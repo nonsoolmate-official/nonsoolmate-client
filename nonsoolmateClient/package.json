@@ -14,12 +14,14 @@
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.6"
+    "styled-components": "^6.1.6",
+    "styled-reset": "^4.5.2"
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/styled-components": "^5.1.34",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
     "@vitejs/plugin-react": "^4.2.1",
