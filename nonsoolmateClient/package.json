@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
@@ -30,7 +31,13 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "postcss-syntax": "^0.36.2",
     "prettier": "^3.1.1",
+    "stylelint": "^16.1.0",
+    "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^6.0.4",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-tsconfig-paths": "^4.2.3"
