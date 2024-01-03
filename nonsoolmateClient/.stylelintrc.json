@@ -1,5 +1,12 @@
 {
-  "extends": ["stylelint-config-styled-components", "stylelint-config-clean-order"],
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": ["stylelint-config-styled-components", "stylelint-config-clean-order", "stylelint-config-prettier"],
   "plugins": ["stylelint-order"],
-  "customSyntax": "@stylelint/postcss-css-in-js"
+  "overrides": [
+    {
+      "files": ["*/.{ts,tsx}"],
+      "customSyntax": "@stylelint/postcss-css-in-js"
+    }
+  ],
+  "rules": { "no-missing-end-of-source-newline": null }
 }
