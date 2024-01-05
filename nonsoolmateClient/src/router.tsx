@@ -1,7 +1,7 @@
 import Error from "@pages/Error";
 import Main from "@pages/Main";
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "@pages/RootLayout";
+import RootLayout from "layout/RootLayout";
 
 export const router = createBrowserRouter([
   {
