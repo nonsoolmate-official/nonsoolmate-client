@@ -15,24 +15,24 @@ body {
 }
 
 a {
-  cursor: pointer;
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 button {
-  cursor: pointer;
-  font: inherit;
-  background: none;
   border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
 }
+
 html {
-  
   @font-face {
-      font-family: 'SUIT-Regular';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
-      font-weight: normal;
+      font-family: SUIT-Regular;
       font-style: normal;
+      font-weight: normal;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
   }
 
 }
