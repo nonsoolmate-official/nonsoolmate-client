@@ -34,3 +34,10 @@ export const subButtonStyle = styled.button`
   color: ${({ theme }) => theme.colors.main_blue};
   ${commonFlex}
 `;
+
+export const answerPageButtonStyle = styled.button`
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.colors.light_blue};
+  color: ${({ theme }) => theme.colors.main_blue};
+  ${commonFlex}
+`;
