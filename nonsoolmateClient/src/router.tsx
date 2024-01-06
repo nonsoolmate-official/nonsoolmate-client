@@ -1,5 +1,5 @@
 import Error from "error";
-import Main from "@pages/Main";
+import TakeTest from "takeTest";
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "layout/RootLayout";
 import Home from "home";
@@ -12,8 +12,8 @@ export const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     errorElement: <Error />,
+
     children: [
-      { path: "/example", element: <Main /> },
       {
         path: "/home",
         element: <Home />,
@@ -23,6 +23,7 @@ export const router = createBrowserRouter([
           { path: "/home/test", element: <HomeTest /> },
         ],
       },
+      { path: "/takeTest", element: <TakeTest /> }
     ],
   },
 ]);
