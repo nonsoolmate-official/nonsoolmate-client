@@ -16,7 +16,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "styled-components": "^6.1.6",
-    "styled-reset": "^4.5.2"
+    "styled-reset": "^4.5.2",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",
