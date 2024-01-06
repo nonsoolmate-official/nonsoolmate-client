@@ -21,7 +21,10 @@ const TestHeaderContainer = styled.header`
   ${commonFlex};
 
   justify-content: space-between;
+  position: sticky;
+  top: 0;
   padding: 1.7rem 3.6rem 1.3rem;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 1.2rem 0 ${({ theme }) => theme.colors.grey_200};
 `;
 const TestCloseButton = styled(mainButtonStyle)`
