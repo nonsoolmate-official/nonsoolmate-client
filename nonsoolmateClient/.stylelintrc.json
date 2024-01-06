@@ -8,6 +8,7 @@
     }
   ],
   "rules": {
+    "font-family-no-missing-generic-family-keyword": null,
     "declaration-property-unit-allowed-list": {
       "/^border/": ["px"],
       "font-size": ["rem", "%"]
