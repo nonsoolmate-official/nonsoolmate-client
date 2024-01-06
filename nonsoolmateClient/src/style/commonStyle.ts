@@ -12,7 +12,7 @@ export const columnFlex = css`
   flex-direction: column;
 `;
 
-export const mainButtonStyle = styled.button`
+export const MainButtonStyle = styled.button`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.main_blue};
   font: ${({ theme }) => theme.fonts.Headline5};
@@ -20,7 +20,7 @@ export const mainButtonStyle = styled.button`
   ${commonFlex}
 `;
 
-export const lightBlueButtonStyle = styled.button`
+export const LightBlueButtonStyle = styled.button`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.light_blue};
   font: ${({ theme }) => theme.fonts.Headline5};
@@ -28,14 +28,14 @@ export const lightBlueButtonStyle = styled.button`
   ${commonFlex}
 `;
 
-export const subButtonStyle = styled.button`
+export const SubButtonStyle = styled.button`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
   ${commonFlex}
 `;
 
-export const answerPageButtonStyle = styled.button`
+export const AnswerPageButtonStyle = styled.button`
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
