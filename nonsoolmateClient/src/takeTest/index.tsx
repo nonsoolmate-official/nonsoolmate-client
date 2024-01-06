@@ -1,3 +1,5 @@
+import TestHeader from "./components/TestHeader";
+
 export default function index() {
-  return <div>testpage</div>;
+  return <TestHeader />;
 }
