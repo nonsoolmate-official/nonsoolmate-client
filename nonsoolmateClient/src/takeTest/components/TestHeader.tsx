@@ -13,7 +13,7 @@ export default function TestHeader() {
       <TimerBox>
         <Timer />
       </TimerBox>
-      <TestCloseButton>시험 종료</TestCloseButton>
+      <TestCloseButton type="button">시험 종료</TestCloseButton>
     </TestHeaderContainer>
   );
 }
