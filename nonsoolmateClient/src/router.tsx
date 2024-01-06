@@ -1,4 +1,4 @@
-import Error from "@pages/Error";
+import Error from "error";
 import Main from "@pages/Main";
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "layout/RootLayout";
