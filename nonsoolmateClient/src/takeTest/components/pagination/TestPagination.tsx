@@ -18,7 +18,7 @@ export default function TestSection() {
     setPaperIdx((prev) => prev + 1);
   }
   return (
-    <TestSectionContainer>
+    <TestPaginationContainer>
       <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
@@ -26,10 +26,10 @@ export default function TestSection() {
       <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
-    </TestSectionContainer>
+    </TestPaginationContainer>
   );
 }
-const TestSectionContainer = styled.section`
+const TestPaginationContainer = styled.section`
   ${commonFlex};
 
   background-color: ${({ theme }) => theme.colors.grey_50};
