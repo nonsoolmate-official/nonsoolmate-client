@@ -1,11 +1,11 @@
 import TestHeader from "./components/TestHeader";
-import TestSection from "./components/TestSection";
+import TestPagination from "./components/TestPagination";
 
 export default function index() {
   return (
     <>
       <TestHeader />
-      <TestSection />
+      <TestPagination />
     </>
   );
 }

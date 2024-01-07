@@ -2,13 +2,14 @@ import { LeftArrowBigIc, RightArrowBigIc } from "@assets/index";
 import styled from "styled-components";
 import testPaper1 from "../../assets/image/testPaperImg1.jpeg";
 import { commonFlex } from "style/commonStyle";
+
 export default function TestSection() {
   return (
     <TestSectionContainer>
       <PreviousPageButton>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <TestPaperImage src={testPaper1} alt="시험지" />
+      <Test src={testPaper1} alt="시험지 이미지" />
       <NextPageButton>
         <RightArrowBigIcon />
       </NextPageButton>
@@ -40,8 +41,7 @@ const LeftArrowBigIcon = styled(LeftArrowBigIc)`
   width: 5.6rem;
   height: 5.6rem;
 `;
-const TestPaperImage = styled.img`
-  width: 93.6rem;
-  height: 132.38rem;
+const Test = styled.img`
+  width: 93rem;
   margin: 2.4rem 8rem;
 `;
