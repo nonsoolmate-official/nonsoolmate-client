@@ -1,16 +1,29 @@
 import { LeftArrowBigIc, RightArrowBigIc } from "@assets/index";
 import styled from "styled-components";
 import testPaper1 from "../../assets/image/testPaperImg1.jpeg";
+import testPaper2 from "../../assets/image/testPaperImg2.jpeg";
+import testPaper3 from "../../assets/image/testPaperImg3.jpeg";
+import testPaper4 from "../../assets/image/testPaperImg4.jpeg";
 import { commonFlex } from "style/commonStyle";
+import { useState } from "react";
 
 export default function TestSection() {
+  const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
+  const [pageNum, setPageNum] = useState(0);
+
+  function handleMovePreviousPage() {
+    setPageNum(pageNum - 1);
+  }
+  function handleMoveNextPage() {
+    setPageNum(pageNum + 1);
+  }
   return (
     <TestSectionContainer>
-      <PreviousPageButton>
+      <PreviousPageButton type="button" onClick={handleMovePreviousPage}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <Test src={testPaper1} alt="시험지 이미지" />
-      <NextPageButton>
+      <Test src={testPapers[pageNum]} alt="시험지 이미지" />
+      <NextPageButton type="button" onClick={handleMoveNextPage}>
         <RightArrowBigIcon />
       </NextPageButton>
     </TestSectionContainer>
