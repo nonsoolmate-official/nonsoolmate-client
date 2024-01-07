@@ -7,7 +7,7 @@ import testPaper4 from "@assets/image/testPaperImg4.jpeg";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 
-export default function TestSection() {
+export default function TestPagination() {
   const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
   const [paperIdx, setPaperIdx] = useState(0);
 
