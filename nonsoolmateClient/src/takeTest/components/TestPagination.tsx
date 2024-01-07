@@ -34,10 +34,9 @@ const TestSectionContainer = styled.section`
 
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
-const PreviousPageButton = styled.button`
+const PageButtonStyle = styled.button`
   position: fixed;
   top: 50%;
-  left: 8rem;
   padding: 0;
 
   :hover {
@@ -46,17 +45,11 @@ const PreviousPageButton = styled.button`
     }
   }
 `;
-const NextPageButton = styled.button`
-  position: fixed;
-  top: 50%;
+const PreviousPageButton = styled(PageButtonStyle)`
+  left: 8rem;
+`;
+const NextPageButton = styled(PageButtonStyle)`
   right: 8rem;
-  padding: 0;
-
-  :hover {
-    path {
-      stroke: ${({ theme }) => theme.colors.grey_700};
-    }
-  }
 `;
 const RightArrowBigIcon = styled(RightArrowBigIc)`
   width: 5.6rem;
