@@ -19,11 +19,11 @@ export default function TestSection() {
   }
   return (
     <TestSectionContainer>
-      <PreviousPageButton type="button" onClick={handleMovePreviousPage}>
+      <PreviousPageButton type="button" onClick={handleMovePreviousPage} disabled={pageNum === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
       <Test src={testPapers[pageNum]} alt="시험지 이미지" />
-      <NextPageButton type="button" onClick={handleMoveNextPage}>
+      <NextPageButton type="button" onClick={handleMoveNextPage} disabled={pageNum >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
     </TestSectionContainer>
