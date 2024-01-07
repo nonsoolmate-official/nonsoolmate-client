@@ -21,5 +21,5 @@ const TimerMarkContainer = styled.div`
   gap: 0.8rem;
   position: fixed;
   top: 0.8rem;
-  left: 56%;
+  left: 55.5%;
 `;
