@@ -1,29 +1,29 @@
 import { LeftArrowBigIc, RightArrowBigIc } from "@assets/index";
 import styled from "styled-components";
-import testPaper1 from "../../assets/image/testPaperImg1.jpeg";
-import testPaper2 from "../../assets/image/testPaperImg2.jpeg";
-import testPaper3 from "../../assets/image/testPaperImg3.jpeg";
-import testPaper4 from "../../assets/image/testPaperImg4.jpeg";
+import testPaper1 from "@assets/image/testPaperImg1.jpeg";
+import testPaper2 from "@assets/image/testPaperImg2.jpeg";
+import testPaper3 from "@assets/image/testPaperImg3.jpeg";
+import testPaper4 from "@assets/image/testPaperImg4.jpeg";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 
 export default function TestSection() {
   const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
-  const [pageNum, setPageNum] = useState(0);
+  const [paperIdx, setPaperIdx] = useState(0);
 
-  function handleMovePreviousPage() {
-    setPageNum(pageNum - 1);
+  function handlePreviousButton() {
+    setPaperIdx((prev) => prev - 1);
   }
-  function handleMoveNextPage() {
-    setPageNum(pageNum + 1);
+  function handleNextButton() {
+    setPaperIdx((prev) => prev + 1);
   }
   return (
     <TestSectionContainer>
-      <PreviousPageButton type="button" onClick={handleMovePreviousPage} disabled={pageNum === 0}>
+      <PreviousPageButton type="button" onClick={handlePreviousButton} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <Test src={testPapers[pageNum]} alt="시험지 이미지" />
-      <NextPageButton type="button" onClick={handleMoveNextPage} disabled={pageNum >= testPapers.length - 1}>
+      <Test src={testPapers[paperIdx]} alt="시험지 이미지" />
+      <NextPageButton type="button" onClick={handleNextButton} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
     </TestSectionContainer>
