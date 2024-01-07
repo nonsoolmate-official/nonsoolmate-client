@@ -15,10 +15,10 @@ export default function CoachMark() {
   );
 }
 const CoachMarkContainer = styled.section`
+  ${({ theme }) => theme.effects.dimmed_60};
+
   position: fixed;
-  background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
-  opacity: 0.6;
   inset: 0;
 `;
 export const CoachMarkText = styled.p`
