@@ -13,7 +13,8 @@ const colors = {
   grey_400: "#AFB3C0",
   grey_300: "#C6CAD2",
   grey_200: "#E2E4E8",
-  grey_100: "#EBEDF3",
+  grey_100: "#ECEDF0",
+  grey_50: "#F3F4F6",
   white: "#FFFFFF",
 
   main_blue: "#6478FF",
