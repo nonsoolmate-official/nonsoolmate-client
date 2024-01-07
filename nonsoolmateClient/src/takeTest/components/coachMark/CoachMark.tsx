@@ -3,6 +3,7 @@ import PrevPageMark from "./PrevPageMark";
 import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
+import CloseCoachMark from "./CloseCoachMark";
 
 export default function CoachMark() {
   return (
@@ -11,6 +12,7 @@ export default function CoachMark() {
       <NextPageMark />
       <TimerMark />
       <QuitTestMark />
+      <CloseCoachMark />
     </CoachMarkContainer>
   );
 }
