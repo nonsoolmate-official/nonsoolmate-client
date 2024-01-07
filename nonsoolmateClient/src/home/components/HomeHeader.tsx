@@ -57,6 +57,7 @@ const LoginInfoButton = styled.button`
 
   gap: 1rem;
   justify-content: space-between;
+  padding: 0;
   cursor: pointer;
 `;
 
@@ -68,6 +69,7 @@ const LoginInfoBox = styled.section`
   ${commonFlex};
 
   gap: 0.8rem;
+  padding: 0.4rem 0;
 `;
 
 const LoginId = styled.h2`
