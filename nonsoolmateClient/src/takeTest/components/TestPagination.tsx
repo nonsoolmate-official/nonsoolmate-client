@@ -39,12 +39,24 @@ const PreviousPageButton = styled.button`
   top: 50%;
   left: 8rem;
   padding: 0;
+
+  :hover {
+    path {
+      stroke: ${({ theme }) => theme.colors.grey_700};
+    }
+  }
 `;
 const NextPageButton = styled.button`
   position: fixed;
   top: 50%;
   right: 8rem;
   padding: 0;
+
+  :hover {
+    path {
+      stroke: ${({ theme }) => theme.colors.grey_700};
+    }
+  }
 `;
 const RightArrowBigIcon = styled(RightArrowBigIc)`
   width: 5.6rem;
