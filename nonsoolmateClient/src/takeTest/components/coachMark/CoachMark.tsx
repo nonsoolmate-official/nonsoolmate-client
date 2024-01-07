@@ -4,15 +4,20 @@ import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
 import CloseCoachMark from "./CloseCoachMark";
+import React from "react";
 
-export default function CoachMark() {
+export interface CoachMarkProps {
+  setCoachMarkStatus: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export default function CoachMark(props: CoachMarkProps) {
+  const { setCoachMarkStatus } = props;
   return (
     <CoachMarkContainer>
       <PrevPageMark />
       <NextPageMark />
       <TimerMark />
       <QuitTestMark />
-      <CloseCoachMark />
+      <CloseCoachMark setCoachMarkStatus={setCoachMarkStatus} />
     </CoachMarkContainer>
   );
 }

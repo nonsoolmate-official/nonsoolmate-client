@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { CoachMarkText } from "./CoachMark";
 import { LeftCircleIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
+import { CoachMarkText } from "./CoachMark";
 
 export default function PrevPageMark() {
   return (
