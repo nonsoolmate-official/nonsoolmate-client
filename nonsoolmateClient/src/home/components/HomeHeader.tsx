@@ -32,6 +32,7 @@ const Header = styled.header`
 `;
 
 const LogoButton = styled.button`
+  padding: 0;
   cursor: pointer;
 `;
 
