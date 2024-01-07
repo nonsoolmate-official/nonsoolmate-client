@@ -1,4 +1,3 @@
-import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import PrevPageMark from "./PrevPageMark";
 import NextPageMark from "./NextPageMark";
