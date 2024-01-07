@@ -11,19 +11,19 @@ export default function TestSection() {
   const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
   const [paperIdx, setPaperIdx] = useState(0);
 
-  function handlePreviousButton() {
+  function handleMoveToPreviousPage() {
     setPaperIdx((prev) => prev - 1);
   }
-  function handleNextButton() {
+  function handleMoveToNextPage() {
     setPaperIdx((prev) => prev + 1);
   }
   return (
     <TestSectionContainer>
-      <PreviousPageButton type="button" onClick={handlePreviousButton} disabled={paperIdx === 0}>
+      <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
       <Test src={testPapers[paperIdx]} alt="시험지 이미지" />
-      <NextPageButton type="button" onClick={handleNextButton} disabled={paperIdx >= testPapers.length - 1}>
+      <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
     </TestSectionContainer>
