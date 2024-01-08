@@ -1,3 +1,15 @@
+import GotoSaleButton from "./GotoSaleButton";
+import HomeImg from "./HomeImg";
+import Summary from "./Summary";
+import Title from "./Title";
+
 export default function Banner() {
-  return <div>Banner</div>;
+  return (
+    <>
+      <Title />
+      <Summary />
+      <GotoSaleButton />
+      <HomeImg />
+    </>
+  );
 }
