@@ -12,15 +12,13 @@ export default function SideBarTestButton() {
   }
 
   return (
-    <>
-      <ButtonBox type="button" onClick={handleMoveToHomeTest}>
-        <TestDisabledIcon />
-        <ButtonTextBox>
-          <Text>시험보기</Text>
-        </ButtonTextBox>
-        <RightArrowIcon />
-      </ButtonBox>
-    </>
+    <ButtonBox type="button" onClick={handleMoveToHomeTest}>
+      <TestDisabledIcon />
+      <ButtonTextBox>
+        <Text>시험보기</Text>
+      </ButtonTextBox>
+      <RightArrowIcon />
+    </ButtonBox>
   );
 }
 
