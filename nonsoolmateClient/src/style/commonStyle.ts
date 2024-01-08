@@ -37,7 +37,7 @@ export const subButtonStyle = styled.button`
 
 export const answerPageButtonStyle = styled.button`
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.colors.light_blue};
-  color: ${({ theme }) => theme.colors.main_blue};
+  background-color: ${({ theme }) => theme.colors.main_blue};
+  color: ${({ theme }) => theme.colors.white};
   ${commonFlex}
 `;
