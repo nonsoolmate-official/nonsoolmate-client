@@ -6,7 +6,7 @@ import { CoachMarkText } from "./PrevPageMark";
 export default function TimerMark() {
   return (
     <TimerMarkContainer>
-      <LeftCircleLongIc />
+      <LeftCircleLongIcon />
       <CoachMarkText>
         타이머가 끝나면
         <br />
@@ -22,4 +22,8 @@ const TimerMarkContainer = styled.div`
   position: fixed;
   top: 0.8rem;
   left: 55.5%;
+`;
+const LeftCircleLongIcon = styled(LeftCircleLongIc)`
+  width: 8.4rem;
+  height: 0.4rem;
 `;

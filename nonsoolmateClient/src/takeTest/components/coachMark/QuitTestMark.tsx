@@ -7,7 +7,7 @@ export default function QuitTestMark() {
   return (
     <QuitTestMarkContainer>
       <IconContainer>
-        <UpCircleIc />
+        <UpCircleIcon />
       </IconContainer>
       <QuitTestCoachMarkText>
         시험이 종료되며
@@ -32,4 +32,8 @@ const IconContainer = styled.div`
 `;
 const QuitTestCoachMarkText = styled(CoachMarkText)`
   text-align: right;
+`;
+const UpCircleIcon = styled(UpCircleIc)`
+  width: 0.4rem;
+  height: 3.9rem;
 `;

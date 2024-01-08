@@ -4,7 +4,7 @@ import { commonFlex } from "style/commonStyle";
 export default function PrevPageMark() {
   return (
     <PrevPageMarkContainer>
-      <LeftCircleIc />
+      <LeftCircleIcon />
       <CoachMarkText>이전 페이지</CoachMarkText>
     </PrevPageMarkContainer>
   );
@@ -22,4 +22,8 @@ export const PageMarkContainer = styled.div`
 `;
 const PrevPageMarkContainer = styled(PageMarkContainer)`
   left: 16.8rem;
+`;
+const LeftCircleIcon = styled(LeftCircleIc)`
+  width: 3.9rem;
+  height: 0.4rem;
 `;
