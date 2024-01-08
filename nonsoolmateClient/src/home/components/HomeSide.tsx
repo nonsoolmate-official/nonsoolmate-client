@@ -50,7 +50,7 @@ const SideHeaderBox = styled.section`
   ${commonFlex};
 
   justify-content: space-between;
-  padding: 0 10rem 0 0;
+  padding-right: 10rem;
 `;
 
 const SideHeaderId = styled.h2`
