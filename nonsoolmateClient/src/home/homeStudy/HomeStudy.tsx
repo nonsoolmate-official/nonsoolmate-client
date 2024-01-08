@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { EmptyIc } from "@assets/index";
+import { UnsetContainerLayout } from "style/layout/UnsetContainerLayout";
+import { UnsetContentLayout } from "style/layout/UnsetContentLayout";
 
 export default function HomeStudy() {
   return (
@@ -14,13 +16,7 @@ export default function HomeStudy() {
 }
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  width: 93.5rem;
-  height: 100%;
-  padding: 6.7rem 21.5rem 0 2.4rem;
-  background-color: ${({ theme }) => theme.colors.grey_50};
+  ${UnsetContainerLayout}
 `;
 
 const Header = styled.h2`
@@ -31,13 +27,7 @@ const Header = styled.h2`
 `;
 
 const Content = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  align-items: center;
-  height: 48.7rem;
-  padding: 14.6rem 0;
-  background-color: ${({ theme }) => theme.colors.grey_200};
+  ${UnsetContentLayout}
 `;
 
 const EmptyIcon = styled(EmptyIc)`
