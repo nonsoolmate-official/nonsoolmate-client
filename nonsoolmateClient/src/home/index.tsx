@@ -18,8 +18,10 @@ export default function index() {
 
 //padding 좌우만 + 대학 스크롤 기능 + 배경색 light-grey
 const Homes = styled.section`
+  justify-content: space-between;
+
   ${commonFlex};
 
-  justify-content: space-between;
+  height: calc(100vh - 6.4rem);
   padding: 0;
 `;
