@@ -16,9 +16,7 @@ const Header = styled.h2`
 const Container = styled.section`
   display: flex;
   width: 93.5rem;
-  background-color: ${({ theme }) => theme.colors.black};
 `;
-
 const Content = styled.section`
   display: flex;
 `;
