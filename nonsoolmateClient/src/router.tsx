@@ -6,6 +6,7 @@ import Home from "home";
 import HomePractice from "home/homePractice/HomePractice";
 import HomeStudy from "home/homeStudy/HomeStudy";
 import HomeTest from "home/homeTest/HomeTest";
+import OnBording from "onbording";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ export const router = createBrowserRouter([
           { path: "/home/test", element: <HomeTest /> },
         ],
       },
-      { path: "/takeTest", element: <TakeTest /> }
+      { path: "/takeTest", element: <TakeTest /> },
+      { path: "/onBording", element: <OnBording /> },
     ],
   },
 ]);
