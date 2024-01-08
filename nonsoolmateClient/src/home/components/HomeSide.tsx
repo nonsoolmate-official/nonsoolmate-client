@@ -30,8 +30,11 @@ const Side = styled.aside`
   ${columnFlex};
 
   gap: 2rem;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  /* justify-content: space-between; */
   position: sticky;
+  height: 100%;
   padding: 2.4rem 2.4rem 0 21.5rem;
 `;
 
