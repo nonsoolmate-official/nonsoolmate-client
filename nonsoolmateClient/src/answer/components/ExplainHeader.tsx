@@ -1,13 +1,20 @@
 import { BackToListIc } from "@assets/index";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-export default function ExplainHeader() {
+interface ExplainHeaderProps {
+  testTitle: string;
+}
+
+export default function ExplainHeader(props: ExplainHeaderProps) {
+  const { testTitle } = props;
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <BackToHomeButton>
+      <BackToHomeButton onClick={() => navigate(`/home`)}>
         <BackToListIcon />
       </BackToHomeButton>
-      <TestName>중앙대학교 - 2021 인문사회 1</TestName>
+      <TestName>{testTitle}</TestName>
     </HeaderContainer>
   );
 }
