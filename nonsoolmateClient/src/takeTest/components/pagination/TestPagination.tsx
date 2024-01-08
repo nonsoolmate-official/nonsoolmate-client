@@ -7,7 +7,7 @@ import testPaper4 from "@assets/image/testPaperImg4.jpeg";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 
-export default function TestSection() {
+export default function TestPagination() {
   const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
   const [paperIdx, setPaperIdx] = useState(0);
 
@@ -18,18 +18,18 @@ export default function TestSection() {
     setPaperIdx((prev) => prev + 1);
   }
   return (
-    <TestSectionContainer>
+    <TestPaginationContainer>
       <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <Test src={testPapers[paperIdx]} alt="시험지 이미지" />
+      <TestImage src={testPapers[paperIdx]} alt="시험지 이미지" />
       <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
-    </TestSectionContainer>
+    </TestPaginationContainer>
   );
 }
-const TestSectionContainer = styled.section`
+const TestPaginationContainer = styled.section`
   ${commonFlex};
 
   background-color: ${({ theme }) => theme.colors.grey_50};
@@ -59,7 +59,7 @@ const LeftArrowBigIcon = styled(LeftArrowBigIc)`
   width: 5.6rem;
   height: 5.6rem;
 `;
-const Test = styled.img`
-  width: 93rem;
+const TestImage = styled.img`
+  width: 93.6rem;
   margin: 2.4rem 8rem;
 `;
