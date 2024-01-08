@@ -22,7 +22,7 @@ export default function TestPagination() {
       <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <Test src={testPapers[paperIdx]} alt="시험지 이미지" />
+      <TestImage src={testPapers[paperIdx]} alt="시험지 이미지" />
       <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
@@ -59,7 +59,7 @@ const LeftArrowBigIcon = styled(LeftArrowBigIc)`
   width: 5.6rem;
   height: 5.6rem;
 `;
-const Test = styled.img`
-  width: 93rem;
+const TestImage = styled.img`
+  width: 93.6rem;
   margin: 2.4rem 8rem;
 `;

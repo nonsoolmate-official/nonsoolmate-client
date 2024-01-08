@@ -43,5 +43,7 @@ const TimerBox = styled(lightBlueButtonStyle)`
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  padding: 0.8rem 2rem;
+  width: 16.4rem;
+  height: 4rem;
+  padding: 0;
 `;
