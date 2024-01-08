@@ -1,7 +1,6 @@
 import { RightCircleIc } from "@assets/index";
-import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
-import { CoachMarkText } from "./CoachMark";
+import { CoachMarkText, PageMarkContainer } from "./PrevPageMark";
 
 export default function NextPageMark() {
   return (
@@ -11,12 +10,6 @@ export default function NextPageMark() {
     </NextPageMarkContainer>
   );
 }
-const NextPageMarkContainer = styled.div`
-  ${commonFlex};
-
-  gap: 0.8rem;
-  position: fixed;
-  top: 50%;
-  transform: translate(0, 50%);
+const NextPageMarkContainer = styled(PageMarkContainer)`
   right: 16.8rem;
 `;

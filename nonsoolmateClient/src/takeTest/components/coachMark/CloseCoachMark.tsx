@@ -6,7 +6,7 @@ export default function CloseCoachMark(props: CoachMarkProps) {
   const { setCoachMarkStatus } = props;
   return (
     <CloseCoachMarkContainer>
-      <Text>논술메이트 시험 화면에 대해 알려드릴게요!</Text>
+      <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
       <CloseCoachMarkButton onClick={() => setCoachMarkStatus(false)} type="button">
         닫기
       </CloseCoachMarkButton>
@@ -23,7 +23,7 @@ const CloseCoachMarkContainer = styled.div`
   transform: translate(-50%, -50%);
   width: 34rem;
 `;
-const Text = styled.p`
+const Title = styled.p`
   ${commonFlex};
   ${({ theme }) => theme.fonts.Headline3};
 

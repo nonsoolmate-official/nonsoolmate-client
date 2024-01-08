@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { CoachMarkText } from "./CoachMark";
 import { LeftCircleLongIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
+import { CoachMarkText } from "./PrevPageMark";
 
 export default function TimerMark() {
   return (

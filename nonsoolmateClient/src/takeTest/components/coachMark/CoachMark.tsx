@@ -28,6 +28,3 @@ const CoachMarkContainer = styled.section`
   color: ${({ theme }) => theme.colors.white};
   inset: 0;
 `;
-export const CoachMarkText = styled.p`
-  ${({ theme }) => theme.fonts.Body4};
-`;

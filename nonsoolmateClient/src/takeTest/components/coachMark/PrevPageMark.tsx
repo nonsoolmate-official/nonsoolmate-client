@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { LeftCircleIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
-import { CoachMarkText } from "./CoachMark";
-
 export default function PrevPageMark() {
   return (
     <PrevPageMarkContainer>
@@ -11,12 +9,17 @@ export default function PrevPageMark() {
     </PrevPageMarkContainer>
   );
 }
-const PrevPageMarkContainer = styled.div`
+export const CoachMarkText = styled.p`
+  ${({ theme }) => theme.fonts.Body4};
+`;
+export const PageMarkContainer = styled.div`
   ${commonFlex};
 
   gap: 0.8rem;
   position: fixed;
   top: 50%;
   transform: translate(0, 50%);
+`;
+const PrevPageMarkContainer = styled(PageMarkContainer)`
   left: 16.8rem;
 `;
