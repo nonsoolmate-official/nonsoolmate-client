@@ -37,7 +37,6 @@ const LogoButton = styled.button`
 `;
 
 const LogoIcon = styled(LogoIc)`
-  /* display: block; */
   object-fit: cover;
 `;
 
