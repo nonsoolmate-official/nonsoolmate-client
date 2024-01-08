@@ -12,15 +12,13 @@ export default function SideBarStudyButton() {
   }
 
   return (
-    <>
-      <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
-        <StudyActiveIcon />
-        <ButtonTextBox>
-          <Text>학습하기</Text>
-        </ButtonTextBox>
-        <RightArrowIcon />
-      </ButtonBox>
-    </>
+    <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
+      <StudyActiveIcon />
+      <ButtonTextBox>
+        <Text>학습하기</Text>
+      </ButtonTextBox>
+      <RightArrowIcon />
+    </ButtonBox>
   );
 }
 
