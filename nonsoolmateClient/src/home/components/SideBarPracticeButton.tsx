@@ -12,15 +12,13 @@ export default function SideBarPracticeButton() {
   }
 
   return (
-    <>
-      <ButtonBox type="button" onClick={handleMoveToHomePractice}>
-        <PracticeDisabledIcon />
-        <ButtonTextBox>
-          <Text>연습하기</Text>
-        </ButtonTextBox>
-        <RightArrowIcon />
-      </ButtonBox>
-    </>
+    <ButtonBox type="button" onClick={handleMoveToHomePractice}>
+      <PracticeDisabledIcon />
+      <ButtonTextBox>
+        <Text>연습하기</Text>
+      </ButtonTextBox>
+      <RightArrowIcon />
+    </ButtonBox>
   );
 }
 
