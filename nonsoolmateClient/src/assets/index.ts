@@ -34,6 +34,9 @@ import LogoIc from "./icon/logoIc.svg?react";
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
 import BorderIc from "./icon/borderIc.svg?react";
+
+import EmptyIc from "./icon/emptyIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -60,4 +63,5 @@ export {
   LogoIc,
   LoginInfoIc,
   BorderIc,
+  EmptyIc,
 };
