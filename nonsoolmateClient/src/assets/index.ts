@@ -9,7 +9,9 @@ import LeftArrowWhiteIc from "./icon/leftArrowWhiteIc.svg?react";
 import LeftCircleIc from "./icon/leftCircleIc.svg?react";
 import LeftCircleLongIc from "./icon/leftCircleLongIc.svg?react";
 
-import PrecautionNumIc from "./icon/precautionNumIc.svg?react";
+import PrecautionNumOneIc from "./icon/precautionNumOneIc.svg?react";
+import PrecautionNumTwoIc from "./icon/precautionNumTwoIc.svg?react";
+import PrecautionNumThreeIc from "./icon/precautionNumThreeIc.svg?react";
 
 import RightArrowBigIc from "./icon/rightArrowBigIc.svg?react";
 import RightArrowIc from "./icon/rightArrowIc.svg?react";
@@ -43,7 +45,9 @@ export {
   LeftArrowWhiteIc,
   LeftCircleIc,
   LeftCircleLongIc,
-  PrecautionNumIc,
+  PrecautionNumOneIc,
+  PrecautionNumTwoIc,
+  PrecautionNumThreeIc,
   RightArrowBigIc,
   RightArrowIc,
   RightArrowWhiteIc,
