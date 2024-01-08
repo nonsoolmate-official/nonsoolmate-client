@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { CoachMarkProps } from "./CoachMark";
 
 export default function CloseCoachMark(props: CoachMarkProps) {
-  const { setCoachMarkStatus } = props;
+  const { changeCoachMarkStatus } = props;
   return (
     <CloseCoachMarkContainer>
       <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
-      <CloseCoachMarkButton onClick={() => setCoachMarkStatus(false)} type="button">
+      <CloseCoachMarkButton onClick={() => changeCoachMarkStatus(false)} type="button">
         닫기
       </CloseCoachMarkButton>
     </CloseCoachMarkContainer>
