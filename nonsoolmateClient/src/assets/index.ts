@@ -34,7 +34,11 @@ import LogoIc from "./icon/logoIc.svg?react";
 
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
+import FaceBookIc from "./icon/facebookIc.svg?react";
+import InstaIc from "./icon/instaIc.svg?react";
+
 import BorderIc from "./icon/borderIc.svg?react";
+import RightWhiteArrowIc from "./icon/rightWhiteArrowIc.svg?react";
 
 import EmptyIc from "./icon/emptyIc.svg?react";
 
@@ -68,6 +72,9 @@ export {
   LogoIc,
   LoginInfoIc,
   BorderIc,
+  FaceBookIc,
+  InstaIc,
+  RightWhiteArrowIc,
   EmptyIc,
   HomeTestUnsetIc,
   FindTestIc,
