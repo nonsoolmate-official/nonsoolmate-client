@@ -3,10 +3,15 @@ import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
-export default function PdfViewer() {
+interface PdfViewerProps {
+  pdfUrl: string;
+}
+
+export default function PdfViewer(props: PdfViewerProps) {
+  const { pdfUrl } = props;
   return (
     <PdfViewerWrapper>
-      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+      <Worker workerUrl={pdfUrl}>
         <div
           style={{
             padding: "2rem 0.8rem 0",
