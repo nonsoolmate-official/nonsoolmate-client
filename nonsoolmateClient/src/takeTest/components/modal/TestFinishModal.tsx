@@ -72,6 +72,7 @@ const TestQuitButton = styled(lightBlueButtonStyle)`
   width: 16rem;
   padding: 0.8rem 0;
 `;
+
 const SelectImageButton = styled(mainButtonStyle)`
   width: 16rem;
   padding: 0.8rem 0;
