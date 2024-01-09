@@ -2,9 +2,15 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
+import { useNavigate } from "react-router-dom";
 
 export default function TestQuitModal(props: TestQuitStatusProps) {
+  const navigate = useNavigate();
   const { changeTestQuitStatus } = props;
+
+  function handleMoveToHome() {
+    navigate("/home/test");
+  }
   return (
     <TestQuitModalContainer>
       <Modal>
@@ -14,7 +20,7 @@ export default function TestQuitModal(props: TestQuitStatusProps) {
             <ModalText>시험 기록이 저장되지 않습니다.</ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton>나가기</TestQuitButton>
+            <TestQuitButton onClick={handleMoveToHome}>나가기</TestQuitButton>
             <StayButton onClick={() => changeTestQuitStatus(false)}>머무르기</StayButton>
           </ButtonContainer>
         </TestQuitModalBox>
