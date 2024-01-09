@@ -1,15 +1,17 @@
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
+import { FOOTER_LIST } from "onbording/core/footerlist";
 
 export default function Buttons() {
   return (
     <Container>
-      <Button type="button">Product</Button>
-      <Button type="button">Information</Button>
-      <Button type="button">Company</Button>
-      <Button type="button">Terms</Button>
-      <Button type="button">Privacy</Button>
-      <Button type="button">Cookies</Button>
+      {FOOTER_LIST.map((item) => {
+        return (
+          <Button key={item} type="button">
+            {item}
+          </Button>
+        );
+      })}
     </Container>
   );
 }
