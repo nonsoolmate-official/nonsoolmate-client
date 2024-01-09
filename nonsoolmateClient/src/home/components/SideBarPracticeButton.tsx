@@ -13,13 +13,11 @@ export default function SideBarPracticeButton(props: SideBarPracticeProps) {
 
   return (
     <ButtonBox type="button" onClick={handleMoveToHomePractice}>
-      {currentPage === "practice" && <PracticeActiveIcon />}
-      {currentPage !== "practice" && <PracticeDisabledIcon />}
+      {currentPage === "practice" ? <PracticeActiveIcon /> : <PracticeDisabledIcon />}
       <ButtonTextBox>
         <Text $currentPage={currentPage}>연습하기</Text>
       </ButtonTextBox>
-      {currentPage === "practice" && <RightArrowBlueIcon />}
-      {currentPage !== "practice" && <RightArrowIcon />}
+      {currentPage === "practice" ? <RightArrowBlueIcon /> : <RightArrowIcon />}
     </ButtonBox>
   );
 }

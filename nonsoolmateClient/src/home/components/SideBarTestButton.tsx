@@ -13,13 +13,11 @@ export default function SideBarTestButton(props: SideBarTestProps) {
 
   return (
     <ButtonBox type="button" onClick={handleMoveToHomeTest}>
-      {currentPage === "test" && <TestActiveIcon />}
-      {currentPage != "test" && <TestDisabledIcon />}
+      {currentPage === "test" ? <TestActiveIcon /> : <TestDisabledIcon />}
       <ButtonTextBox>
         <Text $currentPage={currentPage}>시험보기</Text>
       </ButtonTextBox>
-      {currentPage === "test" && <RightArrowBlueIcon />}
-      {currentPage != "test" && <RightArrowIcon />}
+      {currentPage === "test" ? <RightArrowBlueIcon /> : <RightArrowIcon />}
     </ButtonBox>
   );
 }

@@ -13,13 +13,11 @@ export default function SideBarStudyButton(props: SideBarStudyProps) {
 
   return (
     <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
-      {currentPage === "study" && <StudyActiveIcon />}
-      {currentPage != "study" && <StudyDisabledIcon />}
+      {currentPage === "study" ? <StudyActiveIcon /> : <StudyDisabledIcon />}
       <ButtonTextBox>
         <Text $currentPage={currentPage}>학습하기</Text>
       </ButtonTextBox>
-      {currentPage === "study" && <RightArrowBlueIcon />}
-      {currentPage != "study" && <RightArrowIcon />}
+      {currentPage === "study" ? <RightArrowBlueIcon /> : <RightArrowIcon />}
     </ButtonBox>
   );
 }
