@@ -3,15 +3,14 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
-import { useNavigate } from "react-router-dom";
 
 export default function TestHeader(props: TestQuitStatusProps) {
-  const navigate = useNavigate();
   const { changeTestQuitStatus } = props;
+
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <IconBox onClick={() => navigate("/home/test")}>
+        <IconBox onClick={() => changeTestQuitStatus(true)}>
           <LeftArrowBlackBtnIcon />
         </IconBox>
         <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
@@ -19,9 +18,7 @@ export default function TestHeader(props: TestQuitStatusProps) {
       <TimerBox>
         <Timer />
       </TimerBox>
-      <TestCloseButton type="button" onClick={() => changeTestQuitStatus(true)}>
-        시험 종료
-      </TestCloseButton>
+      <TestCloseButton type="button">시험 종료</TestCloseButton>
     </TestHeaderContainer>
   );
 }
