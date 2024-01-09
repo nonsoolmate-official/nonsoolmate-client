@@ -4,7 +4,7 @@ import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
 import { PracticeDisabledIc, PracticeActiveIc, RightArrowIc, RightArrowBlueIc } from "@assets/index";
 
 interface SideBarPracticeProps {
-  handleMoveToHomePractice: Function;
+  handleMoveToHomePractice: () => void;
   goTo: string;
 }
 

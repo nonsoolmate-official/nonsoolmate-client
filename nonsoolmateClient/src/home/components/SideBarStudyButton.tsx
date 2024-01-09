@@ -4,7 +4,7 @@ import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
 import { StudyActiveIc, RightArrowIc, StudyDisabledIc, RightArrowBlueIc } from "@assets/index";
 
 interface SideBarStudyProps {
-  handleMoveToHomeStudy: Function;
+  handleMoveToHomeStudy: () => void;
   goTo: string;
 }
 

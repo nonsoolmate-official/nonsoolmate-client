@@ -4,7 +4,7 @@ import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
 import { TestActiveIc, TestDisabledIc, RightArrowIc, RightArrowBlueIc } from "@assets/index";
 
 interface SideBarTestProps {
-  handleMoveToHomeTest: Function;
+  handleMoveToHomeTest: () => void;
   goTo: string;
 }
 
