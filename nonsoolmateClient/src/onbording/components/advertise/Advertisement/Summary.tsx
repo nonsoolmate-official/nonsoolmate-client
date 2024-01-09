@@ -19,11 +19,12 @@ export default function Summary(props: SummaryProp) {
 const Container = styled.div`
   ${columnFlex}
 
-  justify-content: flex-start;
+  align-items: flex-start;
+  width: 25.9rem;
+  margin-top: 0.4rem;
 `;
 
 const Text = styled.p`
-  width: 25.9rem;
   color: ${({ theme }) => theme.colors.grey_700};
   ${({ theme }) => theme.fonts.Body6};
 `;
