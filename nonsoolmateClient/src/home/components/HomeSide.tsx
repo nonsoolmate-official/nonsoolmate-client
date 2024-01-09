@@ -34,6 +34,7 @@ const Side = styled.aside`
 
   /* justify-content: space-between; */
   position: sticky;
+  width: calc(100vw - 93.5rem);
   height: 100%;
   padding: 2.4rem 2.4rem 0 21.5rem;
 `;
