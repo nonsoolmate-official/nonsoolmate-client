@@ -14,12 +14,12 @@ export default function SideBarPracticeButton(props: SideBarPracticeProps) {
   return (
     <ButtonBox type="button" onClick={() => handleMoveToHomePractice()}>
       {goTo === "practice" && <PracticeActiveIcon />}
-      {goTo != "practice" && <PracticeDisabledIcon />}
+      {goTo !== "practice" && <PracticeDisabledIcon />}
       <ButtonTextBox>
-        <Text>연습하기</Text>
+        <Text $goTo={goTo}>연습하기</Text>
       </ButtonTextBox>
       {goTo === "practice" && <RightArrowBlueIcon />}
-      {goTo != "practice" && <RightArrowIcon />}
+      {goTo !== "practice" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -27,9 +27,11 @@ export default function SideBarPracticeButton(props: SideBarPracticeProps) {
 const ButtonBox = styled.button`
   ${commonFlex};
 `;
+
 const PracticeActiveIcon = styled(PracticeActiveIc)`
   padding: 0;
 `;
+
 const PracticeDisabledIcon = styled(PracticeDisabledIc)`
   padding: 0;
 `;
@@ -38,16 +40,20 @@ const ButtonTextBox = styled.section`
   ${SideBarTextBoxLayout}
 `;
 
-const Text = styled.h3`
-  ${({ theme }) => theme.fonts.Body3};
-
-  color: ${({ theme }) => theme.colors.grey_400};
-`;
-
 const RightArrowIcon = styled(RightArrowIc)`
+  width: 2rem;
+  height: 2rem;
   padding: 0.1rem 0;
 `;
 
 const RightArrowBlueIcon = styled(RightArrowBlueIc)`
-  padding: 0.1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.1rem 0;
+`;
+
+const Text = styled.h3<{ $goTo: string }>`
+  ${({ theme }) => theme.fonts.Body3};
+
+  color: ${({ theme, $goTo }) => ($goTo === "practice" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;
