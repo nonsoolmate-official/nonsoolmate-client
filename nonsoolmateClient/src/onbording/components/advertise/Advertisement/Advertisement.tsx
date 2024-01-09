@@ -36,13 +36,13 @@ const TextContainer = styled.div`
   ${columnFlex}
 
   align-items: flex-start;
-  width: 25.9rem;
-  height: 7.4rem;
+  width: 24.8rem;
 `;
 
 const ContentContainer = styled.div`
   ${columnFlex}
 
   align-items: flex-end;
-  width: 25.9rem;
+  width: 24.8rem;
+  height: 18.4rem;
 `;
