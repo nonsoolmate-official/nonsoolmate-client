@@ -10,9 +10,6 @@ export default function TestQuitModal(props: TestQuitStatusProps) {
   const navigate = useNavigate();
   const { changeTestQuitStatus } = props;
 
-  function handleMoveToHome() {
-    navigate("/home/test");
-  }
   return (
     <TestQuitModalContainer>
       <Modal>
@@ -22,7 +19,7 @@ export default function TestQuitModal(props: TestQuitStatusProps) {
             <ModalText>시험 기록이 저장되지 않습니다.</ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton onClick={handleMoveToHome}>나가기</TestQuitButton>
+            <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
             <StayButton onClick={() => changeTestQuitStatus(false)}>머무르기</StayButton>
           </ButtonContainer>
         </TestQuitModalBox>

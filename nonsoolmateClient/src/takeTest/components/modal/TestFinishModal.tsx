@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
+import { useNavigate } from "react-router-dom";
 
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
@@ -8,6 +9,7 @@ interface TestFinishProps {
 }
 export default function TestFinishModal(props: TestFinishProps) {
   const { changeTestFinishStatus, changeTestSubmitStatus } = props;
+  const navigate = useNavigate();
   function handleSubmitButton() {
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
@@ -25,7 +27,7 @@ export default function TestFinishModal(props: TestFinishProps) {
             </ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton>나가기</TestQuitButton>
+            <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
             <SelectImageButton onClick={handleSubmitButton}>제출하기</SelectImageButton>
           </ButtonContainer>
         </TestFinishModalBox>
