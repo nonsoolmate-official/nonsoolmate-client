@@ -22,6 +22,7 @@ const Container = styled.article`
 `;
 
 const Button = styled.button`
-  font: ${({ theme }) => theme.fonts.Body6};
+  ${({ theme }) => theme.fonts.Body6};
+
   color: ${({ theme }) => theme.colors.grey_600};
 `;
