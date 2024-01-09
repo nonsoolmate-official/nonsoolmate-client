@@ -4,8 +4,28 @@ import { BorderIc } from "@assets/index";
 import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarPracticeButton from "./SideBarPracticeButton";
 import SideBarTestButton from "./SideBarTestButton";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeSide() {
+  const navigate = useNavigate();
+  const [goTo, setGoTo] = useState<string>("test");
+
+  function handleMoveToHomeStudy() {
+    navigate("/home/study");
+    setGoTo("study");
+  }
+
+  function handleMoveToHomePractice() {
+    navigate("/home/practice");
+    setGoTo("practice");
+  }
+
+  function handleMoveToHomeTest() {
+    navigate("/home/test");
+    setGoTo("test");
+  }
+
   return (
     <Side>
       <SideHeader>
@@ -16,11 +36,11 @@ export default function HomeSide() {
         </SideHeaderBox>
       </SideHeader>
       <SideBar>
-        <SideBarStudyButton />
+        <SideBarStudyButton goTo={goTo} handleMoveToHomeStudy={handleMoveToHomeStudy} />
         <BorderIcon />
-        <SideBarPracticeButton />
+        <SideBarPracticeButton goTo={goTo} handleMoveToHomePractice={handleMoveToHomePractice} />
         <BorderIcon />
-        <SideBarTestButton />
+        <SideBarTestButton goTo={goTo} handleMoveToHomeTest={handleMoveToHomeTest} />
       </SideBar>
     </Side>
   );
