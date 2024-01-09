@@ -11,5 +11,5 @@ export default function Image(props: ImageProps) {
 
 const ReasonImg = styled.img`
   width: 13.2rem;
-  height: 13.2rem;
+  height: 11.2rem;
 `;
