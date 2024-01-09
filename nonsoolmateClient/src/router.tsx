@@ -6,6 +6,8 @@ import Home from "home";
 import HomePractice from "home/homePractice/HomePractice";
 import HomeStudy from "home/homeStudy/HomeStudy";
 import HomeTest from "home/homeTest/HomeTest";
+import Correction from "answer/correction";
+import Explanation from "answer/explanation";
 import OnBording from "onbording";
 
 export const router = createBrowserRouter([
@@ -26,6 +28,8 @@ export const router = createBrowserRouter([
       },
       { path: "/takeTest", element: <TakeTest /> },
       { path: "/onBording", element: <OnBording /> },
+      { path: "/correction", element: <Correction /> },
+      { path: "/explanation", element: <Explanation /> },
     ],
   },
 ]);
