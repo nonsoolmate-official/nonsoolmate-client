@@ -37,6 +37,10 @@ import BorderIc from "./icon/borderIc.svg?react";
 
 import EmptyIc from "./icon/emptyIc.svg?react";
 
+import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
+
+import FindTestIc from "./icon/findTestIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -64,4 +68,6 @@ export {
   LoginInfoIc,
   BorderIc,
   EmptyIc,
+  HomeTestUnsetIc,
+  FindTestIc,
 };
