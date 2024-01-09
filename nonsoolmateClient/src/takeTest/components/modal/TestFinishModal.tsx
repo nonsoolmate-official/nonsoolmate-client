@@ -2,7 +2,16 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 
-export default function TestFinishModal() {
+interface TestFinishProps {
+  changeTestFinishStatus: (testFinishModal: boolean) => void;
+  changeTestSubmitStatus: (testSubmitModal: boolean) => void;
+}
+export default function TestFinishModal(props: TestFinishProps) {
+  const { changeTestFinishStatus, changeTestSubmitStatus } = props;
+  function handleSubmitButton() {
+    changeTestFinishStatus(false);
+    changeTestSubmitStatus(true);
+  }
   return (
     <TestFinishModalContaier>
       <Modal>
@@ -17,7 +26,7 @@ export default function TestFinishModal() {
           </ModalContent>
           <ButtonContainer>
             <TestQuitButton>나가기</TestQuitButton>
-            <SelectImageButton>제출하기</SelectImageButton>
+            <SelectImageButton onClick={handleSubmitButton}>제출하기</SelectImageButton>
           </ButtonContainer>
         </TestFinishModalBox>
       </Modal>
