@@ -1,6 +1,6 @@
 import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
-import { CoachMarkProps } from "./CoachMark";
+import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
 
 export default function CloseCoachMark(props: CoachMarkProps) {
   const { changeStatus } = props;

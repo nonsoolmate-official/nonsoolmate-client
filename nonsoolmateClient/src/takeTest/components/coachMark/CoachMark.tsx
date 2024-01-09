@@ -4,10 +4,8 @@ import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
 import CloseCoachMark from "./CloseCoachMark";
+import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
 
-export interface CoachMarkProps {
-  changeStatus: (coachMark: boolean, precautionModal: boolean) => void;
-}
 export default function CoachMark(props: CoachMarkProps) {
   const { changeStatus } = props;
   return (
