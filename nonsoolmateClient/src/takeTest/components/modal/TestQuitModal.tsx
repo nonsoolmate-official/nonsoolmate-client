@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
-import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
 import { useNavigate } from "react-router-dom";
 
+interface TestQuitStatusProps {
+  changeTestQuitStatus: (testQuitModal: boolean) => void;
+}
 export default function TestQuitModal(props: TestQuitStatusProps) {
   const navigate = useNavigate();
   const { changeTestQuitStatus } = props;
