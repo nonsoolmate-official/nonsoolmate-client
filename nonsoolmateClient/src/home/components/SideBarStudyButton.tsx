@@ -1,23 +1,25 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
-import { StudyActiveIc, RightArrowIc } from "@assets/index";
+import { StudyActiveIc, RightArrowIc, StudyDisabledIc, RightArrowBlueIc } from "@assets/index";
 
-export default function SideBarStudyButton() {
-  const navigate = useNavigate();
+interface SideBarStudyProps {
+  handleMoveToHomeStudy: Function;
+  goTo: string;
+}
 
-  function handleMoveToHomeStudy() {
-    navigate("/home/study");
-  }
+export default function SideBarStudyButton(props: SideBarStudyProps) {
+  const { handleMoveToHomeStudy, goTo } = props;
 
   return (
-    <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
-      <StudyActiveIcon />
+    <ButtonBox type="button" onClick={() => handleMoveToHomeStudy()}>
+      {goTo === "study" && <StudyActiveIcon />}
+      {goTo != "study" && <StudyDisabledIcon />}
       <ButtonTextBox>
         <Text>학습하기</Text>
       </ButtonTextBox>
-      <RightArrowIcon />
+      {goTo === "study" && <RightArrowBlueIcon />}
+      {goTo != "study" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -27,6 +29,10 @@ const ButtonBox = styled.button`
 `;
 
 const StudyActiveIcon = styled(StudyActiveIc)`
+  padding: 0;
+`;
+
+const StudyDisabledIcon = styled(StudyDisabledIc)`
   padding: 0;
 `;
 
@@ -42,4 +48,8 @@ const Text = styled.h3`
 
 const RightArrowIcon = styled(RightArrowIc)`
   padding: 0.1rem 0;
+`;
+
+const RightArrowBlueIcon = styled(RightArrowBlueIc)`
+  padding: 0.1rem;
 `;
