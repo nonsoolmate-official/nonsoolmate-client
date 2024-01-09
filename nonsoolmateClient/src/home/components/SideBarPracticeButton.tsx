@@ -1,23 +1,25 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
-import { PracticeDisabledIc, RightArrowIc } from "@assets/index";
+import { PracticeDisabledIc, PracticeActiveIc, RightArrowIc, RightArrowBlueIc } from "@assets/index";
 
-export default function SideBarPracticeButton() {
-  const navigate = useNavigate();
+interface SideBarPracticeProps {
+  handleMoveToHomePractice: Function;
+  goTo: string;
+}
 
-  function handleMoveToHomePractice() {
-    navigate("/home/practice");
-  }
+export default function SideBarPracticeButton(props: SideBarPracticeProps) {
+  const { handleMoveToHomePractice, goTo } = props;
 
   return (
-    <ButtonBox type="button" onClick={handleMoveToHomePractice}>
-      <PracticeDisabledIcon />
+    <ButtonBox type="button" onClick={() => handleMoveToHomePractice()}>
+      {goTo === "practice" && <PracticeActiveIcon />}
+      {goTo != "practice" && <PracticeDisabledIcon />}
       <ButtonTextBox>
         <Text>연습하기</Text>
       </ButtonTextBox>
-      <RightArrowIcon />
+      {goTo === "practice" && <RightArrowBlueIcon />}
+      {goTo != "practice" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -25,7 +27,9 @@ export default function SideBarPracticeButton() {
 const ButtonBox = styled.button`
   ${commonFlex};
 `;
-
+const PracticeActiveIcon = styled(PracticeActiveIc)`
+  padding: 0;
+`;
 const PracticeDisabledIcon = styled(PracticeDisabledIc)`
   padding: 0;
 `;
@@ -42,4 +46,8 @@ const Text = styled.h3`
 
 const RightArrowIcon = styled(RightArrowIc)`
   padding: 0.1rem 0;
+`;
+
+const RightArrowBlueIcon = styled(RightArrowBlueIc)`
+  padding: 0.1rem;
 `;
