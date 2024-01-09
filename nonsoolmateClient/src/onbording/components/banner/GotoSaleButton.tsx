@@ -4,7 +4,7 @@ import { RightWhiteArrowIc } from "@assets/index";
 
 export default function GotoSaleButton() {
   return (
-    <Button>
+    <Button type="button">
       첫 달 20% 할인받기 <RightWhiteArrowIcon />
     </Button>
   );
@@ -12,6 +12,7 @@ export default function GotoSaleButton() {
 
 const Button = styled.button`
   ${commonFlex}
+  ${({ theme }) => theme.fonts.Headline5};
 
   gap: 1rem;
   width: 25.9rem;
@@ -19,7 +20,6 @@ const Button = styled.button`
   border-radius: 40px;
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fonts.Headline5};
 `;
 
 const RightWhiteArrowIcon = styled(RightWhiteArrowIc)`
