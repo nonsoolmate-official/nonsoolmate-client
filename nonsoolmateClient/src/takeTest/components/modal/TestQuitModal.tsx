@@ -21,7 +21,8 @@ export default function TestQuitModal() {
   );
 }
 const TestQuitModalContainer = styled(ModalContainer)`
-  background-color: ${({ theme }) => theme.effects.dimmed_40};
+  ${({ theme }) => theme.effects.dimmed_60};
+
   backdrop-filter: blur(0.3rem);
 `;
 const TestQuitModalBox = styled.div`

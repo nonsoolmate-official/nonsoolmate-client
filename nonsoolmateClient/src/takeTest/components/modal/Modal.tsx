@@ -24,5 +24,7 @@ const ModalView = styled.section`
   border: none;
   border-radius: 12px;
   background-color: white;
+  ${({ theme }) => theme.effects.modal_shadow};
+
   transform: translate(-50%, -50%);
 `;

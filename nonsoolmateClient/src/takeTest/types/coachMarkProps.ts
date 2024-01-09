@@ -1,3 +1,3 @@
 export interface CoachMarkProps {
-  changeStatus: (coachMark: boolean, precautionModal: boolean) => void;
+  toPrecautionModal: (coachMark: boolean, precautionModal: boolean) => void;
 }

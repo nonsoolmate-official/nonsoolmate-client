@@ -3,7 +3,11 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 
-export default function TestHeader() {
+interface headerProps {
+  changeTestQuitStatus: (testQuitModal: boolean) => void;
+}
+export default function TestHeader(props: headerProps) {
+  const { changeTestQuitStatus } = props;
   return (
     <TestHeaderContainer>
       <HeaderLeft>
@@ -13,7 +17,9 @@ export default function TestHeader() {
       <TimerBox>
         <Timer />
       </TimerBox>
-      <TestCloseButton type="button">시험 종료</TestCloseButton>
+      <TestCloseButton type="button" onClick={() => changeTestQuitStatus(true)}>
+        시험 종료
+      </TestCloseButton>
     </TestHeaderContainer>
   );
 }

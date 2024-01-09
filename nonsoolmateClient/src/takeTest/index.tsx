@@ -3,25 +3,30 @@ import CoachMark from "./components/coachMark/CoachMark";
 import TestHeader from "./components/header/TestHeader";
 import TestPagination from "./components/pagination/TestPagination";
 import PrecautionModal from "./components/modal/PrecautionModal";
+import TestQuitModal from "./components/modal/TestQuitModal";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
   const [openPrecautionModal, setOpenPrecautionModal] = useState(false);
+  const [openTestQuitModal, setOpenTestQuitModal] = useState(false);
 
-  function changePrecautionStatuas(precautionModal: boolean) {
+  function changePrecautionStatus(precautionModal: boolean) {
     setOpenPrecautionModal(precautionModal);
   }
-  function changeStatus(coachMark: boolean, precautionModal: boolean) {
+  function toPrecautionModal(coachMark: boolean, precautionModal: boolean) {
     setOpenCoachMark(coachMark);
-    changePrecautionStatuas(precautionModal);
+    changePrecautionStatus(precautionModal);
   }
-
+  function changeTestQuitStatus(testQuitModal: boolean) {
+    setOpenTestQuitModal(testQuitModal);
+  }
   return (
     <>
-      <TestHeader />
+      <TestHeader changeTestQuitStatus={changeTestQuitStatus} />
       <TestPagination />
-      {openCoachMark && <CoachMark changeStatus={changeStatus} />}
-      {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatuas} />}
+      {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
+      {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
+      {openTestQuitModal && <TestQuitModal />}
     </>
   );
 }

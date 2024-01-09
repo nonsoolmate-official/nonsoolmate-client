@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
 
 export default function CloseCoachMark(props: CoachMarkProps) {
-  const { changeStatus } = props;
+  const { toPrecautionModal } = props;
 
   return (
     <>
@@ -11,7 +11,7 @@ export default function CloseCoachMark(props: CoachMarkProps) {
         <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
         <CloseCoachMarkButton
           onClick={() => {
-            changeStatus(false, true);
+            toPrecautionModal(false, true);
           }}
           type="button">
           닫기

@@ -7,14 +7,14 @@ import CloseCoachMark from "./CloseCoachMark";
 import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
 
 export default function CoachMark(props: CoachMarkProps) {
-  const { changeStatus } = props;
+  const { toPrecautionModal } = props;
   return (
     <CoachMarkContainer>
       <PrevPageMark />
       <NextPageMark />
       <TimerMark />
       <QuitTestMark />
-      <CloseCoachMark changeStatus={changeStatus} />
+      <CloseCoachMark toPrecautionModal={toPrecautionModal} />
     </CoachMarkContainer>
   );
 }
