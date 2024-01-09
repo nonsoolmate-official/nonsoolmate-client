@@ -1,11 +1,12 @@
+import { columnFlex } from "style/commonStyle";
 import { css } from "styled-components";
 
 export const UnsetContentLayout = css`
-  display: flex;
-  flex-direction: column;
+  ${columnFlex}
+
   gap: 0.8rem;
   align-items: center;
-  height: 48.7rem;
+  height: calc(100% - 18.2rem);
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_200};
 `;
