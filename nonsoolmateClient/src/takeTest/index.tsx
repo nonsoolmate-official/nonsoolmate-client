@@ -5,16 +5,20 @@ import TestPagination from "./components/pagination/TestPagination";
 import PrecautionModal from "./components/modal/PrecautionModal";
 
 export default function index() {
-  const [coachMarkStatus, setCoachMarkStatus] = useState(true);
-  const changeCoachMarkStatus = (isCoachMark: boolean) => {
-    setCoachMarkStatus(isCoachMark);
-  };
+  const [openCoachMark, setOpenCoachMark] = useState(true);
+  const [openPrecautionModal, setOpenPrecautionModal] = useState(false);
+
+  function changeStatus(coachMark: boolean, precautionModal: boolean) {
+    setOpenCoachMark(coachMark);
+    setOpenPrecautionModal(precautionModal);
+  }
+
   return (
     <>
       <TestHeader />
       <TestPagination />
-      {coachMarkStatus && <CoachMark changeCoachMarkStatus={changeCoachMarkStatus} />}
-      <PrecautionModal />
+      {openCoachMark && <CoachMark changeStatus={changeStatus} />}
+      {openPrecautionModal && <PrecautionModal />}
     </>
   );
 }

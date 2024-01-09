@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import Modal, { ModalContainer } from "./Modal";
+import Modal from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import { PrecautionNumOneIc, PrecautionNumThreeIc, PrecautionNumTwoIc } from "@assets/index";
 import PRECAUTION_MODAL from "takeTest/constants/modalConstants";
@@ -39,8 +39,11 @@ export default function PrecautionModal() {
     </PrecautionModalContainer>
   );
 }
-const PrecautionModalContainer = styled(ModalContainer)`
-  background-color: ${({ theme }) => theme.effects.dimmed_60};
+const PrecautionModalContainer = styled.section`
+  ${({ theme }) => theme.effects.dimmed_60};
+
+  position: fixed;
+  inset: 0;
 `;
 const PrecautionModalBox = styled.div`
   ${columnFlex};
