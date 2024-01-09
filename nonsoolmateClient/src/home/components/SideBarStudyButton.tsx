@@ -16,7 +16,7 @@ export default function SideBarStudyButton(props: SideBarStudyProps) {
       {goTo === "study" && <StudyActiveIcon />}
       {goTo != "study" && <StudyDisabledIcon />}
       <ButtonTextBox>
-        <Text>학습하기</Text>
+        <Text $goTo={goTo}>학습하기</Text>
       </ButtonTextBox>
       {goTo === "study" && <RightArrowBlueIcon />}
       {goTo != "study" && <RightArrowIcon />}
@@ -40,10 +40,10 @@ const ButtonTextBox = styled.section`
   ${SideBarTextBoxLayout}
 `;
 
-const Text = styled.h3`
+const Text = styled.h3<{ $goTo: string }>`
   ${({ theme }) => theme.fonts.Body3};
 
-  color: ${({ theme }) => theme.colors.grey_400};
+  color: ${({ theme, $goTo }) => ($goTo === "study" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;
 
 const RightArrowIcon = styled(RightArrowIc)`
@@ -51,5 +51,5 @@ const RightArrowIcon = styled(RightArrowIc)`
 `;
 
 const RightArrowBlueIcon = styled(RightArrowBlueIc)`
-  padding: 0.1rem;
+  padding: 0.1rem 0;
 `;
