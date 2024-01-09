@@ -9,21 +9,21 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomeSide() {
   const navigate = useNavigate();
-  const [goTo, setGoTo] = useState<string>("test");
+  const [currentPage, setCurrentPage] = useState<string>("test");
 
   function handleMoveToHomeStudy() {
     navigate("/home/study");
-    setGoTo("study");
+    setCurrentPage("study");
   }
 
   function handleMoveToHomePractice() {
     navigate("/home/practice");
-    setGoTo("practice");
+    setCurrentPage("practice");
   }
 
   function handleMoveToHomeTest() {
     navigate("/home/test");
-    setGoTo("test");
+    setCurrentPage("test");
   }
 
   return (
@@ -36,11 +36,11 @@ export default function HomeSide() {
         </SideHeaderBox>
       </SideHeader>
       <SideBar>
-        <SideBarStudyButton goTo={goTo} handleMoveToHomeStudy={handleMoveToHomeStudy} />
+        <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
         <BorderIcon />
-        <SideBarPracticeButton goTo={goTo} handleMoveToHomePractice={handleMoveToHomePractice} />
+        <SideBarPracticeButton currentPage={currentPage} handleMoveToHomePractice={handleMoveToHomePractice} />
         <BorderIcon />
-        <SideBarTestButton goTo={goTo} handleMoveToHomeTest={handleMoveToHomeTest} />
+        <SideBarTestButton currentPage={currentPage} handleMoveToHomeTest={handleMoveToHomeTest} />
       </SideBar>
     </Side>
   );

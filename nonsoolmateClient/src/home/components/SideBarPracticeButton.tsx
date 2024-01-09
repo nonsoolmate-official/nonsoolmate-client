@@ -5,21 +5,21 @@ import { PracticeDisabledIc, PracticeActiveIc, RightArrowIc, RightArrowBlueIc } 
 
 interface SideBarPracticeProps {
   handleMoveToHomePractice: () => void;
-  goTo: string;
+  currentPage: string;
 }
 
 export default function SideBarPracticeButton(props: SideBarPracticeProps) {
-  const { handleMoveToHomePractice, goTo } = props;
+  const { handleMoveToHomePractice, currentPage } = props;
 
   return (
     <ButtonBox type="button" onClick={() => handleMoveToHomePractice()}>
-      {goTo === "practice" && <PracticeActiveIcon />}
-      {goTo !== "practice" && <PracticeDisabledIcon />}
+      {currentPage === "practice" && <PracticeActiveIcon />}
+      {currentPage !== "practice" && <PracticeDisabledIcon />}
       <ButtonTextBox>
-        <Text $goTo={goTo}>연습하기</Text>
+        <Text $currentPage={currentPage}>연습하기</Text>
       </ButtonTextBox>
-      {goTo === "practice" && <RightArrowBlueIcon />}
-      {goTo !== "practice" && <RightArrowIcon />}
+      {currentPage === "practice" && <RightArrowBlueIcon />}
+      {currentPage !== "practice" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -56,8 +56,8 @@ const RightArrowBlueIcon = styled(RightArrowBlueIc)`
   padding: 0.1rem 0;
 `;
 
-const Text = styled.h3<{ $goTo: string }>`
+const Text = styled.h3<{ $currentPage: string }>`
   ${({ theme }) => theme.fonts.Body3};
 
-  color: ${({ theme, $goTo }) => ($goTo === "practice" ? theme.colors.main_blue : theme.colors.grey_400)};
+  color: ${({ theme, $currentPage }) => ($currentPage === "practice" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;

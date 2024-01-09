@@ -5,21 +5,21 @@ import { TestActiveIc, TestDisabledIc, RightArrowIc, RightArrowBlueIc } from "@a
 
 interface SideBarTestProps {
   handleMoveToHomeTest: () => void;
-  goTo: string;
+  currentPage: string;
 }
 
 export default function SideBarTestButton(props: SideBarTestProps) {
-  const { handleMoveToHomeTest, goTo } = props;
+  const { handleMoveToHomeTest, currentPage } = props;
 
   return (
     <ButtonBox type="button" onClick={() => handleMoveToHomeTest()}>
-      {goTo === "test" && <TestActiveIcon />}
-      {goTo != "test" && <TestDisabledIcon />}
+      {currentPage === "test" && <TestActiveIcon />}
+      {currentPage != "test" && <TestDisabledIcon />}
       <ButtonTextBox>
-        <Text $goTo={goTo}>시험보기</Text>
+        <Text $currentPage={currentPage}>시험보기</Text>
       </ButtonTextBox>
-      {goTo === "test" && <RightArrowBlueIcon />}
-      {goTo != "test" && <RightArrowIcon />}
+      {currentPage === "test" && <RightArrowBlueIcon />}
+      {currentPage != "test" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -44,10 +44,10 @@ const ButtonTextBox = styled.section`
   ${SideBarTextBoxLayout}
 `;
 
-const Text = styled.h3<{ $goTo: string }>`
+const Text = styled.h3<{ $currentPage: string }>`
   ${({ theme }) => theme.fonts.Body3};
 
-  color: ${({ theme, $goTo }) => ($goTo === "test" ? theme.colors.main_blue : theme.colors.grey_400)};
+  color: ${({ theme, $currentPage }) => ($currentPage === "test" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;
 
 const RightArrowIcon = styled(RightArrowIc)`
