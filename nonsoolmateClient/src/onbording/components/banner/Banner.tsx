@@ -7,20 +7,20 @@ import { columnFlex } from "style/commonStyle";
 
 export default function Banner() {
   return (
-    <Wrapper>
-      <Container>
+    <BannerWrapper>
+      <ContentContainer>
         <TextsContainer>
           <Title />
           <Summary />
           <GotoSaleButton />
         </TextsContainer>
         <HomeImg />
-      </Container>
-    </Wrapper>
+      </ContentContainer>
+    </BannerWrapper>
   );
 }
 
-const Wrapper = styled.section`
+const BannerWrapper = styled.section`
   ${columnFlex};
 
   justify-content: flex-end;
@@ -29,14 +29,14 @@ const Wrapper = styled.section`
   background: linear-gradient(to bottom, rgba(101 121 255) 20%, rgb(156 169 255) 100%);
 `;
 
-const Container = styled.div`
+const ContentContainer = styled.div`
   ${columnFlex};
 
   gap: 3.2rem;
   justify-content: space-between;
 `;
 
-const TextsContainer = styled.div`
+const TextsContainer = styled.span`
   ${columnFlex};
 
   gap: 2.8rem;
