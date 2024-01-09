@@ -1,4 +1,4 @@
-import { answerPageButtonStyle } from "style/commonStyle";
+import { answerPageButtonStyle, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 interface TitleWrapperProps {
@@ -12,21 +12,22 @@ export default function TitleWrapper(props: TitleWrapperProps) {
   return (
     <TitleWrapperContainer>
       <Title>{title}</Title>
-      {!ifExplanation && <Button>{buttonText}</Button>}
+      {!ifExplanation && <Button type="button">{buttonText}</Button>}
     </TitleWrapperContainer>
   );
 }
 
 const TitleWrapperContainer = styled.div`
-  display: flex;
+  ${commonFlex}
+
   justify-content: space-between;
-  align-items: center;
   width: calc((100vw - 16.8rem) / 2);
   padding: 0 2.5rem 0 2.4rem;
 `;
 
 const Title = styled.p`
-  font: ${({ theme }) => theme.fonts.Headline3};
+  ${({ theme }) => theme.fonts.Headline3};
+
   color: ${({ theme }) => theme.colors.black};
 `;
 

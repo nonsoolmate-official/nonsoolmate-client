@@ -25,17 +25,16 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   );
 }
 
-const PdfViewerContainer = styled.div`
-  gap: 2.4rem;
-
+const PdfViewerContainer = styled.section`
   ${commonFlex}
 
+  gap: 2.4rem;
   width: 100vw;
   height: calc(100vh - 6.4rem);
   padding: 2rem 0 3rem;
 `;
 
-const SinglePdfViewerWrapper = styled.div`
+const SinglePdfViewerWrapper = styled.article`
   ${columnFlex}
 
   gap: 1.4rem;

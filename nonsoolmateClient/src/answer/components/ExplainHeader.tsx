@@ -1,6 +1,7 @@
 import { BackToListIc } from "@assets/index";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { commonFlex } from "style/commonStyle";
 
 interface ExplainHeaderProps {
   testTitle: string;
@@ -11,7 +12,7 @@ export default function ExplainHeader(props: ExplainHeaderProps) {
   const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <BackToHomeButton onClick={() => navigate(`/home`)}>
+      <BackToHomeButton type="button" onClick={() => navigate(`/home`)}>
         <BackToListIcon />
       </BackToHomeButton>
       <TestName>{testTitle}</TestName>
@@ -20,9 +21,10 @@ export default function ExplainHeader(props: ExplainHeaderProps) {
 }
 
 const HeaderContainer = styled.div`
-  display: flex;
+  ${commonFlex}
+
+  gap: 1.6rem;
   justify-content: flex-start;
-  align-items: center;
   width: 100vw;
   height: 6.4rem;
   padding: 1.2rem 0 1.2rem 3.6rem;
@@ -39,7 +41,7 @@ const BackToListIcon = styled(BackToListIc)`
 `;
 
 const TestName = styled.p`
-  margin-left: 1.6rem;
-  font: ${({ theme }) => theme.fonts.Headline5};
+  ${({ theme }) => theme.fonts.Headline5};
+
   color: ${({ theme }) => theme.colors.black};
 `;
