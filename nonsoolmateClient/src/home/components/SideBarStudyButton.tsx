@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
-import { StudyActiveIc, RightArrowIc } from "@assets/index";
+import { StudyActiveIc, RightArrowIc, StudyDisabledIc, RightArrowBlueIc } from "@assets/index";
 
-export default function SideBarStudyButton() {
-  const navigate = useNavigate();
+interface SideBarStudyProps {
+  handleMoveToHomeStudy: () => void;
+  currentPage: string;
+}
 
-  function handleMoveToHomeStudy() {
-    navigate("/home/study");
-  }
+export default function SideBarStudyButton(props: SideBarStudyProps) {
+  const { handleMoveToHomeStudy, currentPage } = props;
 
   return (
     <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
-      <StudyActiveIcon />
+      {currentPage === "study" ? <StudyActiveIcon /> : <StudyDisabledIcon />}
       <ButtonTextBox>
-        <Text>학습하기</Text>
+        <Text $currentPage={currentPage}>학습하기</Text>
       </ButtonTextBox>
-      <RightArrowIcon />
+      {currentPage === "study" ? <RightArrowBlueIcon /> : <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -27,6 +27,14 @@ const ButtonBox = styled.button`
 `;
 
 const StudyActiveIcon = styled(StudyActiveIc)`
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+`;
+
+const StudyDisabledIcon = styled(StudyDisabledIc)`
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 `;
 
@@ -34,12 +42,20 @@ const ButtonTextBox = styled.section`
   ${SideBarTextBoxLayout}
 `;
 
-const Text = styled.h3`
+const Text = styled.h3<{ $currentPage: string }>`
   ${({ theme }) => theme.fonts.Body3};
 
-  color: ${({ theme }) => theme.colors.grey_400};
+  color: ${({ theme, $currentPage }) => ($currentPage === "study" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;
 
 const RightArrowIcon = styled(RightArrowIc)`
+  width: 2rem;
+  height: 2rem;
+  padding: 0.1rem 0;
+`;
+
+const RightArrowBlueIcon = styled(RightArrowBlueIc)`
+  width: 2rem;
+  height: 2rem;
   padding: 0.1rem 0;
 `;
