@@ -2,11 +2,9 @@ import { commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonS
 import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
+import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
 
-interface headerProps {
-  changeTestQuitStatus: (testQuitModal: boolean) => void;
-}
-export default function TestHeader(props: headerProps) {
+export default function TestHeader(props: TestQuitStatusProps) {
   const { changeTestQuitStatus } = props;
   return (
     <TestHeaderContainer>

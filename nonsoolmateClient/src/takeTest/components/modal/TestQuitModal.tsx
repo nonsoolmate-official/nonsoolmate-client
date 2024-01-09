@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
+import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
 
-export default function TestQuitModal() {
+export default function TestQuitModal(props: TestQuitStatusProps) {
+  const { changeTestQuitStatus } = props;
   return (
     <TestQuitModalContainer>
       <Modal>
@@ -13,7 +15,7 @@ export default function TestQuitModal() {
           </ModalContent>
           <ButtonContainer>
             <TestQuitButton>나가기</TestQuitButton>
-            <StayButton>머무르기</StayButton>
+            <StayButton onClick={() => changeTestQuitStatus(false)}>머무르기</StayButton>
           </ButtonContainer>
         </TestQuitModalBox>
       </Modal>

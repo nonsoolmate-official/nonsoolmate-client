@@ -26,7 +26,7 @@ export default function index() {
       <TestPagination />
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
-      {openTestQuitModal && <TestQuitModal />}
+      {openTestQuitModal && <TestQuitModal changeTestQuitStatus={changeTestQuitStatus} />}
     </>
   );
 }
