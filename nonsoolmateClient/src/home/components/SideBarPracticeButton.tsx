@@ -29,10 +29,14 @@ const ButtonBox = styled.button`
 `;
 
 const PracticeActiveIcon = styled(PracticeActiveIc)`
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 `;
 
 const PracticeDisabledIcon = styled(PracticeDisabledIc)`
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 `;
 

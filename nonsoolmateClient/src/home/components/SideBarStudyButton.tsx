@@ -29,10 +29,14 @@ const ButtonBox = styled.button`
 `;
 
 const StudyActiveIcon = styled(StudyActiveIc)`
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 `;
 
 const StudyDisabledIcon = styled(StudyDisabledIc)`
+  width: 3.2rem;
+  height: 3.2rem;
   padding: 0;
 `;
 
@@ -47,9 +51,13 @@ const Text = styled.h3<{ $goTo: string }>`
 `;
 
 const RightArrowIcon = styled(RightArrowIc)`
+  width: 2rem;
+  height: 2rem;
   padding: 0.1rem 0;
 `;
 
 const RightArrowBlueIcon = styled(RightArrowBlueIc)`
+  width: 2rem;
+  height: 2rem;
   padding: 0.1rem 0;
 `;
