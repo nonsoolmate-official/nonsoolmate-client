@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SetContainerLayout } from "style/layout/SetContainerLayout";
+import { SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
 import { SearchIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
@@ -42,7 +42,7 @@ export default function HomeTestSet() {
 }
 
 const Container = styled.section`
-  ${SetContainerLayout};
+  ${SetUnsetContainerLayout};
 `;
 
 const HeaderBox = styled.h2`
@@ -82,7 +82,6 @@ const SelectedUniversityLists = styled.section`
   width: 69.6rem;
   height: calc(100% - 18.2rem);
   padding: 0;
-  background-color: ${({ theme }) => theme.colors.grey_200};
 `;
 
 const SelectedUniversityButton = styled.button`
