@@ -16,7 +16,7 @@ export default function SideBarTestButton(props: SideBarTestProps) {
       {goTo === "test" && <TestActiveIcon />}
       {goTo != "test" && <TestDisabledIcon />}
       <ButtonTextBox>
-        <Text>시험보기</Text>
+        <Text $goTo={goTo}>시험보기</Text>
       </ButtonTextBox>
       {goTo === "test" && <RightArrowBlueIcon />}
       {goTo != "test" && <RightArrowIcon />}
@@ -40,10 +40,10 @@ const ButtonTextBox = styled.section`
   ${SideBarTextBoxLayout}
 `;
 
-const Text = styled.h3`
+const Text = styled.h3<{ $goTo: string }>`
   ${({ theme }) => theme.fonts.Body3};
 
-  color: ${({ theme }) => theme.colors.grey_400};
+  color: ${({ theme, $goTo }) => ($goTo === "test" ? theme.colors.main_blue : theme.colors.grey_400)};
 `;
 
 const RightArrowIcon = styled(RightArrowIc)`
