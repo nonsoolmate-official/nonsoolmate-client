@@ -12,7 +12,7 @@ export default function SideBarTestButton(props: SideBarTestProps) {
   const { handleMoveToHomeTest, currentPage } = props;
 
   return (
-    <ButtonBox type="button" onClick={() => handleMoveToHomeTest()}>
+    <ButtonBox type="button" onClick={handleMoveToHomeTest}>
       {currentPage === "test" && <TestActiveIcon />}
       {currentPage != "test" && <TestDisabledIcon />}
       <ButtonTextBox>

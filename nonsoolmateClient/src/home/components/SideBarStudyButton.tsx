@@ -12,7 +12,7 @@ export default function SideBarStudyButton(props: SideBarStudyProps) {
   const { handleMoveToHomeStudy, currentPage } = props;
 
   return (
-    <ButtonBox type="button" onClick={() => handleMoveToHomeStudy()}>
+    <ButtonBox type="button" onClick={handleMoveToHomeStudy}>
       {currentPage === "study" && <StudyActiveIcon />}
       {currentPage != "study" && <StudyDisabledIcon />}
       <ButtonTextBox>

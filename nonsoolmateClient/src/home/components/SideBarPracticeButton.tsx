@@ -12,7 +12,7 @@ export default function SideBarPracticeButton(props: SideBarPracticeProps) {
   const { handleMoveToHomePractice, currentPage } = props;
 
   return (
-    <ButtonBox type="button" onClick={() => handleMoveToHomePractice()}>
+    <ButtonBox type="button" onClick={handleMoveToHomePractice}>
       {currentPage === "practice" && <PracticeActiveIcon />}
       {currentPage !== "practice" && <PracticeDisabledIcon />}
       <ButtonTextBox>
