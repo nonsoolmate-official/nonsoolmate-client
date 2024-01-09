@@ -33,6 +33,7 @@ declare module "styled-components" {
       top_nav_shadow: string;
       container_shadow: string;
       blur: string;
+      pdf_shadow: string;
     };
     fonts: {
       Headline1: SerializedStyles;
