@@ -1,53 +1,73 @@
-import { useNavigate } from "react-router-dom";
-import { SideBarButtonLayout } from "style/layout/SideBarButtonLayout";
 import styled from "styled-components";
+import { columnFlex, commonFlex } from "style/commonStyle";
+import { BorderIc } from "@assets/index";
+import SideBarStudyButton from "./SideBarStudyButton";
+import SideBarPracticeButton from "./SideBarPracticeButton";
+import SideBarTestButton from "./SideBarTestButton";
 
 export default function HomeSide() {
-  const navigate = useNavigate();
-
-  function handleMoveToHomePractice() {
-    navigate("/home/practice");
-  }
-  function handleMoveToHomeStudy() {
-    navigate("/home/study");
-  }
-  function handleMoveToHomeTest() {
-    navigate("/home/test");
-  }
   return (
-    <>
-      <Side>
-        <SideHeader>테스트입니다</SideHeader>
-        <SideBar>
-          <SideBarStudyButton onClick={handleMoveToHomeStudy}></SideBarStudyButton>
-          <SideBarPracticeButton onClick={handleMoveToHomePractice}></SideBarPracticeButton>
-          <SideBarTestButton onClick={handleMoveToHomeTest}></SideBarTestButton>
-        </SideBar>
-      </Side>
-    </>
+    <Side>
+      <SideHeader>
+        <SideHeaderHello>안녕하세요!</SideHeaderHello>
+        <SideHeaderBox>
+          <SideHeaderId>류가은</SideHeaderId>
+          <SideHeaderText>님</SideHeaderText>
+        </SideHeaderBox>
+      </SideHeader>
+      <SideBar>
+        <SideBarStudyButton />
+        <BorderIcon />
+        <SideBarPracticeButton />
+        <BorderIcon />
+        <SideBarTestButton />
+      </SideBar>
+    </Side>
   );
 }
 
 const Side = styled.aside`
-  display: flex;
+  ${columnFlex};
+
+  gap: 2rem;
+  justify-content: space-between;
+  position: sticky;
+  padding: 2.4rem 2.4rem 0 21.5rem;
 `;
 
-const SideHeader = styled.h1`
+const SideHeader = styled.header`
   display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 19.2rem;
+`;
+
+const SideHeaderHello = styled.h2`
+  ${({ theme }) => theme.fonts.Headline4};
+`;
+
+const SideHeaderBox = styled.section`
+  ${commonFlex};
+
+  justify-content: space-between;
+  padding-right: 10rem;
+`;
+
+const SideHeaderId = styled.h2`
+  ${({ theme }) => theme.fonts.Headline4};
+
+  color: ${({ theme }) => theme.colors.main_blue};
+`;
+
+const SideHeaderText = styled.h2`
+  ${({ theme }) => theme.fonts.Headline4};
 `;
 
 const SideBar = styled.section`
-  display: flex;
+  gap: 0.2rem;
+  width: 19.2rem;
 `;
 
-const SideBarStudyButton = styled.button`
-  ${SideBarButtonLayout}
-`;
-
-const SideBarPracticeButton = styled.button`
-  ${SideBarButtonLayout}
-`;
-
-const SideBarTestButton = styled.button`
-  ${SideBarButtonLayout}
+const BorderIcon = styled(BorderIc)`
+  padding: 0;
 `;

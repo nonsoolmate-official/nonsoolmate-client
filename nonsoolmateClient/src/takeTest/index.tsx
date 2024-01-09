@@ -1,11 +1,18 @@
-import TestHeader from "./components/TestHeader";
-import TestPagination from "./components/TestPagination";
+import { useState } from "react";
+import CoachMark from "./components/coachMark/CoachMark";
+import TestHeader from "./components/header/TestHeader";
+import TestPagination from "./components/pagination/TestPagination";
 
 export default function index() {
+  const [coachMarkStatus, setCoachMarkStatus] = useState(true);
+  const changeCoachMarkStatus = (isCoachMark: boolean) => {
+    setCoachMarkStatus(isCoachMark);
+  };
   return (
     <>
       <TestHeader />
       <TestPagination />
+      {coachMarkStatus && <CoachMark changeCoachMarkStatus={changeCoachMarkStatus} />}
     </>
   );
 }
