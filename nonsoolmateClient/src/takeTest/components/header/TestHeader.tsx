@@ -3,13 +3,17 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 import { TestQuitStatusProps } from "takeTest/types/testQuitStatusProps";
+import { useNavigate } from "react-router-dom";
 
 export default function TestHeader(props: TestQuitStatusProps) {
+  const navigate = useNavigate();
   const { changeTestQuitStatus } = props;
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <LeftArrowBlackBtn />
+        <IconBox onClick={() => navigate("/home/test")}>
+          <LeftArrowBlackBtnIcon />
+        </IconBox>
         <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
       </HeaderLeft>
       <TimerBox>
@@ -39,6 +43,13 @@ const HeaderLeft = styled.div`
   ${commonFlex};
 
   gap: 0.8rem;
+`;
+const IconBox = styled.div`
+  padding: 0;
+`;
+const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
+  width: 4rem;
+  height: 4rem;
 `;
 const TestTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline5};
