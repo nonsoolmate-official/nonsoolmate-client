@@ -1,4 +1,4 @@
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function Title() {
@@ -14,6 +14,7 @@ const Container = styled.article`
 `;
 
 const Text = styled.h1`
-  font: ${({ theme }) => theme.fonts.Headline1};
+  ${({ theme }) => theme.fonts.Headline1};
+
   color: ${({ theme }) => theme.colors.white};
 `;
