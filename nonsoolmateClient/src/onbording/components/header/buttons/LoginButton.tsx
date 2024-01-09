@@ -10,6 +10,7 @@ const Button = styled.button`
 
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.grey_700};
-  font: ${({ theme }) => theme.fonts.Body3};
+  ${({ theme }) => theme.fonts.Body3};
+
   color: ${({ theme }) => theme.colors.white};
 `;

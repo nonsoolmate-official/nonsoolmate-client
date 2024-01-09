@@ -8,6 +8,7 @@ export default function MembershipButton() {
 const Button = styled.button`
   ${commonFlex}
 
-  font: ${({ theme }) => theme.fonts.Body3};
+  ${({ theme }) => theme.fonts.Body3};
+
   color: ${({ theme }) => theme.colors.main_blue};
 `;
