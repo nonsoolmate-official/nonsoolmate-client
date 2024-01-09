@@ -15,6 +15,7 @@ import RightArrowBigIc from "./icon/rightArrowBigIc.svg?react";
 import RightArrowIc from "./icon/rightArrowIc.svg?react";
 import RightArrowWhiteIc from "./icon/rightArrowWhiteIc.svg?react";
 import RightCircleIc from "./icon/rightCircleIc.svg?react";
+import RightArrowBlueIc from "./icon/rightArrowBlueIc.svg?react";
 
 import UpArrowBoldIc from "./icon/upArrowBoldIc.svg?react";
 import UpArrowIc from "./icon/upArrowIc.svg?react";
@@ -38,6 +39,13 @@ import InstaIc from "./icon/instaIc.svg?react";
 
 import BorderIc from "./icon/borderIc.svg?react";
 import RightWhiteArrowIc from "./icon/rightWhiteArrowIc.svg?react";
+
+import EmptyIc from "./icon/emptyIc.svg?react";
+
+import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
+
+import FindTestIc from "./icon/findTestIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -67,4 +75,8 @@ export {
   FaceBookIc,
   InstaIc,
   RightWhiteArrowIc,
+  EmptyIc,
+  HomeTestUnsetIc,
+  FindTestIc,
+  RightArrowBlueIc,
 };

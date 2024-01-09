@@ -1,11 +1,31 @@
 import styled from "styled-components";
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { commonFlex } from "style/commonStyle";
 import { BorderIc } from "@assets/index";
 import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarPracticeButton from "./SideBarPracticeButton";
 import SideBarTestButton from "./SideBarTestButton";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeSide() {
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState<string>("test");
+
+  function handleMoveToHomeStudy() {
+    navigate("/home/study");
+    setCurrentPage("study");
+  }
+
+  function handleMoveToHomePractice() {
+    navigate("/home/practice");
+    setCurrentPage("practice");
+  }
+
+  function handleMoveToHomeTest() {
+    navigate("/home/test");
+    setCurrentPage("test");
+  }
+
   return (
     <Side>
       <SideHeader>
@@ -16,22 +36,24 @@ export default function HomeSide() {
         </SideHeaderBox>
       </SideHeader>
       <SideBar>
-        <SideBarStudyButton />
+        <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
         <BorderIcon />
-        <SideBarPracticeButton />
+        <SideBarPracticeButton currentPage={currentPage} handleMoveToHomePractice={handleMoveToHomePractice} />
         <BorderIcon />
-        <SideBarTestButton />
+        <SideBarTestButton currentPage={currentPage} handleMoveToHomeTest={handleMoveToHomeTest} />
       </SideBar>
     </Side>
   );
 }
 
 const Side = styled.aside`
-  ${columnFlex};
-
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: sticky;
+  width: 43.1rem;
+  height: 100%;
   padding: 2.4rem 2.4rem 0 21.5rem;
 `;
 
