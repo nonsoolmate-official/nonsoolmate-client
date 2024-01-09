@@ -15,6 +15,7 @@ import RightArrowBigIc from "./icon/rightArrowBigIc.svg?react";
 import RightArrowIc from "./icon/rightArrowIc.svg?react";
 import RightArrowWhiteIc from "./icon/rightArrowWhiteIc.svg?react";
 import RightCircleIc from "./icon/rightCircleIc.svg?react";
+import RightArrowBlueIc from "./icon/rightArrowBlueIc.svg?react";
 
 import UpArrowBoldIc from "./icon/upArrowBoldIc.svg?react";
 import UpArrowIc from "./icon/upArrowIc.svg?react";
@@ -70,4 +71,5 @@ export {
   EmptyIc,
   HomeTestUnsetIc,
   FindTestIc,
+  RightArrowBlueIc,
 };
