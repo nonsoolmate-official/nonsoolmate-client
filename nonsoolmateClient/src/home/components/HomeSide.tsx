@@ -47,14 +47,12 @@ export default function HomeSide() {
 }
 
 const Side = styled.aside`
-  ${columnFlex};
-
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   justify-content: flex-start;
-
-  /* justify-content: space-between; */
   position: sticky;
-  width: calc(100vw - 93.5rem);
+  width: 43.1rem;
   height: 100%;
   padding: 2.4rem 2.4rem 0 21.5rem;
 `;
