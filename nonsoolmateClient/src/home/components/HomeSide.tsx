@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { commonFlex } from "style/commonStyle";
 import { BorderIc } from "@assets/index";
 import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarPracticeButton from "./SideBarPracticeButton";
