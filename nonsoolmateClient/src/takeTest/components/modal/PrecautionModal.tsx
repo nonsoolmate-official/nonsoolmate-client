@@ -4,7 +4,12 @@ import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import { PrecautionNumOneIc, PrecautionNumThreeIc, PrecautionNumTwoIc } from "@assets/index";
 import PRECAUTION_MODAL from "takeTest/constants/modalConstants";
 
-export default function PrecautionModal() {
+interface PrecautionProps {
+  changePrecautionStatus: (precautionModal: boolean) => void;
+}
+
+export default function PrecautionModal(props: PrecautionProps) {
+  const { changePrecautionStatus } = props;
   return (
     <PrecautionModalContainer>
       <Modal>
@@ -33,7 +38,9 @@ export default function PrecautionModal() {
               );
             })}
           </ModalDetailBox>
-          <TestStartButton type="button">시험 시작</TestStartButton>
+          <TestStartButton type="button" onClick={() => changePrecautionStatus(false)}>
+            시험 시작
+          </TestStartButton>
         </PrecautionModalBox>
       </Modal>
     </PrecautionModalContainer>

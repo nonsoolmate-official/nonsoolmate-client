@@ -8,9 +8,12 @@ export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
   const [openPrecautionModal, setOpenPrecautionModal] = useState(false);
 
+  function changePrecautionStatuas(precautionModal: boolean) {
+    setOpenPrecautionModal(precautionModal);
+  }
   function changeStatus(coachMark: boolean, precautionModal: boolean) {
     setOpenCoachMark(coachMark);
-    setOpenPrecautionModal(precautionModal);
+    changePrecautionStatuas(precautionModal);
   }
 
   return (
@@ -18,7 +21,7 @@ export default function index() {
       <TestHeader />
       <TestPagination />
       {openCoachMark && <CoachMark changeStatus={changeStatus} />}
-      {openPrecautionModal && <PrecautionModal />}
+      {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatuas} />}
     </>
   );
 }

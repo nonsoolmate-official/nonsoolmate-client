@@ -1,7 +1,7 @@
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-export interface ChildrenProps {
+interface ChildrenProps {
   children: React.ReactNode;
 }
 export default function Modal(props: ChildrenProps) {
