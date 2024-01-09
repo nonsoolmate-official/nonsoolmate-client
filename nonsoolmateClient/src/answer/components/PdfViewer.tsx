@@ -9,7 +9,7 @@ export default function PdfViewer() {
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
         <div
           style={{
-            padding: "2rem 0.8rem 0 2rem",
+            padding: "2rem 0.8rem 0",
             height: "calc(100vh - 16.4rem)",
           }}>
           <Viewer
