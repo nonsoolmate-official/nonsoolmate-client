@@ -1,23 +1,25 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
-import { TestDisabledIc, RightArrowIc } from "@assets/index";
+import { TestActiveIc, TestDisabledIc, RightArrowIc, RightArrowBlueIc } from "@assets/index";
 
-export default function SideBarTestButton() {
-  const navigate = useNavigate();
+interface SideBarTestProps {
+  handleMoveToHomeTest: Function;
+  goTo: string;
+}
 
-  function handleMoveToHomeTest() {
-    navigate("/home/test");
-  }
+export default function SideBarTestButton(props: SideBarTestProps) {
+  const { handleMoveToHomeTest, goTo } = props;
 
   return (
-    <ButtonBox type="button" onClick={handleMoveToHomeTest}>
-      <TestDisabledIcon />
+    <ButtonBox type="button" onClick={() => handleMoveToHomeTest()}>
+      {goTo === "test" && <TestActiveIcon />}
+      {goTo != "test" && <TestDisabledIcon />}
       <ButtonTextBox>
         <Text>시험보기</Text>
       </ButtonTextBox>
-      <RightArrowIcon />
+      {goTo === "test" && <RightArrowBlueIcon />}
+      {goTo != "test" && <RightArrowIcon />}
     </ButtonBox>
   );
 }
@@ -27,6 +29,10 @@ const ButtonBox = styled.button`
 `;
 
 const TestDisabledIcon = styled(TestDisabledIc)`
+  padding: 0;
+`;
+
+const TestActiveIcon = styled(TestActiveIc)`
   padding: 0;
 `;
 
@@ -42,4 +48,8 @@ const Text = styled.h3`
 
 const RightArrowIcon = styled(RightArrowIc)`
   padding: 0.1rem 0;
+`;
+
+const RightArrowBlueIcon = styled(RightArrowBlueIc)`
+  padding: 0.1rem;
 `;
