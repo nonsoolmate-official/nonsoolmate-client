@@ -18,10 +18,12 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
 
   return (
     <ToggleContainer key={universityId}>
-      {examList.map((data) => {
+      {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examResultStatus } = data;
+        const isLastExam = index === examList.length-1;
+
         return (
-          <ExamContainer key={examId}>
+          <ExamContainer key={examId} $isLastExam={isLastExam}>
             <ExamBox>
               <Name>{examName}</Name>
               <TimeLimit>{examTimeLimit}분</TimeLimit>
@@ -38,7 +40,6 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
   );
 }
 
-//height: 5개 넘어가면 스크롤
 const ToggleContainer = styled.section`
   display: inline-flex;
   flex-direction: column;
@@ -51,14 +52,14 @@ const ToggleContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-const ExamContainer = styled.section`
+const ExamContainer = styled.section<{ $isLastExam: boolean }>`
   display: flex;
   gap: 1.2rem;
   justify-content: space-between;
   width: 100%;
   padding: 0.8rem 0 1.2rem;
-  border-bottom: 1px solid;
-  border-bottom-color: ${({ theme }) => theme.colors.grey_100};
+  border-bottom: ${({ $isLastExam }) => ($isLastExam ? "none" : "1px solid")};
+  border-bottom-color: ${({ theme, $isLastExam }) => ($isLastExam ? "none" : theme.colors.grey_100)};
 `;
 
 const ExamBox = styled.section`
