@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { EmptyIc } from "@assets/index";
-import { UnsetContainerLayout } from "style/layout/UnsetContainerLayout";
-import { UnsetContentLayout } from "style/layout/UnsetContentLayout";
+import { SetUnsetContainerLayout, UnsetContentLayout } from "style/layout/SetUnsetLayout";
 
 export default function HomeStudy() {
   return (
@@ -16,7 +15,7 @@ export default function HomeStudy() {
 }
 
 const Container = styled.section`
-  ${UnsetContainerLayout}
+  ${SetUnsetContainerLayout}
 `;
 
 const Header = styled.h2`
