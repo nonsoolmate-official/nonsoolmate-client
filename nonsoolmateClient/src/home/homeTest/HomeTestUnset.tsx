@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { HomeTestUnsetIc, FindTestIc } from "@assets/index";
-import { UnsetContainerLayout } from "style/layout/UnsetContainerLayout";
-import { UnsetContentLayout } from "style/layout/UnsetContentLayout";
+import { UnsetContentLayout, SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
 import { mainButtonStyle } from "style/commonStyle";
 
 export default function HomeTestUnset() {
@@ -21,7 +20,7 @@ export default function HomeTestUnset() {
 }
 
 const Container = styled.section`
-  ${UnsetContainerLayout}
+  ${SetUnsetContainerLayout}
 `;
 
 const Header = styled.h2`

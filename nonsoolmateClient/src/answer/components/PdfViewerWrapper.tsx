@@ -7,19 +7,20 @@ interface PdfViewerWrapperProps {
   firstTitle: string;
   secondTitle: string;
   ifExplanation?: boolean;
+  pdfUrl: string;
 }
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
-  const { firstTitle, secondTitle, ifExplanation } = props;
+  const { firstTitle, secondTitle, ifExplanation, pdfUrl } = props;
   return (
     <PdfViewerContainer>
       <SinglePdfViewerWrapper>
         <TitleWrapper title={firstTitle} buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"} />
-        <PdfViewer />
+        <PdfViewer pdfUrl={pdfUrl} />
       </SinglePdfViewerWrapper>
       <SinglePdfViewerWrapper>
         <TitleWrapper title={secondTitle} buttonText="해제 숨기기" ifExplanation={ifExplanation} />
-        <PdfViewer />
+        <PdfViewer pdfUrl={pdfUrl} />
       </SinglePdfViewerWrapper>
     </PdfViewerContainer>
   );

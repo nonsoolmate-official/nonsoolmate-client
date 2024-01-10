@@ -9,7 +9,9 @@ import LeftArrowWhiteIc from "./icon/leftArrowWhiteIc.svg?react";
 import LeftCircleIc from "./icon/leftCircleIc.svg?react";
 import LeftCircleLongIc from "./icon/leftCircleLongIc.svg?react";
 
-import PrecautionNumIc from "./icon/precautionNumIc.svg?react";
+import PrecautionNumOneIc from "./icon/precautionNumOneIc.svg?react";
+import PrecautionNumTwoIc from "./icon/precautionNumTwoIc.svg?react";
+import PrecautionNumThreeIc from "./icon/precautionNumThreeIc.svg?react";
 
 import RightArrowBigIc from "./icon/rightArrowBigIc.svg?react";
 import RightArrowIc from "./icon/rightArrowIc.svg?react";
@@ -45,6 +47,10 @@ import EmptyIc from "./icon/emptyIc.svg?react";
 import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 
 import FindTestIc from "./icon/findTestIc.svg?react";
+import SearchIc from "./icon/searchIc.svg?react";
+
+import SignupIc from "./icon/signupIc.svg?react";
+import NaverLoginIc from "./icon/naverLoginIc.svg?react";
 
 import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
@@ -58,7 +64,9 @@ export {
   LeftArrowWhiteIc,
   LeftCircleIc,
   LeftCircleLongIc,
-  PrecautionNumIc,
+  PrecautionNumOneIc,
+  PrecautionNumTwoIc,
+  PrecautionNumThreeIc,
   RightArrowBigIc,
   RightArrowIc,
   RightArrowWhiteIc,
@@ -82,6 +90,9 @@ export {
   HomeTestUnsetIc,
   FindTestIc,
   RightArrowBlueIc,
+  SearchIc,
+  SignupIc,
+  NaverLoginIc,
   QnaToogleOpenIc,
   QnaToogleCloseIc,
 };

@@ -1,16 +1,23 @@
 import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
-import { CoachMarkProps } from "./CoachMark";
+import { CoachMarkProps } from "takeTest/types/coachMarkProps";
 
 export default function CloseCoachMark(props: CoachMarkProps) {
-  const { changeCoachMarkStatus } = props;
+  const { toPrecautionModal } = props;
+
   return (
-    <CloseCoachMarkContainer>
-      <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
-      <CloseCoachMarkButton onClick={() => changeCoachMarkStatus(false)} type="button">
-        닫기
-      </CloseCoachMarkButton>
-    </CloseCoachMarkContainer>
+    <>
+      <CloseCoachMarkContainer>
+        <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
+        <CloseCoachMarkButton
+          onClick={() => {
+            toPrecautionModal(false, true);
+          }}
+          type="button">
+          닫기
+        </CloseCoachMarkButton>
+      </CloseCoachMarkContainer>
+    </>
   );
 }
 

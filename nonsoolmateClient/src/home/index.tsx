@@ -20,6 +20,7 @@ const Homes = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   width: 100%;
   height: calc(100vh - 6.4rem);
   padding: 0;
