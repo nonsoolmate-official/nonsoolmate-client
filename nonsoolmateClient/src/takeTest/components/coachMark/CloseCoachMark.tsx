@@ -1,6 +1,6 @@
 import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
-import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
+import { CoachMarkProps } from "takeTest/types/coachMarkProps";
 
 export default function CloseCoachMark(props: CoachMarkProps) {
   const { toPrecautionModal } = props;
