@@ -41,7 +41,12 @@ export default function index() {
   return (
     <>
       <TakeTestContainer $scroll={scroll}>
-        <TestHeader changeTestQuitStatus={changeTestQuitStatus} changeTestFinishStatus={changeTestFinishStatus} />
+        <TestHeader
+          changeTestQuitStatus={changeTestQuitStatus}
+          changeTestFinishStatus={changeTestFinishStatus}
+          openPrecautionModal={openPrecautionModal}
+          openCoachMark={openCoachMark}
+        />
         <TestPagination />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
