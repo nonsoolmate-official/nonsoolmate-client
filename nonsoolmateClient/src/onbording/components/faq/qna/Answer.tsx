@@ -1,4 +1,3 @@
-import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 interface AnswerProps {
@@ -11,9 +10,8 @@ export default function Answer(props: AnswerProps) {
 }
 
 const Text = styled.h2`
-  ${commonFlex}
   ${({ theme }) => theme.fonts.Body2};
 
-  justify-content: flex-start;
   width: 90rem;
+  margin-left: 3.6rem;
 `;
