@@ -28,7 +28,6 @@ const Container = styled.section`
   ${commonFlex}
 
   width: 100%;
-  height: 86rem;
 `;
 
 const ContentContainer = styled.section`
@@ -36,4 +35,5 @@ const ContentContainer = styled.section`
 
   align-items: flex-start;
   width: 93.6rem;
+  padding: 14.9rem 21.5rem;
 `;
