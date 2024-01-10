@@ -25,7 +25,7 @@ export default function QnA(props: QnAprops) {
           {answer2 && <Answer answer={answer2} />}
         </AnswerContainer>
       )}
-      <DivideLine />
+      <Line />
     </>
   );
 }
@@ -34,4 +34,8 @@ const AnswerContainer = styled.p`
   ${columnFlex}
 
   margin-bottom: 2rem;
+`;
+
+const Line = styled(DivideLine)`
+  width: 93.6rem;
 `;

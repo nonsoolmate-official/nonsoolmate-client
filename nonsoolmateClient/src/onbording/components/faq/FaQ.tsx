@@ -35,5 +35,5 @@ const ContentContainer = styled.section`
 
   align-items: flex-start;
   width: 93.6rem;
-  padding: 14.9rem 21.5rem;
+  margin: 14.9rem 21.5rem;
 `;
