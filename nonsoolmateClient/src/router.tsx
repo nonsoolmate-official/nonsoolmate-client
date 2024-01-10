@@ -9,6 +9,7 @@ import HomeTest from "home/homeTest/HomeTest";
 import Correction from "answer/correction";
 import Explanation from "answer/explanation";
 import OnBording from "onbording";
+import Signup from "signup";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: "/onBording", element: <OnBording /> },
       { path: "/correction", element: <Correction /> },
       { path: "/explanation", element: <Explanation /> },
+      { path: "/signup", element: <Signup /> },
     ],
   },
 ]);

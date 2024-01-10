@@ -49,6 +49,9 @@ import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 import FindTestIc from "./icon/findTestIc.svg?react";
 import SearchIc from "./icon/searchIc.svg?react";
 
+import SignupIc from "./icon/signupIc.svg?react";
+import NaverLoginIc from "./icon/naverLoginIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -85,4 +88,6 @@ export {
   FindTestIc,
   RightArrowBlueIc,
   SearchIc,
+  SignupIc,
+  NaverLoginIc,
 };
