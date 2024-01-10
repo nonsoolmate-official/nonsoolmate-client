@@ -48,6 +48,7 @@ import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 
 import FindTestIc from "./icon/findTestIc.svg?react";
 
+import SignupIc from "./icon/signupIc.svg?react";
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -83,4 +84,5 @@ export {
   HomeTestUnsetIc,
   FindTestIc,
   RightArrowBlueIc,
+  SignupIc,
 };
