@@ -12,15 +12,24 @@ export interface TestHeaderProps {
 export default function TestHeader(props: TestHeaderProps) {
   const { changeTestQuitStatus, changeTestFinishStatus, openPrecautionModal, openCoachMark } = props;
 
+  function handleBackButton() {
+    changeTestQuitStatus(true);
+  }
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <IconBox onClick={() => changeTestQuitStatus(true)}>
+        <IconBox onClick={handleBackButton}>
           <LeftArrowBlackBtnIcon />
         </IconBox>
         <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
       </HeaderLeft>
-      <TimerBox>{openCoachMark || openPrecautionModal ? <InitTimer>00 : 00 : 00</InitTimer> : <Timer />}</TimerBox>
+      <TimerBox>
+        {openCoachMark || openPrecautionModal ? (
+          <InitTimer>00 : 00 : 00</InitTimer>
+        ) : (
+          <Timer openPrecautionModal={openPrecautionModal} />
+        )}
+      </TimerBox>
       <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
         시험 종료
       </TestCloseButton>
