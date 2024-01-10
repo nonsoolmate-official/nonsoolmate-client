@@ -12,11 +12,11 @@ export default function Timer(props: TimerProps) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(10);
-  const time = 10;
-  const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
-  computeTakeTime(takeTime);
 
   useEffect(() => {
+    const time = 10;
+    const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
+    computeTakeTime(takeTime);
     const count = setInterval(() => {
       if (openTestFinishModal) {
         clearInterval(count);
