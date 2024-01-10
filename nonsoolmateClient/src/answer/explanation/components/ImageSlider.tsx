@@ -34,13 +34,13 @@ const ImageSliderContainer = styled.section`
   }
 
   &::-webkit-scrollbar-track {
+    margin-top: 1.9rem;
     background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    height: 5px;
     border: 8px solid transparent;
-    border-radius: 80px;
+    border-radius: 50px;
     background: gray;
     background-clip: padding-box;
   }
@@ -50,7 +50,6 @@ const InnerWrapper = styled.div`
   ${columnFlex}
 
   gap: 1rem;
-  padding: 2rem 0.8rem 0;
 `;
 
 const Image = styled.img`
