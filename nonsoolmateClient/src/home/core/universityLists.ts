@@ -34,7 +34,7 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "첨삭 완료",
       },
       {
         examId: 4,
@@ -77,7 +77,7 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "첨삭 완료",
       },
       {
         examId: 4,
@@ -108,7 +108,7 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "첨삭 완료",
       },
       {
         examId: 4,
@@ -132,7 +132,7 @@ export const universityLists: UniversityListsTypes[] = [
   },
   {
     universityId: 4,
-    universityName: "성균관대학교",
+    universityName: "서강대학교",
     universityCategory: "인문",
     examList: [
       {
@@ -151,13 +151,13 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "열람권 사용 전",
       },
     ],
   },
   {
     universityId: 5,
-    universityName: "성균관대학교",
+    universityName: "이화여자대학교",
     universityCategory: "인문",
     examList: [
       {
@@ -176,7 +176,7 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "첨삭 완료",
       },
       {
         examId: 4,
@@ -188,7 +188,7 @@ export const universityLists: UniversityListsTypes[] = [
   },
   {
     universityId: 6,
-    universityName: "성균관대학교",
+    universityName: "논메대학교",
     universityCategory: "인문",
     examList: [
       {
@@ -207,7 +207,7 @@ export const universityLists: UniversityListsTypes[] = [
         examId: 3,
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
-        examResultStatus: "답안 제출 전",
+        examResultStatus: "첨삭 진행 중",
       },
       {
         examId: 4,
