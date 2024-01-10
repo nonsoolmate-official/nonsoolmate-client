@@ -21,7 +21,6 @@ const ModalView = styled.section`
   left: 50%;
   z-index: 100;
   padding: 0;
-  border: none;
   border-radius: 12px;
   background-color: white;
   ${({ theme }) => theme.effects.modal_shadow};
