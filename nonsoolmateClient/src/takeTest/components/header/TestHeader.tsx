@@ -3,17 +3,27 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 
-export default function TestHeader() {
+export interface TestHeaderProps {
+  changeTestQuitStatus: (testQuitModal: boolean) => void;
+  changeTestFinishStatus: (testFinishModal: boolean) => void;
+}
+export default function TestHeader(props: TestHeaderProps) {
+  const { changeTestQuitStatus, changeTestFinishStatus } = props;
+
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <LeftArrowBlackBtn />
+        <IconBox onClick={() => changeTestQuitStatus(true)}>
+          <LeftArrowBlackBtnIcon />
+        </IconBox>
         <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
       </HeaderLeft>
       <TimerBox>
         <Timer />
       </TimerBox>
-      <TestCloseButton type="button">시험 종료</TestCloseButton>
+      <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
+        시험 종료
+      </TestCloseButton>
     </TestHeaderContainer>
   );
 }
@@ -35,6 +45,13 @@ const HeaderLeft = styled.div`
   ${commonFlex};
 
   gap: 0.8rem;
+`;
+const IconBox = styled.div`
+  padding: 0;
+`;
+const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
+  width: 4rem;
+  height: 4rem;
 `;
 const TestTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline5};
