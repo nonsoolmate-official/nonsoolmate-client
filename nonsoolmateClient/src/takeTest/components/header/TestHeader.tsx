@@ -6,11 +6,20 @@ import { LeftArrowBlackBtn } from "@assets/index";
 export interface TestHeaderProps {
   changeTestQuitStatus: (testQuitModal: boolean) => void;
   changeTestFinishStatus: (testFinishModal: boolean) => void;
+  computeTakeTime: (totalTime: number) => void;
   openPrecautionModal: boolean;
   openCoachMark: boolean;
+  openTestFinishModal: boolean;
 }
 export default function TestHeader(props: TestHeaderProps) {
-  const { changeTestQuitStatus, changeTestFinishStatus, openPrecautionModal, openCoachMark } = props;
+  const {
+    changeTestQuitStatus,
+    changeTestFinishStatus,
+    computeTakeTime,
+    openPrecautionModal,
+    openCoachMark,
+    openTestFinishModal,
+  } = props;
 
   function handleBackButton() {
     changeTestQuitStatus(true);
@@ -27,7 +36,11 @@ export default function TestHeader(props: TestHeaderProps) {
         {openCoachMark || openPrecautionModal ? (
           <InitTimer>00 : 00 : 00</InitTimer>
         ) : (
-          <Timer changeTestFinishStatus={changeTestFinishStatus} />
+          <Timer
+            changeTestFinishStatus={changeTestFinishStatus}
+            computeTakeTime={computeTakeTime}
+            openTestFinishModal={openTestFinishModal}
+          />
         )}
       </TimerBox>
       <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
