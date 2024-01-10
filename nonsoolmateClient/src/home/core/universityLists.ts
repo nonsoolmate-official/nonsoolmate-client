@@ -116,6 +116,18 @@ export const universityLists: UniversityListsTypes[] = [
         examTimeLimit: 60,
         examResultStatus: "열람권 사용 전",
       },
+      {
+        examId: 5,
+        examName: "2023 인문사회 5",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
+      {
+        examId: 6,
+        examName: "2023 인문사회 6",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
     ],
   },
   {
@@ -140,12 +152,6 @@ export const universityLists: UniversityListsTypes[] = [
         examName: "2023 인문사회 3",
         examTimeLimit: 60,
         examResultStatus: "답안 제출 전",
-      },
-      {
-        examId: 4,
-        examName: "2023 인문사회 4",
-        examTimeLimit: 60,
-        examResultStatus: "열람권 사용 전",
       },
     ],
   },
@@ -206,6 +212,18 @@ export const universityLists: UniversityListsTypes[] = [
       {
         examId: 4,
         examName: "2023 인문사회 4",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
+      {
+        examId: 5,
+        examName: "2023 인문사회 5",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
+      {
+        examId: 6,
+        examName: "2023 인문사회 6",
         examTimeLimit: 60,
         examResultStatus: "열람권 사용 전",
       },
