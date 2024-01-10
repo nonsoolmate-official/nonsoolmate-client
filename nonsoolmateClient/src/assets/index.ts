@@ -46,6 +46,9 @@ import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 
 import FindTestIc from "./icon/findTestIc.svg?react";
 
+import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
+import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -79,4 +82,6 @@ export {
   HomeTestUnsetIc,
   FindTestIc,
   RightArrowBlueIc,
+  QnaToogleOpenIc,
+  QnaToogleCloseIc,
 };
