@@ -10,7 +10,7 @@ export default function HomeTestSet() {
   const [selectedUniversityId, setSelectedUniversityId] = useState<number | null>(null);
 
   function handleSelectedUniversityId(id: number) {
-    setSelectedUniversityId(id);
+    setSelectedUniversityId((prevId) => (prevId === id ? null : id));
   }
 
   return (
