@@ -4,7 +4,7 @@ import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
 import CloseCoachMark from "./CloseCoachMark";
-import { CoachMarkProps } from "takeTest/types/\bcoachMarkProps";
+import { CoachMarkProps } from "takeTest/types/coachMarkProps";
 
 export default function CoachMark(props: CoachMarkProps) {
   const { toPrecautionModal } = props;
