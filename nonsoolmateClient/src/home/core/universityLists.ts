@@ -1,4 +1,4 @@
-interface examListTypes {
+export interface examListTypes {
   examId: number;
   examName: string;
   examTimeLimit: number;
@@ -39,6 +39,18 @@ export const universityLists: UniversityListsTypes[] = [
       {
         examId: 4,
         examName: "2023 인문사회 4",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
+      {
+        examId: 5,
+        examName: "2023 인문사회 5",
+        examTimeLimit: 60,
+        examResultStatus: "열람권 사용 전",
+      },
+      {
+        examId: 6,
+        examName: "2023 인문사회 6",
         examTimeLimit: 60,
         examResultStatus: "열람권 사용 전",
       },
