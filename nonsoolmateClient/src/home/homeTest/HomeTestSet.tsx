@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
-import { SearchIc } from "@assets/index";
+import { SearchIc, UpArrowBoldIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
-import { UpArrowBoldIc } from "@assets/index";
 import { universityLists } from "home/core/universityLists";
+import SelectedUniversityToggle from "./components/SelectedUniversityToggle";
 
 export default function HomeTestSet() {
   const [selectedUniversityId, setSelectedUniversityId] = useState<number>(0);
 
-  function handleSelectedUniversityId(selectedUniversityId: number) {
-    setSelectedUniversityId(selectedUniversityId);
+  function handleSelectedUniversityId(id: number) {
+    setSelectedUniversityId(id);
   }
 
   return (
-    <Container>
+    <HomeTestSetContainer>
       <HeaderBox>
         <HeaderText>나의 시험장</HeaderText>
         <HeaderButton type="button">
@@ -26,22 +26,26 @@ export default function HomeTestSet() {
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
           return (
-            <SelectedUniversityButton key={universityId} type="button" onClick={() => handleSelectedUniversityId(1)}>
-              <UniversityBox>
-                <Name>{universityName}</Name>
-                <Category>{universityCategory}</Category>
-              </UniversityBox>
-              <UpArrowBoldIcon />
-            </SelectedUniversityButton>
-            // {selectedUniversityId === { universityId } && <SelectedUniversityToggle />}
+            <div key={universityId}>
+              <SelectedUniversityButton type="button" onClick={() => handleSelectedUniversityId(universityId)}>
+                <UniversityBox>
+                  <Name>{universityName}</Name>
+                  <Category>{universityCategory}</Category>
+                </UniversityBox>
+                <UpArrowBoldIcon />
+              </SelectedUniversityButton>
+              {selectedUniversityId === universityId && (
+                <SelectedUniversityToggle universityId={universityId} examList={examList} />
+              )}
+            </div>
           );
         })}
       </SelectedUniversityLists>
-    </Container>
+    </HomeTestSetContainer>
   );
 }
 
-const Container = styled.section`
+const HomeTestSetContainer = styled.section`
   ${SetUnsetContainerLayout};
 `;
 
@@ -51,7 +55,7 @@ const HeaderBox = styled.h2`
   ${commonFlex};
 
   justify-content: space-between;
-  width: 69.6rem;
+  width: 100%;
   padding: 0 0.8rem;
 `;
 
@@ -79,7 +83,7 @@ const SelectedUniversityLists = styled.section`
   flex-direction: column;
   gap: 1.2rem;
   justify-content: flex-start;
-  width: 69.6rem;
+  width: 100%;
   height: calc(100% - 18.2rem);
   padding: 0;
 `;
@@ -87,7 +91,9 @@ const SelectedUniversityLists = styled.section`
 const SelectedUniversityButton = styled.button`
   display: flex;
   justify-content: space-between;
-  width: 69.6rem;
+
+  /* width: 69.6rem; */
+  width: 100%;
   padding: 1.6rem 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.main_blue};
