@@ -16,11 +16,20 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
     navigate("/takeTest");
   }
 
+  function handleMoveToExplanation() {
+    navigate("/explanation");
+  }
+
+  function handleMoveToCorrection() {
+    navigate("/correction");
+  }
+
   return (
     <ToggleContainer key={universityId}>
       {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examResultStatus } = data;
-        const isLastExam = index === examList.length-1;
+        const isLastExam = index === examList.length - 1;
+        const resultsText = examResultStatus;
 
         return (
           <ExamContainer key={examId} $isLastExam={isLastExam}>
@@ -28,11 +37,36 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
               <Name>{examName}</Name>
               <TimeLimit>{examTimeLimit}분</TimeLimit>
             </ExamBox>
-            <ButtonBox>
-              <TakeTestButton type="button" onClick={handleMoveToTakeTest}>
-                시험보기
-              </TakeTestButton>
-            </ButtonBox>
+            <StatusBox>
+              {resultsText === "열람권 사용 전" && (
+                <TakeTestButton type="button" onClick={handleMoveToTakeTest}>
+                  시험보기
+                </TakeTestButton>
+              )}
+              {resultsText === "첨삭 진행 중" && (
+                <ExamResults>
+                  <ResultsText>{examResultStatus}</ResultsText>
+                  <ResultsButtonBox>
+                    <ExplanationButton type="button" onClick={handleMoveToExplanation}>
+                      해제
+                    </ExplanationButton>
+                    <CorrectionButton type="button" $resultsText={resultsText}>
+                      첨삭
+                    </CorrectionButton>
+                  </ResultsButtonBox>
+                </ExamResults>
+              )}
+              {resultsText === "첨삭 완료" && (
+                <ResultsButtonBox>
+                  <ExplanationButton type="button" onClick={handleMoveToExplanation}>
+                    해제
+                  </ExplanationButton>
+                  <CorrectionButton type="button" $resultsText={resultsText} onClick={handleMoveToCorrection}>
+                    첨삭
+                  </CorrectionButton>
+                </ResultsButtonBox>
+              )}
+            </StatusBox>
           </ExamContainer>
         );
       })}
@@ -78,12 +112,10 @@ const TimeLimit = styled.h3`
   color: ${({ theme }) => theme.colors.grey_500};
 `;
 
-const ButtonBox = styled.section`
+const StatusBox = styled.section`
   display: flex;
-  gap: 0.8rem 0;
   align-items: center;
   padding: 0.8rem 0;
-  border-radius: 4px;
 `;
 
 const TakeTestButton = styled(lightBlueButtonStyle)`
@@ -91,4 +123,51 @@ const TakeTestButton = styled(lightBlueButtonStyle)`
   height: 100%;
   padding: 0;
   ${({ theme }) => theme.fonts.Body5};
+
+  border-radius: 4px;
+`;
+
+const ExamResults = styled.section`
+  gap: 0.8rem;
+
+  ${commonFlex};
+
+  height: 100%;
+  padding: 0;
+`;
+
+const ResultsText = styled.p`
+  ${({ theme }) => theme.fonts.Body8};
+
+  color: ${({ theme }) => theme.colors.grey_600};
+`;
+
+const ResultsButtonBox = styled.section`
+  display: flex;
+  gap: 0.4rem;
+  width: 10rem;
+  height: 100%;
+  padding: 0;
+`;
+
+const ExplanationButton = styled(lightBlueButtonStyle)`
+  width: 4.8rem;
+  height: 100%;
+  padding: 0;
+  ${({ theme }) => theme.fonts.Body5};
+
+  border-radius: 4px;
+`;
+
+const CorrectionButton = styled(lightBlueButtonStyle)<{ $resultsText: string }>`
+  width: 4.8rem;
+  height: 100%;
+  padding: 0;
+  ${({ theme }) => theme.fonts.Body5};
+  
+  border-radius: 4px;
+  background-color: ${({ theme, $resultsText }) =>
+    $resultsText === "첨삭 진행 중" ? theme.colors.grey_100 : theme.colors.light_blue};
+  color: ${({ theme, $resultsText }) =>
+    $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.main_blue};
 `;
