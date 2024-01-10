@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
-import { SearchIc, UpArrowBoldIc } from "@assets/index";
+import { DownArrowBoldIc, SearchIc, UpArrowBoldIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import { universityLists } from "home/core/universityLists";
 import SelectedUniversityToggle from "./components/SelectedUniversityToggle";
 
 export default function HomeTestSet() {
-  const [selectedUniversityId, setSelectedUniversityId] = useState<number>(0);
+  const [selectedUniversityId, setSelectedUniversityId] = useState<number | null>(null);
 
   function handleSelectedUniversityId(id: number) {
     setSelectedUniversityId(id);
@@ -25,18 +25,21 @@ export default function HomeTestSet() {
       <SelectedUniversityLists>
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
+          const isSelected = selectedUniversityId === universityId;
+
           return (
             <div key={universityId}>
-              <SelectedUniversityButton type="button" onClick={() => handleSelectedUniversityId(universityId)}>
+              <SelectedUniversityButton
+                type="button"
+                onClick={() => handleSelectedUniversityId(universityId)}
+                $isSelected={isSelected}>
                 <UniversityBox>
-                  <Name>{universityName}</Name>
-                  <Category>{universityCategory}</Category>
+                  <Name $isSelected={isSelected}>{universityName}</Name>
+                  <Category $isSelected={isSelected}>{universityCategory}</Category>
                 </UniversityBox>
-                <UpArrowBoldIcon />
+                {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
               </SelectedUniversityButton>
-              {selectedUniversityId === universityId && (
-                <SelectedUniversityToggle universityId={universityId} examList={examList} />
-              )}
+              {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
             </div>
           );
         })}
@@ -88,15 +91,13 @@ const SelectedUniversityLists = styled.section`
   padding: 0;
 `;
 
-const SelectedUniversityButton = styled.button`
+const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
-
-  /* width: 69.6rem; */
   width: 100%;
   padding: 1.6rem 2.4rem;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.main_blue};
+  background-color: ${({ theme, $isSelected }) => ($isSelected ? theme.colors.main_blue : theme.colors.white)};
 `;
 
 const UniversityBox = styled.section`
@@ -104,20 +105,25 @@ const UniversityBox = styled.section`
   gap: 0.6rem;
 `;
 
-const Name = styled.p`
+const Name = styled.p<{ $isSelected: boolean }>`
   ${({ theme }) => theme.fonts.Headline5};
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, $isSelected }) => ($isSelected ? theme.colors.white : theme.colors.grey_700)};
 `;
 
-const Category = styled.p`
+const Category = styled.p<{ $isSelected: boolean }>`
   ${({ theme }) => theme.fonts.Body4};
 
   padding: 0.2rem 0;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, $isSelected }) => ($isSelected ? theme.colors.white : theme.colors.grey_700)};
 `;
 
 const UpArrowBoldIcon = styled(UpArrowBoldIc)`
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+
+const DownArrowBoldIcon = styled(DownArrowBoldIc)`
   width: 2.4rem;
   height: 2.4rem;
 `;
