@@ -45,6 +45,9 @@ const effects = {
   blur: `
     filter: blur(3px);
     `,
+  pdf_shadow: `
+    box-shadow: 0px 2.56px 10.239px 0px rgba(0, 0, 0, 0.12);    
+    `,
 };
 
 // bold=700
