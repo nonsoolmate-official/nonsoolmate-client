@@ -1,10 +1,10 @@
 import { useState } from "react";
-import DivideLine from "../DivideLine";
+import DivideLine from "onbording/components/common/DivideLine";
 import { QnaTypes } from "../types/qaatypes";
 import Answer from "./Answer";
 import Question from "./Question";
 import styled from "styled-components";
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { columnFlex } from "style/commonStyle";
 
 interface QnAprops extends QnaTypes {}
 

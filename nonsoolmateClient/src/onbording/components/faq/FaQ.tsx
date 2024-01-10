@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { QNA_LIST } from "./core/qnalist";
-import DivideLine from "./DivideLine";
+import DivideLine from "../common/DivideLine";
 import QnA from "./qna/QnA";
 import Title from "./Title";
 import { columnFlex, commonFlex } from "style/commonStyle";
