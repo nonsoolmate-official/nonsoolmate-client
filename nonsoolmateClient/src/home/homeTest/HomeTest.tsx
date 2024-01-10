@@ -1,11 +1,11 @@
 import HomeTestUnset from "./HomeTestUnset";
+import HomeTestSet from "./HomeTestSet";
 
 export default function HomeTest() {
   return (
     <>
-      <HomeTestUnset/>
-      {/* {!none&&<HomeTestSet/>} */}
+      {/* {none&&<HomeTestUnSet/>} */}
+      <HomeTestSet />
     </>
   );
 }
-
