@@ -8,7 +8,7 @@ export default function index() {
       <PdfViewerWrapper
         firstTitle="첨삭"
         secondTitle="해제"
-        pdfUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js"
+        pdfUrl="http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
       />
     </>
   );

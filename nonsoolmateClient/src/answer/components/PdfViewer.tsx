@@ -11,17 +11,10 @@ export default function PdfViewer(props: PdfViewerProps) {
   const { pdfUrl } = props;
   return (
     <PdfViewerWrapper>
-      <Worker workerUrl={pdfUrl}>
-        <div
-          style={{
-            padding: "2rem 0.8rem 0",
-            height: "calc(100vh - 16.4rem)",
-          }}>
-          <Viewer
-            fileUrl={`http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf`}
-            theme={{ theme: "light" }}
-          />
-        </div>
+      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+        <ViewerWrapper>
+          <Viewer fileUrl={pdfUrl} theme={{ theme: "light" }} />
+        </ViewerWrapper>
       </Worker>
     </PdfViewerWrapper>
   );
@@ -32,5 +25,10 @@ const PdfViewerWrapper = styled.div`
 
   width: calc((100vw - 16.8rem) / 2);
   height: calc(100vh - 16.4rem);
-  border-radius: 7.679px;
+  border-radius: 8px;
+`;
+
+const ViewerWrapper = styled.div`
+  height: calc(100vh - 16.4rem);
+  padding: 2rem 0.8rem 0;
 `;

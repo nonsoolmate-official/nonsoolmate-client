@@ -9,7 +9,7 @@ export default function index() {
         firstTitle="문제"
         secondTitle="해제"
         ifExplanation={true}
-        pdfUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js"
+        pdfUrl="http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
       />
     </>
   );
