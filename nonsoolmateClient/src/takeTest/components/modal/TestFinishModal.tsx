@@ -37,7 +37,8 @@ export default function TestFinishModal(props: TestFinishProps) {
 }
 
 const TestFinishModalContaier = styled(ModalContainer)`
-  background-color: ${({ theme }) => theme.effects.dimmed_40};
+  ${({ theme }) => theme.effects.dimmed_40};
+
   backdrop-filter: blur(0.3rem);
 `;
 const TestFinishModalBox = styled.div`

@@ -22,7 +22,8 @@ export default function TestSubmitModal() {
   );
 }
 const TestSubmitModalCotainer = styled(ModalContainer)`
-  background-color: ${({ theme }) => theme.effects.dimmed_40};
+  ${({ theme }) => theme.effects.dimmed_40};
+
   backdrop-filter: blur(0.3rem);
 `;
 const TestSubmitModalBox = styled.div`

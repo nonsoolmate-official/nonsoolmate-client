@@ -6,6 +6,7 @@ import PrecautionModal from "./components/modal/PrecautionModal";
 import TestQuitModal from "./components/modal/TestQuitModal";
 import TestFinishModal from "./components/modal/TestFinishModal";
 import TestSubmitModal from "./components/modal/TestSubmitModal";
+import styled from "styled-components";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
@@ -14,6 +15,13 @@ export default function index() {
   const [openTestFinishModal, setOpenTestFinishModal] = useState(false);
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
 
+  const scroll = !(
+    openCoachMark ||
+    openPrecautionModal ||
+    openTestQuitModal ||
+    openTestFinishModal ||
+    openTestSubmitModal
+  );
   function changePrecautionStatus(precautionModal: boolean) {
     setOpenPrecautionModal(precautionModal);
   }
@@ -32,8 +40,10 @@ export default function index() {
   }
   return (
     <>
-      <TestHeader changeTestQuitStatus={changeTestQuitStatus} changeTestFinishStatus={changeTestFinishStatus} />
-      <TestPagination />
+      <TakeTestContainer $scroll={scroll}>
+        <TestHeader changeTestQuitStatus={changeTestQuitStatus} changeTestFinishStatus={changeTestFinishStatus} />
+        <TestPagination />
+      </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
       {openTestQuitModal && <TestQuitModal changeTestQuitStatus={changeTestQuitStatus} />}
@@ -47,3 +57,9 @@ export default function index() {
     </>
   );
 }
+
+const TakeTestContainer = styled.section<{ $scroll: boolean }>`
+  ${({ $scroll }) => ($scroll ? "overflow:scroll" : "overflow:hidden")};
+
+  height: 100vh;
+`;
