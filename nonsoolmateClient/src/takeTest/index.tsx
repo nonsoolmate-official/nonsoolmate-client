@@ -50,6 +50,7 @@ export default function index() {
           changeTestFinishStatus={changeTestFinishStatus}
           computeTakeTime={computeTakeTime}
           openTestFinishModal={openTestFinishModal}
+          openTestSubmitModal={openTestSubmitModal}
           openPrecautionModal={openPrecautionModal}
           openCoachMark={openCoachMark}
         />

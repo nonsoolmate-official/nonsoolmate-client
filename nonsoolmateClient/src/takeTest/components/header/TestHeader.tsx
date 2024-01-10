@@ -10,6 +10,7 @@ export interface TestHeaderProps {
   openPrecautionModal: boolean;
   openCoachMark: boolean;
   openTestFinishModal: boolean;
+  openTestSubmitModal: boolean;
 }
 export default function TestHeader(props: TestHeaderProps) {
   const {
@@ -19,6 +20,7 @@ export default function TestHeader(props: TestHeaderProps) {
     openPrecautionModal,
     openCoachMark,
     openTestFinishModal,
+    openTestSubmitModal,
   } = props;
 
   function handleBackButton() {
@@ -40,6 +42,7 @@ export default function TestHeader(props: TestHeaderProps) {
             changeTestFinishStatus={changeTestFinishStatus}
             computeTakeTime={computeTakeTime}
             openTestFinishModal={openTestFinishModal}
+            openTestSubmitModal={openTestSubmitModal}
           />
         )}
       </TimerBox>

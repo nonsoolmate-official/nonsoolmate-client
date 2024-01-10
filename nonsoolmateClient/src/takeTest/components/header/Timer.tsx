@@ -5,10 +5,11 @@ interface TimerProps {
   changeTestFinishStatus: (testQuitModal: boolean) => void;
   computeTakeTime: (takeTime: number) => void;
   openTestFinishModal: boolean;
+  openTestSubmitModal: boolean;
 }
 export default function Timer(props: TimerProps) {
   // 1시간으로 가정
-  const { changeTestFinishStatus, computeTakeTime, openTestFinishModal } = props;
+  const { changeTestFinishStatus, computeTakeTime, openTestFinishModal, openTestSubmitModal } = props;
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(10);
@@ -18,7 +19,7 @@ export default function Timer(props: TimerProps) {
     const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
     computeTakeTime(takeTime);
     const count = setInterval(() => {
-      if (openTestFinishModal) {
+      if (openTestFinishModal || openTestSubmitModal) {
         clearInterval(count);
       } else if (seconds > 0) {
         setSeconds(seconds - 1);
