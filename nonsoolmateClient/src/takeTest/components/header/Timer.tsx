@@ -1,29 +1,49 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { createTimeModel, useTimeModel } from "react-compound-timer";
 
 interface TimerProps {
-  openPrecautionModal: boolean;
+  changeTestFinishStatus: (testQuitModal: boolean) => void;
 }
-const timer = createTimeModel({
-  initialTime: 3600000, //ms 단위(s*1000)
-  direction: "backward",
-  startImmediately: false,
-});
 export default function Timer(props: TimerProps) {
-  const { openPrecautionModal } = props;
-  const { value, start } = useTimeModel(timer);
-  console.log(value);
+  // 1시간으로 가정
+  const { changeTestFinishStatus } = props;
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(10);
 
-  if (!openPrecautionModal) {
-    start();
-  }
+  useEffect(() => {
+    const count = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes > 0) {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+        if (minutes === 0) {
+          if (hours === 0) {
+            clearInterval(count);
+            changeTestFinishStatus(true);
+          } else {
+            setHours(hours - 1);
+            setMinutes(59);
+            setSeconds(59);
+          }
+        }
+      }
+    }, 1000);
+    return () => clearInterval(count);
+  }, [hours, minutes, seconds]);
+
   return (
-    <TimerContainer>
-      {`0${value.h}`}:{value.m < 10 ? `0${value.m}` : value.m}:{value.s < 10 ? `0${value.s}` : value.s}
-    </TimerContainer>
+    <>
+      <TimerContainer>
+        {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+      </TimerContainer>
+    </>
   );
 }
-
 const TimerContainer = styled.p`
   ${({ theme }) => theme.fonts.Headline4};
 `;

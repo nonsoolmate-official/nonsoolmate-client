@@ -27,7 +27,7 @@ export default function TestHeader(props: TestHeaderProps) {
         {openCoachMark || openPrecautionModal ? (
           <InitTimer>00 : 00 : 00</InitTimer>
         ) : (
-          <Timer openPrecautionModal={openPrecautionModal} />
+          <Timer changeTestFinishStatus={changeTestFinishStatus} />
         )}
       </TimerBox>
       <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
