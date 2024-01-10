@@ -5,14 +5,23 @@ interface TitleWrapperProps {
   title: string;
   buttonText: string;
   ifExplanation?: boolean;
+  ifPdfButton?: boolean;
 }
 
 export default function TitleWrapper(props: TitleWrapperProps) {
-  const { title, buttonText, ifExplanation } = props;
+  const { title, buttonText, ifExplanation, ifPdfButton } = props;
   return (
     <TitleWrapperContainer>
       <Title>{title}</Title>
-      {!ifExplanation && <Button type="button">{buttonText}</Button>}
+      {!ifExplanation && ifPdfButton ? (
+        <Button type="button" onClick={() => console.log("clicked!!")}>
+          {buttonText}
+        </Button>
+      ) : (
+        <Button type="button" onClick={() => console.log("다른거!!!")}>
+          {buttonText}
+        </Button>
+      )}
     </TitleWrapperContainer>
   );
 }

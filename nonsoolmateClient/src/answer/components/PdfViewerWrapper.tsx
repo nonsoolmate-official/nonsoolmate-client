@@ -15,7 +15,11 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   return (
     <PdfViewerContainer>
       <SinglePdfViewerWrapper>
-        <TitleWrapper title={firstTitle} buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"} />
+        <TitleWrapper
+          title={firstTitle}
+          buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"}
+          ifPdfButton={!ifExplanation && true}
+        />
         <PdfViewer pdfUrl={pdfUrl} />
       </SinglePdfViewerWrapper>
       <SinglePdfViewerWrapper>
