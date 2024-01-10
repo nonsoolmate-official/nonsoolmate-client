@@ -4,19 +4,17 @@ import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
 import CloseCoachMark from "./CloseCoachMark";
+import { CoachMarkProps } from "takeTest/types/coachMarkProps";
 
-export interface CoachMarkProps {
-  changeCoachMarkStatus: Function;
-}
 export default function CoachMark(props: CoachMarkProps) {
-  const { changeCoachMarkStatus } = props;
+  const { toPrecautionModal } = props;
   return (
     <CoachMarkContainer>
       <PrevPageMark />
       <NextPageMark />
       <TimerMark />
       <QuitTestMark />
-      <CloseCoachMark changeCoachMarkStatus={changeCoachMarkStatus} />
+      <CloseCoachMark toPrecautionModal={toPrecautionModal} />
     </CoachMarkContainer>
   );
 }
