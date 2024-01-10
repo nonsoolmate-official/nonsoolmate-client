@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 
-export interface TestHeaderProps {
+interface TestHeaderProps {
   changeTestQuitStatus: (testQuitModal: boolean) => void;
   changeTestFinishStatus: (testFinishModal: boolean) => void;
   computeTakeTime: (totalTime: number) => void;
