@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Login from "./login/Login";
-import Logos from "./logos/Logos";
+import Login from "./components/login/Login";
+import Logos from "./components/Logos";
 
 export default function Signup() {
   return (
