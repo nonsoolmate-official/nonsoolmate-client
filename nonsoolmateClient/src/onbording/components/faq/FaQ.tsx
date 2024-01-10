@@ -4,7 +4,6 @@ import DivideLine from "./DivideLine";
 import QnA from "./qna/QnA";
 import Title from "./Title";
 import { columnFlex, commonFlex } from "style/commonStyle";
-import { useState } from "react";
 
 export default function FaQ() {
   return (
@@ -37,5 +36,4 @@ const ContentContainer = styled.section`
 
   align-items: flex-start;
   width: 93.6rem;
-  height: 44rem;
 `;
