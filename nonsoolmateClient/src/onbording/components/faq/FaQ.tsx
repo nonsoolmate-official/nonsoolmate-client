@@ -4,6 +4,7 @@ import DivideLine from "./DivideLine";
 import QnA from "./qna/QnA";
 import Title from "./Title";
 import { columnFlex, commonFlex } from "style/commonStyle";
+import { useState } from "react";
 
 export default function FaQ() {
   return (
