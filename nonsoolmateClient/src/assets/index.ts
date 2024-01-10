@@ -47,6 +47,13 @@ import EmptyIc from "./icon/emptyIc.svg?react";
 import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 
 import FindTestIc from "./icon/findTestIc.svg?react";
+import SearchIc from "./icon/searchIc.svg?react";
+
+import SignupIc from "./icon/signupIc.svg?react";
+import NaverLoginIc from "./icon/naverLoginIc.svg?react";
+
+import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
+import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
 
 export {
   BackToListIc,
@@ -83,4 +90,9 @@ export {
   HomeTestUnsetIc,
   FindTestIc,
   RightArrowBlueIc,
+  SearchIc,
+  SignupIc,
+  NaverLoginIc,
+  QnaToogleOpenIc,
+  QnaToogleCloseIc,
 };
