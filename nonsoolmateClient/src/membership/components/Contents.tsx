@@ -24,6 +24,7 @@ export default function Contents() {
 
 const Container = styled.section`
   ${commonFlex}
+
   gap: 2.4rem;
   margin-top: 8.1rem;
 `;

@@ -20,6 +20,7 @@ export default function Summary() {
 
 const Container = styled.div`
   ${columnFlex}
+
   gap: 1.6rem;
   align-items: flex-start;
   margin-bottom: 7.9rem;
@@ -27,11 +28,13 @@ const Container = styled.div`
 
 const TextContainer = styled.span`
   ${commonFlex}
+
   gap: 0.4rem;
 `;
 
 const Text = styled.p`
   ${({ theme }) => theme.fonts.Body4};
+
   color: ${({ theme }) => theme.colors.grey_1000};
 `;
 const CheckSmallIcon = styled(CheckSmallIc)`

@@ -9,7 +9,7 @@ export default function Price(props: PriceProp) {
   const { price } = props;
   return (
     <Container>
-      <PriceText>₩{price} </PriceText>
+      <PriceText> &#8361;{price} </PriceText>
       <Month>/월</Month>
     </Container>
   );
@@ -17,6 +17,7 @@ export default function Price(props: PriceProp) {
 
 const Container = styled.div`
   ${commonFlex}
+
   gap: 0.4rem;
   margin-bottom: 1.6rem;
 `;
@@ -27,5 +28,6 @@ const PriceText = styled.h2`
 
 const Month = styled.h3`
   ${({ theme }) => theme.fonts.Body6};
-  ${({ theme }) => theme.colors.grey_600};
+
+  color: ${({ theme }) => theme.colors.grey_600};
 `;

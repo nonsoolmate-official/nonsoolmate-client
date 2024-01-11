@@ -12,5 +12,6 @@ export default function Advantage() {
 
 const Container = styled.article`
   ${columnFlex}
+
   align-items: flex-start;
 `;

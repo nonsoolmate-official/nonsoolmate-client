@@ -30,7 +30,6 @@ const Container = styled.article`
 
   width: 29.6rem;
   height: 36.4rem;
-
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
 `;

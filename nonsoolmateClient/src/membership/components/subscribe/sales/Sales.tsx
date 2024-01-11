@@ -27,6 +27,7 @@ export default function Sales(props: SalesProp) {
 
 const Container = styled.div`
   ${columnFlex}
+
   gap: 0.3rem;
   align-items: flex-end;
 `;

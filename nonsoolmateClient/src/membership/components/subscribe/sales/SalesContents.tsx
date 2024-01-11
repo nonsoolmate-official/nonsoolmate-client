@@ -10,7 +10,7 @@ export default function SalesContents(props: SaleContentsProps) {
   return (
     <Container>
       <SaleTitle>{saletitle}</SaleTitle>
-      <BeforePrice>₩{beforeprice}</BeforePrice>
+      <BeforePrice> &#8361;{beforeprice}</BeforePrice>
       <SalePercent>{salepercent} % OFF</SalePercent>
     </Container>
   );
@@ -18,6 +18,7 @@ export default function SalesContents(props: SaleContentsProps) {
 
 const Container = styled.div`
   ${commonFlex}
+
   align-items: flex-end;
 `;
 
@@ -28,9 +29,9 @@ const SaleTitle = styled.p`
 `;
 
 const BeforePrice = styled(SaleTitle)`
-  text-decoration: line-through;
-  margin-left: 1.2rem;
   margin-right: 0.4rem;
+  margin-left: 1.2rem;
+  text-decoration: line-through;
 `;
 
 const SalePercent = styled.p`
