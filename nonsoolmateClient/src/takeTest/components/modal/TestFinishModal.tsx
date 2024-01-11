@@ -6,10 +6,16 @@ import { useNavigate } from "react-router-dom";
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
   changeTestSubmitStatus: (testSubmitModal: boolean) => void;
+  totalTime: number;
 }
 export default function TestFinishModal(props: TestFinishProps) {
-  const { changeTestFinishStatus, changeTestSubmitStatus } = props;
+  const { changeTestFinishStatus, changeTestSubmitStatus, totalTime } = props;
   const navigate = useNavigate();
+
+  const hours = Math.floor(totalTime / 3600);
+  const minutes = Math.floor((totalTime - hours * 3600) / 60);
+  const seconds = totalTime - (hours * 3600 + minutes * 60);
+
   function handleSubmitButton() {
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
@@ -19,7 +25,11 @@ export default function TestFinishModal(props: TestFinishProps) {
       <Modal>
         <TestFinishModalBox>
           <ModalContent>
-            <TotalTime>00 : 58 : 09</TotalTime>
+            <TotalTime>
+              {`0${hours} : `}
+              {minutes < 10 ? `0${minutes} : ` : `${minutes} : `}
+              {seconds < 10 ? `0${seconds}` : `${seconds}`}
+            </TotalTime>
             <ModalTitle>시험이 종료되었습니다.</ModalTitle>
             <ModalText>
               <ModalTextGrey>수고하셨습니다! 답안지를 이미지로 제출해주세요.</ModalTextGrey>
