@@ -4,7 +4,7 @@ import { DownArrowBoldIc, SearchIc, UpArrowBoldIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import { universityLists } from "home/core/universityLists";
-import SelectedUniversityToggle from "./components/SelectedUniversityToggle";
+import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
 
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;

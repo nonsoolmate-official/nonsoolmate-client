@@ -1,23 +1,35 @@
 import styled from "styled-components";
 import { commonFlex } from "style/commonStyle";
-import { LogoIc, LoginInfoIc, DownArrowIc } from "@assets/index";
+import { LogoIc, LoginInfoIc, DownArrowGreyIc, UpArrowGreyIc } from "@assets/index";
+import { useState } from "react";
+import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
+
 export default function HomeHeader() {
+  const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
+
+  const handleHomeMemberInfoToggle = () => {
+    setShowMemberInfo((open) => !open);
+  };
+
   return (
-    <Header>
-      <LogoButton type="button">
-        <LogoIcon />
-      </LogoButton>
-      <HeaderInfo>
-        <MembershipButton type="button">멤버십</MembershipButton>
-        <LoginInfoButton type="button">
-          <LoginInfoIcon />
-          <LoginInfoBox>
-            <LoginId>류가은 님</LoginId>
-            <DownArrowIcon />
-          </LoginInfoBox>
-        </LoginInfoButton>
-      </HeaderInfo>
-    </Header>
+    <>
+      <Header>
+        <LogoButton type="button">
+          <LogoIcon />
+        </LogoButton>
+        <HeaderInfo>
+          <MembershipButton type="button">멤버십</MembershipButton>
+          <LoginInfoButton type="button" onClick={handleHomeMemberInfoToggle}>
+            <LoginInfoIcon />
+            <LoginInfoBox>
+              <LoginId>류가은 님</LoginId>
+              {showMemberInfo ? <UpArrowGreyIcon /> : <DownArrowGreyIcon />}
+            </LoginInfoBox>
+          </LoginInfoButton>
+        </HeaderInfo>
+      </Header>
+      {showMemberInfo && <HomeMemberInfoToggle />}
+    </>
   );
 }
 
@@ -79,6 +91,14 @@ const LoginId = styled.h1`
   color: ${({ theme }) => theme.colors.grey_700};
 `;
 
-const DownArrowIcon = styled(DownArrowIc)`
+const DownArrowGreyIcon = styled(DownArrowGreyIc)`
   object-fit: cover;
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+
+const UpArrowGreyIcon = styled(UpArrowGreyIc)`
+  object-fit: cover;
+  width: 2.4rem;
+  height: 2.4rem;
 `;

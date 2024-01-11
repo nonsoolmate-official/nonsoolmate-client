@@ -7,13 +7,13 @@ interface SelectionListsTypes {
 
 export const selectionLists: SelectionListsTypes[] = [
   {
-    universityId: 1,
+    universityId: 2,
     universityName: "중앙대학교",
     universityCategory: "인문사회",
     memberStatus: true,
   },
   {
-    universityId: 2,
+    universityId: 1,
     universityName: "한양대학교",
     universityCategory: "인문",
     memberStatus: true,
@@ -31,13 +31,13 @@ export const selectionLists: SelectionListsTypes[] = [
     memberStatus: true,
   },
   {
-    universityId: 5,
+    universityId: 6,
     universityName: "이화여자대학교",
     universityCategory: "사회",
     memberStatus: true,
   },
   {
-    universityId: 6,
+    universityId: 5,
     universityName: "논메대학교",
     universityCategory: "인문사회",
     memberStatus: true,

@@ -14,7 +14,7 @@ interface UniversityListsTypes {
 
 export const universityLists: UniversityListsTypes[] = [
   {
-    universityId: 1,
+    universityId: 2,
     universityName: "중앙대학교",
     universityCategory: "인문사회",
     examList: [
@@ -57,7 +57,7 @@ export const universityLists: UniversityListsTypes[] = [
     ],
   },
   {
-    universityId: 2,
+    universityId: 1,
     universityName: "한양대학교",
     universityCategory: "인문",
     examList: [
@@ -156,7 +156,7 @@ export const universityLists: UniversityListsTypes[] = [
     ],
   },
   {
-    universityId: 5,
+    universityId: 6,
     universityName: "이화여자대학교",
     universityCategory: "인문",
     examList: [
@@ -187,7 +187,7 @@ export const universityLists: UniversityListsTypes[] = [
     ],
   },
   {
-    universityId: 6,
+    universityId: 5,
     universityName: "논메대학교",
     universityCategory: "인문",
     examList: [

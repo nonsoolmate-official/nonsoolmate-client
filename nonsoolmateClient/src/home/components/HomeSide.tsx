@@ -31,7 +31,7 @@ export default function HomeSide() {
       <SideHeader>
         <SideHeaderHello>안녕하세요!</SideHeaderHello>
         <SideHeaderBox>
-          <SideHeaderId>류가은</SideHeaderId>
+          <SideHeaderName>류가은</SideHeaderName>
           <SideHeaderText>님</SideHeaderText>
         </SideHeaderBox>
       </SideHeader>
@@ -75,7 +75,7 @@ const SideHeaderBox = styled.section`
   padding-right: 10rem;
 `;
 
-const SideHeaderId = styled.h2`
+const SideHeaderName = styled.h2`
   ${({ theme }) => theme.fonts.Headline4};
 
   color: ${({ theme }) => theme.colors.main_blue};
