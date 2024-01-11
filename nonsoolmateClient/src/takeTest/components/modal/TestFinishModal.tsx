@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
@@ -11,15 +12,18 @@ interface TestFinishProps {
 export default function TestFinishModal(props: TestFinishProps) {
   const { changeTestFinishStatus, changeTestSubmitStatus, totalTime } = props;
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const hours = Math.floor(totalTime / 3600);
   const minutes = Math.floor((totalTime - hours * 3600) / 60);
   const seconds = totalTime - (hours * 3600 + minutes * 60);
 
   function handleSubmitButton() {
+    fileInputRef.current && fileInputRef.current.click();
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
   }
+
   return (
     <TestFinishModalContaier>
       <Modal>
@@ -38,7 +42,8 @@ export default function TestFinishModal(props: TestFinishProps) {
           </ModalContent>
           <ButtonContainer>
             <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
-            <SelectImageButton onClick={handleSubmitButton}>제출하기</SelectImageButton>
+            <SelectFileButton onClick={handleSubmitButton}>제출하기</SelectFileButton>
+            <FileInput type="file" ref={fileInputRef} multiple={true} />
           </ButtonContainer>
         </TestFinishModalBox>
       </Modal>
@@ -95,7 +100,11 @@ const TestQuitButton = styled(lightBlueButtonStyle)`
   padding: 0.8rem 0;
 `;
 
-const SelectImageButton = styled(mainButtonStyle)`
+const SelectFileButton = styled(mainButtonStyle)`
   width: 16rem;
   padding: 0.8rem 0;
+`;
+
+const FileInput = styled.input`
+  display: none;
 `;
