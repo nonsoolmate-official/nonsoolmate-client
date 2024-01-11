@@ -21,7 +21,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
   }
 
   return (
-    <HomeTestSetContainer>
+    <Container>
       <HeaderBox>
         <HeaderText>나의 시험장</HeaderText>
         <HeaderButton
@@ -33,7 +33,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
           <SearchIcon />
         </HeaderButton>
       </HeaderBox>
-      <SelectedUniversityLists>
+      <ListBox>
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
           const isSelected = selectedUniversityId === universityId;
@@ -57,12 +57,12 @@ export default function HomeTestSet(props: HomeTestSetProps) {
             </div>
           );
         })}
-      </SelectedUniversityLists>
-    </HomeTestSetContainer>
+      </ListBox>
+    </Container>
   );
 }
 
-const HomeTestSetContainer = styled.section`
+const Container = styled.section`
   ${SetUnsetContainerLayout};
 `;
 
@@ -95,7 +95,7 @@ const SearchIcon = styled(SearchIc)`
   height: 2rem;
 `;
 
-const SelectedUniversityLists = styled.section`
+const ListBox = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
