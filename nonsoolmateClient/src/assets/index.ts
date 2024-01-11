@@ -52,6 +52,12 @@ import SearchIc from "./icon/searchIc.svg?react";
 import CheckBtnIc from "./icon/checkBtnIc.svg?react";
 import NotCheckBtnIc from "./icon/notCheckBtnIc.svg?react";
 
+import SignupIc from "./icon/signupIc.svg?react";
+import NaverLoginIc from "./icon/naverLoginIc.svg?react";
+
+import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
+import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -90,4 +96,8 @@ export {
   SearchIc,
   CheckBtnIc,
   NotCheckBtnIc,
+  SignupIc,
+  NaverLoginIc,
+  QnaToogleOpenIc,
+  QnaToogleCloseIc,
 };

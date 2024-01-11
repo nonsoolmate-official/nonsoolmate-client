@@ -14,6 +14,7 @@ export default function index() {
   const [openTestQuitModal, setOpenTestQuitModal] = useState(false);
   const [openTestFinishModal, setOpenTestFinishModal] = useState(false);
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
 
   const scroll = !(
     openCoachMark ||
@@ -38,10 +39,21 @@ export default function index() {
   function changeTestSubmitStatus(testSubmitModal: boolean) {
     setOpenTestSubmitModal(testSubmitModal);
   }
+  function computeTakeTime(takeTime: number) {
+    setTotalTime(takeTime);
+  }
   return (
     <>
       <TakeTestContainer $scroll={scroll}>
-        <TestHeader changeTestQuitStatus={changeTestQuitStatus} changeTestFinishStatus={changeTestFinishStatus} />
+        <TestHeader
+          changeTestQuitStatus={changeTestQuitStatus}
+          changeTestFinishStatus={changeTestFinishStatus}
+          computeTakeTime={computeTakeTime}
+          openTestFinishModal={openTestFinishModal}
+          openTestSubmitModal={openTestSubmitModal}
+          openPrecautionModal={openPrecautionModal}
+          openCoachMark={openCoachMark}
+        />
         <TestPagination />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
@@ -51,6 +63,7 @@ export default function index() {
         <TestFinishModal
           changeTestFinishStatus={changeTestFinishStatus}
           changeTestSubmitStatus={changeTestSubmitStatus}
+          totalTime={totalTime}
         />
       )}
       {openTestSubmitModal && <TestSubmitModal />}
