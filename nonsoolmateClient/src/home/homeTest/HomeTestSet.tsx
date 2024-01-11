@@ -98,7 +98,6 @@ const SearchIcon = styled(SearchIc)`
 const ListBox = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
   justify-content: flex-start;
   width: 100%;
   height: calc(100% - 18.2rem);
@@ -109,6 +108,7 @@ const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 1.2rem;
   padding: 1.6rem 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme, $isSelected }) => ($isSelected ? theme.colors.main_blue : theme.colors.white)};
