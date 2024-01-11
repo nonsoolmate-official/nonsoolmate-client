@@ -2,6 +2,7 @@ import BackToListIc from "./icon/backToListIc.svg?react";
 
 import DownArrowBoldIc from "./icon/downArrowBoldIc.svg?react";
 import DownArrowIc from "./icon/downArrowIc.svg?react";
+import DownArrowGreyIc from "./icon/downArrowGreyIc.svg?react";
 
 import LeftArrowBigIc from "./icon/leftArrowBigIc.svg?react";
 import LeftArrowBlackBtn from "./icon/leftArrowBlackBtn.svg?react";
@@ -22,6 +23,7 @@ import RightArrowBlueIc from "./icon/rightArrowBlueIc.svg?react";
 import UpArrowBoldIc from "./icon/upArrowBoldIc.svg?react";
 import UpArrowIc from "./icon/upArrowIc.svg?react";
 import UpCircleIc from "./icon/upCircleIc.svg?react";
+import UpArrowGreyIc from "./icon/upArrowGreyIc.svg?react";
 
 import PracticeActiveIc from "./icon/practiceActiveIc.svg?react";
 import PracticeDisabledIc from "./icon/practiceDisabledIc.svg?react";
@@ -100,4 +102,6 @@ export {
   NaverLoginIc,
   QnaToogleOpenIc,
   QnaToogleCloseIc,
+  DownArrowGreyIc,
+  UpArrowGreyIc,
 };
