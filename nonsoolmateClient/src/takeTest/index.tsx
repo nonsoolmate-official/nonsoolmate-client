@@ -54,7 +54,7 @@ export default function index() {
           openPrecautionModal={openPrecautionModal}
           openCoachMark={openCoachMark}
         />
-        <TestPagination />
+        <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
