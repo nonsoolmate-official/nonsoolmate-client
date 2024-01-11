@@ -49,6 +49,9 @@ import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 import FindTestIc from "./icon/findTestIc.svg?react";
 import SearchIc from "./icon/searchIc.svg?react";
 
+import CheckBtnIc from "./icon/checkBtnIc.svg?react";
+import NotCheckBtnIc from "./icon/notCheckBtnIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -85,4 +88,6 @@ export {
   FindTestIc,
   RightArrowBlueIc,
   SearchIc,
+  CheckBtnIc,
+  NotCheckBtnIc,
 };
