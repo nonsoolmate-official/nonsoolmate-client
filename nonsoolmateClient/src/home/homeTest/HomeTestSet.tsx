@@ -66,7 +66,7 @@ const Container = styled.section`
   ${SetUnsetContainerLayout};
 `;
 
-const HeaderBox = styled.h2`
+const HeaderBox = styled.header`
   ${({ theme }) => theme.fonts.Headline5};
 
   ${commonFlex};
@@ -76,7 +76,7 @@ const HeaderBox = styled.h2`
   padding: 0 0.8rem;
 `;
 
-const HeaderText = styled.h2`
+const HeaderText = styled.h3`
   ${({ theme }) => theme.fonts.Headline5};
 `;
 

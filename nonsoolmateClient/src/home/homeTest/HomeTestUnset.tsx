@@ -34,7 +34,7 @@ const Container = styled.section`
   gap: 0.7rem;
 `;
 
-const Header = styled.h2`
+const Header = styled.p`
   ${({ theme }) => theme.fonts.Headline5};
 
   display: flex;
