@@ -11,8 +11,8 @@ export default function HomeTest() {
     setUniversityModal(open);
   }
 
-  function handleSelectedUniversityIdList(IDs: number[]) {
-    setSelectedUniversityIdList(IDs);
+  function handleSelectedUniversityIdList(idList: number[]) {
+    setSelectedUniversityIdList(idList);
   }
   return (
     <>

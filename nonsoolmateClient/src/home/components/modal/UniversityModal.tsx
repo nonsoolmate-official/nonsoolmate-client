@@ -7,18 +7,18 @@ import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
   selectedUniversityIdList: number[];
-  handleSelectedUniversityIdList: (IDs: number[]) => void;
+  handleSelectedUniversityIdList: (idList: number[]) => void;
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
   const { handleUniversityModal, selectedUniversityIdList, handleSelectedUniversityIdList } = props;
 
-  function handleUniversityClick(universityId: number) {
-    const updatedselectedUniversityIdList = selectedUniversityIdList.includes(universityId)
+  function handleUpdateUniversityIdList(universityId: number) {
+    const updatedSelectedUniversityIdList = selectedUniversityIdList.includes(universityId)
       ? selectedUniversityIdList.filter((id) => id !== universityId)
       : [...selectedUniversityIdList, universityId];
 
-    handleSelectedUniversityIdList(updatedselectedUniversityIdList);
+    handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
   }
   return (
     <BackgroundView>
@@ -34,7 +34,7 @@ export default function UniversityModal(props: UniversityModalProps) {
                   <University>{universityName}</University>
                   <Category>{universityCategory}</Category>
                 </UniversityBox>
-                <CheckBoxButton type="button" onClick={() => handleUniversityClick(universityId)}>
+                <CheckBoxButton type="button" onClick={() => handleUpdateUniversityIdList(universityId)}>
                   {isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}
                 </CheckBoxButton>
               </CheckBox>
