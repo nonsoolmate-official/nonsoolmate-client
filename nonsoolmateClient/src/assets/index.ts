@@ -58,6 +58,8 @@ import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
 import MonthlyMembershipIc from "./icon/monthlyMembershipIc.svg?react";
 import SixMonthsMembershipIc from "./icon/sixMonthsMembershipIc.svg?react";
 
+import CheckSmaillIc from "./icon/checkSmallIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -100,4 +102,5 @@ export {
   QnaToogleCloseIc,
   MonthlyMembershipIc,
   SixMonthsMembershipIc,
+  CheckSmaillIc,
 };
