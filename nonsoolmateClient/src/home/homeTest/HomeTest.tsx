@@ -1,6 +1,6 @@
 import HomeTestUnset from "./HomeTestUnset";
 import HomeTestSet from "./HomeTestSet";
-import UniversityModal from "home/components/modal/UniversityModal";
+import UniversityModal from "home/components/UniversityModal";
 import { useState } from "react";
 
 export default function HomeTest() {
