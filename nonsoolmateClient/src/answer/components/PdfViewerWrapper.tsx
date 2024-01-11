@@ -2,6 +2,7 @@ import { columnFlex, commonFlex } from "style/commonStyle";
 import PdfViewer from "./PdfViewer";
 import TitleWrapper from "./TitleWrapper";
 import styled from "styled-components";
+import ImageSlider from "answer/explanation/components/ImageSlider";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -16,8 +17,9 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
     <PdfViewerContainer>
       <SinglePdfViewerWrapper>
         <TitleWrapper title={firstTitle} buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"} />
-        <PdfViewer pdfUrl={pdfUrl} />
+        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} />}
       </SinglePdfViewerWrapper>
+
       <SinglePdfViewerWrapper>
         <TitleWrapper title={secondTitle} buttonText="해제 숨기기" ifExplanation={ifExplanation} />
         <PdfViewer pdfUrl={pdfUrl} />

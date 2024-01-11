@@ -1,4 +1,4 @@
-<img width="1728" alt="논술메이트_서비스설명" src="https://github.com/DO-SOPT-WEB/HyeinKwon/assets/100409061/340f4cec-745c-4093-a7e3-2a2ec8c50bb4">
+<img width="1728" alt="논술메이트_서비스설명" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/341aac17-544e-4d85-94c8-0a4b8dafc86c" />
 
 <br>
 
