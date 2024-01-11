@@ -6,19 +6,19 @@ import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
-  selectedUniversityIds: number[];
-  handleSelectedUniversityIds: (IDs: number[]) => void;
+  selectedUniversityIdList: number[];
+  handleSelectedUniversityIdList: (IDs: number[]) => void;
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
-  const { handleUniversityModal, selectedUniversityIds, handleSelectedUniversityIds } = props;
+  const { handleUniversityModal, selectedUniversityIdList, handleSelectedUniversityIdList } = props;
 
   function handleUniversityClick(universityId: number) {
-    const updatedSelectedUniversityIds = selectedUniversityIds.includes(universityId)
-      ? selectedUniversityIds.filter((id) => id !== universityId)
-      : [...selectedUniversityIds, universityId];
+    const updatedselectedUniversityIdList = selectedUniversityIdList.includes(universityId)
+      ? selectedUniversityIdList.filter((id) => id !== universityId)
+      : [...selectedUniversityIdList, universityId];
 
-    handleSelectedUniversityIds(updatedSelectedUniversityIds);
+    handleSelectedUniversityIdList(updatedselectedUniversityIdList);
   }
   return (
     <BackgroundView>
@@ -27,7 +27,7 @@ export default function UniversityModal(props: UniversityModalProps) {
         <Container>
           {selectionLists.map((data) => {
             const { universityName, universityCategory, universityId } = data;
-            const isChecked = selectedUniversityIds.includes(universityId);
+            const isChecked = selectedUniversityIdList.includes(universityId);
             return (
               <CheckBox key={universityName} $isChecked={isChecked}>
                 <UniversityBox>
@@ -50,7 +50,7 @@ export default function UniversityModal(props: UniversityModalProps) {
           </CancelButton>
           <FinishSelectButton
             onClick={() => {
-              // console.log(selectedUniversityIds);
+              // console.log(selectedUniversityIdList);
               handleUniversityModal(false);
             }}>
             선택완료
