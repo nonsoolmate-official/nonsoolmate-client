@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
@@ -56,6 +56,7 @@ export default function TestFinishModal(props: TestFinishProps) {
               style={{ display: "none" }}
               multiple={true}
               onChange={handleFileInputChange}
+              accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
             />
           </ButtonContainer>
         </TestFinishModalBox>
