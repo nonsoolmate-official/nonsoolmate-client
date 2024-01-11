@@ -3,6 +3,7 @@ import PdfViewer from "./PdfViewer";
 import TitleWrapper from "./TitleWrapper";
 import styled from "styled-components";
 import ImageSlider from "answer/explanation/components/ImageSlider";
+import { getFilePlugin } from "@react-pdf-viewer/get-file";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -13,11 +14,18 @@ interface PdfViewerWrapperProps {
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const { firstTitle, secondTitle, ifExplanation, pdfUrl } = props;
+  const getFilePluginInstance = getFilePlugin();
+
   return (
     <PdfViewerContainer>
       <SinglePdfViewerWrapper>
-        <TitleWrapper title={firstTitle} buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"} />
-        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} />}
+        <TitleWrapper
+          title={firstTitle}
+          buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"}
+          ifPdfButton={!ifExplanation && true}
+          getFilePluginInstance={getFilePluginInstance}
+        />
+        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} getFilePluginInstance={getFilePluginInstance} />}
       </SinglePdfViewerWrapper>
 
       <SinglePdfViewerWrapper>
