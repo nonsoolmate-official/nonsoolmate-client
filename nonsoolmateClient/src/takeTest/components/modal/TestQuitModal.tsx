@@ -19,8 +19,12 @@ export default function TestQuitModal(props: TestQuitStatusProps) {
             <ModalText>시험 기록이 저장되지 않습니다.</ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
-            <StayButton onClick={() => changeTestQuitStatus(false)}>머무르기</StayButton>
+            <TestQuitButton type="button" onClick={() => navigate("/home/test")}>
+              나가기
+            </TestQuitButton>
+            <StayButton type="button" onClick={() => changeTestQuitStatus(false)}>
+              머무르기
+            </StayButton>
           </ButtonContainer>
         </TestQuitModalBox>
       </Modal>

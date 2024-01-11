@@ -48,12 +48,15 @@ export default function TestFinishModal(props: TestFinishProps) {
             </ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
-            <SelectFileButton onClick={handleSubmitButton}>제출하기</SelectFileButton>
+            <TestQuitButton type="button" onClick={() => navigate("/home/test")}>
+              나가기
+            </TestQuitButton>
+            <SelectFileButton type="button" onClick={handleSubmitButton}>
+              제출하기
+            </SelectFileButton>
             <FileInput
               type="file"
               ref={fileInputRef}
-              style={{ display: "none" }}
               multiple={true}
               onChange={handleFileInputChange}
               accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"

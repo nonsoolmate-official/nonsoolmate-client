@@ -51,7 +51,9 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           <ModalContent>
             <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
             <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
-            <SubmitButton onClick={handleZipCreation}>제출하기</SubmitButton>
+            <SubmitButton onClick={handleZipCreation} type="button">
+              제출하기
+            </SubmitButton>
           </ModalContent>
         </TestSubmitModalBox>
       </Modal>
