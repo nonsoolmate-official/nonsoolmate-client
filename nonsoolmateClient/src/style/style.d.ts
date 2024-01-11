@@ -34,6 +34,7 @@ declare module "styled-components" {
       container_shadow: string;
       blur: string;
       pdf_shadow: string;
+      membership_shadow: string;
     };
     fonts: {
       Headline1: SerializedStyles;

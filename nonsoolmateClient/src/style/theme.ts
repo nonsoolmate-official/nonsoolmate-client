@@ -48,6 +48,8 @@ const effects = {
   pdf_shadow: `
     box-shadow: 0px 2.56px 10.239px 0px rgba(0, 0, 0, 0.12);    
     `,
+  membership_shadow: `
+    box-shadow: 0px 0px 12px 0px rgb(236, 237, 249)`,
 };
 
 // bold=700
