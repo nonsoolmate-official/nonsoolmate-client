@@ -3,23 +3,48 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 
-export interface TestHeaderProps {
+interface TestHeaderProps {
   changeTestQuitStatus: (testQuitModal: boolean) => void;
   changeTestFinishStatus: (testFinishModal: boolean) => void;
+  computeTakeTime: (totalTime: number) => void;
+  openPrecautionModal: boolean;
+  openCoachMark: boolean;
+  openTestFinishModal: boolean;
+  openTestSubmitModal: boolean;
 }
 export default function TestHeader(props: TestHeaderProps) {
-  const { changeTestQuitStatus, changeTestFinishStatus } = props;
+  const {
+    changeTestQuitStatus,
+    changeTestFinishStatus,
+    computeTakeTime,
+    openPrecautionModal,
+    openCoachMark,
+    openTestFinishModal,
+    openTestSubmitModal,
+  } = props;
 
+  function handleBackButton() {
+    changeTestQuitStatus(true);
+  }
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <IconBox onClick={() => changeTestQuitStatus(true)}>
+        <IconBox onClick={handleBackButton}>
           <LeftArrowBlackBtnIcon />
         </IconBox>
         <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
       </HeaderLeft>
       <TimerBox>
-        <Timer />
+        {openCoachMark || openPrecautionModal ? (
+          <InitTimer>00 : 00 : 00</InitTimer>
+        ) : (
+          <Timer
+            changeTestFinishStatus={changeTestFinishStatus}
+            computeTakeTime={computeTakeTime}
+            openTestFinishModal={openTestFinishModal}
+            openTestSubmitModal={openTestSubmitModal}
+          />
+        )}
       </TimerBox>
       <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
         시험 종료
@@ -63,4 +88,7 @@ const TimerBox = styled(lightBlueButtonStyle)`
   width: 16.4rem;
   height: 4rem;
   padding: 0;
+`;
+const InitTimer = styled.p`
+  ${({ theme }) => theme.fonts.Headline4};
 `;
