@@ -70,6 +70,8 @@ const BackgroundView = styled.section`
 `;
 
 const ModalView = styled.section`
+  ${({ theme }) => theme.effects.modal_shadow};
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,15 +83,13 @@ const ModalView = styled.section`
   padding: 4.8rem 5.5rem 4rem;
   border-radius: 16px;
   background-color: white;
-
-  ${({ theme }) => theme.effects.modal_shadow};
-
   transform: translate(-50%, -50%);
 `;
 
 const Text = styled.p`
-  padding: 0;
   ${({ theme }) => theme.fonts.Headline4};
+
+  padding: 0;
 `;
 
 const Container = styled.section`
