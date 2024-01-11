@@ -49,6 +49,9 @@ import HomeTestUnsetIc from "./icon/homeTestUnsetIc.svg?react";
 import FindTestIc from "./icon/findTestIc.svg?react";
 import SearchIc from "./icon/searchIc.svg?react";
 
+import CheckBtnIc from "./icon/checkBtnIc.svg?react";
+import NotCheckBtnIc from "./icon/notCheckBtnIc.svg?react";
+
 import SignupIc from "./icon/signupIc.svg?react";
 import NaverLoginIc from "./icon/naverLoginIc.svg?react";
 
@@ -91,6 +94,8 @@ export {
   FindTestIc,
   RightArrowBlueIc,
   SearchIc,
+  CheckBtnIc,
+  NotCheckBtnIc,
   SignupIc,
   NaverLoginIc,
   QnaToogleOpenIc,
