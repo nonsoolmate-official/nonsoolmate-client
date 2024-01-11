@@ -8,7 +8,7 @@ import Univeristy from "./components/univeristy/Univeristy";
 export default function OnBording() {
   return (
     <>
-      <Header />
+      <Header isOnbording={true} />
       <Banner />
       <Univeristy />
       <Advertise />
