@@ -13,11 +13,13 @@ export default function Subscribe(props: ContentsProps) {
   const { id, title, summary, sales, price } = props;
   return (
     <Container>
-      <Icons id={id} />
-      <Title title={title} />
-      <Summary summary={summary} />
-      <Sales sales={sales} price={price} />
-      <PurchaseButton />
+      <ContentContainer>
+        <Icons id={id} />
+        <Title title={title} />
+        <Summary summary={summary} />
+        <Sales sales={sales} price={price} />
+        <PurchaseButton />
+      </ContentContainer>
     </Container>
   );
 }
@@ -31,4 +33,12 @@ const Container = styled.article`
 
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
+`;
+
+const ContentContainer = styled.div`
+  ${columnFlex}
+
+  justify-content:space-between;
+  width: 25.6rem;
+  height: 31.6rem;
 `;

@@ -6,7 +6,7 @@ import Price from "../Price";
 
 interface SalesProp {
   sales: SalesType[];
-  price: number;
+  price: string;
 }
 
 export default function Sales(props: SalesProp) {
