@@ -2,18 +2,19 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 
-export default function TestSubmitModal() {
+interface TestSubmitProps {
+  isFile: File[] | null;
+}
+export default function TestSubmitModal(props: TestSubmitProps) {
+  const { isFile } = props;
+
   return (
     <TestSubmitModalCotainer>
       <Modal>
         <TestSubmitModalBox>
           <ModalContent>
             <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
-            <ModalFile>
-              <FileName>IMG_C691AD594A09-1.png</FileName>
-              <FileName>IMG_B7D81A9E3704-1.png</FileName>
-              <FileName>IMG_468416DAC227-1.png</FileName>
-            </ModalFile>
+            <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
             <SubmitButton>제출하기</SubmitButton>
           </ModalContent>
         </TestSubmitModalBox>

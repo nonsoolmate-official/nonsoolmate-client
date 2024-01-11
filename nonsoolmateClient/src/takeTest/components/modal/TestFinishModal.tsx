@@ -8,12 +8,12 @@ interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
   changeTestSubmitStatus: (testSubmitModal: boolean) => void;
   totalTime: number;
+  saveFile: (imageFile: File[]) => void;
 }
 export default function TestFinishModal(props: TestFinishProps) {
-  const { changeTestFinishStatus, changeTestSubmitStatus, totalTime } = props;
+  const { changeTestFinishStatus, changeTestSubmitStatus, totalTime, saveFile } = props;
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [isfile, setIsfile] = useState<File[] | null>(null);
 
   const hours = Math.floor(totalTime / 3600);
   const minutes = Math.floor((totalTime - hours * 3600) / 60);
@@ -28,7 +28,7 @@ export default function TestFinishModal(props: TestFinishProps) {
     if (e.target.files) {
       console.log(e.target.files);
       const fileList = Array.from(e.target.files);
-      setIsfile(fileList);
+      saveFile(fileList);
     }
   }
   return (

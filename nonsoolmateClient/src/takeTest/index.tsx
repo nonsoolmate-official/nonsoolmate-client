@@ -15,6 +15,7 @@ export default function index() {
   const [openTestFinishModal, setOpenTestFinishModal] = useState(false);
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
+  const [isFile, setIsFile] = useState<File[] | null>(null);
 
   const scroll = !(
     openCoachMark ||
@@ -42,6 +43,9 @@ export default function index() {
   function computeTakeTime(takeTime: number) {
     setTotalTime(takeTime);
   }
+  function saveFile(imageFile: File[]) {
+    setIsFile(imageFile);
+  }
   return (
     <>
       <TakeTestContainer $scroll={scroll}>
@@ -64,9 +68,10 @@ export default function index() {
           changeTestFinishStatus={changeTestFinishStatus}
           changeTestSubmitStatus={changeTestSubmitStatus}
           totalTime={totalTime}
+          saveFile={saveFile}
         />
       )}
-      {openTestSubmitModal && <TestSubmitModal />}
+      {openTestSubmitModal && <TestSubmitModal isFile={isFile} />}
     </>
   );
 }
