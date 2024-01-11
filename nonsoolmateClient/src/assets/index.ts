@@ -60,6 +60,11 @@ import NaverLoginIc from "./icon/naverLoginIc.svg?react";
 import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
 
+import MonthlyMembershipIc from "./icon/monthlyMembershipIc.svg?react";
+import SixMonthsMembershipIc from "./icon/sixMonthsMembershipIc.svg?react";
+
+import CheckSmallIc from "./icon/checkSmallIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -104,4 +109,7 @@ export {
   QnaToogleCloseIc,
   DownArrowGreyIc,
   UpArrowGreyIc,
+  MonthlyMembershipIc,
+  SixMonthsMembershipIc,
+  CheckSmallIc,
 };
