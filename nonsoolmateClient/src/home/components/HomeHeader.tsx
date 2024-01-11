@@ -3,18 +3,19 @@ import { commonFlex } from "style/commonStyle";
 import { LogoIc, LoginInfoIc, DownArrowGreyIc, UpArrowGreyIc } from "@assets/index";
 import { useState } from "react";
 import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeHeader() {
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
-
   const handleHomeMemberInfoToggle = () => {
     setShowMemberInfo((open) => !open);
   };
+  const navigate = useNavigate();
 
   return (
     <>
       <Header>
-        <LogoButton type="button">
+        <LogoButton type="button" onClick={() => navigate("/onBording")}>
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
