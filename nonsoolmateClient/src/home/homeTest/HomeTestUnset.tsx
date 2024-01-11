@@ -30,6 +30,8 @@ export default function HomeTestUnset(props: HomeTestUnsetProps) {
 
 const Container = styled.section`
   ${SetUnsetContainerLayout}
+
+  gap: 0.7rem;
 `;
 
 const Header = styled.h2`

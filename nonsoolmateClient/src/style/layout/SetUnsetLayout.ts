@@ -4,7 +4,6 @@ import { css } from "styled-components";
 export const SetUnsetContainerLayout = css`
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
   overflow: scroll;
   width: calc(100% - 43.1rem);
   height: 100%;
