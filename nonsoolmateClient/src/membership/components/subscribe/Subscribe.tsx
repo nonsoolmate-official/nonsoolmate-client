@@ -2,7 +2,7 @@ import Title from "./Title";
 import Icons from "./Icons";
 import Price from "./Price";
 import PurchaseButton from "./PurchaseButton";
-import Sales from "./Sales";
+import Sales from "./sales/Sales";
 import Summary from "./Summary";
 import { ContentListType } from "membership/types/contentlisttpye";
 
