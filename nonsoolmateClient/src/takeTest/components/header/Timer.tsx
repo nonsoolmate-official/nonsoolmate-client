@@ -10,12 +10,17 @@ interface TimerProps {
 export default function Timer(props: TimerProps) {
   // 1시간으로 가정
   const { changeTestFinishStatus, computeTakeTime, openTestFinishModal, openTestSubmitModal } = props;
+
+  // const hours = Math.floor(time / 3600);    time = 분*60
+  // const minutes = Math.floor((time - hours * 3600) / 60);
+  // const seconds = time - (hours * 3600 + minutes * 60);
+
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
-    const time = 10;
+    const time = 10; //서버에서 분으로 줄 예정..분*60
     const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
     computeTakeTime(takeTime);
     const count = setInterval(() => {
