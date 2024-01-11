@@ -50,7 +50,6 @@ export default function UniversityModal(props: UniversityModalProps) {
           </CancelButton>
           <FinishSelectButton
             onClick={() => {
-              // console.log(selectedUniversityIdList);
               handleUniversityModal(false);
             }}>
             선택완료
