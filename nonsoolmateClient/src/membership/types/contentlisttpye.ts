@@ -5,5 +5,5 @@ export interface ContentListType {
   title: string;
   summary: string;
   sales: SalesType[];
-  price: number;
+  price: string;
 }

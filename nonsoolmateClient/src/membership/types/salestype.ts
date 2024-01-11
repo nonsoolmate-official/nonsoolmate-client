@@ -1,5 +1,5 @@
 export interface SalesType {
   saletitle: string;
-  beforeprice: number;
+  beforeprice: string;
   salepercent: number;
 }

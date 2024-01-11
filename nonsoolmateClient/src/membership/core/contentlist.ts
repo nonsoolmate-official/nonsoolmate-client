@@ -8,16 +8,16 @@ export const CONTENT_LIST: ContentListType[] = [
     sales: [
       {
         saletitle: "얼리버드 특가",
-        beforeprice: 210000,
+        beforeprice: "210,000",
         salepercent: 25,
       },
       {
         saletitle: "첫 달 20%추가 할인",
-        beforeprice: 157500,
+        beforeprice: "157,500",
         salepercent: 20,
       },
     ],
-    price: 126000,
+    price: "126,000",
   },
   {
     id: 2,
@@ -26,10 +26,10 @@ export const CONTENT_LIST: ContentListType[] = [
     sales: [
       {
         saletitle: "패키지 할인",
-        beforeprice: 1260000,
+        beforeprice: "1,260,000",
         salepercent: 40,
       },
     ],
-    price: 126000,
+    price: "126,000",
   },
 ];
