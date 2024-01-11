@@ -2,23 +2,33 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
   changeTestSubmitStatus: (testSubmitModal: boolean) => void;
   totalTime: number;
+  saveFile: (imageFile: File[]) => void;
 }
 export default function TestFinishModal(props: TestFinishProps) {
-  const { changeTestFinishStatus, changeTestSubmitStatus, totalTime } = props;
+  const { changeTestFinishStatus, changeTestSubmitStatus, totalTime, saveFile } = props;
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const hours = Math.floor(totalTime / 3600);
   const minutes = Math.floor((totalTime - hours * 3600) / 60);
   const seconds = totalTime - (hours * 3600 + minutes * 60);
 
   function handleSubmitButton() {
+    fileInputRef.current && fileInputRef.current.click();
+  }
+  function handleFileInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
+    if (e.target.files) {
+      const fileList = Array.from(e.target.files);
+      saveFile(fileList);
+    }
   }
   return (
     <TestFinishModalContaier>
@@ -37,8 +47,19 @@ export default function TestFinishModal(props: TestFinishProps) {
             </ModalText>
           </ModalContent>
           <ButtonContainer>
-            <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
-            <SelectImageButton onClick={handleSubmitButton}>제출하기</SelectImageButton>
+            <TestQuitButton type="button" onClick={() => navigate("/home/test")}>
+              나가기
+            </TestQuitButton>
+            <SelectFileButton type="button" onClick={handleSubmitButton}>
+              제출하기
+            </SelectFileButton>
+            <FileInput
+              type="file"
+              ref={fileInputRef}
+              multiple={true}
+              onChange={handleFileInputChange}
+              accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+            />
           </ButtonContainer>
         </TestFinishModalBox>
       </Modal>
@@ -95,7 +116,11 @@ const TestQuitButton = styled(lightBlueButtonStyle)`
   padding: 0.8rem 0;
 `;
 
-const SelectImageButton = styled(mainButtonStyle)`
+const SelectFileButton = styled(mainButtonStyle)`
   width: 16rem;
   padding: 0.8rem 0;
+`;
+
+const FileInput = styled.input`
+  display: none;
 `;
