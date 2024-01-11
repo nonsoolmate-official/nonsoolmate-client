@@ -19,7 +19,6 @@ const ModalView = styled.section`
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 100;
   padding: 0;
   border-radius: 12px;
   background-color: white;
