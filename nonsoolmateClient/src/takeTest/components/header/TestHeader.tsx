@@ -32,7 +32,11 @@ export default function TestHeader(props: TestHeaderProps) {
         <IconBox onClick={handleBackButton}>
           <LeftArrowBlackBtnIcon />
         </IconBox>
-        <TestTitle>중앙대학교 - 2021 인문사회 1</TestTitle>
+        <TestTitle>
+          {openCoachMark || openPrecautionModal
+            ? "중앙대학교 - 2021 인문사회 1(예시화면)"
+            : "중앙대학교 - 2021 인문사회 1"}
+        </TestTitle>
       </HeaderLeft>
       <TimerBox>
         {openCoachMark || openPrecautionModal ? (
