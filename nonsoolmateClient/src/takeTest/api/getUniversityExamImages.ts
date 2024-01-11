@@ -1,5 +1,8 @@
+import axios from "axios";
 export async function getUniversityExamImages(pageNum: number) {
-  const response = await fetch(`https://placekitten.com/300/20${pageNum}`);
-  const imageBlob = await response.blob();
-  return URL.createObjectURL(imageBlob);
+  const response = await axios.get(`https://placekitten.com/300/20${pageNum}`, {
+    responseType: "blob",
+  });
+
+  return URL.createObjectURL(response.data);
 }
