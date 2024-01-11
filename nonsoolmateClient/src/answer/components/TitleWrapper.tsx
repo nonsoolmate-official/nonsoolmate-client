@@ -23,10 +23,25 @@ export default function TitleWrapper(props: TitleWrapperProps) {
     }
   };
 
+  const renderHideButton = () => {
+    if (!ifExplanation) {
+      return (
+        <Button
+          type="button"
+          // onClick={() => {
+          //   console.log("hide");
+          // }}
+        >
+          {buttonText}
+        </Button>
+      );
+    } else return;
+  };
+
   return (
     <TitleWrapperContainer>
       <Title>{title}</Title>
-      {!ifExplanation && ifPdfButton ? renderDownloadButton() : <Button type="button">{buttonText}</Button>}
+      {!ifExplanation && ifPdfButton ? renderDownloadButton() : renderHideButton()}
     </TitleWrapperContainer>
   );
 }
