@@ -1,3 +1,4 @@
+import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 interface PriceProp {
@@ -7,12 +8,18 @@ interface PriceProp {
 export default function Price(props: PriceProp) {
   const { price } = props;
   return (
-    <>
-      <PriceText>₩{price}</PriceText>
+    <Container>
+      <PriceText>₩{price} </PriceText>
       <Month>/월</Month>
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  ${commonFlex}
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+`;
 
 const PriceText = styled.h2`
   ${({ theme }) => theme.fonts.Headline5};
