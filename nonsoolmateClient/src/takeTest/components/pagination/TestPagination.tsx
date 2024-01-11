@@ -35,8 +35,6 @@ export default function TestPagination(props: PaginatinProps) {
 }
 const TestPaginationContainer = styled.section`
   ${commonFlex};
-
-  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 const PageButtonStyle = styled.button`
   position: fixed;
