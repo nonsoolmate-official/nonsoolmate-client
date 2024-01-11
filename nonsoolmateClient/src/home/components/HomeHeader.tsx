@@ -73,8 +73,10 @@ const LoginInfoBox = styled.section`
   padding: 0.4rem 0;
 `;
 
-const LoginId = styled.h2`
+const LoginId = styled.h1`
   ${({ theme }) => theme.fonts.Body3};
+
+  color: ${({ theme }) => theme.colors.grey_700};
 `;
 
 const DownArrowIcon = styled(DownArrowIc)`

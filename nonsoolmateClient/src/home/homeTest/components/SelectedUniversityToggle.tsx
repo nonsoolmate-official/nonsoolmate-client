@@ -50,7 +50,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
                     <ExplanationButton type="button" onClick={handleMoveToExplanation}>
                       해제
                     </ExplanationButton>
-                    <CorrectionButton type="button" $resultsText={resultsText}>
+                    <CorrectionButton type="button" $resultsText={resultsText} disabled={true}>
                       첨삭
                     </CorrectionButton>
                   </ResultsButtonBox>
@@ -82,7 +82,8 @@ const ToggleContainer = styled.section`
   width: 100%;
   max-height: 33.2rem;
   padding: 0.8rem 2.4rem 1.6rem;
-  border-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -164,10 +165,11 @@ const CorrectionButton = styled(lightBlueButtonStyle)<{ $resultsText: string }>`
   height: 100%;
   padding: 0;
   ${({ theme }) => theme.fonts.Body5};
-  
+
   border-radius: 4px;
   background-color: ${({ theme, $resultsText }) =>
     $resultsText === "첨삭 진행 중" ? theme.colors.grey_100 : theme.colors.light_blue};
   color: ${({ theme, $resultsText }) =>
     $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.main_blue};
+  cursor: ${({ $resultsText }) => ($resultsText === "첨삭 진행 중" ? "default" : "pointer")};
 `;

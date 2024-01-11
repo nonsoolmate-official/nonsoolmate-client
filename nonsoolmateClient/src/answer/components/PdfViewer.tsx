@@ -2,18 +2,24 @@ import styled from "styled-components";
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import { GetFilePlugin } from "@react-pdf-viewer/get-file";
 
 interface PdfViewerProps {
   pdfUrl: string;
+  getFilePluginInstance?: GetFilePlugin;
 }
 
 export default function PdfViewer(props: PdfViewerProps) {
-  const { pdfUrl } = props;
+  const { pdfUrl, getFilePluginInstance } = props;
   return (
     <PdfViewerWrapper>
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
         <ViewerWrapper>
-          <Viewer fileUrl={pdfUrl} theme={{ theme: "light" }} />
+          <Viewer
+            fileUrl={pdfUrl}
+            theme={{ theme: "light" }}
+            plugins={getFilePluginInstance && [getFilePluginInstance]}
+          />
         </ViewerWrapper>
       </Worker>
     </PdfViewerWrapper>
