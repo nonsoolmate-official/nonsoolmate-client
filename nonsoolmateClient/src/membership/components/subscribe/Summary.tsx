@@ -18,6 +18,7 @@ export default function Summary(props: SummaryProp) {
 const Container = styled.div`
   ${columnFlex}
 
+  margin-bottom: 1.8rem;
   width: 25.6rem;
   height: 6.4rem;
   border-radius: 8px;
