@@ -17,14 +17,11 @@ export default function Header(props: HeaderProps) {
     </Container>
   );
 }
-
 const Container = styled.header<{ $isOnbording: boolean }>`
   ${commonFlex}
 
   justify-content: space-around;
   width: 100%;
   height: 6.4rem;
-  box-shadow: 
-  ${($isOnbording) => ($isOnbording ?  0 0 12px 0 rgb(0 0 0 / 10%) : null)}
- 
+  box-shadow: ${({ $isOnbording }) => ($isOnbording ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
 `;
