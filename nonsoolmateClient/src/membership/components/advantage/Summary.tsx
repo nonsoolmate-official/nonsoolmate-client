@@ -1,4 +1,4 @@
-import { CheckSmaillIc } from "@assets/index";
+import { CheckSmallIc } from "@assets/index";
 import { MEMBERSHIP_ADVANTAGE_LIST } from "membership/core/membership";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ export default function Summary() {
       {MEMBERSHIP_ADVANTAGE_LIST.map((ele) => {
         return (
           <TextContainer key={ele}>
-            <CheckSmaillIcon />
+            <CheckSmallIcon />
             <Text>{ele}</Text>
           </TextContainer>
         );
@@ -34,7 +34,7 @@ const Text = styled.p`
   ${({ theme }) => theme.fonts.Body4};
   color: ${({ theme }) => theme.colors.grey_1000};
 `;
-const CheckSmaillIcon = styled(CheckSmaillIc)`
+const CheckSmallIcon = styled(CheckSmallIc)`
   width: 1.6rem;
   height: 1.6rem;
 `;
