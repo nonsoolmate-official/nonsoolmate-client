@@ -15,7 +15,6 @@ export default function index() {
   );
 }
 
-//padding 좌우만 + 대학 스크롤 기능 + 배경색 light-grey
 const Homes = styled.section`
   display: flex;
   justify-content: space-between;
