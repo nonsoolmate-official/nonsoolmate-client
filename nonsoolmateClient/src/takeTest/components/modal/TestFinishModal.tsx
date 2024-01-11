@@ -26,7 +26,6 @@ export default function TestFinishModal(props: TestFinishProps) {
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
     if (e.target.files) {
-      console.log(e.target.files);
       const fileList = Array.from(e.target.files);
       saveFile(fileList);
     }

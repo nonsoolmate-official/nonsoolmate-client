@@ -38,7 +38,6 @@ export default function TestSubmitModal(props: TestSubmitProps) {
         .then((blob) => {
           //saveAs(blob,"files.zip")
           //mutate(blob)
-          console.log(blob);
           console.log("Blob type:", blob.type);
         })
         .catch((error) => {
