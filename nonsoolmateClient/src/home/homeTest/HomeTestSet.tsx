@@ -40,7 +40,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
           const isExisted = selectedUniversityIdList.includes(universityId);
 
           return (
-            <div key={universityId}>
+            <SelectedListBox key={universityId}>
               {isExisted && (
                 <SelectedUniversityButton
                   type="button"
@@ -54,7 +54,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
                 </SelectedUniversityButton>
               )}
               {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
-            </div>
+            </SelectedListBox>
           );
         })}
       </ListBox>
@@ -104,6 +104,9 @@ const ListBox = styled.section`
   padding: 0;
 `;
 
+const SelectedListBox = styled.div`
+  padding: 0;
+`;
 const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
