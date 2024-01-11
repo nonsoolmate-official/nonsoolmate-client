@@ -44,11 +44,9 @@ export default function Timer(props: TimerProps) {
   }, [hours, openTestFinishModal, minutes, seconds]);
 
   return (
-    <>
-      <TimerContainer>
-        {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-      </TimerContainer>
-    </>
+    <TimerContainer>
+      {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+    </TimerContainer>
   );
 }
 const TimerContainer = styled.p`
