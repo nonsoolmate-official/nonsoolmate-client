@@ -43,12 +43,14 @@ export default function UniversityModal(props: UniversityModalProps) {
         </Container>
         <ModalButtonBox>
           <CancelButton
+            type="button"
             onClick={() => {
               handleUniversityModal(false);
             }}>
             취소
           </CancelButton>
           <FinishSelectButton
+            type="button"
             onClick={() => {
               handleUniversityModal(false);
             }}>
