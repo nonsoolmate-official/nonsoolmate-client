@@ -11,4 +11,7 @@ export default function Title(props: TitleProp) {
 
 const Text = styled.h1`
   ${({ theme }) => theme.fonts.Headline4};
+
+  margin-bottom: 4.4rem;
+  margin-top: 0.5rem;
 `;
