@@ -6,7 +6,14 @@ import { useState } from "react";
 import { universityLists } from "home/core/universityLists";
 import SelectedUniversityToggle from "./components/SelectedUniversityToggle";
 
-export default function HomeTestSet() {
+interface HomeTestSetProps {
+  handleUniversityModal: (open: boolean) => void;
+  selectedUniversityIds: number[];
+}
+
+export default function HomeTestSet(props: HomeTestSetProps) {
+  const { handleUniversityModal, selectedUniversityIds } = props;
+
   const [selectedUniversityId, setSelectedUniversityId] = useState<number | null>(null);
 
   function handleSelectedUniversityId(id: number) {
@@ -17,7 +24,11 @@ export default function HomeTestSet() {
     <HomeTestSetContainer>
       <HeaderBox>
         <HeaderText>나의 시험장</HeaderText>
-        <HeaderButton type="button">
+        <HeaderButton
+          type="button"
+          onClick={() => {
+            handleUniversityModal(true);
+          }}>
           대학별 시험 찾기
           <SearchIcon />
         </HeaderButton>
@@ -26,19 +37,22 @@ export default function HomeTestSet() {
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
           const isSelected = selectedUniversityId === universityId;
+          const isExisted = selectedUniversityIds.includes(universityId);
 
           return (
             <div key={universityId}>
-              <SelectedUniversityButton
-                type="button"
-                onClick={() => handleSelectedUniversityId(universityId)}
-                $isSelected={isSelected}>
-                <UniversityBox>
-                  <Name $isSelected={isSelected}>{universityName}</Name>
-                  <Category $isSelected={isSelected}>{universityCategory}</Category>
-                </UniversityBox>
-                {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
-              </SelectedUniversityButton>
+              {isExisted && (
+                <SelectedUniversityButton
+                  type="button"
+                  onClick={() => handleSelectedUniversityId(universityId)}
+                  $isSelected={isSelected}>
+                  <UniversityBox>
+                    <Name $isSelected={isSelected}>{universityName}</Name>
+                    <Category $isSelected={isSelected}>{universityCategory}</Category>
+                  </UniversityBox>
+                  {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
+                </SelectedUniversityButton>
+              )}
               {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
             </div>
           );
