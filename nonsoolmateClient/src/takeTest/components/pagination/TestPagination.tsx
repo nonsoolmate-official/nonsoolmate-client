@@ -1,5 +1,6 @@
 import { LeftArrowBigIc, RightArrowBigIc } from "@assets/index";
 import styled from "styled-components";
+import testExample from "@assets/image/testexample.png";
 import testPaper1 from "@assets/image/testPaperImg1.jpeg";
 import testPaper2 from "@assets/image/testPaperImg2.jpeg";
 import testPaper3 from "@assets/image/testPaperImg3.jpeg";
@@ -7,7 +8,12 @@ import testPaper4 from "@assets/image/testPaperImg4.jpeg";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 
-export default function TestPagination() {
+interface PaginatinProps {
+  openCoachMark: boolean;
+  openPrecautionModal: boolean;
+}
+export default function TestPagination(props: PaginatinProps) {
+  const { openCoachMark, openPrecautionModal } = props;
   const testPapers = [testPaper1, testPaper2, testPaper3, testPaper4];
   const [paperIdx, setPaperIdx] = useState(0);
 
@@ -22,7 +28,7 @@ export default function TestPagination() {
       <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <TestImage src={testPapers[paperIdx]} alt="시험지 이미지" />
+      <TestImage src={openCoachMark || openPrecautionModal ? testExample : testPapers[paperIdx]} alt="시험지 이미지" />
       <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx >= testPapers.length - 1}>
         <RightArrowBigIcon />
       </NextPageButton>

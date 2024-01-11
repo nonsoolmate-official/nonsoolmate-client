@@ -16,9 +16,11 @@ export default function HomePractice() {
 
 const Container = styled.section`
   ${SetUnsetContainerLayout}
+
+  gap: 0.7rem;
 `;
 
-const Header = styled.h2`
+const Header = styled.h3`
   ${({ theme }) => theme.fonts.Headline5};
 
   display: flex;

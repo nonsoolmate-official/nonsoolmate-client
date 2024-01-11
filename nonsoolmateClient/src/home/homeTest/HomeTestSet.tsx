@@ -6,7 +6,14 @@ import { useState } from "react";
 import { universityLists } from "home/core/universityLists";
 import SelectedUniversityToggle from "./components/SelectedUniversityToggle";
 
-export default function HomeTestSet() {
+interface HomeTestSetProps {
+  handleUniversityModal: (open: boolean) => void;
+  selectedUniversityIdList: number[];
+}
+
+export default function HomeTestSet(props: HomeTestSetProps) {
+  const { handleUniversityModal, selectedUniversityIdList } = props;
+
   const [selectedUniversityId, setSelectedUniversityId] = useState<number | null>(null);
 
   function handleSelectedUniversityId(id: number) {
@@ -14,45 +21,52 @@ export default function HomeTestSet() {
   }
 
   return (
-    <HomeTestSetContainer>
+    <Container>
       <HeaderBox>
         <HeaderText>나의 시험장</HeaderText>
-        <HeaderButton type="button">
+        <HeaderButton
+          type="button"
+          onClick={() => {
+            handleUniversityModal(true);
+          }}>
           대학별 시험 찾기
           <SearchIcon />
         </HeaderButton>
       </HeaderBox>
-      <SelectedUniversityLists>
+      <ListBox>
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
           const isSelected = selectedUniversityId === universityId;
+          const isExisted = selectedUniversityIdList.includes(universityId);
 
           return (
-            <div key={universityId}>
-              <SelectedUniversityButton
-                type="button"
-                onClick={() => handleSelectedUniversityId(universityId)}
-                $isSelected={isSelected}>
-                <UniversityBox>
-                  <Name $isSelected={isSelected}>{universityName}</Name>
-                  <Category $isSelected={isSelected}>{universityCategory}</Category>
-                </UniversityBox>
-                {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
-              </SelectedUniversityButton>
+            <SelectedListBox key={universityId}>
+              {isExisted && (
+                <SelectedUniversityButton
+                  type="button"
+                  onClick={() => handleSelectedUniversityId(universityId)}
+                  $isSelected={isSelected}>
+                  <UniversityBox>
+                    <Name $isSelected={isSelected}>{universityName}</Name>
+                    <Category $isSelected={isSelected}>{universityCategory}</Category>
+                  </UniversityBox>
+                  {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
+                </SelectedUniversityButton>
+              )}
               {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
-            </div>
+            </SelectedListBox>
           );
         })}
-      </SelectedUniversityLists>
-    </HomeTestSetContainer>
+      </ListBox>
+    </Container>
   );
 }
 
-const HomeTestSetContainer = styled.section`
+const Container = styled.section`
   ${SetUnsetContainerLayout};
 `;
 
-const HeaderBox = styled.h2`
+const HeaderBox = styled.header`
   ${({ theme }) => theme.fonts.Headline5};
 
   ${commonFlex};
@@ -62,7 +76,7 @@ const HeaderBox = styled.h2`
   padding: 0 0.8rem;
 `;
 
-const HeaderText = styled.h2`
+const HeaderText = styled.h3`
   ${({ theme }) => theme.fonts.Headline5};
 `;
 
@@ -81,20 +95,23 @@ const SearchIcon = styled(SearchIc)`
   height: 2rem;
 `;
 
-const SelectedUniversityLists = styled.section`
+const ListBox = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
   justify-content: flex-start;
   width: 100%;
   height: calc(100% - 18.2rem);
   padding: 0;
 `;
 
+const SelectedListBox = styled.div`
+  padding: 0;
+`;
 const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 1.2rem;
   padding: 1.6rem 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme, $isSelected }) => ($isSelected ? theme.colors.main_blue : theme.colors.white)};

@@ -3,14 +3,23 @@ import { HomeTestUnsetIc, FindTestIc } from "@assets/index";
 import { UnsetContentLayout, SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
 import { mainButtonStyle } from "style/commonStyle";
 
-export default function HomeTestUnset() {
+interface HomeTestUnsetProps {
+  handleUniversityModal: (open: boolean) => void;
+}
+
+export default function HomeTestUnset(props: HomeTestUnsetProps) {
+  const { handleUniversityModal } = props;
   return (
     <Container>
       <Header>나의 시험장</Header>
       <Content>
         <HomeTestUnsetIcon />
         <ContentText>아직 목표대학을 설정하지 않았어요</ContentText>
-        <FindTestButton type="button">
+        <FindTestButton
+          type="button"
+          onClick={() => {
+            handleUniversityModal(true);
+          }}>
           <ButtonText>대학별 시험 찾기</ButtonText>
           <FindTestIcon />
         </FindTestButton>
@@ -21,9 +30,11 @@ export default function HomeTestUnset() {
 
 const Container = styled.section`
   ${SetUnsetContainerLayout}
+
+  gap: 0.7rem;
 `;
 
-const Header = styled.h2`
+const Header = styled.p`
   ${({ theme }) => theme.fonts.Headline5};
 
   display: flex;
