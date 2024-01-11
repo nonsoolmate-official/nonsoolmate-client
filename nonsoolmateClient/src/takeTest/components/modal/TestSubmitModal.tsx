@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
+import { useNavigate } from "react-router-dom";
 
 interface TestSubmitProps {
   isFile: File[] | null;
@@ -9,6 +10,7 @@ interface TestSubmitProps {
 export default function TestSubmitModal(props: TestSubmitProps) {
   const { isFile } = props;
   let zip = new JSZip();
+  const navigate = useNavigate();
 
   const handleZipCreation = () => {
     if (isFile) {
@@ -43,6 +45,7 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           console.error("An error occurred:", error);
         });
     }
+    navigate("/home/test");
   };
   return (
     <TestSubmitModalCotainer>
