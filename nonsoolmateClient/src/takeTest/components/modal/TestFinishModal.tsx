@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 interface TestFinishProps {
   changeTestFinishStatus: (testFinishModal: boolean) => void;
@@ -13,6 +13,7 @@ export default function TestFinishModal(props: TestFinishProps) {
   const { changeTestFinishStatus, changeTestSubmitStatus, totalTime } = props;
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isfile, setIsfile] = useState<File[] | null>(null);
 
   const hours = Math.floor(totalTime / 3600);
   const minutes = Math.floor((totalTime - hours * 3600) / 60);
@@ -20,10 +21,16 @@ export default function TestFinishModal(props: TestFinishProps) {
 
   function handleSubmitButton() {
     fileInputRef.current && fileInputRef.current.click();
+  }
+  function handleFileInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     changeTestFinishStatus(false);
     changeTestSubmitStatus(true);
+    if (e.target.files) {
+      console.log(e.target.files);
+      const fileList = Array.from(e.target.files);
+      setIsfile(fileList);
+    }
   }
-
   return (
     <TestFinishModalContaier>
       <Modal>
@@ -43,7 +50,13 @@ export default function TestFinishModal(props: TestFinishProps) {
           <ButtonContainer>
             <TestQuitButton onClick={() => navigate("/home/test")}>나가기</TestQuitButton>
             <SelectFileButton onClick={handleSubmitButton}>제출하기</SelectFileButton>
-            <FileInput type="file" ref={fileInputRef} multiple={true} />
+            <FileInput
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              multiple={true}
+              onChange={handleFileInputChange}
+            />
           </ButtonContainer>
         </TestFinishModalBox>
       </Modal>
