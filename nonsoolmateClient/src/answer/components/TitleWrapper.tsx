@@ -10,10 +10,21 @@ interface TitleWrapperProps {
   ifPdfButton?: boolean;
   getFilePluginInstance?: GetFilePlugin;
   setIsHide: React.Dispatch<React.SetStateAction<boolean>>;
+  isExplanationHide: boolean;
+  isQuestionHide: boolean;
 }
 
 export default function TitleWrapper(props: TitleWrapperProps) {
-  const { title, buttonText, ifExplanation, ifPdfButton, getFilePluginInstance, setIsHide } = props;
+  const {
+    title,
+    buttonText,
+    ifExplanation,
+    ifPdfButton,
+    getFilePluginInstance,
+    setIsHide,
+    isExplanationHide,
+    isQuestionHide,
+  } = props;
 
   const renderDownloadButton = () => {
     if (getFilePluginInstance) {
@@ -30,7 +41,9 @@ export default function TitleWrapper(props: TitleWrapperProps) {
         <Button
           type="button"
           onClick={() => {
+            // setTimeout(() => {
             setIsHide(true);
+            // }, 500);
           }}>
           {buttonText}
         </Button>
@@ -39,18 +52,23 @@ export default function TitleWrapper(props: TitleWrapperProps) {
   };
 
   return (
-    <TitleWrapperContainer>
+    <TitleWrapperContainer $isExplanationHide={isExplanationHide} $isQuestionHide={isQuestionHide}>
       <Title>{title}</Title>
       {!ifExplanation && ifPdfButton ? renderDownloadButton() : renderHideButton()}
     </TitleWrapperContainer>
   );
 }
 
-const TitleWrapperContainer = styled.div`
+const TitleWrapperContainer = styled.div<{ $isQuestionHide: boolean; $isExplanationHide: boolean }>`
   ${commonFlex}
 
   justify-content: space-between;
-  width: calc((100vw - 16.8rem) / 2);
+  width: 100%;
+
+  /* width: ${({ $isQuestionHide, $isExplanationHide }) =>
+    $isQuestionHide || $isExplanationHide ? `calc(100vw - 16.8rem)` : `calc((100vw - 16.8rem) / 2)`}; */
+
+  /* width: calc((100vw - 16.8rem) / 2); */
   padding: 0 2.5rem 0 2.4rem;
 `;
 

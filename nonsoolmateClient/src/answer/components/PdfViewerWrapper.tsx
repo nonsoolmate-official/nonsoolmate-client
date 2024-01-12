@@ -20,9 +20,19 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
 
+  // useEffect(() => {
+  //   if (isExplanationHide || isQuestionHide) {
+  //     setIsHide(true);
+  //   } else {
+  //     setIsHide(false);
+  //   }
+  // }, [isExplanationHide, isQuestionHide]);
+
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
+      // setTimeout(() => {
       setIsHide(true);
+      // }, 5000); // delay equals to the transition duration
     } else {
       setIsHide(false);
     }
@@ -30,25 +40,38 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
 
   return (
     <PdfViewerContainer $isHide={isHide}>
-      <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide}>
+      <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={firstTitle}
           buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"}
           ifPdfButton={!ifExplanation && true}
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
+          isExplanationHide={isExplanationHide}
+          isQuestionHide={isQuestionHide}
         />
-        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} getFilePluginInstance={getFilePluginInstance} />}
+        {ifExplanation ? (
+          <ImageSlider />
+        ) : (
+          <PdfViewer
+            pdfUrl={pdfUrl}
+            getFilePluginInstance={getFilePluginInstance}
+            isExplanationHide={isExplanationHide}
+            isQuestionHide={isQuestionHide}
+          />
+        )}
       </LeftPdfViewerWrapper>
 
-      <RightPdfViewerWrapper $isExplanationHide={isExplanationHide}>
+      <RightPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={secondTitle}
           buttonText="해제 숨기기"
           ifExplanation={ifExplanation}
           setIsHide={setIsExplanationHide}
+          isExplanationHide={isExplanationHide}
+          isQuestionHide={isQuestionHide}
         />
-        <PdfViewer pdfUrl={pdfUrl} />
+        <PdfViewer pdfUrl={pdfUrl} isExplanationHide={isExplanationHide} isQuestionHide={isQuestionHide} />
       </RightPdfViewerWrapper>
     </PdfViewerContainer>
   );
@@ -64,22 +87,31 @@ const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   padding: 2rem 0 3rem;
 `;
 
-const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean }>`
+const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExplanationHide: boolean }>`
   ${columnFlex}
 
+  display: ${({ $isQuestionHide }) => $isQuestionHide && "none"};
   gap: 1.4rem;
-  position: ${({ $isQuestionHide }) => $isQuestionHide && "relative"};
-  transform: ${({ $isQuestionHide }) => ($isQuestionHide ? `translateX(-120%)` : `none`)};
+
+  /* position: ${({ $isQuestionHide }) => $isQuestionHide && "relative"}; */
+  width: ${({ $isExplanationHide }) => ($isExplanationHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
+  opacity: ${({ $isQuestionHide }) => ($isQuestionHide ? 0 : 1)};
   /* stylelint-disable-next-line unit-allowed-list */
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
+  transform: ${({ $isQuestionHide }) => ($isQuestionHide ? `translateX(-100%)` : `none`)};
 `;
 
-const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean }>`
+const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQuestionHide: boolean }>`
   ${columnFlex}
 
-  gap: 1.4rem;
-  position: ${({ $isExplanationHide }) => $isExplanationHide && "relative"};
+  /* display: ${({ $isExplanationHide }) => $isExplanationHide && "none"}; */
+  gap: ${({ $isQuestionHide }) => ($isQuestionHide ? `0` : `1.4rem`)};
+
+  /* gap: 1.4rem; */
+
+  /* position: ${({ $isExplanationHide }) => $isExplanationHide && "relative"}; */
+  width: ${({ $isQuestionHide }) => ($isQuestionHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
   transform: ${({ $isExplanationHide }) => ($isExplanationHide ? `translateX(120%)` : `none`)};
   /* stylelint-disable-next-line unit-allowed-list */
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
 `;
