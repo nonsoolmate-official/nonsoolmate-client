@@ -9,10 +9,11 @@ interface TitleWrapperProps {
   ifExplanation?: boolean;
   ifPdfButton?: boolean;
   getFilePluginInstance?: GetFilePlugin;
+  setIsHide: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function TitleWrapper(props: TitleWrapperProps) {
-  const { title, buttonText, ifExplanation, ifPdfButton, getFilePluginInstance } = props;
+  const { title, buttonText, ifExplanation, ifPdfButton, getFilePluginInstance, setIsHide } = props;
 
   const renderDownloadButton = () => {
     if (getFilePluginInstance) {
@@ -28,10 +29,9 @@ export default function TitleWrapper(props: TitleWrapperProps) {
       return (
         <Button
           type="button"
-          // onClick={() => {
-          //   console.log("hide");
-          // }}
-        >
+          onClick={() => {
+            setIsHide(true);
+          }}>
           {buttonText}
         </Button>
       );

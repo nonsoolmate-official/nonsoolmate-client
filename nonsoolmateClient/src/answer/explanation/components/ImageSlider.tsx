@@ -5,7 +5,12 @@ import testPaperImg3 from "../../../assets/image/testPaperImg3.jpeg";
 import testPaperImg4 from "../../../assets/image/testPaperImg4.jpeg";
 import { columnFlex } from "style/commonStyle";
 
+// interface ImageSliderProps {
+//   isHide: boolean;
+// }
+
 export default function ImageSlider() {
+  // const { isHide } = props;
   const imageList = [testPaperImg1, testPaperImg2, testPaperImg3, testPaperImg4];
 
   const imageMap = () => {
