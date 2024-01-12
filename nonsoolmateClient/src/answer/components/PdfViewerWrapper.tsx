@@ -6,6 +6,7 @@ import ImageSlider from "answer/explanation/components/ImageSlider";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
+import { RightArrowBigIc, LeftArrowBigIc } from "@assets/index";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -32,6 +33,9 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
 
   return (
     <PdfViewerContainer $isHide={isHide}>
+      <ShowQuestionButton $isQuestionHide={isQuestionHide} onClick={() => setIsQuestionHide(false)}>
+        <RightArrowBigIcon />
+      </ShowQuestionButton>
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={firstTitle}
@@ -54,6 +58,9 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
         />
         <PdfViewer pdfUrl={pdfUrl} fullScreenPluginInstance={fullScreenPluginInstance} />
       </RightPdfViewerWrapper>
+      <ShowExplanationButton $isExplanationHide={isExplanationHide} onClick={() => setIsExplanationHide(false)}>
+        <LeftArrowBigIcon />
+      </ShowExplanationButton>
     </PdfViewerContainer>
   );
 }
@@ -87,4 +94,26 @@ const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQ
 
   /* stylelint-disable-next-line unit-allowed-list */
   transition: 0.3s ease-in-out;
+`;
+
+const RightArrowBigIcon = styled(RightArrowBigIc)`
+  width: 5.6rem;
+  height: 5.6rem;
+`;
+
+const ShowQuestionButton = styled.button<{ $isQuestionHide: boolean }>`
+  display: ${({ $isQuestionHide }) => ($isQuestionHide ? `block` : `none`)};
+  position: fixed;
+  left: 4.9rem;
+`;
+
+const LeftArrowBigIcon = styled(LeftArrowBigIc)`
+  width: 5.6rem;
+  height: 5.6rem;
+`;
+
+const ShowExplanationButton = styled.button<{ $isExplanationHide: boolean }>`
+  display: ${({ $isExplanationHide }) => ($isExplanationHide ? `block` : `none`)};
+  position: fixed;
+  right: 4.8rem;
 `;

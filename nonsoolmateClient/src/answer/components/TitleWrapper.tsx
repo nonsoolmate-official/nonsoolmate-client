@@ -81,7 +81,7 @@ const TitleWrapperContainer = styled.div`
   ${commonFlex}
 
   justify-content: space-between;
-  width: 100%;
+  width: calc((100vw - 16.8rem) / 2);
   padding: 0 2.5rem 0 2.4rem;
 `;
 
