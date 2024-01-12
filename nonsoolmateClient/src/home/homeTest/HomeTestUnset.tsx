@@ -43,6 +43,8 @@ const Header = styled.p`
 
 const Content = styled.section`
   ${UnsetContentLayout}
+
+  padding: 14.2rem 0 16.7rem;
 `;
 
 const HomeTestUnsetIcon = styled(HomeTestUnsetIc)`
