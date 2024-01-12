@@ -29,15 +29,17 @@ export default function UniversityModal(props: UniversityModalProps) {
             const { universityName, universityCategory, universityId } = data;
             const isChecked = selectedUniversityIdList.includes(universityId);
             return (
-              <CheckBox key={universityName} $isChecked={isChecked}>
+              <CheckBoxButton
+                key={universityName}
+                type="button"
+                $isChecked={isChecked}
+                onClick={() => handleUpdateUniversityIdList(universityId)}>
                 <UniversityBox>
                   <University>{universityName}</University>
                   <Category>{universityCategory}</Category>
                 </UniversityBox>
-                <CheckBoxButton type="button" onClick={() => handleUpdateUniversityIdList(universityId)}>
-                  {isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}
-                </CheckBoxButton>
-              </CheckBox>
+                <CheckBox>{isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}</CheckBox>
+              </CheckBoxButton>
             );
           })}
         </Container>
@@ -101,7 +103,7 @@ const Container = styled.section`
   margin-bottom: 22.4rem;
 `;
 
-const CheckBox = styled.div<{ $isChecked: boolean }>`
+const CheckBoxButton = styled.button<{ $isChecked: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -119,7 +121,7 @@ const UniversityBox = styled.div`
   align-items: center;
 `;
 
-const CheckBoxButton = styled.button`
+const CheckBox = styled.div`
   padding: 0;
   cursor: pointer;
 `;
