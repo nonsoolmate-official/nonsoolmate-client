@@ -49,15 +49,13 @@ export default function TestSubmitModal(props: TestSubmitProps) {
   return (
     <TestSubmitModalCotainer>
       <Modal>
-        <TestSubmitModalBox>
-          <ModalContent>
-            <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
-            <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
-            <SubmitButton onClick={handleZipCreation} type="button">
-              제출하기
-            </SubmitButton>
-          </ModalContent>
-        </TestSubmitModalBox>
+        <ModalContent>
+          <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
+          <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
+          <SubmitButton onClick={handleZipCreation} type="button">
+            제출하기
+          </SubmitButton>
+        </ModalContent>
       </Modal>
     </TestSubmitModalCotainer>
   );
@@ -67,19 +65,16 @@ const TestSubmitModalCotainer = styled(ModalContainer)`
 
   backdrop-filter: blur(0.3rem);
 `;
-const TestSubmitModalBox = styled.div`
+const ModalContent = styled.div`
   ${columnFlex};
 
   gap: 2.4rem;
   padding: 5.4rem 5.6rem 4.4rem;
 `;
-const ModalContent = styled.div`
-  ${columnFlex};
-
-  gap: 2.5rem;
-`;
 const ModalTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline4};
+
+  padding-bottom: 0.1rem;
 `;
 const ModalFile = styled.div`
   ${columnFlex};
