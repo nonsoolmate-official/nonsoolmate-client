@@ -48,13 +48,8 @@ export default function TitleWrapper(props: TitleWrapperProps) {
       const { EnterFullScreen } = fullScreenPluginInstance;
       return (
         <EnterFullScreen>
-          {(props: RenderEnterFullScreenProps) => (
-            <Button onClick={() => console.log("clicked")}>Enter fullscreen</Button>
-          )}
+          {(props: RenderEnterFullScreenProps) => <Button onClick={props.onClick}>Enter fullscreen</Button>}
         </EnterFullScreen>
-        // <EnterFullScreen>
-        //   {(props: RenderEnterFullScreenProps) => <Button onClick={props.onClick}>Enter fullscreen</Button>}
-        // </EnterFullScreen>
       );
     }
   };

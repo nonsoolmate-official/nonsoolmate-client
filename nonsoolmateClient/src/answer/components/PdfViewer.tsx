@@ -43,8 +43,6 @@ const PdfViewerWrapper = styled.div`
 `;
 
 const ViewerWrapper = styled.div`
-  flex: 1;
-  overflow: "hidden";
   height: 100%;
   padding: 2rem 0.8rem 0;
 `;
