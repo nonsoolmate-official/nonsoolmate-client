@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ImageSlider from "answer/explanation/components/ImageSlider";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
+import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -19,6 +20,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
+  const fullScreenPluginInstance = fullScreenPlugin();
 
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
@@ -38,16 +40,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
         />
-        {ifExplanation ? (
-          <ImageSlider />
-        ) : (
-          <PdfViewer
-            pdfUrl={pdfUrl}
-            getFilePluginInstance={getFilePluginInstance}
-            isExplanationHide={isExplanationHide}
-            isQuestionHide={isQuestionHide}
-          />
-        )}
+        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} getFilePluginInstance={getFilePluginInstance} />}
       </LeftPdfViewerWrapper>
 
       <RightPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
@@ -56,8 +49,10 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           buttonText="해제 숨기기"
           ifExplanation={ifExplanation}
           setIsHide={setIsExplanationHide}
+          fullScreenPluginInstance={fullScreenPluginInstance}
+          isQuestionHide={isQuestionHide}
         />
-        <PdfViewer pdfUrl={pdfUrl} isExplanationHide={isExplanationHide} isQuestionHide={isQuestionHide} />
+        <PdfViewer pdfUrl={pdfUrl} fullScreenPluginInstance={fullScreenPluginInstance} />
       </RightPdfViewerWrapper>
     </PdfViewerContainer>
   );
