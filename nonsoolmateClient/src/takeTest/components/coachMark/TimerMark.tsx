@@ -21,7 +21,7 @@ const TimerMarkContainer = styled.div`
   gap: 0.8rem;
   position: fixed;
   top: 0.8rem;
-  left: 55.5%;
+  left: 55.9%;
 `;
 const LeftCircleLongIcon = styled(LeftCircleLongIc)`
   width: 8.4rem;
