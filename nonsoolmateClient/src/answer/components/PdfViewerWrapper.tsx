@@ -20,19 +20,9 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
 
-  // useEffect(() => {
-  //   if (isExplanationHide || isQuestionHide) {
-  //     setIsHide(true);
-  //   } else {
-  //     setIsHide(false);
-  //   }
-  // }, [isExplanationHide, isQuestionHide]);
-
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
-      // setTimeout(() => {
       setIsHide(true);
-      // }, 5000); // delay equals to the transition duration
     } else {
       setIsHide(false);
     }
@@ -47,8 +37,6 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           ifPdfButton={!ifExplanation && true}
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
-          isExplanationHide={isExplanationHide}
-          isQuestionHide={isQuestionHide}
         />
         {ifExplanation ? (
           <ImageSlider />
@@ -68,8 +56,6 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           buttonText="해제 숨기기"
           ifExplanation={ifExplanation}
           setIsHide={setIsExplanationHide}
-          isExplanationHide={isExplanationHide}
-          isQuestionHide={isQuestionHide}
         />
         <PdfViewer pdfUrl={pdfUrl} isExplanationHide={isExplanationHide} isQuestionHide={isQuestionHide} />
       </RightPdfViewerWrapper>
@@ -92,26 +78,18 @@ const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExpla
 
   display: ${({ $isQuestionHide }) => $isQuestionHide && "none"};
   gap: 1.4rem;
-
-  /* position: ${({ $isQuestionHide }) => $isQuestionHide && "relative"}; */
   width: ${({ $isExplanationHide }) => ($isExplanationHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
-  opacity: ${({ $isQuestionHide }) => ($isQuestionHide ? 0 : 1)};
   /* stylelint-disable-next-line unit-allowed-list */
   transition: 0.3s ease-in-out;
-  transform: ${({ $isQuestionHide }) => ($isQuestionHide ? `translateX(-100%)` : `none`)};
 `;
 
 const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQuestionHide: boolean }>`
   ${columnFlex}
 
-  /* display: ${({ $isExplanationHide }) => $isExplanationHide && "none"}; */
-  gap: ${({ $isQuestionHide }) => ($isQuestionHide ? `0` : `1.4rem`)};
-
-  /* gap: 1.4rem; */
-
-  /* position: ${({ $isExplanationHide }) => $isExplanationHide && "relative"}; */
+  display: ${({ $isExplanationHide }) => $isExplanationHide && "none"};
+  gap: 1.4rem;
   width: ${({ $isQuestionHide }) => ($isQuestionHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
-  transform: ${({ $isExplanationHide }) => ($isExplanationHide ? `translateX(120%)` : `none`)};
+
   /* stylelint-disable-next-line unit-allowed-list */
   transition: 0.3s ease-in-out;
 `;
