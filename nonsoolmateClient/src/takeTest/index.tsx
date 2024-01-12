@@ -80,4 +80,5 @@ const TakeTestContainer = styled.section<{ $scroll: boolean }>`
   ${({ $scroll }) => ($scroll ? "overflow:scroll" : "overflow:hidden")};
 
   height: 100vh;
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
