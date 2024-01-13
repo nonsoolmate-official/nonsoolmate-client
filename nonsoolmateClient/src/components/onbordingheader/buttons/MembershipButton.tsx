@@ -7,6 +7,7 @@ export default function MembershipButton() {
 
   return (
     <Button
+      type="button"
       onClick={() => {
         navigate("/membership");
       }}>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function HeaderLeft() {
   const navigate = useNavigate();
   return (
-    <LogoContainer onClick={() => navigate("/")}>
+    <LogoContainer type="button" onClick={() => navigate("/")}>
       <LogoIcon />
     </LogoContainer>
   );
