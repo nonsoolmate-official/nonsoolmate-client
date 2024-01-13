@@ -20,11 +20,11 @@ export const mainButtonStyle = styled.button`
   background-color: ${({ theme }) => theme.colors.main_blue};
   color: ${({ theme }) => theme.colors.white};
 
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.middle_blue};
   }
 
-  :active {
+  &:active {
     background-color: ${({ theme }) => theme.colors.dark_blue};
   }
 `;
@@ -37,7 +37,7 @@ export const lightBlueButtonStyle = styled.button`
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
 
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.white};
   }
 `;
@@ -49,7 +49,7 @@ export const subButtonStyle = styled.button`
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
 
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.white};
   }
 `;
@@ -61,11 +61,11 @@ export const answerPageButtonStyle = styled.button`
   background-color: ${({ theme }) => theme.colors.main_blue};
   color: ${({ theme }) => theme.colors.white};
 
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.middle_blue};
   }
 
-  :active {
+  &:active {
     background-color: ${({ theme }) => theme.colors.dark_blue};
   }
 `;
