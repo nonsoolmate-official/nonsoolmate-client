@@ -1,4 +1,4 @@
-import { commonFlex, mainButtonStyle } from "style/commonStyle";
+import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
@@ -80,6 +80,8 @@ const IconBox = styled.div`
   padding: 0;
 `;
 const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
+  ${columnFlex}
+
   width: 4rem;
   height: 4rem;
 `;
