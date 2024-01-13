@@ -172,4 +172,9 @@ const CorrectionButton = styled(lightBlueButtonStyle)<{ $resultsText: string }>`
   color: ${({ theme, $resultsText }) =>
     $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.main_blue};
   cursor: ${({ $resultsText }) => ($resultsText === "첨삭 진행 중" ? "default" : "pointer")};
+
+  &:hover {
+    color: ${({ theme, $resultsText }) =>
+      $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.middle_blue};
+  }
 `;
