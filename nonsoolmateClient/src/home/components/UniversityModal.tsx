@@ -3,7 +3,7 @@ import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { selectionLists } from "home/core/selectionLists";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
@@ -23,6 +23,10 @@ export default function UniversityModal(props: UniversityModalProps) {
     setTest,
     test,
   } = props;
+
+  useEffect(() => {
+    handleSelectedUniversityIdList(test);
+  }, []);
 
   function completeSelect() {
     if (isSelectedNone) {
