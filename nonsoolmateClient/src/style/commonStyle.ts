@@ -38,7 +38,11 @@ export const lightBlueButtonStyle = styled.button`
   color: ${({ theme }) => theme.colors.main_blue};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.middle_blue};
+  }
+
+  &:active {
+    color: ${({ theme }) => theme.colors.dark_blue};
   }
 `;
 
@@ -50,7 +54,11 @@ export const subButtonStyle = styled.button`
   color: ${({ theme }) => theme.colors.main_blue};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.middle_blue};
+  }
+
+  &:active {
+    color: ${({ theme }) => theme.colors.dark_blue};
   }
 `;
 
