@@ -19,7 +19,9 @@ export default function HomeHeader() {
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
-          <MembershipButton type="button">멤버십</MembershipButton>
+          <MembershipButton type="button" onClick={() => navigate("/membership")}>
+            멤버십
+          </MembershipButton>
           <LoginInfoButton type="button" onClick={handleHomeMemberInfoToggle}>
             <LoginInfoIcon />
             <LoginInfoBox>
