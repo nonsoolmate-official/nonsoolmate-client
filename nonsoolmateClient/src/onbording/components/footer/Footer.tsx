@@ -30,6 +30,7 @@ const DivideLineFooter = styled(DivideLine)`
 const ContentContainer = styled.div`
   ${commonFlex}
 
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 93.6rem;
   margin-top: 5.2rem;
 `;
