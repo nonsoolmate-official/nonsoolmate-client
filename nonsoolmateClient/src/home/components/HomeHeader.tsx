@@ -15,7 +15,7 @@ export default function HomeHeader() {
   return (
     <>
       <Header>
-        <LogoButton type="button" onClick={() => navigate("/onBording")}>
+        <LogoButton type="button" onClick={() => navigate("/")}>
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
