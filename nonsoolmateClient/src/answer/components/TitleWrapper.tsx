@@ -48,7 +48,7 @@ export default function TitleWrapper(props: TitleWrapperProps) {
       const { EnterFullScreen } = fullScreenPluginInstance;
       return (
         <EnterFullScreen>
-          {(props: RenderEnterFullScreenProps) => <Button onClick={props.onClick}>Enter fullscreen</Button>}
+          {(props: RenderEnterFullScreenProps) => <Button onClick={props.onClick}>PDF로 크게보기</Button>}
         </EnterFullScreen>
       );
     }
