@@ -22,6 +22,9 @@ export default defineConfig({
       { find: "@type", replacement: path.resolve(__dirname, "src/type") },
     ],
   },
+  server: {
+    port: 5173,
+  },
   build: {
     rollupOptions: {
       output: {
