@@ -10,8 +10,8 @@ interface UniversityModalProps {
   selectedUniversityIdList: number[];
   handleSelectedUniversityIdList: (idList: number[]) => void;
   isSelectedNone?: boolean;
-  setTest: React.Dispatch<React.SetStateAction<number[]>>;
-  test: number[];
+  handleMySelectedUniversityIdList: (idList: number[]) => void;
+  mySelectedUniversityId: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
@@ -20,27 +20,27 @@ export default function UniversityModal(props: UniversityModalProps) {
     selectedUniversityIdList,
     handleSelectedUniversityIdList,
     isSelectedNone,
-    setTest,
-    test,
+    handleMySelectedUniversityIdList,
+    mySelectedUniversityId,
   } = props;
 
   useEffect(() => {
-    handleSelectedUniversityIdList(test);
+    handleSelectedUniversityIdList(mySelectedUniversityId);
   }, []);
 
   function completeSelect() {
     if (isSelectedNone) {
-      setTest([]);
+      handleMySelectedUniversityIdList([]);
     } else {
-      setTest([...selectedUniversityIdList]);
+      handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
-    console.log("test는", test);
+    console.log("test는", mySelectedUniversityId);
     console.log("selectedUniversityIdList는", selectedUniversityIdList);
     handleUniversityModal(false);
   }
 
   function cancel() {
-    console.log("test는", test);
+    console.log("test는", mySelectedUniversityId);
     console.log("selectedUniversityIdList는", selectedUniversityIdList);
     handleUniversityModal(false);
   }
