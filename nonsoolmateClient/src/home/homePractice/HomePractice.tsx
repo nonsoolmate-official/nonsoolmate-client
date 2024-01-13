@@ -5,11 +5,13 @@ import { SetUnsetContainerLayout, UnsetContentLayout } from "style/layout/SetUns
 export default function HomePractice() {
   return (
     <Container>
-      <Header>나의 연습장</Header>
-      <Content>
-        <EmptyIcon />
-        <ContentText>아직 준비 중이에요!</ContentText>
-      </Content>
+      <Box>
+        <Header>나의 연습장</Header>
+        <Content>
+          <EmptyIcon />
+          <ContentText>아직 준비 중이에요!</ContentText>
+        </Content>
+      </Box>
     </Container>
   );
 }
@@ -17,7 +19,14 @@ export default function HomePractice() {
 const Container = styled.section`
   ${SetUnsetContainerLayout}
 
+  overflow-y: hidden;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 0.7rem;
+  margin: 6.7rem 21.5rem 11.5rem 2.4rem;
 `;
 
 const Header = styled.h3`
