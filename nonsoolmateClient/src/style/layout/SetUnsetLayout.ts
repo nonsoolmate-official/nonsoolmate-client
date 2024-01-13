@@ -15,7 +15,7 @@ export const UnsetContentLayout = css`
   flex-direction: column;
   gap: 0.8rem;
   align-items: center;
-  height: 100%;
+  height: 48.7rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_200};
 `;

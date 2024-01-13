@@ -12,7 +12,7 @@ export default function ExplainHeader(props: ExplainHeaderProps) {
   const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <BackToHomeButton type="button" onClick={() => navigate(`/home`)}>
+      <BackToHomeButton type="button" onClick={() => navigate(`/home/test`)}>
         <BackToListIcon />
       </BackToHomeButton>
       <TestName>{testTitle}</TestName>
