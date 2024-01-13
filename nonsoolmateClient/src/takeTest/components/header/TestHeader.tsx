@@ -85,13 +85,18 @@ const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
 const TestTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline5};
 `;
-const TimerBox = styled(lightBlueButtonStyle)`
+const TimerBox = styled.div`
+  ${commonFlex}
+
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
   width: 16.4rem;
   height: 4rem;
   padding: 0;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.light_blue};
+  color: ${({ theme }) => theme.colors.main_blue};
+  transform: translate(-50%);
 `;
 const InitTimer = styled.p`
   ${({ theme }) => theme.fonts.Headline4};
