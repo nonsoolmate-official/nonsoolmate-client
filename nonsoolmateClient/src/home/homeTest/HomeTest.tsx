@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function HomeTest() {
   const [universityModal, setUniversityModal] = useState<boolean>(false);
   const [selectedUniversityIdList, setSelectedUniversityIdList] = useState<number[]>([]);
+  const [test, setTest] = useState<number[]>([]);
 
   function handleUniversityModal(open: boolean) {
     setUniversityModal(open);
@@ -16,19 +17,22 @@ export default function HomeTest() {
   }
   return (
     <>
-      {selectedUniversityIdList.length > 0 ? (
+      {test.length > 0 ? (
         <HomeTestSet
-          selectedUniversityIdList={selectedUniversityIdList}
           handleUniversityModal={handleUniversityModal}
+          test={test}
         />
       ) : (
         <HomeTestUnset handleUniversityModal={handleUniversityModal} />
       )}
       {universityModal && (
         <UniversityModal
+          isSelectedNone={selectedUniversityIdList.length === 0 && true}
           selectedUniversityIdList={selectedUniversityIdList}
+          setTest={setTest}
           handleUniversityModal={handleUniversityModal}
           handleSelectedUniversityIdList={handleSelectedUniversityIdList}
+          test={test}
         />
       )}
     </>
