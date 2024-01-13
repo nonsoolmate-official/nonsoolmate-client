@@ -34,14 +34,10 @@ export default function UniversityModal(props: UniversityModalProps) {
     } else {
       handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
-    console.log("test는", mySelectedUniversityId);
-    console.log("selectedUniversityIdList는", selectedUniversityIdList);
     handleUniversityModal(false);
   }
 
   function cancel() {
-    console.log("test는", mySelectedUniversityId);
-    console.log("selectedUniversityIdList는", selectedUniversityIdList);
     handleUniversityModal(false);
   }
 
@@ -60,7 +56,6 @@ export default function UniversityModal(props: UniversityModalProps) {
         <Container>
           {selectionLists.map((data) => {
             const { universityName, universityCategory, universityId } = data;
-            // 대학교 버튼 클릭 호버 기능
             const isChecked = selectedUniversityIdList.includes(universityId);
 
             return (
