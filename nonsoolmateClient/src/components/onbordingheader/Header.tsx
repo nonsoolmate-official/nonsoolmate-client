@@ -4,14 +4,14 @@ import HeaderRight from "./HeaderRight";
 import styled from "styled-components";
 
 interface HeaderProps {
-  isOnbording: boolean;
+  isOnboarding: boolean;
 }
 
 export default function Header(props: HeaderProps) {
-  const { isOnbording } = props;
+  const { isOnboarding } = props;
 
   return (
-    <Container $isOnbording={isOnbording}>
+    <Container $isOnboarding={isOnboarding}>
       <ContentContainer>
         <HeaderLeft />
         <HeaderRight />
@@ -19,12 +19,12 @@ export default function Header(props: HeaderProps) {
     </Container>
   );
 }
-const Container = styled.header<{ $isOnbording: boolean }>`
+const Container = styled.header<{ $isOnboarding: boolean }>`
   ${commonFlex}
 
   width: 100%;
   height: 6.4rem;
-  box-shadow: ${({ $isOnbording }) => ($isOnbording ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
+  box-shadow: ${({ $isOnboarding }) => ($isOnboarding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
 `;
 
 const ContentContainer = styled.div`

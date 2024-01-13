@@ -8,7 +8,7 @@ import HomeStudy from "home/homeStudy/HomeStudy";
 import HomeTest from "home/homeTest/HomeTest";
 import Correction from "answer/correction";
 import Explanation from "answer/explanation";
-import OnBording from "onbording";
+import OnBoarding from "onboarding";
 import Signup from "signup";
 import Membership from "membership";
 
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
 
     children: [
-      { path: "", element: <OnBording /> },
+      { path: "", element: <OnBoarding /> },
       {
         path: "/home",
         element: <Home />,

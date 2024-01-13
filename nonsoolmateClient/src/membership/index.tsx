@@ -7,7 +7,7 @@ import Title from "./components/Title";
 export default function Membership() {
   return (
     <Container>
-      <Header isOnbording={false} />
+      <Header isOnboarding={false} />
       <Title />
       <Contents />
     </Container>

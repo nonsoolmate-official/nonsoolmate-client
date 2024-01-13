@@ -1,4 +1,4 @@
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { columnFlex } from "style/commonStyle";
 import Summary from "./Summary";
 import Title from "./Title";
 import UnivImgs from "./UnivImgs";
