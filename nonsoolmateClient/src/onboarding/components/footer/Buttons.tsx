@@ -1,6 +1,6 @@
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
-import { FOOTER_LIST } from "onbording/core/footerlist";
+import { FOOTER_LIST } from "onboarding/core/footerlist";
 
 export default function Buttons() {
   return (

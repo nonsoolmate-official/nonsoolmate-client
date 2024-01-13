@@ -2,7 +2,8 @@ import Summary from "./Summary";
 import Image from "./Image";
 import ReasonTitle from "./Title";
 
-import { ReasonListType } from "onbording/types/reasonListType";
+import { ReasonListType } from "onboarding/types/reasonListType";
+
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
 
