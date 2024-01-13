@@ -1,4 +1,4 @@
-import { commonFlex, lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
+import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
