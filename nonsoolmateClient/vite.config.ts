@@ -22,18 +22,4 @@ export default defineConfig({
       { find: "@type", replacement: path.resolve(__dirname, "src/type") },
     ],
   },
-  server: {
-    port: 5173,
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            return id.toString().split("node_modules/")[1].split("/")[0].toString();
-          }
-        },
-      },
-    },
-  },
 });
