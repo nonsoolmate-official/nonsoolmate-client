@@ -5,7 +5,7 @@ import Footer from "./components/footer/Footer";
 import Header from "../components/onbordingheader/Header";
 import Univeristy from "./components/univeristy/Univeristy";
 
-export default function OnBording() {
+export default function OnBoarding() {
   return (
     <>
       <Header isOnbording={true} />
