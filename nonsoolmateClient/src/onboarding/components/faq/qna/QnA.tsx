@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DivideLine from "onbording/components/common/DivideLine";
+import DivideLine from "onboarding/components/common/DivideLine";
 import { QnaTypes } from "../types/qaatypes";
 import Answer from "./Answer";
 import Question from "./Question";
