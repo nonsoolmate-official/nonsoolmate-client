@@ -3,15 +3,43 @@ import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { selectionLists } from "home/core/selectionLists";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
+import { useState, useEffect } from "react";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
   selectedUniversityIdList: number[];
   handleSelectedUniversityIdList: (idList: number[]) => void;
+  isSelectedNone?: boolean;
+  setTest: React.Dispatch<React.SetStateAction<number[]>>;
+  test: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
-  const { handleUniversityModal, selectedUniversityIdList, handleSelectedUniversityIdList } = props;
+  const {
+    handleUniversityModal,
+    selectedUniversityIdList,
+    handleSelectedUniversityIdList,
+    isSelectedNone,
+    setTest,
+    test,
+  } = props;
+
+  function completeSelect() {
+    if (isSelectedNone) {
+      setTest([]);
+    } else {
+      setTest([...selectedUniversityIdList]);
+    }
+    console.log("test는", test);
+    console.log("selectedUniversityIdList는", selectedUniversityIdList);
+    handleUniversityModal(false);
+  }
+
+  function cancel() {
+    console.log("test는", test);
+    console.log("selectedUniversityIdList는", selectedUniversityIdList);
+    handleUniversityModal(false);
+  }
 
   function handleUpdateUniversityIdList(universityId: number) {
     const updatedSelectedUniversityIdList = selectedUniversityIdList.includes(universityId)
@@ -20,6 +48,7 @@ export default function UniversityModal(props: UniversityModalProps) {
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
   }
+
   return (
     <BackgroundView>
       <ModalView>
@@ -27,7 +56,9 @@ export default function UniversityModal(props: UniversityModalProps) {
         <Container>
           {selectionLists.map((data) => {
             const { universityName, universityCategory, universityId } = data;
+            // 대학교 버튼 클릭 호버 기능
             const isChecked = selectedUniversityIdList.includes(universityId);
+
             return (
               <CheckBoxButton
                 key={universityName}
@@ -44,18 +75,10 @@ export default function UniversityModal(props: UniversityModalProps) {
           })}
         </Container>
         <ModalButtonBox>
-          <CancelButton
-            type="button"
-            onClick={() => {
-              handleUniversityModal(false);
-            }}>
+          <CancelButton type="button" onClick={cancel}>
             취소
           </CancelButton>
-          <FinishSelectButton
-            type="button"
-            onClick={() => {
-              handleUniversityModal(false);
-            }}>
+          <FinishSelectButton type="button" onClick={completeSelect}>
             선택완료
           </FinishSelectButton>
         </ModalButtonBox>
