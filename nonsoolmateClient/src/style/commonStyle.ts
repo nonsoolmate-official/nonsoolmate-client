@@ -19,6 +19,14 @@ export const mainButtonStyle = styled.button`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.main_blue};
   color: ${({ theme }) => theme.colors.white};
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.middle_blue};
+  }
+
+  :active {
+    background-color: ${({ theme }) => theme.colors.dark_blue};
+  }
 `;
 
 export const lightBlueButtonStyle = styled.button`
@@ -28,6 +36,10 @@ export const lightBlueButtonStyle = styled.button`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export const subButtonStyle = styled.button`
@@ -36,6 +48,10 @@ export const subButtonStyle = styled.button`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export const answerPageButtonStyle = styled.button`
@@ -44,4 +60,12 @@ export const answerPageButtonStyle = styled.button`
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.main_blue};
   color: ${({ theme }) => theme.colors.white};
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.middle_blue};
+  }
+
+  :active {
+    background-color: ${({ theme }) => theme.colors.dark_blue};
+  }
 `;
