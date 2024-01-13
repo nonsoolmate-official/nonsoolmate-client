@@ -19,6 +19,7 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
 
     children: [
+      { path: "", element: <OnBording /> },
       {
         path: "/home",
         element: <Home />,
@@ -29,7 +30,6 @@ export const router = createBrowserRouter([
         ],
       },
       { path: "/takeTest", element: <TakeTest /> },
-      { path: "/onBording", element: <OnBording /> },
       { path: "/correction", element: <Correction /> },
       { path: "/explanation", element: <Explanation /> },
       { path: "/signup", element: <Signup /> },

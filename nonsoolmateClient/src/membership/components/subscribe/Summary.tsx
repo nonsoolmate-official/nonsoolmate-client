@@ -1,4 +1,4 @@
-import { columnFlex } from "style/commonStyle";
+import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 interface SummaryProp {
@@ -26,6 +26,9 @@ const Container = styled.div`
 `;
 
 const Text = styled.p`
+  ${commonFlex}
+
+  width: 22.6rem;
   ${({ theme }) => theme.fonts.Body6};
   ${({ theme }) => theme.colors.grey_700};
 `;
