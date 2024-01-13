@@ -1,22 +1,61 @@
 import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
+import JSZip from "jszip";
+import { useNavigate } from "react-router-dom";
 
-export default function TestSubmitModal() {
+interface TestSubmitProps {
+  isFile: File[] | null;
+}
+export default function TestSubmitModal(props: TestSubmitProps) {
+  const { isFile } = props;
+  let zip = new JSZip();
+  const navigate = useNavigate();
+
+  const handleZipCreation = () => {
+    if (isFile) {
+      let filePromises = isFile.map((file) => {
+        return new Promise<void>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const target = event.target;
+            if (target && target.result) {
+              zip.file(file.name, target.result, { binary: true });
+              resolve();
+            } else {
+              reject("File reading failed");
+            }
+          };
+          reader.onerror = reject;
+          reader.readAsBinaryString(file);
+        });
+      });
+
+      Promise.all(filePromises)
+        .then(() => {
+          return zip.generateAsync({ type: "blob" });
+        })
+        .then((blob) => {
+          //saveAs(blob,"files.zip")
+          //mutate(blob)
+          console.log("Blob type:", blob.type);
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+        });
+    }
+    navigate("/home/test");
+  };
   return (
     <TestSubmitModalCotainer>
       <Modal>
-        <TestSubmitModalBox>
-          <ModalContent>
-            <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
-            <ModalFile>
-              <FileName>IMG_C691AD594A09-1.png</FileName>
-              <FileName>IMG_B7D81A9E3704-1.png</FileName>
-              <FileName>IMG_468416DAC227-1.png</FileName>
-            </ModalFile>
-            <SubmitButton>제출하기</SubmitButton>
-          </ModalContent>
-        </TestSubmitModalBox>
+        <ModalContent>
+          <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
+          <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
+          <SubmitButton onClick={handleZipCreation} type="button">
+            제출하기
+          </SubmitButton>
+        </ModalContent>
       </Modal>
     </TestSubmitModalCotainer>
   );
@@ -26,19 +65,16 @@ const TestSubmitModalCotainer = styled(ModalContainer)`
 
   backdrop-filter: blur(0.3rem);
 `;
-const TestSubmitModalBox = styled.div`
+const ModalContent = styled.div`
   ${columnFlex};
 
   gap: 2.4rem;
   padding: 5.4rem 5.6rem 4.4rem;
 `;
-const ModalContent = styled.div`
-  ${columnFlex};
-
-  gap: 2.5rem;
-`;
 const ModalTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline4};
+
+  padding-bottom: 0.1rem;
 `;
 const ModalFile = styled.div`
   ${columnFlex};

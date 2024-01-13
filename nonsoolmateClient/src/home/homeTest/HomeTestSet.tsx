@@ -14,10 +14,14 @@ interface HomeTestSetProps {
 export default function HomeTestSet(props: HomeTestSetProps) {
   const { handleUniversityModal, selectedUniversityIdList } = props;
 
-  const [selectedUniversityId, setSelectedUniversityId] = useState<number | null>(null);
+  const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
-    setSelectedUniversityId((prevId) => (prevId === id ? null : id));
+    if (selectedUniversityId.includes(id)) {
+      setSelectedUniversityId((prevSelectedIds) => prevSelectedIds.filter((selectedId) => selectedId !== id));
+    } else {
+      setSelectedUniversityId((prevSelectedIds) => [...prevSelectedIds, id]);
+    }
   }
 
   return (
@@ -36,7 +40,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
       <ListBox>
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
-          const isSelected = selectedUniversityId === universityId;
+          const isSelected = selectedUniversityId.includes(universityId);
           const isExisted = selectedUniversityIdList.includes(universityId);
 
           return (
@@ -107,6 +111,7 @@ const ListBox = styled.section`
 const SelectedListBox = styled.div`
   padding: 0;
 `;
+
 const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;

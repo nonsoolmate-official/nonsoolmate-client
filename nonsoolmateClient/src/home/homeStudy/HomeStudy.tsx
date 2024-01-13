@@ -30,12 +30,12 @@ const Header = styled.h3`
 const Content = styled.section`
   ${UnsetContentLayout}
 
-  padding: 14.6rem 0;
+  padding: 18.2rem 0 21.2rem;
 `;
 
 const EmptyIcon = styled(EmptyIc)`
   width: 10.4rem;
-  height: 10.4rem;
+  height: 6.1rem;
 `;
 
 const ContentText = styled.p`
