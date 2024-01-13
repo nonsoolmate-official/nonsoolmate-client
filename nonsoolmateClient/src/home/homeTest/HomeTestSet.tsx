@@ -8,12 +8,11 @@ import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
 
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
-  selectedUniversityIdList: number[];
+  test: number[];
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
-  const { handleUniversityModal, selectedUniversityIdList } = props;
-
+  const { handleUniversityModal, test } = props;
   const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
@@ -41,7 +40,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
         {universityLists.map((data) => {
           const { universityId, universityName, universityCategory, examList } = data;
           const isSelected = selectedUniversityId.includes(universityId);
-          const isExisted = selectedUniversityIdList.includes(universityId);
+          const isExisted = test.includes(universityId);
 
           return (
             <SelectedListBox key={universityId}>
@@ -57,7 +56,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
                   {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
                 </SelectedUniversityButton>
               )}
-              {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
+              {isSelected && isExisted && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
             </SelectedListBox>
           );
         })}
