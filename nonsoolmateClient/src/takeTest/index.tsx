@@ -29,9 +29,9 @@ export default function index() {
     data: { examName, examTimeLimit },
   } = examRes;
 
-  const {
-    data: { resultFileName, preSignedUrl },
-  } = preSignedRes;
+  // const {
+  //   data: { resultFileName, preSignedUrl },
+  // } = preSignedRes;
 
   const scroll = !(
     openCoachMark ||
