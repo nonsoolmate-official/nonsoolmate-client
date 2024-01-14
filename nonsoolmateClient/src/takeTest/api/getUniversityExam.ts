@@ -1,6 +1,12 @@
 import { client } from "@api/axios";
-export async function getUniversityExam(id: number) {
-  const response = await client.get(`/university/exam/${id}/info`);
+import { Response } from "types/common";
+interface DataTypes {
+  examId: number;
+  examName: string;
+  examTimeLimit: number;
+}
 
-  return response.data;
+export async function getUniversityExam(id: number) {
+  const { data } = await client.get<Response<DataTypes>>(`/university/exam/${id}/info`);
+  return data;
 }
