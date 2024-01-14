@@ -2,9 +2,18 @@ import styled from "styled-components";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { LoginInfoIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
+import useGetTicket from "home/hooks/useGetTicket";
+import Error from "error";
 
 export default function HomeMemberInfoToggle() {
   const navigate = useNavigate();
+
+  const getTicketResponse = useGetTicket();
+  if (!getTicketResponse) return <Error />;
+
+  const {
+    data: { memberName, ticketCount },
+  } = getTicketResponse;
 
   return (
     <BackgroundView>
@@ -12,10 +21,10 @@ export default function HomeMemberInfoToggle() {
         <MemberInfo>
           <LoginInfoIcon />
           <Info>
-            <Name>류가은 님</Name>
+            <Name>{memberName} 님</Name>
             <TicketCount>
               <Text>남은 첨삭권</Text>
-              <CountText>3개</CountText>
+              <CountText>{ticketCount}개</CountText>
             </TicketCount>
           </Info>
         </MemberInfo>
