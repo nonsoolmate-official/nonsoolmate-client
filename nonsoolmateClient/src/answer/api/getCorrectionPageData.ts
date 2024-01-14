@@ -7,6 +7,7 @@ interface DefaultData<T> {
 }
 
 interface CorrectionPageData {
+  universityExamName: string;
   examAnswerUrl: string;
   examResultUrl: string;
 }
