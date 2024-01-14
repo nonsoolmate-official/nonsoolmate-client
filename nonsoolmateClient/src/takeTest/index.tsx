@@ -7,6 +7,9 @@ import TestQuitModal from "./components/modal/TestQuitModal";
 import TestFinishModal from "./components/modal/TestFinishModal";
 import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
+import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
+import useGetPresignedUrl from "./hooks/useGetPresignedUrl";
+import Error from "error";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
@@ -16,6 +19,19 @@ export default function index() {
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
+
+  const examRes = useGetUniversityExam(1);
+  const preSignedRes = useGetPresignedUrl();
+  if (!examRes) return <Error />;
+  if (!preSignedRes) return <Error />;
+
+  const {
+    data: { examName, examTimeLimit },
+  } = examRes;
+
+  // const {
+  //   data: { resultFileName, preSignedUrl },
+  // } = preSignedRes;
 
   const scroll = !(
     openCoachMark ||
@@ -57,6 +73,8 @@ export default function index() {
           openTestSubmitModal={openTestSubmitModal}
           openPrecautionModal={openPrecautionModal}
           openCoachMark={openCoachMark}
+          examName={examName}
+          examTimeLimit={examTimeLimit}
         />
         <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>

@@ -11,19 +11,21 @@ export default function HomeTestUnset(props: HomeTestUnsetProps) {
   const { handleUniversityModal } = props;
   return (
     <Container>
-      <Header>나의 시험장</Header>
-      <Content>
-        <HomeTestUnsetIcon />
-        <ContentText>아직 목표대학을 설정하지 않았어요</ContentText>
-        <FindTestButton
-          type="button"
-          onClick={() => {
-            handleUniversityModal(true);
-          }}>
-          <ButtonText>대학별 시험 찾기</ButtonText>
-          <FindTestIcon />
-        </FindTestButton>
-      </Content>
+      <Box>
+        <Header>나의 시험장</Header>
+        <Content>
+          <HomeTestUnsetIcon />
+          <ContentText>아직 목표대학을 설정하지 않았어요</ContentText>
+          <FindTestButton
+            type="button"
+            onClick={() => {
+              handleUniversityModal(true);
+            }}>
+            <ButtonText>대학별 시험 찾기</ButtonText>
+            <FindTestIcon />
+          </FindTestButton>
+        </Content>
+      </Box>
     </Container>
   );
 }
@@ -31,7 +33,14 @@ export default function HomeTestUnset(props: HomeTestUnsetProps) {
 const Container = styled.section`
   ${SetUnsetContainerLayout}
 
+  overflow-y: hidden;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 0.7rem;
+  margin: 6.7rem 21.5rem 11.5rem 2.4rem;
 `;
 
 const Header = styled.p`

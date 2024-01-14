@@ -6,21 +6,21 @@ interface TimerProps {
   computeTakeTime: (takeTime: number) => void;
   openTestFinishModal: boolean;
   openTestSubmitModal: boolean;
+  examTimeLimit: number;
 }
 export default function Timer(props: TimerProps) {
-  // 1시간으로 가정
-  const { changeTestFinishStatus, computeTakeTime, openTestFinishModal, openTestSubmitModal } = props;
+  const { changeTestFinishStatus, computeTakeTime, openTestFinishModal, openTestSubmitModal, examTimeLimit } = props;
 
-  // const hours = Math.floor(time / 3600);    time = 분*60
-  // const minutes = Math.floor((time - hours * 3600) / 60);
-  // const seconds = time - (hours * 3600 + minutes * 60);
+  const time = examTimeLimit * 60;
+  const h = Math.floor(time / 3600);
+  const m = Math.floor((time - h * 3600) / 60);
+  const s = time - (h * 3600 + m * 60);
 
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [hours, setHours] = useState(h);
+  const [minutes, setMinutes] = useState(m);
+  const [seconds, setSeconds] = useState(s);
 
   useEffect(() => {
-    const time = 10; //서버에서 분으로 줄 예정..분*60
     const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
     computeTakeTime(takeTime);
     const count = setInterval(() => {
