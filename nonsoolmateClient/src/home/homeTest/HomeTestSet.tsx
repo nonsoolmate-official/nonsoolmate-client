@@ -25,7 +25,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
 
   return (
     <Container>
-      <Test>
+      <Box>
         <HeaderBox>
           <HeaderText>나의 시험장</HeaderText>
           <HeaderButton
@@ -64,7 +64,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
             );
           })}
         </ListBox>
-      </Test>
+      </Box>
     </Container>
   );
 }
@@ -75,7 +75,7 @@ const Container = styled.section`
   overflow-y: scroll;
 `;
 
-const Test = styled.div`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   padding: 6.8rem 21.5rem 4.8rem 2.4rem;
