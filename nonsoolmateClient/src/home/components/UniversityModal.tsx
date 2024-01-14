@@ -3,15 +3,43 @@ import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { selectionLists } from "home/core/selectionLists";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
+import { useEffect } from "react";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
   selectedUniversityIdList: number[];
   handleSelectedUniversityIdList: (idList: number[]) => void;
+  isSelectedNone?: boolean;
+  handleMySelectedUniversityIdList: (idList: number[]) => void;
+  mySelectedUniversityId: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
-  const { handleUniversityModal, selectedUniversityIdList, handleSelectedUniversityIdList } = props;
+  const {
+    handleUniversityModal,
+    selectedUniversityIdList,
+    handleSelectedUniversityIdList,
+    isSelectedNone,
+    handleMySelectedUniversityIdList,
+    mySelectedUniversityId,
+  } = props;
+
+  useEffect(() => {
+    handleSelectedUniversityIdList(mySelectedUniversityId);
+  }, []);
+
+  function completeSelect() {
+    if (isSelectedNone) {
+      handleMySelectedUniversityIdList([]);
+    } else {
+      handleMySelectedUniversityIdList([...selectedUniversityIdList]);
+    }
+    handleUniversityModal(false);
+  }
+
+  function cancel() {
+    handleUniversityModal(false);
+  }
 
   function handleUpdateUniversityIdList(universityId: number) {
     const updatedSelectedUniversityIdList = selectedUniversityIdList.includes(universityId)
@@ -20,6 +48,7 @@ export default function UniversityModal(props: UniversityModalProps) {
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
   }
+
   return (
     <BackgroundView>
       <ModalView>
@@ -28,6 +57,7 @@ export default function UniversityModal(props: UniversityModalProps) {
           {selectionLists.map((data) => {
             const { universityName, universityCategory, universityId } = data;
             const isChecked = selectedUniversityIdList.includes(universityId);
+
             return (
               <CheckBoxButton
                 key={universityName}
@@ -44,18 +74,10 @@ export default function UniversityModal(props: UniversityModalProps) {
           })}
         </Container>
         <ModalButtonBox>
-          <CancelButton
-            type="button"
-            onClick={() => {
-              handleUniversityModal(false);
-            }}>
+          <CancelButton type="button" onClick={cancel}>
             취소
           </CancelButton>
-          <FinishSelectButton
-            type="button"
-            onClick={() => {
-              handleUniversityModal(false);
-            }}>
+          <FinishSelectButton type="button" onClick={completeSelect}>
             선택완료
           </FinishSelectButton>
         </ModalButtonBox>

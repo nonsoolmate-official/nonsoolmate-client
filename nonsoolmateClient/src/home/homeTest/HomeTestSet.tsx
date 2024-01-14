@@ -8,12 +8,11 @@ import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
 
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
-  selectedUniversityIdList: number[];
+  mySelectedUniversityId: number[];
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
-  const { handleUniversityModal, selectedUniversityIdList } = props;
-
+  const { handleUniversityModal, mySelectedUniversityId } = props;
   const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
@@ -26,48 +25,60 @@ export default function HomeTestSet(props: HomeTestSetProps) {
 
   return (
     <Container>
-      <HeaderBox>
-        <HeaderText>나의 시험장</HeaderText>
-        <HeaderButton
-          type="button"
-          onClick={() => {
-            handleUniversityModal(true);
-          }}>
-          대학별 시험 찾기
-          <SearchIcon />
-        </HeaderButton>
-      </HeaderBox>
-      <ListBox>
-        {universityLists.map((data) => {
-          const { universityId, universityName, universityCategory, examList } = data;
-          const isSelected = selectedUniversityId.includes(universityId);
-          const isExisted = selectedUniversityIdList.includes(universityId);
+      <Box>
+        <HeaderBox>
+          <HeaderText>나의 시험장</HeaderText>
+          <HeaderButton
+            type="button"
+            onClick={() => {
+              handleUniversityModal(true);
+            }}>
+            대학별 시험 찾기
+            <SearchIcon />
+          </HeaderButton>
+        </HeaderBox>
+        <ListBox>
+          {universityLists.map((data) => {
+            const { universityId, universityName, universityCategory, examList } = data;
+            const isSelected = selectedUniversityId.includes(universityId);
+            const isExisted = mySelectedUniversityId.includes(universityId);
 
-          return (
-            <SelectedListBox key={universityId}>
-              {isExisted && (
-                <SelectedUniversityButton
-                  type="button"
-                  onClick={() => handleSelectedUniversityId(universityId)}
-                  $isSelected={isSelected}>
-                  <UniversityBox>
-                    <Name $isSelected={isSelected}>{universityName}</Name>
-                    <Category $isSelected={isSelected}>{universityCategory}</Category>
-                  </UniversityBox>
-                  {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
-                </SelectedUniversityButton>
-              )}
-              {isSelected && <SelectedUniversityToggle universityId={universityId} examList={examList} />}
-            </SelectedListBox>
-          );
-        })}
-      </ListBox>
+            return (
+              <SelectedListBox key={universityId}>
+                {isExisted && (
+                  <SelectedUniversityButton
+                    type="button"
+                    onClick={() => handleSelectedUniversityId(universityId)}
+                    $isSelected={isSelected}>
+                    <UniversityBox>
+                      <Name $isSelected={isSelected}>{universityName}</Name>
+                      <Category $isSelected={isSelected}>{universityCategory}</Category>
+                    </UniversityBox>
+                    {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
+                  </SelectedUniversityButton>
+                )}
+                {isSelected && isExisted && (
+                  <SelectedUniversityToggle universityId={universityId} examList={examList} />
+                )}
+              </SelectedListBox>
+            );
+          })}
+        </ListBox>
+      </Box>
     </Container>
   );
 }
 
 const Container = styled.section`
   ${SetUnsetContainerLayout};
+
+  overflow-y: scroll;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 6.8rem 21.5rem 4.8rem 2.4rem;
 `;
 
 const HeaderBox = styled.header`
