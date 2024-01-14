@@ -37,7 +37,7 @@ interface Sort {
   unsorted: boolean;
 }
 export async function getUniversityExamImages(pageNum: number) {
-  const response = await client.get<Response<DataTypes>>(`/university/exam/1/image?page=${pageNum}`);
+  const { data } = await client.get<Response<DataTypes>>(`/university/exam/1/image?page=${pageNum}`);
 
-  return response.data;
+  return data;
 }

@@ -22,6 +22,7 @@ export default function index() {
   const examRes = useGetUniversityExam(1);
   const preSignedRes = useGetPresignedUrl();
   if (!examRes) return null;
+  if (!preSignedRes) return null;
 
   const {
     data: { examName, examTimeLimit },
