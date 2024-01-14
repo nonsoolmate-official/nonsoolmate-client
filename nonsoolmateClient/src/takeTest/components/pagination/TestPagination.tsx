@@ -4,6 +4,7 @@ import testExample from "@assets/image/testexample.png";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import { useGetUniversityExampleImages } from "takeTest/hooks/useGetUniversityExampleImages";
+import Error from "error";
 
 interface PaginatinProps {
   openCoachMark: boolean;
@@ -14,7 +15,7 @@ export default function TestPagination(props: PaginatinProps) {
   const [paperIdx, setPaperIdx] = useState(0);
 
   const examImage = useGetUniversityExampleImages(paperIdx);
-  if (!examImage) return null;
+  if (!examImage) return <Error />;
   const {
     data: { totalPages, content },
   } = examImage;

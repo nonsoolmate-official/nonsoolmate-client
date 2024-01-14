@@ -9,6 +9,7 @@ import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 import useGetPresignedUrl from "./hooks/useGetPresignedUrl";
+import Error from "error";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
@@ -21,8 +22,8 @@ export default function index() {
 
   const examRes = useGetUniversityExam(1);
   const preSignedRes = useGetPresignedUrl();
-  if (!examRes) return null;
-  if (!preSignedRes) return null;
+  if (!examRes) return <Error />;
+  if (!preSignedRes) return <Error />;
 
   const {
     data: { examName, examTimeLimit },
