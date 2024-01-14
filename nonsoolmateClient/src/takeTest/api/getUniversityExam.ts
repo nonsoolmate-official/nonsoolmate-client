@@ -1,6 +1,6 @@
 import { client } from "@api/axios";
 import { Response } from "types/common";
-export interface DataTypes {
+interface DataTypes {
   examId: number;
   examName: string;
   examTimeLimit: number;

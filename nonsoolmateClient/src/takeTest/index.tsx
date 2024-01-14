@@ -18,9 +18,12 @@ export default function index() {
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
 
-  const { data } = useGetUniversityExam(1);
-  const examName = data?.data.examName;
-  const examTimeLimit = data?.data.examTimeLimit;
+  const ExamRes = useGetUniversityExam(1);
+  if (!ExamRes) return null;
+
+  const {
+    data: { examName, examTimeLimit },
+  } = ExamRes;
 
   const scroll = !(
     openCoachMark ||
