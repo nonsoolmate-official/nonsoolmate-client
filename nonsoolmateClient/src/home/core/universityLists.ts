@@ -8,7 +8,7 @@ export interface examListTypes {
 interface UniversityListsTypes {
   universityId: number;
   universityName: string;
-  universityCategory: string;
+  universityCollege: string;
   examList: examListTypes[];
 }
 
@@ -16,7 +16,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 2,
     universityName: "중앙대학교",
-    universityCategory: "인문사회",
+    universityCollege: "인문사회",
     examList: [
       {
         examId: 1,
@@ -59,7 +59,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 1,
     universityName: "한양대학교",
-    universityCategory: "인문",
+    universityCollege: "인문",
     examList: [
       {
         examId: 1,
@@ -90,7 +90,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 3,
     universityName: "성균관대학교",
-    universityCategory: "인문",
+    universityCollege: "인문",
     examList: [
       {
         examId: 1,
@@ -133,7 +133,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 4,
     universityName: "서강대학교",
-    universityCategory: "인문",
+    universityCollege: "인문",
     examList: [
       {
         examId: 1,
@@ -158,7 +158,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 6,
     universityName: "이화여자대학교",
-    universityCategory: "인문",
+    universityCollege: "인문",
     examList: [
       {
         examId: 1,
@@ -189,7 +189,7 @@ export const universityLists: UniversityListsTypes[] = [
   {
     universityId: 5,
     universityName: "논메대학교",
-    universityCategory: "인문",
+    universityCollege: "인문",
     examList: [
       {
         examId: 1,

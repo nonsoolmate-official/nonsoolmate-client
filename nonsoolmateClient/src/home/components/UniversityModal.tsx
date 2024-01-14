@@ -55,7 +55,7 @@ export default function UniversityModal(props: UniversityModalProps) {
         <Text>대학 선택</Text>
         <Container>
           {selectionLists.map((data) => {
-            const { universityName, universityCategory, universityId } = data;
+            const { universityName, universityCollege, universityId } = data;
             const isChecked = selectedUniversityIdList.includes(universityId);
 
             return (
@@ -66,7 +66,7 @@ export default function UniversityModal(props: UniversityModalProps) {
                 onClick={() => handleUpdateUniversityIdList(universityId)}>
                 <UniversityBox>
                   <University>{universityName}</University>
-                  <Category>{universityCategory}</Category>
+                  <Category>{universityCollege}</Category>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}</CheckBox>
               </CheckBoxButton>
