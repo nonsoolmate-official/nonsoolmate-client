@@ -13,9 +13,11 @@ export default function TestPagination(props: PaginatinProps) {
   const { openCoachMark, openPrecautionModal } = props;
   const [paperIdx, setPaperIdx] = useState(0);
 
-  const { data } = useGetUniversityExampleImages(paperIdx);
-
-  const maxPage = data?.data.totalPages;
+  const ExamImage = useGetUniversityExampleImages(paperIdx);
+  if (!ExamImage) return null;
+  const {
+    data: { totalPages, content },
+  } = ExamImage;
 
   function handleMoveToPreviousPage() {
     setPaperIdx((prev) => prev - 1);
@@ -28,11 +30,8 @@ export default function TestPagination(props: PaginatinProps) {
       <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
         <LeftArrowBigIcon />
       </PreviousPageButton>
-      <TestImage
-        src={openCoachMark || openPrecautionModal ? testExample : data?.data.content[0].examImgUrl}
-        alt="시험지 이미지"
-      />
-      <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx === maxPage - 1}>
+      <TestImage src={openCoachMark || openPrecautionModal ? testExample : content[0].examImgUrl} alt="시험지 이미지" />
+      <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx === totalPages - 1}>
         <RightArrowBigIcon />
       </NextPageButton>
     </TestPaginationContainer>
