@@ -7,6 +7,7 @@ import TestQuitModal from "./components/modal/TestQuitModal";
 import TestFinishModal from "./components/modal/TestFinishModal";
 import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
+import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
@@ -16,6 +17,10 @@ export default function index() {
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
+
+  const { data } = useGetUniversityExam(1);
+  const examName = data?.data.examName;
+  const examTimeLimit = data?.data.examTimeLimit;
 
   const scroll = !(
     openCoachMark ||
@@ -57,6 +62,8 @@ export default function index() {
           openTestSubmitModal={openTestSubmitModal}
           openPrecautionModal={openPrecautionModal}
           openCoachMark={openCoachMark}
+          examName={examName}
+          examTimeLimit={examTimeLimit}
         />
         <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>

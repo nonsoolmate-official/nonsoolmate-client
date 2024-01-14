@@ -1,4 +1,4 @@
-import { commonFlex, mainButtonStyle } from "style/commonStyle";
+import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
@@ -11,6 +11,8 @@ interface TestHeaderProps {
   openCoachMark: boolean;
   openTestFinishModal: boolean;
   openTestSubmitModal: boolean;
+  examName: string;
+  examTimeLimit: number;
 }
 export default function TestHeader(props: TestHeaderProps) {
   const {
@@ -21,6 +23,8 @@ export default function TestHeader(props: TestHeaderProps) {
     openCoachMark,
     openTestFinishModal,
     openTestSubmitModal,
+    examName,
+    examTimeLimit,
   } = props;
 
   function handleBackButton() {
@@ -32,11 +36,7 @@ export default function TestHeader(props: TestHeaderProps) {
         <IconBox onClick={handleBackButton}>
           <LeftArrowBlackBtnIcon />
         </IconBox>
-        <TestTitle>
-          {openCoachMark || openPrecautionModal
-            ? "중앙대학교 - 2021 인문사회 1(예시화면)"
-            : "중앙대학교 - 2021 인문사회 1"}
-        </TestTitle>
+        <TestTitle>{openCoachMark || openPrecautionModal ? "중앙대학교 - 2021 인문사회 1" : examName}</TestTitle>
       </HeaderLeft>
       <TimerBox>
         {openCoachMark || openPrecautionModal ? (
@@ -47,6 +47,7 @@ export default function TestHeader(props: TestHeaderProps) {
             computeTakeTime={computeTakeTime}
             openTestFinishModal={openTestFinishModal}
             openTestSubmitModal={openTestSubmitModal}
+            examTimeLimit={examTimeLimit}
           />
         )}
       </TimerBox>
@@ -79,6 +80,8 @@ const IconBox = styled.div`
   padding: 0;
 `;
 const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
+  ${columnFlex}
+
   width: 4rem;
   height: 4rem;
 `;
