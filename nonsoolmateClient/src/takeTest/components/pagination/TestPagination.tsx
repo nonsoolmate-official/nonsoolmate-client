@@ -13,11 +13,11 @@ export default function TestPagination(props: PaginatinProps) {
   const { openCoachMark, openPrecautionModal } = props;
   const [paperIdx, setPaperIdx] = useState(0);
 
-  const ExamImage = useGetUniversityExampleImages(paperIdx);
-  if (!ExamImage) return null;
+  const examImage = useGetUniversityExampleImages(paperIdx);
+  if (!examImage) return null;
   const {
     data: { totalPages, content },
-  } = ExamImage;
+  } = examImage;
 
   function handleMoveToPreviousPage() {
     setPaperIdx((prev) => prev - 1);
