@@ -1,10 +1,11 @@
 import ExplainHeader from "answer/components/ExplainHeader";
 import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
 import { useGetCorrectionPageData } from "answer/hooks/useGetCorrectionPagePdfs";
+import Error from "error";
 export default function index() {
   const id = 1;
   const correctionRes = useGetCorrectionPageData(id);
-  console.log(correctionRes);
+  if (!correctionRes) return <Error />;
 
   return (
     <>
