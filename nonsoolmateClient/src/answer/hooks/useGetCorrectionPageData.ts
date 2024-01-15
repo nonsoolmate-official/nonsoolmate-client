@@ -6,10 +6,10 @@ const QUERY_KEY = {
 };
 
 export function useGetCorrectionPageData(id: number) {
-  const response = useQuery([QUERY_KEY.getCorrectionPageData, id], () => getCorrectionPageData(id), {
+  const { data } = useQuery([QUERY_KEY.getCorrectionPageData, id], () => getCorrectionPageData(id), {
     onError: (err) => {
       console.log(err);
     },
   });
-  return response;
+  return data;
 }
