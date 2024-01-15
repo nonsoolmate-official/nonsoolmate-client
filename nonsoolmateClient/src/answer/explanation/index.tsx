@@ -9,7 +9,7 @@ export default function index() {
         firstTitle="문제"
         secondTitle="해제"
         ifExplanation={true}
-        pdfUrl="http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
+        firstPdfUrl="http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
       />
     </>
   );
