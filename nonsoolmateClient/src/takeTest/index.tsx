@@ -29,10 +29,11 @@ export default function index() {
     data: { examName, examTimeLimit },
   } = examRes;
 
-  // const {
-  //   data: { resultFileName, preSignedUrl },
-  // } = preSignedRes;
+  const {
+    data: { resultFileName, preSignedUrl },
+  } = preSignedRes;
 
+  console.log(preSignedUrl);
   const scroll = !(
     openCoachMark ||
     openPrecautionModal ||
@@ -89,7 +90,9 @@ export default function index() {
           saveFile={saveFile}
         />
       )}
-      {openTestSubmitModal && <TestSubmitModal isFile={isFile} />}
+      {openTestSubmitModal && (
+        <TestSubmitModal isFile={isFile} resultFileName={resultFileName} preSignedUrl={preSignedUrl} />
+      )}
     </>
   );
 }
