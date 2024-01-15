@@ -22,8 +22,7 @@ export default function index() {
 
   const examRes = useGetUniversityExam(1);
   const preSignedRes = useGetPresignedUrl();
-  if (!examRes) return <Error />;
-  if (!preSignedRes) return <Error />;
+  if (!examRes || !preSignedRes) return <Error />;
 
   const {
     data: { examName, examTimeLimit },
@@ -33,7 +32,6 @@ export default function index() {
     data: { resultFileName, preSignedUrl },
   } = preSignedRes;
 
-  console.log(preSignedUrl);
   const scroll = !(
     openCoachMark ||
     openPrecautionModal ||
