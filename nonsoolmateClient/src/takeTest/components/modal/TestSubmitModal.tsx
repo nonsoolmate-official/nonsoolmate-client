@@ -3,12 +3,16 @@ import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
 import { useNavigate } from "react-router-dom";
+import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
 
 interface TestSubmitProps {
   isFile: File[] | null;
+  resultFileName: string;
+  preSignedUrl: string;
 }
 export default function TestSubmitModal(props: TestSubmitProps) {
-  const { isFile } = props;
+  const { isFile, preSignedUrl } = props;
+  const { mutate } = usePutExamSheet();
   let zip = new JSZip();
   const navigate = useNavigate();
 
@@ -36,9 +40,8 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           return zip.generateAsync({ type: "blob" });
         })
         .then((blob) => {
-          //saveAs(blob,"files.zip")
-          //mutate(blob)
-          console.log("Blob type:", blob.type);
+          mutate({ blob, url: preSignedUrl });
+          console.log(mutate);
         })
         .catch((error) => {
           console.error("An error occurred:", error);
