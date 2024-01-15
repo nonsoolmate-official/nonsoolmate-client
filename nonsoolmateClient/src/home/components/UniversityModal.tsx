@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
 import Error from "error";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
-import { client } from "@api/axios";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
