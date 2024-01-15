@@ -6,28 +6,25 @@ import { useNavigate } from "react-router-dom";
 import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
 import Error from "error";
 import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
-import { useQueryClient } from "react-query";
 import { getPresignedUrl } from "takeTest/api/getPresignedUrl";
 
 interface TestSubmitProps {
   isFile: File[] | null;
   totalTime: number;
 }
+
 export default function TestSubmitModal(props: TestSubmitProps) {
   const { isFile, totalTime } = props;
-  const queryClient = useQueryClient();
   const { mutate: putMutate } = usePutExamSheet();
   const { mutate: postMutate } = usePostExamRecord();
   let zip = new JSZip();
   const navigate = useNavigate();
 
   async function handleZipCreation() {
-    const presignedData = await queryClient.fetchQuery("getPresignedUrl", getPresignedUrl);
+    const response = await getPresignedUrl();
+    if (!response) return <Error />;
 
-    if (!presignedData) {
-      return <Error />;
-    }
-    const { resultFileName, preSignedUrl } = presignedData?.data;
+    const { resultFileName, preSignedUrl } = response?.data;
 
     if (isFile) {
       let filePromises = isFile.map((file) => {
