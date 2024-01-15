@@ -1,15 +1,27 @@
 import ExplainHeader from "answer/components/ExplainHeader";
 import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
+import { useGetExplanationPageData } from "answer/hooks/useGetExplanationPageData";
+import Error from "error";
 
 export default function index() {
+  const examId = 4;
+  const explanationRes = useGetExplanationPageData(examId);
+  if (!explanationRes) return <Error />;
+
+  const {
+    data: { universityExamName, examQuestionList, examAnswerUrl },
+  } = explanationRes;
+
   return (
     <>
-      <ExplainHeader testTitle="중앙대학교 - 2021 인문사회 1" />
+      <ExplainHeader testTitle={universityExamName} />
       <PdfViewerWrapper
         firstTitle="문제"
         secondTitle="해제"
         ifExplanation={true}
-        firstPdfUrl="http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
+        testImages={examQuestionList}
+        firstPdfUrl={examAnswerUrl}
+        // "http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
       />
     </>
   );
