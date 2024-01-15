@@ -7,6 +7,7 @@ import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { RightArrowBigIc, LeftArrowBigIc } from "@assets/index";
+import { TestImageType } from "answer/api/getExplanationPageData";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -15,10 +16,6 @@ interface PdfViewerWrapperProps {
   firstPdfUrl: string;
   secondPdfUrl?: string;
   testImages?: TestImageType[];
-}
-
-export interface TestImageType {
-  examImgUrl: string;
 }
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
