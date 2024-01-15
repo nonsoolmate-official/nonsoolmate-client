@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
 import Error from "error";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
+import { useQueryClient } from "react-query";
+import { getSelectUniversities } from "home/api/getSelectUniversities";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
@@ -25,21 +27,25 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleMySelectedUniversityIdList,
     mySelectedUniversityIdList,
   } = props;
+  const { mutate } = usePatchSelectUniversities();
 
-  useEffect(() => {
-    handleSelectedUniversityIdList(mySelectedUniversityIdList);
-  }, []);
+  const [cancelClicked, setCancelClicked] = useState(false);
+
+  const getSelectUniversitiesResponse = useGetSelectUniversities();
+  if (!getSelectUniversitiesResponse) return <Error />;
+
+  // useEffect(() => {
+  //   handleSelectedUniversityIdList(mySelectedUniversityIdList);
+  // }, []);
 
   useEffect(() => {
     if (isSelectedNone) {
       handleMySelectedUniversityIdList([]);
     } else {
-      handleMySelectedUniversityIdList([...selectedUniversityIdList]);
+      handleMySelectedUniversityIdList(selectedUniversityIdList);
     }
-    console.log("isSelectedNone아님", isSelectedNone, selectedUniversityIdList, mySelectedUniversityIdList);
+    console.log(selectedUniversityIdList);
   }, [selectedUniversityIdList]);
-
-  const { mutate } = usePatchSelectUniversities();
 
   function completeSelect() {
     handleMySelectedUniversityIdList([...selectedUniversityIdList]);
@@ -54,7 +60,16 @@ export default function UniversityModal(props: UniversityModalProps) {
 
   function cancel() {
     handleUniversityModal(false);
+    setCancelClicked(true);
   }
+
+  useEffect(() => {
+    if (cancelClicked) {
+      const getSelectUniversitiesResponse = useGetSelectUniversities();
+      // Use the response here...
+      setCancelClicked(false); // Reset the state
+    }
+  }, [cancelClicked]);
 
   function handleUpdateUniversityIdList(universityId: number) {
     const updatedSelectedUniversityIdList = selectedUniversityIdList.includes(universityId)
@@ -63,9 +78,6 @@ export default function UniversityModal(props: UniversityModalProps) {
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
   }
-
-  const getSelectUniversitiesResponse = useGetSelectUniversities();
-  if (!getSelectUniversitiesResponse) return <Error />;
 
   return (
     <BackgroundView>
