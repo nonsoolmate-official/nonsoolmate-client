@@ -12,11 +12,12 @@ interface PdfViewerWrapperProps {
   firstTitle: string;
   secondTitle: string;
   ifExplanation?: boolean;
-  pdfUrl: string;
+  firstPdfUrl: string;
+  secondPdfUrl?: string;
 }
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
-  const { firstTitle, secondTitle, ifExplanation, pdfUrl } = props;
+  const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl } = props;
   const getFilePluginInstance = getFilePlugin();
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
@@ -44,7 +45,11 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
         />
-        {ifExplanation ? <ImageSlider /> : <PdfViewer pdfUrl={pdfUrl} getFilePluginInstance={getFilePluginInstance} />}
+        {ifExplanation ? (
+          <ImageSlider />
+        ) : (
+          <PdfViewer pdfUrl={firstPdfUrl} getFilePluginInstance={getFilePluginInstance} />
+        )}
       </LeftPdfViewerWrapper>
 
       <RightPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
@@ -56,7 +61,10 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           fullScreenPluginInstance={fullScreenPluginInstance}
           isQuestionHide={isQuestionHide}
         />
-        <PdfViewer pdfUrl={pdfUrl} fullScreenPluginInstance={fullScreenPluginInstance} />
+        <PdfViewer
+          pdfUrl={secondPdfUrl ? secondPdfUrl : firstPdfUrl}
+          fullScreenPluginInstance={fullScreenPluginInstance}
+        />
       </RightPdfViewerWrapper>
       <ShowExplanationButton $isExplanationHide={isExplanationHide} onClick={() => setIsExplanationHide(false)}>
         <LeftArrowBigIcon />
