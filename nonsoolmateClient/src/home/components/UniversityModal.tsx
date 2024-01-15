@@ -30,20 +30,25 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList(mySelectedUniversityIdList);
   }, []);
 
-  const mutate = usePatchSelectUniversities();
-
-  function completeSelect() {
+  useEffect(() => {
     if (isSelectedNone) {
       handleMySelectedUniversityIdList([]);
     } else {
       handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
+    console.log("isSelectedNone아님", isSelectedNone, selectedUniversityIdList, mySelectedUniversityIdList);
+  }, [selectedUniversityIdList]);
 
+  const { mutate } = usePatchSelectUniversities();
+
+  function completeSelect() {
     handleMySelectedUniversityIdList([...selectedUniversityIdList]);
 
     const sendList = mySelectedUniversityIdList.map((id) => ({ universityId: id }));
+    //patch
     mutate(sendList);
 
+    //모달 닫기
     handleUniversityModal(false);
   }
 
