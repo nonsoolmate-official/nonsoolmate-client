@@ -22,16 +22,15 @@ export default function index() {
 
   const examRes = useGetUniversityExam(1);
   const preSignedRes = useGetPresignedUrl();
-  if (!examRes) return <Error />;
-  if (!preSignedRes) return <Error />;
+  if (!examRes || !preSignedRes) return <Error />;
 
   const {
     data: { examName, examTimeLimit },
   } = examRes;
 
-  // const {
-  //   data: { resultFileName, preSignedUrl },
-  // } = preSignedRes;
+  const {
+    data: { resultFileName, preSignedUrl },
+  } = preSignedRes;
 
   const scroll = !(
     openCoachMark ||
@@ -89,7 +88,9 @@ export default function index() {
           saveFile={saveFile}
         />
       )}
-      {openTestSubmitModal && <TestSubmitModal isFile={isFile} />}
+      {openTestSubmitModal && (
+        <TestSubmitModal isFile={isFile} resultFileName={resultFileName} preSignedUrl={preSignedUrl} />
+      )}
     </>
   );
 }
