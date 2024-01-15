@@ -1,12 +1,11 @@
-import { NAVER_AUTH_URL } from "@api/auth/naverLogincode";
 import { NaverLoginIc } from "@assets/index";
-import { naverLoginCodeHandler } from "@utils/naverLoginCode";
+import { redirectToNaverAuth } from "socialLogin/utils/redirectToNaverAuth";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function NaverLoginButton() {
   function loginHandler() {
-    window.location.href = NAVER_AUTH_URL;
+    redirectToNaverAuth();
   }
 
   return (
