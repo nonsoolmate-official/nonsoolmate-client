@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
-import { TestImageType } from "answer/components/PdfViewerWrapper";
+import { testImageType } from "answer/types/testImageType";
 
 interface ImageSliderProps {
-  testImages: TestImageType[];
+  testImages: testImageType[];
 }
 
 export default function ImageSlider(props: ImageSliderProps) {

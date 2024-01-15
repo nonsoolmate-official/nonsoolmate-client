@@ -1,14 +1,11 @@
 import { client } from "@api/axios";
+import { testImageType } from "answer/types/testImageType";
 import { Response } from "types/common";
 
 interface ExplanationPageData {
   universityExamName: string;
-  examQuestionList: TestImageType[];
+  examQuestionList: testImageType[];
   examAnswerUrl: string;
-}
-
-export interface TestImageType {
-  examImgUrl: string;
 }
 
 export async function getExplanationPageData(examId: number) {
