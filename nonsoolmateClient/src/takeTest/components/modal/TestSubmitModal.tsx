@@ -11,7 +11,7 @@ interface TestSubmitProps {
   preSignedUrl: string;
 }
 export default function TestSubmitModal(props: TestSubmitProps) {
-  const { isFile, resultFileName, preSignedUrl } = props;
+  const { isFile, preSignedUrl } = props;
   const { mutate } = usePutExamSheet();
   let zip = new JSZip();
   const navigate = useNavigate();
@@ -40,11 +40,8 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           return zip.generateAsync({ type: "blob" });
         })
         .then((blob) => {
-          //saveAs(blob,"files.zip")
-          //mutate(blob)
           mutate({ blob, url: preSignedUrl });
           console.log(mutate);
-          // console.log("Blob type:", blob.type);
         })
         .catch((error) => {
           console.error("An error occurred:", error);
