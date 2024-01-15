@@ -21,7 +21,6 @@ export default function index() {
         ifExplanation={true}
         testImages={examQuestionList}
         firstPdfUrl={examAnswerUrl}
-        // "http://www.usrap.org/sites/default/files/historical/pdf/usRAP_brochure.pdf"
       />
     </>
   );
