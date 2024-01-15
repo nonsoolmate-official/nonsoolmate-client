@@ -14,5 +14,5 @@ export async function login(code: string) {
     },
   );
 
-  return response;
+  return response?.data?.data;
 }
