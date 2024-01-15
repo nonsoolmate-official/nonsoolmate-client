@@ -3,7 +3,7 @@ import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
 import { useGetCorrectionPageData } from "answer/hooks/useGetCorrectionPageData";
 import Error from "error";
 export default function index() {
-  const id = 1;
+  const id = 4;
   const correctionRes = useGetCorrectionPageData(id);
   if (!correctionRes) return <Error />;
 
