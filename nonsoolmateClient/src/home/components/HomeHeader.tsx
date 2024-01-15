@@ -4,13 +4,21 @@ import { LogoIc, LoginInfoIc, DownArrowGreyIc, UpArrowGreyIc } from "@assets/ind
 import { useState } from "react";
 import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 import { useNavigate } from "react-router-dom";
-
+import Error from "error";
+import useGetName from "home/hooks/useGetName";
 export default function HomeHeader() {
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
   const handleHomeMemberInfoToggle = () => {
     setShowMemberInfo((open) => !open);
   };
   const navigate = useNavigate();
+
+  const getNameResponse = useGetName();
+  if (!getNameResponse) return <Error />;
+
+  const {
+    data: { memberName },
+  } = getNameResponse;
 
   return (
     <>
@@ -25,7 +33,7 @@ export default function HomeHeader() {
           <LoginInfoButton type="button" onClick={handleHomeMemberInfoToggle}>
             <LoginInfoIcon />
             <LoginInfoBox>
-              <LoginId>류가은 님</LoginId>
+              <LoginId>{memberName} 님</LoginId>
               {showMemberInfo ? <UpArrowGreyIcon /> : <DownArrowGreyIcon />}
             </LoginInfoBox>
           </LoginInfoButton>
