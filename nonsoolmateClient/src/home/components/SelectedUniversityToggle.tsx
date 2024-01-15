@@ -38,7 +38,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
               <TimeLimit>{examTimeLimit}분</TimeLimit>
             </ExamBox>
             <StatusBox>
-              {examStatus === "열람권 사용 전" && (
+              {examStatus === "시험 응시 전" && (
                 <TakeTestButton type="button" onClick={handleMoveToTakeTest}>
                   시험보기
                 </TakeTestButton>
