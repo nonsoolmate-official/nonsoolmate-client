@@ -3,16 +3,17 @@ import { SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
 import { DownArrowBoldIc, SearchIc, UpArrowBoldIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
-import { universityLists } from "home/core/universityLists";
 import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
+import Error from "error";
+import useGetSelectUniversityExams from "home/hooks/useGetSelectUniversityExams";
 
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
-  mySelectedUniversityId: number[];
+  mySelectedUniversityIdList: number[];
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
-  const { handleUniversityModal, mySelectedUniversityId } = props;
+  const { handleUniversityModal, mySelectedUniversityIdList } = props;
   const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
@@ -22,6 +23,9 @@ export default function HomeTestSet(props: HomeTestSetProps) {
       setSelectedUniversityId((prevSelectedIds) => [...prevSelectedIds, id]);
     }
   }
+
+  const getSelectUniversityExamsResponse = useGetSelectUniversityExams();
+  if (!getSelectUniversityExamsResponse) return <Error />;
 
   return (
     <Container>
@@ -38,10 +42,10 @@ export default function HomeTestSet(props: HomeTestSetProps) {
           </HeaderButton>
         </HeaderBox>
         <ListBox>
-          {universityLists.map((data) => {
-            const { universityId, universityName, universityCategory, examList } = data;
+          {getSelectUniversityExamsResponse.map((data) => {
+            const { universityId, universityName, universityCollege, examList } = data;
             const isSelected = selectedUniversityId.includes(universityId);
-            const isExisted = mySelectedUniversityId.includes(universityId);
+            const isExisted = mySelectedUniversityIdList.includes(universityId);
 
             return (
               <SelectedListBox key={universityId}>
@@ -52,7 +56,7 @@ export default function HomeTestSet(props: HomeTestSetProps) {
                     $isSelected={isSelected}>
                     <UniversityBox>
                       <Name $isSelected={isSelected}>{universityName}</Name>
-                      <Category $isSelected={isSelected}>{universityCategory}</Category>
+                      <Category $isSelected={isSelected}>{universityCollege}</Category>
                     </UniversityBox>
                     {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
                   </SelectedUniversityButton>

@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function HomeTest() {
   const [universityModal, setUniversityModal] = useState<boolean>(false);
   const [selectedUniversityIdList, setSelectedUniversityIdList] = useState<number[]>([]);
-  const [mySelectedUniversityId, setMySelectedUniversityId] = useState<number[]>([]);
+  const [mySelectedUniversityIdList, setMySelectedUniversityIdList] = useState<number[]>([]);
 
   function handleUniversityModal(open: boolean) {
     setUniversityModal(open);
@@ -15,14 +15,18 @@ export default function HomeTest() {
   function handleSelectedUniversityIdList(idList: number[]) {
     setSelectedUniversityIdList(idList);
   }
+
   function handleMySelectedUniversityIdList(idList: number[]) {
-    setMySelectedUniversityId(idList);
+    setMySelectedUniversityIdList(idList);
   }
 
   return (
     <>
-      {mySelectedUniversityId.length > 0 ? (
-        <HomeTestSet handleUniversityModal={handleUniversityModal} mySelectedUniversityId={mySelectedUniversityId} />
+      {mySelectedUniversityIdList.length > 0 ? (
+        <HomeTestSet
+          handleUniversityModal={handleUniversityModal}
+          mySelectedUniversityIdList={mySelectedUniversityIdList}
+        />
       ) : (
         <HomeTestUnset handleUniversityModal={handleUniversityModal} />
       )}
@@ -33,7 +37,7 @@ export default function HomeTest() {
           handleMySelectedUniversityIdList={handleMySelectedUniversityIdList}
           handleUniversityModal={handleUniversityModal}
           handleSelectedUniversityIdList={handleSelectedUniversityIdList}
-          mySelectedUniversityId={mySelectedUniversityId}
+          mySelectedUniversityIdList={mySelectedUniversityIdList}
         />
       )}
     </>
