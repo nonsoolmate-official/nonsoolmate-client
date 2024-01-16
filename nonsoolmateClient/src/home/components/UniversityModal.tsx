@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
 import Error from "error";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
@@ -26,28 +26,43 @@ export default function UniversityModal(props: UniversityModalProps) {
     mySelectedUniversityIdList,
   } = props;
 
-  useEffect(() => {
-    handleSelectedUniversityIdList(mySelectedUniversityIdList);
-  }, []);
-
   const mutate = usePatchSelectUniversities();
 
-  function completeSelect() {
+  const getSelectUniversitiesResponse = useGetSelectUniversities();
+  if (!getSelectUniversitiesResponse) return <Error />;
+
+  useEffect(() => {
     if (isSelectedNone) {
       handleMySelectedUniversityIdList([]);
     } else {
       handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
+  }, [selectedUniversityIdList, localStorage.getItem("backList")]);
 
-    handleMySelectedUniversityIdList([...selectedUniversityIdList]);
+  function completeSelect() {
+    const backList = mySelectedUniversityIdList.map((id) => ({ universityId: id }));
+    const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
 
-    const sendList = mySelectedUniversityIdList.map((id) => ({ universityId: id }));
-    mutate(sendList);
+    console.log("모달 배열", modalList);
+    console.log("패치해와야할 배열", backList);
 
+    //backList를 localStorage에 저장
+    localStorage.setItem("backList", JSON.stringify(backList));
+
+    mutate(backList);
     handleUniversityModal(false);
   }
 
   function cancel() {
+    // localStorage에 있는 backList를 가져온다
+    const savedData = localStorage.getItem("backList");
+    // 파싱 작업
+    const parsedData = savedData ? JSON.parse(savedData) : [];
+    console.log("백업된 리스트:", parsedData);
+
+    //handleSelectedUniversityIdList(parsedData);
+
+    mutate(parsedData);
     handleUniversityModal(false);
   }
 
@@ -57,10 +72,8 @@ export default function UniversityModal(props: UniversityModalProps) {
       : [...selectedUniversityIdList, universityId];
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
+    console.log(updatedSelectedUniversityIdList);
   }
-
-  const getSelectUniversitiesResponse = useGetSelectUniversities();
-  if (!getSelectUniversitiesResponse) return <Error />;
 
   return (
     <BackgroundView>
