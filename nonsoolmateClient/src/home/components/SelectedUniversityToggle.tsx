@@ -10,26 +10,37 @@ interface SelectedUniversityToggleProps {
 
 export default function SelectedUniversityToggle(props: SelectedUniversityToggleProps) {
   const { universityId, examList } = props;
-
   const navigate = useNavigate();
-
-  function handleMoveToTakeTest() {
-    navigate("/takeTest");
-  }
-
-  function handleMoveToExplanation() {
-    navigate("/explanation");
-  }
-
-  function handleMoveToCorrection() {
-    navigate("/correction");
-  }
 
   return (
     <ToggleContainer key={universityId}>
       {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examStatus } = data;
         const isLastExam = index === examList.length - 1;
+
+        function handleMoveToExplanation() {
+          navigate("/explanation", {
+            state: {
+              examId: examId,
+            },
+          });
+        }
+
+        function handleMoveToCorrection() {
+          navigate("/correction", {
+            state: {
+              examId: examId,
+            },
+          });
+        }
+
+        function handleMoveToTakeTest() {
+          navigate("/takeTest", {
+            state: {
+              examId: examId,
+            },
+          });
+        }
 
         return (
           <ExamContainer key={examId} $isLastExam={isLastExam}>
