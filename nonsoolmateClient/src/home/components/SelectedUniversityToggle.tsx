@@ -1,10 +1,11 @@
-import { examListTypes } from "home/core/universityLists";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { commonFlex, lightBlueButtonStyle } from "style/commonStyle";
+import { SelectExamListDataTypes } from "home/api/getSelectUniversityExams";
+
 interface SelectedUniversityToggleProps {
   universityId: number;
-  examList: examListTypes[];
+  examList: SelectExamListDataTypes[];
 }
 
 export default function SelectedUniversityToggle(props: SelectedUniversityToggleProps) {
@@ -27,9 +28,8 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
   return (
     <ToggleContainer key={universityId}>
       {examList.map((data, index) => {
-        const { examId, examName, examTimeLimit, examResultStatus } = data;
+        const { examId, examName, examTimeLimit, examStatus } = data;
         const isLastExam = index === examList.length - 1;
-        const resultsText = examResultStatus;
 
         return (
           <ExamContainer key={examId} $isLastExam={isLastExam}>
@@ -38,30 +38,30 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
               <TimeLimit>{examTimeLimit}분</TimeLimit>
             </ExamBox>
             <StatusBox>
-              {resultsText === "열람권 사용 전" && (
+              {examStatus === "시험 응시 전" && (
                 <TakeTestButton type="button" onClick={handleMoveToTakeTest}>
                   시험보기
                 </TakeTestButton>
               )}
-              {resultsText === "첨삭 진행 중" && (
+              {examStatus === "첨삭 진행 중" && (
                 <ExamResults>
-                  <ResultsText>{examResultStatus}</ResultsText>
+                  <ResultsText>{examStatus}</ResultsText>
                   <ResultsButtonBox>
                     <ExplanationButton type="button" onClick={handleMoveToExplanation}>
                       해제
                     </ExplanationButton>
-                    <CorrectionButton type="button" $resultsText={resultsText} disabled={true}>
+                    <CorrectionButton type="button" $examStatus={examStatus} disabled={true}>
                       첨삭
                     </CorrectionButton>
                   </ResultsButtonBox>
                 </ExamResults>
               )}
-              {resultsText === "첨삭 완료" && (
+              {examStatus === "첨삭 완료" && (
                 <ResultsButtonBox>
                   <ExplanationButton type="button" onClick={handleMoveToExplanation}>
                     해제
                   </ExplanationButton>
-                  <CorrectionButton type="button" $resultsText={resultsText} onClick={handleMoveToCorrection}>
+                  <CorrectionButton type="button" $examStatus={examStatus} onClick={handleMoveToCorrection}>
                     첨삭
                   </CorrectionButton>
                 </ResultsButtonBox>
@@ -160,21 +160,21 @@ const ExplanationButton = styled(lightBlueButtonStyle)`
   border-radius: 4px;
 `;
 
-const CorrectionButton = styled(lightBlueButtonStyle)<{ $resultsText: string }>`
+const CorrectionButton = styled(lightBlueButtonStyle)<{ $examStatus: string }>`
   width: 4.8rem;
   height: 100%;
   padding: 0;
   ${({ theme }) => theme.fonts.Body5};
 
   border-radius: 4px;
-  background-color: ${({ theme, $resultsText }) =>
-    $resultsText === "첨삭 진행 중" ? theme.colors.grey_100 : theme.colors.light_blue};
-  color: ${({ theme, $resultsText }) =>
-    $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.main_blue};
-  cursor: ${({ $resultsText }) => ($resultsText === "첨삭 진행 중" ? "default" : "pointer")};
+  background-color: ${({ theme, $examStatus }) =>
+    $examStatus === "첨삭 진행 중" ? theme.colors.grey_100 : theme.colors.light_blue};
+  color: ${({ theme, $examStatus }) =>
+    $examStatus === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.main_blue};
+  cursor: ${({ $examStatus }) => ($examStatus === "첨삭 진행 중" ? "default" : "pointer")};
 
   &:hover {
-    color: ${({ theme, $resultsText }) =>
-      $resultsText === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.middle_blue};
+    color: ${({ theme, $examStatus }) =>
+      $examStatus === "첨삭 진행 중" ? theme.colors.grey_400 : theme.colors.middle_blue};
   }
 `;
