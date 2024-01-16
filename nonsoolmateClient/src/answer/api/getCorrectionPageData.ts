@@ -1,10 +1,5 @@
 import { client } from "@api/axios";
-
-interface DefaultData<T> {
-  code: number;
-  message: string;
-  data: T;
-}
+import { Response } from "types/common";
 
 interface CorrectionPageData {
   universityExamName: string;
@@ -13,7 +8,7 @@ interface CorrectionPageData {
 }
 
 export async function getCorrectionPageData(id: number) {
-  const { data } = await client.get<DefaultData<CorrectionPageData>>(`/university/exam-record/${id}`);
+  const { data } = await client.get<Response<CorrectionPageData>>(`/university/exam-record/${id}`);
 
   return data;
 }

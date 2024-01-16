@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import testPaperImg1 from "../../../assets/image/testPaperImg1.jpeg";
-import testPaperImg2 from "../../../assets/image/testPaperImg2.jpeg";
-import testPaperImg3 from "../../../assets/image/testPaperImg3.jpeg";
-import testPaperImg4 from "../../../assets/image/testPaperImg4.jpeg";
 import { columnFlex } from "style/commonStyle";
+import { testImageType } from "answer/types/testImageType";
 
-export default function ImageSlider() {
-  const imageList = [testPaperImg1, testPaperImg2, testPaperImg3, testPaperImg4];
+interface ImageSliderProps {
+  testImages: testImageType[];
+}
+
+export default function ImageSlider(props: ImageSliderProps) {
+  const { testImages } = props;
 
   const imageMap = () => {
-    return imageList.map((eachImage) => {
-      return <Image key={eachImage} src={eachImage} alt="문제 이미지" />;
+    return testImages.map((eachImage) => {
+      return <Image key={eachImage.examImgUrl} src={eachImage.examImgUrl} alt="문제 이미지" />;
     });
   };
 

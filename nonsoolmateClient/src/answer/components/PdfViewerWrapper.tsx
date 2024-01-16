@@ -7,6 +7,7 @@ import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { RightArrowBigIc, LeftArrowBigIc } from "@assets/index";
+import { testImageType } from "answer/types/testImageType";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -14,10 +15,11 @@ interface PdfViewerWrapperProps {
   ifExplanation?: boolean;
   firstPdfUrl: string;
   secondPdfUrl?: string;
+  testImages?: testImageType[];
 }
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
-  const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl } = props;
+  const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testImages } = props;
   const getFilePluginInstance = getFilePlugin();
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
@@ -45,8 +47,8 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
         />
-        {ifExplanation ? (
-          <ImageSlider />
+        {ifExplanation && testImages ? (
+          <ImageSlider testImages={testImages && testImages} />
         ) : (
           <PdfViewer pdfUrl={firstPdfUrl} getFilePluginInstance={getFilePluginInstance} />
         )}
