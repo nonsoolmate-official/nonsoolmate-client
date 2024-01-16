@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
 import Error from "error";
 import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
@@ -19,6 +19,8 @@ export default function TestSubmitModal(props: TestSubmitProps) {
   const { mutate: postMutate } = usePostExamRecord();
   let zip = new JSZip();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { examId } = location.state;
 
   async function handleZipCreation() {
     const response = await getPresignedUrl();
@@ -54,7 +56,7 @@ export default function TestSubmitModal(props: TestSubmitProps) {
             {
               onSuccess: () => {
                 // put 요청이 성공하면 post 요청
-                postMutate({ examId: 1, totalTime: totalTime, fileName: resultFileName });
+                postMutate({ examId: examId, totalTime: totalTime, fileName: resultFileName });
               },
               onError: (error) => {
                 console.error("Put request failed:", error);

@@ -5,12 +5,16 @@ const QUERY_KEY = {
   getUniversityExamImages: "getUniversityExamImages",
 };
 
-export function useGetUniversityExampleImages(pageNum: number) {
-  const { data } = useQuery([QUERY_KEY.getUniversityExamImages, pageNum], () => getUniversityExamImages(pageNum), {
-    keepPreviousData: true,
-    onError: (error) => {
-      console.log("에러 발생", error);
+export function useGetUniversityExampleImages(examId: number, pageNum: number) {
+  const { data } = useQuery(
+    [QUERY_KEY.getUniversityExamImages, pageNum],
+    () => getUniversityExamImages(examId, pageNum),
+    {
+      keepPreviousData: true,
+      onError: (error) => {
+        console.log("에러 발생", error);
+      },
     },
-  });
+  );
   return data;
 }

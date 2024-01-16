@@ -9,12 +9,13 @@ import Error from "error";
 interface PaginatinProps {
   openCoachMark: boolean;
   openPrecautionModal: boolean;
+  examId: number;
 }
 export default function TestPagination(props: PaginatinProps) {
-  const { openCoachMark, openPrecautionModal } = props;
+  const { openCoachMark, openPrecautionModal, examId } = props;
   const [paperIdx, setPaperIdx] = useState(0);
 
-  const examImage = useGetUniversityExampleImages(paperIdx);
+  const examImage = useGetUniversityExampleImages(examId, paperIdx);
   if (!examImage) return <Error />;
   const {
     data: { totalPages, content },

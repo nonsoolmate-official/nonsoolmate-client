@@ -9,6 +9,7 @@ import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 import Error from "error";
+import { useLocation } from "react-router-dom";
 
 export default function index() {
   const [openCoachMark, setOpenCoachMark] = useState(true);
@@ -19,7 +20,11 @@ export default function index() {
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
 
-  const examRes = useGetUniversityExam(1);
+  //받아오기
+  const location = useLocation();
+  const { examId } = location.state;
+
+  const examRes = useGetUniversityExam(examId);
   if (!examRes) return <Error />;
 
   const {
@@ -69,7 +74,7 @@ export default function index() {
           examName={examName}
           examTimeLimit={examTimeLimit}
         />
-        <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
+        <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} examId={examId} />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
