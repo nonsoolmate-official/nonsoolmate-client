@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
-import { selectionLists } from "home/core/selectionLists";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 import { useEffect } from "react";
+import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
+import Error from "error";
+import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
@@ -11,7 +13,7 @@ interface UniversityModalProps {
   handleSelectedUniversityIdList: (idList: number[]) => void;
   isSelectedNone?: boolean;
   handleMySelectedUniversityIdList: (idList: number[]) => void;
-  mySelectedUniversityId: number[];
+  mySelectedUniversityIdList: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
@@ -21,23 +23,28 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList,
     isSelectedNone,
     handleMySelectedUniversityIdList,
-    mySelectedUniversityId,
   } = props;
 
-  useEffect(() => {
-    handleSelectedUniversityIdList(mySelectedUniversityId);
-  }, []);
+  const mutate = usePatchSelectUniversities();
 
-  function completeSelect() {
+  useEffect(() => {
     if (isSelectedNone) {
       handleMySelectedUniversityIdList([]);
-    } else {
-      handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
+  }, [selectedUniversityIdList]);
+
+  function completeSelect() {
+    const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
+    localStorage.setItem("backList", JSON.stringify(selectedUniversityIdList));
+    mutate(modalList);
     handleUniversityModal(false);
+    handleMySelectedUniversityIdList([...selectedUniversityIdList]);
   }
 
   function cancel() {
+    const savedData = localStorage.getItem("backList");
+    const parsedData = savedData ? JSON.parse(savedData) : [];
+    handleSelectedUniversityIdList(parsedData);
     handleUniversityModal(false);
   }
 
@@ -49,24 +56,27 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
   }
 
+  const getSelectUniversitiesResponse = useGetSelectUniversities();
+  if (!getSelectUniversitiesResponse) return <Error />;
+
   return (
     <BackgroundView>
       <ModalView>
         <Text>대학 선택</Text>
         <Container>
-          {selectionLists.map((data) => {
-            const { universityName, universityCategory, universityId } = data;
+          {getSelectUniversitiesResponse.data.map((data) => {
+            const { universityName, collegeName, universityId } = data;
             const isChecked = selectedUniversityIdList.includes(universityId);
 
             return (
               <CheckBoxButton
-                key={universityName}
+                key={universityId}
                 type="button"
                 $isChecked={isChecked}
                 onClick={() => handleUpdateUniversityIdList(universityId)}>
                 <UniversityBox>
                   <University>{universityName}</University>
-                  <Category>{universityCategory}</Category>
+                  <Category>{collegeName}</Category>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}</CheckBox>
               </CheckBoxButton>
