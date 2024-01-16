@@ -4,19 +4,28 @@ import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
 import { useNavigate } from "react-router-dom";
 import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
+import Error from "error";
+import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
+import { getPresignedUrl } from "takeTest/api/getPresignedUrl";
 
 interface TestSubmitProps {
   isFile: File[] | null;
-  resultFileName: string;
-  preSignedUrl: string;
+  totalTime: number;
 }
+
 export default function TestSubmitModal(props: TestSubmitProps) {
-  const { isFile, preSignedUrl } = props;
-  const { mutate } = usePutExamSheet();
+  const { isFile, totalTime } = props;
+  const { mutate: putMutate } = usePutExamSheet();
+  const { mutate: postMutate } = usePostExamRecord();
   let zip = new JSZip();
   const navigate = useNavigate();
 
-  const handleZipCreation = () => {
+  async function handleZipCreation() {
+    const response = await getPresignedUrl();
+    if (!response) return <Error />;
+
+    const { resultFileName, preSignedUrl } = response?.data;
+
     if (isFile) {
       let filePromises = isFile.map((file) => {
         return new Promise<void>((resolve, reject) => {
@@ -40,15 +49,25 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           return zip.generateAsync({ type: "blob" });
         })
         .then((blob) => {
-          mutate({ blob, url: preSignedUrl });
-          console.log(mutate);
+          putMutate(
+            { blob, url: preSignedUrl },
+            {
+              onSuccess: () => {
+                // put 요청이 성공하면 post 요청
+                postMutate({ examId: 1, totalTime: totalTime, fileName: resultFileName });
+              },
+              onError: (error) => {
+                console.error("Put request failed:", error);
+              },
+            },
+          );
         })
         .catch((error) => {
           console.error("An error occurred:", error);
         });
     }
     navigate("/home/test");
-  };
+  }
   return (
     <TestSubmitModalCotainer>
       <Modal>

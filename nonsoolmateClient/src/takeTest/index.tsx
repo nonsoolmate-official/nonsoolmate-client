@@ -8,7 +8,6 @@ import TestFinishModal from "./components/modal/TestFinishModal";
 import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
-import useGetPresignedUrl from "./hooks/useGetPresignedUrl";
 import Error from "error";
 
 export default function index() {
@@ -21,16 +20,11 @@ export default function index() {
   const [isFile, setIsFile] = useState<File[] | null>(null);
 
   const examRes = useGetUniversityExam(1);
-  const preSignedRes = useGetPresignedUrl();
-  if (!examRes || !preSignedRes) return <Error />;
+  if (!examRes) return <Error />;
 
   const {
     data: { examName, examTimeLimit },
   } = examRes;
-
-  const {
-    data: { resultFileName, preSignedUrl },
-  } = preSignedRes;
 
   const scroll = !(
     openCoachMark ||
@@ -88,9 +82,7 @@ export default function index() {
           saveFile={saveFile}
         />
       )}
-      {openTestSubmitModal && (
-        <TestSubmitModal isFile={isFile} resultFileName={resultFileName} preSignedUrl={preSignedUrl} />
-      )}
+      {openTestSubmitModal && <TestSubmitModal isFile={isFile} totalTime={totalTime} />}
     </>
   );
 }
