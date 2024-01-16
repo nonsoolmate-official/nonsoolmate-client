@@ -1,12 +1,25 @@
 import HomeTestUnset from "./HomeTestUnset";
 import HomeTestSet from "./HomeTestSet";
 import UniversityModal from "home/components/UniversityModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useGetSelectUniversityExams from "home/hooks/useGetSelectUniversityExams";
+import Error from "error";
 
 export default function HomeTest() {
   const [universityModal, setUniversityModal] = useState<boolean>(false);
   const [selectedUniversityIdList, setSelectedUniversityIdList] = useState<number[]>([]);
   const [mySelectedUniversityIdList, setMySelectedUniversityIdList] = useState<number[]>([]);
+
+  useEffect(() => {
+    let realArray = response?.map((item) => item.universityId);
+    realArray && handleMySelectedUniversityIdList(realArray);
+  }, []);
+
+  const response = useGetSelectUniversityExams();
+  if (!response) return <Error />;
+  console.log(response);
+
+  const dataUniversityIds = response.map((item) => item.universityId);
 
   function handleUniversityModal(open: boolean) {
     setUniversityModal(open);
@@ -22,10 +35,11 @@ export default function HomeTest() {
 
   return (
     <>
-      {mySelectedUniversityIdList.length > 0 ? (
+      {response.length > 0 ? (
         <HomeTestSet
           handleUniversityModal={handleUniversityModal}
-          mySelectedUniversityIdList={mySelectedUniversityIdList}
+          response={response}
+          dataUniversityIds={dataUniversityIds}
         />
       ) : (
         <HomeTestUnset handleUniversityModal={handleUniversityModal} />
@@ -38,6 +52,7 @@ export default function HomeTest() {
           handleUniversityModal={handleUniversityModal}
           handleSelectedUniversityIdList={handleSelectedUniversityIdList}
           mySelectedUniversityIdList={mySelectedUniversityIdList}
+          dataUniversityIds={dataUniversityIds}
         />
       )}
     </>

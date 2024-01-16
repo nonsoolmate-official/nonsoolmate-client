@@ -4,16 +4,16 @@ import { DownArrowBoldIc, SearchIc, UpArrowBoldIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
-import Error from "error";
-import useGetSelectUniversityExams from "home/hooks/useGetSelectUniversityExams";
+import { SelectUniversityDataTypes } from "home/api/getSelectUniversityExams";
 
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
-  mySelectedUniversityIdList: number[];
+  response: SelectUniversityDataTypes[];
+  dataUniversityIds: number[]
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
-  const { handleUniversityModal, mySelectedUniversityIdList } = props;
+  const { handleUniversityModal, response, dataUniversityIds } = props;
   const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
@@ -24,8 +24,6 @@ export default function HomeTestSet(props: HomeTestSetProps) {
     }
   }
 
-  const getSelectUniversityExamsResponse = useGetSelectUniversityExams();
-  if (!getSelectUniversityExamsResponse) return <Error />;
 
   return (
     <Container>
@@ -42,10 +40,10 @@ export default function HomeTestSet(props: HomeTestSetProps) {
           </HeaderButton>
         </HeaderBox>
         <ListBox>
-          {getSelectUniversityExamsResponse.map((data) => {
+          {response.map((data) => {
             const { universityId, universityName, universityCollege, examList } = data;
             const isSelected = selectedUniversityId.includes(universityId);
-            const isExisted = mySelectedUniversityIdList.includes(universityId);
+            const isExisted = dataUniversityIds.includes(universityId);
 
             return (
               <SelectedListBox key={universityId}>
