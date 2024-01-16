@@ -2,9 +2,12 @@ import ExplainHeader from "answer/components/ExplainHeader";
 import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
 import { useGetExplanationPageData } from "answer/hooks/useGetExplanationPageData";
 import Error from "error";
+import { useLocation } from "react-router-dom";
 
 export default function index() {
-  const examId = 4;
+  const location = useLocation();
+  const { examId } = location.state;
+
   const explanationRes = useGetExplanationPageData(examId);
   if (!explanationRes) return <Error />;
 
