@@ -35,27 +35,16 @@ export default function UniversityModal(props: UniversityModalProps) {
 
   function completeSelect() {
     const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
-
-    //backList를 localStorage에 저장
     localStorage.setItem("backList", JSON.stringify(selectedUniversityIdList));
-
     mutate(modalList);
     handleUniversityModal(false);
     handleMySelectedUniversityIdList([...selectedUniversityIdList]);
   }
 
   function cancel() {
-    // localStorage에 있는 backList를 가져온다
     const savedData = localStorage.getItem("backList");
-
-    // 파싱 작업
     const parsedData = savedData ? JSON.parse(savedData) : [];
-
-    console.log("백업된 리스트:", parsedData);
-
     handleSelectedUniversityIdList(parsedData);
-    console.log("모달에 띠어지는 백업 리스트", selectedUniversityIdList);
-    console.log(selectedUniversityIdList);
     handleUniversityModal(false);
   }
 
@@ -65,7 +54,6 @@ export default function UniversityModal(props: UniversityModalProps) {
       : [...selectedUniversityIdList, universityId];
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
-    console.log(updatedSelectedUniversityIdList);
   }
 
   const getSelectUniversitiesResponse = useGetSelectUniversities();
