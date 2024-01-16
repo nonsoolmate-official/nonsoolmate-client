@@ -1,5 +1,4 @@
 import { getSelectUniversityExams } from "home/api/getSelectUniversityExams";
-
 import { useQuery } from "react-query";
 
 export default function useGetSelectUniversityExams() {

@@ -14,6 +14,8 @@ interface UniversityModalProps {
   isSelectedNone?: boolean;
   handleMySelectedUniversityIdList: (idList: number[]) => void;
   mySelectedUniversityIdList: number[];
+  dataUniversityIds: number[]
+
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
@@ -23,9 +25,14 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList,
     isSelectedNone,
     handleMySelectedUniversityIdList,
+    dataUniversityIds
   } = props;
 
   const mutate = usePatchSelectUniversities();
+
+useEffect(() => {
+  handleSelectedUniversityIdList(dataUniversityIds)
+}, [])
 
   useEffect(() => {
     if (isSelectedNone) {
@@ -42,6 +49,7 @@ export default function UniversityModal(props: UniversityModalProps) {
   }
 
   function cancel() {
+    //localstorage에 저장된 리스트 불러오기 + 타입에 맞게 파싱작업
     const savedData = localStorage.getItem("backList");
     const parsedData = savedData ? JSON.parse(savedData) : [];
     handleSelectedUniversityIdList(parsedData);
@@ -58,6 +66,7 @@ export default function UniversityModal(props: UniversityModalProps) {
 
   const getSelectUniversitiesResponse = useGetSelectUniversities();
   if (!getSelectUniversitiesResponse) return <Error />;
+
 
   return (
     <BackgroundView>
