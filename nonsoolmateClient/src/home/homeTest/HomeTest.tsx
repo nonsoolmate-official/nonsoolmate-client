@@ -17,7 +17,6 @@ export default function HomeTest() {
 
   const response = useGetSelectUniversityExams();
   if (!response) return <Error />;
-  console.log(response);
 
   const dataUniversityIds = response.map((item) => item.universityId);
 

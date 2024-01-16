@@ -6,10 +6,6 @@ export default function useGetSelectUniversityExams() {
     onError: (error) => {
       console.log("에러 발생", error);
     },
-    onSuccess: () => {
-      console.log("성공");
-      //queryClient.invalidateQueries("getSelectUniversityExams");
-    },
   });
   return data;
 }
