@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
-import { selectionLists } from "home/core/selectionLists";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 import { useEffect } from "react";
+import { useQueryClient } from "react-query";
+import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
+import Error from "error";
+import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
 
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
@@ -11,7 +14,7 @@ interface UniversityModalProps {
   handleSelectedUniversityIdList: (idList: number[]) => void;
   isSelectedNone?: boolean;
   handleMySelectedUniversityIdList: (idList: number[]) => void;
-  mySelectedUniversityId: number[];
+  mySelectedUniversityIdList: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
@@ -21,23 +24,46 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList,
     isSelectedNone,
     handleMySelectedUniversityIdList,
-    mySelectedUniversityId,
+    mySelectedUniversityIdList,
   } = props;
 
-  useEffect(() => {
-    handleSelectedUniversityIdList(mySelectedUniversityId);
-  }, []);
+  const mutate = usePatchSelectUniversities();
 
-  function completeSelect() {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
     if (isSelectedNone) {
       handleMySelectedUniversityIdList([]);
-    } else {
-      handleMySelectedUniversityIdList([...selectedUniversityIdList]);
     }
+  }, [selectedUniversityIdList]);
+
+  function completeSelect() {
+    const backList = mySelectedUniversityIdList.map((id) => ({ universityId: id }));
+    const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
+
+    console.log("모달 배열", modalList);
+    console.log("패치해와야할 배열", backList);
+
+    //backList를 localStorage에 저장
+    localStorage.setItem("저장할것", JSON.stringify(modalList));
+
+    mutate(modalList);
     handleUniversityModal(false);
+    handleMySelectedUniversityIdList([...selectedUniversityIdList]);
   }
 
   function cancel() {
+    // localStorage에 있는 backList를 가져온다
+    const savedData = localStorage.getItem("backList");
+    // 파싱 작업
+    const parsedData = savedData ? JSON.parse(savedData) : [];
+    console.log("백업된 리스트:", parsedData);
+
+    // 서버한테 보낸 backList를 다시 get해온다
+    // queryClient.invalidateQueries("getSelectUniversityExams");
+
+    handleMySelectedUniversityIdList(parsedData);
+    console.log(selectedUniversityIdList);
     handleUniversityModal(false);
   }
 
@@ -47,26 +73,30 @@ export default function UniversityModal(props: UniversityModalProps) {
       : [...selectedUniversityIdList, universityId];
 
     handleSelectedUniversityIdList(updatedSelectedUniversityIdList);
+    console.log(updatedSelectedUniversityIdList);
   }
+
+  const getSelectUniversitiesResponse = useGetSelectUniversities();
+  if (!getSelectUniversitiesResponse) return <Error />;
 
   return (
     <BackgroundView>
       <ModalView>
         <Text>대학 선택</Text>
         <Container>
-          {selectionLists.map((data) => {
-            const { universityName, universityCategory, universityId } = data;
+          {getSelectUniversitiesResponse.data.map((data) => {
+            const { universityName, collegeName, universityId } = data;
             const isChecked = selectedUniversityIdList.includes(universityId);
 
             return (
               <CheckBoxButton
-                key={universityName}
+                key={universityId}
                 type="button"
                 $isChecked={isChecked}
                 onClick={() => handleUpdateUniversityIdList(universityId)}>
                 <UniversityBox>
                   <University>{universityName}</University>
-                  <Category>{universityCategory}</Category>
+                  <Category>{collegeName}</Category>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <NotCheckBtnIcon />}</CheckBox>
               </CheckBoxButton>
