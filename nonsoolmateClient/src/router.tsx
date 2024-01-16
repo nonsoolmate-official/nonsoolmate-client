@@ -11,6 +11,7 @@ import Explanation from "answer/explanation";
 import OnBoarding from "onboarding";
 import Signup from "signup";
 import Membership from "membership";
+import RedirectPages from "socialLogin";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
       { path: "/explanation", element: <Explanation /> },
       { path: "/signup", element: <Signup /> },
       { path: "/membership", element: <Membership /> },
+      { path: "/login/oauth2/code/naver", element: <RedirectPages /> },
     ],
   },
 ]);
