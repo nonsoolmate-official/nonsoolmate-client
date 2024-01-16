@@ -1,10 +1,15 @@
 import { NaverLoginIc } from "@assets/index";
+import { redirectToNaverAuth } from "socialLogin/utils/redirectToNaverAuth";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function NaverLoginButton() {
+  function loginHandler() {
+    redirectToNaverAuth();
+  }
+
   return (
-    <Container type="button">
+    <Container onClick={loginHandler} type="button">
       <ContentContainer>
         <NaverLoginIcon />
         <Text>네이버 로그인</Text>
