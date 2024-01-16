@@ -3,7 +3,6 @@ import { commonFlex, mainButtonStyle } from "style/commonStyle";
 import { lightBlueButtonStyle } from "style/commonStyle";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 import { useEffect } from "react";
-import { useQueryClient } from "react-query";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
 import Error from "error";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
@@ -24,12 +23,9 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList,
     isSelectedNone,
     handleMySelectedUniversityIdList,
-    mySelectedUniversityIdList,
   } = props;
 
   const mutate = usePatchSelectUniversities();
-
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (isSelectedNone) {
@@ -38,14 +34,10 @@ export default function UniversityModal(props: UniversityModalProps) {
   }, [selectedUniversityIdList]);
 
   function completeSelect() {
-    const backList = mySelectedUniversityIdList.map((id) => ({ universityId: id }));
     const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
 
-    console.log("모달 배열", modalList);
-    console.log("패치해와야할 배열", backList);
-
     //backList를 localStorage에 저장
-    localStorage.setItem("저장할것", JSON.stringify(modalList));
+    localStorage.setItem("backList", JSON.stringify(selectedUniversityIdList));
 
     mutate(modalList);
     handleUniversityModal(false);
@@ -55,14 +47,14 @@ export default function UniversityModal(props: UniversityModalProps) {
   function cancel() {
     // localStorage에 있는 backList를 가져온다
     const savedData = localStorage.getItem("backList");
+
     // 파싱 작업
     const parsedData = savedData ? JSON.parse(savedData) : [];
+
     console.log("백업된 리스트:", parsedData);
 
-    // 서버한테 보낸 backList를 다시 get해온다
-    // queryClient.invalidateQueries("getSelectUniversityExams");
-
-    handleMySelectedUniversityIdList(parsedData);
+    handleSelectedUniversityIdList(parsedData);
+    console.log("모달에 띠어지는 백업 리스트", selectedUniversityIdList);
     console.log(selectedUniversityIdList);
     handleUniversityModal(false);
   }
