@@ -1,14 +1,19 @@
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import ErrorImg from "@assets/image/errorIc.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Error() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Image src={ErrorImg} alt="errorimg" />
       <Text>이용에 불편을 드려 죄송합니다.</Text>
       <Text>관리자에게 문의하세요.</Text>
-      <Button>홈으로</Button>
+      <Button type="button" onClick={() => navigate(-1)}>
+        이전 화면으로
+      </Button>
     </Container>
   );
 }
