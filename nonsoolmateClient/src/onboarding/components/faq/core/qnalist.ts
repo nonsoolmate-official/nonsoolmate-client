@@ -2,12 +2,6 @@ import { QnaTypes } from "../types/qaatypes";
 
 export const QNA_LIST: QnaTypes[] = [
   {
-    question: "모의고사는 어떻게 푸나요?",
-    answer: "첨삭이 이루어지는 시험문제는 실제 대학별 기출시험 문제입니다.",
-    answer2:
-      " 실제 시험환경과 최대한 동일하게 하기 위해, 답안은 수기로 작성하게 되어 있으며 제한시간이 완료되면 시험이 자동 종료됩니다.",
-  },
-  {
     question: "실제 논술시험과 얼마나 유사한가요?",
     answer: "첨삭이 이루어지는 시험문제는 실제 대학별 기출시험 문제입니다.",
     answer2:
