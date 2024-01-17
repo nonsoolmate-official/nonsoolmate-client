@@ -36,6 +36,7 @@ export const router = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/membership", element: <Membership /> },
       { path: "/login/oauth2/code/naver", element: <RedirectPages /> },
+      { path: "/error", element: <Error /> },
     ],
   },
 ]);
