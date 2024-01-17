@@ -2,7 +2,7 @@ import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function AdvanTitle() {
-  return <Text>멤버쉽 혜택</Text>;
+  return <Text>멤버십 혜택</Text>;
 }
 
 const Text = styled.h1`

@@ -56,7 +56,14 @@ export default function TestSubmitModal(props: TestSubmitProps) {
             {
               onSuccess: () => {
                 // put 요청이 성공하면 post 요청
-                postMutate({ examId: examId, totalTime: totalTime, fileName: resultFileName });
+                postMutate(
+                  { examId: examId, totalTime: totalTime, fileName: resultFileName },
+                  {
+                    onSuccess: () => {
+                      navigate("/home/test", { state: { testSubmitted: true } });
+                    },
+                  },
+                );
               },
               onError: (error) => {
                 console.error("Put request failed:", error);
@@ -68,7 +75,6 @@ export default function TestSubmitModal(props: TestSubmitProps) {
           console.error("An error occurred:", error);
         });
     }
-    navigate("/home/test");
   }
   return (
     <TestSubmitModalCotainer>
