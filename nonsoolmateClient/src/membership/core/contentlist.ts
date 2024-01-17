@@ -13,15 +13,15 @@ export const CONTENT_LIST: ContentListType[] = [
       },
       {
         saletitle: "첫 달 20%추가 할인",
-        beforeprice: "157,500",
+        beforeprice: "168,000",
         salepercent: 20,
       },
     ],
-    price: "126,000",
+    price: "134,400",
   },
   {
     id: 2,
-    title: "6개월 패키지",
+    title: "3개월 패키지",
     summary: "체계적으로 논술입시를 준비하는",
     sales: [
       {
