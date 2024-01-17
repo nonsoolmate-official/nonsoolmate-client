@@ -12,6 +12,7 @@ import OnBoarding from "onboarding";
 import Signup from "signup";
 import Membership from "membership";
 import RedirectPages from "socialLogin";
+import Loading from "loading";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/membership", element: <Membership /> },
       { path: "/login/oauth2/code/naver", element: <RedirectPages /> },
+      { path: "/loading", element: <Loading /> },
     ],
   },
 ]);
