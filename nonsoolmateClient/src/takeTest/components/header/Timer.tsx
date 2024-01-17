@@ -11,7 +11,7 @@ interface TimerProps {
 export default function Timer(props: TimerProps) {
   const { changeTestFinishStatus, computeTakeTime, openTestFinishModal, openTestSubmitModal, examTimeLimit } = props;
 
-  const time = examTimeLimit * 60;
+  const time = examTimeLimit;
   const h = Math.floor(time / 3600);
   const m = Math.floor((time - h * 3600) / 60);
   const s = time - (h * 3600 + m * 60);

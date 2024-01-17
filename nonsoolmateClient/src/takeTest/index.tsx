@@ -20,7 +20,6 @@ export default function index() {
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
 
-  //받아오기
   const location = useLocation();
   const { examId } = location.state;
 
