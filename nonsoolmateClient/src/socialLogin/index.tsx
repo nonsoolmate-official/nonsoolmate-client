@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import useLogin from "./hooks/useLogin";
+import Error from "error";
+import Loading from "loading";
 
 //네이버 REDIRECT URL로 이동했을 때의 REDIRECT PAGE
 export default function RedirectPage() {
@@ -15,11 +17,11 @@ export default function RedirectPage() {
   }, [mutate]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <div>오류가 발생했습니다.</div>;
+    return <Error />;
   }
 
   return <div>로그인 처리 중...</div>;
