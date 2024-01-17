@@ -55,7 +55,6 @@ export default function TestSubmitModal(props: TestSubmitProps) {
             { blob, url: preSignedUrl },
             {
               onSuccess: () => {
-                // put 요청이 성공하면 post 요청
                 postMutate(
                   { examId: examId, totalTime: totalTime, fileName: resultFileName },
                   {
