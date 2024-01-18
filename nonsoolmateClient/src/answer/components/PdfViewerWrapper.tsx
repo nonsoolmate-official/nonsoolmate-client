@@ -21,11 +21,11 @@ interface PdfViewerWrapperProps {
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testImages } = props;
   const getFilePluginInstance = getFilePlugin();
+  const fullScreenPluginInstance = fullScreenPlugin();
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
   const [isButtonHover, setIsButtonHover] = useState(false);
-  const fullScreenPluginInstance = fullScreenPlugin();
 
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
@@ -34,10 +34,6 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
       setIsHide(false);
     }
   }, [isExplanationHide, isQuestionHide]);
-
-  // function handleButtonHover() {
-  //   setIsButtonHover((prev) => !prev);
-  // }
 
   return (
     <PdfViewerContainer $isHide={isHide}>
