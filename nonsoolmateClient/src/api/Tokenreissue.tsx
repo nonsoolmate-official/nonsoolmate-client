@@ -1,5 +1,4 @@
 // axiosSetup.js
-import axios from "axios";
 import { client } from "./axios";
 import { getCookie, setCookie } from "./cookie";
 import { useEffect } from "react";
@@ -9,7 +8,6 @@ const SetupAxiosInterceptors = ({ children }: { children: React.ReactNode }) => 
     const aT = getCookie("accessToken");
     if (aT) {
       client.defaults.headers.common.Authorization = `Bearer ${aT}`;
-      axios.defaults.headers.common.Authorization = `Bearer ${aT}`;
     }
 
     client.interceptors.response.use(
@@ -31,17 +29,14 @@ const SetupAxiosInterceptors = ({ children }: { children: React.ReactNode }) => 
                 },
               },
             );
-            console.log(res);
 
             const newAccessToken = res.data.data.accessToken;
             const newRefreshToken = res.data.data.refreshToken;
-            console.log(newAccessToken, newRefreshToken);
 
             setCookie("accessToken", newAccessToken, { path: "/" });
             sessionStorage.setItem("rt", newRefreshToken);
 
             client.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-            axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
 
             originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
