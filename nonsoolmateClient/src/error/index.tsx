@@ -25,6 +25,7 @@ const Container = styled.section`
 
   width: 100%;
   height: 100vh;
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const Image = styled.img`
