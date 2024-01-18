@@ -1,7 +1,7 @@
 // axiosSetup.js
 import axios from "axios";
 import { client } from "./axios";
-import { getCookie, removeCookie, setCookie } from "./cookie";
+import { getCookie, setCookie } from "./cookie";
 import { useEffect } from "react";
 
 const SetupAxiosInterceptors = ({ children }: { children: React.ReactNode }) => {
