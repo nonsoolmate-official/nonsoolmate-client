@@ -24,7 +24,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
-  // const [isButtonHover, setIsButtonHover];
+  const [isButtonHover, setIsButtonHover] = useState(false);
   const fullScreenPluginInstance = fullScreenPlugin();
 
   useEffect(() => {
@@ -35,11 +35,21 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
     }
   }, [isExplanationHide, isQuestionHide]);
 
+  // function handleButtonHover() {
+  //   setIsButtonHover((prev) => !prev);
+  // }
+
   return (
     <PdfViewerContainer $isHide={isHide}>
-      <ShowQuestionButton $isQuestionHide={isQuestionHide} onClick={() => setIsQuestionHide(false)}>
+      <ShowQuestionButton
+        $isQuestionHide={isQuestionHide}
+        onMouseOver={() => setIsButtonHover(true)}
+        onMouseLeave={() => setIsButtonHover(false)}
+        onClick={() => setIsQuestionHide(false)}>
         <RightArrowBigIcon />
-        <ShowQuestionTagIcon $isQuestionHide={isQuestionHide} />
+        <ShowQuestionMessageBox $isButtonHover={isButtonHover}>
+          <ShowQuestionTagIcon />
+        </ShowQuestionMessageBox>
       </ShowQuestionButton>
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
@@ -70,22 +80,38 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           fullScreenPluginInstance={fullScreenPluginInstance}
         />
       </RightPdfViewerWrapper>
-      <ShowExplanationButton $isExplanationHide={isExplanationHide} onClick={() => setIsExplanationHide(false)}>
+      <ShowExplanationButton
+        $isExplanationHide={isExplanationHide}
+        onClick={() => setIsExplanationHide(false)}
+        onMouseOver={() => setIsButtonHover(true)}
+        onMouseLeave={() => setIsButtonHover(false)}>
         <LeftArrowBigIcon />
-        <ShowExplanationTagIcon $isExplanationHide={isExplanationHide} />
+        <ShowExplanationMessageBox $isButtonHover={isButtonHover}>
+          <ShowExplanationTagIcon />
+        </ShowExplanationMessageBox>
       </ShowExplanationButton>
     </PdfViewerContainer>
   );
 }
 
-const ShowQuestionTagIcon = styled(ShowQuestionTagIc)<{ $isQuestionHide: boolean }>`
-  display: ${({ $isQuestionHide }) => $isQuestionHide && "block"};
+const ShowQuestionTagIcon = styled(ShowQuestionTagIc)`
   width: 7.3rem;
   height: 3.6rem;
 `;
 
-const ShowExplanationTagIcon = styled(ShowExplanationTagIc)<{ $isExplanationHide: boolean }>`
-  display: ${({ $isExplanationHide }) => $isExplanationHide && "block"};
+const ShowQuestionMessageBox = styled.div<{ $isButtonHover: boolean }>`
+  display: ${({ $isButtonHover }) => ($isButtonHover ? "block" : "none")};
+  position: fixed;
+  left: 5rem;
+`;
+
+const ShowExplanationMessageBox = styled.div<{ $isButtonHover: boolean }>`
+  display: ${({ $isButtonHover }) => ($isButtonHover ? "block" : "none")};
+  position: fixed;
+  right: 5rem;
+`;
+
+const ShowExplanationTagIcon = styled(ShowExplanationTagIc)`
   width: 7.3rem;
   height: 3.6rem;
 `;
