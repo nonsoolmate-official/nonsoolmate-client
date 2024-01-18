@@ -6,7 +6,7 @@ import ImageSlider from "answer/explanation/components/ImageSlider";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
-import { RightArrowBigIc, LeftArrowBigIc } from "@assets/index";
+import { RightArrowBigIc, LeftArrowBigIc, ShowExplanationTagIc, ShowQuestionTagIc } from "@assets/index";
 import { testImageType } from "answer/types/testImageType";
 
 interface PdfViewerWrapperProps {
@@ -24,6 +24,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
+  // const [isButtonHover, setIsButtonHover];
   const fullScreenPluginInstance = fullScreenPlugin();
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
     <PdfViewerContainer $isHide={isHide}>
       <ShowQuestionButton $isQuestionHide={isQuestionHide} onClick={() => setIsQuestionHide(false)}>
         <RightArrowBigIcon />
+        <ShowQuestionTagIcon $isQuestionHide={isQuestionHide} />
       </ShowQuestionButton>
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
@@ -70,10 +72,23 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
       </RightPdfViewerWrapper>
       <ShowExplanationButton $isExplanationHide={isExplanationHide} onClick={() => setIsExplanationHide(false)}>
         <LeftArrowBigIcon />
+        <ShowExplanationTagIcon $isExplanationHide={isExplanationHide} />
       </ShowExplanationButton>
     </PdfViewerContainer>
   );
 }
+
+const ShowQuestionTagIcon = styled(ShowQuestionTagIc)<{ $isQuestionHide: boolean }>`
+  display: ${({ $isQuestionHide }) => $isQuestionHide && "block"};
+  width: 7.3rem;
+  height: 3.6rem;
+`;
+
+const ShowExplanationTagIcon = styled(ShowExplanationTagIc)<{ $isExplanationHide: boolean }>`
+  display: ${({ $isExplanationHide }) => $isExplanationHide && "block"};
+  width: 7.3rem;
+  height: 3.6rem;
+`;
 
 const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   ${commonFlex}

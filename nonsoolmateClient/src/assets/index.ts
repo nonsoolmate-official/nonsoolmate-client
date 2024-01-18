@@ -65,6 +65,9 @@ import SixMonthsMembershipIc from "./icon/sixMonthsMembershipIc.svg?react";
 
 import CheckSmallIc from "./icon/checkSmallIc.svg?react";
 
+import ShowExplanationTagIc from "./icon/showExplanationTagIc.svg?react";
+import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -112,4 +115,6 @@ export {
   MonthlyMembershipIc,
   SixMonthsMembershipIc,
   CheckSmallIc,
+  ShowExplanationTagIc,
+  ShowQuestionTagIc,
 };
