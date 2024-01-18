@@ -1,4 +1,4 @@
-import University from "@assets/image/univieristy.png";
+import University from "@assets/image/university.png";
 import styled from "styled-components";
 
 export default function UnivImgs() {
