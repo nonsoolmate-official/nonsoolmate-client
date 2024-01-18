@@ -23,7 +23,7 @@ export default function HomeHeader() {
   return (
     <>
       <Header>
-        <LogoButton type="button">
+        <LogoButton onClick={() => navigate("/")} type="button">
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
