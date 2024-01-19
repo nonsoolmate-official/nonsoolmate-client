@@ -9,7 +9,7 @@ export const CONTENT_LIST: ContentListType[] = [
       {
         saletitle: "얼리버드 특가",
         beforeprice: "210,000",
-        salepercent: 25,
+        salepercent: 20,
       },
       {
         saletitle: "첫 달 20%추가 할인",

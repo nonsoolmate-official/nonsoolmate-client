@@ -30,4 +30,5 @@ const Container = styled.div`
 
   gap: 0.3rem;
   align-items: flex-end;
+  width: 25.6rem;
 `;

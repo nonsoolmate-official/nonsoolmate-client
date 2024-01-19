@@ -5,5 +5,5 @@ export default function Title() {
 }
 
 const Text = styled.h1`
-  ${({ theme }) => theme.fonts.Headline1};
+  ${({ theme }) => theme.fonts.Headline2};
 `;
