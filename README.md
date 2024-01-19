@@ -78,7 +78,8 @@
 
 <br>
 ## 🖥️ Pages
-![pages](https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/121157847/75aa6e18-f417-45c1-abfc-2ccb3a962a42)
+
+<img src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/121157847/4aba0cac-fe21-46c2-817c-9d2765438f27">
 
 ## 📂 Project Structure
 ~~~
