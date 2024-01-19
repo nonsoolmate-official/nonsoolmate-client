@@ -6,7 +6,7 @@ export default function Title() {
     <Container>
       <Text>더 많은 자료와 개인화된 채점</Text>
       <Text>
-        온라인 과외, <Nonsool>논술메이트</Nonsool>와 함께하세요
+        온라인 과외,&nbsp;<Nonsool> 논술메이트 </Nonsool>와 함께하세요
       </Text>
     </Container>
   );
