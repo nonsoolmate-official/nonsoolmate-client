@@ -1,10 +1,13 @@
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { RightWhiteArrowIc } from "@assets/index";
+import { useNavigate } from "react-router-dom";
 
 export default function GotoSaleButton() {
+  const navigate = useNavigate();
+
   return (
-    <Button type="button">
+    <Button type="button" onClick={() =>{navigate('membership')}}>
       첫 달 20% 할인받기 <RightWhiteArrowIcon />
     </Button>
   );
