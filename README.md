@@ -11,13 +11,13 @@
   <th>박소영 @qwp0</th>
 	<th>이시연 @SynthiaLee</th>
 	<tr>
-		<td><img width="300" alt="혜인" src="https://github.com/DO-SOPT-WEB/HyeinKwon/assets/100409061/68d412f0-111d-4310-ac4c-7a76303fca40">
+		<td><img width="300" alt="혜인" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/5f9c5746-f95d-4e10-9420-c733ae822ab2">
     </td>
-		<td><img width="300" alt="미뇽" src="https://github.com/DO-SOPT-WEB/HyeinKwon/assets/100409061/5d512583-c649-49d1-97ff-17789ae4de21">
+		<td><img width="300" alt="미뇽" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/d6620441-ae60-489e-9537-aa789141260e">
     </td>
-    	<td><img width="300" alt="소영" src="https://github.com/DO-SOPT-WEB/HyeinKwon/assets/100409061/4225b09c-ee34-4f35-90e7-8a9adf094ae9">
+    	<td><img width="300" alt="소영" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/1872ad94-4d8e-4f47-a705-9eec958ecded">
     </td>
-    	<td><img width="300" alt="시연" src="https://github.com/DO-SOPT-WEB/HyeinKwon/assets/100409061/8378f02c-dbed-4dde-b7bd-f6e0214728b9">
+    	<td><img width="300" alt="시연" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/9f6732c0-4884-4385-8773-466394199053">
     </td>
 	</tr>
 <th> 역할</th>
@@ -25,6 +25,7 @@
 <tr>
 <td>
 - 소셜 로그인<br>
+- 토큰 재발급 <br>
 - 온보딩 페이지<br>
 - 회원 가입 페이지<br>
 - 랜딩 페이지<br>
