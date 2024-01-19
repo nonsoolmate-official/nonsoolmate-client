@@ -45,8 +45,9 @@
   <td>
 - 첨삭, 해제 창<br>
 - pdf viewer<br>
-- pdf download<br>
-- 컴포넌트 간 슬라이드<br>
+- pdf 다운로드<br>
+- pdf 전체화면 보기<br>
+- 이미지 슬라이더<br>
 </td>
 </tr>
 	</table>
