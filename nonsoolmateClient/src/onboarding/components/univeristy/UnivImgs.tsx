@@ -7,6 +7,7 @@ export default function UnivImgs() {
 
 const Image = styled.img`
   width: 100%;
-  height: 26.5rem;
+  height: auto;
   margin-top: 5.6rem;
+  object-fit: cover;
 `;

@@ -32,7 +32,7 @@ export default function TestQuitModal(props: TestQuitStatusProps) {
   );
 }
 const TestQuitModalContainer = styled(ModalContainer)`
-  ${({ theme }) => theme.effects.dimmed_60};
+  ${({ theme }) => theme.effects.dimmed_40};
 
   backdrop-filter: blur(0.3rem);
 `;
