@@ -77,6 +77,8 @@
 <img  alt="vercel" src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
 
 <br>
+<br>
+
 ## 🖥️ Pages
 
 <img src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/121157847/4aba0cac-fe21-46c2-817c-9d2765438f27">
