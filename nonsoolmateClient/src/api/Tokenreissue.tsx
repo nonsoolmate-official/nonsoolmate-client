@@ -15,9 +15,14 @@ const SetupAxiosInterceptors = ({ children }: { children: React.ReactNode }) => 
         return response;
       },
       async function (error) {
+        if (error.response.status === 403) {
+          const originalRequest = error.config;
+          console.log("logo");
+          return client(originalRequest);
+        }
+
         if (error.response.status === 401) {
           const originalRequest = error.config;
-          console.log("hehehre");
 
           try {
             const res = await client.post(

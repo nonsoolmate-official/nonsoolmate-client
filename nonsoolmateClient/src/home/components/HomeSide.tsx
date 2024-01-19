@@ -7,14 +7,13 @@ import SideBarTestButton from "./SideBarTestButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useGetName from "home/hooks/useGetName";
-import Error from "error";
 
 export default function HomeSide() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState<string>("test");
 
   const getNameResponse = useGetName();
-  if (!getNameResponse) return <Error />;
+  if (!getNameResponse) return <></>;
 
   const {
     data: { memberName },
@@ -36,22 +35,24 @@ export default function HomeSide() {
   }
 
   return (
-    <Side>
-      <SideHeader>
-        <SideHeaderHello>안녕하세요!</SideHeaderHello>
-        <SideHeaderBox>
-          <SideHeaderName>{memberName}</SideHeaderName>
-          <SideHeaderText>님</SideHeaderText>
-        </SideHeaderBox>
-      </SideHeader>
-      <SideBar>
-        <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
-        <BorderIcon />
-        <SideBarPracticeButton currentPage={currentPage} handleMoveToHomePractice={handleMoveToHomePractice} />
-        <BorderIcon />
-        <SideBarTestButton currentPage={currentPage} handleMoveToHomeTest={handleMoveToHomeTest} />
-      </SideBar>
-    </Side>
+    getNameResponse && (
+      <Side>
+        <SideHeader>
+          <SideHeaderHello>안녕하세요!</SideHeaderHello>
+          <SideHeaderBox>
+            <SideHeaderName>{memberName}</SideHeaderName>
+            <SideHeaderText>님</SideHeaderText>
+          </SideHeaderBox>
+        </SideHeader>
+        <SideBar>
+          <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
+          <BorderIcon />
+          <SideBarPracticeButton currentPage={currentPage} handleMoveToHomePractice={handleMoveToHomePractice} />
+          <BorderIcon />
+          <SideBarTestButton currentPage={currentPage} handleMoveToHomeTest={handleMoveToHomeTest} />
+        </SideBar>
+      </Side>
+    )
   );
 }
 
