@@ -17,7 +17,7 @@
     </td>
     	<td><img width="300" alt="소영" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/1872ad94-4d8e-4f47-a705-9eec958ecded">
     </td>
-    	<td><img width="280" alt="시연" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/9f6732c0-4884-4385-8773-466394199053">
+    	<td><img width="260" alt="시연" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/9f6732c0-4884-4385-8773-466394199053">
     </td>
 	</tr>
 <th> 역할</th>
