@@ -74,28 +74,59 @@
 
 ## 📂 Project Structure
 ~~~
-📦 nonsoolmateServer
-|-- 📁 .github
-|-- 📁 .husky
+📦 nonsoolmateClient
+|-- 📁 dist
 |-- 📁 node_modules
-|-- 📁 public
 |-- 📁 src
+	|-- 📁 answer 
+		|-- 📁 api 
+		|-- 📁 components
+		|-- 📁 correction
+			|-- index.tsx
+		|-- 📁 explanation
+			|-- 📁 components
+			|-- index.tsx
+		|-- 📁 hooks 
+		|-- 📁 types
 	|-- 📁 api 
-	|-- 📁 zustand
 	|-- 📁 assets
-			|-- 📁 icon //svg
-			|-- 📁 image //png
-			|-- 📁 assets.d.ts
-			|-- 📁 index.ts //icon export
-	|-- 📁 core 
+		|-- 📁 icon //svg
+		|-- 📁 image //png
+		|-- 📁 assets.d.ts
+		|-- 📁 index.ts //icon export
 	|-- 📁 components
-			|-- 📁 common
-	|-- 📁 hooks 
+		|-- 📁 onBoardingHeader
+	|-- 📁 error
+		|-- index.tsx
+	|-- 📁 home
+		|-- 📁 api 
+		|-- 📁 components
+		|-- 📁 homePractice
+			|-- index.tsx
+		|-- 📁 homeStudy
+			|-- index.tsx
+		|-- 📁 homeTest
+			|-- index.tsx
+		|-- 📁 hooks 
+		|-- index.tsx 
+	|-- 📁 layout 
+	|-- 📁 loading 
+	|-- 📁 membership 
+	|-- 📁 onboarding 
+	|-- 📁 signup 
+	|-- 📁 socialLogin 
 	|-- 📁 style
-			|-- globalStyle.ts
-			|-- style.d.ts
-			|-- theme.ts
-	|-- 📁 utils 
+		|-- commonStyle.ts
+		|-- globalStyle.ts
+		|-- style.d.ts
+		|-- theme.ts
+	|-- 📁 takeTest 
+		|-- 📁 api 
+		|-- 📁 components
+		|-- 📁 constants
+		|-- 📁 hooks 
+		|-- 📁 types
+		|-- index.tsx
 	|-- 📁 types 
 	|-- 📁 api
 	|-- App.tsx
