@@ -77,6 +77,9 @@
 
 
 <br><br>
+## 🖥️ Pages
+![pages](https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/121157847/75aa6e18-f417-45c1-abfc-2ccb3a962a42)
+
 ## 📂 Project Structure
 ~~~
 📦 nonsoolmateServer
