@@ -6,6 +6,7 @@ import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 import { useNavigate } from "react-router-dom";
 import Error from "error";
 import useGetName from "home/hooks/useGetName";
+
 export default function HomeHeader() {
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
   const handleHomeMemberInfoToggle = () => {
