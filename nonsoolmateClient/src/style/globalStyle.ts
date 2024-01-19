@@ -31,10 +31,10 @@ button {
 
 html {
   @font-face {
-      font-family: SUIT-Regular;
+      font-family: SUIT;
       font-style: normal;
       font-weight: normal;
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+      src: url('https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css') format('woff2');
   }
 
 }

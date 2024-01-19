@@ -40,6 +40,7 @@ const PdfViewerWrapper = styled.div`
   width: 100%;
   height: calc(100vh - 16.4rem);
   border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const ViewerWrapper = styled.div`

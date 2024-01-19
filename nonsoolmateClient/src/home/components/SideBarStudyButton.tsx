@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { commonFlex } from "style/commonStyle";
 import { SideBarTextBoxLayout } from "style/layout/SideBarTextBoxLayout";
 import { StudyActiveIc, RightArrowIc, StudyDisabledIc, RightArrowBlueIc } from "@assets/index";
 
@@ -23,7 +22,9 @@ export default function SideBarStudyButton(props: SideBarStudyProps) {
 }
 
 const ButtonBox = styled.button`
-  ${commonFlex};
+  display: flex;
+  align-items: center;
+  height: 4rem;
 `;
 
 const StudyActiveIcon = styled(StudyActiveIc)`
@@ -51,11 +52,13 @@ const Text = styled.h3<{ $currentPage: string }>`
 const RightArrowIcon = styled(RightArrowIc)`
   width: 2rem;
   height: 2rem;
+  margin-left: 3.1rem;
   padding: 0.1rem 0;
 `;
 
 const RightArrowBlueIcon = styled(RightArrowBlueIc)`
   width: 2rem;
   height: 2rem;
+  margin-left: 3.1rem;
   padding: 0.1rem 0;
 `;

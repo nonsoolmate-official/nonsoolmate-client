@@ -29,6 +29,7 @@ const ImageSliderContainer = styled.section`
   height: calc(100vh - 16.4rem);
   border-radius: 8px;
   overflow-y: scroll;
+  background-color: ${({ theme }) => theme.colors.white};
 
   &::-webkit-scrollbar {
     width: 23px;
