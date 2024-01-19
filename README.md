@@ -153,13 +153,11 @@
 |-- vite.config.ts
 |-- yarn.lock
 ~~~
-<br><br>
 
 ## 🔐 Nonsoolmate Client's Rule
 
 ## 1. 👻 Commit Convention
 https://www.notion.so/nonsoolmate/Coding-Convention-a9d00075f5b14c39ae704610f1238d75
-
 
 <br>
 
