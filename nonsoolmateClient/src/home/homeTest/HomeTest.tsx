@@ -3,7 +3,6 @@ import HomeTestSet from "./HomeTestSet";
 import UniversityModal from "home/components/UniversityModal";
 import { useState, useEffect } from "react";
 import useGetSelectUniversityExams from "home/hooks/useGetSelectUniversityExams";
-import Error from "error";
 import { useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
@@ -33,7 +32,7 @@ export default function HomeTest() {
   }, []);
 
   const response = useGetSelectUniversityExams();
-  if (!response) return <Error />;
+  if (!response) return <></>;
 
   const dataUniversityIds = response.map((item) => item.universityId);
 

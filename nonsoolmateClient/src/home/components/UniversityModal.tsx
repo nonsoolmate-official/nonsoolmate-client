@@ -4,7 +4,6 @@ import { lightBlueButtonStyle } from "style/commonStyle";
 import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 import { useEffect } from "react";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
-import Error from "error";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
 
 interface UniversityModalProps {
@@ -14,8 +13,7 @@ interface UniversityModalProps {
   isSelectedNone?: boolean;
   handleMySelectedUniversityIdList: (idList: number[]) => void;
   mySelectedUniversityIdList: number[];
-  dataUniversityIds: number[]
-
+  dataUniversityIds: number[];
 }
 
 export default function UniversityModal(props: UniversityModalProps) {
@@ -25,14 +23,14 @@ export default function UniversityModal(props: UniversityModalProps) {
     handleSelectedUniversityIdList,
     isSelectedNone,
     handleMySelectedUniversityIdList,
-    dataUniversityIds
+    dataUniversityIds,
   } = props;
 
   const mutate = usePatchSelectUniversities();
 
-useEffect(() => {
-  handleSelectedUniversityIdList(dataUniversityIds)
-}, [])
+  useEffect(() => {
+    handleSelectedUniversityIdList(dataUniversityIds);
+  }, []);
 
   useEffect(() => {
     if (isSelectedNone) {
@@ -65,8 +63,7 @@ useEffect(() => {
   }
 
   const getSelectUniversitiesResponse = useGetSelectUniversities();
-  if (!getSelectUniversitiesResponse) return <Error />;
-
+  if (!getSelectUniversitiesResponse) return <></>;
 
   return (
     <BackgroundView>

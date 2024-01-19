@@ -24,5 +24,5 @@ export default function RedirectPage() {
     return <Error />;
   }
 
-  return <div>로그인 처리 중...</div>;
+  return <Loading />;
 }
