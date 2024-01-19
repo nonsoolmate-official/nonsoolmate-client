@@ -55,9 +55,9 @@ const effects = {
 const fonts = {
   Headline1: css`
     font-family: SUIT;
-    font-size: 6.4rem;
+    font-size: 4.8rem;
     font-weight: 600;
-    line-height: 7.6rem;
+    line-height: 6rem;
   `,
   Headline2: css`
     font-family: SUIT;

@@ -3,13 +3,12 @@ import { lightBlueButtonStyle } from "style/commonStyle";
 import { LoginInfoIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import useGetTicket from "home/hooks/useGetTicket";
-import Error from "error";
 
 export default function HomeMemberInfoToggle() {
   const navigate = useNavigate();
 
   const getTicketResponse = useGetTicket();
-  if (!getTicketResponse) return <Error />;
+  if (!getTicketResponse) return <></>;
 
   const {
     data: { memberName, ticketCount },
