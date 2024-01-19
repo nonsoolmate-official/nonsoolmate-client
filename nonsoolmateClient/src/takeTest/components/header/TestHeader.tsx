@@ -33,7 +33,7 @@ export default function TestHeader(props: TestHeaderProps) {
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <IconBox onClick={handleBackButton}>
+        <IconBox onClick={handleBackButton} type="button">
           <LeftArrowBlackBtnIcon />
         </IconBox>
         <TestTitle>{openCoachMark || openPrecautionModal ? "시험 예시 화면" : examName}</TestTitle>
@@ -76,7 +76,7 @@ const HeaderLeft = styled.div`
 
   gap: 0.8rem;
 `;
-const IconBox = styled.div`
+const IconBox = styled.button`
   padding: 0;
 `;
 const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`

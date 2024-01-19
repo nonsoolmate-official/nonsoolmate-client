@@ -9,7 +9,7 @@ import { SelectUniversityDataTypes } from "home/api/getSelectUniversityExams";
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
   response: SelectUniversityDataTypes[];
-  dataUniversityIds: number[]
+  dataUniversityIds: number[];
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
@@ -23,7 +23,6 @@ export default function HomeTestSet(props: HomeTestSetProps) {
       setSelectedUniversityId((prevSelectedIds) => [...prevSelectedIds, id]);
     }
   }
-
 
   return (
     <Container>
@@ -128,6 +127,7 @@ const SelectedListBox = styled.div`
 const SelectedUniversityButton = styled.button<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 1.2rem;
   padding: 1.6rem 2.4rem;

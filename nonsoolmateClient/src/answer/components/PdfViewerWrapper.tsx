@@ -6,7 +6,7 @@ import ImageSlider from "answer/explanation/components/ImageSlider";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
-import { RightArrowBigIc, LeftArrowBigIc } from "@assets/index";
+import { RightArrowBigIc, LeftArrowBigIc, ShowExplanationTagIc, ShowQuestionTagIc } from "@assets/index";
 import { testImageType } from "answer/types/testImageType";
 
 interface PdfViewerWrapperProps {
@@ -21,10 +21,11 @@ interface PdfViewerWrapperProps {
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testImages } = props;
   const getFilePluginInstance = getFilePlugin();
+  const fullScreenPluginInstance = fullScreenPlugin();
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
-  const fullScreenPluginInstance = fullScreenPlugin();
+  const [isButtonHover, setIsButtonHover] = useState(false);
 
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
@@ -36,8 +37,15 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
 
   return (
     <PdfViewerContainer $isHide={isHide}>
-      <ShowQuestionButton $isQuestionHide={isQuestionHide} onClick={() => setIsQuestionHide(false)}>
+      <ShowQuestionButton
+        $isQuestionHide={isQuestionHide}
+        onMouseOver={() => setIsButtonHover(true)}
+        onMouseLeave={() => setIsButtonHover(false)}
+        onClick={() => setIsQuestionHide(false)}>
         <RightArrowBigIcon />
+        <ShowQuestionMessageBox $isButtonHover={isButtonHover}>
+          <ShowQuestionTagIcon />
+        </ShowQuestionMessageBox>
       </ShowQuestionButton>
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
@@ -68,12 +76,41 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           fullScreenPluginInstance={fullScreenPluginInstance}
         />
       </RightPdfViewerWrapper>
-      <ShowExplanationButton $isExplanationHide={isExplanationHide} onClick={() => setIsExplanationHide(false)}>
+      <ShowExplanationButton
+        $isExplanationHide={isExplanationHide}
+        onClick={() => setIsExplanationHide(false)}
+        onMouseOver={() => setIsButtonHover(true)}
+        onMouseLeave={() => setIsButtonHover(false)}>
         <LeftArrowBigIcon />
+        <ShowExplanationMessageBox $isButtonHover={isButtonHover}>
+          <ShowExplanationTagIcon />
+        </ShowExplanationMessageBox>
       </ShowExplanationButton>
     </PdfViewerContainer>
   );
 }
+
+const ShowQuestionTagIcon = styled(ShowQuestionTagIc)`
+  width: 7.3rem;
+  height: 3.6rem;
+`;
+
+const ShowQuestionMessageBox = styled.div<{ $isButtonHover: boolean }>`
+  display: ${({ $isButtonHover }) => ($isButtonHover ? "block" : "none")};
+  position: fixed;
+  left: 5rem;
+`;
+
+const ShowExplanationMessageBox = styled.div<{ $isButtonHover: boolean }>`
+  display: ${({ $isButtonHover }) => ($isButtonHover ? "block" : "none")};
+  position: fixed;
+  right: 5rem;
+`;
+
+const ShowExplanationTagIcon = styled(ShowExplanationTagIc)`
+  width: 7.3rem;
+  height: 3.6rem;
+`;
 
 const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   ${commonFlex}
@@ -83,6 +120,7 @@ const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   width: 100vw;
   height: calc(100vh - 6.4rem);
   padding: 2rem 0 3rem;
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExplanationHide: boolean }>`

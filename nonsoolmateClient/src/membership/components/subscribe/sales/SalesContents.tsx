@@ -11,7 +11,7 @@ export default function SalesContents(props: SaleContentsProps) {
     <Container>
       <SaleTitle>{saletitle}</SaleTitle>
       <BeforePrice> &#8361;{beforeprice}</BeforePrice>
-      <SalePercent>{salepercent} % OFF</SalePercent>
+      <SalePercent>{salepercent}% OFF</SalePercent>
     </Container>
   );
 }

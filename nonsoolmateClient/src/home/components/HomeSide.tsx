@@ -74,7 +74,7 @@ const SideHeader = styled.header`
   width: 19.2rem;
 `;
 
-const SideHeaderHello = styled.h2`
+const SideHeaderHello = styled.h4`
   ${({ theme }) => theme.fonts.Headline4};
 `;
 
@@ -85,13 +85,13 @@ const SideHeaderBox = styled.section`
   padding-right: 10rem;
 `;
 
-const SideHeaderName = styled.h2`
+const SideHeaderName = styled.h4`
   ${({ theme }) => theme.fonts.Headline4};
 
   color: ${({ theme }) => theme.colors.main_blue};
 `;
 
-const SideHeaderText = styled.h2`
+const SideHeaderText = styled.h4`
   ${({ theme }) => theme.fonts.Headline4};
 `;
 

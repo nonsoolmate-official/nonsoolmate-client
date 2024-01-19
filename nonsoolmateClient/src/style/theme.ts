@@ -52,85 +52,81 @@ const effects = {
     box-shadow: 0px 0px 12px 0px rgb(236, 237, 249)`,
 };
 
-// bold=700
-// medium=500
-//regular=400
-
 const fonts = {
   Headline1: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 6.4rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 7.6rem;
   `,
   Headline2: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 3.6rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 4.4rem;
   `,
   Headline3: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 2.8rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 3.6rem;
   `,
   Headline4: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 2.4rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Headline5: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Body1: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.8rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Body2: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.8rem;
     font-weight: 500;
     line-height: 2.8rem;
   `,
   Body3: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 2.4rem;
   `,
   Body4: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.4rem;
   `,
   Body5: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 2rem;
   `,
   Body6: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 2rem;
   `,
   Body7: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.6rem;
   `,
   Body8: css`
-    font-family: SUIT-Regular;
+    font-family: SUIT;
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 1.6rem;
