@@ -120,6 +120,7 @@ const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   width: 100vw;
   height: calc(100vh - 6.4rem);
   padding: 2rem 0 3rem;
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExplanationHide: boolean }>`
