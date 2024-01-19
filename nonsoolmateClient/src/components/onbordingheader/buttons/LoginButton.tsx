@@ -18,6 +18,8 @@ export default function LoginButton() {
 const Button = styled.button`
   ${commonFlex}
 
+  width: 6.8rem;
+  height: 3.2rem;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.grey_700};
   ${({ theme }) => theme.fonts.Body3};
