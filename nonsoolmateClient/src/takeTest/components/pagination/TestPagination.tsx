@@ -24,7 +24,7 @@ export default function TestPagination(props: PaginatinProps) {
   useEffect(() => {
     setShowPreviousIcon(openCoachMark || openPrecautionModal || paperIdx > 0);
     setShowNextIcon(paperIdx < totalPages - 1);
-  }, [openCoachMark, openPrecautionModal, paperIdx, totalPages]);
+  }, [openCoachMark, openPrecautionModal, paperIdx]);
 
   if (!examImage) return <Error />;
   const {
