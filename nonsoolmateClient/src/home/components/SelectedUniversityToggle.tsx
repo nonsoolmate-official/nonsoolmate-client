@@ -93,7 +93,7 @@ const ToggleContainer = styled.section`
   overflow: scroll;
   width: 100%;
   max-height: 33.2rem;
-  padding: 0.8rem 2.4rem 2.8rem;
+  padding: 0.8rem 2.4rem 1.6rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
