@@ -1,21 +1,40 @@
-import { useMutation, useQueryClient } from "react-query";
-import { login } from "socialLogin/api/login";
-import { setCookie } from "@api/cookie";
+import { client } from "@api/axios";
+import { useNavigate } from "react-router-dom";
+import { loginErrorProps, loginResProps } from "./type";
+import { useEffect } from "react";
 
 //login을 위한 useMutation customhook입니다.
 export default function useLogin() {
-  const queryClient = useQueryClient();
+  const urlParams = new URLSearchParams(window.location.search);
+  const CODE = urlParams.get("code");
+  console.log(CODE);
+  const navigate = useNavigate();
 
-  const { mutate, ...rest } = useMutation(login, {
-    onSuccess: (data) => {
-      console.log("성공", data);
-      //accessToken을 cookie에 저장합니다.
-      setCookie("accessToken", data.accessToken, { path: "/" });
-      //해당 data를 querydata에 저장합니다.
-      queryClient.setQueryData("authToken", data);
-      //성공하면 바로 home으로 이동하도록 합니다.
-      window.location.href = "/home/test";
-    },
-  });
-  return { mutate, ...rest };
+  useEffect(() => {
+    client
+      .post(
+        `${import.meta.env.VITE_BASE_URL}/auth/social/login`,
+        {
+          platformType: "NAVER",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "authorization-code": CODE,
+          },
+        },
+      )
+      .then((res: loginResProps) => {
+        console.log("로그인 성공");
+        console.log(res);
+        // window.location.href = "/home/test";
+      })
+      .catch((err: loginErrorProps) => {
+        if (err.response.data.code === 404) {
+          navigate("/signup");
+        } else {
+          navigate("/error");
+        }
+      });
+  }, []);
 }
