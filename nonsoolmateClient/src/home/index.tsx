@@ -2,18 +2,15 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import HomeHeader from "./components/HomeHeader";
 import HomeSide from "./components/HomeSide";
-import { ErrorHandler } from "@api/ErrorHandler";
 
 export default function index() {
   return (
     <>
-      <ErrorHandler>
-        <HomeHeader />
-        <Homes>
-          <HomeSide />
-          <Outlet />
-        </Homes>
-      </ErrorHandler>
+      <HomeHeader />
+      <Homes>
+        <HomeSide />
+        <Outlet />
+      </Homes>
     </>
   );
 }

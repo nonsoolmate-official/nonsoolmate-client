@@ -4,8 +4,6 @@ import { ThemeProvider } from "styled-components";
 import { router } from "router";
 import { RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import SetupAxiosInterceptors from "@api/Tokenreissue";
-import { ErrorHandler } from "@api/ErrorHandler";
 
 const queryClient = new QueryClient();
 
@@ -13,11 +11,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <SetupAxiosInterceptors>
-          <ErrorHandler>
-            <RouterProvider router={router} />
-          </ErrorHandler>
-        </SetupAxiosInterceptors>
+        <RouterProvider router={router} />
         <GlobalStyle />
       </ThemeProvider>
     </QueryClientProvider>
