@@ -12,62 +12,6 @@
 
 <br/> 
 
-## 📓 Frontend Developer
-<div align="center">
-	<table>
-  <th>권혜인 @hae2ni</th>
-	<th>김민영 @Rose-my</th>
-  <th>박소영 @qwp0</th>
-	<th>이시연 @SynthiaLee</th>
-	<tr>
-		<td><img width="300" alt="혜인" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/5f9c5746-f95d-4e10-9420-c733ae822ab2">
-    </td>
-		<td><img width="300" alt="미뇽" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/d6620441-ae60-489e-9537-aa789141260e">
-    </td>
-    	<td><img width="300" alt="소영" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/1872ad94-4d8e-4f47-a705-9eec958ecded">
-    </td>
-    	<td><img width="260" alt="시연" src="https://github.com/nonsoolmate/NONSOOLMATE-CLIENT/assets/100409061/9f6732c0-4884-4385-8773-466394199053">
-    </td>
-	</tr>
-<th> 역할</th>
-<th> 역할</th>
-<th> 역할</th>
-<th> 역할</th>
-<tr>
-<td>
-- 소셜 로그인<br>
-- 토큰 재발급 <br>
-- 온보딩 페이지<br>
-- 회원 가입 페이지<br>
-- 랜딩 페이지<br>
-</td>
-<td>
-- 나의 시험장 페이지<br>
-- 대학 시험 리스트 토글<br>
-- 목표 대학 설정 모달<br>
-- 목표 대학, 시험 api 연결<br>
-- 회원정보 토글 <br>
-</td>
-  <td>
-- 시험 보기 페이지<br>
-- 코치마크 화면<br>
-- 모달창<br>
-- 타이머<br>
-- 이미지 페이지네이션<br>
-- 이미지 압축 업로드<br>
-</td>
-  <td>
-- 첨삭, 해제 창<br>
-- pdf viewer<br>
-- pdf 다운로드<br>
-- pdf 전체화면 보기<br>
-- 이미지 슬라이더<br>
-</td>
-</tr>
-	</table>
-</div>
-
-<br>
 
 ## 💻 Development Tech
 ![](https://img.shields.io/badge/react-61DAFB.svg?style=for-the-badge&logo=react&logoColor=white) <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
