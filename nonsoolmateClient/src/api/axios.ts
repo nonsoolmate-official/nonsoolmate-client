@@ -1,13 +1,5 @@
 import axios, { AxiosInstance } from "axios";
 
-export const client: AxiosInstance = axios.create({
-  baseURL: `${import.meta.env.VITE_BASE_URL}`,
-  headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-  },
-});
-
 const ACCESS_TOKEN = "token";
 
 export const getToken = () => {
@@ -21,3 +13,12 @@ export const setToken = (token: string) => {
 export const removeToken = () => {
   localStorage.removeItem(ACCESS_TOKEN);
 };
+
+export const client: AxiosInstance = axios.create({
+  baseURL: `${import.meta.env.VITE_BASE_URL}`,
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: `Bearer ${getToken()}`,
+  },
+});

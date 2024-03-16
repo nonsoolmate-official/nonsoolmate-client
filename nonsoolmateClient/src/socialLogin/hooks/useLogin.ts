@@ -1,9 +1,8 @@
-import { client } from "@api/axios";
+import { client, setToken } from "@api/axios";
 import { useNavigate } from "react-router-dom";
 import { loginErrorProps, loginResProps } from "./type";
 import { useEffect } from "react";
 
-//login을 위한 useMutation customhook입니다.
 export default function useLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
@@ -27,7 +26,8 @@ export default function useLogin() {
       .then((res: loginResProps) => {
         console.log("로그인 성공");
         console.log(res);
-        // window.location.href = "/home/test";
+        setToken(res.data.data.accessToken);
+        window.location.href = "/home/test";
       })
       .catch((err: loginErrorProps) => {
         if (err.response.data.code === 404) {
