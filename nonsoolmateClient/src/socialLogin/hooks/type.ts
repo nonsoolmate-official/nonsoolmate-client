@@ -11,12 +11,3 @@ export interface loginResProps {
     };
   };
 }
-
-export interface loginErrorProps {
-  response: {
-    data: {
-      code: number;
-      message: string;
-    };
-  };
-}

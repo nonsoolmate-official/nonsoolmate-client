@@ -1,6 +1,6 @@
 import { client, setToken } from "@api/axios";
 import { useNavigate } from "react-router-dom";
-import { loginErrorProps, loginResProps } from "./type";
+import { loginResProps } from "./type";
 import { useEffect } from "react";
 
 export default function useLogin() {
@@ -29,12 +29,8 @@ export default function useLogin() {
         setToken(res.data.data.accessToken);
         window.location.href = "/home/test";
       })
-      .catch((err: loginErrorProps) => {
-        if (err.response.data.code === 404) {
-          navigate("/signup");
-        } else {
-          navigate("/error");
-        }
+      .catch(() => {
+        navigate("/error");
       });
   }, []);
 }
