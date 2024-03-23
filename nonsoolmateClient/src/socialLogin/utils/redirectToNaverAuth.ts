@@ -1,4 +1,4 @@
-import { NAVER_AUTH_URL } from "socialLogin/api/getNaverAuthUrl";
+import { NAVER_AUTH_URL } from "socialLogin/constants/naverAuthUrl";
 
 // 네이버 인증 URL로 리디렉트하는 함수
 export function redirectToNaverAuth() {

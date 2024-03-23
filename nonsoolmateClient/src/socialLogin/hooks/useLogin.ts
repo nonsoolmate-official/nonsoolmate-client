@@ -1,8 +1,20 @@
 import { client, setToken } from "@api/axios";
 import { useNavigate } from "react-router-dom";
-import { loginResProps } from "./type";
 import { useEffect } from "react";
 
+export interface loginResProps {
+  data: {
+    code: number;
+    message: string;
+    data: {
+      memberId: number;
+      authType: string;
+      memberName: string;
+      accessToken: string;
+      refreshToken: string;
+    };
+  };
+}
 export default function useLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
