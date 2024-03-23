@@ -1,6 +1,7 @@
-import { client, setToken } from "@api/axios";
+import { setToken } from "@api/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { client } from "@api/axios";
 
 export interface loginResProps {
   data: {
