@@ -8,7 +8,6 @@ import TestFinishModal from "./components/modal/TestFinishModal";
 import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
-import Error from "error";
 import { useLocation } from "react-router-dom";
 
 export default function index() {
@@ -24,7 +23,7 @@ export default function index() {
   const { examId } = location.state;
 
   const examRes = useGetUniversityExam(examId);
-  if (!examRes) return <Error />;
+  if (!examRes) return <></>;
 
   const {
     data: { examName, examTimeLimit },
