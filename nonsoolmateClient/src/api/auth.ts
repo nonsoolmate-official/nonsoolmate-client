@@ -22,3 +22,11 @@ export const getRefreshToken = () => {
 export const setRefreshToken = (token: string) => {
   sessionStorage.setItem(REFREH_TOKEN, token);
 };
+
+client.interceptors.request.use((config) => {
+  const accessToken = getToken();
+  if (accessToken) {
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
+  }
+  return config;
+});
