@@ -1,10 +1,10 @@
 import { useLayoutEffect } from "react";
 import { client } from "@api/axios";
 import { getToken } from "socialLogin/utils/token";
-import useRefresh from "./useRefresh";
+import usePostRefresh from "./usePostRefresh";
 
 export default function useSetInterceptors() {
-  const refresh = useRefresh();
+  const refresh = usePostRefresh();
   useLayoutEffect(() => {
     const requestInterceptor = client.interceptors.request.use((config) => {
       const accessToken = getToken();

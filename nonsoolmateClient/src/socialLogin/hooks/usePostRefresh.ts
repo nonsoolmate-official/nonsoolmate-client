@@ -3,10 +3,10 @@ import { client } from "@api/axios";
 import { isAxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function useRefresh() {
+export default function usePostRefresh() {
   const navigate = useNavigate();
 
-  const refresh = async () => {
+  const postRefresh = async () => {
     const refreshToken = getRefreshToken();
 
     try {
@@ -31,5 +31,5 @@ export default function useRefresh() {
     }
   };
 
-  return refresh;
+  return postRefresh;
 }

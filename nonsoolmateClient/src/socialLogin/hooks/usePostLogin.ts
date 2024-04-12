@@ -16,7 +16,7 @@ export interface loginResProps {
     };
   };
 }
-export default function useLogin() {
+export default function usePostLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
   console.log(CODE);
