@@ -2,8 +2,10 @@ import ExplainHeader from "answer/components/ExplainHeader";
 import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
 import { useGetExplanationPageData } from "answer/hooks/useGetExplanationPageData";
 import { useLocation } from "react-router-dom";
+import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 
 export default function index() {
+  useRefreshPage();
   const location = useLocation();
   const { examId } = location.state;
 
