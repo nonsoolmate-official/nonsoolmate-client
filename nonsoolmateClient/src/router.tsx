@@ -1,7 +1,6 @@
 import Error from "error";
 import TakeTest from "takeTest";
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "layout/RootLayout";
 import Home from "home";
 import HomePractice from "home/homePractice/HomePractice";
 import HomeStudy from "home/homeStudy/HomeStudy";
@@ -13,11 +12,12 @@ import Signup from "signup";
 import Membership from "membership";
 import RedirectPages from "socialLogin";
 import Loading from "loading";
+import Interceptors from "socialLogin/components/Interceptors";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <Interceptors />,
     errorElement: <Loading />,
 
     children: [

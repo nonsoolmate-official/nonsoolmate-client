@@ -1,4 +1,4 @@
-import { setRefreshToken, setToken } from "@api/auth";
+import { setRefreshToken, setToken } from "socialLogin/utils/token";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { client } from "@api/axios";
