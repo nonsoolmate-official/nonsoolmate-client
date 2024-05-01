@@ -1,4 +1,4 @@
-import { setToken } from "@api/auth";
+import { setRefreshToken, setToken } from "socialLogin/utils/token";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { client } from "@api/axios";
@@ -16,7 +16,7 @@ export interface loginResProps {
     };
   };
 }
-export default function useLogin() {
+export default function usePostLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
   console.log(CODE);
@@ -37,9 +37,9 @@ export default function useLogin() {
         },
       )
       .then((res: loginResProps) => {
-        console.log("로그인 성공");
-        console.log(res);
-        setToken(res.data.data.accessToken);
+        const { accessToken, refreshToken } = res.data.data;
+        setToken(accessToken);
+        setRefreshToken(refreshToken);
         window.location.href = "/home/test";
       })
       .catch(() => {

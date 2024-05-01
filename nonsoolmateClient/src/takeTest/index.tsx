@@ -9,8 +9,10 @@ import TestSubmitModal from "./components/modal/TestSubmitModal";
 import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 import { useLocation } from "react-router-dom";
+import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 
 export default function index() {
+  useRefreshPage();
   const [openCoachMark, setOpenCoachMark] = useState(true);
   const [openPrecautionModal, setOpenPrecautionModal] = useState(false);
   const [openTestQuitModal, setOpenTestQuitModal] = useState(false);
