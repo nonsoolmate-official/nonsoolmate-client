@@ -1,13 +1,16 @@
 import Header from "@components/onbordingheader/Header";
-import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import Contents from "./components/Contents";
 import Title from "./components/Title";
+import useGetName from "home/hooks/useGetName";
+import HomeHeader from "home/components/HomeHeader";
 
 export default function Membership() {
+  const getNameResponse = useGetName();
+
   return (
     <Container>
-      <Header isOnboarding={false} />
+      {getNameResponse ? <HomeHeader /> : <Header isOnboarding={false} />}
       <Title />
       <Contents />
     </Container>
@@ -15,7 +18,5 @@ export default function Membership() {
 }
 
 const Container = styled.section`
-  ${columnFlex}
-
   position: relative;
 `;
