@@ -18,7 +18,6 @@ export default function useSetInterceptors() {
       (res) => res,
       async (err) => {
         if (err.config.url !== "/auth/reissue" && err.response.status === 401) {
-          console.log("401에러");
           await refresh();
           const token = getToken();
           if (token) {
