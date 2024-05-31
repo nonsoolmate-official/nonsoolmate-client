@@ -2,6 +2,7 @@ import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
+import { media } from "style/responsiveStyle";
 
 interface TestHeaderProps {
   changeTestQuitStatus: (testQuitModal: boolean) => void;
@@ -38,25 +39,28 @@ export default function TestHeader(props: TestHeaderProps) {
         </IconBox>
         <TestTitle>{openCoachMark || openPrecautionModal ? "시험 예시 화면" : examName}</TestTitle>
       </HeaderLeft>
-      <TimerBox>
-        {openCoachMark || openPrecautionModal ? (
-          <InitTimer>00 : 00 : 00</InitTimer>
-        ) : (
-          <Timer
-            changeTestFinishStatus={changeTestFinishStatus}
-            computeTakeTime={computeTakeTime}
-            openTestFinishModal={openTestFinishModal}
-            openTestSubmitModal={openTestSubmitModal}
-            examTimeLimit={examTimeLimit}
-          />
-        )}
-      </TimerBox>
-      <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
-        시험 종료
-      </TestCloseButton>
+      <IpadHeaderRight>
+        <TimerBox>
+          {openCoachMark || openPrecautionModal ? (
+            <InitTimer>00 : 00 : 00</InitTimer>
+          ) : (
+            <Timer
+              changeTestFinishStatus={changeTestFinishStatus}
+              computeTakeTime={computeTakeTime}
+              openTestFinishModal={openTestFinishModal}
+              openTestSubmitModal={openTestSubmitModal}
+              examTimeLimit={examTimeLimit}
+            />
+          )}
+        </TimerBox>
+        <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
+          시험 종료
+        </TestCloseButton>
+      </IpadHeaderRight>
     </TestHeaderContainer>
   );
 }
+
 const TestHeaderContainer = styled.header`
   ${commonFlex};
 
@@ -88,6 +92,13 @@ const LeftArrowBlackBtnIcon = styled(LeftArrowBlackBtn)`
 const TestTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline5};
 `;
+const IpadHeaderRight = styled.div`
+  ${media.tablet} {
+    ${commonFlex}
+
+    justify-content: space-between;
+  }
+`;
 const TimerBox = styled.div`
   ${commonFlex}
 
@@ -100,6 +111,11 @@ const TimerBox = styled.div`
   background-color: ${({ theme }) => theme.colors.light_blue};
   color: ${({ theme }) => theme.colors.main_blue};
   transform: translate(-50%);
+
+  ${media.tablet} {
+    position: relative;
+    left: 25%;
+  }
 `;
 const InitTimer = styled.p`
   ${({ theme }) => theme.fonts.Headline4};
