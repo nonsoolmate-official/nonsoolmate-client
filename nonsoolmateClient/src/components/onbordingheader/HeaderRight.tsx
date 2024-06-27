@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LoginButton from "./buttons/LoginButton";
 import MembershipButton from "./buttons/MembershipButton";
-import { commonFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
 
 export default function HeaderRight() {
   return (
@@ -13,9 +13,15 @@ export default function HeaderRight() {
 }
 
 const Container = styled.div`
-  ${commonFlex}
+  display: flex;
+  align-items: center;
 
-  justify-content: space-between;
-  width: 16.2rem;
   height: 3.2rem;
+
+  gap: 5.2rem;
+  padding: 0 24.3rem 0 0;
+
+  ${media.tablet} {
+    padding: 0 3.2rem 0 0;
+  }
 `;
