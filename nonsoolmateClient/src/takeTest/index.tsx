@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";
+import EndTestModal from "./components/modal/EndTestModal";
 
 export default function index() {
   useRefreshPage();
@@ -18,6 +19,7 @@ export default function index() {
   const [openTestQuitModal, setOpenTestQuitModal] = useState(false);
   const [openTestFinishModal, setOpenTestFinishModal] = useState(false);
   const [openTestSubmitModal, setOpenTestSubmitModal] = useState(false);
+  const [openEndTestModal, setOpenEndTestModal] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
 
@@ -36,7 +38,8 @@ export default function index() {
     openPrecautionModal ||
     openTestQuitModal ||
     openTestFinishModal ||
-    openTestSubmitModal
+    openTestSubmitModal ||
+    openEndTestModal
   );
   function changePrecautionStatus(precautionModal: boolean) {
     setOpenPrecautionModal(precautionModal);
@@ -53,6 +56,9 @@ export default function index() {
   }
   function changeTestSubmitStatus(testSubmitModal: boolean) {
     setOpenTestSubmitModal(testSubmitModal);
+  }
+  function changeTestEndStatus(testEndModal: boolean) {
+    setOpenEndTestModal(testEndModal);
   }
   function computeTakeTime(takeTime: number) {
     setTotalTime(takeTime);
@@ -87,7 +93,15 @@ export default function index() {
           saveFile={saveFile}
         />
       )}
-      {openTestSubmitModal && <TestSubmitModal isFile={isFile} totalTime={totalTime} />}
+      {openTestSubmitModal && (
+        <TestSubmitModal
+          isFile={isFile}
+          totalTime={totalTime}
+          changeTestEndStatus={changeTestEndStatus}
+          changeTestSubmitStatus={changeTestSubmitStatus}
+        />
+      )}
+      {openEndTestModal && <EndTestModal />}
     </>
   );
 }

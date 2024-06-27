@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal, { ModalContainer } from "./Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
 import Error from "error";
 import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
@@ -11,14 +11,15 @@ import { getPresignedUrl } from "takeTest/api/getPresignedUrl";
 interface TestSubmitProps {
   isFile: File[] | null;
   totalTime: number;
+  changeTestEndStatus: (testQuitModal: boolean) => void;
+  changeTestSubmitStatus: (testQuitModal: boolean) => void;
 }
 
 export default function TestSubmitModal(props: TestSubmitProps) {
-  const { isFile, totalTime } = props;
+  const { isFile, totalTime, changeTestEndStatus, changeTestSubmitStatus } = props;
   const { mutate: putMutate } = usePutExamSheet();
   const { mutate: postMutate } = usePostExamRecord();
   let zip = new JSZip();
-  const navigate = useNavigate();
   const location = useLocation();
   const { examId } = location.state;
 
@@ -59,7 +60,8 @@ export default function TestSubmitModal(props: TestSubmitProps) {
                   { examId: examId, totalTime: totalTime, fileName: resultFileName },
                   {
                     onSuccess: () => {
-                      navigate("/home/test", { state: { testSubmitted: true } });
+                      changeTestSubmitStatus(false);
+                      changeTestEndStatus(true);
                     },
                   },
                 );
