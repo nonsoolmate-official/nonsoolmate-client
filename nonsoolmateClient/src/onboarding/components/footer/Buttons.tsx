@@ -1,4 +1,3 @@
-import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { FOOTER_LIST } from "onboarding/core/footerlist";
 
@@ -17,14 +16,15 @@ export default function Buttons() {
 }
 
 const Container = styled.article`
-  ${commonFlex}
-
+  display: flex;
   gap: 3.3rem;
   justify-content: space-between;
 `;
 
 const Button = styled.button`
-  ${({ theme }) => theme.fonts.Body6};
+  display: flex;
+  padding: 0;
 
+  ${({ theme }) => theme.fonts.Body6};
   color: ${({ theme }) => theme.colors.grey_600};
 `;
