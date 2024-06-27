@@ -4,9 +4,11 @@ import Contents from "./components/Contents";
 import Title from "./components/Title";
 import useGetName from "home/hooks/useGetName";
 import HomeHeader from "home/components/HomeHeader";
+import { getToken } from "socialLogin/utils/token";
 
 export default function Membership() {
-  const getNameResponse = useGetName();
+  const token = getToken();
+  const getNameResponse = token ? useGetName() : null;
 
   return (
     <Container>

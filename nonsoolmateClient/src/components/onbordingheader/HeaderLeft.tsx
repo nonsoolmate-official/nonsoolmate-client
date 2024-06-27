@@ -1,12 +1,14 @@
 import { LogoIc } from "@assets/index";
 import useGetName from "home/hooks/useGetName";
 import { useNavigate } from "react-router";
+import { getToken } from "socialLogin/utils/token";
 import styled from "styled-components";
 import { media } from "style/responsiveStyle";
 
 export default function HeaderLeft() {
   const navigate = useNavigate();
-  const getNameResponse = useGetName();
+  const token = getToken();
+  const getNameResponse = token ? useGetName() : null;
   return (
     <LogoContainer type="button" onClick={() => (getNameResponse ? navigate("/home/test") : navigate("/"))}>
       <LogoIcon />
