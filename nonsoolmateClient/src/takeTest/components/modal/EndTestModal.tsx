@@ -13,9 +13,9 @@ export default function EndTestModal() {
   return (
     <EndTestModalContainer>
       <Modal>
-        <ModalContent>
+        <EndTestModalBox>
           <Lottie loop animationData={lottieJson} play />
-          <ModalTextBox>
+          <ModalContent>
             <ModalText>
               <ModalTitle>수고하셨습니다!</ModalTitle>
               <ModalSubTitle>제출 완료! 첨삭 결과는 일주일 뒤에 전달돼요.</ModalSubTitle>
@@ -23,8 +23,8 @@ export default function EndTestModal() {
             <QuitButton type="button" onClick={handleQuitButton}>
               시험 종료
             </QuitButton>
-          </ModalTextBox>
-        </ModalContent>
+          </ModalContent>
+        </EndTestModalBox>
       </Modal>
     </EndTestModalContainer>
   );
@@ -35,13 +35,14 @@ const EndTestModalContainer = styled(ModalContainer)`
 
   backdrop-filter: blur(0.3rem);
 `;
-const ModalContent = styled.div`
+const EndTestModalBox = styled.div`
   ${columnFlex};
 
   gap: 1.2rem;
+  width: 45.6rem;
   padding: 4.4rem 8.4rem;
 `;
-const ModalTextBox = styled.div`
+const ModalContent = styled.div`
   ${columnFlex};
 
   gap: 2rem;
