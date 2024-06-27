@@ -4,7 +4,6 @@ import { QnaTypes } from "../types/qaatypes";
 import Answer from "./Answer";
 import Question from "./Question";
 import styled from "styled-components";
-import { columnFlex } from "style/commonStyle";
 
 interface QnAprops extends QnaTypes {}
 
@@ -31,11 +30,13 @@ export default function QnA(props: QnAprops) {
 }
 
 const AnswerContainer = styled.p`
-  ${columnFlex}
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   margin-bottom: 2rem;
 `;
 
 const Line = styled(DivideLine)`
-  width: 93.6rem;
+  width: 100%;
 `;

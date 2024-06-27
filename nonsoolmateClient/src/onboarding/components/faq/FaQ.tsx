@@ -3,33 +3,29 @@ import { QNA_LIST } from "./core/qnalist";
 import DivideLine from "../common/DivideLine";
 import QnA from "./qna/QnA";
 import Title from "./Title";
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
 
 export default function FaQ() {
   return (
-    <Container>
-      <ContentContainer>
-        <Title />
-        <DivideLine />
-        {QNA_LIST.map((qna) => {
-          const { question, answer, answer2 } = qna;
-          return <QnA key={question} question={question} answer={answer} answer2={answer2} />;
-        })}
-      </ContentContainer>
-    </Container>
+    <ContentContainer>
+      <Title />
+      <DivideLine />
+      {QNA_LIST.map((qna) => {
+        const { question, answer, answer2 } = qna;
+        return <QnA key={question} question={question} answer={answer} answer2={answer2} />;
+      })}
+    </ContentContainer>
   );
 }
 
-const Container = styled.section`
-  ${commonFlex}
-
-  width: 100%;
-`;
-
 const ContentContainer = styled.section`
-  ${columnFlex}
+  display: flex;
+  flex-direction: column;
 
   align-items: flex-start;
-  width: 93.6rem;
-  margin: 14.9rem 21.5rem;
+  padding: 14.8rem 21.5rem;
+
+  ${media.tablet} {
+    padding: 16rem 2.4rem;
+  }
 `;
