@@ -51,7 +51,7 @@ const ModalTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline4};
 `;
 const ModalText = styled.p`
-  ${({ theme }) => theme.fonts.Body6};
+  ${({ theme }) => theme.fonts.Body4};
 
   color: ${({ theme }) => theme.colors.grey_700};
 `;

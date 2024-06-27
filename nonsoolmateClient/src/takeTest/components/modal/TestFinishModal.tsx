@@ -96,7 +96,7 @@ const ModalTitle = styled.h1`
 `;
 const ModalText = styled.div`
   ${columnFlex}
-  ${({ theme }) => theme.fonts.Body6};
+  ${({ theme }) => theme.fonts.Body4};
 
   gap: 0.4rem;
 `;
