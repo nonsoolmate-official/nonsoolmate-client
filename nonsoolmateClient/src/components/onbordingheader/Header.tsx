@@ -2,6 +2,8 @@ import { commonFlex } from "style/commonStyle";
 import HeaderLeft from "./HeaderLeft";
 import HeaderRight from "./HeaderRight";
 import styled from "styled-components";
+import HomeMemberInfoToggle from "home/components/HomeMemberInfoToggle";
+import { useState } from "react";
 
 interface HeaderProps {
   isOnboarding: boolean;
@@ -9,14 +11,21 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   const { isOnboarding } = props;
+  const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
 
+  function handleHomeMemberInfoToggle() {
+    setShowMemberInfo((open) => !open);
+  }
   return (
-    <Container $isOnboarding={isOnboarding}>
-      <ContentContainer>
-        <HeaderLeft />
-        <HeaderRight />
-      </ContentContainer>
-    </Container>
+    <>
+      <Container $isOnboarding={isOnboarding}>
+        <ContentContainer>
+          <HeaderLeft />
+          <HeaderRight handleHomeMemberInfoToggle={handleHomeMemberInfoToggle} showMemberInfo={showMemberInfo} />
+        </ContentContainer>
+      </Container>
+      {showMemberInfo && <HomeMemberInfoToggle />}
+    </>
   );
 }
 const Container = styled.header<{ $isOnboarding: boolean }>`
