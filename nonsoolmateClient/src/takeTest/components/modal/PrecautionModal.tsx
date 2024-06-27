@@ -55,6 +55,7 @@ const PrecautionModalBox = styled.div`
   ${columnFlex};
 
   justify-content: space-between;
+  width: 65.8rem;
   padding: 3.6rem 5.4rem;
 `;
 const ModalTitle = styled.h1`

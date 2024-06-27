@@ -4,6 +4,7 @@ import testExample from "@assets/image/testexample.png";
 import { commonFlex } from "style/commonStyle";
 import { useEffect, useState } from "react";
 import { useGetUniversityExampleImages } from "takeTest/hooks/useGetUniversityExampleImages";
+import { media } from "style/responsiveStyle";
 
 interface PaginatinProps {
   openCoachMark: boolean;
@@ -48,6 +49,7 @@ export default function TestPagination(props: PaginatinProps) {
     </TestPaginationContainer>
   );
 }
+
 const TestPaginationContainer = styled.section`
   ${commonFlex};
 `;
@@ -64,9 +66,15 @@ const PageButtonStyle = styled.button`
 `;
 const PreviousPageButton = styled(PageButtonStyle)`
   left: 8rem;
+  ${media.tablet} {
+    left: 0;
+  }
 `;
 const NextPageButton = styled(PageButtonStyle)`
   right: 8rem;
+  ${media.tablet} {
+    right: 0;
+  }
 `;
 const RightArrowBigIcon = styled(RightArrowBigIc)<{ $showNextIcon: boolean }>`
   display: ${({ $showNextIcon }) => ($showNextIcon ? "flex" : "none")};
@@ -81,4 +89,7 @@ const LeftArrowBigIcon = styled(LeftArrowBigIc)<{ $showPreviousIcon: boolean }>`
 const TestImage = styled.img`
   width: 93.6rem;
   margin: 2.4rem 8rem;
+  ${media.tablet} {
+    width: 70.4rem;
+  }
 `;

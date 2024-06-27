@@ -1,6 +1,7 @@
 import { RightCircleIc } from "@assets/index";
 import styled from "styled-components";
 import { CoachMarkText, PageMarkContainer } from "./PrevPageMark";
+import { media } from "style/responsiveStyle";
 
 export default function NextPageMark() {
   return (
@@ -10,8 +11,12 @@ export default function NextPageMark() {
     </NextPageMarkContainer>
   );
 }
+
 const NextPageMarkContainer = styled(PageMarkContainer)`
   right: 16.8rem;
+  ${media.tablet} {
+    right: 4.8rem;
+  }
 `;
 const RightCircleIcon = styled(RightCircleIc)`
   width: 3.9rem;

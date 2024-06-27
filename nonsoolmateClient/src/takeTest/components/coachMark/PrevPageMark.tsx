@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { LeftCircleIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
 export default function PrevPageMark() {
   return (
     <PrevPageMarkContainer>
@@ -9,6 +10,7 @@ export default function PrevPageMark() {
     </PrevPageMarkContainer>
   );
 }
+
 export const CoachMarkText = styled.p`
   ${({ theme }) => theme.fonts.Body4};
 `;
@@ -22,6 +24,9 @@ export const PageMarkContainer = styled.div`
 `;
 const PrevPageMarkContainer = styled(PageMarkContainer)`
   left: 16.8rem;
+  ${media.tablet} {
+    left: 4.8rem;
+  }
 `;
 const LeftCircleIcon = styled(LeftCircleIc)`
   width: 3.9rem;
