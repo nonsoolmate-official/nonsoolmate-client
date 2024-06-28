@@ -1,4 +1,3 @@
-import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import Summary from "./Summary";
 
@@ -11,7 +10,11 @@ export default function Advantage() {
 }
 
 const Container = styled.article`
-  ${columnFlex}
-
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: 1000px) {
+    padding: 0 35.8rem 0 7.6rem;
+  }
 `;

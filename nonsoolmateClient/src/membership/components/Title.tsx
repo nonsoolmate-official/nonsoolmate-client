@@ -12,16 +12,21 @@ export default function Title() {
   );
 }
 
-const Text = styled.h1`
-  ${commonFlex}
-  ${({ theme }) => theme.fonts.Headline2};
-`;
-
 const Container = styled.div`
   ${columnFlex}
 
   gap: 0.4rem;
   margin-top: 6rem;
+
+  @media (max-width: 1000px) {
+    margin-top: 10rem;
+  }
+`;
+
+const Text = styled.h1`
+  ${commonFlex}
+
+  ${({ theme }) => theme.fonts.Headline2};
 `;
 
 const Nonsool = styled.p`
