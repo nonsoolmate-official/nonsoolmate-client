@@ -50,13 +50,14 @@ const Container = styled.div`
 
   height: 3.2rem;
 
-  gap: 5.2rem;
+  gap: 4.8rem;
   padding: 0 24.3rem 0 0;
 
   ${media.tablet} {
     padding: 0 3.2rem 0 0;
   }
 `;
+
 const LoginInfoButton = styled.button`
   ${commonFlex};
 
@@ -65,9 +66,11 @@ const LoginInfoButton = styled.button`
   padding: 0;
   cursor: pointer;
 `;
+
 const LoginInfoIcon = styled(LoginInfoIc)`
   object-fit: cover;
 `;
+
 const LoginInfoBox = styled.section`
   ${commonFlex};
 

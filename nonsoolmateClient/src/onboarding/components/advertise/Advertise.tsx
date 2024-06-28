@@ -3,7 +3,6 @@ import Reasons from "./Advertisement/Reasons";
 import Summary from "./Summary";
 import Title from "./Title";
 import { media } from "style/responsiveStyle";
-import { columnFlex } from "style/commonStyle";
 
 export default function Advertise() {
   return (
@@ -16,10 +15,13 @@ export default function Advertise() {
 }
 
 const Container = styled.section`
-  ${columnFlex}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   padding: 10rem 21.5rem 16rem;
   width: 100%;
+
   background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {

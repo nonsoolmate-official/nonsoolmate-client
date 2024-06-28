@@ -7,11 +7,15 @@ export default function HomeImg() {
 }
 
 const Image = styled.img`
-  width: 87.9rem;
-  height: 33.4rem;
+  /* width: 87.9rem;
+  height: 33.4rem; */
+  padding: 0 24rem;
+  width: 100%;
 
   ${media.tablet} {
-    width: 70.2rem;
-    height: 31rem;
+    /* width: 70.2rem;
+    height: 31rem; */
+    padding: 0 3.3rem;
+    width: 100%;
   }
 `;
