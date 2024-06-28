@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
 import Login from "./components/login/Login";
 import Logos from "./components/Logos";
 
 export default function Signup() {
+  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <Container>
-      <Logos />
+      {!isIpadSize && <Logos />}
       <Login />
     </Container>
   );
