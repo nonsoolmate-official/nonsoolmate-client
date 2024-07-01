@@ -24,6 +24,10 @@ const Container = styled.div`
   gap: 1.6rem;
   align-items: flex-start;
   margin-bottom: 7.9rem;
+
+  @media (max-width: 1000px) {
+    margin-bottom: 4.6rem;
+  }
 `;
 
 const TextContainer = styled.span`
@@ -37,6 +41,7 @@ const Text = styled.p`
 
   color: ${({ theme }) => theme.colors.grey_1000};
 `;
+
 const CheckSmallIcon = styled(CheckSmallIc)`
   width: 1.6rem;
   height: 1.6rem;

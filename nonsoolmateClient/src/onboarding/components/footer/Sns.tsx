@@ -1,5 +1,4 @@
 import { FaceBookIc, InstaIc } from "@assets/index";
-import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function Sns() {
@@ -12,10 +11,11 @@ export default function Sns() {
 }
 
 const Container = styled.div`
-  ${commonFlex}
+  display: flex;
+  align-items: center;
 
   gap: 1.5rem;
-  justify-content: space-between;
+  margin-top: 2rem;
 `;
 
 const FaceBookIcon = styled(FaceBookIc)`

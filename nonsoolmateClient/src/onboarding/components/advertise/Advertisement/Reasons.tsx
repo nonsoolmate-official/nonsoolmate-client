@@ -1,7 +1,6 @@
 import { REASON_LIST } from "onboarding/core/reasons";
 import Advertisement from "./Advertisement";
 import styled from "styled-components";
-import { commonFlex } from "style/commonStyle";
 
 export default function Reasons() {
   return (
@@ -15,11 +14,12 @@ export default function Reasons() {
 }
 
 const Container = styled.section`
-  ${commonFlex};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   flex-wrap: wrap;
-  gap: 2.4rem;
-  width: 93.6rem;
-  height: 46.2rem;
+
   margin-top: 5.6rem;
+  gap: 2.4rem;
 `;

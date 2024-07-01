@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import LoginButton from "./buttons/LoginButton";
 import MembershipButton from "./buttons/MembershipButton";
+import { media } from "style/responsiveStyle";
 import { commonFlex } from "style/commonStyle";
+
 import useGetName from "home/hooks/useGetName";
 import { DownArrowGreyIc, LoginInfoIc, UpArrowGreyIc } from "@assets/index";
 import { getToken } from "socialLogin/utils/token";
@@ -43,14 +45,19 @@ export default function HeaderRight(props: HeaderRightProps) {
 }
 
 const Container = styled.div`
-  ${commonFlex}
+  display: flex;
+  align-items: center;
 
-  gap: 1.6rem;
-  flex: 1;
-  justify-content: end;
-  width: 16.2rem;
   height: 3.2rem;
+
+  gap: 4.8rem;
+  padding: 0 24.3rem 0 0;
+
+  ${media.tablet} {
+    padding: 0 3.2rem 0 0;
+  }
 `;
+
 const LoginInfoButton = styled.button`
   ${commonFlex};
 
@@ -59,9 +66,11 @@ const LoginInfoButton = styled.button`
   padding: 0;
   cursor: pointer;
 `;
+
 const LoginInfoIcon = styled(LoginInfoIc)`
   object-fit: cover;
 `;
+
 const LoginInfoBox = styled.section`
   ${commonFlex};
 

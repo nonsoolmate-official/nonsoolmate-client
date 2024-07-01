@@ -5,6 +5,7 @@ import { useState } from "react";
 import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 import { useNavigate } from "react-router-dom";
 import useGetName from "home/hooks/useGetName";
+import { media } from "style/responsiveStyle";
 
 export default function HomeHeader() {
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
@@ -53,6 +54,10 @@ const Header = styled.header`
   padding: 1.6rem 21.5rem;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 1.2rem 0 ${({ theme }) => theme.colors.grey_200};
+
+  ${media.tablet} {
+    padding: 1.6rem 3.2rem;
+  }
 `;
 
 const LogoButton = styled.button`

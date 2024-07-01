@@ -1,36 +1,48 @@
 import styled from "styled-components";
 import FooterLeft from "./FooterLeft";
 import FooterRight from "./FooterRight";
-import { columnFlex, commonFlex } from "style/commonStyle";
 import DivideLine from "../common/DivideLine";
+import { media } from "style/responsiveStyle";
+import Sns from "./Sns";
 
 export default function Footer() {
   return (
     <Container>
-      <DivideLineFooter />
+      <DivideLine />
       <ContentContainer>
         <FooterLeft />
         <FooterRight />
       </ContentContainer>
+      <Sns />
     </Container>
   );
 }
 
 const Container = styled.footer`
-  ${columnFlex}
+  display: flex;
+  flex-direction: column;
 
   width: 100%;
   height: 20.6rem;
-`;
 
-const DivideLineFooter = styled(DivideLine)`
-  width: 100%;
+  padding: 0 21.5rem;
+
+  ${media.tablet} {
+    padding: 0 2.4rem;
+  }
 `;
 
 const ContentContainer = styled.div`
-  ${commonFlex}
-
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: 93.6rem;
+
   margin-top: 5.2rem;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 2rem;
+  }
 `;

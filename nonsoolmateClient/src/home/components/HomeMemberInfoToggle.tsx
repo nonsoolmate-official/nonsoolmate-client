@@ -3,6 +3,7 @@ import { lightBlueButtonStyle } from "style/commonStyle";
 import { LoginInfoIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import useGetTicket from "home/hooks/useGetTicket";
+import { media } from "style/responsiveStyle";
 
 export default function HomeMemberInfoToggle() {
   const navigate = useNavigate();
@@ -54,6 +55,10 @@ const MemberInfoToggleView = styled.section`
   padding: 2rem 2.4rem;
   border-radius: 8px;
   background-color: white;
+
+  ${media.tablet} {
+    right: 3.2rem;
+  }
 `;
 
 const MemberInfo = styled.div`

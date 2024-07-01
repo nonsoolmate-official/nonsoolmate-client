@@ -12,6 +12,5 @@ export default function Answer(props: AnswerProps) {
 const Text = styled.h2`
   ${({ theme }) => theme.fonts.Body2};
 
-  width: 90rem;
   margin-left: 3.6rem;
 `;
