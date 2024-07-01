@@ -6,8 +6,10 @@ import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 import { useNavigate } from "react-router-dom";
 import useGetName from "home/hooks/useGetName";
 import { media } from "style/responsiveStyle";
+import { useMediaQuery } from "react-responsive";
 
 export default function HomeHeader() {
+  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
   const handleHomeMemberInfoToggle = () => {
     setShowMemberInfo((open) => !open);
@@ -28,9 +30,11 @@ export default function HomeHeader() {
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
-          <MembershipButton type="button" onClick={() => navigate("/membership")}>
-            멤버십
-          </MembershipButton>
+          {!isIpadSize && (
+            <MembershipButton type="button" onClick={() => navigate("/membership")}>
+              멤버십
+            </MembershipButton>
+          )}
           <LoginInfoButton type="button" onClick={handleHomeMemberInfoToggle}>
             <LoginInfoIcon />
             <LoginInfoBox>
