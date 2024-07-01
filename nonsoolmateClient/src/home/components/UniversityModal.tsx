@@ -5,7 +5,7 @@ import { CheckBtnIc, NotCheckBtnIc } from "@assets/index";
 import { useEffect } from "react";
 import useGetSelectUniversities from "home/hooks/useGetSelectUniversities";
 import usePatchSelectUniversities from "home/hooks/usePatchSelectUniversities";
-
+import { media } from "style/responsiveStyle";
 interface UniversityModalProps {
   handleUniversityModal: (open: boolean) => void;
   selectedUniversityIdList: number[];
@@ -101,6 +101,7 @@ export default function UniversityModal(props: UniversityModalProps) {
     </BackgroundView>
   );
 }
+
 const BackgroundView = styled.section`
   position: fixed;
   inset: 0;
@@ -118,12 +119,19 @@ const ModalView = styled.section`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 77.6rem;
+  width: 77.4rem;
   height: 49.6rem;
   padding: 4.8rem 5.5rem 4rem;
   border-radius: 16px;
   background-color: white;
   transform: translate(-50%, -50%);
+
+  ${media.tablet} {
+    width: 55rem;
+    height: 49.6rem;
+
+    padding: 4.8rem 5.4rem 3.2rem 5.4rem;
+  }
 `;
 
 const Text = styled.p`
@@ -139,6 +147,10 @@ const Container = styled.section`
   width: 100%;
   margin-top: 2.4rem;
   margin-bottom: 22.4rem;
+
+  ${media.tablet} {
+    margin-bottom: 17.6rem;
+  }
 `;
 
 const CheckBoxButton = styled.button<{ $isChecked: boolean }>`
