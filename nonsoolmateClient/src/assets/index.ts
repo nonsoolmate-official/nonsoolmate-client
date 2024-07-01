@@ -68,6 +68,8 @@ import CheckSmallIc from "./icon/checkSmallIc.svg?react";
 import ShowExplanationTagIc from "./icon/showExplanationTagIc.svg?react";
 import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
 
+import MembershipDisabledIc from "./icon/membershipIc.svg?react";
+
 export {
   BackToListIc,
   DownArrowBoldIc,
@@ -117,4 +119,5 @@ export {
   CheckSmallIc,
   ShowExplanationTagIc,
   ShowQuestionTagIc,
+  MembershipDisabledIc,
 };
