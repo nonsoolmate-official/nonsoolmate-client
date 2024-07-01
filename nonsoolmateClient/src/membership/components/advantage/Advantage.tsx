@@ -15,6 +15,8 @@ const Container = styled.article`
   align-items: flex-start;
 
   @media (max-width: 1000px) {
-    padding: 0 35.8rem 0 7.6rem;
+    //padding: 0 35.8rem 0 7.6rem;
+
+    width: 60rem;
   }
 `;

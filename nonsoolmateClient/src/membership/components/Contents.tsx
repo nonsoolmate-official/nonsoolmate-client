@@ -51,6 +51,8 @@ const Ipad = styled.div`
     justify-content: space-between;
 
     margin-bottom: 13.5rem;
+
+    width: 100%;
   }
 `;
 
@@ -67,16 +69,15 @@ const IpadGrey = styled.div`
 
 const AdvantageContainer = styled.article`
   ${columnFlex}
-
-  /* justify-content: space-between; */
   align-items: flex-start;
 
   gap: 3rem;
 
   @media (max-width: 1000px) {
     align-items: center;
-
     margin-top: 7.4rem;
     gap: 9.6rem;
+
+    width: 100%;
   }
 `;
