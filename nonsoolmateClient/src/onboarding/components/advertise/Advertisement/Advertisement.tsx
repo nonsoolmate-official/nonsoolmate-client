@@ -30,7 +30,7 @@ const Container = styled.article`
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
 
-  ${media.tablet} {
+  @media (width >= 768px) {
     width: 34.8rem;
   }
 `;
