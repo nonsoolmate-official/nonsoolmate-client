@@ -79,10 +79,9 @@ const SideHeaderHello = styled.h4`
 `;
 
 const SideHeaderBox = styled.section`
-  ${commonFlex};
-
-  justify-content: space-between;
-  padding-right: 10rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 `;
 
 const SideHeaderName = styled.h4`
