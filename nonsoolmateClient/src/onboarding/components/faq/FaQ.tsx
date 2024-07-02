@@ -21,7 +21,6 @@ export default function FaQ() {
 const ContentContainer = styled.section`
   display: flex;
   flex-direction: column;
-
   align-items: flex-start;
   padding: 14.8rem 21.5rem;
 

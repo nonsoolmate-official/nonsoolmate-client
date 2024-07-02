@@ -19,6 +19,7 @@ const Container = styled.section`
   ${columnFlex}
 
   width: 100%;
+
   /* height: 92.1rem; */
   padding: 20rem 0 28rem;
 

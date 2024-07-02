@@ -18,10 +18,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding: 10rem 21.5rem 16rem;
   width: 100%;
-
+  padding: 10rem 21.5rem 16rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {

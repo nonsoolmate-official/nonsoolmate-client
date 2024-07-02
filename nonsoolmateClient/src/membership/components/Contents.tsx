@@ -33,7 +33,7 @@ const Container = styled.section`
   gap: 2.4rem;
   margin-top: 8.1rem;
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     flex-direction: column;
     margin-top: 9.6rem;
   }
@@ -41,23 +41,20 @@ const Container = styled.section`
 
 const SubscribeWrapper = styled.div`
   display: flex;
-
   gap: 2.4rem;
 `;
 
 const Ipad = styled.div`
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     display: flex;
     justify-content: space-between;
-
-    margin-bottom: 13.5rem;
-
     width: 100%;
+    margin-bottom: 13.5rem;
   }
 `;
 
 const IpadGrey = styled.div`
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     position: absolute;
     bottom: 13.5rem;
     z-index: -1;
@@ -69,15 +66,14 @@ const IpadGrey = styled.div`
 
 const AdvantageContainer = styled.article`
   ${columnFlex}
-  align-items: flex-start;
 
+  align-items: flex-start;
   gap: 3rem;
 
-  @media (max-width: 1000px) {
-    align-items: center;
-    margin-top: 7.4rem;
+  @media (width <= 1000px) {
     gap: 9.6rem;
-
+    align-items: center;
     width: 100%;
+    margin-top: 7.4rem;
   }
 `;

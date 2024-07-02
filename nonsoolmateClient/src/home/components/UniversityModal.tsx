@@ -129,8 +129,7 @@ const ModalView = styled.section`
   ${media.tablet} {
     width: 55rem;
     height: 49.6rem;
-
-    padding: 4.8rem 5.4rem 3.2rem 5.4rem;
+    padding: 4.8rem 5.4rem 3.2rem;
   }
 `;
 

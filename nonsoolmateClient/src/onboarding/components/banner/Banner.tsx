@@ -25,9 +25,10 @@ const BannerWrapper = styled.section`
 
   justify-content: flex-end;
   width: 100%;
+
   /* height: 76.8rem; */
-  background: linear-gradient(to bottom, rgba(101 121 255) 20%, rgb(156 169 255) 100%);
   padding: 6.6rem 0 0;
+  background: linear-gradient(to bottom, rgba(101 121 255) 20%, rgb(156 169 255) 100%);
 `;
 
 const ContentContainer = styled.div`

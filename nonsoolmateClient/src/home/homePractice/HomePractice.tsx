@@ -30,7 +30,7 @@ const Box = styled.div`
   margin: 6.7rem 21.5rem 11.5rem 2.4rem;
 
   ${media.tablet} {
-    margin: 4rem 3.2rem 6.6rem 3.2rem;
+    margin: 4rem 3.2rem 6.6rem;
   }
 `;
 

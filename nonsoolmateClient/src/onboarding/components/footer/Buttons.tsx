@@ -26,5 +26,6 @@ const Button = styled.button`
   padding: 0;
 
   ${({ theme }) => theme.fonts.Body6};
+
   color: ${({ theme }) => theme.colors.grey_600};
 `;

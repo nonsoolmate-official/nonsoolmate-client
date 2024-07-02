@@ -15,11 +15,9 @@ export default function Reasons() {
 
 const Container = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: center;
-
   flex-wrap: wrap;
-
-  margin-top: 5.6rem;
   gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5.6rem;
 `;

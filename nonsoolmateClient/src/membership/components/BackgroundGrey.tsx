@@ -11,7 +11,7 @@ const Square = styled.div`
   height: 28.8rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     bottom: 64.1rem;
   }
 `;

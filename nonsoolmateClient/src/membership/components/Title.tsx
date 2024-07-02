@@ -18,7 +18,7 @@ const Container = styled.div`
   gap: 0.4rem;
   margin-top: 6rem;
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     margin-top: 10rem;
   }
 `;

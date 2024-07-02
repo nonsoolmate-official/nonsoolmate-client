@@ -25,7 +25,7 @@ const Container = styled.div`
   align-items: flex-start;
   margin-bottom: 7.9rem;
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     margin-bottom: 4.6rem;
   }
 `;

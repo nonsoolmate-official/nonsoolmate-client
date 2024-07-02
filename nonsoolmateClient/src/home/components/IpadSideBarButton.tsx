@@ -51,9 +51,8 @@ export default function IpadSideBarButton(props: IpadSideBarButtonProps) {
 const ButtonBox = styled.button`
   display: flex;
   flex-direction: column;
-  align-items: center;
-
   gap: 0.3rem;
+  align-items: center;
 `;
 
 const Text = styled.h3<{ $isActive: boolean }>`

@@ -29,7 +29,6 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 50%;
 
   /* padding: 29.8rem 0 0; */

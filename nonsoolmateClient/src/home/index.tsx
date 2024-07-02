@@ -34,7 +34,6 @@ const Homes = styled.section`
 
   ${media.tablet} {
     flex-direction: column;
-
     height: calc(100vh - 12.8rem);
   }
 `;

@@ -21,10 +21,8 @@ export default function Footer() {
 const Container = styled.footer`
   display: flex;
   flex-direction: column;
-
   width: 100%;
   height: 20.6rem;
-
   padding: 0 21.5rem;
 
   ${media.tablet} {
@@ -34,15 +32,13 @@ const Container = styled.footer`
 
 const ContentContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
   margin-top: 5.2rem;
 
-  @media (max-width: 1000px) {
+  @media (width <= 1000px) {
     flex-direction: column;
-    align-items: flex-start;
-
     gap: 2rem;
+    align-items: flex-start;
   }
 `;

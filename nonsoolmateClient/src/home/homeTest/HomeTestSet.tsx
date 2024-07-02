@@ -82,7 +82,7 @@ const Box = styled.div`
   padding: 6.8rem 21.5rem 4.8rem 2.4rem;
 
   ${media.tablet} {
-    padding: 4rem 3.2rem 4rem 3.2rem;
+    padding: 4rem 3.2rem;
   }
 `;
 
