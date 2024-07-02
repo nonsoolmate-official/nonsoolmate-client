@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Summary from "./Summary";
+import { media } from "style/responsiveStyle";
 
 export default function Advantage() {
   return (
@@ -14,7 +15,7 @@ const Container = styled.article`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     width: 60rem;
   }
 `;

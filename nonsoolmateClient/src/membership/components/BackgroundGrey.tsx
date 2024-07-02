@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "style/responsiveStyle";
 
 export default function BackgroundGrey() {
   return <Square />;
@@ -11,7 +12,7 @@ const Square = styled.div`
   height: 28.8rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     bottom: 64.1rem;
   }
 `;
