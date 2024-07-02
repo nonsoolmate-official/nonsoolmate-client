@@ -46,11 +46,9 @@ export default function HeaderRight(props: HeaderRightProps) {
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
-
-  height: 3.2rem;
-
   gap: 4.8rem;
+  align-items: center;
+  height: 3.2rem;
   padding: 0 24.3rem 0 0;
 
   ${media.tablet} {

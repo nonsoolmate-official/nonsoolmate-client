@@ -28,9 +28,8 @@ export default function Header(props: HeaderProps) {
 
 const Container = styled.header<{ $isOnboarding: boolean }>`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
   width: 100%;
   height: 6.4rem;
   box-shadow: ${({ $isOnboarding }) => ($isOnboarding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};

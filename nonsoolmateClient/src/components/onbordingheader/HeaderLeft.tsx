@@ -18,7 +18,6 @@ export default function HeaderLeft() {
 
 const LogoContainer = styled.button`
   display: flex;
-
   padding: 0 0 0 21.5rem;
 
   ${media.tablet} {

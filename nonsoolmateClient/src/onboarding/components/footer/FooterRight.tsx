@@ -11,6 +11,5 @@ export default function FooterRight() {
 
 const Container = styled.div`
   display: flex;
-
   gap: 2.2rem;
 `;

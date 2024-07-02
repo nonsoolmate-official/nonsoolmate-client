@@ -27,13 +27,14 @@ export default function Login() {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-
   width: 50%;
 
-  padding: 29.8rem 0 0;
+  /* padding: 29.8rem 0 0; */
 
   ${media.tablet} {
+    justify-content: flex-start;
     width: 100%;
     padding: 31.8rem 21.2rem 0;
   }

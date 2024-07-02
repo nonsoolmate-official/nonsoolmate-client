@@ -14,7 +14,7 @@ const Container = styled.article`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: 1000px) {
-    padding: 0 35.8rem 0 7.6rem;
+  @media (width <= 1000px) {
+    width: 60rem;
   }
 `;

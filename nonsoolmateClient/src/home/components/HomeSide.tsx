@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { commonFlex } from "style/commonStyle";
 import { BorderIc } from "@assets/index";
 import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarPracticeButton from "./SideBarPracticeButton";
@@ -79,10 +78,9 @@ const SideHeaderHello = styled.h4`
 `;
 
 const SideHeaderBox = styled.section`
-  ${commonFlex};
-
-  justify-content: space-between;
-  padding-right: 10rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 `;
 
 const SideHeaderName = styled.h4`

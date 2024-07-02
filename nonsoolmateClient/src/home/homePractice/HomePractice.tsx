@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { EmptyIc } from "@assets/index";
 import { SetUnsetContainerLayout, UnsetContentLayout } from "style/layout/SetUnsetLayout";
+import { media } from "style/responsiveStyle";
 
 export default function HomePractice() {
   return (
@@ -27,6 +28,10 @@ const Box = styled.div`
   flex-direction: column;
   gap: 0.7rem;
   margin: 6.7rem 21.5rem 11.5rem 2.4rem;
+
+  ${media.tablet} {
+    margin: 4rem 3.2rem 6.6rem;
+  }
 `;
 
 const Header = styled.h3`
@@ -40,6 +45,10 @@ const Content = styled.section`
   ${UnsetContentLayout}
 
   padding: 18.2rem 0 21rem;
+
+  ${media.tablet} {
+    padding: 31.8rem 0 34.3rem;
+  }
 `;
 
 const EmptyIcon = styled(EmptyIc)`

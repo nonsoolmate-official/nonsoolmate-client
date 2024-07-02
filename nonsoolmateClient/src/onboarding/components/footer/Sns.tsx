@@ -12,9 +12,8 @@ export default function Sns() {
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
-
   gap: 1.5rem;
+  align-items: center;
   margin-top: 2rem;
 `;
 

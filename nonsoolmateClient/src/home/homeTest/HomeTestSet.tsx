@@ -5,7 +5,7 @@ import { commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
 import { SelectUniversityDataTypes } from "home/api/getSelectUniversityExams";
-
+import { media } from "style/responsiveStyle";
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
   response: SelectUniversityDataTypes[];
@@ -80,6 +80,10 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   padding: 6.8rem 21.5rem 4.8rem 2.4rem;
+
+  ${media.tablet} {
+    padding: 4rem 3.2rem;
+  }
 `;
 
 const HeaderBox = styled.header`

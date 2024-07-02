@@ -7,7 +7,11 @@ export default function GotoSaleButton() {
   const navigate = useNavigate();
 
   return (
-    <Button type="button" onClick={() =>{navigate('membership')}}>
+    <Button
+      type="button"
+      onClick={() => {
+        navigate("membership");
+      }}>
       첫 달 20% 할인받기 <RightWhiteArrowIcon />
     </Button>
   );
