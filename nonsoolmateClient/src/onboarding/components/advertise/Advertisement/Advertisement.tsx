@@ -4,7 +4,6 @@ import ReasonTitle from "./Title";
 import { ReasonListType } from "onboarding/types/reasonListType";
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
-import { media } from "style/responsiveStyle";
 
 interface AdvertisementProps extends ReasonListType {}
 

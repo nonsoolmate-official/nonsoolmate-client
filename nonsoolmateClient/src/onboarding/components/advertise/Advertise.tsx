@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Reasons from "./Advertisement/Reasons";
 import Summary from "./Summary";
 import Title from "./Title";
-import { media } from "style/responsiveStyle";
 
 export default function Advertise() {
   return (
