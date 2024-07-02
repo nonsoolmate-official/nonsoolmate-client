@@ -8,7 +8,7 @@ import HomeIpadSide from "./components/HomeIpadSide";
 import { media } from "style/responsiveStyle";
 
 export default function index() {
-  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
+  const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
   useRefreshPage();
 
   return (
