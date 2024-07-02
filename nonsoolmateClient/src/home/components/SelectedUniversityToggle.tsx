@@ -112,7 +112,6 @@ const ExamContainer = styled.section<{ $isLastExam: boolean }>`
 const ExamBox = styled.section`
   display: flex;
   flex-direction: column;
-  width: 40rem;
 `;
 
 const Name = styled.h3`
