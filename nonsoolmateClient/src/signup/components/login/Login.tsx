@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
 
 export default function Login() {
-  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
+  const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <Container>

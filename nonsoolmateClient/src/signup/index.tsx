@@ -4,7 +4,7 @@ import Login from "./components/login/Login";
 import Logos from "./components/Logos";
 
 export default function Signup() {
-  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
+  const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <Container>
