@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LoginButton from "./buttons/LoginButton";
-import MembershipButton from "./buttons/MembershipButton";
+import LoginButton from "@components/buttons/LoginButton";
+import MembershipButton from "../buttons/MembershipButton";
 import { media } from "style/responsiveStyle";
 import { commonFlex } from "style/commonStyle";
 
