@@ -35,7 +35,15 @@ const TimerMarkContainer = styled.div`
     align-items: flex-start;
     position: fixed;
     top: 5rem;
-    left: 50%;
+    left: 62%;
+
+    @media (width <= 820px) {
+      left: 53%;
+    }
+
+    @media (width <= 768px) {
+      left: 50%;
+    }
   }
 `;
 const LeftCircleLongIcon = styled(LeftCircleLongIc)`
