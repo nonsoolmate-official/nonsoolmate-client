@@ -36,7 +36,7 @@ const ContentContainer = styled.div`
   align-items: center;
   margin-top: 5.2rem;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     flex-direction: column;
     gap: 2rem;
     align-items: flex-start;

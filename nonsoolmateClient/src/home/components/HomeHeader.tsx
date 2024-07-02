@@ -9,7 +9,7 @@ import { media } from "style/responsiveStyle";
 import { useMediaQuery } from "react-responsive";
 
 export default function HomeHeader() {
-  const isIpadSize = useMediaQuery({ query: "(max-width: 768px)" });
+  const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
   const handleHomeMemberInfoToggle = () => {
     setShowMemberInfo((open) => !open);

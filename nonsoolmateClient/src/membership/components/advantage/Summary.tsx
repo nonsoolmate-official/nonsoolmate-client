@@ -2,6 +2,7 @@ import { CheckSmallIc } from "@assets/index";
 import { MEMBERSHIP_ADVANTAGE_LIST } from "membership/core/membership";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
+import { media } from "style/responsiveStyle";
 
 export default function Summary() {
   return (
@@ -25,7 +26,7 @@ const Container = styled.div`
   align-items: flex-start;
   margin-bottom: 7.9rem;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     margin-bottom: 4.6rem;
   }
 `;

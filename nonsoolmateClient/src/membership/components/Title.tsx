@@ -1,5 +1,6 @@
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
+import { media } from "style/responsiveStyle";
 
 export default function Title() {
   return (
@@ -18,7 +19,7 @@ const Container = styled.div`
   gap: 0.4rem;
   margin-top: 6rem;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     margin-top: 10rem;
   }
 `;

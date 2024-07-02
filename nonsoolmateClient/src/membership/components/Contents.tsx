@@ -5,6 +5,7 @@ import { columnFlex, commonFlex } from "style/commonStyle";
 import Advantage from "./advantage/Advantage";
 import BackgroundGrey from "./BackgroundGrey";
 import AdvanTitle from "./advantage/Title";
+import { media } from "style/responsiveStyle";
 
 export default function Contents() {
   return (
@@ -33,7 +34,7 @@ const Container = styled.section`
   gap: 2.4rem;
   margin-top: 8.1rem;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     flex-direction: column;
     margin-top: 9.6rem;
   }
@@ -45,7 +46,7 @@ const SubscribeWrapper = styled.div`
 `;
 
 const Ipad = styled.div`
-  @media (width <= 1000px) {
+  ${media.tablet} {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -54,7 +55,7 @@ const Ipad = styled.div`
 `;
 
 const IpadGrey = styled.div`
-  @media (width <= 1000px) {
+  ${media.tablet} {
     position: absolute;
     bottom: 13.5rem;
     z-index: -1;
@@ -67,10 +68,10 @@ const IpadGrey = styled.div`
 const AdvantageContainer = styled.article`
   ${columnFlex}
 
-  align-items: flex-start;
   gap: 3rem;
+  align-items: flex-start;
 
-  @media (width <= 1000px) {
+  ${media.tablet} {
     gap: 9.6rem;
     align-items: center;
     width: 100%;

@@ -4,7 +4,6 @@ import ReasonTitle from "./Title";
 import { ReasonListType } from "onboarding/types/reasonListType";
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
-import { media } from "style/responsiveStyle";
 
 interface AdvertisementProps extends ReasonListType {}
 
@@ -30,7 +29,7 @@ const Container = styled.article`
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
 
-  ${media.tablet} {
+  @media (width >= 768px) {
     width: 34.8rem;
   }
 `;
