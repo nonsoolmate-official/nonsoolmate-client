@@ -15,7 +15,7 @@ ${reset}
 html,
 body {
   width: 100%;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto;
   font-size: 62.5%;
   -ms-overflow-style: none; /* 인터넷 익스플로러  스크롤바 숨김 */
