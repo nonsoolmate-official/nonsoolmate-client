@@ -1,12 +1,12 @@
 import { css } from "styled-components";
 import { media } from "style/responsiveStyle";
-
+//height: 100%;
 export const SetUnsetContainerLayout = css`
   display: flex;
   flex-direction: column;
   overflow: scroll;
   width: calc(100% - 43.1rem);
-  height: 100%;
+  height: calc(var(--vh, 1vh) * 100);
   background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {
