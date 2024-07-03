@@ -36,6 +36,5 @@ html {
       font-weight: normal;
       src: url('https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css') format('woff2');
   }
-
 }
 `;
