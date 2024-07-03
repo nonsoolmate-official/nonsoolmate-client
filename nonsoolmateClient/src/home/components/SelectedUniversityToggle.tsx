@@ -91,6 +91,7 @@ const ToggleContainer = styled.section`
   flex-direction: column;
   align-items: flex-start;
   overflow: scroll;
+  scrollbar-width: none;
   width: 100%;
   max-height: 33.2rem;
   padding: 0.8rem 2.4rem 1.6rem;
