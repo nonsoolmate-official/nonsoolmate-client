@@ -74,6 +74,7 @@ const Container = styled.section`
   ${SetUnsetContainerLayout};
 
   overflow-y: scroll;
+  scrollbar-width: none;
 `;
 
 const Box = styled.div`
