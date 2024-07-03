@@ -29,11 +29,11 @@ const Homes = styled.section`
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100 - 6.4rem);
+  height: calc(100vh - 6.4rem);
   padding: 0;
 
   ${media.tablet} {
     flex-direction: column;
-    height: calc(var(--vh, 1vh) * 100 - 12.8rem);
+    height: calc(100vh - 12.8rem);
   }
 `;
