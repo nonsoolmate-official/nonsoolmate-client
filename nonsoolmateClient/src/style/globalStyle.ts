@@ -8,6 +8,10 @@ ${reset}
   box-sizing: border-box;
 }
 
+:root{
+  --vh: 100%;
+}
+
 html,
 body {
   width: 100%;
