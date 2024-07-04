@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { RightArrowBigIc, LeftArrowBigIc, ShowExplanationTagIc, ShowQuestionTagIc } from "@assets/index";
 import { testImageType } from "answer/types/testImageType";
+import { media } from "style/responsiveStyle";
 
 interface PdfViewerWrapperProps {
   firstTitle: string;
@@ -26,6 +27,24 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
   const [isButtonHover, setIsButtonHover] = useState(false);
+
+  const [selectTest, setSelectTest] = useState(true);
+  const [selectExplanation, setSelectExplanation] = useState(false);
+
+  function clickTestButton() {
+    if (selectTest && !selectExplanation) {
+      setSelectTest(true);
+    } else {
+      setSelectTest(!selectTest);
+    }
+  }
+  function clickExplanationButton() {
+    if (selectExplanation && !selectTest) {
+      setSelectExplanation(true);
+    } else {
+      setSelectExplanation(!selectExplanation);
+    }
+  }
 
   useEffect(() => {
     if (isExplanationHide || isQuestionHide) {
@@ -47,6 +66,43 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           <ShowQuestionTagIcon />
         </ShowQuestionMessageBox>
       </ShowQuestionButton>
+      <IpadButtonContainer>
+        <TestButton type="button" onClick={clickTestButton} $selectTest={selectTest}>
+          {firstTitle}
+        </TestButton>
+        <ExplanationButton type="button" onClick={clickExplanationButton} $selectExplanation={selectExplanation}>
+          {secondTitle}
+        </ExplanationButton>
+      </IpadButtonContainer>
+      <IpadPdfViewer>
+        {selectTest && (
+          <>
+            {ifExplanation && testImages ? (
+              <ImageSlider
+                testImages={testImages && testImages}
+                selectTest={selectTest}
+                selectExplanation={selectExplanation}
+              />
+            ) : (
+              <PdfViewer
+                pdfUrl={firstPdfUrl}
+                getFilePluginInstance={getFilePluginInstance}
+                selectTest={selectTest}
+                selectExplanation={selectExplanation}
+              />
+            )}
+          </>
+        )}
+        {selectExplanation && (
+          <PdfViewer
+            pdfUrl={secondPdfUrl ? secondPdfUrl : firstPdfUrl}
+            fullScreenPluginInstance={fullScreenPluginInstance}
+            selectTest={selectTest}
+            selectExplanation={selectExplanation}
+          />
+        )}
+      </IpadPdfViewer>
+
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={firstTitle}
@@ -121,6 +177,44 @@ const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
   height: calc(100vh - 6.4rem);
   padding: 2rem 0 3rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
+
+  ${media.tablet} {
+    ${columnFlex}
+
+    gap: 1.4rem;
+    padding: 2rem 3rem;
+  }
+`;
+
+const IpadButtonContainer = styled.div`
+  ${media.tablet} {
+    display: flex;
+    width: 100%;
+    height: 7rem;
+    padding: 0 1.6rem;
+    ${({ theme }) => theme.fonts.Headline3}
+  }
+
+  display: none;
+`;
+
+const TestButton = styled.button<{ $selectTest: boolean }>`
+  padding: 0 1.6rem;
+  color: ${({ theme, $selectTest }) => ($selectTest ? theme.colors.black : theme.colors.grey_300)};
+`;
+const ExplanationButton = styled.button<{ $selectExplanation: boolean }>`
+  padding: 0 1.6rem;
+  color: ${({ theme, $selectExplanation }) => ($selectExplanation ? theme.colors.black : theme.colors.grey_300)};
+`;
+const IpadPdfViewer = styled.article`
+  ${media.tablet} {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    width: 100%;
+  }
+
+  display: none;
 `;
 
 const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExplanationHide: boolean }>`
@@ -130,6 +224,10 @@ const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExpla
   gap: 1.4rem;
   width: ${({ $isExplanationHide }) => ($isExplanationHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
   transition: 0.3s ease-in-out;
+
+  ${media.tablet} {
+    display: none;
+  }
 `;
 
 const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQuestionHide: boolean }>`
@@ -139,6 +237,10 @@ const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQ
   gap: 1.4rem;
   width: ${({ $isQuestionHide }) => ($isQuestionHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
   transition: 0.3s ease-in-out;
+
+  ${media.tablet} {
+    display: none;
+  }
 `;
 
 const RightArrowBigIcon = styled(RightArrowBigIc)`
