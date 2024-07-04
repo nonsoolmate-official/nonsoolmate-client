@@ -252,6 +252,9 @@ const ShowQuestionButton = styled.button<{ $isQuestionHide: boolean }>`
   display: ${({ $isQuestionHide }) => ($isQuestionHide ? `block` : `none`)};
   position: fixed;
   left: 4.9rem;
+  ${media.tablet} {
+    display: none;
+  }
 `;
 
 const LeftArrowBigIcon = styled(LeftArrowBigIc)`
