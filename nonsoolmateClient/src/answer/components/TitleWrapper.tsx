@@ -4,6 +4,7 @@ import { RenderDownloadProps } from "@react-pdf-viewer/get-file";
 import { GetFilePlugin } from "@react-pdf-viewer/get-file";
 import { RenderEnterFullScreenProps } from "@react-pdf-viewer/full-screen";
 import { FullScreenPlugin } from "@react-pdf-viewer/full-screen";
+import { media } from "style/responsiveStyle";
 
 interface TitleWrapperProps {
   title: string;
@@ -83,6 +84,10 @@ const TitleWrapperContainer = styled.div`
   justify-content: space-between;
   width: calc((100vw - 16.8rem) / 2);
   padding: 0 2.5rem 0 2.4rem;
+
+  ${media.tablet} {
+    display: none;
+  }
 `;
 
 const Title = styled.p`

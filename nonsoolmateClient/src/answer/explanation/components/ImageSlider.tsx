@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
 import { testImageType } from "answer/types/testImageType";
+import { media } from "style/responsiveStyle";
 
 interface ImageSliderProps {
   testImages: testImageType[];
+  selectTest?: boolean;
+  selectExplanation?: boolean;
 }
 
 export default function ImageSlider(props: ImageSliderProps) {
-  const { testImages } = props;
+  const { testImages, selectTest, selectExplanation } = props;
 
   const imageMap = () => {
     return testImages.map((eachImage) => {
@@ -16,13 +19,13 @@ export default function ImageSlider(props: ImageSliderProps) {
   };
 
   return (
-    <ImageSliderContainer>
+    <ImageSliderContainer $selectTest={selectTest} $selectExplanation={selectExplanation}>
       <InnerWrapper>{imageMap()}</InnerWrapper>
     </ImageSliderContainer>
   );
 }
 
-const ImageSliderContainer = styled.section`
+const ImageSliderContainer = styled.section<{ $selectTest?: boolean; $selectExplanation?: boolean }>`
   ${({ theme }) => theme.effects.pdf_shadow};
 
   width: calc((100vw - 16.8rem) / 2);
@@ -46,6 +49,11 @@ const ImageSliderContainer = styled.section`
     background: gray;
     background-clip: padding-box;
   }
+  ${media.tablet} {
+    width: 100%;
+    ${({ $selectTest, $selectExplanation }) =>
+      $selectTest && $selectExplanation && "height : calc((100vh - 17.5rem) / 2)"};
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -55,5 +63,5 @@ const InnerWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  width: 54.9rem;
+  width: 55rem;
 `;
