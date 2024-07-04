@@ -25,6 +25,7 @@ export default function Advertisement(props: AdvertisementProps) {
 const Container = styled.article`
   display: flex;
   flex-direction: column;
+  height: 22rem;
   padding: 2rem 2.4rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
