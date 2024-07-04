@@ -6,7 +6,7 @@ export const SetUnsetContainerLayout = css`
   flex-direction: column;
   overflow: scroll;
   width: calc(100% - 43.1rem);
-  height: 100%;
+  height: 100vh;
   background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {
