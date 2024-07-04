@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import IpadSideBarButton from "./IpadSideBarButton";
 
 export default function HomeIpadSide() {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState<string>("test");
+
+  const [currentPage, setCurrentPage] = useState<string>(() => {
+    return localStorage.getItem("currentPage") || "test";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const handleMoveToPage = (page: string) => {
     navigate(`/home/${page}`);
