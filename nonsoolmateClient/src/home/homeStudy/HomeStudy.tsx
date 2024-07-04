@@ -20,7 +20,8 @@ export default function HomeStudy() {
 const Container = styled.section`
   ${SetUnsetContainerLayout}
 
-  overflow-y: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
 `;
 
 const Box = styled.div`
