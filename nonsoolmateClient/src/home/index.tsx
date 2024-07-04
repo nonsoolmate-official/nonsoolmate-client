@@ -12,16 +12,23 @@ export default function index() {
   useRefreshPage();
 
   return (
-    <>
+    <Wrapper>
       <HomeHeader />
       <Homes>
         {!isIpadSize && <HomeSide />}
         <Outlet />
       </Homes>
       {isIpadSize && <HomeIpadSide />}
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
 
 const Homes = styled.section`
   display: flex;
