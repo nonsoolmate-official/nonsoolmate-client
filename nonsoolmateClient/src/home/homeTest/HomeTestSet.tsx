@@ -121,7 +121,9 @@ const ListBox = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: calc(100% - 18.2rem);
+  height: 100%;
+
+  /* height: calc(100% - 18.2rem); */
   padding: 0;
 `;
 

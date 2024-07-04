@@ -3,13 +3,19 @@ import { BorderIc } from "@assets/index";
 import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarPracticeButton from "./SideBarPracticeButton";
 import SideBarTestButton from "./SideBarTestButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useGetName from "home/hooks/useGetName";
 
 export default function HomeSide() {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState<string>("test");
+  const [currentPage, setCurrentPage] = useState<string>(() => {
+    return localStorage.getItem("currentPage") || "test";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const getNameResponse = useGetName();
   if (!getNameResponse) return <></>;

@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import IpadSideBarButton from "./IpadSideBarButton";
 
 export default function HomeIpadSide() {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState<string>("test");
+
+  const [currentPage, setCurrentPage] = useState<string>(() => {
+    return localStorage.getItem("currentPage") || "test";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const handleMoveToPage = (page: string) => {
     navigate(`/home/${page}`);
@@ -51,6 +58,7 @@ const Side = styled.aside`
   display: flex;
   justify-content: space-around;
   position: sticky;
+  bottom: 0;
   height: 100%;
   padding: 0.6rem 4.8rem;
 `;

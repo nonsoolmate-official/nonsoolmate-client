@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HomeTestUnsetIc, FindTestIc } from "@assets/index";
 import { UnsetContentLayout, SetUnsetContainerLayout } from "style/layout/SetUnsetLayout";
 import { mainButtonStyle } from "style/commonStyle";
-
+import { media } from "style/responsiveStyle";
 interface HomeTestUnsetProps {
   handleUniversityModal: (open: boolean) => void;
 }
@@ -33,7 +33,8 @@ export default function HomeTestUnset(props: HomeTestUnsetProps) {
 const Container = styled.section`
   ${SetUnsetContainerLayout}
 
-  overflow-y: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
 `;
 
 const Box = styled.div`
@@ -41,6 +42,10 @@ const Box = styled.div`
   flex-direction: column;
   gap: 0.7rem;
   margin: 6.7rem 21.5rem 11.5rem 2.4rem;
+
+  ${media.tablet} {
+    margin: 4rem 3.2rem 6.6rem;
+  }
 `;
 
 const Header = styled.p`
@@ -54,6 +59,10 @@ const Content = styled.section`
   ${UnsetContentLayout}
 
   padding: 14.2rem 0 16.7rem;
+
+  ${media.tablet} {
+    padding: 31.8rem 0 34.3rem;
+  }
 `;
 
 const HomeTestUnsetIcon = styled(HomeTestUnsetIc)`
