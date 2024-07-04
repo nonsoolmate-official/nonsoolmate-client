@@ -58,6 +58,7 @@ const Side = styled.aside`
   display: flex;
   justify-content: space-around;
   position: sticky;
+  bottom: 0;
   height: 100%;
   padding: 0.6rem 4.8rem;
 `;
