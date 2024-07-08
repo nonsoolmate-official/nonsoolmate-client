@@ -73,8 +73,9 @@ export default function HomeTestSet(props: HomeTestSetProps) {
 const Container = styled.section`
   ${SetUnsetContainerLayout};
 
-  overflow-y: scroll;
   scrollbar-width: none;
+  flex-grow: 1;
+  overflow-y: auto;
 `;
 
 const Box = styled.div`
