@@ -36,7 +36,7 @@ const Homes = styled.section`
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: inherit;
 
   /* height: calc(100vh - 6.4rem); */
   padding: 0;
