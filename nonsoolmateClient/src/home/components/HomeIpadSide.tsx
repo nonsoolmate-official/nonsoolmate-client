@@ -59,6 +59,7 @@ const Side = styled.aside`
   justify-content: space-around;
   position: sticky;
   bottom: 0;
+  z-index: 1;
   height: 6.4rem;
   padding: 0.6rem 4.8rem;
 `;
