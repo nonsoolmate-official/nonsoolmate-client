@@ -62,4 +62,5 @@ const Side = styled.aside`
   z-index: 1;
   height: 6.4rem;
   padding: 0.6rem 4.8rem;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
