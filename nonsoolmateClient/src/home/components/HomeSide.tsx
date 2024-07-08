@@ -66,6 +66,8 @@ const Side = styled.aside`
   flex-direction: column;
   gap: 2rem;
   justify-content: flex-start;
+  flex-shrink: 0;
+  overflow: hidden;
   position: sticky;
   width: 43.1rem;
   height: 100%;
