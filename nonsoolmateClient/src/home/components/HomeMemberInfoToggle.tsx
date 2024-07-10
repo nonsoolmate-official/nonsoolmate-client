@@ -29,7 +29,9 @@ export default function HomeMemberInfoToggle() {
           </Info>
         </MemberInfo>
         <Line />
-        <MypageButton type="button">내 정보</MypageButton>
+        <MypageButton type="button" onClick={() => navigate("/mypage")}>
+          내 정보
+        </MypageButton>
         <LogoutButton type="button" onClick={() => navigate("/signup")}>
           로그아웃
         </LogoutButton>

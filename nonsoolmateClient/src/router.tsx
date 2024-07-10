@@ -13,6 +13,7 @@ import Membership from "membership";
 import RedirectPages from "socialLogin";
 import Loading from "loading";
 import Interceptors from "socialLogin/components/Interceptors";
+import Mypage from "mypage";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
       { path: "/login/oauth2/code/naver", element: <RedirectPages /> },
       { path: "/loading", element: <Loading /> },
       { path: "/error", element: <Error /> },
+      { path: "/mypage", element: <Mypage /> },
     ],
   },
 ]);
