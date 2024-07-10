@@ -29,6 +29,9 @@ export default function HomeMemberInfoToggle() {
           </Info>
         </MemberInfo>
         <Line />
+        <MypageButton type="button" onClick={() => navigate("/mypage")}>
+          내 정보
+        </MypageButton>
         <LogoutButton type="button" onClick={() => navigate("/signup")}>
           로그아웃
         </LogoutButton>
@@ -51,7 +54,7 @@ const MemberInfoToggleView = styled.section`
   top: 0.8rem;
   right: 21.5rem;
   width: 22.8rem;
-  height: 12.8rem;
+  height: 17rem;
   padding: 2rem 2.4rem;
   border-radius: 8px;
   background-color: white;
@@ -87,6 +90,14 @@ const TicketCount = styled.div`
   gap: 0.4rem;
 `;
 
+const MypageButton = styled.button`
+  display: flex;
+  width: 100%;
+  margin: 0.6rem 0;
+  padding: 0.8rem 0.4rem;
+  ${({ theme }) => theme.fonts.Body6};
+`;
+
 const Text = styled.p`
   ${({ theme }) => theme.fonts.Body6};
 `;
@@ -106,7 +117,6 @@ const LogoutButton = styled(lightBlueButtonStyle)`
 
   width: 18rem;
   height: 100%;
-  margin-top: 0.6rem;
   padding: 0;
   border-radius: 4px;
 `;
