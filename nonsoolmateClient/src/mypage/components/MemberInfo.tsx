@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import useGetProfileInfo from "mypage/hooks/useGetProfileInfo";
+import useGetProfile from "mypage/hooks/useGetProfile";
 
 export default function MemberInfo() {
-  const response = useGetProfileInfo();
+  const response = useGetProfile();
   if (!response) return <></>;
 
   const { name, gender, birthday, email, phoneNumber } = response?.data;
