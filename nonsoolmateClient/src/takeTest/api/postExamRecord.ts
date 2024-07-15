@@ -10,7 +10,7 @@ export async function postExamRecord({
   fileName: string;
 }) {
   const { data } = await client.post(`/university/exam-record/sheet`, {
-    universityExamId: examId,
+    examId: examId,
     memberTakeTimeExam: totalTime,
     memberSheetFileName: fileName,
   });
