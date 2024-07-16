@@ -29,17 +29,12 @@ const Container = styled.article`
   padding: 2rem 2.4rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
-
-  @media (width >= 768px) {
-    width: 34.8rem;
-  }
 `;
 
 const TextContainer = styled.div`
   ${columnFlex}
 
   align-items: flex-start;
-  width: 24.8rem;
 `;
 
 const ImageWrapper = styled.div`
