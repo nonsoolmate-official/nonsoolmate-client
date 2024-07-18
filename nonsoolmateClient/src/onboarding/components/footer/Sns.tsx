@@ -2,9 +2,9 @@ import { InstaIc, KakaoIc } from "@assets/index";
 import styled from "styled-components";
 
 export default function Sns() {
-  const openUrl = (url: string) => {
+  function openUrl(url: string) {
     window.open(url, "_blank");
-  };
+  }
 
   return (
     <Container>
