@@ -2,16 +2,18 @@ import styled from "styled-components";
 import { EmptyIc } from "@assets/index";
 import { SetUnsetContainerLayout, UnsetContentLayout } from "style/layout/SetUnsetLayout";
 import { media } from "style/responsiveStyle";
+import PdfViewerTestv1 from "answer/components/PdfViewerTestv1";
 
 export default function HomeStudy() {
   return (
     <Container>
       <Box>
         <Header>나의 학습장</Header>
-        <Content>
+        {/* <Content>
           <EmptyIcon />
           <ContentText>아직 준비 중이에요!</ContentText>
-        </Content>
+        </Content> */}
+        <PdfViewerTestv1 />
       </Box>
     </Container>
   );
