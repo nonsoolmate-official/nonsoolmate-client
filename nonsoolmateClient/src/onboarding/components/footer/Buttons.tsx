@@ -19,6 +19,7 @@ const Container = styled.article`
   display: flex;
   gap: 3.3rem;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Button = styled.button`

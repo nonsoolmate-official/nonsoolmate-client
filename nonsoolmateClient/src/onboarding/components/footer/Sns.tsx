@@ -1,23 +1,22 @@
-import { FaceBookIc, InstaIc } from "@assets/index";
+import { InstaIc, KakaoIc } from "@assets/index";
 import styled from "styled-components";
 
 export default function Sns() {
   return (
     <Container>
-      <FaceBookIcon />
       <InstaIcon />
+      <KakaoIcon />
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
-  margin-top: 2rem;
 `;
 
-const FaceBookIcon = styled(FaceBookIc)`
+const KakaoIcon = styled(KakaoIc)`
   width: 3.6rem;
   height: 3.6rem;
 `;
