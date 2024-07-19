@@ -14,10 +14,14 @@ export default function Reasons() {
 }
 
 const Container = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 2.4rem;
   justify-content: center;
   align-items: center;
   margin-top: 5.6rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (width <= 987px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;

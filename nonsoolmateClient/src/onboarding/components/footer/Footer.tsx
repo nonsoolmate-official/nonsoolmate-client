@@ -3,7 +3,8 @@ import FooterLeft from "./FooterLeft";
 import FooterRight from "./FooterRight";
 import DivideLine from "../common/DivideLine";
 import { media } from "style/responsiveStyle";
-import Sns from "./Sns";
+
+import NonsoolInfoImg from "@assets/image/nonsoolInfo.png";
 
 export default function Footer() {
   return (
@@ -13,7 +14,10 @@ export default function Footer() {
         <FooterLeft />
         <FooterRight />
       </ContentContainer>
-      <Sns />
+      <Info>
+        <Title>논술메이트</Title>
+        <NonsoolInfo src={NonsoolInfoImg} />
+      </Info>
     </Container>
   );
 }
@@ -41,4 +45,23 @@ const ContentContainer = styled.div`
     gap: 2rem;
     align-items: flex-start;
   }
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 2rem 0 5.8rem;
+`;
+
+const Title = styled.p`
+  color: ${({ theme }) => theme.colors.grey_600};
+  ${({ theme }) => theme.fonts.Body5};
+`;
+
+const NonsoolInfo = styled.img`
+  width: 33.6rem;
+  padding: 0;
+  border: none;
+  background: none;
 `;
