@@ -13,7 +13,8 @@ const colors = {
   grey_400: "#AFB3C0",
   grey_300: "#C6CAD2",
   grey_200: "#E2E4E8",
-  grey_100: "#EBEDF3",
+  grey_100: "#ECEDF0",
+  grey_50: "#F3F4F6",
   white: "#FFFFFF",
 
   main_blue: "#6478FF",
@@ -44,89 +45,90 @@ const effects = {
   blur: `
     filter: blur(3px);
     `,
+  pdf_shadow: `
+    box-shadow: 0px 2.56px 10.239px 0px rgba(0, 0, 0, 0.12);    
+    `,
+  membership_shadow: `
+    box-shadow: 0px 0px 12px 0px rgb(236, 237, 249)`,
 };
-
-// bold=700
-// medium=500
-//regular=400
 
 const fonts = {
   Headline1: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
-    font-size: 6.4rem;
-    line-height: 7.6rem;
+    font-family: SUIT, "Apple SD Gothic Neo";
+    font-size: 4.8rem;
+    font-weight: 600;
+    line-height: 6rem;
   `,
   Headline2: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 3.6rem;
+    font-weight: 600;
     line-height: 4.4rem;
   `,
   Headline3: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 2.8rem;
+    font-weight: 600;
     line-height: 3.6rem;
   `,
   Headline4: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 2.4rem;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Headline5: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 2rem;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Body1: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.8rem;
+    font-weight: 600;
     line-height: 2.8rem;
   `,
   Body2: css`
-    font-family: "SUIT-Regular";
-    font-weight: 500;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.8rem;
+    font-weight: 500;
     line-height: 2.8rem;
   `,
   Body3: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.6rem;
+    font-weight: 600;
     line-height: 2.4rem;
   `,
   Body4: css`
-    font-family: "SUIT-Regular";
-    font-weight: 400;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.6rem;
+    font-weight: 400;
     line-height: 2.4rem;
   `,
   Body5: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.4rem;
+    font-weight: 600;
     line-height: 2rem;
   `,
   Body6: css`
-    font-family: "SUIT-Regular";
-    font-weight: 500;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.4rem;
+    font-weight: 500;
     line-height: 2rem;
   `,
   Body7: css`
-    font-family: "SUIT-Regular";
-    font-weight: 700;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.2rem;
+    font-weight: 600;
     line-height: 1.6rem;
   `,
   Body8: css`
-    font-family: "SUIT-Regular";
-    font-weight: 500;
+    font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1.6rem;
   `,
 };

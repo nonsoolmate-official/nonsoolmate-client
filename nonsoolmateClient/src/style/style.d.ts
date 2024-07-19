@@ -16,6 +16,7 @@ declare module "styled-components" {
       grey_300: string;
       grey_200: string;
       grey_100: string;
+      grey_50: string;
       white: string;
 
       main_blue: string;
@@ -32,6 +33,8 @@ declare module "styled-components" {
       top_nav_shadow: string;
       container_shadow: string;
       blur: string;
+      pdf_shadow: string;
+      membership_shadow: string;
     };
     fonts: {
       Headline1: SerializedStyles;
