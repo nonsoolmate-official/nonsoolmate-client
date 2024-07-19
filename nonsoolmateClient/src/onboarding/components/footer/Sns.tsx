@@ -1,23 +1,32 @@
-import { FaceBookIc, InstaIc } from "@assets/index";
+import { InstaIc, KakaoIc } from "@assets/index";
 import styled from "styled-components";
 
 export default function Sns() {
+  function openUrl(url: string) {
+    window.open(url, "_blank");
+  }
+
   return (
     <Container>
-      <FaceBookIcon />
-      <InstaIcon />
+      <BtnWrapper type="button" onClick={() => openUrl("http://pf.kakao.com/_iuHpG")}>
+        <KakaoIcon />
+      </BtnWrapper>
+      <BtnWrapper
+        type="button"
+        onClick={() => openUrl("https://www.instagram.com/nonsoolmate?igsh=amFiemthdmRxMDg4&utm_source=qr")}>
+        <InstaIcon />
+      </BtnWrapper>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
-  margin-top: 2rem;
 `;
 
-const FaceBookIcon = styled(FaceBookIc)`
+const KakaoIcon = styled(KakaoIc)`
   width: 3.6rem;
   height: 3.6rem;
 `;
@@ -25,4 +34,11 @@ const FaceBookIcon = styled(FaceBookIc)`
 const InstaIcon = styled(InstaIc)`
   width: 3.6rem;
   height: 3.6rem;
+`;
+
+const BtnWrapper = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 `;
