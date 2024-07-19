@@ -1,95 +1,38 @@
-import { LeftArrowBigIc, RightArrowBigIc } from "@assets/index";
-import styled from "styled-components";
-import testExample from "@assets/image/testexample.png";
+import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
+import { getFilePlugin } from "@react-pdf-viewer/get-file";
+import { useGetExplanationPageData } from "answer/hooks/useGetExplanationPageData";
 import { commonFlex } from "style/commonStyle";
-import { useEffect, useState } from "react";
-import { useGetUniversityExampleImages } from "takeTest/hooks/useGetUniversityExampleImages";
-import { media } from "style/responsiveStyle";
+import styled from "styled-components";
+import { useGetUniversityExamplePdf } from "takeTest/hooks/useGetUniversityExamplePdf";
+import PdfViewer from "./PdfViewer";
 
 interface PaginatinProps {
-  openCoachMark: boolean;
-  openPrecautionModal: boolean;
   examId: number;
 }
 export default function TestPagination(props: PaginatinProps) {
-  const { openCoachMark, openPrecautionModal, examId } = props;
-  const [paperIdx, setPaperIdx] = useState(0);
-  const [showPreviousIcon, setShowPreviousIcon] = useState(true);
-  const [showNextIcon, setShowNextIcon] = useState(true);
+  const { examId } = props;
 
-  const examImage = useGetUniversityExampleImages(examId, paperIdx);
+  const getFilePluginInstance = getFilePlugin();
+  const fullScreenPluginInstance = fullScreenPlugin();
 
-  const totalPages = examImage ? examImage.data.totalPages : 0;
+  const explanationRes = useGetExplanationPageData(examId);
+  if (!explanationRes) return <></>;
 
-  useEffect(() => {
-    setShowPreviousIcon(openCoachMark || openPrecautionModal || paperIdx > 0);
-    setShowNextIcon(openCoachMark || openPrecautionModal || paperIdx < totalPages - 1);
-  }, [openCoachMark, openPrecautionModal, paperIdx]);
-
-  if (!examImage) return <></>;
   const {
-    data: { content },
-  } = examImage;
+    data: { examAnswerUrl },
+  } = explanationRes;
 
-  function handleMoveToPreviousPage() {
-    setPaperIdx((prev) => prev - 1);
-  }
-  function handleMoveToNextPage() {
-    setPaperIdx((prev) => prev + 1);
-  }
+  console.log(examAnswerUrl);
   return (
-    <TestPaginationContainer>
-      <PreviousPageButton type="button" onClick={handleMoveToPreviousPage} disabled={paperIdx === 0}>
-        <LeftArrowBigIcon $showPreviousIcon={showPreviousIcon} />
-      </PreviousPageButton>
-      <TestImage src={openCoachMark || openPrecautionModal ? testExample : content[0].examImgUrl} alt="시험지 이미지" />
-      <NextPageButton type="button" onClick={handleMoveToNextPage} disabled={paperIdx === totalPages - 1}>
-        <RightArrowBigIcon $showNextIcon={showNextIcon} />
-      </NextPageButton>
-    </TestPaginationContainer>
+    <TakeTestContainer>
+      <PdfViewer pdfUrl={examAnswerUrl} getFilePluginInstance={getFilePluginInstance} />
+    </TakeTestContainer>
   );
 }
+const TakeTestContainer = styled.section`
+  ${commonFlex}
 
-const TestPaginationContainer = styled.section`
-  ${commonFlex};
-`;
-const PageButtonStyle = styled.button`
-  position: fixed;
-  top: 50%;
-  padding: 0;
-
-  :hover {
-    path {
-      stroke: ${({ theme }) => theme.colors.grey_700};
-    }
-  }
-`;
-const PreviousPageButton = styled(PageButtonStyle)`
-  left: 8rem;
-  ${media.tablet} {
-    left: 0;
-  }
-`;
-const NextPageButton = styled(PageButtonStyle)`
-  right: 8rem;
-  ${media.tablet} {
-    right: 0;
-  }
-`;
-const RightArrowBigIcon = styled(RightArrowBigIc)<{ $showNextIcon: boolean }>`
-  display: ${({ $showNextIcon }) => ($showNextIcon ? "flex" : "none")};
-  width: 5.6rem;
-  height: 5.6rem;
-`;
-const LeftArrowBigIcon = styled(LeftArrowBigIc)<{ $showPreviousIcon: boolean }>`
-  display: ${({ $showPreviousIcon }) => ($showPreviousIcon ? "flex" : "none")};
-  width: 5.6rem;
-  height: 5.6rem;
-`;
-const TestImage = styled.img`
-  width: 93.6rem;
-  margin: 2.4rem 8rem;
-  ${media.tablet} {
-    width: 70.4rem;
-  }
+  width: 100vw;
+  height: calc(100vh - 6.4rem);
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
