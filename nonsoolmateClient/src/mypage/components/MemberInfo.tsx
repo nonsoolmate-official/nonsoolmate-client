@@ -60,7 +60,7 @@ const ReviseButton = styled.button`
 
   position: absolute;
   right: 0;
-  width: 7.2rem;
+  width: 7.6rem;
   color: ${({ theme }) => theme.colors.main_blue};
 `;
 const GenderBox = styled.ul`
