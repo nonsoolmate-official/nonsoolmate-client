@@ -1,7 +1,6 @@
 import { UpCircleIc } from "@assets/index";
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
-import { CoachMarkText } from "./PrevPageMark";
 
 export default function QuitTestMark() {
   return (
@@ -30,8 +29,9 @@ const IconContainer = styled.div`
   display: flex;
   padding-right: 2.4rem;
 `;
-const QuitTestCoachMarkText = styled(CoachMarkText)`
+const QuitTestCoachMarkText = styled.p`
   text-align: right;
+  ${({ theme }) => theme.fonts.Body4};
 `;
 const UpCircleIcon = styled(UpCircleIc)`
   width: 0.4rem;

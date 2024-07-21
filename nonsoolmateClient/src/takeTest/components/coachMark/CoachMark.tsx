@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import PrevPageMark from "./PrevPageMark";
-import NextPageMark from "./NextPageMark";
 import TimerMark from "./TimerMark";
 import QuitTestMark from "./QuitTestMark";
 import CloseCoachMark from "./CloseCoachMark";
@@ -10,8 +8,6 @@ export default function CoachMark(props: CoachMarkProps) {
   const { toPrecautionModal } = props;
   return (
     <CoachMarkContainer>
-      <PrevPageMark />
-      <NextPageMark />
       <TimerMark />
       <QuitTestMark />
       <CloseCoachMark toPrecautionModal={toPrecautionModal} />

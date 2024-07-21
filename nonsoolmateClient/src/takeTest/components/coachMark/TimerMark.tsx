@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { LeftCircleLongIc, UpCircleIc } from "@assets/index";
 import { columnFlex, commonFlex } from "style/commonStyle";
-import { CoachMarkText } from "./PrevPageMark";
 import { media } from "style/responsiveStyle";
 
 export default function TimerMark() {
@@ -67,7 +66,8 @@ const UpCircleIcon = styled(UpCircleIc)`
     height: 3.9rem;
   }
 `;
-const TimerCoachMarkText = styled(CoachMarkText)`
+const TimerCoachMarkText = styled.p`
+  ${({ theme }) => theme.fonts.Body4};
   ${media.tablet} {
     text-align: right;
   }
