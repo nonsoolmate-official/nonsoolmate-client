@@ -5,7 +5,7 @@ const QUERY_KEY = {
   getUniversityExamPdf: "getUniversityExamPdf",
 };
 
-export function useGetUniversityExamplePdf(examId: number) {
+export function useGetUniversityExamPdf(examId: number) {
   const { data } = useQuery([QUERY_KEY.getUniversityExamPdf], () => getUniversityExamPdf(examId), {
     onError: (error) => {
       console.log("에러 발생", error);
