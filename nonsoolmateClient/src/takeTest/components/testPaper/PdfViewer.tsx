@@ -38,13 +38,9 @@ const PdfViewerWrapper = styled.div`
   ${({ theme }) => theme.effects.pdf_shadow};
 
   width: 100%;
-  height: calc(100vh - 2.4rem);
-  margin: 0;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey_50};
+  height: 100%;
 `;
 
 const ViewerWrapper = styled.div`
   height: 100%;
-  padding: 2.4rem 21.5rem 0;
 `;
