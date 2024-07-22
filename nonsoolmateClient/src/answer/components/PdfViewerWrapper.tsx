@@ -2,12 +2,10 @@ import { columnFlex, commonFlex } from "style/commonStyle";
 import PdfViewer from "./PdfViewer";
 import TitleWrapper from "./TitleWrapper";
 import styled from "styled-components";
-import ImageSlider from "answer/explanation/components/ImageSlider";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { RightArrowBigIc, LeftArrowBigIc, ShowExplanationTagIc, ShowQuestionTagIc } from "@assets/index";
-import { testImageType } from "answer/types/testImageType";
 import { media } from "style/responsiveStyle";
 
 interface PdfViewerWrapperProps {
@@ -16,11 +14,11 @@ interface PdfViewerWrapperProps {
   ifExplanation?: boolean;
   firstPdfUrl: string;
   secondPdfUrl?: string;
-  testImages?: testImageType[];
+  testUrl?: string;
 }
 
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
-  const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testImages } = props;
+  const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testUrl } = props;
   const getFilePluginInstance = getFilePlugin();
   const fullScreenPluginInstance = fullScreenPlugin();
   const [isQuestionHide, setIsQuestionHide] = useState(false);
@@ -77,9 +75,10 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
       <IpadPdfViewer>
         {selectTest && (
           <>
-            {ifExplanation && testImages ? (
-              <ImageSlider
-                testImages={testImages && testImages}
+            {ifExplanation && testUrl ? (
+              <PdfViewer
+                pdfUrl={testUrl}
+                getFilePluginInstance={getFilePluginInstance}
                 selectTest={selectTest}
                 selectExplanation={selectExplanation}
               />
@@ -111,8 +110,8 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
         />
-        {ifExplanation && testImages ? (
-          <ImageSlider testImages={testImages && testImages} />
+        {ifExplanation && testUrl ? (
+          <PdfViewer pdfUrl={testUrl} getFilePluginInstance={getFilePluginInstance} />
         ) : (
           <PdfViewer pdfUrl={firstPdfUrl} getFilePluginInstance={getFilePluginInstance} />
         )}
