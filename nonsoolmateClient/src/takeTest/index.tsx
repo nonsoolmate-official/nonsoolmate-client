@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CoachMark from "./components/coachMark/CoachMark";
 import TestHeader from "./components/header/TestHeader";
-import TestPagination from "./components/pagination/TestPagination";
 import PrecautionModal from "./components/modal/PrecautionModal";
 import TestQuitModal from "./components/modal/TestQuitModal";
 import TestFinishModal from "./components/modal/TestFinishModal";
@@ -11,6 +10,7 @@ import { useGetUniversityExam } from "./hooks/useGetUniversityExam";
 import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 import EndTestModal from "./components/modal/EndTestModal";
+import TestPaper from "./components/testPaper/TestPaper";
 
 export default function index() {
   useRefreshPage();
@@ -80,7 +80,7 @@ export default function index() {
           examName={examName}
           examTimeLimit={examTimeLimit}
         />
-        <TestPagination openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} examId={examId} />
+        <TestPaper examId={examId} />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
