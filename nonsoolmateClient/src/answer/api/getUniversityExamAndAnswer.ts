@@ -2,13 +2,13 @@ import { client } from "@api/axios";
 import { Response } from "types/common";
 
 interface UniversityExamAndAnswerDataTypes {
-  universityExamName: string;
-  universityExamUrl: string;
-  universityExamAnswerUrl: string;
+  examName: string;
+  examUrl: string;
+  examAnswerUrl: string;
 }
 
-export async function getUniversityExamAndAnswer(examId: number) {
-  const { data } = await client.get<Response<UniversityExamAndAnswerDataTypes>>(`/university/exam/${examId}/answer`);
+export async function getUniversityExamAndAnswer(id: number) {
+  const { data } = await client.get<Response<UniversityExamAndAnswerDataTypes>>(`/university/exam/v2/${id}/answer`);
 
   return data;
 }

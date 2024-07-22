@@ -6,25 +6,27 @@ import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 
 export default function index() {
   useRefreshPage();
+
   const location = useLocation();
   const { examId } = location.state;
+  console.log(examId);
 
   const explanationRes = useGetUniversityExamAndAnswer(examId);
   if (!explanationRes) return <></>;
-
+  console.log(explanationRes);
   const {
-    data: { universityExamName, universityExamUrl, universityExamAnswerUrl },
+    data: { examName, examUrl, examAnswerUrl },
   } = explanationRes;
 
   return (
     <>
-      <ExplainHeader testTitle={universityExamName} />
+      <ExplainHeader testTitle={examName} />
       <PdfViewerWrapper
         firstTitle="문제"
         secondTitle="해제"
         ifExplanation={true}
-        testUrl={universityExamUrl}
-        firstPdfUrl={universityExamAnswerUrl}
+        testUrl={examUrl}
+        firstPdfUrl={examAnswerUrl}
       />
     </>
   );
