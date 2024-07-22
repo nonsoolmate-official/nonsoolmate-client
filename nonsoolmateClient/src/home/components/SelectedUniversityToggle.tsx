@@ -17,7 +17,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
       {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examStatus } = data;
         const isLastExam = index === examList.length - 1;
-        const examMinute = examTimeLimit / 60;
+        const examMinute = Math.round(examTimeLimit / 60);
 
         function handleMoveToExplanation() {
           navigate("/explanation", {
