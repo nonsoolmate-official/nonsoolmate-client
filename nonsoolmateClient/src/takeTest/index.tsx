@@ -80,7 +80,7 @@ export default function index() {
           examName={examName}
           examTimeLimit={examTimeLimit}
         />
-        <TestPaper examId={examId} />
+        <TestPaper examId={examId} openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>
       {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
       {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}

@@ -8,7 +8,10 @@ export default function CloseCoachMark(props: CoachMarkProps) {
   return (
     <>
       <CloseCoachMarkContainer>
-        <Title>논술메이트 시험 화면에 대해 알려드릴게요!</Title>
+        <Title>
+          논술메이트 시험 화면에 대해
+          <br /> 알려드릴게요!
+        </Title>
         <CloseCoachMarkButton
           onClick={() => {
             toPrecautionModal(false, true);
