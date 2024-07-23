@@ -96,6 +96,12 @@ const MypageButton = styled.button`
   margin: 0.6rem 0;
   padding: 0.8rem 0.4rem;
   ${({ theme }) => theme.fonts.Body6};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.grey_100};
+    color: ${({ theme }) => theme.colors.grey_700};
+    cursor: pointer;
+  }
 `;
 
 const Text = styled.p`
