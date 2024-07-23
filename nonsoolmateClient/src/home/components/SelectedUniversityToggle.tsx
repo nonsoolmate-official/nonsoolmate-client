@@ -17,7 +17,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
       {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examStatus } = data;
         const isLastExam = index === examList.length - 1;
-        const examMinute = Math.round(examTimeLimit / 60);
+        // const examMinute = Math.round(examTimeLimit / 60);
 
         function handleMoveToExplanation() {
           navigate("/explanation", {
@@ -47,7 +47,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
           <ExamContainer key={examId} $isLastExam={isLastExam}>
             <ExamBox>
               <Name>{examName}</Name>
-              <TimeLimit>{examMinute}분</TimeLimit>
+              <TimeLimit>{examTimeLimit}분</TimeLimit>
             </ExamBox>
             <StatusBox>
               {examStatus === "시험 응시 전" && (
