@@ -24,7 +24,6 @@ export default function TestPaper(props: TestPaperProps) {
     data: { examUrl },
   } = response;
 
-  console.log(openCoachMark, openPrecautionModal);
   return (
     <TestPaperContainer>
       {openCoachMark || openPrecautionModal ? (
