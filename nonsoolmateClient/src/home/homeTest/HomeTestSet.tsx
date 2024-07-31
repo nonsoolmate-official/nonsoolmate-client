@@ -6,7 +6,7 @@ import { useState } from "react";
 import SelectedUniversityToggle from "home/components/SelectedUniversityToggle";
 import { SelectUniversityDataTypes } from "home/api/getSelectUniversityExams";
 import { media } from "style/responsiveStyle";
-import { serverInitController } from "home/api/serverInitController";
+
 interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
   response: SelectUniversityDataTypes[];
@@ -25,9 +25,6 @@ export default function HomeTestSet(props: HomeTestSetProps) {
     }
   }
 
-  function clickInitButton() {
-    serverInitController();
-  }
   return (
     <Container>
       <Box>
@@ -68,7 +65,6 @@ export default function HomeTestSet(props: HomeTestSetProps) {
               </SelectedListBox>
             );
           })}
-          <InitButton onClick={clickInitButton}>시험 내역 초기화</InitButton>
         </ListBox>
       </Box>
     </Container>
@@ -174,16 +170,4 @@ const UpArrowBoldIcon = styled(UpArrowBoldIc)`
 const DownArrowBoldIcon = styled(DownArrowBoldIc)`
   width: 2.4rem;
   height: 2.4rem;
-`;
-
-const InitButton = styled.button`
-  display: flex;
-  align-self: center;
-  width: 10.5rem;
-  margin-top: 3rem;
-  padding-top: 1rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey_400};
-  ${({ theme }) => theme.fonts.Body6}
-
-  color: ${({ theme }) => theme.colors.grey_400};
 `;
