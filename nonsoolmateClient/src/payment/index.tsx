@@ -9,7 +9,9 @@ interface Amount {
   value: number;
 }
 
-interface WidgetPaymentMethodWidget {}
+interface WidgetPaymentMethodWidget {
+  //
+}
 
 interface PaymentWidgets {
   setAmount(amount: Amount): Promise<void>;
@@ -34,6 +36,7 @@ export default function Payment() {
   const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState<PaymentWidgets | null>(null);
 
+  const generateRandomString = () => window.btoa(Math.random().toString()).slice(0, 20);
   useEffect(() => {
     async function fetchPaymentWidgets() {
       // ------  결제위젯 초기화 ------
@@ -151,12 +154,12 @@ export default function Payment() {
               // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
               // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
               await widgets?.requestPayment({
-                orderId: "hfRcZPdXjBluX9C_0ZNaB",
-                orderName: "토스 티셔츠 외 2건",
+                orderId: generateRandomString(),
+                orderName: "논술메이트 정기구독",
                 successUrl: window.location.origin + "/success",
                 failUrl: window.location.origin + "/fail",
                 customerEmail: "customer123@gmail.com",
-                customerName: "김토스",
+                customerName: "김논메",
                 customerMobilePhone: "01012341234",
               });
             } catch (error) {
