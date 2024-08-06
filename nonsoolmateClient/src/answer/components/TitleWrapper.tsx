@@ -99,5 +99,5 @@ const Title = styled.p`
 const Button = styled(answerPageButtonStyle)`
   ${({ theme }) => theme.fonts.Body3};
 
-  padding: 0.6rem 2rem;
+  padding: 0.8rem 1.6rem;
 `;
