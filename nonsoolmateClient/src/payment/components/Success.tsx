@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getToken } from "socialLogin/utils/token";
 
@@ -5,15 +6,17 @@ export default function Success() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  console.log("success");
-  const token = getToken();
-  const requestData = {
-    orderId: searchParams.get("orderId"),
-    amount: searchParams.get("amount"),
-    paymentKey: searchParams.get("paymentKey"),
-  };
-  async function confirmPayment() {
-    try {
+  useEffect(() => {
+    // 쿼리 파라미터 값이 결제 요청할 때 보낸 데이터와 동일한지 반드시 확인하세요.
+    // 클라이언트에서 결제 금액을 조작하는 행위를 방지할 수 있습니다.
+    const requestData = {
+      orderId: searchParams.get("orderId"),
+      amount: searchParams.get("amount"),
+      paymentKey: searchParams.get("paymentKey"),
+    };
+
+    const token = getToken();
+    async function confirm() {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/confirm`, {
         method: "POST",
         headers: {
@@ -26,14 +29,15 @@ export default function Success() {
       const json = await response.json();
 
       if (!response.ok) {
+        // 결제 실패 비즈니스 로직을 구현하세요.
         navigate(`/fail?message=${json.message}&code=${json.code}`);
         return;
       }
-    } catch (error) {
-      console.error("결제 확인 중 에러 발생:", error);
+
+      // 결제 성공 비즈니스 로직을 구현하세요.
     }
-  }
-  confirmPayment();
+    confirm();
+  }, []);
 
   return (
     <div className="result wrapper">
