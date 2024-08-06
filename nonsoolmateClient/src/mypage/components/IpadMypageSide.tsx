@@ -23,7 +23,6 @@ export default function IpadMypageSide(props: IpadMypageSideProps) {
           또다른메뉴
         </Btn>
       </Sidebar>
-      {/* <Border /> */}
     </Container>
   );
 }
@@ -58,12 +57,4 @@ const Btn = styled.button<{ $isClicked: boolean }>`
   color: ${({ theme, $isClicked }) => ($isClicked ? theme.colors.black : theme.colors.grey_400)};
   cursor: pointer;
   ${({ theme }) => theme.fonts.Body5};
-`;
-
-const Border = styled.div`
-  position: absolute;
-  top: 10.9rem;
-  z-index: 0;
-  width: 100%;
-  border-bottom: 1px solid var(--grayscale-gray200, #e2e4e8);
 `;
