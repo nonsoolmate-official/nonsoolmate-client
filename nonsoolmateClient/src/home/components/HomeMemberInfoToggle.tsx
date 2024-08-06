@@ -53,6 +53,7 @@ const MemberInfoToggleView = styled.section`
   position: absolute;
   top: 0.8rem;
   right: 21.5rem;
+  z-index: 1;
   width: 22.8rem;
   height: 17rem;
   padding: 2rem 2.4rem;
