@@ -82,8 +82,8 @@ const TitleWrapperContainer = styled.div`
   ${commonFlex}
 
   justify-content: space-between;
-  width: calc((100vw - 16.8rem) / 2);
-  padding: 0 2.5rem 0 2.4rem;
+  width: 100%;
+  padding: 0;
 
   ${media.tablet} {
     display: none;
@@ -97,7 +97,7 @@ const Title = styled.p`
 `;
 
 const Button = styled(answerPageButtonStyle)`
-  ${({ theme }) => theme.fonts.Body3};
+  ${({ theme }) => theme.fonts.Body5};
 
   padding: 0.8rem 1.6rem;
 `;
