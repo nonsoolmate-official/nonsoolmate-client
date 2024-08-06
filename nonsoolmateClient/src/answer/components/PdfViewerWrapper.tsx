@@ -188,9 +188,9 @@ const PdfViewerContainer = styled.section<{ $isHide: boolean }>`
 const IpadButtonContainer = styled.div`
   ${media.tablet} {
     display: flex;
+    gap: 2.4rem;
     width: 100%;
     height: 7rem;
-    padding: 0 1.6rem;
     ${({ theme }) => theme.fonts.Headline3}
   }
 
@@ -198,11 +198,11 @@ const IpadButtonContainer = styled.div`
 `;
 
 const TestButton = styled.button<{ $selectTest: boolean }>`
-  padding: 0 1.6rem;
+  padding: 0;
   color: ${({ theme, $selectTest }) => ($selectTest ? theme.colors.black : theme.colors.grey_300)};
 `;
 const ExplanationButton = styled.button<{ $selectExplanation: boolean }>`
-  padding: 0 1.6rem;
+  padding: 0;
   color: ${({ theme, $selectExplanation }) => ($selectExplanation ? theme.colors.black : theme.colors.grey_300)};
 `;
 const IpadPdfViewer = styled.article`
