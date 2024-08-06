@@ -1,5 +1,3 @@
-import BackToListIc from "./icon/backToListIc.svg?react";
-
 import DownArrowBoldIc from "./icon/downArrowBoldIc.svg?react";
 import DownArrowIc from "./icon/downArrowIc.svg?react";
 import DownArrowGreyIc from "./icon/downArrowGreyIc.svg?react";
@@ -71,7 +69,6 @@ import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
 import MembershipDisabledIc from "./icon/membershipIc.svg?react";
 
 export {
-  BackToListIc,
   DownArrowBoldIc,
   DownArrowIc,
   LeftArrowBigIc,
