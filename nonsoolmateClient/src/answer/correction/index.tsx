@@ -12,7 +12,7 @@ export default function index() {
   if (!correctionRes) return <></>;
 
   const {
-    data: { universityExamName, examAnswerUrl, examResultUrl },
+    data: { examName, examAnswerUrl, examResultUrl },
   } = correctionRes;
 
   //examResult: 첨삭  (first)
@@ -20,7 +20,7 @@ export default function index() {
 
   return (
     <>
-      <ExplainHeader testTitle={universityExamName} />
+      <ExplainHeader testTitle={examName} />
       <PdfViewerWrapper firstTitle="첨삭" secondTitle="해제" firstPdfUrl={examResultUrl} secondPdfUrl={examAnswerUrl} />
     </>
   );
