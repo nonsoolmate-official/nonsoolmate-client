@@ -41,7 +41,7 @@ const MemberInfoContainer = styled.ul`
   gap: 2.8rem;
   position: relative;
   width: 100%;
-  padding: 8rem 6.4rem;
+  padding: 8rem 0 8rem 6.4rem;
 
   ${media.tablet} {
     padding: 3.1rem 3.2rem;
@@ -51,7 +51,6 @@ const MemberInfoContainer = styled.ul`
 const Info = styled.li`
   display: flex;
   gap: 0.2rem;
-  width: 65rem;
 `;
 
 const Title = styled.p`
@@ -83,7 +82,7 @@ const GenderBox = styled.ul`
   display: flex;
   gap: 0.6rem;
   position: absolute;
-  right: 48.4rem;
+  right: 50rem;
 
   ${media.tablet} {
     right: 3.2rem;
