@@ -221,6 +221,7 @@ const LeftPdfViewerWrapper = styled.article<{ $isQuestionHide: boolean; $isExpla
 
   display: ${({ $isQuestionHide }) => $isQuestionHide && "none"};
   gap: 1.4rem;
+  overflow: hidden;
   width: ${({ $isExplanationHide }) => ($isExplanationHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
   transition: 0.3s ease-in-out;
 
@@ -234,6 +235,7 @@ const RightPdfViewerWrapper = styled.article<{ $isExplanationHide: boolean; $isQ
 
   display: ${({ $isExplanationHide }) => $isExplanationHide && "none"};
   gap: 1.4rem;
+  overflow: hidden;
   width: ${({ $isQuestionHide }) => ($isQuestionHide ? "calc(100vh - 6.4rem)" : "calc((100vw - 16.8rem) / 2)")};
   transition: 0.3s ease-in-out;
 
