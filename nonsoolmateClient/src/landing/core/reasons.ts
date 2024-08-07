@@ -4,8 +4,7 @@ import ReasonIc03 from "@assets/image/reason03Ic.png";
 import ReasonIc04 from "@assets/image/reason04Ic.png";
 import ReasonIc05 from "@assets/image/reason05Ic.png";
 import ReasonIc06 from "@assets/image/reason06Ic.png";
-
-import { ReasonListType } from "onboarding/types/reasonListType";
+import { ReasonListType } from "landing/types/reasonListType";
 
 export const REASON_LIST: ReasonListType[] = [
   {

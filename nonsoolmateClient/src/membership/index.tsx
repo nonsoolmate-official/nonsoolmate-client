@@ -12,7 +12,7 @@ export default function Membership() {
 
   return (
     <Container>
-      {getNameResponse ? <HomeHeader /> : <Header isOnboarding={false} />}
+      {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Title />
       <Contents />
     </Container>

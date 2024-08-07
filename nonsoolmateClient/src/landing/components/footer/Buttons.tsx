@@ -1,5 +1,5 @@
+import { FOOTER_LIST } from "landing/core/footerlist";
 import styled from "styled-components";
-import { FOOTER_LIST } from "onboarding/core/footerlist";
 
 export default function Buttons() {
   return (

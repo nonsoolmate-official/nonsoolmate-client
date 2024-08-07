@@ -8,13 +8,13 @@ import HomeHeader from "home/components/HomeHeader";
 import { getToken } from "socialLogin/utils/token";
 import useGetName from "home/hooks/useGetName";
 
-export default function OnBoarding() {
+export default function Landing() {
   const token = getToken();
   const getNameResponse = token ? useGetName() : null;
 
   return (
     <>
-      {getNameResponse ? <HomeHeader /> : <Header isOnboarding={false} />}
+      {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Banner />
       <Univeristy />
       <Advertise />

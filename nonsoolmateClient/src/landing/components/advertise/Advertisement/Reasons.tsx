@@ -1,4 +1,4 @@
-import { REASON_LIST } from "onboarding/core/reasons";
+import { REASON_LIST } from "landing/core/reasons";
 import Advertisement from "./Advertisement";
 import styled from "styled-components";
 
