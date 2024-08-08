@@ -1,8 +1,21 @@
 import styled from "styled-components";
 import { DownArrowIc } from "@assets/index";
 import { columnFlex, commonFlex } from "style/commonStyle";
+import { useState } from "react";
 
 export default function RequestForm() {
+  const phoneNumberRegexp = /^010-\d{3,4}-\d{4}$/;
+
+  const [isClickInput, setIsClickInput] = useState(false);
+  const [isMatch, setIsMatch] = useState(true);
+
+  function clickInputBox() {
+    setIsClickInput(true);
+  }
+  function checkPhoneNumber(number: string) {
+    setIsMatch(phoneNumberRegexp.test(number));
+  }
+
   return (
     <Form>
       <TitleWrapper>
@@ -17,7 +30,14 @@ export default function RequestForm() {
       <ContentWrapper>
         <ListBox>
           <ListTitle>상담 받으실 번호</ListTitle>
-          <Input placeholder="010-0000-0000" />
+          <Input
+            placeholder="010-0000-0000"
+            onClick={clickInputBox}
+            onChange={(e) => checkPhoneNumber(e.target.value)}
+            $selected={isClickInput}
+            $isMatch={isMatch}
+          />
+          <Error $isMatch={isMatch}>010-0000-0000 형식의 번호를 입력해주세요.</Error>
         </ListBox>
       </ContentWrapper>
     </Form>
@@ -90,10 +110,12 @@ const ListTitle = styled.p`
   width: 100%;
 `;
 
-const Input = styled.input`
+const Input = styled.input<{ $selected: boolean; $isMatch: boolean }>`
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey_100};
+  border: 1px solid
+    ${({ theme, $selected, $isMatch }) =>
+      $isMatch ? ($selected ? theme.colors.grey_400 : theme.colors.grey_100) : theme.colors.error};
   border-radius: 8px;
 
   &:focus {
@@ -104,4 +126,11 @@ const Input = styled.input`
     color: ${({ theme }) => theme.colors.grey_500};
     ${({ theme }) => theme.fonts.Body8}
   }
+`;
+const Error = styled.p<{ $isMatch: boolean }>`
+  display: ${({ $isMatch }) => ($isMatch ? "none" : "block")};
+  ${({ theme }) => theme.fonts.Caption1}
+
+  width:100%;
+  color: ${({ theme }) => theme.colors.error};
 `;
