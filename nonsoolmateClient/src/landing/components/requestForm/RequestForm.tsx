@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DownArrowIc, UpArrowIc } from "@assets/index";
+import { DownArrowIc, RadioButtonCheckIc, RadioButtonDefaultIc, UpArrowIc } from "@assets/index";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import { GRADE_LIST } from "landing/core/gradelist";
@@ -14,6 +14,7 @@ export default function RequestForm() {
   const [selectedTime, setSelectedTime] = useState("상담 시간 선택");
   const [gradeDropDown, setGradeDropDown] = useState(false);
   const [timeDropDown, setTimeDropDown] = useState(false);
+  const [identity, setIdentity] = useState("p");
 
   function clickInputBox() {
     setIsClickInput(true);
@@ -36,6 +37,12 @@ export default function RequestForm() {
   }
   function selectTime(time: string) {
     setSelectedTime(time);
+  }
+  function clickParent() {
+    setIdentity("p");
+  }
+  function clickStudent() {
+    setIdentity("s");
   }
 
   return (
@@ -93,6 +100,20 @@ export default function RequestForm() {
             )}
           </SelectButton>
         </ListBox>
+        <CheckIdentityBox>
+          <IdentityBox>
+            <CheckIconBox onClick={clickParent}>
+              {identity === "p" ? <RadioButtonCheckIc /> : <RadioButtonDefaultIc />}
+            </CheckIconBox>
+            <Identity>학부모입니다.</Identity>
+          </IdentityBox>
+          <IdentityBox>
+            <CheckIconBox onClick={clickStudent}>
+              {identity === "s" ? <RadioButtonCheckIc /> : <RadioButtonDefaultIc />}
+            </CheckIconBox>
+            <Identity>학생입니다.</Identity>
+          </IdentityBox>
+        </CheckIdentityBox>
       </ContentWrapper>
     </Form>
   );
@@ -235,4 +256,28 @@ const Option = styled.li`
   &:hover {
     background-color: ${({ theme }) => theme.colors.grey_50};
   }
+`;
+
+const CheckIdentityBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.4rem;
+`;
+
+const IdentityBox = styled.div`
+  display: flex;
+  gap: 0.8rem;
+`;
+
+const Identity = styled.p`
+  ${({ theme }) => theme.fonts.Body7}
+
+  display: flex;
+  align-items: center;
+  width: 9.5rem;
+`;
+
+const CheckIconBox = styled.div`
+  display: flex;
 `;
