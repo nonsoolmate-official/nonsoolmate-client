@@ -2,18 +2,40 @@ import styled from "styled-components";
 import { DownArrowIc } from "@assets/index";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import { useState } from "react";
+import { GRADE_LIST } from "landing/core/gradelist";
+import { TIMELIST } from "landing/core/timelist";
 
 export default function RequestForm() {
   const phoneNumberRegexp = /^010-\d{3,4}-\d{4}$/;
 
   const [isClickInput, setIsClickInput] = useState(false);
   const [isMatch, setIsMatch] = useState(true);
+  const [selectedGrade, setSelectedGrade] = useState("학년 선택");
+  const [selectedTime, setSelectedTime] = useState("상담 시간 선택");
+  const [gradeDropDown, setGradeDropDown] = useState(false);
+  const [timeDropDown, setTimeDropDown] = useState(false);
 
   function clickInputBox() {
     setIsClickInput(true);
   }
   function checkPhoneNumber(number: string) {
     setIsMatch(phoneNumberRegexp.test(number));
+  }
+  function clickGradeChoice() {
+    setGradeDropDown(!gradeDropDown);
+    setIsClickInput(false);
+    setTimeDropDown(false);
+  }
+  function clickTimeChoice() {
+    setTimeDropDown(!timeDropDown);
+    setIsClickInput(false);
+    setGradeDropDown(false);
+  }
+  function selectGrade(grade: string) {
+    setSelectedGrade(grade);
+  }
+  function selectTime(time: string) {
+    setSelectedTime(time);
   }
 
   return (
@@ -38,6 +60,42 @@ export default function RequestForm() {
             $isMatch={isMatch}
           />
           <Error $isMatch={isMatch}>010-0000-0000 형식의 번호를 입력해주세요.</Error>
+        </ListBox>
+        <ListBox>
+          <ListTitle>학생의 학년</ListTitle>
+          <SelectButton type="button" onClick={clickGradeChoice} $selected={gradeDropDown} $default={selectedGrade}>
+            {selectedGrade}
+            <ArrowIconBox>
+              <DownArrowIcon />
+            </ArrowIconBox>
+            {gradeDropDown && (
+              <DropDown>
+                {GRADE_LIST.map((item) => (
+                  <Option key={item} onClick={() => selectGrade(item)}>
+                    {item}
+                  </Option>
+                ))}
+              </DropDown>
+            )}
+          </SelectButton>
+        </ListBox>
+        <ListBox>
+          <ListTitle>희망 상담 시간</ListTitle>
+          <SelectButton type="button" onClick={clickTimeChoice} $selected={timeDropDown} $default={selectedTime}>
+            {selectedTime}
+            <ArrowIconBox>
+              <DownArrowIcon />
+            </ArrowIconBox>
+            {timeDropDown && (
+              <DropDown>
+                {TIMELIST.map((item) => (
+                  <Option key={item} onClick={() => selectTime(item)}>
+                    {item}
+                  </Option>
+                ))}
+              </DropDown>
+            )}
+          </SelectButton>
         </ListBox>
       </ContentWrapper>
     </Form>
@@ -127,10 +185,53 @@ const Input = styled.input<{ $selected: boolean; $isMatch: boolean }>`
     ${({ theme }) => theme.fonts.Body8}
   }
 `;
+
 const Error = styled.p<{ $isMatch: boolean }>`
   display: ${({ $isMatch }) => ($isMatch ? "none" : "block")};
   ${({ theme }) => theme.fonts.Caption1}
 
   width:100%;
   color: ${({ theme }) => theme.colors.error};
+`;
+
+const SelectButton = styled.button<{ $selected: boolean; $default: string }>`
+  ${({ theme }) => theme.fonts.Body8}
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid ${({ theme, $selected }) => ($selected ? theme.colors.grey_400 : theme.colors.grey_100)};
+  border-radius: 8px;
+  color: ${({ theme, $default }) =>
+    $default === "학년 선택" || $default === "상담 시간 선택" ? theme.colors.grey_500 : theme.colors.black};
+`;
+
+const DropDown = styled.ul`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  top: -16.6rem;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 16rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey_400};
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
+
+const Option = styled.li`
+  width: 100%;
+  height: 3.2rem;
+  padding: 0.8rem;
+  color: ${({ theme }) => theme.colors.grey_900};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.grey_50};
+  }
 `;
