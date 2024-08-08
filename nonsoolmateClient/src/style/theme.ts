@@ -131,6 +131,12 @@ const fonts = {
     font-weight: 500;
     line-height: 1.6rem;
   `,
+  Caption1: css`
+    font-family: SUIT, "Apple SD Gothic Neo";
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+  `,
 };
 
 const theme: Pick<DefaultTheme, "colors" | "fonts" | "effects"> = {
