@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { DownArrowIc, RadioButtonCheckIc, RadioButtonDefaultIc, UpArrowIc } from "@assets/index";
-import { columnFlex, commonFlex } from "style/commonStyle";
+import { columnFlex, commonFlex, mainButtonStyle } from "style/commonStyle";
 import { useState } from "react";
 import { GRADE_LIST } from "landing/core/gradelist";
 import { TIMELIST } from "landing/core/timelist";
@@ -115,6 +115,10 @@ export default function RequestForm() {
           </IdentityBox>
         </CheckIdentityBox>
       </ContentWrapper>
+      <ButtonWrapper>
+        <ApplyButton>무료로 상담 신청하기</ApplyButton>
+        <AgreeText>개인정보 수집 및 이용에 동의합니다.</AgreeText>
+      </ButtonWrapper>
     </Form>
   );
 }
@@ -280,4 +284,24 @@ const Identity = styled.p`
 
 const CheckIconBox = styled.div`
   display: flex;
+`;
+
+const ButtonWrapper = styled.div`
+  ${columnFlex}
+
+  gap: 0.6rem;
+  width: 100%;
+`;
+
+const ApplyButton = styled(mainButtonStyle)`
+  ${({ theme }) => theme.fonts.Body5}
+
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+`;
+
+const AgreeText = styled.p`
+  ${({ theme }) => theme.fonts.Body8};
+
+  color: ${({ theme }) => theme.colors.grey_500};
 `;
