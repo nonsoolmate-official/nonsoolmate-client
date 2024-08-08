@@ -48,6 +48,7 @@ const Sidebar = styled.aside`
   display: flex;
   gap: 4rem;
   width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
 
 const Btn = styled.button<{ $isClicked: boolean }>`

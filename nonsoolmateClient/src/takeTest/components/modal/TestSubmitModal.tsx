@@ -7,6 +7,7 @@ import { usePutExamSheet } from "takeTest/hooks/usePutExamSheet";
 import Error from "error";
 import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
 import { getPresignedUrl } from "takeTest/api/getPresignedUrl";
+import { useRef } from "react";
 
 interface TestSubmitProps {
   isFile: File[] | null;
@@ -22,8 +23,12 @@ export default function TestSubmitModal(props: TestSubmitProps) {
   let zip = new JSZip();
   const location = useLocation();
   const { examId } = location.state;
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   async function handleZipCreation() {
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
     const response = await getPresignedUrl();
     if (!response) return <Error />;
 
@@ -83,7 +88,7 @@ export default function TestSubmitModal(props: TestSubmitProps) {
         <ModalContent>
           <ModalTitle>아래 파일을 제출하시겠습니까?</ModalTitle>
           <ModalFile>{isFile?.map((item) => <FileName key={item.name}>{item.name}</FileName>)}</ModalFile>
-          <SubmitButton onClick={handleZipCreation} type="button">
+          <SubmitButton onClick={handleZipCreation} type="button" ref={buttonRef}>
             제출하기
           </SubmitButton>
         </ModalContent>
