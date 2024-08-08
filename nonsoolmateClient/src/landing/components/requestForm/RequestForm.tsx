@@ -15,6 +15,7 @@ export default function RequestForm() {
   const [gradeDropDown, setGradeDropDown] = useState(false);
   const [timeDropDown, setTimeDropDown] = useState(false);
   const [identity, setIdentity] = useState("p");
+  const [isFull, setIsFull] = useState(true);
 
   function clickInputBox() {
     setIsClickInput(true);
@@ -44,19 +45,20 @@ export default function RequestForm() {
   function clickStudent() {
     setIdentity("s");
   }
+  function handleFormSize() {
+    setIsFull(!isFull);
+  }
 
   return (
-    <Form>
+    <Form $isFull={isFull}>
       <TitleWrapper>
         <TextBox>
           <Title>가장 잘 맞는 선생님 찾으려면?</Title>
           <SubTitle>1:1 상담 후 분석을 통해 학생에게 가장 잘 맞는 선생님을 연결해 드려요.</SubTitle>
         </TextBox>
-        <ArrowIconBox>
-          <DownArrowIcon />
-        </ArrowIconBox>
+        <ArrowIconBox onClick={handleFormSize}>{isFull ? <DownArrowIcon /> : <UpArrowIcon />}</ArrowIconBox>
       </TitleWrapper>
-      <ContentWrapper>
+      <ContentWrapper $isFull={isFull}>
         <ListBox>
           <ListTitle>상담 받으실 번호</ListTitle>
           <Input
@@ -123,17 +125,18 @@ export default function RequestForm() {
   );
 }
 
-const Form = styled.form`
+const Form = styled.form<{ $isFull: boolean }>`
   ${columnFlex}
   ${({ theme }) => theme.effects.modal_shadow};
 
-  gap: 2.4rem;
+  gap: ${({ $isFull }) => ($isFull ? "2.4rem" : "0")};
   align-items: center;
   overflow: hidden;
   position: fixed;
   right: 2.4rem;
   bottom: 1.6rem;
   width: 29.4rem;
+  height: ${({ $isFull }) => ($isFull ? "auto" : "11.6rem")};
   padding: 2.4rem;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -174,11 +177,12 @@ const SubTitle = styled.p`
   ${({ theme }) => theme.fonts.Body7};
 `;
 
-const ContentWrapper = styled.ul`
+const ContentWrapper = styled.ul<{ $isFull: boolean }>`
   ${columnFlex}
 
   gap: 1.2rem;
   width: 100%;
+  ${({ $isFull }) => !$isFull && `overflow: hidden`};
 `;
 
 const ListBox = styled.li`
@@ -290,6 +294,7 @@ const ButtonWrapper = styled.div`
   ${columnFlex}
 
   gap: 0.6rem;
+  overflow: hidden;
   width: 100%;
 `;
 
