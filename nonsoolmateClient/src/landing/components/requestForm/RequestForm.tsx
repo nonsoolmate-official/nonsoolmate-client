@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DownArrowIc } from "@assets/index";
+import { DownArrowIc, UpArrowIc } from "@assets/index";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import { useState } from "react";
 import { GRADE_LIST } from "landing/core/gradelist";
@@ -65,9 +65,7 @@ export default function RequestForm() {
           <ListTitle>학생의 학년</ListTitle>
           <SelectButton type="button" onClick={clickGradeChoice} $selected={gradeDropDown} $default={selectedGrade}>
             {selectedGrade}
-            <ArrowIconBox>
-              <DownArrowIcon />
-            </ArrowIconBox>
+            <ArrowIconBox>{gradeDropDown === true ? <UpArrowIcon /> : <DownArrowIcon />}</ArrowIconBox>
             {gradeDropDown && (
               <DropDown>
                 {GRADE_LIST.map((item) => (
@@ -83,9 +81,7 @@ export default function RequestForm() {
           <ListTitle>희망 상담 시간</ListTitle>
           <SelectButton type="button" onClick={clickTimeChoice} $selected={timeDropDown} $default={selectedTime}>
             {selectedTime}
-            <ArrowIconBox>
-              <DownArrowIcon />
-            </ArrowIconBox>
+            <ArrowIconBox>{timeDropDown === true ? <UpArrowIcon /> : <DownArrowIcon />}</ArrowIconBox>
             {timeDropDown && (
               <DropDown>
                 {TIMELIST.map((item) => (
@@ -135,6 +131,11 @@ const ArrowIconBox = styled.div`
 `;
 
 const DownArrowIcon = styled(DownArrowIc)`
+  width: 2rem;
+  height: 2rem;
+`;
+
+const UpArrowIcon = styled(UpArrowIc)`
   width: 2rem;
   height: 2rem;
 `;
