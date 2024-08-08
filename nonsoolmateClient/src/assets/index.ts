@@ -68,6 +68,9 @@ import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
 
 import MembershipDisabledIc from "./icon/membershipIc.svg?react";
 
+import RadioButtonDefaultIc from "./icon/radioBtnDefault.svg?react";
+import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -117,4 +120,6 @@ export {
   ShowQuestionTagIc,
   MembershipDisabledIc,
   KakaoIc,
+  RadioButtonDefaultIc,
+  RadioButtonCheckIc,
 };
