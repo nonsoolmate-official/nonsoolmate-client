@@ -14,6 +14,12 @@ export default function RequestForm() {
           <DownArrowIcon />
         </ArrowIconBox>
       </TitleWrapper>
+      <ContentWrapper>
+        <ListBox>
+          <ListTitle>상담 받으실 번호</ListTitle>
+          <Input placeholder="010-0000-0000" />
+        </ListBox>
+      </ContentWrapper>
     </Form>
   );
 }
@@ -62,4 +68,40 @@ const Title = styled.h1`
 const SubTitle = styled.p`
   color: ${({ theme }) => theme.colors.grey_500};
   ${({ theme }) => theme.fonts.Body7};
+`;
+
+const ContentWrapper = styled.ul`
+  ${columnFlex}
+
+  gap: 1.2rem;
+  width: 100%;
+`;
+
+const ListBox = styled.li`
+  ${columnFlex}
+
+  gap: 0.6rem;
+  width: 100%;
+`;
+
+const ListTitle = styled.p`
+  ${({ theme }) => theme.fonts.Body7}
+
+  width: 100%;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey_100};
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.grey_500};
+    ${({ theme }) => theme.fonts.Body8}
+  }
 `;
