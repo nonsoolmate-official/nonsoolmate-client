@@ -68,6 +68,13 @@ import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
 
 import MembershipDisabledIc from "./icon/membershipIc.svg?react";
 
+import XIc from "./icon/xIc.svg?react";
+
+import DisplayIc from "./icon/displayIc.svg?react";
+import PrintIc from "./icon/printIc.svg?react";
+
+import EmptyCircleIc from "./icon/emptyCircleIc.svg?react";
+import FilledCircleIc from "./icon/filledCircleIc.svg?react";
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -117,4 +124,9 @@ export {
   ShowQuestionTagIc,
   MembershipDisabledIc,
   KakaoIc,
+  XIc,
+  DisplayIc,
+  PrintIc,
+  FilledCircleIc,
+  EmptyCircleIc,
 };
