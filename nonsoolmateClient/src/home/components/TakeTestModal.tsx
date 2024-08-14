@@ -4,14 +4,17 @@ import { commonFlex, takeTestModalNextButtonStyle } from "style/commonStyle";
 import { media } from "style/responsiveStyle";
 import { DisplayIc, EmptyCircleIc, FilledCircleIc, PrintIc, XIc } from "@assets/index";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface TakeTestModalProps {
+  examId: number;
   handleTakeTestModal: () => void;
 }
 
 export default function TakeTestModal(props: TakeTestModalProps) {
-  const { handleTakeTestModal } = props;
+  const { examId, handleTakeTestModal } = props;
 
+  const navigate = useNavigate();
   const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
   const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
 
@@ -25,10 +28,29 @@ export default function TakeTestModal(props: TakeTestModalProps) {
     setIsDisplayClicked(false);
   }
 
+  function moveToTakeTest() {
+    // 화면으로 바로 볼게요 클릭 시
+    if (isDisplayClicked) {
+      navigate("/takeTest", {
+        state: {
+          examId: examId,
+        },
+      });
+    }
+    // 인쇄,다운로드 클릭 시
+    else {
+      navigate("/takeTest", {
+        state: {
+          examId: examId,
+        },
+      });
+    }
+  }
+
   return (
     <BackgroundView>
       <ModalView>
-        <CloseButton onClick={handleTakeTestModal}>
+        <CloseButton type="button" onClick={handleTakeTestModal}>
           <XIcon />
         </CloseButton>
         <Text>시험지 어떻게 보실래요?</Text>
@@ -55,7 +77,11 @@ export default function TakeTestModal(props: TakeTestModalProps) {
           </PrintOption>
         </Container>
         <ModalButtonBox>
-          <NextButton type="button" $isPrintClicked={isPrintClicked} $isDisplayClicked={isDisplayClicked}>
+          <NextButton
+            type="button"
+            onClick={moveToTakeTest}
+            $isPrintClicked={isPrintClicked}
+            $isDisplayClicked={isDisplayClicked}>
             다음
           </NextButton>
         </ModalButtonBox>

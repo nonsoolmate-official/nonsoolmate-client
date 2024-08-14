@@ -10,6 +10,7 @@ export default function HomeTest() {
   const [selectedUniversityIdList, setSelectedUniversityIdList] = useState<number[]>([]);
   const [mySelectedUniversityIdList, setMySelectedUniversityIdList] = useState<number[]>([]);
   const [isTakeTestClicked, setIsTakeTestClicked] = useState<boolean>(false);
+  const [selectedExamId, setSelectedExamId] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     let realArray = response?.map((item) => item.universityId);
@@ -33,9 +34,10 @@ export default function HomeTest() {
     setMySelectedUniversityIdList(idList);
   }
 
-  const handleTakeTestModal = () => {
-    setIsTakeTestClicked((open) => !open);
-  };
+  function handleTakeTestModal(examId?: number) {
+    setSelectedExamId(examId);
+    setIsTakeTestClicked((prev) => !prev);
+  }
 
   return (
     <>
@@ -60,7 +62,9 @@ export default function HomeTest() {
           dataUniversityIds={dataUniversityIds}
         />
       )}
-      {isTakeTestClicked && <TakeTestModal handleTakeTestModal={handleTakeTestModal} />}
+      {isTakeTestClicked && selectedExamId !== undefined && (
+        <TakeTestModal examId={selectedExamId} handleTakeTestModal={() => handleTakeTestModal()} />
+      )}
     </>
   );
 }
