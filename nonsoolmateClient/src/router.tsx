@@ -7,7 +7,6 @@ import HomeStudy from "home/homeStudy/HomeStudy";
 import HomeTest from "home/homeTest/HomeTest";
 import Correction from "answer/correction";
 import Explanation from "answer/explanation";
-import OnBoarding from "onboarding";
 import Signup from "signup";
 import Membership from "membership";
 import RedirectPages from "socialLogin";
@@ -17,6 +16,7 @@ import Mypage from "mypage";
 import Payment from "payment";
 import Fail from "payment/components/Fail";
 import Success from "payment/components/Success";
+import Landing from "landing";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
     errorElement: <Loading />,
 
     children: [
-      { path: "", element: <OnBoarding /> },
+      { path: "", element: <Landing /> },
       {
         path: "/home",
         element: <Home />,

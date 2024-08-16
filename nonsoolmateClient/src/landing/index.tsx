@@ -7,14 +7,16 @@ import Univeristy from "./components/univeristy/Univeristy";
 import HomeHeader from "home/components/HomeHeader";
 import { getToken } from "socialLogin/utils/token";
 import useGetName from "home/hooks/useGetName";
+import RequestForm from "./components/requestForm/RequestForm";
 
-export default function OnBoarding() {
+export default function Landing() {
   const token = getToken();
   const getNameResponse = token ? useGetName() : null;
 
   return (
     <>
-      {getNameResponse ? <HomeHeader /> : <Header isOnboarding={false} />}
+      <RequestForm />
+      {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Banner />
       <Univeristy />
       <Advertise />

@@ -2,7 +2,7 @@ import { client } from "@api/axios";
 import { Response } from "types/common";
 
 interface CorrectionPageData {
-  universityExamName: string;
+  examName: string;
   examAnswerUrl: string;
   examResultUrl: string;
 }

@@ -13,7 +13,6 @@ export default function index() {
 
   const explanationRes = useGetUniversityExamAndAnswer(examId);
   if (!explanationRes) return <></>;
-  console.log(explanationRes);
   const {
     data: { examName, examUrl, examAnswerUrl },
   } = explanationRes;
