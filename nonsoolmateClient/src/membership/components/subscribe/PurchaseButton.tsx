@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function PurchaseButton() {
-  return <Button>구매하기</Button>;
+  const navigate = useNavigate();
+  function clickPurchaseButton() {
+    navigate("/payment");
+  }
+  return <Button onClick={clickPurchaseButton}>구매하기</Button>;
 }
 
 const Button = styled.button`
