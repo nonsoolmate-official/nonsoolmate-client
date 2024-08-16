@@ -708,6 +708,11 @@
     "@svgr/hast-util-to-babel-ast" "8.0.0"
     svg-parser "^2.0.4"
 
+"@tosspayments/tosspayments-sdk@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tosspayments/tosspayments-sdk/-/tosspayments-sdk-2.2.4.tgz#9fccc999b63e0b025f72e00b2682164c24d5da43"
+  integrity sha512-z0U6KGr0/BXLmJDeUH7b64WdDXjBFOWWvAX3PjD7+dzSJUgArLubhiBEx/XwhRre+JXuX9NMAkqS0aPLonDKgQ==
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
