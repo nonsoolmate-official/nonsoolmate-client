@@ -14,6 +14,9 @@ import RedirectPages from "socialLogin";
 import Loading from "loading";
 import Interceptors from "socialLogin/components/Interceptors";
 import Mypage from "mypage";
+import Payment from "payment";
+import Fail from "payment/components/Fail";
+import Success from "payment/components/Success";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +44,9 @@ export const router = createBrowserRouter([
       { path: "/loading", element: <Loading /> },
       { path: "/error", element: <Error /> },
       { path: "/mypage", element: <Mypage /> },
+      { path: "/payment", element: <Payment /> },
+      { path: "/fail", element: <Fail /> },
+      { path: "/success", element: <Success /> },
     ],
   },
 ]);
