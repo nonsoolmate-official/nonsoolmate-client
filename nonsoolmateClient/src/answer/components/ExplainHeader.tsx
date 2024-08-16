@@ -1,7 +1,7 @@
-import { BackToListIc } from "@assets/index";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
+import { LeftArrowBlackBtn } from "@assets/index";
 
 interface ExplainHeaderProps {
   testTitle: string;
@@ -32,10 +32,10 @@ const HeaderContainer = styled.div`
 `;
 
 const BackToHomeButton = styled.button`
-  /* cursor: pointer; */
+  padding: 0;
 `;
 
-const BackToListIcon = styled(BackToListIc)`
+const BackToListIcon = styled(LeftArrowBlackBtn)`
   width: 4rem;
   height: 4rem;
 `;
