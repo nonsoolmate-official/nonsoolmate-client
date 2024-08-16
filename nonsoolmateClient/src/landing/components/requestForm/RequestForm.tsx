@@ -60,7 +60,7 @@ export default function RequestForm() {
   }
   function sendToSlack() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://hooks.slack.com/services/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", true);
+    xhr.open("POST", "https://hooks.slack.com/services/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", true);
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
