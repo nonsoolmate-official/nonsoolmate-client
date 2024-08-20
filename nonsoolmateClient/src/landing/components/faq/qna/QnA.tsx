@@ -1,9 +1,9 @@
 import { useState } from "react";
-import DivideLine from "onboarding/components/common/DivideLine";
 import { QnaTypes } from "../types/qaatypes";
 import Answer from "./Answer";
 import Question from "./Question";
 import styled from "styled-components";
+import DivideLine from "landing/components/common/DivideLine";
 
 interface QnAprops extends QnaTypes {}
 
@@ -31,9 +31,8 @@ export default function QnA(props: QnAprops) {
 
 const AnswerContainer = styled.p`
   display: flex;
-  justify-content: center;
   flex-direction: column;
-
+  justify-content: center;
   margin-bottom: 2rem;
 `;
 

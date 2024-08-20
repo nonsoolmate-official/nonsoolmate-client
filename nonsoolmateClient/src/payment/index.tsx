@@ -1,8 +1,9 @@
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
-const customerKey = "test_gsk_GjLJoQ1aVZq0AWdL79M13w6KYe2R";
+const customerKey = uuidv4();
 
 interface Amount {
   currency: string;

@@ -77,3 +77,10 @@ export const answerPageButtonStyle = styled.button`
     background-color: ${({ theme }) => theme.colors.dark_blue};
   }
 `;
+
+export const takeTestModalNextButtonStyle = styled.button`
+  ${commonFlex}
+
+  border-radius: 8px;
+  color: ${({ theme }) => theme.colors.white};
+`;

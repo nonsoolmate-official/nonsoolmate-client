@@ -1,0 +1,38 @@
+<svg width="80" height="64" viewBox="0 0 80 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 1171276072">
+<g id="Group 1171276018">
+<g id="Group 1171276017">
+<g id="Group 1171276016">
+<g id="Group 1171276014">
+<g id="Group 1171276012">
+<rect id="Rectangle 40247" x="53" y="11" width="32" height="45" rx="8" transform="rotate(90 53 11)" fill="white"/>
+<rect id="Rectangle 40246" x="0.5" y="-0.5" width="24" height="14" rx="1.5" transform="matrix(1 0 0 -1 18 33)" fill="#F3F4F6" stroke="#E2E4E8"/>
+<path id="Vector 26016" d="M22 24H26" stroke="#C6CAD2" stroke-linecap="round"/>
+<path id="Vector 26019" d="M29 24L39 24" stroke="#C6CAD2" stroke-linecap="round"/>
+<path id="Vector 26017" d="M22 27L32 27" stroke="#C6CAD2" stroke-linecap="round"/>
+<path id="Vector 26020" d="M35 27L39 27" stroke="#C6CAD2" stroke-linecap="round"/>
+<path id="Vector 26018" d="M22 30L39 30" stroke="#C6CAD2" stroke-linecap="round"/>
+<rect id="Rectangle 40241" x="8" y="11" width="4" height="32" rx="2" fill="#93A1FF"/>
+<rect id="Rectangle 40242" x="49" y="11" width="4" height="32" rx="2" fill="#93A1FF"/>
+<rect id="Rectangle 40243" x="53" y="11" width="4" height="45" rx="2" transform="rotate(90 53 11)" fill="#93A1FF"/>
+<rect id="Rectangle 40245" x="47" y="48" width="4" height="33" rx="2" transform="rotate(90 47 48)" fill="#93A1FF"/>
+<rect id="Rectangle 40244" x="53" y="38" width="7" height="45" rx="3.5" transform="rotate(90 53 38)" fill="#6478FF"/>
+</g>
+</g>
+</g>
+<g id="Group 1171276015">
+<g id="Group 1171276014_2">
+<g id="Group 1171276012_2">
+<g id="Group 1171276010">
+<path id="Rectangle 40253" d="M56 48C56 43.5817 59.5817 40 64 40C68.4183 40 72 43.5817 72 48V52H56V48Z" fill="#EDEFFF"/>
+<path id="Rectangle 40254" d="M64 40C68.4183 40 72 43.5817 72 48V52H64V40Z" fill="#D2D7FF"/>
+<path id="Vector 26027" d="M64 40V45" stroke="#B5BFFF"/>
+<path id="Vector 26028" d="M64 44V46" stroke="#93A1FF" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

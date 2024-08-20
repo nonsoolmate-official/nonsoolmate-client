@@ -6,10 +6,11 @@ import { SelectExamListDataTypes } from "home/api/getSelectUniversityExams";
 interface SelectedUniversityToggleProps {
   universityId: number;
   examList: SelectExamListDataTypes[];
+  handleTakeTestModal: (examId: number) => void;
 }
 
 export default function SelectedUniversityToggle(props: SelectedUniversityToggleProps) {
-  const { universityId, examList } = props;
+  const { universityId, examList, handleTakeTestModal } = props;
   const navigate = useNavigate();
 
   return (
@@ -35,14 +36,6 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
           });
         }
 
-        function handleMoveToTakeTest() {
-          navigate("/takeTest", {
-            state: {
-              examId: examId,
-            },
-          });
-        }
-
         return (
           <ExamContainer key={examId} $isLastExam={isLastExam}>
             <ExamBox>
@@ -51,7 +44,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
             </ExamBox>
             <StatusBox>
               {examStatus === "시험 응시 전" && (
-                <TakeTestButton type="button" onClick={handleMoveToTakeTest}>
+                <TakeTestButton type="button" onClick={() => handleTakeTestModal(examId)}>
                   시험보기
                 </TakeTestButton>
               )}
