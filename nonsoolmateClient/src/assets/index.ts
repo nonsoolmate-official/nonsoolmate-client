@@ -51,6 +51,7 @@ import SearchIc from "./icon/searchIc.svg?react";
 
 import CheckBtnIc from "./icon/checkBtnIc.svg?react";
 import NotCheckBtnIc from "./icon/notCheckBtnIc.svg?react";
+import CheckCircleBtnIc from "./icon/checkCircleIc.svg?react";
 
 import SignupIc from "./icon/signupIc.svg?react";
 import NaverLoginIc from "./icon/naverLoginIc.svg?react";
@@ -67,6 +68,16 @@ import ShowExplanationTagIc from "./icon/showExplanationTagIc.svg?react";
 import ShowQuestionTagIc from "./icon/showQuestionTagIc.svg?react";
 
 import MembershipDisabledIc from "./icon/membershipIc.svg?react";
+
+import XIc from "./icon/xIc.svg?react";
+
+import DisplayIc from "./icon/displayIc.svg?react";
+import PrintIc from "./icon/printIc.svg?react";
+
+import EmptyCircleIc from "./icon/emptyCircleIc.svg?react";
+import FilledCircleIc from "./icon/filledCircleIc.svg?react";
+import RadioButtonDefaultIc from "./icon/radioBtnDefault.svg?react";
+import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 
 export {
   DownArrowBoldIc,
@@ -117,4 +128,12 @@ export {
   ShowQuestionTagIc,
   MembershipDisabledIc,
   KakaoIc,
+  XIc,
+  DisplayIc,
+  PrintIc,
+  FilledCircleIc,
+  EmptyCircleIc,
+  RadioButtonDefaultIc,
+  RadioButtonCheckIc,
+  CheckCircleBtnIc,
 };

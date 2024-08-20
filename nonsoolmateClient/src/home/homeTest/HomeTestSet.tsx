@@ -11,10 +11,11 @@ interface HomeTestSetProps {
   handleUniversityModal: (open: boolean) => void;
   response: SelectUniversityDataTypes[];
   dataUniversityIds: number[];
+  handleTakeTestModal: () => void;
 }
 
 export default function HomeTestSet(props: HomeTestSetProps) {
-  const { handleUniversityModal, response, dataUniversityIds } = props;
+  const { handleUniversityModal, response, dataUniversityIds, handleTakeTestModal } = props;
   const [selectedUniversityId, setSelectedUniversityId] = useState<number[]>([]);
 
   function handleSelectedUniversityId(id: number) {
@@ -60,7 +61,11 @@ export default function HomeTestSet(props: HomeTestSetProps) {
                   </SelectedUniversityButton>
                 )}
                 {isSelected && isExisted && (
-                  <SelectedUniversityToggle universityId={universityId} examList={examList} />
+                  <SelectedUniversityToggle
+                    universityId={universityId}
+                    examList={examList}
+                    handleTakeTestModal={handleTakeTestModal}
+                  />
                 )}
               </SelectedListBox>
             );
