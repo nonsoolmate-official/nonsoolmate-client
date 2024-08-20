@@ -79,6 +79,9 @@ import FilledCircleIc from "./icon/filledCircleIc.svg?react";
 import RadioButtonDefaultIc from "./icon/radioBtnDefault.svg?react";
 import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 
+import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
+import PrintCircleIc from "./icon/printCircleIc.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -136,4 +139,6 @@ export {
   RadioButtonDefaultIc,
   RadioButtonCheckIc,
   CheckCircleBtnIc,
+  DownloadCircleIc,
+  PrintCircleIc,
 };
