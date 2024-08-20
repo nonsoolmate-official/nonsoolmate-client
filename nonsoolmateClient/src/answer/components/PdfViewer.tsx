@@ -1,36 +1,37 @@
 import styled from "styled-components";
-import { Plugin, Worker } from "@react-pdf-viewer/core";
+import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { GetFilePlugin } from "@react-pdf-viewer/get-file";
-import { FullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { media } from "style/responsiveStyle";
+import { PrintPlugin } from "@react-pdf-viewer/print";
 
 interface PdfViewerProps {
   pdfUrl: string;
-  getFilePluginInstance?: GetFilePlugin;
-  fullScreenPluginInstance?: FullScreenPlugin;
+  getFilePluginInstance: GetFilePlugin;
   selectTest?: boolean;
   selectExplanation?: boolean;
+  printPluginInstance: PrintPlugin;
 }
 
 export default function PdfViewer(props: PdfViewerProps) {
-  const { pdfUrl, getFilePluginInstance, fullScreenPluginInstance, selectTest, selectExplanation } = props;
+  const { pdfUrl, selectTest, selectExplanation, printPluginInstance, getFilePluginInstance } = props;
 
-  let plugins: Plugin[] | undefined = [];
-  if (getFilePluginInstance && fullScreenPluginInstance) {
-    plugins = [getFilePluginInstance, fullScreenPluginInstance];
-  } else if (getFilePluginInstance) {
-    plugins = [getFilePluginInstance];
-  } else if (fullScreenPluginInstance) {
-    plugins = [fullScreenPluginInstance];
-  }
+  // let plugins: Plugin[] | undefined = [];
+
+  // if (getFilePluginInstance && fullScreenPluginInstance && printPluginInstance) {
+  //   plugins = [getFilePluginInstance, fullScreenPluginInstance];
+  // } else if (getFilePluginInstance && printPluginInstance) {
+  //   plugins = [getFilePluginInstance, printPluginInstance];
+  // } else if (fullScreenPluginInstance) {
+  //   plugins = [fullScreenPluginInstance];
+  // }
 
   return (
     <PdfViewerWrapper $selectTest={selectTest} $selectExplanation={selectExplanation}>
-      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+      <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}>
         <ViewerWrapper>
-          <Viewer fileUrl={pdfUrl} theme={{ theme: "light" }} plugins={plugins} />
+          <Viewer fileUrl={pdfUrl} theme={{ theme: "light" }} plugins={[printPluginInstance, getFilePluginInstance]} />
         </ViewerWrapper>
       </Worker>
     </PdfViewerWrapper>

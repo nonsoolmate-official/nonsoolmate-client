@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { fullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { RightArrowBigIc, LeftArrowBigIc, ShowExplanationTagIc, ShowQuestionTagIc } from "@assets/index";
 import { media } from "style/responsiveStyle";
-
+import { printPlugin } from "@react-pdf-viewer/print";
 interface PdfViewerWrapperProps {
   firstTitle: string;
   secondTitle: string;
@@ -20,7 +20,9 @@ interface PdfViewerWrapperProps {
 export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
   const { firstTitle, secondTitle, ifExplanation, firstPdfUrl, secondPdfUrl, testUrl } = props;
   const getFilePluginInstance = getFilePlugin();
-  const fullScreenPluginInstance = fullScreenPlugin();
+
+  const printPluginInstance = printPlugin();
+
   const [isQuestionHide, setIsQuestionHide] = useState(false);
   const [isExplanationHide, setIsExplanationHide] = useState(false);
   const [isHide, setIsHide] = useState(false);
@@ -64,6 +66,8 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
           <ShowQuestionTagIcon />
         </ShowQuestionMessageBox>
       </ShowQuestionButton>
+
+      {/* ----- 아이패드 반응형 ---------*/}
       <IpadButtonContainer>
         <TestButton type="button" onClick={clickTestButton} $selectTest={selectTest}>
           {firstTitle}
@@ -81,6 +85,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
                 getFilePluginInstance={getFilePluginInstance}
                 selectTest={selectTest}
                 selectExplanation={selectExplanation}
+                printPluginInstance={printPluginInstance}
               />
             ) : (
               <PdfViewer
@@ -88,6 +93,7 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
                 getFilePluginInstance={getFilePluginInstance}
                 selectTest={selectTest}
                 selectExplanation={selectExplanation}
+                printPluginInstance={printPluginInstance}
               />
             )}
           </>
@@ -95,42 +101,56 @@ export default function PdfViewerWrapper(props: PdfViewerWrapperProps) {
         {selectExplanation && (
           <PdfViewer
             pdfUrl={secondPdfUrl ? secondPdfUrl : firstPdfUrl}
-            fullScreenPluginInstance={fullScreenPluginInstance}
             selectTest={selectTest}
             selectExplanation={selectExplanation}
+            getFilePluginInstance={getFilePluginInstance}
+            printPluginInstance={printPluginInstance}
           />
         )}
       </IpadPdfViewer>
 
+      {/*---- 왼쪽 pdf viewer wrapper -----*/}
       <LeftPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={firstTitle}
-          buttonText={ifExplanation ? "문제 숨기기" : "첨삭 PDF로 저장"}
+          buttonText={ifExplanation ? "문제 숨기기" : "none"}
           ifPdfButton={!ifExplanation && true}
-          getFilePluginInstance={getFilePluginInstance}
           setIsHide={setIsQuestionHide}
+          getFilePluginInstance={getFilePluginInstance}
+          printPluginInstance={printPluginInstance}
         />
         {ifExplanation && testUrl ? (
-          <PdfViewer pdfUrl={testUrl} getFilePluginInstance={getFilePluginInstance} />
+          <PdfViewer
+            pdfUrl={testUrl}
+            getFilePluginInstance={getFilePluginInstance}
+            printPluginInstance={printPluginInstance}
+          />
         ) : (
-          <PdfViewer pdfUrl={firstPdfUrl} getFilePluginInstance={getFilePluginInstance} />
+          <PdfViewer
+            pdfUrl={firstPdfUrl}
+            getFilePluginInstance={getFilePluginInstance}
+            printPluginInstance={printPluginInstance}
+          />
         )}
       </LeftPdfViewerWrapper>
 
+      {/*---- 오른쪽 pdf viewer wrapper -----*/}
       <RightPdfViewerWrapper $isQuestionHide={isQuestionHide} $isExplanationHide={isExplanationHide}>
         <TitleWrapper
           title={secondTitle}
           buttonText="해제 숨기기"
           ifExplanation={ifExplanation}
           setIsHide={setIsExplanationHide}
-          fullScreenPluginInstance={fullScreenPluginInstance}
-          isQuestionHide={isQuestionHide}
+          getFilePluginInstance={getFilePluginInstance}
+          printPluginInstance={printPluginInstance}
         />
         <PdfViewer
           pdfUrl={secondPdfUrl ? secondPdfUrl : firstPdfUrl}
-          fullScreenPluginInstance={fullScreenPluginInstance}
+          printPluginInstance={printPluginInstance}
+          getFilePluginInstance={getFilePluginInstance}
         />
       </RightPdfViewerWrapper>
+
       <ShowExplanationButton
         $isExplanationHide={isExplanationHide}
         onClick={() => setIsExplanationHide(false)}

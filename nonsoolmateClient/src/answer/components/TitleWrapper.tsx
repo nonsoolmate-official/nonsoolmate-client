@@ -1,59 +1,27 @@
-import { answerPageButtonStyle, commonFlex } from "style/commonStyle";
+import { answerPageButtonStyle } from "style/commonStyle";
 import styled from "styled-components";
 import { RenderDownloadProps } from "@react-pdf-viewer/get-file";
 import { GetFilePlugin } from "@react-pdf-viewer/get-file";
-import { RenderEnterFullScreenProps } from "@react-pdf-viewer/full-screen";
-import { FullScreenPlugin } from "@react-pdf-viewer/full-screen";
 import { media } from "style/responsiveStyle";
+import { DownloadCircleIc, PrintCircleIc } from "@assets/index";
+// import { RenderEnterFullScreenProps } from "@react-pdf-viewer/full-screen";
+// import { FullScreenPlugin } from "@react-pdf-viewer/full-screen";
+import { PrintPlugin, RenderPrintProps } from "@react-pdf-viewer/print";
 
 interface TitleWrapperProps {
   title: string;
   buttonText: string;
   ifExplanation?: boolean;
   ifPdfButton?: boolean;
-  getFilePluginInstance?: GetFilePlugin;
   setIsHide: React.Dispatch<React.SetStateAction<boolean>>;
-  fullScreenPluginInstance?: FullScreenPlugin;
-  isQuestionHide?: boolean;
+  getFilePluginInstance: GetFilePlugin;
+  printPluginInstance: PrintPlugin;
+  // fullScreenPluginInstance?: FullScreenPlugin;
 }
 
 export default function TitleWrapper(props: TitleWrapperProps) {
-  const {
-    title,
-    buttonText,
-    ifExplanation,
-    ifPdfButton,
-    getFilePluginInstance,
-    setIsHide,
-    fullScreenPluginInstance,
-    isQuestionHide,
-  } = props;
-
-  const renderDownloadButton = () => {
-    if (getFilePluginInstance) {
-      const { Download } = getFilePluginInstance;
-      return (
-        <Download>
-          {(props: RenderDownloadProps) => (
-            <Button type="button" onClick={props.onClick}>
-              첨삭 PDF로 저장
-            </Button>
-          )}
-        </Download>
-      );
-    }
-  };
-
-  const renderFullScreenButton = () => {
-    if (fullScreenPluginInstance) {
-      const { EnterFullScreen } = fullScreenPluginInstance;
-      return (
-        <EnterFullScreen>
-          {(props: RenderEnterFullScreenProps) => <Button onClick={props.onClick}>PDF로 크게보기</Button>}
-        </EnterFullScreen>
-      );
-    }
-  };
+  const { title, buttonText, ifExplanation, ifPdfButton, getFilePluginInstance, setIsHide, printPluginInstance } =
+    props;
 
   const renderHideButton = () => {
     if (!ifExplanation) {
@@ -69,19 +37,38 @@ export default function TitleWrapper(props: TitleWrapperProps) {
     } else return;
   };
 
+  const { Print } = printPluginInstance;
+  const { Download } = getFilePluginInstance;
+
   return (
     <TitleWrapperContainer>
       <Title>{title}</Title>
-      {isQuestionHide && renderFullScreenButton()}
-      {!ifExplanation && ifPdfButton ? renderDownloadButton() : renderHideButton()}
+      {!ifExplanation && ifPdfButton ? <></> : renderHideButton()}
+      <PluginContainer>
+        <Print>
+          {(props: RenderPrintProps) => (
+            <PluginButton type="button" onClick={props.onClick}>
+              <PrintIcon />
+            </PluginButton>
+          )}
+        </Print>
+        <Download>
+          {(props: RenderDownloadProps) => (
+            <PluginButton type="button" onClick={props.onClick}>
+              <DownloadIcon />
+            </PluginButton>
+          )}
+        </Download>
+      </PluginContainer>
     </TitleWrapperContainer>
   );
 }
 
 const TitleWrapperContainer = styled.div`
-  ${commonFlex}
-
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
   width: 100%;
   padding: 0;
 
@@ -97,7 +84,33 @@ const Title = styled.p`
 `;
 
 const Button = styled(answerPageButtonStyle)`
+  position: absolute;
+  left: 6.7rem;
   ${({ theme }) => theme.fonts.Body5};
 
   padding: 0.8rem 1.6rem;
+`;
+
+const PluginContainer = styled.div`
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 0;
+`;
+
+const PrintIcon = styled(PrintCircleIc)`
+  width: 3.2rem;
+  height: 3.2rem;
+`;
+
+const DownloadIcon = styled(DownloadCircleIc)`
+  width: 3.2rem;
+  height: 3.2rem;
+`;
+
+const PluginButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
 `;
