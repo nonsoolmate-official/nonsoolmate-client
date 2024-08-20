@@ -60,7 +60,7 @@ export default function RequestForm() {
   }
   function sendToSlack() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://hooks.slack.com/services/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", true);
+    xhr.open("POST", `${import.meta.env.VITE_SLACK_WEBHOOK_URL}`, true);
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
