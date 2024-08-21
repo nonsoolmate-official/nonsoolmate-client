@@ -11,6 +11,8 @@ import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 import EndTestModal from "./components/modal/EndTestModal";
 import TestPaper from "./components/testPaper/TestPaper";
+import { useRecoilValue } from "recoil";
+import { takeTestPdfPlugin } from "recoil/atom";
 
 export default function index() {
   useRefreshPage();
@@ -22,6 +24,7 @@ export default function index() {
   const [openEndTestModal, setOpenEndTestModal] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [isFile, setIsFile] = useState<File[] | null>(null);
+  const pdfPlugin = useRecoilValue(takeTestPdfPlugin);
 
   const location = useLocation();
   const { examId } = location.state;
@@ -82,8 +85,8 @@ export default function index() {
         />
         <TestPaper examId={examId} openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>
-      {openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
-      {openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
+      {!pdfPlugin && openCoachMark && <CoachMark toPrecautionModal={toPrecautionModal} />}
+      {!pdfPlugin && openPrecautionModal && <PrecautionModal changePrecautionStatus={changePrecautionStatus} />}
       {openTestQuitModal && <TestQuitModal changeTestQuitStatus={changeTestQuitStatus} />}
       {openTestFinishModal && (
         <TestFinishModal
