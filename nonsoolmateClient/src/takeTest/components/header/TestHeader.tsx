@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 import { media } from "style/responsiveStyle";
+import { useRecoilValue } from "recoil";
+import { takeTestPdfPlugin } from "recoil/atom";
+import { useNavigate } from "react-router-dom";
 
 interface TestHeaderProps {
   changeTestQuitStatus: (testQuitModal: boolean) => void;
@@ -28,34 +31,58 @@ export default function TestHeader(props: TestHeaderProps) {
     examTimeLimit,
   } = props;
 
+  const navigate = useNavigate();
+  const pdfPlugin = useRecoilValue(takeTestPdfPlugin);
+
   function handleBackButton() {
     changeTestQuitStatus(true);
   }
+
   return (
     <TestHeaderContainer>
       <HeaderLeft>
-        <IconBox onClick={handleBackButton} type="button">
-          <LeftArrowBlackBtnIcon />
-        </IconBox>
-        <TestTitle>{openCoachMark || openPrecautionModal ? "시험 예시 화면" : examName}</TestTitle>
+        {pdfPlugin ? (
+          <IconBox onClick={() => navigate("/home/test")} type="button">
+            <LeftArrowBlackBtnIcon />
+          </IconBox>
+        ) : (
+          <IconBox onClick={handleBackButton} type="button">
+            <LeftArrowBlackBtnIcon />
+          </IconBox>
+        )}
+        {pdfPlugin ? (
+          <TestTitle>인쇄/다운로드</TestTitle>
+        ) : (
+          <TestTitle>{openCoachMark || openPrecautionModal ? "시험 예시 화면" : examName}</TestTitle>
+        )}
       </HeaderLeft>
       <IpadHeaderRight>
-        <TimerBox>
-          {openCoachMark || openPrecautionModal ? (
-            <InitTimer>00 : 00 : 00</InitTimer>
-          ) : (
-            <Timer
-              changeTestFinishStatus={changeTestFinishStatus}
-              computeTakeTime={computeTakeTime}
-              openTestFinishModal={openTestFinishModal}
-              openTestSubmitModal={openTestSubmitModal}
-              examTimeLimit={examTimeLimit}
-            />
-          )}
-        </TimerBox>
-        <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
-          시험 종료
-        </TestCloseButton>
+        {pdfPlugin ? (
+          <></>
+        ) : (
+          <TimerBox>
+            {openCoachMark || openPrecautionModal ? (
+              <InitTimer>00 : 00 : 00</InitTimer>
+            ) : (
+              <Timer
+                changeTestFinishStatus={changeTestFinishStatus}
+                computeTakeTime={computeTakeTime}
+                openTestFinishModal={openTestFinishModal}
+                openTestSubmitModal={openTestSubmitModal}
+                examTimeLimit={examTimeLimit}
+              />
+            )}
+          </TimerBox>
+        )}
+        {pdfPlugin ? (
+          <TestCloseButton onClick={() => navigate("/home/test")} type="button">
+            준비 완료
+          </TestCloseButton>
+        ) : (
+          <TestCloseButton type="button" onClick={() => changeTestFinishStatus(true)}>
+            시험 종료
+          </TestCloseButton>
+        )}
       </IpadHeaderRight>
     </TestHeaderContainer>
   );
