@@ -1,11 +1,11 @@
-import { getFilePlugin } from "@react-pdf-viewer/get-file";
-import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import PdfViewer from "./PdfViewer";
 import testExampleIpad from "@assets/image/blurTestImageIpad.png";
 import testExample from "@assets/image/blurTestImage.png";
 import { useGetUniversityExamPdf } from "takeTest/hooks/useGetUniversityExamPdf";
 import { media } from "style/responsiveStyle";
+import { useRecoilValue } from "recoil";
+import { takeTestPdfPlugin } from "recoil/atom";
 
 interface TestPaperProps {
   openCoachMark: boolean;
@@ -15,7 +15,7 @@ interface TestPaperProps {
 export default function TestPaper(props: TestPaperProps) {
   const { openCoachMark, openPrecautionModal, examId } = props;
 
-  const getFilePluginInstance = getFilePlugin();
+  const pdfPlugin = useRecoilValue(takeTestPdfPlugin);
 
   const response = useGetUniversityExamPdf(examId);
   if (!response) return <></>;
@@ -25,21 +25,26 @@ export default function TestPaper(props: TestPaperProps) {
   } = response;
 
   return (
-    <TestPaperContainer>
-      {openCoachMark || openPrecautionModal ? (
+    <TestPaperContainer $pdfPlugin={pdfPlugin}>
+      {pdfPlugin ? (
+        <PdfViewer pdfUrl={examUrl} />
+      ) : openCoachMark || openPrecautionModal ? (
         <>
           <BlurTestImage src={testExample} />
           <BlurTestImageIpad src={testExampleIpad} />
         </>
       ) : (
-        <PdfViewer pdfUrl={examUrl} getFilePluginInstance={getFilePluginInstance} />
+        <PdfViewer pdfUrl={examUrl} />
       )}
     </TestPaperContainer>
   );
 }
-const TestPaperContainer = styled.section`
-  ${commonFlex}
 
+const TestPaperContainer = styled.section<{ $pdfPlugin: boolean }>`
+  display: flex;
+  flex-direction: ${({ $pdfPlugin }) => ($pdfPlugin ? "column" : "row")};
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: calc(100vh - 6.4rem);
 `;
