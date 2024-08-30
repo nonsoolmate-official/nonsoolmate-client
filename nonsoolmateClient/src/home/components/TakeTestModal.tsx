@@ -5,6 +5,8 @@ import { media } from "style/responsiveStyle";
 import { DisplayIc, EmptyCircleIc, FilledCircleIc, PrintIc, XIc } from "@assets/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { takeTestPdfPlugin } from "recoil/atom";
 
 interface TakeTestModalProps {
   examId: number;
@@ -17,6 +19,8 @@ export default function TakeTestModal(props: TakeTestModalProps) {
   const navigate = useNavigate();
   const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
   const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
+
+  const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
 
   function handleDisplayOption() {
     setIsDisplayClicked((open) => !open);
@@ -36,6 +40,7 @@ export default function TakeTestModal(props: TakeTestModalProps) {
           examId: examId,
         },
       });
+      setPdfPlugin(false);
     }
     // 인쇄,다운로드 클릭 시
     else {
@@ -44,6 +49,7 @@ export default function TakeTestModal(props: TakeTestModalProps) {
           examId: examId,
         },
       });
+      setPdfPlugin(true);
     }
   }
 
