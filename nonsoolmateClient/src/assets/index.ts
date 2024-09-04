@@ -82,6 +82,9 @@ import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
 import PrintCircleIc from "./icon/printCircleIc.svg?react";
 
+import RecorrectionBlueIc from "./icon/recorrectionBlueIc.svg?react";
+import RecorrectionGrayIc from "./icon/recorrectionGrayIc.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -141,4 +144,6 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  RecorrectionBlueIc,
+  RecorrectionGrayIc,
 };
