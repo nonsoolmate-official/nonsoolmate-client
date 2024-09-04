@@ -5,7 +5,7 @@ export interface PatchDataTypes {
 }
 
 export async function patchSelectUniversities(universityIdList: PatchDataTypes[]) {
-  const { data } = await client.patch(`/select-university`, universityIdList);
-  
+  const { data } = await client.patch(`/select-college`, universityIdList);
+
   return data;
 }

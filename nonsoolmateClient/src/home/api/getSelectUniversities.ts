@@ -9,6 +9,6 @@ export interface SelectUniversitiesDataTypes {
 }
 
 export async function getSelectUniversities() {
-  const { data } = await client.get<Response<SelectUniversitiesDataTypes[]>>(`/select-university`);
+  const { data } = await client.get<Response<SelectUniversitiesDataTypes[]>>(`/select-college`);
   return data;
 }
