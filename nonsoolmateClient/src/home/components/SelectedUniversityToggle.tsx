@@ -61,15 +61,18 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
                   </ResultsButtonBox>
                 </ExamResults>
               )}
-              {examStatus === "첨삭 완료" && (
-                <ResultsButtonBox>
-                  <ExplanationButton type="button" onClick={handleMoveToExplanation}>
-                    해제
-                  </ExplanationButton>
-                  <CorrectionButton type="button" $examStatus={examStatus} onClick={handleMoveToCorrection}>
-                    첨삭
-                  </CorrectionButton>
-                </ResultsButtonBox>
+              {(examStatus === "첨삭 완료" || examStatus === "재첨삭 진행 중" || examStatus === "재첨삭 완료") && (
+                <ExamResults>
+                  <ResultsText>{examStatus}</ResultsText>
+                  <ResultsButtonBox>
+                    <ExplanationButton type="button" onClick={handleMoveToExplanation}>
+                      해제
+                    </ExplanationButton>
+                    <CorrectionButton type="button" $examStatus={examStatus} onClick={handleMoveToCorrection}>
+                      첨삭
+                    </CorrectionButton>
+                  </ResultsButtonBox>
+                </ExamResults>
               )}
             </StatusBox>
           </ExamContainer>
