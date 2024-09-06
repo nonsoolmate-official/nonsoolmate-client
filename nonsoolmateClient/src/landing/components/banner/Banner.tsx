@@ -43,12 +43,12 @@ const ContentContainer = styled.div`
 `;
 
 const TextsContainer = styled.span`
-  ${columnFlex};
-
+  display: flex;
+  flex-direction: column;
   gap: 2.4rem;
   position: absolute;
   top: 50%;
-  right: 21.5rem;
+  right: 15%;
   transform: translateY(-50%);
   width: 37.6rem;
 `;

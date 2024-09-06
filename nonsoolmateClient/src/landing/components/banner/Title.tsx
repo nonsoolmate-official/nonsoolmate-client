@@ -1,4 +1,3 @@
-import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function Title() {
@@ -10,7 +9,8 @@ export default function Title() {
 }
 
 const Container = styled.article`
-  ${columnFlex}
+  display: flex;
+  flex-direction: column;
 `;
 
 const Text = styled.h1`
