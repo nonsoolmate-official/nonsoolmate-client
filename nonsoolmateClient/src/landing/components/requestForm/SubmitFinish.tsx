@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   position: fixed;
   right: 2.4rem;
   bottom: 1.6rem;
+  z-index: 1;
   padding: 2.4rem;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.white};
