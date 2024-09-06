@@ -1,6 +1,7 @@
 import DownArrowBoldIc from "./icon/downArrowBoldIc.svg?react";
 import DownArrowIc from "./icon/downArrowIc.svg?react";
 import DownArrowGreyIc from "./icon/downArrowGreyIc.svg?react";
+import DownArrowWhiteIc from "./icon/downArrowWhiteIc.svg?react";
 
 import LeftArrowBigIc from "./icon/leftArrowBigIc.svg?react";
 import LeftArrowBlackBtn from "./icon/leftArrowBlackBtn.svg?react";
@@ -141,4 +142,5 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  DownArrowWhiteIc,
 };
