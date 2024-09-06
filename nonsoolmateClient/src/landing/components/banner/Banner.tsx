@@ -32,6 +32,7 @@ const BannerWrapper = styled.section`
   justify-content: flex-end;
   position: relative;
   width: 100%;
+  height: calc(100vh - 6.4rem);
   background: linear-gradient(180deg, #fff 0%, #e4e8ff 100%);
 `;
 
