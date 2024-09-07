@@ -32,6 +32,8 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
           navigate("/correction", {
             state: {
               examId: examId,
+              examStatus: examStatus,
+              examName: examName,
             },
           });
         }
