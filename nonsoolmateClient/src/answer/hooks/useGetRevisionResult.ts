@@ -6,10 +6,11 @@ const QUERY_KEY = {
 };
 
 export function useGetRevisionResult(examId: number) {
-  const { data } = useQuery([QUERY_KEY.getRevisionResult, examId], () => getRevisionResult(examId), {
-    onError: (err) => {
-      console.log(err);
+  const { data, refetch } = useQuery([QUERY_KEY.getRevisionResult, examId], () => getRevisionResult(examId), {
+    refetchInterval: 3000, // 3초마다 데이터를 refetch
+    onError: (error) => {
+      console.log("에러", error);
     },
   });
-  return data;
+  return { data, refetch };
 }

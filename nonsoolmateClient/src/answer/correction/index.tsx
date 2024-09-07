@@ -2,6 +2,7 @@ import CorrectionContainer from "answer/components/correction/CorrectionContaine
 import ExplainHeader from "answer/components/explanation/ExplainHeader";
 import { useGetEditingResult } from "answer/hooks/useGetEditingResult";
 import { useGetRevisionResult } from "answer/hooks/useGetRevisionResult";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 export default function index() {
@@ -13,10 +14,15 @@ export default function index() {
   const editingRes = useGetEditingResult(examId);
 
   //재첨삭 결과
-  const revisionRes = useGetRevisionResult(examId);
+  const { data: revisionRes, refetch } = useGetRevisionResult(examId);
 
   if (!editingRes) return <></>;
   if (!revisionRes) return <></>;
+
+  //revisionStatus가 바뀔 때마다 refetch
+  useEffect(() => {
+    refetch();
+  }, [revisionRes, refetch]);
 
   const editingResultFileUrl = editingRes.examResultFileUrl;
   const revisionResultFileUrl = revisionRes.examResultFileUrl;
