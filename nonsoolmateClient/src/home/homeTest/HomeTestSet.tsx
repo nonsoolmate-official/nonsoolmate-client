@@ -41,13 +41,13 @@ export default function HomeTestSet(props: HomeTestSetProps) {
           </HeaderButton>
         </HeaderBox>
         <ListBox>
-          {response.map((data) => {
+          {response.map((data, index) => {
             const { universityId, universityName, universityCollege, examList } = data;
             const isSelected = selectedUniversityId.includes(universityId);
             const isExisted = dataUniversityIds.includes(universityId);
 
             return (
-              <SelectedListBox key={universityId}>
+              <SelectedListBox key={index}>
                 {isExisted && (
                   <SelectedUniversityButton
                     type="button"
