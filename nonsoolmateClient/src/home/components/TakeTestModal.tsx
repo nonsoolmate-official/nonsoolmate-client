@@ -5,6 +5,8 @@ import { media } from "style/responsiveStyle";
 import { DisplayIc, EmptyCircleIc, FilledCircleIc, PrintIc, XIc } from "@assets/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { takeTestPdfPlugin } from "recoil/atom";
 
 import { useRecoilState } from "recoil";
 import { takeTestPdfPlugin } from "recoil/atom";
@@ -20,6 +22,8 @@ export default function TakeTestModal(props: TakeTestModalProps) {
   const navigate = useNavigate();
   const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
   const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
+  const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
+
   const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
 
   function handleDisplayOption() {
