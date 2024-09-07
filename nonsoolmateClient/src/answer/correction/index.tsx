@@ -16,13 +16,13 @@ export default function index() {
   //재첨삭 결과
   const { data: revisionRes, refetch } = useGetRevisionResult(examId);
 
-  if (!editingRes) return <></>;
-  if (!revisionRes) return <></>;
-
   //revisionStatus가 바뀔 때마다 refetch
   useEffect(() => {
     refetch();
   }, [revisionRes, refetch]);
+
+  if (!editingRes) return <></>;
+  if (!revisionRes) return <></>;
 
   const editingResultFileUrl = editingRes.examResultFileUrl;
   const revisionResultFileUrl = revisionRes.examResultFileUrl;
