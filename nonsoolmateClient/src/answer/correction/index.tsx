@@ -1,27 +1,37 @@
-import ExplainHeader from "answer/components/ExplainHeader";
-import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
-import { useGetCorrectionPageData } from "answer/hooks/useGetCorrectionPageData";
+import CorrectionContainer from "answer/components/correction/CorrectionContainer";
+import ExplainHeader from "answer/components/explanation/ExplainHeader";
+import { useGetEditingResult } from "answer/hooks/useGetEditingResult";
+import { useGetRevisionResult } from "answer/hooks/useGetRevisionResult";
 import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 export default function index() {
   useRefreshPage();
   const location = useLocation();
-  const { examId } = location.state;
+  const { examId, examStatus, examName } = location.state;
 
-  const correctionRes = useGetCorrectionPageData(examId);
-  if (!correctionRes) return <></>;
+  // 첨삭 결과
+  const editingRes = useGetEditingResult(examId);
 
-  const {
-    data: { examName, examAnswerUrl, examResultUrl },
-  } = correctionRes;
+  //재첨삭 결과
+  const revisionRes = useGetRevisionResult(examId);
 
-  //examResult: 첨삭  (first)
-  //examAnswer: 해제  (second)
+  if (!editingRes) return <></>;
+  if (!revisionRes) return <></>;
+
+  const editingResultFileUrl = editingRes.examResultFileUrl;
+  const revisionResultFileUrl = revisionRes.examResultFileUrl;
+  console.log(revisionResultFileUrl);
 
   return (
     <>
       <ExplainHeader testTitle={examName} />
-      <PdfViewerWrapper firstTitle="첨삭" secondTitle="해제" firstPdfUrl={examResultUrl} secondPdfUrl={examAnswerUrl} />
+      <CorrectionContainer
+        editingTitle="첨삭"
+        revisionTitle="재첨삭"
+        examStatus={examStatus}
+        editingPdfUrl={editingResultFileUrl}
+        revisionPdfUrl={revisionResultFileUrl}
+      />
     </>
   );
 }
