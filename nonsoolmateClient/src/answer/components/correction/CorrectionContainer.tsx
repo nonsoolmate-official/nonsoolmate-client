@@ -10,12 +10,12 @@ interface CorrectionContainerProps {
   revisionTitle: string;
   editingPdfUrl: string;
   revisionPdfUrl: string;
-  examStatus: string;
+  revisionStatus: string;
   ifExplanation?: boolean;
 }
 
 export default function CorrectionContainer(props: CorrectionContainerProps) {
-  const { editingTitle, editingPdfUrl, revisionPdfUrl, examStatus } = props;
+  const { editingTitle, editingPdfUrl, revisionPdfUrl, revisionStatus } = props;
 
   const [activeButton, setActiveButton] = useState<"edit" | "revision">("edit");
 
@@ -44,7 +44,7 @@ export default function CorrectionContainer(props: CorrectionContainerProps) {
         {activeButton === "edit" ? (
           <PdfViewer pdfUrl={editingPdfUrl} title={editingTitle} />
         ) : (
-          <RevisionContainer examStatus={examStatus} pdfUrl={revisionPdfUrl} />
+          <RevisionContainer revisionStatus={revisionStatus} pdfUrl={revisionPdfUrl} />
         )}
       </IpadPdfViewer>
 
@@ -52,7 +52,7 @@ export default function CorrectionContainer(props: CorrectionContainerProps) {
       <LeftPdfViewerWrapper>
         {editingPdfUrl && <PdfViewer pdfUrl={editingPdfUrl} title={editingTitle} />}
       </LeftPdfViewerWrapper>
-      <RevisionContainer examStatus={examStatus} pdfUrl={revisionPdfUrl} />
+      <RevisionContainer revisionStatus={revisionStatus} pdfUrl={revisionPdfUrl} />
     </Container>
   );
 }

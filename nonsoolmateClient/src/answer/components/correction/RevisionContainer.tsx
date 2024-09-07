@@ -9,12 +9,11 @@ import FileEndModal from "./FileEndModal";
 import PdfViewer from "./PdfViewer";
 
 interface Props {
-  examStatus: string;
+  revisionStatus: string;
   pdfUrl: string;
 }
 export default function RevisionContainer(props: Props) {
-  const { examStatus, pdfUrl } = props;
-  const [isRevisionCompleted, setIsRevisionCompleted] = useState<boolean>(false);
+  const { revisionStatus, pdfUrl } = props;
   const [openSelectFileModal, setOpenSelectFileModal] = useState(false);
   const [openFileSubmitModal, setOpenFileSubmitModal] = useState(false);
   const [openEndFileModal, setOpenEndFileModal] = useState(false);
@@ -40,10 +39,14 @@ export default function RevisionContainer(props: Props) {
   return (
     <>
       <Container>
-        {isRevisionCompleted ? (
+        {revisionStatus === "재첨삭 완료" ? (
           <PdfViewer pdfUrl={pdfUrl} title="재첨삭" />
         ) : (
-          <RevisionUnset changeSelectFileStatus={changeSelectFileStatus} isSubmit={isSubmit} examStatus={examStatus} />
+          <RevisionUnset
+            changeSelectFileStatus={changeSelectFileStatus}
+            isSubmit={isSubmit}
+            revisionStatus={revisionStatus}
+          />
         )}
       </Container>
       {openSelectFileModal && (

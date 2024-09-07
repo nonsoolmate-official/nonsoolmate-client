@@ -5,11 +5,11 @@ import { media } from "style/responsiveStyle";
 interface Props {
   changeSelectFileStatus: (selectFileModal: boolean) => void;
   isSubmit: boolean;
-  examStatus: string;
+  revisionStatus: string;
 }
 
 export default function RevisionUnset(props: Props) {
-  const { changeSelectFileStatus, isSubmit, examStatus } = props;
+  const { changeSelectFileStatus, isSubmit, revisionStatus } = props;
 
   return (
     <Container>
@@ -20,12 +20,12 @@ export default function RevisionUnset(props: Props) {
         <IconWrapper>
           <RecorrectionGrayIcon />
         </IconWrapper>
-        {isSubmit || examStatus == "재첨삭 진행 중" ? (
+        {isSubmit || revisionStatus == "재첨삭 진행 중" ? (
           <ContentText>재첨삭 진행 중이에요!</ContentText>
         ) : (
           <ContentText>아직 재첨삭을 신청하지 않았어요.</ContentText>
         )}
-        {isSubmit || examStatus == "재첨삭 진행 중" ? (
+        {isSubmit || revisionStatus == "재첨삭 진행 중" ? (
           <></>
         ) : (
           <Button

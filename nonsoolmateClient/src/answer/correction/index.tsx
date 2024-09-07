@@ -7,7 +7,7 @@ import useRefreshPage from "socialLogin/hooks/useRefreshPage";
 export default function index() {
   useRefreshPage();
   const location = useLocation();
-  const { examId, examStatus, examName } = location.state;
+  const { examId, examName } = location.state;
 
   // 첨삭 결과
   const editingRes = useGetEditingResult(examId);
@@ -20,7 +20,10 @@ export default function index() {
 
   const editingResultFileUrl = editingRes.examResultFileUrl;
   const revisionResultFileUrl = revisionRes.examResultFileUrl;
-  console.log(revisionResultFileUrl);
+  const revisionStatus = revisionRes.examResultStatus;
+
+  console.log("editingRes" + editingRes);
+  console.log("revisionRes" + revisionRes);
 
   return (
     <>
@@ -28,7 +31,7 @@ export default function index() {
       <CorrectionContainer
         editingTitle="첨삭"
         revisionTitle="재첨삭"
-        examStatus={examStatus}
+        revisionStatus={revisionStatus}
         editingPdfUrl={editingResultFileUrl}
         revisionPdfUrl={revisionResultFileUrl}
       />
