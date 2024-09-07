@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { getEditingResult } from "answer/api/getEditingResult";
 
 const QUERY_KEY = {
-  getEditingResult: "getRevisionResult",
+  getEditingResult: "getEditingResult",
 };
 
 export function useGetEditingResult(examId: number) {
