@@ -62,7 +62,7 @@ export default function TestSubmitModal(props: TestSubmitProps) {
             {
               onSuccess: () => {
                 postMutate(
-                  { examId: examId, totalTime: totalTime, fileName: resultFileName },
+                  { examId: examId, totalTime: totalTime, fileName: resultFileName, editingType: "EDITING" },
                   {
                     onSuccess: () => {
                       changeTestSubmitStatus(false);
