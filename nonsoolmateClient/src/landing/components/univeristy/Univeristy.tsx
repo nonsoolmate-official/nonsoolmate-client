@@ -3,6 +3,7 @@ import Summary from "./Summary";
 import Title from "./Title";
 import styled from "styled-components";
 import { media } from "style/responsiveStyle";
+import UniversityCarousel from "./UniversityCarousel";
 
 export default function Univeristy() {
   return (
@@ -11,6 +12,9 @@ export default function Univeristy() {
         <Title />
         <Summary />
       </TextContainer>
+      <CarouselContainer>
+        <UniversityCarousel />
+      </CarouselContainer>
     </Container>
   );
 }
@@ -33,4 +37,8 @@ const TextContainer = styled.div`
   gap:1.6rem;
 `;
 
-const UnivImgsContainer = styled.div``;
+const CarouselContainer = styled.div`
+  display: flex;
+  width: 93.6rem;
+  height: 100%;
+`;
