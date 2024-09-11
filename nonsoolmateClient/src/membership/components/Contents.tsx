@@ -3,27 +3,22 @@ import Subscribe from "./subscribe/Subscribe";
 import { CONTENT_LIST } from "../core/contentlist";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import Advantage from "./advantage/Advantage";
-import BackgroundGrey from "./BackgroundGrey";
-import AdvanTitle from "./advantage/Title";
 import { media } from "style/responsiveStyle";
 
 export default function Contents() {
   return (
     <Container>
-      <BackgroundGrey />
       <SubscribeWrapper>
         {CONTENT_LIST.map((ele) => {
-          const { id, title, summary, sales, price } = ele;
-          return <Subscribe key={id} id={id} title={title} summary={summary} sales={sales} price={price} />;
+          const { id, title, sales, price } = ele;
+          return <Subscribe key={id} id={id} title={title} sales={sales} price={price} />;
         })}
       </SubscribeWrapper>
       <Ipad>
         <AdvantageContainer>
-          <AdvanTitle />
           <Advantage />
         </AdvantageContainer>
       </Ipad>
-      <IpadGrey />
     </Container>
   );
 }
@@ -36,7 +31,7 @@ const Container = styled.section`
 
   ${media.tablet} {
     flex-direction: column;
-    margin-top: 9.6rem;
+    margin-top: 5.6rem;
   }
 `;
 
@@ -50,18 +45,7 @@ const Ipad = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 13.5rem;
-  }
-`;
-
-const IpadGrey = styled.div`
-  ${media.tablet} {
-    position: absolute;
-    bottom: 13.5rem;
-    z-index: -1;
-    width: 100%;
-    height: 28.8rem;
-    background-color: ${({ theme }) => theme.colors.grey_50};
+    margin-bottom: 8.4rem;
   }
 `;
 
@@ -75,6 +59,5 @@ const AdvantageContainer = styled.article`
     gap: 9.6rem;
     align-items: center;
     width: 100%;
-    margin-top: 7.4rem;
   }
 `;

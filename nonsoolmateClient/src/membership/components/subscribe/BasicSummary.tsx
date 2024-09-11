@@ -1,16 +1,12 @@
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-interface SummaryProp {
-  summary: string;
-}
-
-export default function Summary(props: SummaryProp) {
-  const { summary } = props;
+export default function BasicSummary() {
   return (
     <Container>
-      <Text>{summary}</Text>
-      <Text>학생들을 위한 이용권</Text>
+      <Text>첨삭권 4개</Text>
+      <Text>재첨삭관 2개</Text>
+      <Text>유형별 연습문제</Text>
     </Container>
   );
 }
@@ -19,7 +15,7 @@ const Container = styled.div`
   ${columnFlex}
 
   width: 25.6rem;
-  height: 6.4rem;
+  height: 12.4rem;
   margin-bottom: 1.8rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
@@ -30,5 +26,6 @@ const Text = styled.p`
 
   width: 22.6rem;
   ${({ theme }) => theme.fonts.Body6};
-  ${({ theme }) => theme.colors.grey_700};
+
+  color: ${({ theme }) => theme.colors.grey_700};
 `;

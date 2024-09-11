@@ -82,6 +82,12 @@ import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
 import PrintCircleIc from "./icon/printCircleIc.svg?react";
 
+import Advan1Ic from "./icon/advan1Ic.svg?react";
+import Advan2Ic from "./icon/advan2Ic.svg?react";
+import Advan3Ic from "./icon/advan3Ic.svg?react";
+import Advan4Ic from "./icon/advan4Ic.svg?react";
+import Advan5Ic from "./icon/advan5Ic.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -141,4 +147,9 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  Advan1Ic,
+  Advan2Ic,
+  Advan3Ic,
+  Advan4Ic,
+  Advan5Ic,
 };
