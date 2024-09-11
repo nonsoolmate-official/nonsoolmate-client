@@ -29,11 +29,11 @@ export default function QnA(props: QnAprops) {
   );
 }
 
-const AnswerContainer = styled.p`
+const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Line = styled(DivideLine)`
