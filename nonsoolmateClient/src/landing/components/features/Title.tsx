@@ -14,7 +14,7 @@ export default function Title(props: TitleProps) {
   return (
     <TitleContainer>
       {icType === "test" ? <TakeTestIc /> : <PracticeIc />}
-      <TitleBox>
+      <TitleBox $caution={caution}>
         <MainTitle>{mainTitle}</MainTitle>
         <SubTitleBox>
           <SubTitle>{subTitle}</SubTitle>
@@ -33,10 +33,10 @@ const TitleContainer = styled.div`
   padding: 10.4rem 0;
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled.div<{ $caution: string | undefined }>`
   ${columnFlex}
 
-  gap:1.2rem;
+  ${({ $caution }) => ($caution ? "gap:1.6rem" : "gap:1.2rem")}
 `;
 
 const MainTitle = styled.h1`
