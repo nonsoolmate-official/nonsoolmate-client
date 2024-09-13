@@ -33,6 +33,7 @@ import TestActiveIc from "./icon/testActiveIc.svg?react";
 import TestDisabledIc from "./icon/testDisabledIc.svg?react";
 
 import LogoIc from "./icon/logoIc.svg?react";
+import FooterLogoIc from "./icon/footerLogoIc.svg?react";
 
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
@@ -185,4 +186,5 @@ export {
   Curri3Ic,
   Curri4Ic,
   Curri5Ic,
+  FooterLogoIc,
 };
