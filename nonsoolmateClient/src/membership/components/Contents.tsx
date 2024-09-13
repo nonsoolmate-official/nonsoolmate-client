@@ -28,10 +28,12 @@ const Container = styled.section`
 
   gap: 2.4rem;
   margin-top: 8.1rem;
+  margin-bottom: 8.4rem;
 
   ${media.tablet} {
     flex-direction: column;
     margin-top: 5.6rem;
+    margin-bottom: 0;
   }
 `;
 

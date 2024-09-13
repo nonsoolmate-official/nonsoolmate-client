@@ -5,6 +5,8 @@ import Title from "./components/Title";
 import useGetName from "home/hooks/useGetName";
 import HomeHeader from "home/components/HomeHeader";
 import { getToken } from "socialLogin/utils/token";
+import Event from "./event";
+import Curriculum from "./curriculum";
 
 export default function Membership() {
   const token = getToken();
@@ -15,6 +17,8 @@ export default function Membership() {
       {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Title />
       <Contents />
+      <Event />
+      <Curriculum />
     </Container>
   );
 }

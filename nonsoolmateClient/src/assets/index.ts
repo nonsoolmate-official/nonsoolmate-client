@@ -88,6 +88,18 @@ import Advan3Ic from "./icon/advan3Ic.svg?react";
 import Advan4Ic from "./icon/advan4Ic.svg?react";
 import Advan5Ic from "./icon/advan5Ic.svg?react";
 
+import PresentIc from "./icon/presentIc.svg?react";
+
+import Univ1Ic from "./icon/univ1Ic.svg?react";
+import Univ2Ic from "./icon/univ2Ic.svg?react";
+import Univ3Ic from "./icon/univ3Ic.svg?react";
+import Univ4Ic from "./icon/univ4Ic.svg?react";
+import Univ5Ic from "./icon/univ5Ic.svg?react";
+import Univ6Ic from "./icon/univ6Ic.svg?react";
+import Univ7Ic from "./icon/univ7Ic.svg?react";
+import Univ8Ic from "./icon/univ8Ic.svg?react";
+import Univ9Ic from "./icon/univ9Ic.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -152,4 +164,14 @@ export {
   Advan3Ic,
   Advan4Ic,
   Advan5Ic,
+  PresentIc,
+  Univ1Ic,
+  Univ2Ic,
+  Univ3Ic,
+  Univ4Ic,
+  Univ5Ic,
+  Univ6Ic,
+  Univ7Ic,
+  Univ8Ic,
+  Univ9Ic,
 };
