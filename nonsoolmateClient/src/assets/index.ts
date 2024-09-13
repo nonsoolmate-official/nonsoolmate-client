@@ -100,6 +100,12 @@ import Univ7Ic from "./icon/univ7Ic.svg?react";
 import Univ8Ic from "./icon/univ8Ic.svg?react";
 import Univ9Ic from "./icon/univ9Ic.svg?react";
 
+import Curri1Ic from "./icon/curriculum1Ic.svg?react";
+import Curri2Ic from "./icon/curriculum2Ic.svg?react";
+import Curri3Ic from "./icon/curriculum3Ic.svg?react";
+import Curri4Ic from "./icon/curriculum4Ic.svg?react";
+import Curri5Ic from "./icon/curriculum5Ic.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -174,4 +180,9 @@ export {
   Univ7Ic,
   Univ8Ic,
   Univ9Ic,
+  Curri1Ic,
+  Curri2Ic,
+  Curri3Ic,
+  Curri4Ic,
+  Curri5Ic,
 };

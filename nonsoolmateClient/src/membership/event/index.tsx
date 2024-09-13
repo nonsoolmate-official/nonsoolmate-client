@@ -2,7 +2,6 @@ import { PresentIc } from "@assets/index";
 import UnivBox from "membership/components/event/UnivBox";
 import { UNIV_LIST } from "membership/core/univlist";
 import { commonFlex } from "style/commonStyle";
-import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
 export default function index() {
