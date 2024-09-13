@@ -86,6 +86,9 @@ import PrintCircleIc from "./icon/printCircleIc.svg?react";
 import TakeTestIc from "./icon/takeTestIc.svg?react";
 import PracticeIc from "./icon/practiceIc.svg?react";
 
+import PlusIc from "./icon/plusIc.svg?react";
+import CloseIc from "./icon/closeIc.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -148,4 +151,6 @@ export {
   DownArrowWhiteIc,
   TakeTestIc,
   PracticeIc,
+  PlusIc,
+  CloseIc,
 };
