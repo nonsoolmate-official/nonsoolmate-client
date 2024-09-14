@@ -1,19 +1,30 @@
-import Image from "./Image";
 import ReasonTitle from "./Title";
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
 import { ReasonListType } from "landing/types/reasonListType";
 import { useState } from "react";
 import { CloseIc, PlusIc } from "@assets/index";
+import Lottie from "react-lottie-player";
 
 interface AdvertisementProps extends ReasonListType {}
 
 export default function Advertisement(props: AdvertisementProps) {
-  const { title, summary, img, summary2 } = props;
+  const { title, summary, summary2, lottie, lottieReset } = props;
   const [isHovered, setIsHovered] = useState(false);
+  const [isLottiePlaying, setIsLottiePlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setIsLottiePlaying(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsLottiePlaying(false);
+  };
 
   return (
-    <Container onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <Container onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <ReasonTitle advertiseTitle={title} />
       <ContentContainer>
         <IconWrapper $isHovered={isHovered}>{isHovered ? <CloseIc /> : <PlusIc />}</IconWrapper>
@@ -22,7 +33,8 @@ export default function Advertisement(props: AdvertisementProps) {
           <Text>{summary2}</Text>
         </SummaryContainer>
         <ImageWrapper>
-          <Image advertiseImg={img} />
+          {isLottiePlaying && <Lottie animationData={lottie} play={isLottiePlaying} loop={false} />}
+          {!isLottiePlaying && <Lottie animationData={lottieReset} play loop={false} />}
         </ImageWrapper>
       </ContentContainer>
     </Container>
