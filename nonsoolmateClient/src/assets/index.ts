@@ -1,6 +1,7 @@
 import DownArrowBoldIc from "./icon/downArrowBoldIc.svg?react";
 import DownArrowIc from "./icon/downArrowIc.svg?react";
 import DownArrowGreyIc from "./icon/downArrowGreyIc.svg?react";
+import DownArrowWhiteIc from "./icon/downArrowWhiteIc.svg?react";
 
 import LeftArrowBigIc from "./icon/leftArrowBigIc.svg?react";
 import LeftArrowBlackBtn from "./icon/leftArrowBlackBtn.svg?react";
@@ -82,6 +83,12 @@ import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
 import PrintCircleIc from "./icon/printCircleIc.svg?react";
 
+import TakeTestIc from "./icon/takeTestIc.svg?react";
+import PracticeIc from "./icon/practiceIc.svg?react";
+
+import PlusIc from "./icon/plusIc.svg?react";
+import CloseIc from "./icon/closeIc.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -141,4 +148,9 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  DownArrowWhiteIc,
+  TakeTestIc,
+  PracticeIc,
+  PlusIc,
+  CloseIc,
 };

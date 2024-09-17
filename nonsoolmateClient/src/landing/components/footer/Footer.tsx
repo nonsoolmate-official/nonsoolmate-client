@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import FooterLeft from "./FooterLeft";
 import FooterRight from "./FooterRight";
-import DivideLine from "../common/DivideLine";
 import { media } from "style/responsiveStyle";
 
 import NonsoolInfoImg from "@assets/image/nonsoolInfo.png";
@@ -9,7 +8,6 @@ import NonsoolInfoImg from "@assets/image/nonsoolInfo.png";
 export default function Footer() {
   return (
     <Container>
-      <DivideLine />
       <ContentContainer>
         <FooterLeft />
         <FooterRight />

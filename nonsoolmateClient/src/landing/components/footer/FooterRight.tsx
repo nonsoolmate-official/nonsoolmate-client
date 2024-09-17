@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import Buttons from "./Buttons";
 import Sns from "./Sns";
 
 export default function FooterRight() {
   return (
     <Container>
-      <Buttons />
       <Sns />
     </Container>
   );
@@ -13,6 +11,6 @@ export default function FooterRight() {
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
 `;

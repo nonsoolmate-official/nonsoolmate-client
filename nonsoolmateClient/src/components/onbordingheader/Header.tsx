@@ -32,5 +32,6 @@ const Container = styled.header<{ $isLanding: boolean }>`
   align-items: center;
   width: 100%;
   height: 6.4rem;
+  border-bottom: 1px solid #ecedf0;
   box-shadow: ${({ $isLanding }) => ($isLanding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
 `;

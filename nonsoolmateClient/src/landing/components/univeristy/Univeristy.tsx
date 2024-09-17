@@ -1,16 +1,20 @@
 import { columnFlex } from "style/commonStyle";
 import Summary from "./Summary";
 import Title from "./Title";
-import UnivImgs from "./UnivImgs";
 import styled from "styled-components";
 import { media } from "style/responsiveStyle";
+import UniversityCarousel from "./UniversityCarousel";
 
 export default function Univeristy() {
   return (
     <Container>
-      <Title />
-      <Summary />
-      <UnivImgs />
+      <TextContainer>
+        <Title />
+        <Summary />
+      </TextContainer>
+      <CarouselContainer>
+        <UniversityCarousel />
+      </CarouselContainer>
     </Container>
   );
 }
@@ -18,12 +22,23 @@ export default function Univeristy() {
 const Container = styled.section`
   ${columnFlex}
 
+  gap: 7.2rem;
   width: 100%;
-
-  /* height: 92.1rem; */
-  padding: 20rem 0 28rem;
+  padding: 14.4rem 0;
 
   ${media.tablet} {
     padding: 19.62rem 0 23.8rem;
   }
+`;
+
+const TextContainer = styled.div`
+  ${columnFlex}
+
+  gap:1.6rem;
+`;
+
+const CarouselContainer = styled.div`
+  display: flex;
+  width: 93.6rem;
+  height: 100%;
 `;
