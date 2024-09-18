@@ -11,13 +11,14 @@ import RequestForm from "./components/requestForm/RequestForm";
 import TestFeature from "./components/features/TestFeature";
 import PracticeFeature from "./components/features/PracticeFeature";
 import Price from "./components/price/Price";
+import styled from "styled-components";
 
 export default function Landing() {
   const token = getToken();
   const getNameResponse = token ? useGetName() : null;
 
   return (
-    <>
+    <LandingContainer>
       <RequestForm />
       {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Banner />
@@ -28,6 +29,10 @@ export default function Landing() {
       <Advertise />
       <FaQ />
       <Footer />
-    </>
+    </LandingContainer>
   );
 }
+
+const LandingContainer = styled.section`
+  position: relative;
+`;
