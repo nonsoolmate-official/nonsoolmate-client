@@ -1,4 +1,5 @@
-import { commonFlex } from "style/commonStyle";
+import { columnFlex, commonFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -28,12 +29,22 @@ const ContentContainer = styled.div`
 
   gap: 10.6rem;
   padding-bottom: 16.8rem;
+
+  ${media.tablet} {
+    ${columnFlex}
+
+    gap:4rem;
+    align-items: start;
+  }
 `;
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.8rem;
   width: 37.6rem;
+  ${media.tablet} {
+    gap: 2rem;
+  }
 `;
 
 const ContentTitleBox = styled.div`

@@ -81,7 +81,6 @@ const ImageWrapper = styled.div`
 `;
 
 const Text = styled.p`
-  z-index: 1;
   color: ${({ theme }) => theme.colors.grey_700};
   ${({ theme }) => theme.fonts.Body6};
 `;

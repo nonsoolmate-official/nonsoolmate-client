@@ -5,6 +5,7 @@ import Summary from "./Summary";
 import Title from "./Title";
 import { columnFlex } from "style/commonStyle";
 import { DownArrowWhiteIc } from "@assets/index";
+import { media } from "style/responsiveStyle";
 
 export default function Banner() {
   return (
@@ -51,6 +52,12 @@ const TextsContainer = styled.span`
   right: 15%;
   transform: translateY(-50%);
   width: 37.6rem;
+  ${media.tablet} {
+    ${columnFlex}
+
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
 `;
 
 const ButtonContainer = styled.div`
