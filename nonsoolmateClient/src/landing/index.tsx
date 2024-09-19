@@ -34,6 +34,6 @@ export default function Landing() {
 }
 
 const LandingContainer = styled.section`
+  overflow: hidden scroll;
   position: relative;
-  overflow-x: hidden;
 `;

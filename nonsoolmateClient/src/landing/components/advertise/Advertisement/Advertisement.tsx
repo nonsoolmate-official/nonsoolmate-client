@@ -78,6 +78,8 @@ const ImageWrapper = styled.div`
   position: absolute;
   right: 2.4rem;
   bottom: 2rem;
+  width: 13.2rem;
+  height: 13.2rem;
 `;
 
 const Text = styled.p`

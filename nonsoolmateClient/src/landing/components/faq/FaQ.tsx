@@ -11,8 +11,8 @@ export default function FaQ() {
       <Title />
       <DivideLine />
       {QNA_LIST.map((qna) => {
-        const { question, answer, answer2 } = qna;
-        return <QnA key={question} question={question} answer={answer} answer2={answer2} />;
+        const { question, answer, answer2, answer3 } = qna;
+        return <QnA key={question} question={question} answer={answer} answer2={answer2} answer3={answer3} />;
       })}
     </ContentContainer>
   );
