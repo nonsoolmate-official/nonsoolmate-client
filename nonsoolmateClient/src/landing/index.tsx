@@ -34,6 +34,11 @@ export default function Landing() {
 }
 
 const LandingContainer = styled.section`
-  overflow: hidden scroll;
+  overflow: hidden auto;
   position: relative;
+  height: 100vh;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
