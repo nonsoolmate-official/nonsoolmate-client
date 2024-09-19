@@ -35,4 +35,5 @@ export default function Landing() {
 
 const LandingContainer = styled.section`
   position: relative;
+  overflow-x: hidden;
 `;
