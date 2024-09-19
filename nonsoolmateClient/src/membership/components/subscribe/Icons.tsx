@@ -17,5 +17,5 @@ const MonthlyMembershipIcon = styled(MonthlyMembershipIc)`
 `;
 const SixMonthsMembershipIcon = styled(SixMonthsMembershipIc)`
   width: 4.4rem;
-  height: 4.4rem;
+  height: 4rem;
 `;

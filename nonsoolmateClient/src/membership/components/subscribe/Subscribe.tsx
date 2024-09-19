@@ -2,21 +2,22 @@ import Title from "./Title";
 import Icons from "./Icons";
 import PurchaseButton from "./PurchaseButton";
 import Sales from "./sales/Sales";
-import Summary from "./Summary";
 import { ContentListType } from "membership/types/contentlisttpye";
 import styled from "styled-components";
 import { columnFlex } from "style/commonStyle";
+import BasicSummary from "./BasicSummary";
+import PremiumSummary from "./PremiumSummary";
 
 interface ContentsProps extends ContentListType {}
 
 export default function Subscribe(props: ContentsProps) {
-  const { id, title, summary, sales, price } = props;
+  const { id, title, sales, price } = props;
   return (
     <Container>
       <ContentContainer>
         <Icons id={id} />
         <Title title={title} />
-        <Summary summary={summary} />
+        {id == 1 ? <BasicSummary /> : <PremiumSummary />}
         <Sales sales={sales} price={price} />
         <PurchaseButton />
       </ContentContainer>
@@ -29,7 +30,7 @@ const Container = styled.article`
   ${({ theme }) => theme.effects.membership_shadow};
 
   width: 29.6rem;
-  height: 36.4rem;
+  height: 40rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
 `;

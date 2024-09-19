@@ -34,6 +34,7 @@ import TestActiveIc from "./icon/testActiveIc.svg?react";
 import TestDisabledIc from "./icon/testDisabledIc.svg?react";
 
 import LogoIc from "./icon/logoIc.svg?react";
+import FooterLogoIc from "./icon/footerLogoIc.svg?react";
 
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
@@ -83,11 +84,37 @@ import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
 import PrintCircleIc from "./icon/printCircleIc.svg?react";
 
+
+import Advan1Ic from "./icon/advan1Ic.svg?react";
+import Advan2Ic from "./icon/advan2Ic.svg?react";
+import Advan3Ic from "./icon/advan3Ic.svg?react";
+import Advan4Ic from "./icon/advan4Ic.svg?react";
+import Advan5Ic from "./icon/advan5Ic.svg?react";
+
+import PresentIc from "./icon/presentIc.svg?react";
+
+import Univ1Ic from "./icon/univ1Ic.svg?react";
+import Univ2Ic from "./icon/univ2Ic.svg?react";
+import Univ3Ic from "./icon/univ3Ic.svg?react";
+import Univ4Ic from "./icon/univ4Ic.svg?react";
+import Univ5Ic from "./icon/univ5Ic.svg?react";
+import Univ6Ic from "./icon/univ6Ic.svg?react";
+import Univ7Ic from "./icon/univ7Ic.svg?react";
+import Univ8Ic from "./icon/univ8Ic.svg?react";
+import Univ9Ic from "./icon/univ9Ic.svg?react";
+
+import Curri1Ic from "./icon/curriculum1Ic.svg?react";
+import Curri2Ic from "./icon/curriculum2Ic.svg?react";
+import Curri3Ic from "./icon/curriculum3Ic.svg?react";
+import Curri4Ic from "./icon/curriculum4Ic.svg?react";
+import Curri5Ic from "./icon/curriculum5Ic.svg?react";
+
 import TakeTestIc from "./icon/takeTestIc.svg?react";
 import PracticeIc from "./icon/practiceIc.svg?react";
 
 import PlusIc from "./icon/plusIc.svg?react";
 import CloseIc from "./icon/closeIc.svg?react";
+
 
 export {
   DownArrowBoldIc,
@@ -148,6 +175,27 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  Advan1Ic,
+  Advan2Ic,
+  Advan3Ic,
+  Advan4Ic,
+  Advan5Ic,
+  PresentIc,
+  Univ1Ic,
+  Univ2Ic,
+  Univ3Ic,
+  Univ4Ic,
+  Univ5Ic,
+  Univ6Ic,
+  Univ7Ic,
+  Univ8Ic,
+  Univ9Ic,
+  Curri1Ic,
+  Curri2Ic,
+  Curri3Ic,
+  Curri4Ic,
+  Curri5Ic,
+  FooterLogoIc,
   DownArrowWhiteIc,
   TakeTestIc,
   PracticeIc,
