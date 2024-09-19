@@ -4,18 +4,24 @@ import HomeImg from "./HomeImg";
 import Summary from "./Summary";
 import Title from "./Title";
 import { columnFlex } from "style/commonStyle";
+import { DownArrowWhiteIc } from "@assets/index";
 
 export default function Banner() {
   return (
     <BannerWrapper>
       <ContentContainer>
+        <HomeImg />
         <TextsContainer>
           <Title />
           <Summary />
-          <GotoSaleButton />
+          <ButtonContainer>
+            <GotoSaleButton />
+          </ButtonContainer>
         </TextsContainer>
-        <HomeImg />
       </ContentContainer>
+      <DownArrowContainer>
+        <DownArrowWhiteIc />
+      </DownArrowContainer>
     </BannerWrapper>
   );
 }
@@ -24,22 +30,41 @@ const BannerWrapper = styled.section`
   ${columnFlex};
 
   justify-content: flex-end;
+  position: relative;
   width: 100%;
-
-  /* height: 76.8rem; */
-  padding: 6.6rem 0 0;
-  background: linear-gradient(to bottom, rgba(101 121 255) 20%, rgb(156 169 255) 100%);
+  height: calc(100vh - 6.4rem);
+  background: linear-gradient(180deg, #fff 0%, #e4e8ff 100%);
 `;
 
 const ContentContainer = styled.div`
-  ${columnFlex};
-
   gap: 3.2rem;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const TextsContainer = styled.span`
-  ${columnFlex};
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translateY(-50%);
+  width: 37.6rem;
+`;
 
-  gap: 2.8rem;
+const ButtonContainer = styled.div`
+  margin-top: 2rem;
+`;
+
+const DownArrowContainer = styled.div`
+  ${columnFlex}
+
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 12.2rem;
+  padding: 2.4rem 0.8rem;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 10%) 100%);
 `;

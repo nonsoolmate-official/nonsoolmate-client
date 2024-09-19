@@ -8,6 +8,9 @@ import HomeHeader from "home/components/HomeHeader";
 import { getToken } from "socialLogin/utils/token";
 import useGetName from "home/hooks/useGetName";
 import RequestForm from "./components/requestForm/RequestForm";
+import TestFeature from "./components/features/TestFeature";
+import PracticeFeature from "./components/features/PracticeFeature";
+import Price from "./components/price/Price";
 
 export default function Landing() {
   const token = getToken();
@@ -19,6 +22,9 @@ export default function Landing() {
       {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Banner />
       <Univeristy />
+      <TestFeature />
+      <PracticeFeature />
+      <Price />
       <Advertise />
       <FaQ />
       <Footer />

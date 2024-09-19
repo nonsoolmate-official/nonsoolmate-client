@@ -1,20 +1,20 @@
-import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 export default function Title() {
   return (
     <Container>
-      <Text>논술메이트,</Text> <Text> 논술입시 성공의 지름길</Text>
+      <Text>역시나,</Text> <Text> 합격할 줄 알았어</Text>
     </Container>
   );
 }
 
 const Container = styled.article`
-  ${columnFlex}
+  display: flex;
+  flex-direction: column;
 `;
 
 const Text = styled.h1`
   ${({ theme }) => theme.fonts.Headline1};
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.grey_1000};
 `;
