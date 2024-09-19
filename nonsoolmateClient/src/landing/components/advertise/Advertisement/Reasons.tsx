@@ -30,7 +30,7 @@ const Container = styled.section`
   margin-top: 5.6rem;
   grid-template-columns: repeat(3, 1fr);
 
-  @media (width <= 987px) {
+  @media (width <= 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
