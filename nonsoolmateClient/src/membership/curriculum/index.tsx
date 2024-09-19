@@ -12,7 +12,7 @@ export default function index() {
       </Title>
       <Contents>
         {CURRICULUMS.map((ele) => {
-          const { id, label, title_1, title_2, details, iconSrc } = ele;
+          const { id, label, title_1, title_2, details, imgSrc } = ele;
           return (
             <ContentBox
               key={id}
@@ -21,7 +21,7 @@ export default function index() {
               title_1={title_1}
               title_2={title_2}
               details={details}
-              iconSrc={iconSrc}
+              imgSrc={imgSrc}
             />
           );
         })}

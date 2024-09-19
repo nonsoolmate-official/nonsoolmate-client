@@ -8,11 +8,11 @@ interface Props {
   title_1: string;
   title_2: string;
   details: string;
-  iconSrc: string;
+  imgSrc: string;
 }
 
 export default function ContentBox(props: Props) {
-  const { id, label, title_1, title_2, details, iconSrc } = props;
+  const { id, label, title_1, title_2, details, imgSrc } = props;
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
@@ -33,7 +33,7 @@ export default function ContentBox(props: Props) {
         )}
         <Details>{details}</Details>
       </Explanation>
-      <Icon as={iconSrc} />
+      <Img src={imgSrc} />
     </Container>
   );
 }
@@ -78,7 +78,7 @@ const Details = styled.p`
   }
 `;
 
-const Icon = styled.svg`
+const Img = styled.img`
   width: 64.8rem;
   height: 30rem;
 `;
