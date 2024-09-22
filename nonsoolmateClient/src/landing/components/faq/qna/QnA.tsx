@@ -8,7 +8,7 @@ import DivideLine from "landing/components/common/DivideLine";
 interface QnAprops extends QnaTypes {}
 
 export default function QnA(props: QnAprops) {
-  const { question, answer, answer2 } = props;
+  const { question, answer, answer2, answer3 } = props;
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
 
   function handleToggleOpen() {
@@ -22,6 +22,7 @@ export default function QnA(props: QnAprops) {
         <AnswerContainer>
           <Answer answer={answer} />
           {answer2 && <Answer answer={answer2} />}
+          {answer3 && <Answer answer={answer3} />}
         </AnswerContainer>
       )}
       <Line />
@@ -29,11 +30,11 @@ export default function QnA(props: QnAprops) {
   );
 }
 
-const AnswerContainer = styled.p`
+const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Line = styled(DivideLine)`

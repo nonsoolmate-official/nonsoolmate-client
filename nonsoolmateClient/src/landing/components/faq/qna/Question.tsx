@@ -1,6 +1,7 @@
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { QnaToogleOpenIc, QnaToogleCloseIc } from "@assets/index";
+import theme from "style/theme";
 
 interface QuestionProps {
   question: string;
@@ -22,7 +23,8 @@ const Text = styled.h2`
   ${commonFlex}
   ${({ theme }) => theme.fonts.Body1};
 
-  height: 6rem;
+  height: 7rem;
+  color: ${theme.colors.grey_8};
   cursor: pointer;
 `;
 

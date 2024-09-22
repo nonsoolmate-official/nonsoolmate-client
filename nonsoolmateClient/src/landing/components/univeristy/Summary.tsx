@@ -4,8 +4,7 @@ import styled from "styled-components";
 export default function Summary() {
   return (
     <Container>
-      <Text>합격 답안 분석 데이터를 기반으로 한 대학별 선호 어휘, </Text>
-      <Text>답안 구조 등을 학습하고, 대학별 맞춤 모의고사를 풀어보세요</Text>
+      <Text>논술메이트, 목표 대학 선배가 내 러닝메이트가 되는 곳 </Text>
     </Container>
   );
 }
@@ -16,4 +15,6 @@ const Container = styled.div`
 
 const Text = styled.p`
   ${({ theme }) => theme.fonts.Body2};
+
+  color: ${({ theme }) => theme.colors.grey_700};
 `;

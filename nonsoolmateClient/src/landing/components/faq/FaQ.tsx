@@ -11,8 +11,8 @@ export default function FaQ() {
       <Title />
       <DivideLine />
       {QNA_LIST.map((qna) => {
-        const { question, answer, answer2 } = qna;
-        return <QnA key={question} question={question} answer={answer} answer2={answer2} />;
+        const { question, answer, answer2, answer3 } = qna;
+        return <QnA key={question} question={question} answer={answer} answer2={answer2} answer3={answer3} />;
       })}
     </ContentContainer>
   );
@@ -23,7 +23,7 @@ const ContentContainer = styled.section`
   flex-direction: column;
   align-items: flex-start;
   padding: 14.8rem 21.5rem;
-
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
   ${media.tablet} {
     padding: 16rem 2.4rem;
   }

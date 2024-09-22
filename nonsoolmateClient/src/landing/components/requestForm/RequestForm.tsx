@@ -223,6 +223,7 @@ const Form = styled.form<{ $isFull: boolean }>`
   position: fixed;
   right: 2.4rem;
   bottom: 1.6rem;
+  z-index: 1;
   width: 29.4rem;
   height: ${({ $isFull }) => ($isFull ? "auto" : "11.6rem")};
   padding: ${({ $isFull }) => ($isFull ? "2.4rem" : "2.2rem")};

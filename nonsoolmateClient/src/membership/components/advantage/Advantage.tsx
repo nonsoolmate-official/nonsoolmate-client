@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import Summary from "./Summary";
+import AdvanBox from "./AdvanBox";
 import { media } from "style/responsiveStyle";
 
 export default function Advantage() {
   return (
     <Container>
-      <Summary />
+      <Header>멤버십 혜택</Header>
+      <AdvanBox />
     </Container>
   );
 }
@@ -13,9 +14,28 @@ export default function Advantage() {
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  ${({ theme }) => theme.effects.membership_shadow};
+
+  width: 29.6rem;
+  height: 40rem;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.white};
 
   ${media.tablet} {
-    width: 60rem;
+    width: 61.6rem;
+    height: auto;
   }
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2.4rem 1.6rem;
+  background-color: ${({ theme }) => theme.colors.main_blue};
+  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.fonts.Headline4};
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;

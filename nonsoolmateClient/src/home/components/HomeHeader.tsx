@@ -58,6 +58,7 @@ const Header = styled.header`
 
   /* z-index: 1; */
   padding: 1.6rem 21.5rem;
+  border-bottom: 1px solid #ecedf0;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 1.2rem 0 ${({ theme }) => theme.colors.grey_200};
 

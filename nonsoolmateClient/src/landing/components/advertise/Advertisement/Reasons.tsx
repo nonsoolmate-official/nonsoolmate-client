@@ -6,8 +6,17 @@ export default function Reasons() {
   return (
     <Container>
       {REASON_LIST.map((reason) => {
-        const { title, summary, img, summary2 } = reason;
-        return <Advertisement key={summary} title={title} summary={summary} summary2={summary2} img={img} />;
+        const { title, summary, summary2, lottie, lottieReset } = reason;
+        return (
+          <Advertisement
+            key={summary}
+            title={title}
+            summary={summary}
+            summary2={summary2}
+            lottie={lottie}
+            lottieReset={lottieReset}
+          />
+        );
       })}
     </Container>
   );
@@ -21,7 +30,7 @@ const Container = styled.section`
   margin-top: 5.6rem;
   grid-template-columns: repeat(3, 1fr);
 
-  @media (width <= 987px) {
+  @media (width <= 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
