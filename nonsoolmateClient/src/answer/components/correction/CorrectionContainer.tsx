@@ -7,11 +7,9 @@ import RevisionContainer from "./RevisionContainer";
 
 interface CorrectionContainerProps {
   editingTitle: string;
-  revisionTitle: string;
   editingPdfUrl: string;
   revisionPdfUrl: string;
   revisionStatus: string;
-  ifExplanation?: boolean;
 }
 
 export default function CorrectionContainer(props: CorrectionContainerProps) {
