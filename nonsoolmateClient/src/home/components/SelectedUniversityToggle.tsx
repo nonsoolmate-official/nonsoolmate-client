@@ -33,6 +33,7 @@ export default function SelectedUniversityToggle(props: SelectedUniversityToggle
             state: {
               examId: examId,
               examName: examName,
+              examStatus: examStatus,
             },
           });
         }
