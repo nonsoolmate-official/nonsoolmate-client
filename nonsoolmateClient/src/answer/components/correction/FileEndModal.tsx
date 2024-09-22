@@ -3,16 +3,21 @@ import Modal, { ModalContainer } from "takeTest/components/modal/Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import Lottie from "react-lottie-player";
 import lottieJson from "@assets/lottie/endtestsuccess.json";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   changeIsSubmitStatus: (isSubmit: boolean) => void;
 }
+
 export default function FileEndModal(props: Props) {
   const { changeIsSubmitStatus } = props;
+  const navigate = useNavigate();
 
   function handleQuitButton() {
+    navigate("/home/test");
     changeIsSubmitStatus(true);
   }
+
   return (
     <EndTestModalContainer>
       <Modal>
