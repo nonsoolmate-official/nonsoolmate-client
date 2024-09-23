@@ -11,15 +11,19 @@ export default function HomeTest() {
   const [mySelectedUniversityIdList, setMySelectedUniversityIdList] = useState<number[]>([]);
   const [isTakeTestClicked, setIsTakeTestClicked] = useState<boolean>(false);
   const [selectedExamId, setSelectedExamId] = useState<number | undefined>(undefined);
+  const { data: response, refetch } = useGetSelectUniversityExams();
 
   useEffect(() => {
     let realArray = response?.map((item) => item.universityId);
     realArray && handleMySelectedUniversityIdList(realArray);
   }, []);
 
-  const response = useGetSelectUniversityExams();
-  if (!response) return <></>;
+  //response가 바뀔 때마다 refetch
+  useEffect(() => {
+    refetch();
+  }, [response, refetch]);
 
+  if (!response) return <></>;
   const dataUniversityIds = response.map((item) => item.universityId);
 
   function handleUniversityModal(open: boolean) {

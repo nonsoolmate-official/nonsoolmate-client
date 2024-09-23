@@ -84,6 +84,9 @@ import RadioButtonCheckIc from "./icon/radioBtnCheck.svg?react";
 import DownloadCircleIc from "./icon/downloadCircleIc.svg?react";
 import PrintCircleIc from "./icon/printCircleIc.svg?react";
 
+import RecorrectionBlueIc from "./icon/recorrectionBlueIc.svg?react";
+import RecorrectionGrayIc from "./icon/recorrectionGrayIc.svg?react";
+
 import Advan1Ic from "./icon/advan1Ic.svg?react";
 import Advan2Ic from "./icon/advan2Ic.svg?react";
 import Advan3Ic from "./icon/advan3Ic.svg?react";
@@ -167,6 +170,8 @@ export {
   CheckCircleBtnIc,
   DownloadCircleIc,
   PrintCircleIc,
+  RecorrectionBlueIc,
+  RecorrectionGrayIc,
   Advan1Ic,
   Advan2Ic,
   Advan3Ic,
