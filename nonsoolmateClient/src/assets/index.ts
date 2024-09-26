@@ -108,6 +108,8 @@ import PracticeIc from "./icon/practiceIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
 import CloseIc from "./icon/closeIc.svg?react";
 
+import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
+
 export {
   DownArrowBoldIc,
   DownArrowIc,
@@ -188,4 +190,5 @@ export {
   PracticeIc,
   PlusIc,
   CloseIc,
+  CheckEmptyIc,
 };
