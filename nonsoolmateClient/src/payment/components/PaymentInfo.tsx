@@ -71,6 +71,7 @@ const PaymentInfoContainer = styled.article`
   flex-direction: column;
   gap: 2rem;
   width: 29.6rem;
+  height: 42.8rem;
   margin-top: 6.8rem;
   padding: 2.4rem;
   border: 1px solid ${theme.colors.grey_200};
@@ -197,8 +198,8 @@ const Agreement = styled.div`
 `;
 
 const CheckIconBox = styled.div`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
   cursor: pointer;
 `;
 
