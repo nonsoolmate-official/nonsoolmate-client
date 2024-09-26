@@ -8,7 +8,7 @@ interface UniversityExamAndAnswerDataTypes {
 }
 
 export async function getUniversityExamAndAnswer(id: number) {
-  const { data } = await client.get<Response<UniversityExamAndAnswerDataTypes>>(`/university/exam/${id}/answer`);
+  const { data } = await client.get<Response<UniversityExamAndAnswerDataTypes>>(`/college/exam/${id}/answer`);
 
   return data;
 }

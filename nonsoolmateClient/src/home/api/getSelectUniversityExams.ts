@@ -16,8 +16,8 @@ export interface SelectExamListDataTypes {
 }
 
 export async function getSelectUniversityExams() {
-  const response = await client.get<Response<SelectUniversityDataTypes[]>>(`/select-university/exam`);
+  const response = await client.get<Response<SelectUniversityDataTypes[]>>(`/select-college/exam`);
   const { data } = response?.data;
-  
+
   return data;
 }

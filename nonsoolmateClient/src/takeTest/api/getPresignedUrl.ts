@@ -5,6 +5,6 @@ interface DataTypes {
   preSignedUrl: string;
 }
 export async function getPresignedUrl() {
-  const { data } = await client.get<Response<DataTypes>>("/university/exam-record/sheet/presigned");
+  const { data } = await client.get<Response<DataTypes>>("/college/exam-record/sheet/presigned");
   return data;
 }

@@ -1,5 +1,5 @@
-import ExplainHeader from "answer/components/ExplainHeader";
-import PdfViewerWrapper from "answer/components/PdfViewerWrapper";
+import ExplainHeader from "answer/components/explanation/ExplainHeader";
+import PdfViewerWrapper from "answer/components/explanation/PdfViewerWrapper";
 import { useGetUniversityExamAndAnswer } from "answer/hooks/useGetUniversityExamAndAnswer";
 import { useLocation } from "react-router-dom";
 import useRefreshPage from "socialLogin/hooks/useRefreshPage";

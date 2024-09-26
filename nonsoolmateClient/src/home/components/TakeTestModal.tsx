@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { commonFlex, takeTestModalNextButtonStyle } from "style/commonStyle";
-
 import { media } from "style/responsiveStyle";
 import { DisplayIc, EmptyCircleIc, FilledCircleIc, PrintIc, XIc } from "@assets/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { takeTestPdfPlugin } from "recoil/atom";
-
 interface TakeTestModalProps {
   examId: number;
   handleTakeTestModal: () => void;
@@ -19,7 +17,6 @@ export default function TakeTestModal(props: TakeTestModalProps) {
   const navigate = useNavigate();
   const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
   const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
-
   const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
 
   function handleDisplayOption() {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Modal, { ModalContainer } from "./Modal";
+import Modal, { ModalContainer } from "takeTest/components/modal/Modal";
 import { columnFlex, mainButtonStyle } from "style/commonStyle";
 import JSZip from "jszip";
 import { useLocation } from "react-router-dom";
@@ -9,15 +9,14 @@ import { usePostExamRecord } from "takeTest/hooks/usePostExamRecord";
 import { getPresignedUrl } from "takeTest/api/getPresignedUrl";
 import { useRef } from "react";
 
-interface TestSubmitProps {
+interface Props {
   isFile: File[] | null;
-  totalTime: number;
-  changeTestEndStatus: (testQuitModal: boolean) => void;
-  changeTestSubmitStatus: (testQuitModal: boolean) => void;
+  changeFileEndStatus: (testQuitModal: boolean) => void;
+  changeFileSubmitStatus: (testQuitModal: boolean) => void;
 }
 
-export default function TestSubmitModal(props: TestSubmitProps) {
-  const { isFile, totalTime, changeTestEndStatus, changeTestSubmitStatus } = props;
+export default function FileSubmitModal(props: Props) {
+  const { isFile, changeFileEndStatus, changeFileSubmitStatus } = props;
   const { mutate: putMutate } = usePutExamSheet();
   const { mutate: postMutate } = usePostExamRecord();
   let zip = new JSZip();
@@ -62,11 +61,11 @@ export default function TestSubmitModal(props: TestSubmitProps) {
             {
               onSuccess: () => {
                 postMutate(
-                  { examId: examId, totalTime: totalTime, fileName: resultFileName, editingType: "EDITING" },
+                  { examId: examId, totalTime: 120, fileName: resultFileName, editingType: "REVISION" },
                   {
                     onSuccess: () => {
-                      changeTestSubmitStatus(false);
-                      changeTestEndStatus(true);
+                      changeFileSubmitStatus(false);
+                      changeFileEndStatus(true);
                     },
                   },
                 );
