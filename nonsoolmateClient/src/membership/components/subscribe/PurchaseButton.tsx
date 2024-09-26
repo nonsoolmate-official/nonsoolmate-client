@@ -2,10 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-export default function PurchaseButton() {
+interface PurchaseButtonProps {
+  id: number;
+}
+export default function PurchaseButton(props: PurchaseButtonProps) {
+  const { id } = props;
   const navigate = useNavigate();
   function clickPurchaseButton() {
-    navigate("/payment");
+    navigate("/payment", { state: { id } });
   }
   return <Button onClick={clickPurchaseButton}>구매하기</Button>;
 }

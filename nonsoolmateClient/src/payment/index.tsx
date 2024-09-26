@@ -1,12 +1,18 @@
 import RegisterLayout from "payment/components/RegisterLayout";
 import styled from "styled-components";
 import PaymentInfo from "./components/PaymentInfo";
+import OrderInfo from "./components/OrderInfo";
+import { useLocation } from "react-router-dom";
 
 export default function Payment() {
+  const location = useLocation();
+  const { id } = location.state;
+
   return (
     <PaymentContainer>
       <PaymentLeftContainer>
         <Title>정기결제</Title>
+        <OrderInfo id={id} />
         <RegisterLayout title="쿠폰 사용" button="쿠폰 사용" content="등록된 쿠폰이 없습니다." />
         <RegisterLayout title="결제 수단" button="카드 등록" content="등록된 카드가 없습니다." />
       </PaymentLeftContainer>
@@ -24,7 +30,7 @@ const PaymentContainer = styled.section`
 const PaymentLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4.4rem;
+  gap: 4rem;
   width: 100%;
 `;
 const Title = styled.h1`

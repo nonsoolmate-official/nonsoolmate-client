@@ -19,7 +19,7 @@ export default function Subscribe(props: ContentsProps) {
         <Title title={title} />
         {id == 1 ? <BasicSummary /> : <PremiumSummary />}
         <Sales sales={sales} price={price} />
-        <PurchaseButton />
+        <PurchaseButton id={id} />
       </ContentContainer>
     </Container>
   );
