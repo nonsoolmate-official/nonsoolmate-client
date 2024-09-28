@@ -39,7 +39,7 @@ export default function UniversityModal(props: UniversityModalProps) {
   }, [selectedUniversityIdList]);
 
   function completeSelect() {
-    const modalList = selectedUniversityIdList.map((id) => ({ universityId: id }));
+    const modalList = selectedUniversityIdList.map((id) => ({ collegeId: id }));
     localStorage.setItem("backList", JSON.stringify(selectedUniversityIdList));
     mutate(modalList);
     handleUniversityModal(false);
@@ -71,15 +71,15 @@ export default function UniversityModal(props: UniversityModalProps) {
         <Text>대학 선택</Text>
         <Container>
           {getSelectUniversitiesResponse.data.map((data) => {
-            const { universityName, collegeName, universityId } = data;
-            const isChecked = selectedUniversityIdList.includes(universityId);
+            const { universityName, collegeName, collegeId } = data;
+            const isChecked = selectedUniversityIdList.includes(collegeId);
 
             return (
               <CheckBoxButton
-                key={universityId}
+                key={collegeId}
                 type="button"
                 $isChecked={isChecked}
-                onClick={() => handleUpdateUniversityIdList(universityId)}>
+                onClick={() => handleUpdateUniversityIdList(collegeId)}>
                 <UniversityBox>
                   <University>{universityName}</University>
                   <Category>{collegeName}</Category>

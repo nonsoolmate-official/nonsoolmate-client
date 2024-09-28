@@ -2,7 +2,7 @@ import { Response } from "types/common";
 import { client } from "@api/axios";
 
 export interface SelectUniversitiesDataTypes {
-  universityId: number;
+  collegeId: number;
   universityName: string;
   collegeName: string;
   memberStatus: boolean;
