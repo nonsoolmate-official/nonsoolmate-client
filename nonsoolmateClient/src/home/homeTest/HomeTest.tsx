@@ -14,7 +14,7 @@ export default function HomeTest() {
   const { data: response, refetch } = useGetSelectUniversityExams();
 
   useEffect(() => {
-    let realArray = response?.map((item) => item.universityId);
+    let realArray = response?.map((item) => item.collegeId);
     realArray && handleMySelectedUniversityIdList(realArray);
   }, []);
 
@@ -24,7 +24,7 @@ export default function HomeTest() {
   }, [response, refetch]);
 
   if (!response) return <></>;
-  const dataUniversityIds = response.map((item) => item.universityId);
+  const dataUniversityIds = response.map((item) => item.collegeId);
 
   function handleUniversityModal(open: boolean) {
     setUniversityModal(open);

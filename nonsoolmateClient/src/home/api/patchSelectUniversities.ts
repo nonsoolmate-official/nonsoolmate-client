@@ -1,7 +1,7 @@
 import { client } from "@api/axios";
 
 export interface PatchDataTypes {
-  universityId: number;
+  collegeId: number;
 }
 
 export async function patchSelectUniversities(universityIdList: PatchDataTypes[]) {
