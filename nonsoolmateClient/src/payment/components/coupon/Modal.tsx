@@ -1,5 +1,6 @@
 import { EmptyCircleIc, FilledCircleIc, XIc } from "@assets/index";
-import { COUPON_LIST } from "payment/core/couponlists";
+import useGetCoupon from "payment/hooks/useGetCoupon";
+import { usePostCoupon } from "payment/hooks/usePostCoupon";
 import { useEffect, useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
@@ -13,10 +14,27 @@ export default function Modal(props: ModalProps) {
   const [couponExist, setCouponExist] = useState(false);
   const [finsishSelectCoupon, setFinishSelectCoupon] = useState(false);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+  const [couponNumber, setCouponNumber] = useState("");
+  const [mismatch, setMismatch] = useState(false);
+
+  const { data: COUPON_LIST } = useGetCoupon();
+  const { mutate: postCouponMutate } = usePostCoupon();
+
+  useEffect(() => {
+    if (COUPON_LIST && COUPON_LIST.coupons) {
+      setCouponExist(COUPON_LIST.coupons.length > 0);
+    } else {
+      setCouponExist(false);
+    }
+  }, [COUPON_LIST]);
 
   useEffect(() => {
     setFinishSelectCoupon(activeCouponId !== null);
   }, [activeCouponId]);
+
+  if (!COUPON_LIST) {
+    return <></>;
+  }
 
   function checkCouponType(couponType: string, discountRate?: number, discountAmount?: number) {
     if (couponType === "RATE") {
@@ -40,6 +58,27 @@ export default function Modal(props: ModalProps) {
     }
   }
 
+  const handleCouponNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCouponNumber(e.target.value);
+    setMismatch(false);
+  };
+
+  function registerCoupon() {
+    postCouponMutate(
+      {
+        couponNumber: couponNumber,
+      },
+      {
+        onSuccess: () => {
+          setMismatch(false);
+        },
+        onError: () => {
+          setMismatch(true);
+        },
+      },
+    );
+  }
+
   return (
     <BackgroundView>
       <ModalView>
@@ -49,9 +88,17 @@ export default function Modal(props: ModalProps) {
         <Text>쿠폰 사용</Text>
         <Container>
           <InputContainer>
-            <CodeField type="text" placeholder="쿠폰 코드를 입력해 주세요"></CodeField>
-            <RegisterButton type="button">쿠폰 등록</RegisterButton>
+            <CodeField
+              type="text"
+              placeholder="쿠폰 코드를 입력해 주세요"
+              value={couponNumber}
+              onChange={handleCouponNumChange}
+              $mismatch={mismatch}></CodeField>
+            <RegisterButton type="button" onClick={registerCoupon}>
+              쿠폰 등록
+            </RegisterButton>
           </InputContainer>
+          {mismatch && <MismatchText>* 유효하지 않은 쿠폰입니다.</MismatchText>}
           <CouponContainer>
             {couponExist ? (
               <CouponListBox>
@@ -152,13 +199,13 @@ const Container = styled.section`
 const InputContainer = styled.div`
   display: flex;
   gap: 2.4rem;
-  padding: 0 0 2.4rem;
+  padding: 0 0 0.8rem;
 `;
 
-export const CodeField = styled.input`
+export const CodeField = styled.input<{ $mismatch: boolean }>`
   flex: 1;
   padding: 0.8rem 1.2rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey_200};
+  border: ${({ $mismatch }) => ($mismatch ? "1px solid #FF5858" : "1px solid #E2E4E8")};
   border-radius: 8px;
   background-color: white;
   color: black;
@@ -175,6 +222,12 @@ export const CodeField = styled.input`
 
     color: ${({ theme }) => theme.colors.grey_500};
   }
+`;
+
+const MismatchText = styled.p`
+  ${({ theme }) => theme.fonts.Body8};
+
+  color: #ff5858;
 `;
 
 const CouponContainer = styled.div`
