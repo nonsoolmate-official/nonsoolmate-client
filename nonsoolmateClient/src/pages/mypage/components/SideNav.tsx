@@ -53,4 +53,10 @@ const MenuList = styled.li<{ $isActive: boolean }>`
 
   list-style: none;
   cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.main_blue};
+
+    transition: color 0.5s ease-in-out;
+  }
 `;
