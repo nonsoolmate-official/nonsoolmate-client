@@ -1,3 +1,4 @@
+import { Menu } from "@pages/mypage/types/menu";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
@@ -5,21 +6,25 @@ import styled from "styled-components";
 import HomeHeader from "../home/components/HomeHeader";
 import IpadMypageSide from "./components/IpadMypageSide";
 import MemberInfo from "./components/MemberInfo";
-import MypageSide from "./components/MypageSide";
+import SideNav from "./components/SideNav";
 
-export default function index() {
+export default function Index() {
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
+  const [menu, setMenu] = useState<Menu>("회원 정보");
   const [isClicked, setIsClicked] = useState<number>(1);
 
   function handleInfo() {
+    setMenu("회원 정보");
     setIsClicked(1);
   }
 
   function handleSecond() {
+    setMenu("멤버십 관리");
     setIsClicked(2);
   }
 
   function handleThird() {
+    setMenu("담당 선생님");
     setIsClicked(3);
   }
 
@@ -27,7 +32,7 @@ export default function index() {
     <MypageContainer>
       <HomeHeader />
       <Mypage>
-        {!isIpadSize && <MypageSide />}
+        {!isIpadSize && <SideNav menu={menu} setMenu={setMenu} />}
         {isIpadSize && (
           <IpadMypageSide
             isClicked={isClicked}
@@ -36,7 +41,7 @@ export default function index() {
             handleThird={handleThird}
           />
         )}
-        {(!isIpadSize || isClicked === 1) && <MemberInfo />}
+        {!isIpadSize && <>{menu === "회원 정보" && <MemberInfo />}</>}
       </Mypage>
     </MypageContainer>
   );
