@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getUniversityExamPdf } from "../api/getUniversityExamPdf";
 
 const QUERY_KEY = {
@@ -6,10 +6,9 @@ const QUERY_KEY = {
 };
 
 export function useGetUniversityExamPdf(examId: number) {
-  const { data } = useQuery([QUERY_KEY.getUniversityExamPdf], () => getUniversityExamPdf(examId), {
-    onError: (error) => {
-      console.log("에러 발생", error);
-    },
+  const { data } = useQuery({
+    queryKey: [QUERY_KEY.getUniversityExamPdf],
+    queryFn: () => getUniversityExamPdf(examId),
   });
   return data;
 }

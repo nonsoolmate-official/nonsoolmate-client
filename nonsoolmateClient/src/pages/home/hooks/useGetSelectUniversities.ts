@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getSelectUniversities } from "../api/getSelectUniversities";
 
 const QUERY_KEY = {
@@ -6,10 +6,9 @@ const QUERY_KEY = {
 };
 
 export default function useGetSelectUniversities() {
-  const { data } = useQuery(QUERY_KEY.getSelectUniversities, () => getSelectUniversities(), {
-    onError: (error) => {
-      console.log("에러 발생", error);
-    },
+  const { data } = useQuery({
+    queryKey: [QUERY_KEY.getSelectUniversities],
+    queryFn: () => getSelectUniversities(),
   });
   return data;
 }

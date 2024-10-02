@@ -1,8 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { postExamRecord } from "../api/postExamRecord";
 
 export function usePostExamRecord() {
-  return useMutation(postExamRecord, {
+  return useMutation({
+    mutationFn: postExamRecord,
     onSuccess: () => {
       console.log("Upload successful");
     },

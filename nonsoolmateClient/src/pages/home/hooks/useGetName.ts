@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getName } from "../api/getName";
 
 const QUERY_KEY = {
@@ -6,10 +6,9 @@ const QUERY_KEY = {
 };
 
 export default function useGetName() {
-  const { data } = useQuery(QUERY_KEY.getName, () => getName(), {
-    onError: (error) => {
-      console.log("에러 발생", error);
-    },
+  const { data } = useQuery({
+    queryKey: [QUERY_KEY.getName],
+    queryFn: () => getName(),
   });
   return data;
 }

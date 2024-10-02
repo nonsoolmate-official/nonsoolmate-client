@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getUniversityExamAndAnswer } from "../api/getUniversityExamAndAnswer";
 
 const QUERY_KEY = {
@@ -6,10 +6,9 @@ const QUERY_KEY = {
 };
 
 export function useGetUniversityExamAndAnswer(examId: number) {
-  const { data } = useQuery([QUERY_KEY.getUniversityExamAndAnswer, examId], () => getUniversityExamAndAnswer(examId), {
-    onError: (err) => {
-      console.log(err);
-    },
+  const { data } = useQuery({
+    queryKey: [QUERY_KEY.getUniversityExamAndAnswer, examId],
+    queryFn: () => getUniversityExamAndAnswer(examId),
   });
   return data;
 }

@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getEditingResult } from "../api/getEditingResult";
 
 const QUERY_KEY = {
@@ -6,10 +6,9 @@ const QUERY_KEY = {
 };
 
 export function useGetEditingResult(examId: number) {
-  const { data } = useQuery([QUERY_KEY.getEditingResult, examId], () => getEditingResult(examId), {
-    onError: (err) => {
-      console.log(err);
-    },
+  const { data } = useQuery({
+    queryKey: [QUERY_KEY.getEditingResult, examId],
+    queryFn: () => getEditingResult(examId),
   });
   return data;
 }
