@@ -8,7 +8,7 @@ interface TabletSideNavProps {
 
 export default function TabletSideNav({ menu, setMenu }: TabletSideNavProps) {
   return (
-    <Container>
+    <Nav>
       <Header>마이페이지</Header>
       <Sidebar>
         <MenuList onClick={() => setMenu("회원 정보")} $isActive={menu === "회원 정보"}>
@@ -21,11 +21,11 @@ export default function TabletSideNav({ menu, setMenu }: TabletSideNavProps) {
           담당 선생님
         </MenuList>
       </Sidebar>
-    </Container>
+    </Nav>
   );
 }
 
-const Container = styled.div`
+const Nav = styled.nav`
   display: flex;
   position: relative;
 
@@ -44,7 +44,7 @@ const Header = styled.h2`
   ${({ theme }) => theme.fonts.Headline5};
 `;
 
-const Sidebar = styled.aside`
+const Sidebar = styled.ul`
   display: flex;
 
   width: 100%;
@@ -54,7 +54,7 @@ const Sidebar = styled.aside`
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
 
-const MenuList = styled.button<{ $isActive: boolean }>`
+const MenuList = styled.li<{ $isActive: boolean }>`
   padding: 0 0 0.5rem;
 
   border: none;
@@ -62,6 +62,8 @@ const MenuList = styled.button<{ $isActive: boolean }>`
 
   color: ${({ theme, $isActive }) => ($isActive ? theme.colors.black : theme.colors.grey_400)};
   ${({ theme }) => theme.fonts.Body5};
+
+  list-style: none;
 
   cursor: pointer;
 `;
