@@ -1,6 +1,8 @@
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Modal from "./components/coupon/Modal";
+import styled from "styled-components";
 
 const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
 const customerKey = uuidv4();
@@ -30,6 +32,25 @@ interface PaymentWidgets {
 }
 
 export default function Payment() {
+  /*--쿠폰-- */
+  const [openModal, setOpenModal] = useState(false);
+  const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
+  const [dcInfo, setDcInfo] = useState("");
+
+  function closeCouponModal() {
+    setOpenModal(false);
+  }
+
+  function openCouponModal() {
+    setOpenModal(true);
+  }
+
+  function handleCouponTxtStatus(coupon: string, dcInfo: string) {
+    setCouponTxt(coupon);
+    setDcInfo(dcInfo);
+  }
+  /** */
+
   const [amount, setAmount] = useState<Amount>({
     currency: "KRW",
     value: 50_000,
@@ -171,6 +192,20 @@ export default function Payment() {
           결제하기
         </button>
       </div>
+      {/*----쿠폰---------*/}
+      <button type="button" onClick={openCouponModal}>
+        쿠폰 사용
+      </button>
+      <CouponInfo>
+        <h2>{couponTxt}</h2>
+        <h2>{dcInfo}</h2>
+      </CouponInfo>
+      {openModal && <Modal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
     </div>
   );
 }
+
+const CouponInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

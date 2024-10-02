@@ -6,7 +6,8 @@ const QUERY_KEY = {
 };
 
 export default function useGetCoupon() {
-  const { data } = useQuery([QUERY_KEY.getCoupon], () => getCoupon(), {
+  const { data, refetch } = useQuery([QUERY_KEY.getCoupon], () => getCoupon(), {
+    refetchInterval: 3000,
     onSuccess: (data) => {
       console.log("쿠폰 리스트 조회", data);
     },
@@ -15,5 +16,5 @@ export default function useGetCoupon() {
     },
   });
 
-  return { data };
+  return { data, refetch };
 }

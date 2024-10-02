@@ -7,15 +7,23 @@ import styled from "styled-components";
 
 interface ModalProps {
   closeModal: () => void;
+  handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
 }
 
 export default function Modal(props: ModalProps) {
-  const { closeModal } = props;
+  const { closeModal, handleCouponTxtStatus } = props;
   const [couponExist, setCouponExist] = useState(false);
   const [finsishSelectCoupon, setFinishSelectCoupon] = useState(false);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
+  const [hasKorean, setHasKorean] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState<{
+    couponName: string;
+    couponType: string;
+    discountRate?: number;
+    discountAmount?: number;
+  } | null>(null);
 
   const { data: COUPON_LIST } = useGetCoupon();
   const { mutate: postCouponMutate } = usePostCoupon();
@@ -50,33 +58,60 @@ export default function Modal(props: ModalProps) {
     return date.toISOString().split("T")[0];
   }
 
-  function handleCouponClick(couponMemberId: number) {
+  function handleCouponClick(
+    couponMemberId: number,
+    couponName: string,
+    couponType: string,
+    discountRate?: number,
+    discountAmount?: number,
+  ) {
     if (activeCouponId === couponMemberId) {
       setActiveCouponId(null);
+      setSelectedCoupon(null);
     } else {
       setActiveCouponId(couponMemberId);
+      setSelectedCoupon({ couponName, couponType, discountRate, discountAmount });
     }
   }
 
   const handleCouponNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCouponNumber(e.target.value);
+    const value = e.target.value;
+
+    const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const hasKoreanChar = koreanRegex.test(value);
+
+    setHasKorean(hasKoreanChar);
+    setCouponNumber(value);
     setMismatch(false);
   };
 
   function registerCoupon() {
-    postCouponMutate(
-      {
-        couponNumber: couponNumber,
-      },
-      {
-        onSuccess: () => {
-          setMismatch(false);
+    if (!hasKorean) {
+      postCouponMutate(
+        { couponNumber },
+        {
+          onSuccess: () => {
+            setMismatch(false);
+          },
+          onError: () => {
+            setMismatch(true);
+          },
         },
-        onError: () => {
-          setMismatch(true);
-        },
-      },
-    );
+      );
+    }
+  }
+
+  function applyCoupon() {
+    if (selectedCoupon) {
+      const { couponName, couponType, discountRate, discountAmount } = selectedCoupon;
+
+      if (couponType === "RATE") {
+        handleCouponTxtStatus(couponName, `${discountRate}% OFF`);
+      } else {
+        handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
+      }
+      closeModal();
+    }
   }
 
   return (
@@ -93,12 +128,14 @@ export default function Modal(props: ModalProps) {
               placeholder="쿠폰 코드를 입력해 주세요"
               value={couponNumber}
               onChange={handleCouponNumChange}
-              $mismatch={mismatch}></CodeField>
+              $mismatch={mismatch}
+              $hasKorean={hasKorean}></CodeField>
             <RegisterButton type="button" onClick={registerCoupon}>
               쿠폰 등록
             </RegisterButton>
           </InputContainer>
           {mismatch && <MismatchText>* 유효하지 않은 쿠폰입니다.</MismatchText>}
+          {hasKorean && <MismatchText>* 영문, 숫자로 입력해 주세요.</MismatchText>}
           <CouponContainer>
             {couponExist ? (
               <CouponListBox>
@@ -111,7 +148,9 @@ export default function Modal(props: ModalProps) {
                       type="button"
                       key={couponMemberId}
                       $isCouponClicked={isCouponClicked}
-                      onClick={() => handleCouponClick(couponMemberId)}>
+                      onClick={() =>
+                        handleCouponClick(couponMemberId, couponName, couponType, discountRate, discountAmount)
+                      }>
                       {isCouponClicked ? <FilledCircleIcon /> : <EmptyCircleIcon />}
                       <CouponText>
                         <DiscountTxt>{checkCouponType(couponType, discountRate, discountAmount)}</DiscountTxt>
@@ -129,7 +168,11 @@ export default function Modal(props: ModalProps) {
             )}
           </CouponContainer>
         </Container>
-        <ApplyButton type="button" disabled={!finsishSelectCoupon} $finsishSelectCoupon={finsishSelectCoupon}>
+        <ApplyButton
+          type="button"
+          disabled={!finsishSelectCoupon}
+          $finsishSelectCoupon={finsishSelectCoupon}
+          onClick={applyCoupon}>
           쿠폰 사용하기
         </ApplyButton>
       </ModalView>
@@ -202,10 +245,10 @@ const InputContainer = styled.div`
   padding: 0 0 0.8rem;
 `;
 
-export const CodeField = styled.input<{ $mismatch: boolean }>`
+export const CodeField = styled.input<{ $mismatch: boolean; $hasKorean: boolean }>`
   flex: 1;
   padding: 0.8rem 1.2rem;
-  border: ${({ $mismatch }) => ($mismatch ? "1px solid #FF5858" : "1px solid #E2E4E8")};
+  border: ${({ $mismatch, $hasKorean }) => ($mismatch || $hasKorean ? "1px solid #FF5858" : "1px solid #E2E4E8")};
   border-radius: 8px;
   background-color: white;
   color: black;
@@ -227,6 +270,7 @@ export const CodeField = styled.input<{ $mismatch: boolean }>`
 const MismatchText = styled.p`
   ${({ theme }) => theme.fonts.Body8};
 
+  margin-bottom: 0.8rem;
   color: #ff5858;
 `;
 
