@@ -1,9 +1,11 @@
 import { LogoIc } from "@assets/index";
-import useGetName from "home/hooks/useGetName";
+
 import { useNavigate } from "react-router";
-import { getToken } from "socialLogin/utils/token";
-import styled from "styled-components";
+
+import useGetName from "@pages/home/hooks/useGetName";
+import { getToken } from "@pages/socialLogin/utils/token";
 import { media } from "style/responsiveStyle";
+import styled from "styled-components";
 
 export default function HeaderLeft() {
   const navigate = useNavigate();
