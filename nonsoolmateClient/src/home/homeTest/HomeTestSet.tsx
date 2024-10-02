@@ -42,27 +42,27 @@ export default function HomeTestSet(props: HomeTestSetProps) {
         </HeaderBox>
         <ListBox>
           {response.map((data, index) => {
-            const { universityId, universityName, universityCollege, examList } = data;
-            const isSelected = selectedUniversityId.includes(universityId);
-            const isExisted = dataUniversityIds.includes(universityId);
+            const { collegeId, universityName, collegeName, examList } = data;
+            const isSelected = selectedUniversityId.includes(collegeId);
+            const isExisted = dataUniversityIds.includes(collegeId);
 
             return (
               <SelectedListBox key={index}>
                 {isExisted && (
                   <SelectedUniversityButton
                     type="button"
-                    onClick={() => handleSelectedUniversityId(universityId)}
+                    onClick={() => handleSelectedUniversityId(collegeId)}
                     $isSelected={isSelected}>
                     <UniversityBox>
                       <Name $isSelected={isSelected}>{universityName}</Name>
-                      <Category $isSelected={isSelected}>{universityCollege}</Category>
+                      <Category $isSelected={isSelected}>{collegeName}</Category>
                     </UniversityBox>
                     {isSelected ? <UpArrowBoldIcon /> : <DownArrowBoldIcon />}
                   </SelectedUniversityButton>
                 )}
                 {isSelected && isExisted && (
                   <SelectedUniversityToggle
-                    universityId={universityId}
+                    collegeId={collegeId}
                     examList={examList}
                     handleTakeTestModal={handleTakeTestModal}
                   />

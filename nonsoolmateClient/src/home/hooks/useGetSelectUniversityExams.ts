@@ -8,5 +8,6 @@ export default function useGetSelectUniversityExams() {
       console.log("에러 발생", error);
     },
   });
+
   return { data, refetch };
 }

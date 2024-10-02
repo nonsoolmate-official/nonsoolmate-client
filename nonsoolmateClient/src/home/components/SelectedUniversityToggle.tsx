@@ -4,17 +4,19 @@ import { commonFlex, lightBlueButtonStyle } from "style/commonStyle";
 import { SelectExamListDataTypes } from "home/api/getSelectUniversityExams";
 
 interface SelectedUniversityToggleProps {
-  universityId: number;
+  collegeId: number;
   examList: SelectExamListDataTypes[];
   handleTakeTestModal: (examId: number) => void;
 }
 
 export default function SelectedUniversityToggle(props: SelectedUniversityToggleProps) {
-  const { universityId, examList, handleTakeTestModal } = props;
+  const { collegeId, examList, handleTakeTestModal } = props;
   const navigate = useNavigate();
-
+  if (!examList) {
+    return <></>;
+  }
   return (
-    <ToggleContainer key={universityId}>
+    <ToggleContainer key={collegeId}>
       {examList.map((data, index) => {
         const { examId, examName, examTimeLimit, examStatus } = data;
         const isLastExam = index === examList.length - 1;
