@@ -28,15 +28,23 @@ export default function SideNav({ menu, setMenu }: SideNavProps) {
 const Ul = styled.ul`
   display: flex;
   position: sticky;
+
   width: 43.1rem;
   height: 100%;
+
   flex-shrink: 0;
   flex-direction: column;
-  gap: 2rem;
+
   justify-content: flex-start;
+
+  gap: 2rem;
+
   padding: 2.4rem 2.4rem 0 21.5rem;
+
   border-right: 1px solid ${({ theme }) => theme.colors.grey_100};
+
   background-color: ${({ theme }) => theme.colors.white};
+
   overflow: hidden;
 `;
 
@@ -46,6 +54,7 @@ const NavHeader = styled.header`
 
 const MenuList = styled.li<{ $isActive: boolean }>`
   padding: 0.8rem;
+
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.main_blue : theme.colors.grey_400)};

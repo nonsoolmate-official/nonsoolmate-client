@@ -27,9 +27,12 @@ export default function TabletSideNav({ menu, setMenu }: TabletSideNavProps) {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   position: relative;
+
   width: 100%;
+
+  flex-direction: column;
+
   padding: 0 3.2rem;
 `;
 
@@ -37,23 +40,28 @@ const Header = styled.h2`
   margin-top: 3.2rem;
   margin-bottom: 2.4rem;
 
-  ${({ theme }) => theme.fonts.Headline5};
-
   color: ${({ theme }) => theme.colors.black};
+  ${({ theme }) => theme.fonts.Headline5};
 `;
 
 const Sidebar = styled.aside`
   display: flex;
-  gap: 4rem;
+
   width: 100%;
+
+  gap: 4rem;
+
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
 
 const MenuList = styled.button<{ $isActive: boolean }>`
   padding: 0 0 0.5rem;
+
   border: none;
   border-bottom: ${({ $isActive }) => ($isActive ? "1px solid black" : "none")};
+
   color: ${({ theme, $isActive }) => ($isActive ? theme.colors.black : theme.colors.grey_400)};
-  cursor: pointer;
   ${({ theme }) => theme.fonts.Body5};
+
+  cursor: pointer;
 `;

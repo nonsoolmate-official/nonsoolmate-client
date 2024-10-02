@@ -28,13 +28,16 @@ export default function Index() {
 
 const MypageContainer = styled.section`
   display: flex;
-  flex-direction: column;
+
   width: 100%;
   height: 100vh;
+
+  flex-direction: column;
 `;
 
 const Mypage = styled.div`
   display: flex;
+
   width: 100%;
   height: 100vh;
 
