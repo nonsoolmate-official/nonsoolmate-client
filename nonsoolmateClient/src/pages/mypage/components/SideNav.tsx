@@ -7,17 +7,38 @@ interface SideNavProps {
 }
 
 export default function SideNav({ menu, setMenu }: SideNavProps) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLLIElement>, menu: Menu) => {
+    if (e.key === "Enter") {
+      setMenu(menu);
+    }
+  };
+
   return (
     <nav>
       <Ul>
         <NavHeader>마이페이지</NavHeader>
-        <MenuList onClick={() => setMenu("회원 정보")} $isActive={menu === "회원 정보"}>
+        <MenuList
+          role="button"
+          tabIndex={0}
+          onClick={() => setMenu("회원 정보")}
+          onKeyDown={(e) => handleKeyDown(e, "회원 정보")}
+          $isActive={menu === "회원 정보"}>
           회원 정보
         </MenuList>
-        <MenuList onClick={() => setMenu("멤버십 관리")} $isActive={menu === "멤버십 관리"}>
+        <MenuList
+          role="button"
+          tabIndex={0}
+          onClick={() => setMenu("멤버십 관리")}
+          onKeyDown={(e) => handleKeyDown(e, "멤버십 관리")}
+          $isActive={menu === "멤버십 관리"}>
           멤버십 관리
         </MenuList>
-        <MenuList onClick={() => setMenu("담당 선생님")} $isActive={menu === "담당 선생님"}>
+        <MenuList
+          role="button"
+          tabIndex={0}
+          onClick={() => setMenu("담당 선생님")}
+          onKeyDown={(e) => handleKeyDown(e, "담당 선생님")}
+          $isActive={menu === "담당 선생님"}>
           담당 선생님
         </MenuList>
       </Ul>
