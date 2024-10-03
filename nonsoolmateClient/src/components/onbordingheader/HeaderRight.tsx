@@ -1,12 +1,12 @@
-import styled from "styled-components";
 import LoginButton from "@components/buttons/LoginButton";
-import MembershipButton from "../buttons/MembershipButton";
-import { media } from "style/responsiveStyle";
 import { commonFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
+import styled from "styled-components";
+import MembershipButton from "../buttons/MembershipButton";
 
-import useGetName from "home/hooks/useGetName";
 import { DownArrowGreyIc, LoginInfoIc, UpArrowGreyIc } from "@assets/index";
-import { getToken } from "socialLogin/utils/token";
+import useGetName from "@pages/home/hooks/useGetName";
+import { getToken } from "@pages/socialLogin/utils/token";
 
 interface HeaderRightProps {
   handleHomeMemberInfoToggle: () => void;

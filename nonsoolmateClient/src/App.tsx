@@ -1,9 +1,10 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "router";
 import { GlobalStyle } from "style/globalStyle";
 import theme from "style/theme";
 import { ThemeProvider } from "styled-components";
-import { router } from "router";
-import { RouterProvider } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 
