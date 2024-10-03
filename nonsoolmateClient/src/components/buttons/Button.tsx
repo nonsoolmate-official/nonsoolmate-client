@@ -1,10 +1,9 @@
-import React, { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
 type Size = "sm" | "md" | "lg" | "xl";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
   variant?: "primary" | "secondary";
   size?: Size;
 }
@@ -20,10 +19,13 @@ export default function Button({ children, variant = "primary", size = "md", ...
 const ButtonWrapper = styled.button<{ variant: "primary" | "secondary"; size: Size }>`
   padding: 0.8rem 2.8rem;
 
+  border-radius: 8px;
+
   ${({ variant }) => {
     switch (variant) {
       case "primary":
         return css`
+          color: ${({ theme }) => theme.colors.white};
           background-color: ${({ theme }) => theme.colors.main_blue};
         `;
       case "secondary":
@@ -35,6 +37,12 @@ const ButtonWrapper = styled.button<{ variant: "primary" | "secondary"; size: Si
 
           &:hover {
             border: 1px solid ${({ theme }) => theme.colors.grey_600};
+
+            color: ${({ theme }) => theme.colors.main_blue};
+          }
+
+          &:checked {
+            border: 1px solid ${({ theme }) => theme.colors.main_blue};
 
             color: ${({ theme }) => theme.colors.main_blue};
           }
@@ -74,4 +82,6 @@ const ButtonWrapper = styled.button<{ variant: "primary" | "secondary"; size: Si
   }}
 
   ${({ theme }) => theme.fonts.Body6};
+
+  white-space: nowrap;
 `;
