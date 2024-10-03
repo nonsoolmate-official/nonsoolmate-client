@@ -37,8 +37,7 @@ const Nav = styled.nav`
 `;
 
 const Header = styled.h2`
-  margin-top: 3.2rem;
-  margin-bottom: 2.4rem;
+  margin: 3.2rem 0 2.4rem 0;
 
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Headline5};
