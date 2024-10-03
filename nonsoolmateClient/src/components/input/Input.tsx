@@ -20,7 +20,7 @@ export default function Input({
   return (
     <InputWrapper>
       <InputLayout placeholder={placeholder} value={value} onChange={onChange} isError={isError} {...props} />
-      <ErrorMessage isVisible={isError}>{errorMessage}</ErrorMessage>
+      {isError && <ErrorMessage isVisible={isError}>{errorMessage}</ErrorMessage>}
     </InputWrapper>
   );
 }
@@ -28,22 +28,16 @@ export default function Input({
 const InputWrapper = styled.div`
   position: relative;
   display: flex;
-
   flex-direction: column;
-
   gap: 0.2rem;
 `;
 
 const InputLayout = styled.input<{ isError: boolean }>`
   position: relative;
-
   padding: 0 1.2rem;
-
   height: 3.6rem;
-
   border: 1px solid ${({ theme, isError }) => (isError ? theme.colors.error : theme.colors.grey_100)};
   border-radius: 6px;
-
   outline: none;
 
   ${({ theme }) => theme.fonts.Body6};

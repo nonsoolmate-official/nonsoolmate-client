@@ -1,7 +1,7 @@
 import { DataTypes } from "@pages/mypage/api/getProfile";
 import { AxiosResponse } from "axios";
 import { ERROR_MESSAGE } from "constants/errorMessage";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type Input = "name" | "gender" | "email" | "birthday" | "phoneNumber";
 
@@ -13,6 +13,17 @@ export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
     email: response?.data?.email,
     phoneNumber: response?.data?.phoneNumber,
   });
+
+  useEffect(() => {
+    // response값을 받아올 때 다시 상태 업데이트
+    setInput({
+      name: response?.data?.name,
+      gender: response?.data?.gender,
+      birthday: response?.data?.birthday,
+      email: response?.data?.email,
+      phoneNumber: response?.data?.phoneNumber,
+    });
+  }, [response]);
 
   const handleChangeInput = useCallback((key: Input, e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
