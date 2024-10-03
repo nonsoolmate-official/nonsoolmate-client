@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
-  value: string;
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isError?: boolean;
   errorMessage?: string;
@@ -39,8 +39,14 @@ const InputLayout = styled.input<{ isError: boolean }>`
 
   outline: none;
 
+  ${({ theme }) => theme.fonts.Body6};
+
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.main_blue};
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.grey_300};
   }
 `;
 
