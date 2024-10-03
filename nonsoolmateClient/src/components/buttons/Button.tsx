@@ -21,6 +21,10 @@ const ButtonWrapper = styled.button<{ variant: "primary" | "secondary"; size: Si
 
   border-radius: 8px;
 
+  ${({ theme }) => theme.fonts.Body6};
+
+  white-space: nowrap;
+
   ${({ variant }) => {
     switch (variant) {
       case "primary":
@@ -81,7 +85,7 @@ const ButtonWrapper = styled.button<{ variant: "primary" | "secondary"; size: Si
     }
   }}
 
-  ${({ theme }) => theme.fonts.Body6};
-
-  white-space: nowrap;
+  &:disabled {
+    opacity: 0.5;
+  }
 `;

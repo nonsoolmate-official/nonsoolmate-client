@@ -6,10 +6,17 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isError?: boolean;
-  errorMessage?: string;
+  errorMessage?: string | null;
 }
 
-export default function Input({ placeholder, value, onChange, isError = false, errorMessage, ...props }: InputProps) {
+export default function Input({
+  placeholder,
+  value = "",
+  onChange,
+  isError = false,
+  errorMessage,
+  ...props
+}: InputProps) {
   return (
     <InputWrapper>
       <InputLayout placeholder={placeholder} value={value} onChange={onChange} isError={isError} {...props} />

@@ -20,6 +20,7 @@ export default function RadioButtonGroup({ options, onChange, value }: RadioButt
 
       return (
         <RadioButton
+          key={id}
           id={id}
           label={label}
           name={name}
