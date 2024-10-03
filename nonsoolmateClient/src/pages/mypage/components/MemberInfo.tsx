@@ -1,107 +1,170 @@
-import styled from "styled-components";
-
+import Button from "@components/buttons/Button";
+import Input from "@components/input/Input";
+import RadioButtonGroup from "@components/radioButton/RadioButtonGroup";
+import Error from "@pages/error";
+import { ERROR_MESSAGE } from "constants/errorMessage";
+import { useState } from "react";
 import { media } from "style/responsiveStyle";
+import styled from "styled-components";
 import useGetProfile from "../hooks/useGetProfile";
 
 export default function MemberInfo() {
   const response = useGetProfile();
-  if (!response) return <></>;
+  if (!response) return <Error />;
 
   const { name, gender, birthday, email, phoneNumber } = response?.data;
+
+  const initialGender = gender === "M" ? "M" : gender === "F" ? "F" : null;
+  const [checkedGender, setCheckedGender] = useState(initialGender);
+
   return (
-    <MemberInfoContainer>
-      <Info>
-        <Title>이름</Title>
-        <Text>{name}</Text>
-        <GenderBox>
-          <Male $gender={gender}>남성</Male>
-          <Female $gender={gender}>여성</Female>
-        </GenderBox>
-      </Info>
-      <Info>
-        <Title>출생연도</Title>
-        <Text>{birthday}년</Text>
-      </Info>
-      <Info>
-        <Title>이메일</Title>
-        <Text>{email}</Text>
-        <ReviseButton>수정하기</ReviseButton>
-      </Info>
-      <Info>
-        <Title>전화번호</Title>
-        <Text>{phoneNumber}</Text>
-        <ReviseButton>수정하기</ReviseButton>
-      </Info>
-    </MemberInfoContainer>
+    <Wrapper>
+      <Title>회원정보</Title>
+      <MemberInfoContainer>
+        <Info>
+          <FieldLayout>
+            <Field>이름</Field>
+            <Input
+              value={name}
+              placeholder="이름"
+              onChange={() => {}}
+              isError={false}
+              errorMessage={ERROR_MESSAGE.NAME_EMPTY}
+              style={{ width: "22.8rem" }}
+            />
+          </FieldLayout>
+          <FieldLayout>
+            <Field>성별</Field>
+            <RadioButtonGroup
+              options={[
+                { label: "남성", value: "M", name: "gender" },
+                { label: "여성", value: "F", name: "gender" },
+              ]}
+              onChange={(e) => {
+                setCheckedGender(e.target.value);
+              }}
+            />
+          </FieldLayout>
+        </Info>
+
+        <Info>
+          <FieldLayout>
+            <Field>출생연도</Field>
+            <Input
+              value={birthday}
+              placeholder="0000"
+              onChange={() => {}}
+              isError={true}
+              errorMessage={ERROR_MESSAGE.BIRTH}
+              style={{ width: "6.4rem" }}
+            />
+            <Field>년</Field>
+          </FieldLayout>
+          <FieldLayout>
+            <Field>전화번호</Field>
+            <Input
+              value={phoneNumber}
+              placeholder="000-0000-0000"
+              onChange={() => {}}
+              isError={false}
+              errorMessage={ERROR_MESSAGE.PHONE}
+              style={{ width: "22.8rem" }}
+            />
+          </FieldLayout>
+        </Info>
+
+        <Info>
+          <Field>이메일</Field>
+          <Input
+            value={email}
+            placeholder="example@email.com"
+            onChange={() => {}}
+            isError={false}
+            errorMessage={ERROR_MESSAGE.EMAIL}
+            style={{ width: "56.8rem" }}
+          />
+        </Info>
+        <SubmitLayout>
+          <Button variant="primary" size="sm" type="submit">
+            저장
+          </Button>
+        </SubmitLayout>
+      </MemberInfoContainer>
+    </Wrapper>
   );
 }
 
-const MemberInfoContainer = styled.ul`
+const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 2.8rem;
-  position: relative;
+
   width: 100%;
-  padding: 8rem 0 8rem 6.4rem;
+
+  flex-direction: column;
+
+  background-color: ${({ theme }) => theme.colors.grey_50};
+`;
+
+const MemberInfoContainer = styled.ul`
+  position: relative;
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2.8rem;
+
+  width: 69.6rem;
+
+  padding: 2.4rem;
+  margin-left: 2.4rem;
+
+  border-radius: 8px;
+
+  background-color: ${({ theme }) => theme.colors.white};
 
   ${media.tablet} {
     padding: 3.1rem 3.2rem;
   }
 `;
 
-const Info = styled.li`
+const Info = styled.div`
   display: flex;
-  gap: 0.2rem;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2.4rem;
 `;
 
-const Title = styled.p`
+const Title = styled.h3`
+  display: flex;
+
+  padding: 2.4rem;
+
+  ${({ theme }) => theme.fonts.Headline5};
+
+  white-space: nowrap;
+`;
+
+const Field = styled.h3`
+  width: 5.6rem;
+
   ${({ theme }) => theme.fonts.Body3};
 
-  width: 8.8rem;
+  white-space: nowrap;
 `;
 
-const Text = styled.p`
-  ${({ theme }) => theme.fonts.Body4};
-`;
-
-const ReviseButton = styled.button`
-  ${({ theme }) => theme.fonts.Body4};
-
-  position: absolute;
-  right: 22.5rem;
-  width: 7.6rem;
-  color: ${({ theme }) => theme.colors.main_blue};
-
-  ${media.tablet} {
-    right: 3.2rem;
-  }
-`;
-
-const GenderBox = styled.ul`
-  ${({ theme }) => theme.fonts.Body7};
-
+const FieldLayout = styled.div`
   display: flex;
-  gap: 0.6rem;
-  position: absolute;
-  right: 50rem;
 
-  ${media.tablet} {
-    right: 3.2rem;
-  }
+  align-items: center;
+
+  gap: 2.4rem;
 `;
 
-const Male = styled.li<{ $gender: String }>`
-  padding: 0.4rem 0.8rem;
-  border: 1px solid ${({ $gender, theme }) => ($gender == "M" ? theme.colors.main_blue : theme.colors.grey_400)};
-  border-radius: 4px;
-  background-color: ${({ $gender, theme }) => ($gender == "M" ? theme.colors.light_blue : theme.colors.grey_50)};
-  color: ${({ $gender, theme }) => ($gender == "M" ? theme.colors.main_blue : theme.colors.grey_400)};
-`;
+const SubmitLayout = styled.div`
+  display: flex;
 
-const Female = styled.li<{ $gender: String }>`
-  padding: 0.4rem 0.8rem;
-  border: 1px solid ${({ $gender, theme }) => ($gender == "F" ? theme.colors.main_blue : theme.colors.grey_400)};
-  border-radius: 4px;
-  background-color: ${({ $gender, theme }) => ($gender == "F" ? theme.colors.light_blue : theme.colors.grey_50)};
-  color: ${({ $gender, theme }) => ($gender == "F" ? theme.colors.main_blue : theme.colors.grey_400)};
+  margin-top: 4.8rem;
+
+  justify-content: flex-end;
 `;
