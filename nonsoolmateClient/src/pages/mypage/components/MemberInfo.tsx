@@ -38,7 +38,7 @@ export default function MemberInfo() {
                 { label: "남성", value: "M", name: "gender" },
                 { label: "여성", value: "F", name: "gender" },
               ]}
-              value={input.gender || ""}
+              value={input.gender ?? null}
               onChange={(e) => handleChangeInput("gender", e)}
             />
           </FieldLayout>

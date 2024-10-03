@@ -1,16 +1,21 @@
 import { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
-export interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface RadioProps {
   label: string;
   name: string;
+  value: string;
 }
 
-export default function RadioButton({ label, name, checked, ...props }: RadioButtonProps) {
+export interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+export default function RadioButton({ label, value, id, ...props }: RadioButtonProps) {
   return (
     <RadioButtonWrapper>
-      <StyledRadioButton type="radio" name={name} checked={checked} {...props} />
-      <Label>{label}</Label>
+      <StyledRadioButton id={id} type="radio" value={value} {...props} />
+      <Label htmlFor={id}>{label}</Label>
     </RadioButtonWrapper>
   );
 }
@@ -30,7 +35,6 @@ const StyledRadioButton = styled.input`
     padding: 0.8rem 4.15rem;
 
     border: 1px solid ${({ theme }) => theme.colors.grey_300};
-    border-radius: 4px;
 
     color: ${({ theme }) => theme.colors.grey_600};
 
@@ -49,6 +53,8 @@ const StyledRadioButton = styled.input`
 
 const Label = styled.label`
   ${({ theme }) => theme.fonts.Body6};
+
+  border-radius: 8px;
 
   background-color: ${({ theme }) => theme.colors.white};
 `;
