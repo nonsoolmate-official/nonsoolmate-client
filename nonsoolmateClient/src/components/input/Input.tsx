@@ -9,18 +9,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
 }
 
-export default function Input({
-  type,
-  placeholder,
-  value,
-  onChange,
-  isError = false,
-  errorMessage,
-  ...props
-}: InputProps) {
+export default function Input({ placeholder, value, onChange, isError = false, errorMessage, ...props }: InputProps) {
   return (
     <>
-      <InputLayout type={type} placeholder={placeholder} value={value} onChange={onChange} {...props} />
+      <InputLayout placeholder={placeholder} value={value} onChange={onChange} {...props} />
       {isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </>
   );
@@ -35,6 +27,10 @@ const InputLayout = styled.input`
 
   border: 1px solid ${({ theme }) => theme.colors.grey_100};
   border-radius: 6px;
+
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.main_blue};
+  }
 `;
 
 const ErrorMessage = styled.p`
