@@ -1,33 +1,31 @@
 import Button from "@components/buttons/Button";
 import Input from "@components/input/Input";
 import RadioButtonGroup from "@components/radioButton/RadioButtonGroup";
-import Error from "@pages/error";
+import useMemberInfo from "@pages/mypage/hooks/useMemberInfo";
 import { ERROR_MESSAGE } from "constants/errorMessage";
-import { useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
-import useGetProfile from "../hooks/useGetProfile";
 
 export default function MemberInfo() {
-  const response = useGetProfile();
-  if (!response) return <Error />;
+  const { input, handleChangeInput } = useMemberInfo();
 
-  const { name, gender, birthday, email, phoneNumber } = response?.data;
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  const initialGender = gender === "M" ? "M" : gender === "F" ? "F" : null;
-  const [checkedGender, setCheckedGender] = useState(initialGender);
+    // 저장 시 동작하는 로직
+  };
 
   return (
     <Wrapper>
       <Title>회원정보</Title>
-      <MemberInfoContainer>
+      <MemberInfoContainer onSubmit={handleSubmit}>
         <Info>
           <FieldLayout>
             <Field>이름</Field>
             <Input
-              value={name}
+              value={input.name}
               placeholder="이름"
-              onChange={() => {}}
+              onChange={(e) => handleChangeInput("name", e)}
               isError={false}
               errorMessage={ERROR_MESSAGE.NAME_EMPTY}
               style={{ width: "22.8rem" }}
@@ -40,9 +38,8 @@ export default function MemberInfo() {
                 { label: "남성", value: "M", name: "gender" },
                 { label: "여성", value: "F", name: "gender" },
               ]}
-              onChange={(e) => {
-                setCheckedGender(e.target.value);
-              }}
+              value={input.gender || ""}
+              onChange={(e) => handleChangeInput("gender", e)}
             />
           </FieldLayout>
         </Info>
@@ -51,9 +48,9 @@ export default function MemberInfo() {
           <FieldLayout>
             <Field>출생연도</Field>
             <Input
-              value={birthday}
+              value={input.birthday || ""}
               placeholder="0000"
-              onChange={() => {}}
+              onChange={(e) => handleChangeInput("birthday", e)}
               isError={true}
               errorMessage={ERROR_MESSAGE.BIRTH}
               style={{ width: "6.4rem" }}
@@ -63,9 +60,9 @@ export default function MemberInfo() {
           <FieldLayout>
             <Field>전화번호</Field>
             <Input
-              value={phoneNumber}
+              value={input.phoneNumber || ""}
               placeholder="000-0000-0000"
-              onChange={() => {}}
+              onChange={(e) => handleChangeInput("phoneNumber", e)}
               isError={false}
               errorMessage={ERROR_MESSAGE.PHONE}
               style={{ width: "22.8rem" }}
@@ -76,16 +73,16 @@ export default function MemberInfo() {
         <Info>
           <Field>이메일</Field>
           <Input
-            value={email}
+            value={input.email || ""}
             placeholder="example@email.com"
-            onChange={() => {}}
+            onChange={(e) => handleChangeInput("email", e)}
             isError={false}
             errorMessage={ERROR_MESSAGE.EMAIL}
             style={{ width: "56.8rem" }}
           />
         </Info>
         <SubmitLayout>
-          <Button variant="primary" size="sm" type="submit">
+          <Button variant="primary" size="sm" type="button">
             저장
           </Button>
         </SubmitLayout>
@@ -104,7 +101,7 @@ const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
-const MemberInfoContainer = styled.ul`
+const MemberInfoContainer = styled.form`
   position: relative;
   display: flex;
 
@@ -120,6 +117,8 @@ const MemberInfoContainer = styled.ul`
   border-radius: 8px;
 
   background-color: ${({ theme }) => theme.colors.white};
+
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
 
   ${media.tablet} {
     padding: 3.1rem 3.2rem;
