@@ -1,7 +1,8 @@
+import styled from "styled-components";
 import HeaderLeft from "./HeaderLeft";
 import HeaderRight from "./HeaderRight";
-import styled from "styled-components";
-import HomeMemberInfoToggle from "home/components/HomeMemberInfoToggle";
+
+import HomeMemberInfoToggle from "@pages/home/components/HomeMemberInfoToggle";
 import { useState } from "react";
 
 interface HeaderProps {
