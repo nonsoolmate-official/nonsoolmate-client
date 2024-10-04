@@ -1,7 +1,7 @@
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Modal from "./components/coupon/Modal";
+import CouponModal from "./components/CouponModal";
 import styled from "styled-components";
 
 const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
@@ -200,7 +200,7 @@ export default function Payment() {
         <h2>{couponTxt}</h2>
         <h2>{dcInfo}</h2>
       </CouponInfo>
-      {openModal && <Modal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
+      {openModal && <CouponModal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
     </div>
   );
 }

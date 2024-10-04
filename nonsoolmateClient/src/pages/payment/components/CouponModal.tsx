@@ -1,16 +1,17 @@
 import { EmptyCircleIc, FilledCircleIc, XIc } from "@assets/index";
-import useGetCoupon from "payment/hooks/useGetCoupon";
-import { usePostCoupon } from "payment/hooks/usePostCoupon";
+import useGetCoupon from "@pages/payment/hooks/useGetCoupon";
+import { usePostCoupon } from "@pages/payment/hooks/usePostCoupon";
 import { useEffect, useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
+import { CouponsType } from "../api/getCoupon";
 
 interface ModalProps {
   closeModal: () => void;
   handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
 }
 
-export default function Modal(props: ModalProps) {
+export default function CouponModal(props: ModalProps) {
   const { closeModal, handleCouponTxtStatus } = props;
   const [couponExist, setCouponExist] = useState(false);
   const [finsishSelectCoupon, setFinishSelectCoupon] = useState(false);
@@ -139,7 +140,7 @@ export default function Modal(props: ModalProps) {
           <CouponContainer>
             {couponExist ? (
               <CouponListBox>
-                {COUPON_LIST.coupons.map((item) => {
+                {COUPON_LIST.coupons.map((item: CouponsType) => {
                   const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate } = item;
                   const isCouponClicked = activeCouponId === couponMemberId;
 

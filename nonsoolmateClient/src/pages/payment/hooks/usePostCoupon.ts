@@ -1,8 +1,9 @@
-import { useMutation } from "react-query";
-import { postCoupon } from "payment/api/postCoupon";
+import { postCoupon } from "@pages/payment/api/postCoupon";
+import { useMutation } from "@tanstack/react-query";
 
 export function usePostCoupon() {
-  return useMutation(postCoupon, {
+  return useMutation({
+    mutationFn: postCoupon,
     onSuccess: () => {
       console.log("쿠폰 등록 성공");
     },
