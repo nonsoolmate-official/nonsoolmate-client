@@ -1,8 +1,8 @@
-import RegisterLayout from "payment/components/RegisterLayout";
 import styled from "styled-components";
-import PaymentInfo from "./components/PaymentInfo";
-import OrderInfo from "./components/OrderInfo";
+import PaymentInfo from "./components/paymentInfo/PaymentInfo";
+import OrderInfo from "./components/orderInfo/OrderInfo";
 import { useLocation } from "react-router-dom";
+import RegisterLayout from "./components/register/RegisterLayout";
 
 export default function Payment() {
   const location = useLocation();
