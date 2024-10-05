@@ -1,4 +1,4 @@
-import { BasicPlanIc, CheckEmptyIc, PremiumPlanIc } from "@assets/index";
+import { BasicPlanIc, CheckBtnIc, CheckEmptyIc, PremiumPlanIc } from "@assets/index";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -7,13 +7,21 @@ interface PlanProps {
   title: string;
   description: string;
   checkBox: boolean;
+  selectedPlan?: number;
+  onPlanChange?: (newPlanId: number) => void;
 }
 
 export default function Plan(props: PlanProps) {
-  const { id, title, description, checkBox } = props;
+  const { id, title, description, checkBox, selectedPlan, onPlanChange } = props;
+
+  function handleClick() {
+    if (onPlanChange) {
+      onPlanChange(id);
+    }
+  }
 
   return (
-    <PlanBox>
+    <PlanBox onClick={handleClick}>
       <PlanTitleBox>
         <PlanTitle>
           {id === 1 ? <BasicPlanIcon /> : <PremiumPlanIcon />}
@@ -26,9 +34,7 @@ export default function Plan(props: PlanProps) {
             </PlanMerit>
           )}
         </PlanTitle>
-        <CheckIconBox $checkBox={checkBox}>
-          <CheckEmptyIc />
-        </CheckIconBox>
+        <CheckIconBox $checkBox={checkBox}>{selectedPlan === id ? <CheckBtnIc /> : <CheckEmptyIc />}</CheckIconBox>
       </PlanTitleBox>
       <PlanDescription>{description}</PlanDescription>
     </PlanBox>

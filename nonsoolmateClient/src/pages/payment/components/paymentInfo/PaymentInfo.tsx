@@ -1,11 +1,19 @@
 import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
+import { PAYMENTINFO_LIST } from "@pages/payment/core/paymentInfoList";
 import { useState } from "react";
 import theme from "style/theme";
 import styled from "styled-components";
 
-export default function PaymentInfo() {
+interface PaymentInfoProps {
+  selectedPlan: number;
+}
+
+export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
   const [isAgreeTerms, setIsAgreeTerms] = useState(false);
   const [isAgreeMinorConsent, setIsAgreeMinorConsent] = useState(false);
+
+  const plan = PAYMENTINFO_LIST.find((item) => item.id === selectedPlan);
+  const originalPrice = plan?.price || 0;
 
   function clickTermsAgreement() {
     setIsAgreeTerms(!isAgreeTerms);
@@ -13,25 +21,28 @@ export default function PaymentInfo() {
   function clickMinorConsentAgreement() {
     setIsAgreeMinorConsent(!isAgreeMinorConsent);
   }
+
   return (
     <PaymentInfoContainer>
       <Title>결제 정보</Title>
       <InfoBox>
         <InfoTitle>주문 정보</InfoTitle>
         <InfoDetail>
-          <Plan>베이직 플랜</Plan>
-          <Price>260,000원</Price>
+          <Plan>{plan?.title}</Plan>
+          <Price>{originalPrice?.toLocaleString()}원</Price>
         </InfoDetail>
       </InfoBox>
       <InfoBox>
         <InfoTitle>할인 정보</InfoTitle>
-        <InfoDetail>
-          <Coupon>얼리버드 특가</Coupon>
-          <DiscountPriceBox>
-            <PrevPrice>260,000원</PrevPrice>
-            <Discount>20% OFF</Discount>
-          </DiscountPriceBox>
-        </InfoDetail>
+        {plan?.defaultDiscount.map((discount) => (
+          <InfoDetail key={discount.id}>
+            <Coupon>{discount.title}</Coupon>
+            <DiscountPriceBox>
+              <PrevPrice>{originalPrice.toLocaleString()}원</PrevPrice>
+              <Discount>{discount.rate}% OFF</Discount>
+            </DiscountPriceBox>
+          </InfoDetail>
+        ))}
       </InfoBox>
       <DevideLine />
       <Overview>
@@ -65,13 +76,12 @@ export default function PaymentInfo() {
     </PaymentInfoContainer>
   );
 }
-
 const PaymentInfoContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-self: flex-start;
   width: 29.6rem;
-  height: 42.8rem;
   margin-top: 6.8rem;
   padding: 2.4rem;
   border: 1px solid ${theme.colors.grey_200};
