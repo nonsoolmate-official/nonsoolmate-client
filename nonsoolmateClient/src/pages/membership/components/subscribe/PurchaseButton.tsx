@@ -1,3 +1,4 @@
+import { getToken } from "@pages/socialLogin/utils/token";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
@@ -8,9 +9,13 @@ interface PurchaseButtonProps {
 export default function PurchaseButton(props: PurchaseButtonProps) {
   const { id } = props;
   const navigate = useNavigate();
+  const from = location.pathname;
+  sessionStorage.setItem("from", from);
+
   function clickPurchaseButton() {
-    navigate("/payment", { state: { id } });
+    getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
   }
+
   return <Button onClick={clickPurchaseButton}>구매하기</Button>;
 }
 
