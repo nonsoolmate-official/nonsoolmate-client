@@ -10,9 +10,9 @@ export default function Payment() {
   const { id } = location.state;
   const [selectedPlan, setSelectedPlan] = useState(id);
 
-  const handlePlanChange = (newPlanId: number) => {
+  function handlePlanChange(newPlanId: number) {
     setSelectedPlan(newPlanId);
-  };
+  }
 
   return (
     <PaymentContainer>
