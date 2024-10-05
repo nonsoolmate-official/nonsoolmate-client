@@ -17,7 +17,9 @@ export default function MemberInfo() {
 
   const {
     input,
+    gender,
     handleChangeInput,
+    handleChangeGender,
     isNameError,
     isEmailError,
     isPhoneNumberError,
@@ -72,8 +74,8 @@ export default function MemberInfo() {
                 { label: "남성", value: "M", name: "gender" },
                 { label: "여성", value: "F", name: "gender" },
               ]}
-              value={input.gender ?? null}
-              onChange={(e) => handleChangeInput("gender", e)}
+              value={gender ?? null}
+              onChange={(e) => handleChangeGender(e.target.value)}
             />
           </FieldLayout>
         </Info>

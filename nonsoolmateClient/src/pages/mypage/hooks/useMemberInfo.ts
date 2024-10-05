@@ -6,9 +6,9 @@ import { useCallback, useEffect, useState } from "react";
 type Input = "name" | "gender" | "email" | "birthday" | "phoneNumber";
 
 export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
+  const [gender, setGender] = useState<string | null>(null);
   const [input, setInput] = useState({
     name: response?.data?.name,
-    gender: response?.data?.gender,
     birthday: response?.data?.birthday,
     email: response?.data?.email,
     phoneNumber: response?.data?.phoneNumber,
@@ -18,11 +18,12 @@ export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
     // response값을 받아올 때 다시 상태 업데이트
     setInput({
       name: response?.data?.name,
-      gender: response?.data?.gender,
       birthday: response?.data?.birthday,
       email: response?.data?.email,
       phoneNumber: response?.data?.phoneNumber,
     });
+
+    setGender(response?.data?.gender);
   }, [response]);
 
   const handleChangeInput = useCallback((key: Input, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +37,10 @@ export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
       ...prev,
       [key]: value,
     }));
+  }, []);
+
+  const handleChangeGender = useCallback((value: string | null) => {
+    setGender(value);
   }, []);
 
   const validateName = useCallback((value: string) => {
@@ -75,7 +80,9 @@ export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
 
   return {
     input,
+    gender,
     handleChangeInput,
+    handleChangeGender,
     validateName,
     validatePhoneNumber,
     validateEmail,
