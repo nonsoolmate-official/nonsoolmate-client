@@ -5,7 +5,7 @@ export const PAYMENTINFO_LIST = [
     price: 210000,
     defaultDiscount: [
       { id: 1, title: "얼리버드 특가", rate: 20 },
-      { id: 2, title: "추가 할인", rate: 15 },
+      { id: 2, title: "쿠폰 할인", rate: 20 },
     ],
   },
   {
@@ -14,7 +14,7 @@ export const PAYMENTINFO_LIST = [
     price: 260000,
     defaultDiscount: [
       { id: 1, title: "얼리버드 특가", rate: 20 },
-      { id: 2, title: "추가 할인", rate: 15 },
+      { id: 2, title: "쿠폰 할인", rate: 20 },
     ],
   },
 ];

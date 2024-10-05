@@ -1,18 +1,23 @@
 import theme from "style/theme";
 import styled from "styled-components";
 
-export default function Overview() {
+interface OverviewProps {
+  discountedPrice: number;
+  finalPrice: number;
+}
+export default function Overview(props: OverviewProps) {
+  const { discountedPrice, finalPrice } = props;
   return (
     <OverviewContainer>
       <DiscountOverview>
         <TotalDiscount>총 할인가</TotalDiscount>
-        <Price>-42,000원</Price>
+        <Price>-{discountedPrice.toLocaleString()}원</Price>
       </DiscountOverview>
       <PaymentOverview>
         <TotalPayment>총 결제 금액</TotalPayment>
         <TotalPriceBox>
-          <TotalPrice>168,000원</TotalPrice>
-          <Unit>/월</Unit>
+          <TotalPrice>{finalPrice.toLocaleString()}원</TotalPrice>
+          <Unit> / 월</Unit>
         </TotalPriceBox>
       </PaymentOverview>
     </OverviewContainer>
@@ -64,4 +69,6 @@ const TotalPrice = styled.p`
 
 const Unit = styled.p`
   ${({ theme }) => theme.fonts.Body2}
+
+  margin-left: 0.6rem;
 `;

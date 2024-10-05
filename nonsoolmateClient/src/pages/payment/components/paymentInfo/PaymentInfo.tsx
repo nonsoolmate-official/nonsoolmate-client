@@ -6,6 +6,7 @@ import OrderDetail from "./OrderDetail";
 import DiscountDetail from "./DiscountDetail";
 import Overview from "./Overview";
 import Agreements from "./Agreements";
+import { calculateStandardDiscount } from "@pages/payment/utils/calculateStandardDiscount";
 
 interface PaymentInfoProps {
   selectedPlan: number;
@@ -14,6 +15,12 @@ interface PaymentInfoProps {
 export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
   const plan = PAYMENTINFO_LIST.find((item) => item.id === selectedPlan);
   const [isAgree, setIsAgree] = useState(false);
+
+  const originalPrice = plan?.price || 0;
+
+  const discountHistory = plan ? calculateStandardDiscount(plan) : [];
+  const finalPrice = discountHistory[discountHistory.length - 1].discounted_price;
+  const discountedPrice = originalPrice - finalPrice;
 
   function handleAgreements(agreeState: boolean) {
     setIsAgree(agreeState);
@@ -28,10 +35,10 @@ export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
       </InfoBox>
       <InfoBox>
         <InfoTitle>할인 정보</InfoTitle>
-        {plan && <DiscountDetail plan={plan} />}
+        {plan && <DiscountDetail discountHistory={discountHistory} />}
       </InfoBox>
       <DevideLine />
-      <Overview />
+      <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
       <Agreements handleAgreements={handleAgreements} />
       <PaymentButton $isAgree={isAgree} disabled={!isAgree}>
         결제하기
@@ -84,8 +91,6 @@ const PaymentButton = styled.button<{ $isAgree: boolean }>`
   width: 100%;
   padding: 0.8rem;
   border-radius: 8px;
-  ${({ theme, $isAgree }) =>
-    $isAgree ? `background-color : ${theme.colors.main_blue}` : `background-color : ${theme.colors.grey_100}`};
-
-  ${({ theme, $isAgree }) => ($isAgree ? `color : ${theme.colors.white}` : `color : ${theme.colors.grey_400}`)}
+  background-color: ${({ theme, $isAgree }) => ($isAgree ? theme.colors.main_blue : theme.colors.grey_100)};
+  color: ${({ theme, $isAgree }) => ($isAgree ? theme.colors.white : theme.colors.grey_400)};
 `;

@@ -1,17 +1,20 @@
-import { OrderProps } from "@pages/payment/types/paymentInfoType";
+import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
 import theme from "style/theme";
 import styled from "styled-components";
 
-export default function DiscountDetail(props: OrderProps) {
-  const { plan } = props;
+interface DiscountDetailProps {
+  discountHistory: DiscountHistoryItem[];
+}
+export default function DiscountDetail(props: DiscountDetailProps) {
+  const { discountHistory } = props;
   return (
     <>
-      {plan?.defaultDiscount.map((discount) => (
-        <DiscountDetailContainer key={discount.id}>
-          <Coupon>{discount.title}</Coupon>
+      {discountHistory.map((item) => (
+        <DiscountDetailContainer key={item.discount_id}>
+          <Coupon>{item.discount_title}</Coupon>
           <DiscountPriceBox>
-            <PrevPrice>{plan?.price.toLocaleString()}원</PrevPrice>
-            <DiscountRate>{discount.rate}% OFF</DiscountRate>
+            <PrevPrice>{item.beforeDiscount_price.toLocaleString()}원</PrevPrice>
+            <DiscountRate>{item.discount_rate}% OFF</DiscountRate>
           </DiscountPriceBox>
         </DiscountDetailContainer>
       ))}
