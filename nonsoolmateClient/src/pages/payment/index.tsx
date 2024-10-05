@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import PaymentInfo from "./components/paymentInfo/PaymentInfo";
 import OrderInfo from "./components/orderInfo/OrderInfo";
-import { useLocation } from "react-router-dom";
 import RegisterLayout from "./components/register/RegisterLayout";
 
 export default function Payment() {

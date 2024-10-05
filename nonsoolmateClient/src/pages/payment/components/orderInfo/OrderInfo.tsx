@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Plan from "./Plan";
-import { PLAN_LIST } from "payment/core/planList";
+import { PLAN_LIST } from "../../core/planList";
 
 interface OrderInfoProps {
   id: number;
