@@ -1,0 +1,132 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "overrides": [
+    {
+      "customSyntax": "@stylelint/postcss-css-in-js",
+      "files": ["**/*.tsx", "**/*.ts"]
+    }
+  ],
+  "rules": {
+    "font-family-no-missing-generic-family-keyword": null,
+    "declaration-property-unit-allowed-list": {
+      "/^border/": ["px"],
+      "font-size": ["rem", "%"]
+    },
+    "unit-allowed-list": ["%", "deg", "px", "rem", "ms", "vh", "vw", "s", "fr"],
+
+    "order/properties-order": [
+      {
+        "groupName": "Layout",
+        "noEmptyLineBetween": true,
+        "properties": [
+          "display",
+          "flex-direction",
+          "flex-wrap",
+          "flex-flow",
+          "gap",
+          "flex",
+          "justify-content",
+          "align-items",
+          "align-content",
+          "flex-basis",
+          "flex-grow",
+          "flex-shrink",
+          "align-self",
+
+          "visibility",
+
+          "overflow",
+
+          "float",
+          "clear",
+
+          "position",
+          "top",
+          "right",
+          "bottom",
+          "left",
+
+          "z-index"
+        ]
+      },
+      {
+        "groupName": "Box",
+        "noEmptyLineBetween": true,
+        "properties": [
+          "width",
+          "min-width",
+          "max-width",
+
+          "height",
+          "min-height",
+          "max-height",
+
+          "margin",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+
+          "padding",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left",
+
+          "border",
+          "border-top",
+          "border-right",
+          "border-bottom",
+          "border-left",
+          "border-color",
+          "border-radius",
+
+          "color",
+          "background-color"
+        ]
+      },
+      {
+        "groupName": "Background",
+        "noEmptyLineBetween": true,
+        "properties": [
+          "color",
+          "background",
+          "background-color",
+          "background-image",
+          "background-position",
+          "background-repeat",
+          "box-shadow"
+        ]
+      },
+      {
+        "groupName": "Font",
+        "noEmptyLineBetween": true,
+        "properties": [
+          "font",
+          "font-family",
+          "color",
+          "font-style",
+          "font-size",
+          "font-weight",
+
+          "text-align",
+          "vertical-align",
+          "line-height",
+
+          "text-transform",
+          "text-decoration",
+
+          "letter-spacing",
+          "text-indent",
+          "white-space"
+        ]
+      },
+      {
+        "groupName": "Etc",
+        "noEmptyLineBetween": true,
+        "properties": ["cursor", "opacity", "animation", "transition"]
+      }
+    ]
+  }
+}
