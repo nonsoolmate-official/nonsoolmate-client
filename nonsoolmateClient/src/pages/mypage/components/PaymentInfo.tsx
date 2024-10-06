@@ -37,6 +37,8 @@ export default function PaymentInfo() {
           <Info>{PAYMENT_DATA.payment.discountEvent}</Info>
         </Payment>
 
+        <Divider />
+
         <Payment>
           <InfoTitle>총 할인가</InfoTitle>
           <Info>{PAYMENT_DATA.payment.totalDiscount}</Info>
@@ -114,4 +116,15 @@ const Info = styled.div`
   width: 100%;
 
   ${({ theme }) => theme.fonts.Body4};
+`;
+
+const Divider = styled.hr`
+  width: 100%;
+  height: 0.1rem;
+
+  margin: 0;
+
+  border: none;
+
+  background-color: ${({ theme }) => theme.colors.grey_200};
 `;
