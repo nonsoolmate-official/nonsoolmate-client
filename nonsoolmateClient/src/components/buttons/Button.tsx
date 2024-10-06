@@ -53,6 +53,8 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
         `;
       case "text":
         return css`
+          padding: 0;
+
           color: ${({ theme }) => theme.colors.grey_300};
 
           text-decoration: underline;
