@@ -20,6 +20,8 @@ export default function Button({ children, variant = "primary", size = "md", ...
 const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
   padding: 0.8rem 2.8rem;
 
+  align-items: center;
+
   border-radius: 8px;
 
   ${({ theme }) => theme.fonts.Body6};

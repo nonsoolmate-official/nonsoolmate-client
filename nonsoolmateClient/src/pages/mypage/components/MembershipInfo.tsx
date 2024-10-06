@@ -6,36 +6,50 @@ import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
 import styled from "styled-components";
 
 export default function MembershipInfo() {
+  const data = MEMBERSHIP_DATA;
   return (
-    <InfoWrapper>
-      <MembershipWrapper>
-        <Title>멤버십 정보</Title>
-        <MembershipInfoLayout>
-          <MembershipInfoContainer>
-            <MembershipInfoBox>
-              <Membership>
-                <InfoTitle>이용 중인 멤버십</InfoTitle>
-                <CurrentMembership>
-                  <MembershipIc />
-                  <Info>{MEMBERSHIP_DATA.membership.name}</Info>
-                </CurrentMembership>
-              </Membership>
-              <Button variant="text" size="sm">
-                멤버십 해지하기
-              </Button>
-            </MembershipInfoBox>
+    <>
+      {!!data.membership.name ? (
+        <InfoWrapper>
+          <MembershipWrapper>
+            <Title>멤버십 정보</Title>
+            <MembershipInfoLayout>
+              <MembershipInfoContainer>
+                <MembershipInfoBox>
+                  <Membership>
+                    <InfoTitle>이용 중인 멤버십</InfoTitle>
+                    <CurrentMembership>
+                      <MembershipIc />
+                      <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
+                    </CurrentMembership>
+                  </Membership>
+                  <Button variant="text" size="sm">
+                    멤버십 해지하기
+                  </Button>
+                </MembershipInfoBox>
 
-            <Membership>
-              <InfoTitle>이용 기간</InfoTitle>
-              <Info>
-                {MEMBERSHIP_DATA.membership.startDate}~{MEMBERSHIP_DATA.membership.endDate}
-              </Info>
-            </Membership>
-          </MembershipInfoContainer>
-        </MembershipInfoLayout>
-      </MembershipWrapper>
-      <PaymentInfo />
-    </InfoWrapper>
+                <Membership>
+                  <InfoTitle>이용 기간</InfoTitle>
+                  <Info>
+                    {MEMBERSHIP_DATA.membership?.startDate}~{MEMBERSHIP_DATA.membership?.endDate}
+                  </Info>
+                </Membership>
+              </MembershipInfoContainer>
+            </MembershipInfoLayout>
+          </MembershipWrapper>
+          <PaymentInfo />
+        </InfoWrapper>
+      ) : (
+        <MembershipWrapper>
+          <Title>멤버십 관리</Title>
+          <NullMembershipContainer>
+            <Text>이용 중인 멤버십이 없습니다.</Text>
+            <Button variant="primary">멤버십 구매하기</Button>
+          </NullMembershipContainer>
+          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
+        </MembershipWrapper>
+      )}
+    </>
   );
 }
 
@@ -118,4 +132,29 @@ const CurrentMembership = styled.div`
 
 const Info = styled.div`
   ${({ theme }) => theme.fonts.Body4};
+`;
+
+const NullMembershipContainer = styled.div`
+  display: flex;
+
+  padding: 1.6rem 2.4rem;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 0.8rem;
+
+  background-color: ${({ theme }) => theme.colors.grey_100};
+`;
+
+const Text = styled.div`
+  color: ${({ theme }) => theme.colors.grey_700};
+
+  ${({ theme }) => theme.fonts.Body4};
+`;
+
+const Notice = styled.p`
+  color: ${({ theme }) => theme.colors.grey_400};
+
+  ${({ theme }) => theme.fonts.Body7};
 `;
