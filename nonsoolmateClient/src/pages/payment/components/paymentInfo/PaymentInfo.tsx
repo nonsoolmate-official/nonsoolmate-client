@@ -40,7 +40,7 @@ export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
       <DevideLine />
       <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
       <Agreements handleAgreements={handleAgreements} />
-      <PaymentButton $isAgree={isAgree} disabled={!isAgree}>
+      <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button">
         결제하기
       </PaymentButton>
     </PaymentInfoContainer>

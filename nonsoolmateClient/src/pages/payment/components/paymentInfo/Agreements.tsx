@@ -41,13 +41,13 @@ export default function Agreements({ handleAgreements }: AgreementsProps) {
   );
 }
 
-const AgreementContainer = styled.div`
+const AgreementContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 `;
 
-const Agreement = styled.div`
+const Agreement = styled.li`
   display: flex;
   gap: 0.8rem;
 `;

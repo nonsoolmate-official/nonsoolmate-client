@@ -47,9 +47,10 @@ const OrderInfoTitle = styled.p`
   ${({ theme }) => theme.fonts.Body1}
 `;
 
-const PlanContainer = styled.div`
+const PlanContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   width: 100%;
+  cursor: pointer;
 `;

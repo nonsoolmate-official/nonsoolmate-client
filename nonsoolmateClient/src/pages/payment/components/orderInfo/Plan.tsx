@@ -40,7 +40,7 @@ export default function Plan(props: PlanProps) {
     </PlanBox>
   );
 }
-const PlanBox = styled.div`
+const PlanBox = styled.li`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
