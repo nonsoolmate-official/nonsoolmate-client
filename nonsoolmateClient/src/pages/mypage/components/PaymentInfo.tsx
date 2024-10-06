@@ -1,3 +1,4 @@
+import { CouponIc, DiscountIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import { PAYMENT_DATA } from "@pages/mypage/constants/dummy";
 import styled from "styled-components";
@@ -25,7 +26,17 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            <Info>{PAYMENT_DATA.payment.couponInfo}</Info>
+            {!!PAYMENT_DATA.payment.couponInfo ? (
+              <EventInfoBox>
+                <CouponInfo>
+                  <CouponIc />
+                  {PAYMENT_DATA.payment.couponInfo.name}
+                  <p>{PAYMENT_DATA.payment.couponInfo.discount}&nbsp;OFF</p>
+                </CouponInfo>
+              </EventInfoBox>
+            ) : (
+              <Info>등록된 쿠폰이 없습니다.</Info>
+            )}
           </Payment>
           <Button variant="tertiary" size="sm">
             쿠폰 변경
@@ -34,7 +45,20 @@ export default function PaymentInfo() {
 
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.discountEvent}</Info>
+
+          {!!PAYMENT_DATA.payment.discountEvent ? (
+            <EventInfoContainer>
+              <EventInfoBox>
+                <DiscountInfo>
+                  <DiscountIc />
+                  {PAYMENT_DATA.payment.discountEvent.name}
+                  <p>{PAYMENT_DATA.payment.discountEvent.discount}&nbsp;OFF</p>
+                </DiscountInfo>
+              </EventInfoBox>
+            </EventInfoContainer>
+          ) : (
+            <Info>진행중인 할인 이벤트가 없습니다.</Info>
+          )}
         </Payment>
 
         <Divider />
@@ -86,16 +110,14 @@ const PaymentInfoLayout = styled.section`
 
 const Payment = styled.div`
   display: flex;
-
-  height: 3.6rem;
-
+  align-items: flex-start;
   gap: 2rem;
 `;
 
 const PaymentInfoBox = styled.div`
   display: flex;
 
-  align-items: center;
+  align-items: flex-start;
 
   justify-content: space-between;
 `;
@@ -116,6 +138,61 @@ const Info = styled.div`
   width: 100%;
 
   ${({ theme }) => theme.fonts.Body4};
+`;
+
+const EventInfoContainer = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 1.6rem;
+
+  width: 100%;
+`;
+
+const EventInfoBox = styled.div`
+  display: flex;
+
+  flex-shrink: 0;
+
+  width: 100%;
+  max-width: 37.6rem;
+
+  gap: 0.8rem;
+
+  padding: 0.8rem 1.2rem;
+
+  align-items: center;
+
+  border-radius: 0.8rem;
+
+  background-color: ${({ theme }) => theme.colors.grey_50};
+`;
+
+const CouponInfo = styled.div`
+  display: flex;
+
+  width: 100%;
+
+  justify-content: space-between;
+  gap: 0.8rem;
+  ${({ theme }) => theme.fonts.Body4};
+
+  white-space: nowrap;
+`;
+
+const DiscountInfo = styled.div`
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 0.8rem;
+
+  width: 100%;
+
+  ${({ theme }) => theme.fonts.Body4};
+  white-space: nowrap;
 `;
 
 const Divider = styled.hr`

@@ -109,6 +109,8 @@ import PracticeIc from "./icon/practiceIc.svg?react";
 import TakeTestIc from "./icon/takeTestIc.svg?react";
 
 import CloseIc from "./icon/closeIc.svg?react";
+import CouponIc from "./icon/couponIc.svg?react";
+import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
 
@@ -123,6 +125,8 @@ export {
   CheckCircleBtnIc,
   CheckSmallIc,
   CloseIc,
+  CouponIc,
+  DiscountIc,
   DisplayIc,
   DownArrowBoldIc,
   DownArrowGreyIc,
