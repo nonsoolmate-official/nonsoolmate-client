@@ -1,3 +1,4 @@
+import Button from "@components/buttons/Button";
 import { PAYMENT_DATA } from "@pages/mypage/constants/dummy";
 import styled from "styled-components";
 
@@ -6,30 +7,43 @@ export default function PaymentInfo() {
     <PaymentInfoWrapper>
       <Title>다음 결제 정보</Title>
       <PaymentInfoLayout>
-        <PaymentInfoContainer>
+        <Payment>
           <InfoTitle>다음 결제 일</InfoTitle>
           <Info>{PAYMENT_DATA.payment.dueDate}</Info>
-        </PaymentInfoContainer>
-        <PaymentInfoContainer>
-          <InfoTitle>결제 수단</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.paymentMethod}</Info>
-        </PaymentInfoContainer>
-        <PaymentInfoContainer>
-          <InfoTitle>쿠폰 정보</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.couponInfo}</Info>
-        </PaymentInfoContainer>
-        <PaymentInfoContainer>
+        </Payment>
+
+        <PaymentInfoBox>
+          <Payment>
+            <InfoTitle>결제 수단</InfoTitle>
+            <Info>{PAYMENT_DATA.payment.paymentMethod}</Info>
+          </Payment>
+          <Button variant="text">결제 수단 변경하기</Button>
+        </PaymentInfoBox>
+
+        <PaymentInfoBox>
+          <Payment>
+            <InfoTitle>쿠폰 정보</InfoTitle>
+            <Info>{PAYMENT_DATA.payment.couponInfo}</Info>
+          </Payment>
+          <Button variant="tertiary" size="sm">
+            쿠폰 변경
+          </Button>
+        </PaymentInfoBox>
+
+        <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
           <Info>{PAYMENT_DATA.payment.discountEvent}</Info>
-        </PaymentInfoContainer>
-        <PaymentInfoContainer>
+        </Payment>
+
+        <Payment>
           <InfoTitle>총 할인가</InfoTitle>
           <Info>{PAYMENT_DATA.payment.totalDiscount}</Info>
-        </PaymentInfoContainer>
-        <PaymentInfoContainer>
+        </Payment>
+
+        <Payment>
           <InfoTitle>결제 예정 금액</InfoTitle>
           <Info>{PAYMENT_DATA.payment.totalPrice}</Info>
-        </PaymentInfoContainer>
+        </Payment>
       </PaymentInfoLayout>
     </PaymentInfoWrapper>
   );
@@ -66,7 +80,7 @@ const PaymentInfoLayout = styled.section`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-const PaymentInfoContainer = styled.div`
+const Payment = styled.div`
   display: flex;
 
   height: 3.6rem;
@@ -74,8 +88,18 @@ const PaymentInfoContainer = styled.div`
   gap: 2rem;
 `;
 
+const PaymentInfoBox = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+`;
+
 const InfoTitle = styled.h2`
-  width: 13rem;
+  width: 11.2rem;
+
+  flex-shrink: 0;
 
   ${({ theme }) => theme.fonts.Body3};
 

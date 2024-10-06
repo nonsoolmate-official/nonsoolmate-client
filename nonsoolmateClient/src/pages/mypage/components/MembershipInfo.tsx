@@ -1,4 +1,5 @@
 import { MembershipIc } from "@assets/index";
+import Button from "@components/buttons/Button";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
 
@@ -11,16 +12,22 @@ export default function MembershipInfo() {
         <Title>멤버십 정보</Title>
         <MembershipInfoLayout>
           <MembershipInfoContainer>
-            <Membership>
-              <InfoTitle>이용 중인 멤버십</InfoTitle>
-              <CurrentMembership>
-                <MembershipIc />
-                <MembershipName>{MEMBERSHIP_DATA.membership.name}</MembershipName>
-              </CurrentMembership>
-            </Membership>
+            <MembershipInfoBox>
+              <Membership>
+                <InfoTitle>이용 중인 멤버십</InfoTitle>
+                <CurrentMembership>
+                  <MembershipIc />
+                  <Info>{MEMBERSHIP_DATA.membership.name}</Info>
+                </CurrentMembership>
+              </Membership>
+              <Button variant="text">멤버십 해지하기</Button>
+            </MembershipInfoBox>
+
             <Membership>
               <InfoTitle>이용 기간</InfoTitle>
-              <MembershipPeriod>{MEMBERSHIP_DATA.membership.period}</MembershipPeriod>
+              <Info>
+                {MEMBERSHIP_DATA.membership.startDate}~{MEMBERSHIP_DATA.membership.endDate}
+              </Info>
             </Membership>
           </MembershipInfoContainer>
         </MembershipInfoLayout>
@@ -85,6 +92,14 @@ const Membership = styled.div`
   gap: 2rem;
 `;
 
+const MembershipInfoBox = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+`;
+
 const InfoTitle = styled.h2`
   width: 11.2rem;
 
@@ -99,10 +114,6 @@ const CurrentMembership = styled.div`
   gap: 0.8rem;
 `;
 
-const MembershipName = styled.h3`
-  ${({ theme }) => theme.fonts.Body4};
-`;
-
-const MembershipPeriod = styled.h3`
+const Info = styled.div`
   ${({ theme }) => theme.fonts.Body4};
 `;

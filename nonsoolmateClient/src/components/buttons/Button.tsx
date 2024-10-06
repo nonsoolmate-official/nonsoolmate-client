@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
-type Size = "sm" | "md" | "lg" | "xl";
-type Variant = "primary" | "secondary" | "text";
+type Size = "xs" | "sm" | "md" | "lg" | "xl";
+type Variant = "primary" | "secondary" | "tertiary" | "text";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -41,29 +41,47 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
           color: ${({ theme }) => theme.colors.main_blue};
           background-color: ${({ theme }) => theme.colors.light_blue};
         `;
-      case "text":
+      case "tertiary":
         return css`
-          color: ${({ theme }) => theme.colors.main_blue};
-          background-color: ${({ theme }) => theme.colors.white};
+          border: 1px solid ${({ theme }) => theme.colors.grey_300};
+
+          &:hover {
+            background-color: ${({ theme }) => theme.colors.light_blue};
+
+            transition: all 0.2s ease-in-out;
+          }
         `;
-      default:
+      case "text":
         return css`
           color: ${({ theme }) => theme.colors.grey_300};
 
           text-decoration: underline;
 
+          ${({ theme }) => theme.fonts.Body4};
+
           &:hover {
             color: ${({ theme }) => theme.colors.main_blue};
+
+            transition: all 0.2s ease-in-out;
           }
+        `;
+      default:
+        return css`
+          color: ${({ theme }) => theme.colors.main_blue};
+          background-color: ${({ theme }) => theme.colors.white};
         `;
     }
   }}
 
   ${({ size }) => {
     switch (size) {
-      case "sm":
+      case "xs":
         return css`
           width: 8rem;
+        `;
+      case "sm":
+        return css`
+          width: 12rem;
         `;
       case "md":
         return css`
