@@ -5,9 +5,8 @@ const QUERY_KEY = {
   getProfile: "getProfile",
 };
 export default function useGetProfile() {
-  const { data } = useQuery({
+  return useQuery({
     queryKey: [QUERY_KEY.getProfile],
     queryFn: () => getProfile(),
   });
-  return data;
 }

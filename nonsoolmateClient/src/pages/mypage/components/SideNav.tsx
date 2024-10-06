@@ -53,12 +53,11 @@ const Ul = styled.ul`
   width: 43.1rem;
   height: 100%;
 
-  flex-shrink: 0;
   flex-direction: column;
 
   justify-content: flex-start;
 
-  gap: 2rem;
+  gap: 0.4rem;
 
   padding: 2.4rem 2.4rem 0 21.5rem;
 
@@ -70,6 +69,8 @@ const Ul = styled.ul`
 `;
 
 const NavHeader = styled.header`
+  margin-bottom: 2rem;
+
   ${({ theme }) => theme.fonts.Headline4};
 `;
 
