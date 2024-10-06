@@ -19,8 +19,7 @@ export default function Payment() {
       <PaymentLeftContainer>
         <Title>정기결제</Title>
         <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
-        <RegisterLayout title="쿠폰 사용" button="쿠폰 사용" content="등록된 쿠폰이 없습니다." />
-        <RegisterLayout title="결제 수단" button="카드 등록" content="등록된 카드가 없습니다." />
+        <RegisterLayout />
       </PaymentLeftContainer>
       <PaymentInfo selectedPlan={selectedPlan} />
     </PaymentContainer>

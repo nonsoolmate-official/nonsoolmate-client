@@ -2,22 +2,21 @@ import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
+import { REGISTER_TEXT } from "@pages/payment/core/registerText";
 
-interface RegisterLayoutProps {
-  title: string;
-  button: string;
-  content: string;
-}
-export default function RegisterLayout(props: RegisterLayoutProps) {
-  const { title, button, content } = props;
+export default function RegisterLayout() {
   return (
-    <RegisterLayoutContainer>
-      <TitleContainer>
-        <Title>{title}</Title>
-        <RegisterButton button={button} />
-      </TitleContainer>
-      <Content>{content}</Content>
-    </RegisterLayoutContainer>
+    <>
+      {REGISTER_TEXT.map((item) => (
+        <RegisterLayoutContainer key={item.title}>
+          <TitleContainer>
+            <Title>{item.title}</Title>
+            <RegisterButton button={item.buttonText} />
+          </TitleContainer>
+          <Content>{item.content}</Content>
+        </RegisterLayoutContainer>
+      ))}
+    </>
   );
 }
 
