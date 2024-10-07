@@ -20,7 +20,7 @@ export default function HeaderRight(props: HeaderRightProps) {
     return (
       <Container>
         <MembershipButton />
-        <LoginButton />
+        {/* <LoginButton /> */}
       </Container>
     );
 
