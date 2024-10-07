@@ -1,4 +1,4 @@
-import LoginButton from "@components/buttons/LoginButton";
+// import LoginButton from "@components/buttons/LoginButton";
 import { commonFlex } from "style/commonStyle";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
@@ -20,7 +20,7 @@ export default function HeaderRight(props: HeaderRightProps) {
     return (
       <Container>
         <MembershipButton />
-        <LoginButton />
+        {/* <LoginButton /> */}
       </Container>
     );
 
