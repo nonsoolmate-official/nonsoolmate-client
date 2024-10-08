@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
         <HeaderLeft />
         <HeaderRight handleHomeMemberInfoToggle={handleHomeMemberInfoToggle} showMemberInfo={showMemberInfo} />
       </Container>
-      {showMemberInfo && <UserProfileModal />}
+      {showMemberInfo && <UserProfileModal onClose={() => setShowMemberInfo(false)} />}
     </>
   );
 }

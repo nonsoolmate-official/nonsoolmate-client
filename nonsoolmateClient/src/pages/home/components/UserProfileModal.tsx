@@ -8,7 +8,11 @@ import { USER } from "@pages/home/constants/dummy";
 import { useRef } from "react";
 import { media } from "style/responsiveStyle";
 
-export default function UserProfileModal({ onClose }: { onClose: () => void }) {
+interface UserInfoModalProps {
+  onClose: () => void;
+}
+
+export default function UserProfileModal({ onClose }: UserInfoModalProps) {
   const navigate = useNavigate();
   const modalRef = useRef(null);
 
