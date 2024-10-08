@@ -57,7 +57,6 @@ const InfoWrapper = styled.div`
   display: flex;
 
   width: 100%;
-  height: 100%;
 
   flex-direction: column;
 `;
@@ -86,6 +85,8 @@ const MembershipInfoLayout = styled.section`
   flex-direction: column;
 
   gap: 2.4rem;
+
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
 `;
 
 const MembershipInfoContainer = styled.div`

@@ -106,6 +106,7 @@ const PaymentInfoLayout = styled.section`
 
   border-radius: 0.8rem;
   background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
 `;
 
 const Payment = styled.div`

@@ -43,6 +43,8 @@ const Mypage = styled.div`
   width: 100%;
   height: 100vh;
 
+  background-color: ${({ theme }) => theme.colors.grey_50};
+
   ${media.tablet} {
     flex-direction: column;
   }
