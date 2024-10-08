@@ -73,8 +73,8 @@ const UserProfileWrapper = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 0.8rem;
+  position: fixed;
+  top: 7.5rem;
   right: 21.5rem;
   z-index: 2;
   width: 22.8rem;
