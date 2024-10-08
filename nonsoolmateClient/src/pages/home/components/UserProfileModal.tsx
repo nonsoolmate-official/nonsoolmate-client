@@ -98,6 +98,8 @@ const MemberInfo = styled.div`
 const Profile = styled.img`
   width: 4.4rem;
   height: 4.4rem;
+
+  object-fit: cover;
 `;
 
 const Name = styled.p`
