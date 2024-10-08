@@ -131,7 +131,6 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const MemberInfoContainer = styled.form`
