@@ -2,7 +2,7 @@ import styled from "styled-components";
 import HeaderLeft from "./HeaderLeft";
 import HeaderRight from "./HeaderRight";
 
-import HomeMemberInfoToggle from "@pages/home/components/HomeMemberInfoToggle";
+import UserProfileModal from "@pages/home/components/UserProfileModal";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
         <HeaderLeft />
         <HeaderRight handleHomeMemberInfoToggle={handleHomeMemberInfoToggle} showMemberInfo={showMemberInfo} />
       </Container>
-      {showMemberInfo && <HomeMemberInfoToggle />}
+      {showMemberInfo && <UserProfileModal />}
     </>
   );
 }
