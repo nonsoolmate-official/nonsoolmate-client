@@ -1,3 +1,4 @@
+import Mentor from "@pages/mypage/components/Mentor";
 import TabletSideNav from "@pages/mypage/components/TabletSideNav";
 import { Menu } from "@pages/mypage/types/menu";
 import { useState } from "react";
@@ -21,6 +22,7 @@ export default function Index() {
         {isIpadSize && <TabletSideNav menu={menu} setMenu={setMenu} />}
 
         {!isIpadSize && <>{menu === "회원 정보" && <MemberInfo />}</>}
+        {!isIpadSize && <>{menu === "담당 선생님" && <Mentor />}</>}
       </Mypage>
     </MypageContainer>
   );
