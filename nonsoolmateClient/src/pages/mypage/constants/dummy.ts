@@ -1,4 +1,14 @@
-export const MEMBERSHIP_DATA = {
+interface Membership {
+  name: string;
+  startDate: string;
+  endDate: string;
+}
+
+interface MembershipData {
+  membership: Membership;
+}
+
+export const MEMBERSHIP_DATA: MembershipData = {
   membership: {
     name: "베이직 플랜",
     startDate: "2024.01.01",
@@ -6,7 +16,26 @@ export const MEMBERSHIP_DATA = {
   },
 };
 
-export const PAYMENT_DATA = {
+interface Payment {
+  dueDate: string;
+  paymentMethod: string;
+  couponInfo?: {
+    name: string;
+    discount: string;
+  };
+  discountEvent?: {
+    name: string;
+    discount: string;
+  };
+  totalDiscount: string;
+  totalPrice: string;
+}
+
+interface PaymentData {
+  payment: Payment;
+}
+
+export const PAYMENT_DATA: PaymentData = {
   payment: {
     dueDate: "2024.01.01",
     paymentMethod: "신한카드 **** 4532",
