@@ -63,7 +63,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
           border: 1px solid ${({ theme }) => theme.colors.grey_300};
 
           &:hover {
-            background-color: ${({ theme }) => theme.colors.light_blue};
+            background-color: ${({ theme }) => theme.colors.grey_50};
 
             transition: all 0.2s ease-in-out;
           }
