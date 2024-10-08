@@ -1,0 +1,13 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="checkBtn">
+<g clip-path="url(#clip0_2341_13367)">
+<rect id="bg" y="0.000488281" width="20" height="20" rx="2.5" fill="#6478FF"/>
+<path id="Vector 26009" d="M5.5 9.5L9 13L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2341_13367">
+<rect width="20" height="20" rx="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

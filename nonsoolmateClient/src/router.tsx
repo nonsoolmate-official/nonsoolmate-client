@@ -1,19 +1,22 @@
-import Error from "error";
-import TakeTest from "takeTest";
+import Correction from "@pages/answer/correction";
+import Explanation from "@pages/answer/explanation";
+import Error from "@pages/error";
+import Home from "@pages/home";
+import HomePractice from "@pages/home/homePractice/HomePractice";
+import HomeStudy from "@pages/home/homeStudy/HomeStudy";
+import HomeTest from "@pages/home/homeTest/HomeTest";
+import Landing from "@pages/landing";
+import Loading from "@pages/loading";
+import Membership from "@pages/membership";
+import MyPage from "@pages/mypage";
+import Payment from "@pages/payment";
+import Fail from "@pages/payment/components/Fail";
+import Success from "@pages/payment/components/Success";
+import Signup from "@pages/signup";
+import RedirectPage from "@pages/socialLogin";
+import Interceptors from "@pages/socialLogin/components/Interceptors";
+import TakeTest from "@pages/takeTest";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "home";
-import HomePractice from "home/homePractice/HomePractice";
-import HomeStudy from "home/homeStudy/HomeStudy";
-import HomeTest from "home/homeTest/HomeTest";
-import Correction from "answer/correction";
-import Explanation from "answer/explanation";
-import OnBoarding from "onboarding";
-import Signup from "signup";
-import Membership from "membership";
-import RedirectPages from "socialLogin";
-import Loading from "loading";
-import Interceptors from "socialLogin/components/Interceptors";
-import Mypage from "mypage";
 
 export const router = createBrowserRouter([
   {
@@ -22,14 +25,17 @@ export const router = createBrowserRouter([
     errorElement: <Loading />,
 
     children: [
-      { path: "", element: <OnBoarding /> },
+      { path: "", element: <Landing /> },
       {
         path: "/home",
         element: <Home />,
         children: [
           { path: "/home/practice", element: <HomePractice /> },
           { path: "/home/study", element: <HomeStudy /> },
-          { path: "/home/test", element: <HomeTest /> },
+          {
+            path: "/home/test",
+            element: <HomeTest />,
+          },
         ],
       },
       { path: "/takeTest", element: <TakeTest /> },
@@ -37,10 +43,13 @@ export const router = createBrowserRouter([
       { path: "/explanation", element: <Explanation /> },
       { path: "/signup", element: <Signup /> },
       { path: "/membership", element: <Membership /> },
-      { path: "/login/oauth2/code/naver", element: <RedirectPages /> },
+      { path: "/login/oauth2/code/naver", element: <RedirectPage /> },
       { path: "/loading", element: <Loading /> },
       { path: "/error", element: <Error /> },
-      { path: "/mypage", element: <Mypage /> },
+      { path: "/mypage", element: <MyPage /> },
+      { path: "/payment", element: <Payment /> },
+      { path: "/fail", element: <Fail /> },
+      { path: "/success", element: <Success /> },
     ],
   },
 ]);

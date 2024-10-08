@@ -15,6 +15,7 @@ const colors = {
   grey_200: "#E2E4E8",
   grey_100: "#ECEDF0",
   grey_50: "#F3F4F6",
+  grey_8: "#1D1D1F",
   white: "#FFFFFF",
 
   main_blue: "#6478FF",
@@ -128,6 +129,12 @@ const fonts = {
   Body8: css`
     font-family: SUIT, "Apple SD Gothic Neo";
     font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+  `,
+  Caption1: css`
+    font-family: SUIT, "Apple SD Gothic Neo";
+    font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.6rem;
   `,

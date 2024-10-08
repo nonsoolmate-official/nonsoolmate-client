@@ -1,15 +1,16 @@
+import styled from "styled-components";
 import HeaderLeft from "./HeaderLeft";
 import HeaderRight from "./HeaderRight";
-import styled from "styled-components";
-import HomeMemberInfoToggle from "home/components/HomeMemberInfoToggle";
+
+import HomeMemberInfoToggle from "@pages/home/components/HomeMemberInfoToggle";
 import { useState } from "react";
 
 interface HeaderProps {
-  isOnboarding: boolean;
+  isLanding: boolean;
 }
 
 export default function Header(props: HeaderProps) {
-  const { isOnboarding } = props;
+  const { isLanding } = props;
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
 
   function handleHomeMemberInfoToggle() {
@@ -17,7 +18,7 @@ export default function Header(props: HeaderProps) {
   }
   return (
     <>
-      <Container $isOnboarding={isOnboarding}>
+      <Container $isLanding={isLanding}>
         <HeaderLeft />
         <HeaderRight handleHomeMemberInfoToggle={handleHomeMemberInfoToggle} showMemberInfo={showMemberInfo} />
       </Container>
@@ -26,11 +27,12 @@ export default function Header(props: HeaderProps) {
   );
 }
 
-const Container = styled.header<{ $isOnboarding: boolean }>`
+const Container = styled.header<{ $isLanding: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 6.4rem;
-  box-shadow: ${({ $isOnboarding }) => ($isOnboarding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
+  border-bottom: 1px solid #ecedf0;
+  box-shadow: ${({ $isLanding }) => ($isLanding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
 `;
