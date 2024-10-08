@@ -15,13 +15,6 @@ export default function UnivChip({ logo = "", children }: UnivChipProps) {
   );
 }
 
-const Logo = styled.img`
-  width: 2.4rem;
-  height: 2.4rem;
-
-  object-fit: cover;
-`;
-
 const Chip = styled.div`
   display: flex;
   align-items: center;
@@ -30,4 +23,11 @@ const Chip = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.grey_100};
   border-radius: 0.4rem;
   color: ${({ theme }) => theme.colors.grey_800};
+`;
+
+const Logo = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+
+  object-fit: cover;
 `;
