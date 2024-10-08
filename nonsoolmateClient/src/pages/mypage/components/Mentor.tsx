@@ -1,4 +1,5 @@
 import { PassIc } from "@assets/index";
+import Button from "@components/buttons/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import { MENTOR } from "@pages/mypage/constants/dummy";
 import styled from "styled-components";
@@ -7,38 +8,51 @@ export default function Mentor() {
   return (
     <MentorWrapper>
       <Title>담당 선생님</Title>
-      <Discription> {MENTOR.student}님의 목표대학에 가장 적합한 선생님이에요</Discription>
-      <MentorInfoLayout>
-        <MentorProfileContainer>
-          <Profile src={MENTOR.teacher.profile} />
-          <MentorProfileBox>
-            <Name>{MENTOR.teacher.name} 선생님</Name>
-            {MENTOR.teacher.isPass && (
-              <Badge>
-                <PassIc />
-                논술 합격 인증
-              </Badge>
-            )}
-          </MentorProfileBox>
-        </MentorProfileContainer>
-        <Divider />
-        <MentorInfoContainer>
-          <SubTitle>선생님 소개</SubTitle>
-          <Content>{MENTOR.discription}</Content>
-        </MentorInfoContainer>
-        <MentorInfoContainer>
-          <SubTitle>첨삭 전문 대학교</SubTitle>
-          <Content>
-            <UnivChipBox>
-              {MENTOR.universities.map((univ, index) => (
-                <UnivChip key={index} logo={univ.logo}>
-                  {univ.name}
-                </UnivChip>
-              ))}
-            </UnivChipBox>
-          </Content>
-        </MentorInfoContainer>
-      </MentorInfoLayout>
+      {MENTOR.teacher?.status === "matched" ? (
+        <>
+          <Discription> {MENTOR.student}님의 목표대학에 가장 적합한 선생님이에요</Discription>
+          <MentorInfoLayout>
+            <MentorProfileContainer>
+              <Profile src={MENTOR.teacher?.profile} />
+              <MentorProfileBox>
+                <Name>{MENTOR.teacher?.name} 선생님</Name>
+                {MENTOR.teacher?.isPass && (
+                  <Badge>
+                    <PassIc />
+                    논술 합격 인증
+                  </Badge>
+                )}
+              </MentorProfileBox>
+            </MentorProfileContainer>
+            <Divider />
+            <MentorInfoContainer>
+              <SubTitle>선생님 소개</SubTitle>
+              <Content>{MENTOR.description}</Content>
+            </MentorInfoContainer>
+            <MentorInfoContainer>
+              <SubTitle>첨삭 전문 대학교</SubTitle>
+              <Content>
+                <UnivChipBox>
+                  {MENTOR.universities.map((univ, index) => (
+                    <UnivChip key={index} logo={univ.logo}>
+                      {univ.name}
+                    </UnivChip>
+                  ))}
+                </UnivChipBox>
+              </Content>
+            </MentorInfoContainer>
+          </MentorInfoLayout>
+        </>
+      ) : MENTOR.teacher?.status === "pending" ? (
+        <NullMentorWrapper>첨삭 담당 선생님을 배정 중이에요. 배정은 영업일 기준 1일 이내에 완료돼요.</NullMentorWrapper>
+      ) : (
+        <NullMentorWrapper>
+          <NullMentorContainer>
+            <Content style={{ margin: 0 }}>아직 배정받은 선생님이 없어요.</Content>
+            <Button>선생님 배정 받기</Button>
+          </NullMentorContainer>
+        </NullMentorWrapper>
+      )}
     </MentorWrapper>
   );
 }
@@ -144,4 +158,25 @@ const Content = styled.p`
 const UnivChipBox = styled.div`
   display: flex;
   gap: 1.2rem;
+`;
+
+const NullMentorWrapper = styled.section`
+  width: 100%;
+  padding: 1.6rem 2.4rem;
+  margin-top: 2rem;
+
+  border-radius: 0.8rem;
+
+  color: ${({ theme }) => theme.colors.grey_700};
+  background-color: ${({ theme }) => theme.colors.grey_100};
+
+  ${({ theme }) => theme.fonts.Body4};
+`;
+
+const NullMentorContainer = styled.div`
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
 `;

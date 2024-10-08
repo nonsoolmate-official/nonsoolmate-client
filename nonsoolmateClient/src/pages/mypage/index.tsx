@@ -35,6 +35,8 @@ const MypageContainer = styled.section`
   height: 100vh;
 
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const Mypage = styled.div`
