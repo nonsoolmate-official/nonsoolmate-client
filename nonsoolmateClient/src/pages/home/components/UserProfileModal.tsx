@@ -3,11 +3,16 @@ import styled from "styled-components";
 
 import { MonthlyMembershipGrayIc } from "@assets/index";
 import Button from "@components/buttons/Button";
+import useOutsideClick from "@hooks/useOutsideClick";
 import { USER } from "@pages/home/constants/dummy";
+import { useRef } from "react";
 import { media } from "style/responsiveStyle";
 
-export default function UserProfileModal() {
+export default function UserProfileModal({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
+  const modalRef = useRef(null);
+
+  useOutsideClick(modalRef, onClose);
 
   // const getTicketResponse = useGetTicket();
   // if (!getTicketResponse) return <></>;
@@ -18,7 +23,7 @@ export default function UserProfileModal() {
 
   return (
     <BackgroundView>
-      <MemberInfoToggleView>
+      <UserProfileWrapper ref={modalRef}>
         <MemberInfo>
           <Profile src={USER.avatarUrl} />
           <Name>{USER.userName} 님</Name>
@@ -49,7 +54,7 @@ export default function UserProfileModal() {
           onClick={() => navigate("/signup")}>
           로그아웃
         </Button>
-      </MemberInfoToggleView>
+      </UserProfileWrapper>
     </BackgroundView>
   );
 }
@@ -58,7 +63,7 @@ const BackgroundView = styled.section`
   position: relative;
 `;
 
-const MemberInfoToggleView = styled.section`
+const UserProfileWrapper = styled.aside`
   ${({ theme }) => theme.effects.modal_shadow};
 
   display: flex;

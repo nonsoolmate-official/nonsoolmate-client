@@ -12,9 +12,6 @@ import useGetName from "../hooks/useGetName";
 export default function HomeHeader() {
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
-  const handleHomeMemberInfoToggle = () => {
-    setShowMemberInfo((open) => !open);
-  };
   const navigate = useNavigate();
 
   const getNameResponse = useGetName();
@@ -23,6 +20,12 @@ export default function HomeHeader() {
   const {
     data: { memberName },
   } = getNameResponse;
+
+  const handleHomeMemberInfoToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    setShowMemberInfo((open) => !open);
+  };
 
   return (
     <>
@@ -45,7 +48,7 @@ export default function HomeHeader() {
           </LoginInfoButton>
         </HeaderInfo>
       </Header>
-      {showMemberInfo && <UserProfileModal />}
+      {showMemberInfo && <UserProfileModal onClose={() => setShowMemberInfo(false)} />}
     </>
   );
 }
