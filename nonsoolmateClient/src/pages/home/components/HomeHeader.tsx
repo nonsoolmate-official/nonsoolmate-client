@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
-import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 
+import UserProfileModal from "@pages/home/components/UserProfileModal";
 import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
 import useGetName from "../hooks/useGetName";
@@ -45,7 +45,7 @@ export default function HomeHeader() {
           </LoginInfoButton>
         </HeaderInfo>
       </Header>
-      {showMemberInfo && <HomeMemberInfoToggle />}
+      {showMemberInfo && <UserProfileModal />}
     </>
   );
 }
