@@ -91,7 +91,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
         return css`
           width: 14.4rem;
         `;
-      case "md":
+      case "lg":
         return css`
           width: 19.9rem;
         `;
