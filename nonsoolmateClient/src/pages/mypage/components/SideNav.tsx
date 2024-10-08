@@ -77,8 +77,6 @@ const NavHeader = styled.header`
 const MenuList = styled.li<{ $isActive: boolean }>`
   padding: 0.8rem;
 
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
-
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.main_blue : theme.colors.grey_400)};
   ${({ theme }) => theme.fonts.Body3};
 
@@ -89,5 +87,9 @@ const MenuList = styled.li<{ $isActive: boolean }>`
     color: ${({ theme }) => theme.colors.main_blue};
 
     transition: color 0.5s ease-in-out;
+  }
+
+  &:not(:nth-last-child(1)) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
   }
 `;
