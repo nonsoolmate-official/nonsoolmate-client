@@ -3,7 +3,7 @@ import styled from "styled-components";
 import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
 import { REGISTER_TEXT } from "@pages/payment/core/registerText";
-import CouponModal from "../CouponModal";
+import CouponModal from "../coupon/CouponModal";
 import { SmallCouponIc } from "@assets/index";
 
 interface RegisterLayoutProps {

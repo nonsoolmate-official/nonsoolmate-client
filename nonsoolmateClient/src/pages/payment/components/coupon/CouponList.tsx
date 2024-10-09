@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { CouponListResponse, CouponsType } from "../api/getCoupon";
-import { checkCouponType, convertDate } from "../utils/coupon";
+
 import { EmptyCircleIc, FilledCircleIc } from "@assets/index";
+import { checkCouponType, convertDate } from "@pages/payment/utils/coupon";
+import { CouponListResponse, CouponsType } from "@pages/payment/api/getCoupon";
 
 interface ListProps {
   couponExist?: boolean;
