@@ -1,6 +1,6 @@
 import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
 import { AGREEMENT_TEXT } from "@pages/payment/core/agreementText";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -12,19 +12,15 @@ export default function Agreements({ handleAgreements }: AgreementsProps) {
   const [isAgreeMinorConsent, setIsAgreeMinorConsent] = useState(false);
 
   function clickTermsAgreement() {
-    setIsAgreeTerms(!isAgreeTerms);
+    const updatedTermsAgreement = !isAgreeTerms;
+    setIsAgreeTerms(updatedTermsAgreement);
+    handleAgreements(updatedTermsAgreement && isAgreeMinorConsent);
   }
   function clickMinorConsentAgreement() {
-    setIsAgreeMinorConsent(!isAgreeMinorConsent);
+    const updatedMinorConsent = !isAgreeMinorConsent;
+    setIsAgreeMinorConsent(updatedMinorConsent);
+    handleAgreements(isAgreeTerms && updatedMinorConsent);
   }
-
-  useEffect(() => {
-    if (isAgreeTerms && isAgreeMinorConsent) {
-      handleAgreements(true);
-    } else {
-      handleAgreements(false);
-    }
-  }, [isAgreeTerms, isAgreeMinorConsent]);
 
   return (
     <AgreementContainer>
