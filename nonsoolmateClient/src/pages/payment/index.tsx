@@ -8,7 +8,6 @@ import HomeHeader from "@pages/home/components/HomeHeader";
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import CouponModal from "./components/CouponModal";
 
 const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
 const customerKey = uuidv4();
@@ -45,24 +44,25 @@ export default function Payment() {
   function handlePlanChange(newPlanId: number) {
     setSelectedPlan(newPlanId);
   }
-  /*--쿠폰-- */
-  const [openModal, setOpenModal] = useState(false);
+
+  // -------- 쿠폰 로직
+  const [isCouponOpen, setIsCouponOpen] = useState(false);
   const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
   const [dcInfo, setDcInfo] = useState("");
 
   function closeCouponModal() {
-    setOpenModal(false);
+    setIsCouponOpen(false);
   }
 
   function openCouponModal() {
-    setOpenModal(true);
+    setIsCouponOpen(true);
   }
 
   function handleCouponTxtStatus(coupon: string, dcInfo: string) {
     setCouponTxt(coupon);
     setDcInfo(dcInfo);
   }
-  /** */
+  // ---------
 
   const [amount, setAmount] = useState<Amount>({
     currency: "KRW",
@@ -156,19 +156,17 @@ export default function Payment() {
         <PaymentLeftContainer>
           <Title>정기결제</Title>
           <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
-          <RegisterLayout />
+          <RegisterLayout
+            openCouponModal={openCouponModal}
+            closeCouponModal={closeCouponModal}
+            handleCouponTxtStatus={handleCouponTxtStatus}
+            isCouponOpen={isCouponOpen}
+            couponTxt={couponTxt}
+            dcInfo={dcInfo}
+          />
         </PaymentLeftContainer>
         <PaymentInfo selectedPlan={selectedPlan} />
       </PaymentContainer>
-      {/*----쿠폰---------*/}
-      <button type="button" onClick={openCouponModal}>
-        쿠폰 사용
-      </button>
-      <CouponInfo>
-        <h2>{couponTxt}</h2>
-        <h2>{dcInfo}</h2>
-      </CouponInfo>
-      {openModal && <CouponModal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
     </>
   );
 }
