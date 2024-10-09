@@ -14,13 +14,21 @@ interface ModalProps {
 export default function SelectUnivModal(props: ModalProps) {
   const { changeSelectUnivModalStatus, changeRandomMatchModalStatus, changeQuitModalStatus } = props;
 
-  const [checkedUnivs, setCheckedUnivs] = useState<number[]>([]); // Array to track checked universities
+  const [checkedUnivs, setCheckedUnivs] = useState<number[]>([]);
+  const [isCheckedNone, setIsCheckedNone] = useState(false);
+  const [isOverSix, setIsOverSix] = useState(false);
 
   const handleCheck = (id: number) => {
+    setIsCheckedNone(false);
+    setIsOverSix(false);
     if (checkedUnivs.includes(id)) {
       setCheckedUnivs(checkedUnivs.filter((univId) => univId !== id));
     } else {
-      setCheckedUnivs([...checkedUnivs, id]);
+      if (checkedUnivs.length < 6) {
+        setCheckedUnivs([...checkedUnivs, id]);
+      } else {
+        setIsOverSix(true);
+      }
     }
   };
 
@@ -29,9 +37,13 @@ export default function SelectUnivModal(props: ModalProps) {
     changeRandomMatchModalStatus(true);
   }
 
-  function quitMatchModalStatus() {
-    changeSelectUnivModalStatus(false);
-    changeQuitModalStatus(true);
+  function handleFinishSelect() {
+    if (checkedUnivs.length === 0) {
+      setIsCheckedNone(true);
+    } else {
+      changeSelectUnivModalStatus(false);
+      changeQuitModalStatus(true);
+    }
   }
 
   return (
@@ -42,6 +54,8 @@ export default function SelectUnivModal(props: ModalProps) {
           합격 이력이 가장 많이 일치하는 선생님을 영업일 기준 1일 이내에 배정해 드릴게요. 학생의 목표 대학을
           선택해주세요. <RedText>(최대 6개)</RedText>
         </SubTitle>
+        {isCheckedNone && <RedText>* 목표 대학을 1개 이상 선택해주세요.</RedText>}
+        {isOverSix && <RedText>* 최대 6개만 선택이 가능합니다.</RedText>}
         <Container>
           {UNIV_LIST.map((data) => {
             const { id, univ, img, details } = data;
@@ -51,7 +65,7 @@ export default function SelectUnivModal(props: ModalProps) {
               <CheckBoxButton key={id} type="button" $isChecked={isChecked} onClick={() => handleCheck(id)}>
                 <UniversityBox>
                   <Image as={img} />
-                  <University>{univ}</University>
+                  <University>{univ}학교</University>
                   <Category>{details}</Category>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <CheckEmptyIcon />}</CheckBox>
@@ -63,7 +77,7 @@ export default function SelectUnivModal(props: ModalProps) {
           <RandomButton type="button" onClick={changeRandomModalStatus}>
             임의로 배정받기
           </RandomButton>
-          <FinishSelectButton type="button" onClick={quitMatchModalStatus}>
+          <FinishSelectButton type="button" onClick={handleFinishSelect}>
             선택완료
           </FinishSelectButton>
         </ModalButtonBox>
@@ -112,6 +126,7 @@ const Text = styled.p`
 const SubTitle = styled.p`
   ${({ theme }) => theme.fonts.Body6};
 
+  margin-bottom: 2rem;
   color: ${({ theme }) => theme.colors.grey_800};
 `;
 
@@ -126,7 +141,7 @@ const Container = styled.section`
   flex-wrap: wrap;
   gap: 1.4rem 1.2rem;
   width: 100%;
-  margin-top: 4.4rem;
+  margin-top: 2rem;
   margin-bottom: 4.4rem;
   grid-template-columns: repeat(2, 1fr);
 `;
