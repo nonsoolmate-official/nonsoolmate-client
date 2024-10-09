@@ -4,7 +4,8 @@ import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
 import { REGISTER_TEXT } from "@pages/payment/core/registerText";
 import CouponModal from "../coupon/CouponModal";
-import { SmallCouponIc } from "@assets/index";
+import { CardIc, SmallCouponIc } from "@assets/index";
+import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 
 interface RegisterLayoutProps {
   openCouponModal: () => void;
@@ -19,6 +20,7 @@ interface RegisterLayoutProps {
 export default function RegisterLayout(props: RegisterLayoutProps) {
   const { openCouponModal, closeCouponModal, registerCard, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } =
     props;
+  const response = useGetCardInfo();
 
   return (
     <>
@@ -40,6 +42,11 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
                 </CouponTxt>
                 <DcInfo>{dcInfo}</DcInfo>
               </Coupon>
+            ) : response ? (
+              <CardInfo>
+                <CardIc />
+                {response.cardCompany} {response.cardNumber}
+              </CardInfo>
             ) : (
               item.content
             )}
@@ -100,4 +107,10 @@ const DcInfo = styled.p`
 const SmallCouponIcon = styled(SmallCouponIc)`
   width: 2rem;
   height: 2rem;
+`;
+
+const CardInfo = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
 `;
