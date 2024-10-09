@@ -4,6 +4,8 @@ import PaymentInfo from "./components/paymentInfo/PaymentInfo";
 import OrderInfo from "./components/orderInfo/OrderInfo";
 import RegisterLayout from "./components/register/RegisterLayout";
 import { useState } from "react";
+import { media } from "style/responsiveStyle";
+import HomeHeader from "@pages/home/components/HomeHeader";
 
 export default function Payment() {
   const location = useLocation();
@@ -15,14 +17,17 @@ export default function Payment() {
   }
 
   return (
-    <PaymentContainer>
-      <PaymentLeftContainer>
-        <Title>정기결제</Title>
-        <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
-        <RegisterLayout />
-      </PaymentLeftContainer>
-      <PaymentInfo selectedPlan={selectedPlan} />
-    </PaymentContainer>
+    <>
+      <HomeHeader />
+      <PaymentContainer>
+        <PaymentLeftContainer>
+          <Title>정기결제</Title>
+          <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <RegisterLayout />
+        </PaymentLeftContainer>
+        <PaymentInfo selectedPlan={selectedPlan} />
+      </PaymentContainer>
+    </>
   );
 }
 
@@ -32,6 +37,11 @@ const PaymentContainer = styled.section`
   gap: 2.4rem;
   align-self: flex-start;
   margin: 4.8rem 21.5rem;
+  ${media.tablet} {
+    flex-direction: column;
+    gap: 5.6rem;
+    margin: 4.8rem 3.2rem;
+  }
 `;
 
 const PaymentLeftContainer = styled.div`

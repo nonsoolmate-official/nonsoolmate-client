@@ -7,6 +7,7 @@ import DiscountDetail from "./DiscountDetail";
 import Overview from "./Overview";
 import Agreements from "./Agreements";
 import { calculateStandardDiscount } from "@pages/payment/utils/calculateStandardDiscount";
+import { media } from "style/responsiveStyle";
 
 interface PaymentInfoProps {
   selectedPlan: number;
@@ -60,6 +61,10 @@ const PaymentInfoContainer = styled.aside`
   ${({ theme }) => theme.effects.container_shadow};
 
   user-select: none;
+  ${media.tablet} {
+    width: 100%;
+    margin: 0 0 7.2rem;
+  }
 `;
 
 const Title = styled.h1`
