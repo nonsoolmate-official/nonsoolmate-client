@@ -108,15 +108,16 @@ import Univ9Ic from "./icon/univ9Ic.svg?react";
 import PracticeIc from "./icon/practiceIc.svg?react";
 import TakeTestIc from "./icon/takeTestIc.svg?react";
 
+import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
 import CloseIc from "./icon/closeIc.svg?react";
 import CouponIc from "./icon/couponIc.svg?react";
-import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
 import CardIc from "./icon/cardIc.svg?react";
 
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
 
+import PassIc from "./icon/passIc.svg?react";
 import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 
 export {
@@ -125,14 +126,14 @@ export {
   Advan3Ic,
   Advan4Ic,
   Advan5Ic,
-  BorderIc,
   BasicPlanIc,
+  BorderIc,
   CheckBtnIc,
   CheckCircleBtnIc,
+  CheckEmptyIc,
   CheckSmallIc,
   CloseIc,
   CouponIc,
-  CheckEmptyIc,
   CardIc,
   DiscountIc,
   DisplayIc,
@@ -160,6 +161,7 @@ export {
   MembershipIc,
   NaverLoginIc,
   NotCheckBtnIc,
+  PassIc,
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,
@@ -167,10 +169,10 @@ export {
   PrecautionNumOneIc,
   PrecautionNumThreeIc,
   PrecautionNumTwoIc,
+  PremiumPlanIc,
   PresentIc,
   PrintCircleIc,
   PrintIc,
-  PremiumPlanIc,
   QnaToogleCloseIc,
   QnaToogleOpenIc,
   RadioButtonCheckIc,
@@ -187,6 +189,7 @@ export {
   ShowExplanationTagIc,
   ShowQuestionTagIc,
   SignupIc,
+  SmallCouponIc,
   StudyActiveIc,
   StudyDisabledIc,
   TakeTestIc,
@@ -206,5 +209,4 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
-  SmallCouponIc,
 };
