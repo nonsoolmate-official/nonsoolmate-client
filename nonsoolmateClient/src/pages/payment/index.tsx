@@ -5,36 +5,7 @@ import OrderInfo from "./components/orderInfo/OrderInfo";
 import RegisterLayout from "./components/register/RegisterLayout";
 import { media } from "style/responsiveStyle";
 import HomeHeader from "@pages/home/components/HomeHeader";
-import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
-const customerKey = uuidv4();
-
-interface Amount {
-  currency: string;
-  value: number;
-}
-
-interface WidgetPaymentMethodWidget {
-  //
-}
-
-interface PaymentWidgets {
-  setAmount(amount: Amount): Promise<void>;
-  renderPaymentMethods(options: { selector: string; variantKey: string }): Promise<WidgetPaymentMethodWidget>;
-  renderAgreement(options: { selector: string; variantKey: string }): Promise<void>;
-  requestPayment(options: {
-    orderId: string;
-    orderName: string;
-    successUrl: string;
-    failUrl: string;
-    customerEmail: string;
-    customerName: string;
-    customerMobilePhone: string;
-  }): Promise<void>;
-}
+import { useState } from "react";
 
 export default function Payment() {
   const location = useLocation();
@@ -63,91 +34,6 @@ export default function Payment() {
     setDcInfo(dcInfo);
   }
   // ---------
-
-  const [amount, setAmount] = useState<Amount>({
-    currency: "KRW",
-    value: 50_000,
-  });
-  const [ready, setReady] = useState(false);
-  const [widgets, setWidgets] = useState<PaymentWidgets | null>(null);
-
-  const generateRandomString = () => window.btoa(Math.random().toString()).slice(0, 20);
-  useEffect(() => {
-    async function fetchPaymentWidgets() {
-      // ------  결제위젯 초기화 ------
-      const tossPayments = await loadTossPayments(clientKey);
-      // 회원 결제
-      const paymentWidgets = tossPayments.widgets({
-        customerKey,
-      });
-
-      const customWidgets: PaymentWidgets = {
-        setAmount: async (amount: Amount) => {
-          await paymentWidgets.setAmount(amount);
-        },
-        renderPaymentMethods: async (options: { selector: string; variantKey: string }) => {
-          return await paymentWidgets.renderPaymentMethods(options);
-        },
-        renderAgreement: async (options: { selector: string; variantKey: string }) => {
-          await paymentWidgets.renderAgreement(options);
-        },
-        requestPayment: async (options: {
-          orderId: string;
-          orderName: string;
-          successUrl: string;
-          failUrl: string;
-          customerEmail: string;
-          customerName: string;
-          customerMobilePhone: string;
-        }) => {
-          await paymentWidgets.requestPayment(options);
-        },
-      };
-
-      setWidgets(customWidgets);
-    }
-
-    fetchPaymentWidgets();
-  }, [clientKey, customerKey]);
-
-  useEffect(() => {
-    async function renderPaymentWidgets() {
-      if (widgets == null) {
-        return;
-      }
-      // ------ 주문의 결제 금액 설정 ------
-      await widgets.setAmount(amount);
-
-      await Promise.all([
-        // ------  결제 UI 렌더링 ------
-        widgets
-          .renderPaymentMethods({
-            selector: "#payment-method",
-            variantKey: "DEFAULT",
-          })
-          .catch(console.error),
-        // ------  이용약관 UI 렌더링 ------
-        widgets
-          .renderAgreement({
-            selector: "#agreement",
-            variantKey: "AGREEMENT",
-          })
-          .catch(console.error),
-      ]);
-
-      setReady(true);
-    }
-
-    renderPaymentWidgets();
-  }, [widgets]);
-
-  useEffect(() => {
-    if (widgets == null) {
-      return;
-    }
-
-    widgets.setAmount(amount).catch(console.error);
-  }, [widgets, amount]);
 
   return (
     <>
