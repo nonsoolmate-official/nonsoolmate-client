@@ -193,8 +193,3 @@ const PaymentLeftContainer = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.fonts.Headline4}
 `;
-
-const CouponInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
