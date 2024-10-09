@@ -55,23 +55,16 @@ export default function MembershipInfo() {
 
 const InfoWrapper = styled.div`
   display: flex;
-
-  width: 100%;
-
   flex-direction: column;
+  width: 100%;
 `;
 
 const MembershipWrapper = styled.div`
   display: flex;
-
-  width: 100%;
-
   flex-direction: column;
-
-  padding: 2.4rem 21.5rem 0rem 2.4rem;
-
   gap: 2rem;
-
+  width: 100%;
+  padding: 2.4rem 21.5rem 0 2.4rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
@@ -81,40 +74,29 @@ const Title = styled.h1`
 
 const MembershipInfoLayout = styled.section`
   display: flex;
-
   flex-direction: column;
-
   gap: 2.4rem;
-
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
 
 const MembershipInfoContainer = styled.div`
   display: flex;
-
   flex-direction: column;
-
-  padding: 2.4rem;
-
-  border-radius: 0.8rem;
-
   gap: 2.8rem;
-
+  padding: 2.4rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const Membership = styled.div`
   display: flex;
-
   gap: 2rem;
 `;
 
 const MembershipInfoBox = styled.div`
   display: flex;
-
-  align-items: center;
-
   justify-content: space-between;
+  align-items: center;
 `;
 
 const InfoTitle = styled.h2`
@@ -127,7 +109,6 @@ const InfoTitle = styled.h2`
 
 const CurrentMembership = styled.div`
   display: flex;
-
   gap: 0.8rem;
 `;
 
@@ -137,14 +118,10 @@ const Info = styled.div`
 
 const NullMembershipContainer = styled.div`
   display: flex;
-
-  padding: 1.6rem 2.4rem;
-
-  align-items: center;
   justify-content: space-between;
-
-  border-radius: 0.8rem;
-
+  align-items: center;
+  padding: 1.6rem 2.4rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_100};
 `;
 
