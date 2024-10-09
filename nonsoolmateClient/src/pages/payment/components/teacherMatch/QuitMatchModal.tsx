@@ -28,7 +28,7 @@ export default function QuitMatchModal(props: ModalProps) {
           <SubTitle>이제 나의 시험장에서 대학별 시험 응시하고,</SubTitle>
           <SubTitle>선생님께 첨삭 받을 답안지를 제출해 보세요.</SubTitle>
         </SubTitleBox>
-        <SubTitle>논술메이트를 100%로 활용하려면? 이용자 가이드북</SubTitle>
+        <Phrase>논술메이트를 100%로 활용하려면? 이용자 가이드북</Phrase>
         <ModalButtonBox>
           <BackButton type="button" onClick={handleBackBtn}>
             뒤로가기
@@ -98,6 +98,12 @@ const SubTitle = styled.p`
   ${({ theme }) => theme.fonts.Body6};
 
   color: ${({ theme }) => theme.colors.grey_800};
+`;
+
+const Phrase = styled.p`
+  ${({ theme }) => theme.fonts.Body6};
+
+  color: ${({ theme }) => theme.colors.grey_600};
 `;
 
 const ModalButtonBox = styled.section`
