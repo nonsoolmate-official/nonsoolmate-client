@@ -16,19 +16,19 @@ export default function OrderInfo(props: OrderInfoProps) {
       <OrderInfoTitle>주문 정보</OrderInfoTitle>
       <PlanContainer>
         {id === 1
-          ? PLAN_LIST.map((item) => (
+          ? PLAN_LIST.map(({ id, title, description }) => (
               <Plan
-                id={item.id}
-                key={item.id}
-                title={item.title}
-                description={item.description}
+                id={id}
+                key={id}
+                title={title}
+                description={description}
                 checkBox={true}
                 selectedPlan={selectedPlan}
                 onPlanChange={onPlanChange}
               />
             ))
-          : PLAN_LIST.filter((item) => item.id === 2).map((item) => (
-              <Plan id={item.id} key={item.id} title={item.title} description={item.description} checkBox={false} />
+          : PLAN_LIST.filter((item) => item.id === 2).map(({ id, title, description }) => (
+              <Plan id={id} key={id} title={title} description={description} checkBox={false} />
             ))}
       </PlanContainer>
     </OrderInfoContainer>
