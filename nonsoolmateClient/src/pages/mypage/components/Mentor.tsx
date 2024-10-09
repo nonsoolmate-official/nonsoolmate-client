@@ -79,7 +79,7 @@ const MentorInfoLayout = styled.section`
   flex-direction: column;
   gap: 1.6rem;
   padding: 2.4rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
@@ -107,12 +107,12 @@ const Name = styled.p`
 
 const Badge = styled.div`
   display: flex;
-  padding: 0.4rem 0.8rem 0.4rem 0.4rem;
-  border-radius: 0.4rem;
-  align-items: center;
   gap: 0.8rem;
-  color: ${({ theme }) => theme.colors.main_blue};
+  align-items: center;
+  padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.light_blue};
+  color: ${({ theme }) => theme.colors.main_blue};
 
   ${({ theme }) => theme.fonts.Caption1};
 `;
@@ -125,7 +125,10 @@ const Divider = styled.hr`
   background-color: ${({ theme }) => theme.colors.grey_200};
 `;
 
-const MentorInfoContainer = styled.div``;
+const MentorInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const SubTitle = styled.h3`
   ${({ theme }) => theme.fonts.Body3};
@@ -145,11 +148,11 @@ const UnivChipBox = styled.div`
 
 const NullMentorWrapper = styled.section`
   width: 100%;
-  padding: 1.6rem 2.4rem;
   margin-top: 2rem;
-  border-radius: 0.8rem;
-  color: ${({ theme }) => theme.colors.grey_700};
+  padding: 1.6rem 2.4rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_100};
+  color: ${({ theme }) => theme.colors.grey_700};
 
   ${({ theme }) => theme.fonts.Body4};
 `;

@@ -34,8 +34,8 @@ const InputWrapper = styled.div`
 
 const InputLayout = styled.input<{ isError: boolean }>`
   position: relative;
-  padding: 0 1.2rem;
   height: 3.6rem;
+  padding: 0 1.2rem;
   border: 1px solid ${({ theme, isError }) => (isError ? theme.colors.error : theme.colors.grey_100)};
   border-radius: 6px;
   outline: none;
@@ -52,8 +52,8 @@ const InputLayout = styled.input<{ isError: boolean }>`
 `;
 
 const ErrorMessage = styled.p<{ isVisible: boolean }>`
-  position: absolute;
   display: ${({ isVisible }) => (isVisible ? "block" : "none")};
+  position: absolute;
   top: 4.2rem;
   left: 0;
   color: ${({ theme }) => theme.colors.error};

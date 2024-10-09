@@ -21,7 +21,7 @@ const Chip = styled.div`
   align-items: center;
   padding: 0.4rem 0.8rem;
   border: 1px solid ${({ theme }) => theme.colors.grey_100};
-  border-radius: 0.4rem;
+  border-radius: 4px;
   color: ${({ theme }) => theme.colors.grey_800};
 `;
 

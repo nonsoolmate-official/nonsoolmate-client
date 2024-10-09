@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
@@ -18,8 +19,8 @@ export default function Button({ children, variant = "primary", size = "md", ...
 }
 
 const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
-  padding: 0.8rem 2.8rem;
   align-items: center;
+  padding: 0.8rem 2.8rem;
   border-radius: 8px;
 
   ${({ theme }) => theme.fonts.Body6};
@@ -47,10 +48,13 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
           background-color: ${({ theme }) => theme.colors.light_blue};
           color: ${({ theme }) => theme.colors.main_blue};
 
+          /* stylelint-disable-next-line no-duplicate-selectors */
           &:hover {
+            background-color: ${({ theme }) => theme.colors.white};
             color: ${({ theme }) => theme.colors.middle_blue};
           }
 
+          /* stylelint-disable-next-line no-duplicate-selectors */
           &:active {
             color: ${({ theme }) => theme.colors.dark_blue};
           }
@@ -59,6 +63,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
         return css`
           border: 1px solid ${({ theme }) => theme.colors.grey_300};
 
+          /* stylelint-disable-next-line no-duplicate-selectors */
           &:hover {
             background-color: ${({ theme }) => theme.colors.light_blue};
             transition: all 0.2s ease-in-out;
@@ -72,6 +77,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
 
           ${({ theme }) => theme.fonts.Body4};
 
+          /* stylelint-disable-next-line no-duplicate-selectors */
           &:hover {
             color: ${({ theme }) => theme.colors.main_blue};
             transition: all 0.2s ease-in-out;

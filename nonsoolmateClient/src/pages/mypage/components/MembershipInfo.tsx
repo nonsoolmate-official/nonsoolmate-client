@@ -83,7 +83,7 @@ const MembershipInfoContainer = styled.div`
   flex-direction: column;
   gap: 2.8rem;
   padding: 2.4rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -120,7 +120,7 @@ const NullMembershipContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1.6rem 2.4rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_100};
 `;
 

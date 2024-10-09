@@ -95,7 +95,7 @@ const PaymentInfoLayout = styled.section`
   flex-direction: column;
   gap: 1.6rem;
   padding: 2.4rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
@@ -113,8 +113,8 @@ const PaymentInfoBox = styled.div`
 `;
 
 const InfoTitle = styled.h2`
-  width: 11.2rem;
   flex-shrink: 0;
+  width: 11.2rem;
 
   ${({ theme }) => theme.fonts.Body3};
 
@@ -144,15 +144,15 @@ const EventInfoBox = styled.div`
   width: 100%;
   max-width: 37.6rem;
   padding: 0.8rem 1.2rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const CouponInfo = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: space-between;
   gap: 0.8rem;
+  justify-content: space-between;
+  width: 100%;
   ${({ theme }) => theme.fonts.Body4};
 
   white-space: nowrap;
@@ -160,8 +160,8 @@ const CouponInfo = styled.div`
 
 const DiscountInfo = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 0.8rem;
+  justify-content: space-between;
   width: 100%;
 
   ${({ theme }) => theme.fonts.Body4};
