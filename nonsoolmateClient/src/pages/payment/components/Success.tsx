@@ -21,8 +21,7 @@ export default function Success() {
 
     if (isLoading) return;
 
-    console.log(cardInfo);
-    if (cardInfo && cardInfo.cardId) {
+    if (cardInfo) {
       updateCard(authKey, {
         onSuccess: () => {
           console.log("카드 업데이트 성공");
