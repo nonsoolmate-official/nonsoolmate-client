@@ -47,7 +47,7 @@ export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
   );
 }
 
-const PaymentInfoContainer = styled.article`
+const PaymentInfoContainer = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -62,7 +62,7 @@ const PaymentInfoContainer = styled.article`
   user-select: none;
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
   ${({ theme }) => theme.fonts.Body1}
 `;
 

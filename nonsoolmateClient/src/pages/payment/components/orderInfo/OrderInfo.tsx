@@ -43,7 +43,7 @@ const OrderInfoContainer = styled.article`
   margin-top: 0.4rem;
 `;
 
-const OrderInfoTitle = styled.p`
+const OrderInfoTitle = styled.h1`
   ${({ theme }) => theme.fonts.Body1}
 `;
 
