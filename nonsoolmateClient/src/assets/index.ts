@@ -116,6 +116,8 @@ import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
 
+import SmallCouponIc from "./icon/smallCouponIc.svg?react";
+
 export {
   Advan1Ic,
   Advan2Ic,
@@ -202,4 +204,5 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
+  SmallCouponIc,
 };
