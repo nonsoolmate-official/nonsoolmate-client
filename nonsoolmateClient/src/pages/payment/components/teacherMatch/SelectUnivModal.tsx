@@ -1,6 +1,9 @@
-import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
-import { UNIV_LIST } from "@pages/membership/core/univlist";
-import { useState } from "react";
+import { CheckBtnIc, CheckEmptyIc, Univ4Ic } from "@assets/index";
+import { TargetUnivResponse } from "@pages/payment/api/getTargetUniv";
+import { PatchDataTypes } from "@pages/payment/api/patchTargetUniv";
+import useGetTargetUniv from "@pages/payment/hooks/useGetTargetUniv";
+import usePatchTargetUniv from "@pages/payment/hooks/usePatchTargetUniv";
+import { useEffect, useState } from "react";
 import { lightBlueButtonStyle, mainButtonStyle } from "style/commonStyle";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
@@ -17,6 +20,26 @@ export default function SelectUnivModal(props: ModalProps) {
   const [checkedUnivs, setCheckedUnivs] = useState<number[]>([]);
   const [isCheckedNone, setIsCheckedNone] = useState(false);
   const [isOverSix, setIsOverSix] = useState(false);
+
+  const { data: TARGETS } = useGetTargetUniv();
+  const patchMutate = usePatchTargetUniv();
+
+  useEffect(() => {
+    const storedUnivs = sessionStorage.getItem("targetUnivs");
+    if (storedUnivs) {
+      setCheckedUnivs(JSON.parse(storedUnivs));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (checkedUnivs.length > 0) {
+      sessionStorage.setItem("targetUnivs", JSON.stringify(checkedUnivs));
+    }
+  }, [checkedUnivs]);
+
+  if (!TARGETS) {
+    return <></>;
+  }
 
   const handleCheck = (id: number) => {
     setIsCheckedNone(false);
@@ -41,6 +64,10 @@ export default function SelectUnivModal(props: ModalProps) {
     if (checkedUnivs.length === 0) {
       setIsCheckedNone(true);
     } else {
+      const dataToPatch: PatchDataTypes[] = checkedUnivs.map((id) => ({
+        universityId: id,
+      }));
+      patchMutate(dataToPatch);
       changeSelectUnivModalStatus(false);
       changeQuitModalStatus(true);
     }
@@ -57,16 +84,19 @@ export default function SelectUnivModal(props: ModalProps) {
         {isCheckedNone && <RedText>* 목표 대학을 1개 이상 선택해주세요.</RedText>}
         {isOverSix && <RedText>* 최대 6개만 선택이 가능합니다.</RedText>}
         <Container>
-          {UNIV_LIST.map((data) => {
-            const { id, univ, img, details } = data;
-            const isChecked = checkedUnivs.includes(id);
+          {TARGETS.map((data: TargetUnivResponse) => {
+            const { universityId, universityName } = data;
+            const isChecked = checkedUnivs.includes(universityId);
 
             return (
-              <CheckBoxButton key={id} type="button" $isChecked={isChecked} onClick={() => handleCheck(id)}>
+              <CheckBoxButton
+                key={universityId}
+                type="button"
+                $isChecked={isChecked}
+                onClick={() => handleCheck(universityId)}>
                 <UniversityBox>
-                  <Image as={img} />
-                  <University>{univ}학교</University>
-                  <Category>{details}</Category>
+                  <Image as={Univ4Ic} />
+                  <University>{universityName}</University>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <CheckEmptyIcon />}</CheckBox>
               </CheckBoxButton>
@@ -177,12 +207,6 @@ const Image = styled.svg`
 
 const University = styled.p`
   ${({ theme }) => theme.fonts.Body6};
-`;
-
-const Category = styled.div`
-  ${({ theme }) => theme.fonts.Body6};
-
-  padding: 0.4rem 0;
 `;
 
 const CheckBtnIcon = styled(CheckBtnIc)`
