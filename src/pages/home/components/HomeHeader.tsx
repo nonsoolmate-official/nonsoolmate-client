@@ -1,4 +1,9 @@
-import { DownArrowGreyIc, LoginInfoIc, LogoIc, UpArrowGreyIc } from "@assets/index";
+import {
+  DownArrowGreyIc,
+  LoginInfoIc,
+  LogoIc,
+  UpArrowGreyIc,
+} from "@assets/index";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
@@ -27,12 +32,20 @@ export default function HomeHeader() {
   return (
     <>
       <Header>
-        <LogoButton onClick={() => (getNameResponse ? navigate("/home/test") : navigate("/"))} type="button">
+        <LogoButton
+          onClick={() =>
+            getNameResponse ? navigate("/home/test") : navigate("/")
+          }
+          type="button"
+        >
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
           {!isIpadSize && (
-            <MembershipButton type="button" onClick={() => navigate("/membership")}>
+            <MembershipButton
+              type="button"
+              onClick={() => navigate("/membership")}
+            >
               멤버십
             </MembershipButton>
           )}
