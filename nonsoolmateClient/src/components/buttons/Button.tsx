@@ -19,9 +19,7 @@ export default function Button({ children, variant = "primary", size = "md", ...
 
 const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
   padding: 0.8rem 2.8rem;
-
   align-items: center;
-
   border-radius: 8px;
 
   ${({ theme }) => theme.fonts.Body6};
@@ -32,8 +30,8 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
     switch (variant) {
       case "primary":
         return css`
-          color: ${({ theme }) => theme.colors.white};
           background-color: ${({ theme }) => theme.colors.main_blue};
+          color: ${({ theme }) => theme.colors.white};
 
           &:hover {
             background-color: ${({ theme }) => theme.colors.middle_blue};
@@ -46,9 +44,8 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
       case "secondary":
         return css`
           border-radius: 4px;
-
-          color: ${({ theme }) => theme.colors.main_blue};
           background-color: ${({ theme }) => theme.colors.light_blue};
+          color: ${({ theme }) => theme.colors.main_blue};
 
           &:hover {
             color: ${({ theme }) => theme.colors.middle_blue};
@@ -64,30 +61,26 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
 
           &:hover {
             background-color: ${({ theme }) => theme.colors.light_blue};
-
             transition: all 0.2s ease-in-out;
           }
         `;
       case "text":
         return css`
           padding: 0;
-
           color: ${({ theme }) => theme.colors.grey_300};
-
           text-decoration: underline;
 
           ${({ theme }) => theme.fonts.Body4};
 
           &:hover {
             color: ${({ theme }) => theme.colors.main_blue};
-
             transition: all 0.2s ease-in-out;
           }
         `;
       default:
         return css`
-          color: ${({ theme }) => theme.colors.main_blue};
           background-color: ${({ theme }) => theme.colors.white};
+          color: ${({ theme }) => theme.colors.main_blue};
         `;
     }
   }}
@@ -122,7 +115,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
   }}
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.grey_400};
     background-color: ${({ theme }) => theme.colors.grey_100};
+    color: ${({ theme }) => theme.colors.grey_400};
   }
 `;

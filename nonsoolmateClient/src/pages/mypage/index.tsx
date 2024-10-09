@@ -32,21 +32,16 @@ export default function Index() {
 
 const MypageContainer = styled.section`
   display: flex;
-
+  flex-direction: column;
   width: 100%;
   height: 100vh;
-
-  flex-direction: column;
-
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const Mypage = styled.div`
   display: flex;
-
   width: 100%;
   height: 100vh;
-
   background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {

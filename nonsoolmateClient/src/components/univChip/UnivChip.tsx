@@ -17,9 +17,9 @@ export default function UnivChip({ logo = "", children }: UnivChipProps) {
 
 const Chip = styled.div`
   display: flex;
+  gap: 0.6rem;
   align-items: center;
   padding: 0.4rem 0.8rem;
-  gap: 0.6rem;
   border: 1px solid ${({ theme }) => theme.colors.grey_100};
   border-radius: 0.4rem;
   color: ${({ theme }) => theme.colors.grey_800};
@@ -28,6 +28,5 @@ const Chip = styled.div`
 const Logo = styled.img`
   width: 2.4rem;
   height: 2.4rem;
-
   object-fit: cover;
 `;

@@ -59,7 +59,6 @@ export default function Mentor() {
 
 const MentorWrapper = styled.div`
   width: 100%;
-
   padding: 2.4rem 21.5rem 30.8rem 2.4rem;
 `;
 
@@ -71,7 +70,6 @@ const Title = styled.h1`
 
 const Discription = styled.div`
   margin-bottom: 1.6rem;
-
   color: ${({ theme }) => theme.colors.grey_500};
   ${({ theme }) => theme.fonts.Body6};
 `;
@@ -79,29 +77,22 @@ const Discription = styled.div`
 const MentorInfoLayout = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 2.4rem;
-
-  border-radius: 0.8rem;
-
-  background-color: ${({ theme }) => theme.colors.white};
-
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
-
   gap: 1.6rem;
+  padding: 2.4rem;
+  border-radius: 0.8rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
 
 const MentorProfileContainer = styled.div`
   display: flex;
-
-  align-items: center;
-
   gap: 1.2rem;
+  align-items: center;
 `;
 
 const Profile = styled.img`
   width: 6rem;
   height: 6rem;
-
   object-fit: cover;
 `;
 
@@ -116,15 +107,10 @@ const Name = styled.p`
 
 const Badge = styled.div`
   display: flex;
-
   padding: 0.4rem 0.8rem 0.4rem 0.4rem;
-
   border-radius: 0.4rem;
-
   align-items: center;
-
   gap: 0.8rem;
-
   color: ${({ theme }) => theme.colors.main_blue};
   background-color: ${({ theme }) => theme.colors.light_blue};
 
@@ -134,11 +120,8 @@ const Badge = styled.div`
 const Divider = styled.hr`
   width: 100%;
   height: 0.1rem;
-
   margin: 0;
-
   border: none;
-
   background-color: ${({ theme }) => theme.colors.grey_200};
 `;
 
@@ -164,9 +147,7 @@ const NullMentorWrapper = styled.section`
   width: 100%;
   padding: 1.6rem 2.4rem;
   margin-top: 2rem;
-
   border-radius: 0.8rem;
-
   color: ${({ theme }) => theme.colors.grey_700};
   background-color: ${({ theme }) => theme.colors.grey_100};
 
@@ -175,8 +156,6 @@ const NullMentorWrapper = styled.section`
 
 const NullMentorContainer = styled.div`
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
 `;

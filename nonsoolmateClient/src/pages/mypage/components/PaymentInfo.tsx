@@ -83,49 +83,37 @@ const Title = styled.h1`
 
 const PaymentInfoWrapper = styled.div`
   display: flex;
-
-  width: 100%;
-
   flex-direction: column;
-
-  padding: 2.4rem 21.5rem 7.6rem 2.4rem;
-
   gap: 2rem;
-
+  width: 100%;
+  padding: 2.4rem 21.5rem 7.6rem 2.4rem;
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const PaymentInfoLayout = styled.section`
   display: flex;
-
   flex-direction: column;
-
-  padding: 2.4rem;
-
   gap: 1.6rem;
-
+  padding: 2.4rem;
   border-radius: 0.8rem;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
 
 const Payment = styled.div`
   display: flex;
-  align-items: flex-start;
   gap: 2rem;
+  align-items: flex-start;
 `;
 
 const PaymentInfoBox = styled.div`
   display: flex;
-
-  align-items: flex-start;
-
   justify-content: space-between;
+  align-items: flex-start;
 `;
 
 const InfoTitle = styled.h2`
   width: 11.2rem;
-
   flex-shrink: 0;
 
   ${({ theme }) => theme.fonts.Body3};
@@ -135,7 +123,6 @@ const InfoTitle = styled.h2`
 
 const Info = styled.div`
   display: flex;
-
   width: 100%;
 
   ${({ theme }) => theme.fonts.Body4};
@@ -143,39 +130,27 @@ const Info = styled.div`
 
 const EventInfoContainer = styled.div`
   display: flex;
-
   flex-direction: column;
-  align-items: flex-start;
-
   gap: 1.6rem;
-
+  align-items: flex-start;
   width: 100%;
 `;
 
 const EventInfoBox = styled.div`
   display: flex;
-
+  gap: 0.8rem;
+  align-items: center;
   flex-shrink: 0;
-
   width: 100%;
   max-width: 37.6rem;
-
-  gap: 0.8rem;
-
   padding: 0.8rem 1.2rem;
-
-  align-items: center;
-
   border-radius: 0.8rem;
-
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
 const CouponInfo = styled.div`
   display: flex;
-
   width: 100%;
-
   justify-content: space-between;
   gap: 0.8rem;
   ${({ theme }) => theme.fonts.Body4};
@@ -185,24 +160,19 @@ const CouponInfo = styled.div`
 
 const DiscountInfo = styled.div`
   display: flex;
-
   justify-content: space-between;
-
   gap: 0.8rem;
-
   width: 100%;
 
   ${({ theme }) => theme.fonts.Body4};
+
   white-space: nowrap;
 `;
 
 const Divider = styled.hr`
   width: 100%;
   height: 0.1rem;
-
   margin: 0;
-
   border: none;
-
   background-color: ${({ theme }) => theme.colors.grey_200};
 `;

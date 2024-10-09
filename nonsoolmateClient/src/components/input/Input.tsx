@@ -26,10 +26,10 @@ export default function Input({
 }
 
 const InputWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  position: relative;
 `;
 
 const InputLayout = styled.input<{ isError: boolean }>`
@@ -54,10 +54,8 @@ const InputLayout = styled.input<{ isError: boolean }>`
 const ErrorMessage = styled.p<{ isVisible: boolean }>`
   position: absolute;
   display: ${({ isVisible }) => (isVisible ? "block" : "none")};
-
   top: 4.2rem;
   left: 0;
-
   color: ${({ theme }) => theme.colors.error};
   ${({ theme }) => theme.fonts.Body8};
 

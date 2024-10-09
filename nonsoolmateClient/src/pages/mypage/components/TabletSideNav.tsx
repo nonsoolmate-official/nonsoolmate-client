@@ -27,42 +27,32 @@ export default function TabletSideNav({ menu, setMenu }: TabletSideNavProps) {
 
 const Nav = styled.nav`
   display: flex;
-  position: relative;
-
-  width: 100%;
-
   flex-direction: column;
-
+  position: relative;
+  width: 100%;
   padding: 0 3.2rem;
 `;
 
 const Header = styled.h2`
-  margin: 3.2rem 0 2.4rem 0;
-
+  margin: 3.2rem 0 2.4rem;
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Headline5};
 `;
 
 const Sidebar = styled.ul`
   display: flex;
-
-  width: 100%;
-
   gap: 4rem;
-
+  width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
 
 const MenuList = styled.li<{ $isActive: boolean }>`
   padding: 0 0 0.5rem;
-
   border: none;
   border-bottom: ${({ $isActive }) => ($isActive ? "1px solid black" : "none")};
-
   color: ${({ theme, $isActive }) => ($isActive ? theme.colors.black : theme.colors.grey_400)};
   ${({ theme }) => theme.fonts.Body5};
 
   list-style: none;
-
   cursor: pointer;
 `;
