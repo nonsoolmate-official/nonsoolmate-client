@@ -1,5 +1,5 @@
-import { DiscountHistoryItem } from "../types/discountHistoryType";
-import { Plan } from "../types/paymentInfoType";
+import { DiscountHistoryItem } from "@pages/payment/components/types/discountHistoryType";
+import { Plan } from "@pages/payment/components/types/paymentInfoType";
 
 export function calculateStandardDiscount(plan: Plan) {
   let currentPrice = plan?.price || 0;

@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import PaymentInfo from "./components/paymentInfo/PaymentInfo";
-import OrderInfo from "./components/orderInfo/OrderInfo";
-import RegisterLayout from "./components/register/RegisterLayout";
-import { media } from "style/responsiveStyle";
 import HomeHeader from "@pages/home/components/HomeHeader";
+import OrderInfo from "@pages/payment/components/orderInfo/OrderInfo";
+import PaymentInfo from "@pages/payment/components/paymentInfo/PaymentInfo";
+import RegisterLayout from "@pages/payment/components/register/RegisterLayout";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { media } from "style/responsiveStyle";
+import styled from "styled-components";
 
 export default function Payment() {
   const location = useLocation();
@@ -41,7 +41,11 @@ export default function Payment() {
       <PaymentContainer>
         <PaymentLeftContainer>
           <Title>정기결제</Title>
-          <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <OrderInfo
+            id={id}
+            selectedPlan={selectedPlan}
+            onPlanChange={handlePlanChange}
+          />
           <RegisterLayout
             openCouponModal={openCouponModal}
             closeCouponModal={closeCouponModal}

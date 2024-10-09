@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Plan from "./Plan";
 import { PLAN_LIST } from "../../core/planList";
+import Plan from "./Plan";
 
 interface OrderInfoProps {
   id: number;
@@ -27,9 +27,17 @@ export default function OrderInfo(props: OrderInfoProps) {
                 onPlanChange={onPlanChange}
               />
             ))
-          : PLAN_LIST.filter((item) => item.id === 2).map(({ id, title, description }) => (
-              <Plan id={id} key={id} title={title} description={description} checkBox={false} />
-            ))}
+          : PLAN_LIST.filter((item) => item.id === 2).map(
+              ({ id, title, description }) => (
+                <Plan
+                  id={id}
+                  key={id}
+                  title={title}
+                  description={description}
+                  checkBox={false}
+                />
+              )
+            )}
       </PlanContainer>
     </OrderInfoContainer>
   );

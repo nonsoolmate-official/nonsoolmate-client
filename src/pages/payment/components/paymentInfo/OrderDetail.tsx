@@ -1,4 +1,4 @@
-import { OrderProps } from "@pages/payment/types/paymentInfoType";
+import { OrderProps } from "@pages/payment/components/types/paymentInfoType";
 import theme from "style/theme";
 import styled from "styled-components";
 

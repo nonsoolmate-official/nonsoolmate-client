@@ -1,4 +1,4 @@
-import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
+import { DiscountHistoryItem } from "@pages/payment/components/types/discountHistoryType";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -13,7 +13,9 @@ export default function DiscountDetail(props: DiscountDetailProps) {
         <DiscountDetailContainer key={item.discount_id}>
           <Coupon>{item.discount_title}</Coupon>
           <DiscountPriceBox>
-            <PrevPrice>{item.beforeDiscount_price.toLocaleString()}원</PrevPrice>
+            <PrevPrice>
+              {item.beforeDiscount_price.toLocaleString()}원
+            </PrevPrice>
             <DiscountRate>{item.discount_rate}% OFF</DiscountRate>
           </DiscountPriceBox>
         </DiscountDetailContainer>
