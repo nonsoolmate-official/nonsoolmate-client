@@ -1,10 +1,12 @@
-import { EmptyCircleIc, FilledCircleIc, XIc } from "@assets/index";
+import { XIc } from "@assets/index";
 import useGetCoupon from "@pages/payment/hooks/useGetCoupon";
 import { usePostCoupon } from "@pages/payment/hooks/usePostCoupon";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
-import { CouponsType } from "../api/getCoupon";
+
+import CouponInput from "./CouponInput";
+import CouponList from "./CouponList";
 
 interface ModalProps {
   closeModal: () => void;
@@ -13,8 +15,6 @@ interface ModalProps {
 
 export default function CouponModal(props: ModalProps) {
   const { closeModal, handleCouponTxtStatus } = props;
-  const [couponExist, setCouponExist] = useState(false);
-  const [finsishSelectCoupon, setFinishSelectCoupon] = useState(false);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
@@ -29,34 +29,12 @@ export default function CouponModal(props: ModalProps) {
   const { data: COUPON_LIST } = useGetCoupon();
   const { mutate: postCouponMutate } = usePostCoupon();
 
-  useEffect(() => {
-    if (COUPON_LIST && COUPON_LIST.coupons) {
-      setCouponExist(COUPON_LIST.coupons.length > 0);
-    } else {
-      setCouponExist(false);
-    }
-  }, [COUPON_LIST]);
+  const couponExist = COUPON_LIST && COUPON_LIST.coupons && COUPON_LIST.coupons.length > 0;
 
-  useEffect(() => {
-    setFinishSelectCoupon(activeCouponId !== null);
-  }, [activeCouponId]);
+  const finishSelectCoupon = activeCouponId !== null;
 
   if (!COUPON_LIST) {
     return <></>;
-  }
-
-  function checkCouponType(couponType: string, discountRate?: number, discountAmount?: number) {
-    if (couponType === "RATE") {
-      return `${discountRate}% 할인`;
-    } else {
-      return `${discountAmount}원 할인`;
-    }
-  }
-
-  function convertDate(validEndDate: string) {
-    const date = new Date(validEndDate);
-
-    return date.toISOString().split("T")[0];
   }
 
   function handleCouponClick(
@@ -66,13 +44,9 @@ export default function CouponModal(props: ModalProps) {
     discountRate?: number,
     discountAmount?: number,
   ) {
-    if (activeCouponId === couponMemberId) {
-      setActiveCouponId(null);
-      setSelectedCoupon(null);
-    } else {
-      setActiveCouponId(couponMemberId);
-      setSelectedCoupon({ couponName, couponType, discountRate, discountAmount });
-    }
+    const isCouponActive = activeCouponId === couponMemberId;
+    setActiveCouponId(isCouponActive ? null : couponMemberId);
+    setSelectedCoupon(isCouponActive ? null : { couponName, couponType, discountRate, discountAmount });
   }
 
   const handleCouponNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,56 +97,26 @@ export default function CouponModal(props: ModalProps) {
         </CloseButton>
         <Text>쿠폰 사용</Text>
         <Container>
-          <InputContainer>
-            <CodeField
-              type="text"
-              placeholder="쿠폰 코드를 입력해 주세요"
-              value={couponNumber}
-              onChange={handleCouponNumChange}
-              $mismatch={mismatch}
-              $hasKorean={hasKorean}></CodeField>
-            <RegisterButton type="button" onClick={registerCoupon}>
-              쿠폰 등록
-            </RegisterButton>
-          </InputContainer>
+          <CouponInput
+            couponNumber={couponNumber}
+            registerCoupon={registerCoupon}
+            mismatch={mismatch}
+            hasKorean={hasKorean}
+            handleCouponNumChange={handleCouponNumChange}
+          />
           {mismatch && <MismatchText>* 유효하지 않은 쿠폰입니다.</MismatchText>}
           {hasKorean && <MismatchText>* 영문, 숫자로 입력해 주세요.</MismatchText>}
-          <CouponContainer>
-            {couponExist ? (
-              <CouponListBox>
-                {COUPON_LIST.coupons.map((item: CouponsType) => {
-                  const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate } = item;
-                  const isCouponClicked = activeCouponId === couponMemberId;
-
-                  return (
-                    <Coupon
-                      type="button"
-                      key={couponMemberId}
-                      $isCouponClicked={isCouponClicked}
-                      onClick={() =>
-                        handleCouponClick(couponMemberId, couponName, couponType, discountRate, discountAmount)
-                      }>
-                      {isCouponClicked ? <FilledCircleIcon /> : <EmptyCircleIcon />}
-                      <CouponText>
-                        <DiscountTxt>{checkCouponType(couponType, discountRate, discountAmount)}</DiscountTxt>
-                        <CouponDetail>
-                          <CouponName>{couponName} |</CouponName>
-                          <CouponExpiration>유효기간 ~ {convertDate(validEndDate)}</CouponExpiration>
-                        </CouponDetail>
-                      </CouponText>
-                    </Coupon>
-                  );
-                })}
-              </CouponListBox>
-            ) : (
-              <NoCouponTxt>사용 가능한 쿠폰이 없습니다.</NoCouponTxt>
-            )}
-          </CouponContainer>
+          <CouponList
+            couponExist={couponExist}
+            activeCouponId={activeCouponId}
+            COUPON_LIST={COUPON_LIST}
+            handleCouponClick={handleCouponClick}
+          />
         </Container>
         <ApplyButton
           type="button"
-          disabled={!finsishSelectCoupon}
-          $finsishSelectCoupon={finsishSelectCoupon}
+          disabled={!finishSelectCoupon}
+          $finsishSelectCoupon={finishSelectCoupon}
           onClick={applyCoupon}>
           쿠폰 사용하기
         </ApplyButton>
@@ -239,13 +183,6 @@ const Container = styled.section`
   margin-top: 4.4rem;
   margin-bottom: 4.4rem;
 `;
-
-const InputContainer = styled.div`
-  display: flex;
-  gap: 2.4rem;
-  padding: 0 0 0.8rem;
-`;
-
 export const CodeField = styled.input<{ $mismatch: boolean; $hasKorean: boolean }>`
   flex: 1;
   padding: 0.8rem 1.2rem;
@@ -272,87 +209,7 @@ const MismatchText = styled.p`
   ${({ theme }) => theme.fonts.Body8};
 
   margin-bottom: 0.8rem;
-  color: #ff5858;
-`;
-
-const CouponContainer = styled.div`
-  display: flex;
-`;
-
-const CouponListBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  width: 100%;
-  height: 17.6rem;
-  padding: 0 0 1rem;
-`;
-
-const RegisterButton = styled.button`
-  display: flex;
-  padding: 0.8rem 1.2rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey_200};
-  border-radius: 8px;
-  background-color: white;
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.Body6};
-`;
-
-const NoCouponTxt = styled.p`
-  margin-top: 2.4rem;
-  color: ${({ theme }) => theme.colors.grey_500};
-  ${({ theme }) => theme.fonts.Body6};
-`;
-
-const Coupon = styled.button<{ $isCouponClicked: boolean }>`
-  display: flex;
-  gap: 1.6rem;
-  align-items: center;
-  width: 100%;
-  height: 8.8rem;
-  padding: 2rem 0;
-  border-top: 1px solid ${({ theme }) => theme.colors.grey_100};
-`;
-
-const EmptyCircleIcon = styled(EmptyCircleIc)`
-  width: 1.6rem;
-  height: 1.6rem;
-`;
-
-const FilledCircleIcon = styled(FilledCircleIc)`
-  width: 1.6rem;
-  height: 1.6rem;
-`;
-
-const CouponText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  width: 100%;
-`;
-
-const DiscountTxt = styled.p`
-  text-align: left;
-  ${({ theme }) => theme.fonts.Body5};
-  ${({ theme }) => theme.colors.black};
-`;
-
-const CouponDetail = styled.div`
-  display: flex;
-  gap: 0.4rem;
-  width: 100%;
-`;
-
-const CouponName = styled.p`
-  text-align: left;
-  ${({ theme }) => theme.colors.grey_800};
-  ${({ theme }) => theme.fonts.Body7};
-`;
-
-const CouponExpiration = styled.p`
-  ${({ theme }) => theme.fonts.Body8};
-
-  color: ${({ theme }) => theme.colors.grey_500};
+  color: ${({ theme }) => theme.colors.error};
 `;
 
 const ApplyButton = styled.button<{ $finsishSelectCoupon: boolean }>`
