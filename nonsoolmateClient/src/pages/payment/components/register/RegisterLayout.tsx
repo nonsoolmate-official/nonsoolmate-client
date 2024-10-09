@@ -3,19 +3,48 @@ import styled from "styled-components";
 import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
 import { REGISTER_TEXT } from "@pages/payment/core/registerText";
+import CouponModal from "../coupon/CouponModal";
+import { SmallCouponIc } from "@assets/index";
 
-export default function RegisterLayout() {
+interface RegisterLayoutProps {
+  openCouponModal: () => void;
+  closeCouponModal: () => void;
+  handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
+  isCouponOpen: boolean;
+  couponTxt: string;
+  dcInfo: string;
+}
+
+export default function RegisterLayout(props: RegisterLayoutProps) {
+  const { openCouponModal, closeCouponModal, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } = props;
+
   return (
     <>
       {REGISTER_TEXT.map((item) => (
         <RegisterLayoutContainer key={item.title}>
           <TitleContainer>
             <Title>{item.title}</Title>
-            <RegisterButton button={item.buttonText} />
+            <RegisterButton
+              button={item.buttonText}
+              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : openCouponModal}
+            />
           </TitleContainer>
-          <Content>{item.content}</Content>
+          <Content>
+            {item.buttonText === "쿠폰 사용" ? (
+              <Coupon>
+                <CouponTxt $couponTxt={couponTxt}>
+                  {couponTxt !== "등록된 쿠폰이 없습니다." && <SmallCouponIcon />}
+                  {couponTxt}
+                </CouponTxt>
+                <DcInfo>{dcInfo}</DcInfo>
+              </Coupon>
+            ) : (
+              item.content
+            )}
+          </Content>
         </RegisterLayoutContainer>
       ))}
+      {isCouponOpen && <CouponModal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
     </>
   );
 }
@@ -45,4 +74,28 @@ const Content = styled.div`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
   color: ${theme.colors.grey_500};
+`;
+
+const Coupon = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const CouponTxt = styled.div<{ $couponTxt: string }>`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  color: ${({ theme, $couponTxt }) =>
+    $couponTxt === "등록된 쿠폰이 없습니다." ? theme.colors.grey_500 : theme.colors.grey_1000};
+`;
+
+const DcInfo = styled.p`
+  color: ${({ theme }) => theme.colors.grey_1000};
+`;
+
+const SmallCouponIcon = styled(SmallCouponIc)`
+  width: 2rem;
+  height: 2rem;
 `;

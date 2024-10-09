@@ -3,10 +3,15 @@ import styled from "styled-components";
 
 interface RegisterButtonProps {
   button: string;
+  onClick: () => void;
 }
 export default function RegisterButton(props: RegisterButtonProps) {
-  const { button } = props;
-  return <RegisterButtonContainer type="button">{button}</RegisterButtonContainer>;
+  const { button, onClick } = props;
+  return (
+    <RegisterButtonContainer type="button" onClick={onClick}>
+      {button}
+    </RegisterButtonContainer>
+  );
 }
 
 const RegisterButtonContainer = styled.button`
