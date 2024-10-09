@@ -42,10 +42,10 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
                 </CouponTxt>
                 <DcInfo>{dcInfo}</DcInfo>
               </Coupon>
-            ) : response ? (
+            ) : response.cardInfo ? (
               <CardInfo>
                 <CardIc />
-                {response.cardCompany} {response.cardNumber}
+                {response.cardInfo?.cardCompany} {response.cardInfo?.cardNumber}
               </CardInfo>
             ) : (
               item.content
