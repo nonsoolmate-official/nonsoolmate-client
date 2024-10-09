@@ -111,6 +111,7 @@ import TakeTestIc from "./icon/takeTestIc.svg?react";
 import CloseIc from "./icon/closeIc.svg?react";
 import CouponIc from "./icon/couponIc.svg?react";
 import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
+
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
@@ -153,6 +154,7 @@ export {
   LogoIc,
   MembershipDisabledIc,
   MembershipIc,
+  MonthlyMembershipIc,
   NaverLoginIc,
   NotCheckBtnIc,
   PlusIc,
@@ -182,6 +184,7 @@ export {
   ShowExplanationTagIc,
   ShowQuestionTagIc,
   SignupIc,
+  SixMonthsMembershipIc,
   StudyActiveIc,
   StudyDisabledIc,
   TakeTestIc,
