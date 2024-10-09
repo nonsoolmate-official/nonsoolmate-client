@@ -1,4 +1,5 @@
 import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
+import { AGREEMENT_TEXT } from "@pages/payment/core/agreementText";
 import { useEffect, useState } from "react";
 import theme from "style/theme";
 import styled from "styled-components";
@@ -29,13 +30,13 @@ export default function Agreements({ handleAgreements }: AgreementsProps) {
     <AgreementContainer>
       <Agreement>
         <CheckIconBox onClick={clickTermsAgreement}>{isAgreeTerms ? <CheckBtnIc /> : <CheckEmptyIc />}</CheckIconBox>
-        <AgreementText> [필수] 결제 서비스 이용 약관 및 개인정보 처리 동의</AgreementText>
+        <AgreementText> {AGREEMENT_TEXT.terms1}</AgreementText>
       </Agreement>
       <Agreement>
         <CheckIconBox onClick={clickMinorConsentAgreement}>
           {isAgreeMinorConsent ? <CheckBtnIc /> : <CheckEmptyIc />}
         </CheckIconBox>
-        <AgreementText>[필수] 미성년자 법정대리인 결제 동의</AgreementText>
+        <AgreementText>{AGREEMENT_TEXT.terms2}</AgreementText>
       </Agreement>
     </AgreementContainer>
   );
