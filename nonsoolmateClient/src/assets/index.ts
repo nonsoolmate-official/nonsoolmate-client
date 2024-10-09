@@ -61,8 +61,8 @@ import SignupIc from "./icon/signupIc.svg?react";
 import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
 import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 
-import MonthlyMembershipIc from "./icon/monthlyMembershipIc.svg?react";
-import SixMonthsMembershipIc from "./icon/sixMonthsMembershipIc.svg?react";
+import BasicPlanIc from "./icon/basicPlanIc.svg?react";
+import PremiumPlanIc from "./icon/premiumPlanIc.svg?react";
 
 import CheckSmallIc from "./icon/checkSmallIc.svg?react";
 
@@ -110,6 +110,8 @@ import TakeTestIc from "./icon/takeTestIc.svg?react";
 
 import CloseIc from "./icon/closeIc.svg?react";
 import CouponIc from "./icon/couponIc.svg?react";
+import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
+
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import PlusIc from "./icon/plusIc.svg?react";
@@ -121,11 +123,13 @@ export {
   Advan4Ic,
   Advan5Ic,
   BorderIc,
+  BasicPlanIc,
   CheckBtnIc,
   CheckCircleBtnIc,
   CheckSmallIc,
   CloseIc,
   CouponIc,
+  CheckEmptyIc,
   DiscountIc,
   DisplayIc,
   DownArrowBoldIc,
@@ -150,7 +154,6 @@ export {
   LogoIc,
   MembershipDisabledIc,
   MembershipIc,
-  MonthlyMembershipIc,
   NaverLoginIc,
   NotCheckBtnIc,
   PlusIc,
@@ -163,6 +166,7 @@ export {
   PresentIc,
   PrintCircleIc,
   PrintIc,
+  PremiumPlanIc,
   QnaToogleCloseIc,
   QnaToogleOpenIc,
   RadioButtonCheckIc,
@@ -179,7 +183,6 @@ export {
   ShowExplanationTagIc,
   ShowQuestionTagIc,
   SignupIc,
-  SixMonthsMembershipIc,
   StudyActiveIc,
   StudyDisabledIc,
   TakeTestIc,
