@@ -3,12 +3,12 @@ import styled from "styled-components";
 import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
 import { REGISTER_TEXT } from "@pages/payment/core/registerText";
-import CouponModal from "../coupon/CouponModal";
 import { SmallCouponIc } from "@assets/index";
+import CouponModal from "../coupon/CouponModal";
 
 interface RegisterLayoutProps {
-  openCouponModal: () => void;
-  closeCouponModal: () => void;
+  changeCouponModalStatus: (open: boolean) => void;
+  changeSelectUnivModalStatus: (open: boolean) => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
   couponTxt: string;
@@ -16,7 +16,18 @@ interface RegisterLayoutProps {
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
-  const { openCouponModal, closeCouponModal, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } = props;
+  const {
+    isCouponOpen,
+    changeCouponModalStatus,
+    couponTxt,
+    dcInfo,
+    changeSelectUnivModalStatus,
+    handleCouponTxtStatus,
+  } = props;
+
+  function openCouponModal() {
+    changeCouponModalStatus(true);
+  }
 
   return (
     <>
@@ -44,7 +55,13 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
           </Content>
         </RegisterLayoutContainer>
       ))}
-      {isCouponOpen && <CouponModal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
+      {isCouponOpen && (
+        <CouponModal
+          changeCouponModalStatus={changeCouponModalStatus}
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          handleCouponTxtStatus={handleCouponTxtStatus}
+        />
+      )}
     </>
   );
 }

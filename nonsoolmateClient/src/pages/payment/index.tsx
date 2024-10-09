@@ -18,22 +18,39 @@ export default function Payment() {
 
   // -------- 쿠폰 로직
   const [isCouponOpen, setIsCouponOpen] = useState(false);
+  const [isSelctUnivOpen, setIsSelectUnivOpen] = useState(false);
+  const [isSucessOpen, setIsSucessOpen] = useState(false);
+  const [isRandomMatchOpen, setIsRandomMatchOpen] = useState(false);
+  const [isQuitOpen, setIsQuitOpen] = useState(false);
+
   const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
   const [dcInfo, setDcInfo] = useState("");
-
-  function closeCouponModal() {
-    setIsCouponOpen(false);
-  }
-
-  function openCouponModal() {
-    setIsCouponOpen(true);
-  }
 
   function handleCouponTxtStatus(coupon: string, dcInfo: string) {
     setCouponTxt(coupon);
     setDcInfo(dcInfo);
   }
   // ---------
+
+  function changeCouponModalStatus(openModal: boolean) {
+    setIsCouponOpen(openModal);
+  }
+
+  function changeSuccessModalStatus(openModal: boolean) {
+    setIsSucessOpen(openModal);
+  }
+
+  function changeSelectUnivModalStatus(openModal: boolean) {
+    setIsSelectUnivOpen(openModal);
+  }
+
+  function changeRandomMatchModalStatus(openModal: boolean) {
+    setIsRandomMatchOpen(openModal);
+  }
+
+  function changeQuitModalStatus(openModal: boolean) {
+    setIsQuitOpen(openModal);
+  }
 
   return (
     <>
@@ -43,15 +60,25 @@ export default function Payment() {
           <Title>정기결제</Title>
           <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
-            openCouponModal={openCouponModal}
-            closeCouponModal={closeCouponModal}
+            changeCouponModalStatus={changeCouponModalStatus}
+            changeSelectUnivModalStatus={changeSelectUnivModalStatus}
             handleCouponTxtStatus={handleCouponTxtStatus}
             isCouponOpen={isCouponOpen}
             couponTxt={couponTxt}
             dcInfo={dcInfo}
           />
         </PaymentLeftContainer>
-        <PaymentInfo selectedPlan={selectedPlan} />
+        <PaymentInfo
+          selectedPlan={selectedPlan}
+          isSelctUnivOpen={isSelctUnivOpen}
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          isSucessOpen={isSucessOpen}
+          isQuitOpen={isQuitOpen}
+          changeSuccessModalStatus={changeSuccessModalStatus}
+          changeRandomMatchModalStatus={changeRandomMatchModalStatus}
+          changeQuitModalStatus={changeQuitModalStatus}
+          isRandomMatchOpen={isRandomMatchOpen}
+        />
       </PaymentContainer>
     </>
   );
@@ -76,6 +103,7 @@ const PaymentLeftContainer = styled.div`
   gap: 4rem;
   width: 100%;
 `;
+
 const Title = styled.h1`
   ${({ theme }) => theme.fonts.Headline4}
 `;

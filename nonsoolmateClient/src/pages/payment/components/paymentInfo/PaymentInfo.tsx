@@ -8,12 +8,35 @@ import Overview from "./Overview";
 import Agreements from "./Agreements";
 import { calculateStandardDiscount } from "@pages/payment/utils/calculateStandardDiscount";
 import { media } from "style/responsiveStyle";
+import SuccessModal from "../SuccessModal";
+import SelectUnivModal from "../teacherMatch/SelectUnivModal";
+import RandomMatchModal from "../teacherMatch/RandomMatchModal";
+import QuitMatchModal from "../teacherMatch/QuitMatchModal";
 
 interface PaymentInfoProps {
   selectedPlan: number;
+  isSelctUnivOpen: boolean;
+  changeSelectUnivModalStatus: (open: boolean) => void;
+  changeSuccessModalStatus: (open: boolean) => void;
+  changeRandomMatchModalStatus: (open: boolean) => void;
+  isSucessOpen: boolean;
+  isRandomMatchOpen: boolean;
+  isQuitOpen: boolean;
+  changeQuitModalStatus: (open: boolean) => void;
 }
 
-export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
+export default function PaymentInfo(props: PaymentInfoProps) {
+  const {
+    selectedPlan,
+    isSelctUnivOpen,
+    changeSelectUnivModalStatus,
+    changeSuccessModalStatus,
+    changeRandomMatchModalStatus,
+    isSucessOpen,
+    isRandomMatchOpen,
+    changeQuitModalStatus,
+    isQuitOpen,
+  } = props;
   const plan = PAYMENTINFO_LIST.find((item) => item.id === selectedPlan);
   const [isAgree, setIsAgree] = useState(false);
 
@@ -28,23 +51,57 @@ export default function PaymentInfo({ selectedPlan }: PaymentInfoProps) {
   }
 
   return (
-    <PaymentInfoContainer>
-      <Title>결제 정보</Title>
-      <InfoBox>
-        <InfoTitle>주문 정보</InfoTitle>
-        {plan && <OrderDetail plan={plan} />}
-      </InfoBox>
-      <InfoBox>
-        <InfoTitle>할인 정보</InfoTitle>
-        {plan && <DiscountDetail discountHistory={discountHistory} />}
-      </InfoBox>
-      <DevideLine />
-      <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
-      <Agreements handleAgreements={handleAgreements} />
-      <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button">
-        결제하기
-      </PaymentButton>
-    </PaymentInfoContainer>
+    <>
+      <PaymentInfoContainer>
+        <Title>결제 정보</Title>
+        <InfoBox>
+          <InfoTitle>주문 정보</InfoTitle>
+          {plan && <OrderDetail plan={plan} />}
+        </InfoBox>
+        <InfoBox>
+          <InfoTitle>할인 정보</InfoTitle>
+          {plan && <DiscountDetail discountHistory={discountHistory} />}
+        </InfoBox>
+        <DevideLine />
+        <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
+        <Agreements handleAgreements={handleAgreements} />
+        <PaymentButton
+          $isAgree={isAgree}
+          disabled={!isAgree}
+          type="button"
+          onClick={() => changeSuccessModalStatus(true)}>
+          결제하기
+        </PaymentButton>
+      </PaymentInfoContainer>
+      {isSucessOpen && plan && (
+        <SuccessModal
+          finalPrice={finalPrice}
+          changeSuccessModalStatus={changeSuccessModalStatus}
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          planTitle={plan.title}
+        />
+      )}
+      {isSelctUnivOpen && (
+        <SelectUnivModal
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          changeRandomMatchModalStatus={changeRandomMatchModalStatus}
+          changeQuitModalStatus={changeQuitModalStatus}
+        />
+      )}
+      {isRandomMatchOpen && (
+        <RandomMatchModal
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          changeRandomMatchModalStatus={changeRandomMatchModalStatus}
+          changeQuitModalStatus={changeQuitModalStatus}
+        />
+      )}
+      {isQuitOpen && (
+        <QuitMatchModal
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          changeQuitModalStatus={changeQuitModalStatus}
+        />
+      )}
+    </>
   );
 }
 
