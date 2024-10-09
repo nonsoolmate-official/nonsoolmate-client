@@ -9,6 +9,7 @@ import { SmallCouponIc } from "@assets/index";
 interface RegisterLayoutProps {
   openCouponModal: () => void;
   closeCouponModal: () => void;
+  registerCard: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
   couponTxt: string;
@@ -16,7 +17,8 @@ interface RegisterLayoutProps {
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
-  const { openCouponModal, closeCouponModal, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } = props;
+  const { openCouponModal, closeCouponModal, registerCard, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } =
+    props;
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
             <Title>{item.title}</Title>
             <RegisterButton
               button={item.buttonText}
-              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : openCouponModal}
+              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCard}
             />
           </TitleContainer>
           <Content>
