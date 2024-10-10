@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import theme from "style/theme";
 import styled from "styled-components";
 import OrderDetail from "./OrderDetail";
@@ -77,11 +77,22 @@ export default function PaymentInfo(props: PaymentInfoProps) {
   }
 
   function handlePayment() {
-    postMembership({
-      productId: selectedPlan,
-      couponMemberId: activeCouponId,
-    });
+    postMembership(
+      {
+        productId: selectedPlan,
+        couponMemberId: activeCouponId,
+      },
+      {
+        onSuccess: () => {
+          if (activeCouponId) {
+            sessionStorage.removeItem("couponTxt");
+            sessionStorage.removeItem("dcInfo");
+          }
+        },
+      },
+    );
   }
+
   return (
     <>
       <PaymentInfoContainer>

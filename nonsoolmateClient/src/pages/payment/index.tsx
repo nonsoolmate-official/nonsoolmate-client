@@ -5,7 +5,7 @@ import OrderInfo from "./components/orderInfo/OrderInfo";
 import RegisterLayout from "./components/register/RegisterLayout";
 import { media } from "style/responsiveStyle";
 import HomeHeader from "@pages/home/components/HomeHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
 
@@ -25,8 +25,16 @@ export default function Payment() {
     isQuitOpen: false,
   });
 
-  const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
-  const [dcInfo, setDcInfo] = useState("");
+  const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || "등록된 쿠폰이 없습니다.");
+  const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
+
+  useEffect(() => {
+    sessionStorage.setItem("couponTxt", couponTxt);
+  }, [couponTxt]);
+
+  useEffect(() => {
+    sessionStorage.setItem("dcInfo", dcInfo);
+  }, [dcInfo]);
 
   function handlePlanChange(newPlanId: number) {
     setSelectedPlan(newPlanId);
