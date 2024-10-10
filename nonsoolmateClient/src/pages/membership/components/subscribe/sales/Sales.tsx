@@ -1,23 +1,26 @@
-import { SalesType } from "@pages/membership/types/salesType";
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import Price from "../Price";
 import SalesContents from "./SalesContents";
+import { Discount } from "@pages/membership/api/getProductsList";
 
 interface SalesProp {
-  sales: SalesType[];
-  price: string;
+  defaultDiscounts: Discount[];
+  price: number;
 }
 
 export default function Sales(props: SalesProp) {
-  const { sales, price } = props;
-
+  const { defaultDiscounts, price } = props;
   return (
     <Container>
-      {sales.map((sale) => {
-        const { saletitle, beforeprice, salepercent } = sale;
+      {defaultDiscounts.map(({ discountId, discountName, discountRate }) => {
         return (
-          <SalesContents key={saletitle} saletitle={saletitle} beforeprice={beforeprice} salepercent={salepercent} />
+          <SalesContents
+            key={discountId}
+            discountId={discountId}
+            discountName={discountName}
+            discountRate={discountRate}
+          />
         );
       })}
       <Price price={price} />

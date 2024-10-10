@@ -1,17 +1,15 @@
-import { SalesType } from "@pages/membership/types/salesType";
+import { Discount } from "@pages/membership/api/getProductsList";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-interface SaleContentsProps extends SalesType {}
-
-export default function SalesContents(props: SaleContentsProps) {
-  const { saletitle, beforeprice, salepercent } = props;
+export default function SalesContents(props: Discount) {
+  const { discountName, discountRate } = props;
 
   return (
     <Container>
-      <SaleTitle>{saletitle}</SaleTitle>
-      <BeforePrice> &#8361;{beforeprice}</BeforePrice>
-      <SalePercent>{salepercent}% OFF</SalePercent>
+      <SaleTitle>{discountName}</SaleTitle>
+      <BeforePrice> &#8361;100000</BeforePrice>
+      <SalePercent>{discountRate}% OFF</SalePercent>
     </Container>
   );
 }

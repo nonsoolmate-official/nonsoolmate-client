@@ -2,7 +2,7 @@ import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
 interface PriceProp {
-  price: string;
+  price: number;
 }
 
 export default function Price(props: PriceProp) {

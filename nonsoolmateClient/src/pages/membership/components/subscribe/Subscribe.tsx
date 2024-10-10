@@ -3,24 +3,21 @@ import PurchaseButton from "./PurchaseButton";
 import Sales from "./sales/Sales";
 import Title from "./Title";
 
-import { ContentListType } from "@pages/membership/types/contentListType";
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
-import BasicSummary from "./BasicSummary";
-import PremiumSummary from "./PremiumSummary";
+import { Plan } from "@pages/membership/api/getProductsList";
+import Summary from "./Summary";
 
-interface ContentsProps extends ContentListType {}
-
-export default function Subscribe(props: ContentsProps) {
-  const { id, title, sales, price } = props;
+export default function Subscribe(props: Plan) {
+  const { productId, productName, productDescriptions, price, defaultDiscounts } = props;
   return (
     <Container>
       <ContentContainer>
-        <Icons id={id} />
-        <Title title={title} />
-        {id == 1 ? <BasicSummary /> : <PremiumSummary />}
-        <Sales sales={sales} price={price} />
-        <PurchaseButton id={id} />
+        <Icons id={productId} />
+        <Title title={productName} />
+        <Summary productDescriptions={productDescriptions} />
+        <Sales defaultDiscounts={defaultDiscounts} price={price} />
+        <PurchaseButton id={productId} />
       </ContentContainer>
     </Container>
   );
