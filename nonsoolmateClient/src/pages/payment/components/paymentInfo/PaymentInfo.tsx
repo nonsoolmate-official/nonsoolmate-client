@@ -12,6 +12,7 @@ import SuccessModal from "../SuccessModal";
 import SelectUnivModal from "../teacherMatch/SelectUnivModal";
 import RandomMatchModal from "../teacherMatch/RandomMatchModal";
 import QuitMatchModal from "../teacherMatch/QuitMatchModal";
+import useGetSingleProduct from "@pages/payment/hooks/useGetSingleProduct";
 
 interface PaymentInfoProps {
   selectedPlan: number;
@@ -37,13 +38,21 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     changeQuitModalStatus,
     isQuitOpen,
   } = props;
-  const plan = PAYMENTINFO_LIST.find((item) => item.productId === selectedPlan);
+
   const [isAgree, setIsAgree] = useState(false);
+  const { data } = useGetSingleProduct(selectedPlan);
+  if (!data) {
+    return <></>;
+  }
+  const plan = data;
 
   const originalPrice = plan?.price || 0;
 
-  const discountHistory = plan ? calculateStandardDiscount(plan) : [];
-  const finalPrice = discountHistory[discountHistory.length - 1].discountedPrice;
+  const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan) : [];
+  const finalPrice = discountHistory.length
+    ? discountHistory[discountHistory.length - 1].discountedPrice
+    : originalPrice;
+
   const discountedPrice = originalPrice - finalPrice;
 
   function handleAgreements(agreeState: boolean) {
