@@ -72,6 +72,7 @@ const UserProfileWrapper = styled.aside`
 
   display: flex;
   flex-direction: column;
+  gap: 0.8rem;
   align-items: center;
   position: fixed;
   top: 7.5rem;
@@ -79,7 +80,6 @@ const UserProfileWrapper = styled.aside`
   z-index: 2;
   width: 22.8rem;
   padding: 2rem 2.4rem;
-  gap: 0.8rem;
   border-radius: 8px;
   background-color: white;
 
@@ -98,7 +98,6 @@ const MemberInfo = styled.div`
 const Profile = styled.img`
   width: 4.4rem;
   height: 4.4rem;
-
   object-fit: cover;
 `;
 
@@ -108,16 +107,12 @@ const Name = styled.p`
 
 const PlanBox = styled.div`
   display: flex;
-
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-
+  gap: 0.8rem;
   align-items: center;
   align-self: stretch;
-  gap: 0.8rem;
-
-  border-radius: 0.8rem;
-
+  margin-bottom: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
@@ -128,22 +123,18 @@ const PlanText = styled.p`
 
 const TicketCount = styled.div`
   display: flex;
-
-  width: 100%;
-
   justify-content: space-between;
+  width: 100%;
 `;
 
 const Content = styled.p`
   height: 3.2rem;
   padding: 0 0.8rem;
-
   color: ${({ theme }) => theme.colors.grey_700};
   ${({ theme }) => theme.fonts.Body6};
 `;
 
 const Line = styled.div`
   width: 100%;
-
   border-top: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
