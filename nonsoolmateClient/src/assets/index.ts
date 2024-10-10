@@ -115,6 +115,8 @@ import CardIc from "./icon/cardIc.svg?react";
 
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
+import MonthlyMembershipGrayIc from "./icon/monthlyMembershipGrayIc.svg?react";
+
 import PlusIc from "./icon/plusIc.svg?react";
 
 import PassIc from "./icon/passIc.svg?react";
@@ -161,6 +163,7 @@ export {
   LogoIc,
   MembershipDisabledIc,
   MembershipIc,
+  MonthlyMembershipGrayIc,
   NaverLoginIc,
   NotCheckBtnIc,
   PassIc,
