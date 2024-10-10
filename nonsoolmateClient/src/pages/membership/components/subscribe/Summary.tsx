@@ -18,8 +18,8 @@ const Container = styled.div`
   ${columnFlex}
 
   width: 25.6rem;
-  height: 12.4rem;
-  margin-bottom: 1.8rem;
+  height: 10.4rem;
+  padding: 1.2rem 0.8rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
