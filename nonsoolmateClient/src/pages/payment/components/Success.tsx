@@ -21,7 +21,7 @@ export default function Success() {
 
     if (isLoading) return;
 
-    if (cardInfo) {
+    if (cardInfo && cardInfo.cardId) {
       updateCard(authKey, {
         onSuccess: () => {
           console.log("카드 업데이트 성공");
@@ -45,7 +45,7 @@ export default function Success() {
         },
       );
     }
-  }, [cardInfo, authKey, navigate, postMutate]);
+  }, [authKey, cardInfo, navigate, postMutate, id]);
 
   if (!authKey) {
     return <></>;
