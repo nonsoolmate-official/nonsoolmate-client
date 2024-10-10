@@ -9,12 +9,13 @@ import CouponInput from "./CouponInput";
 import CouponList from "./CouponList";
 
 interface ModalProps {
-  closeModal: () => void;
+  changeCouponModalStatus: (open: boolean) => void;
+  changeSelectUnivModalStatus: (open: boolean) => void;
   handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
 }
 
 export default function CouponModal(props: ModalProps) {
-  const { closeModal, handleCouponTxtStatus } = props;
+  const { changeCouponModalStatus, handleCouponTxtStatus, changeSelectUnivModalStatus } = props;
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
@@ -85,14 +86,15 @@ export default function CouponModal(props: ModalProps) {
       } else {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
-      closeModal();
+      changeCouponModalStatus(false);
+      changeSelectUnivModalStatus(true);
     }
   }
 
   return (
     <BackgroundView>
       <ModalView>
-        <CloseButton type="button" onClick={closeModal}>
+        <CloseButton type="button" onClick={() => changeCouponModalStatus(false)}>
           <XIcon />
         </CloseButton>
         <Text>쿠폰 사용</Text>

@@ -119,6 +119,8 @@ import PlusIc from "./icon/plusIc.svg?react";
 import PassIc from "./icon/passIc.svg?react";
 import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 
+import PaySuccessIc from "./icon/paySuccessIc.svg?react";
+
 export {
   Advan1Ic,
   Advan2Ic,
@@ -160,6 +162,7 @@ export {
   NaverLoginIc,
   NotCheckBtnIc,
   PassIc,
+  PaySuccessIc,
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,

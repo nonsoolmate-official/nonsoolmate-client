@@ -16,24 +16,28 @@ export default function Payment() {
     setSelectedPlan(newPlanId);
   }
 
-  // -------- 쿠폰 로직
-  const [isCouponOpen, setIsCouponOpen] = useState(false);
+  const [modalStatus, setModalStatus] = useState({
+    isCouponOpen: false,
+    isSelectUnivOpen: false,
+    isSuccessOpen: false,
+    isRandomMatchOpen: false,
+    isQuitOpen: false,
+  });
+
   const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
   const [dcInfo, setDcInfo] = useState("");
-
-  function closeCouponModal() {
-    setIsCouponOpen(false);
-  }
-
-  function openCouponModal() {
-    setIsCouponOpen(true);
-  }
 
   function handleCouponTxtStatus(coupon: string, dcInfo: string) {
     setCouponTxt(coupon);
     setDcInfo(dcInfo);
   }
-  // ---------
+
+  function changeModalStatus(modalName: keyof typeof modalStatus, openModal: boolean) {
+    setModalStatus((prevState) => ({
+      ...prevState,
+      [modalName]: openModal,
+    }));
+  }
 
   return (
     <>
@@ -43,15 +47,25 @@ export default function Payment() {
           <Title>정기결제</Title>
           <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
-            openCouponModal={openCouponModal}
-            closeCouponModal={closeCouponModal}
+            changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
+            changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
-            isCouponOpen={isCouponOpen}
+            isCouponOpen={modalStatus.isCouponOpen}
             couponTxt={couponTxt}
             dcInfo={dcInfo}
           />
         </PaymentLeftContainer>
-        <PaymentInfo selectedPlan={selectedPlan} />
+        <PaymentInfo
+          selectedPlan={selectedPlan}
+          isSelctUnivOpen={modalStatus.isSelectUnivOpen}
+          changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
+          isSucessOpen={modalStatus.isSuccessOpen}
+          isQuitOpen={modalStatus.isQuitOpen}
+          changeSuccessModalStatus={(openModal) => changeModalStatus("isSuccessOpen", openModal)}
+          changeRandomMatchModalStatus={(openModal) => changeModalStatus("isRandomMatchOpen", openModal)}
+          changeQuitModalStatus={(openModal) => changeModalStatus("isQuitOpen", openModal)}
+          isRandomMatchOpen={modalStatus.isRandomMatchOpen}
+        />
       </PaymentContainer>
     </>
   );
@@ -76,6 +90,7 @@ const PaymentLeftContainer = styled.div`
   gap: 4rem;
   width: 100%;
 `;
+
 const Title = styled.h1`
   ${({ theme }) => theme.fonts.Headline4}
 `;
