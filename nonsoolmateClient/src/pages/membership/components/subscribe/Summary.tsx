@@ -1,12 +1,15 @@
 import { columnFlex, commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-export default function BasicSummary() {
+interface SummaryProps {
+  productDescriptions: string[];
+}
+export default function Summary({ productDescriptions }: SummaryProps) {
   return (
     <Container>
-      <Text>첨삭권 4개</Text>
-      <Text>재첨삭관 2개</Text>
-      <Text>유형별 연습문제</Text>
+      {productDescriptions.map((item) => (
+        <Text key={item}>{item}</Text>
+      ))}
     </Container>
   );
 }
