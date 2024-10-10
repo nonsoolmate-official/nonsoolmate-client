@@ -8,8 +8,8 @@ import { CardIc, SmallCouponIc } from "@assets/index";
 import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 
 interface RegisterLayoutProps {
-  openCouponModal: () => void;
-  closeCouponModal: () => void;
+  changeCouponModalStatus: (open: boolean) => void;
+  changeSelectUnivModalStatus: (open: boolean) => void;
   registerCard: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
@@ -18,9 +18,21 @@ interface RegisterLayoutProps {
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
-  const { openCouponModal, closeCouponModal, registerCard, handleCouponTxtStatus, isCouponOpen, couponTxt, dcInfo } =
-    props;
+  const {
+    isCouponOpen,
+    changeCouponModalStatus,
+    couponTxt,
+    dcInfo,
+    changeSelectUnivModalStatus,
+    handleCouponTxtStatus,
+    registerCard,
+  } = props;
+
   const response = useGetCardInfo();
+
+  function openCouponModal() {
+    changeCouponModalStatus(true);
+  }
 
   return (
     <>
@@ -53,7 +65,13 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
           </Content>
         </RegisterLayoutContainer>
       ))}
-      {isCouponOpen && <CouponModal closeModal={closeCouponModal} handleCouponTxtStatus={handleCouponTxtStatus} />}
+      {isCouponOpen && (
+        <CouponModal
+          changeCouponModalStatus={changeCouponModalStatus}
+          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
+          handleCouponTxtStatus={handleCouponTxtStatus}
+        />
+      )}
     </>
   );
 }

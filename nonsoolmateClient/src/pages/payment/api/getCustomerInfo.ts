@@ -1,11 +1,12 @@
 import { client } from "@api/axios";
 
-interface DataTypes {
+export interface CustomerInfoResponse {
   customerKey: string;
   customerName: string;
   customerEmail: string;
 }
+
 export async function getCustomerInfo() {
-  const { data } = await client.get<DataTypes>("/payment/customer/info");
+  const { data } = await client.get<CustomerInfoResponse>(`/payment/customer/info`);
   return data;
 }

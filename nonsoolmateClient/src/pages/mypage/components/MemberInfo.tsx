@@ -143,7 +143,7 @@ const MemberInfoContainer = styled.form`
   padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
+  box-shadow: ${({ theme }) => theme.effects.container_shadow};
   ${media.tablet} {
     padding: 3.1rem 3.2rem;
   }
