@@ -61,7 +61,6 @@ import SignupIc from "./icon/signupIc.svg?react";
 import QnaToogleCloseIc from "./icon/qnatooglecloseIc.svg?react";
 import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 
-import SixMonthsMembershipIc from "./icon/sixMonthsMembershipIc.svg?react";
 import BasicPlanIc from "./icon/basicPlanIc.svg?react";
 import PremiumPlanIc from "./icon/premiumPlanIc.svg?react";
 
@@ -116,7 +115,7 @@ import CouponIc from "./icon/couponIc.svg?react";
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import MonthlyMembershipGrayIc from "./icon/monthlyMembershipGrayIc.svg?react";
-import MonthlyMembershipIc from "./icon/monthlyMembershipIc.svg?react";
+
 import PlusIc from "./icon/plusIc.svg?react";
 
 import PassIc from "./icon/passIc.svg?react";
@@ -161,7 +160,6 @@ export {
   MembershipDisabledIc,
   MembershipIc,
   MonthlyMembershipGrayIc,
-  MonthlyMembershipIc,
   NaverLoginIc,
   NotCheckBtnIc,
   PassIc,
