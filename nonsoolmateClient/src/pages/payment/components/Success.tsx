@@ -12,38 +12,18 @@ export default function Success() {
   const customerKey = searchParams.get("customerKey");
   const authKey = searchParams.get("authKey");
   const id = searchParams.get("id");
-  const { mutate: updateCard } = usePutCardUpdate();
-  const { mutate: postMutate } = usePostCardRegister();
+  const { mutate: updateCard } = usePutCardUpdate(navigate, id);
+  const { mutate: postMutate } = usePostCardRegister(navigate, id);
   const { cardInfo, isLoading } = useGetCardInfo();
 
   useEffect(() => {
     if (!customerKey || !authKey) return;
-
     if (isLoading) return;
 
     if (cardInfo && cardInfo.cardId) {
-      updateCard(authKey, {
-        onSuccess: () => {
-          console.log("카드 업데이트 성공");
-          navigate(`/payment`, { state: { id: Number(id) } });
-        },
-        onError: (error) => {
-          console.error("카드 업데이트 실패", error);
-        },
-      });
+      updateCard(authKey);
     } else {
-      postMutate(
-        { authKey: authKey },
-        {
-          onSuccess: () => {
-            console.log("카드 등록 성공");
-            navigate(`/payment`, { state: { id: Number(id) } });
-          },
-          onError: (error) => {
-            console.error("카드 등록 실패", error);
-          },
-        },
-      );
+      postMutate({ authKey: authKey });
     }
   }, [authKey, cardInfo, navigate, postMutate, id]);
 
