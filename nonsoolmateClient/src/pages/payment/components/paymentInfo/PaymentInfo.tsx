@@ -37,7 +37,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     changeQuitModalStatus,
     isQuitOpen,
   } = props;
-  const plan = PAYMENTINFO_LIST.find((item) => item.id === selectedPlan);
+  const plan = PAYMENTINFO_LIST.find((item) => item.productId === selectedPlan);
   const [isAgree, setIsAgree] = useState(false);
 
   const originalPrice = plan?.price || 0;
@@ -78,7 +78,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
           finalPrice={finalPrice}
           changeSuccessModalStatus={changeSuccessModalStatus}
           changeSelectUnivModalStatus={changeSelectUnivModalStatus}
-          planTitle={plan.title}
+          planTitle={plan.productName}
         />
       )}
       {isSelctUnivOpen && (

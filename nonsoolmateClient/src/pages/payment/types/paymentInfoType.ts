@@ -1,14 +1,15 @@
 export interface Discount {
-  id: number;
-  title: string;
-  rate: number;
+  discountId: number;
+  discountName: string;
+  discountRate: number;
 }
 
 export interface Plan {
-  id: number;
-  title: string;
+  productId: number;
+  productName: string;
+  productDescriptions: never[];
   price: number;
-  defaultDiscount: Discount[];
+  defaultDiscounts: Discount[];
 }
 
 export interface OrderProps {

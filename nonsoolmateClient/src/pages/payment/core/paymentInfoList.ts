@@ -1,20 +1,22 @@
 export const PAYMENTINFO_LIST = [
   {
-    id: 1,
-    title: "베이직 플랜",
+    productId: 1,
+    productName: "베이직 플랜",
+    productDescriptions: [],
     price: 210000,
-    defaultDiscount: [
-      { id: 1, title: "얼리버드 특가", rate: 20 },
-      { id: 2, title: "쿠폰 할인", rate: 20 },
+    defaultDiscounts: [
+      { discountId: 1, discountName: "얼리버드 특가", discountRate: 0.2 },
+      { discountId: 2, discountName: "첫 달 20% 추가 할인", discountRate: 0.2 },
     ],
   },
   {
-    id: 2,
-    title: "프리미엄 플랜",
+    productId: 2,
+    productName: "프리미엄 플랜",
+    productDescriptions: [],
     price: 260000,
-    defaultDiscount: [
-      { id: 1, title: "얼리버드 특가", rate: 20 },
-      { id: 2, title: "쿠폰 할인", rate: 20 },
+    defaultDiscounts: [
+      { discountId: 1, discountName: "얼리버드 특가", discountRate: 0.2 },
+      { discountId: 2, discountName: "첫 달 20% 추가 할인", discountRate: 0.2 },
     ],
   },
 ];

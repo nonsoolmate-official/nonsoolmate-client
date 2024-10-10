@@ -14,7 +14,7 @@ export default function DiscountDetail(props: DiscountDetailProps) {
           <Coupon>{item.discount_title}</Coupon>
           <DiscountPriceBox>
             <PrevPrice>{item.beforeDiscount_price.toLocaleString()}원</PrevPrice>
-            <DiscountRate>{item.discount_rate}% OFF</DiscountRate>
+            <DiscountRate>{item.discount_rate * 100}% OFF</DiscountRate>
           </DiscountPriceBox>
         </DiscountDetailContainer>
       ))}

@@ -6,7 +6,7 @@ export default function OrderDetail(props: OrderProps) {
   const { plan } = props;
   return (
     <OrderDetailContainer>
-      <Type>{plan?.title}</Type>
+      <Type>{plan?.productName}</Type>
       <Price>{plan?.price.toLocaleString()}원</Price>
     </OrderDetailContainer>
   );
