@@ -7,11 +7,11 @@ export interface Discount {
 export interface Plan {
   productId: number;
   productName: string;
-  productDescriptions: never[];
+  productDescriptions: string[];
   price: number;
   defaultDiscounts: Discount[];
 }
 
-export interface OrderProps {
-  plan: Plan;
+export interface ProductListTypes {
+  data: Plan[];
 }
