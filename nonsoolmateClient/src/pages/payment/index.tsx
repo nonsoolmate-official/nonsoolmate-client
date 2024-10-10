@@ -89,7 +89,6 @@ export default function Payment() {
           <OrderInfo id={id} plan={plan} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
-            changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
             isCouponOpen={modalStatus.isCouponOpen}
             couponTxt={couponTxt}

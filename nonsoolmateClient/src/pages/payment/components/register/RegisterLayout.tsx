@@ -9,7 +9,6 @@ import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 
 interface RegisterLayoutProps {
   changeCouponModalStatus: (open: boolean) => void;
-  changeSelectUnivModalStatus: (open: boolean) => void;
   registerCard: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
@@ -27,7 +26,6 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     changeCouponModalStatus,
     couponTxt,
     dcInfo,
-    changeSelectUnivModalStatus,
     handleCouponTxtStatus,
     registerCard,
     activeCouponId,
@@ -82,7 +80,6 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
       {isCouponOpen && (
         <CouponModal
           changeCouponModalStatus={changeCouponModalStatus}
-          changeSelectUnivModalStatus={changeSelectUnivModalStatus}
           handleCouponTxtStatus={handleCouponTxtStatus}
           activeCouponId={activeCouponId}
           handleActiveCouponId={handleActiveCouponId}

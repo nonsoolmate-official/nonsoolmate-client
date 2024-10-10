@@ -10,20 +10,13 @@ import CouponList from "./CouponList";
 
 interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
-  changeSelectUnivModalStatus: (open: boolean) => void;
   handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
   activeCouponId: number | null;
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
 }
 
 export default function CouponModal(props: ModalProps) {
-  const {
-    changeCouponModalStatus,
-    handleCouponTxtStatus,
-    changeSelectUnivModalStatus,
-    activeCouponId,
-    handleActiveCouponId,
-  } = props;
+  const { changeCouponModalStatus, handleCouponTxtStatus, activeCouponId, handleActiveCouponId } = props;
   // const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
