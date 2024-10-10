@@ -1,4 +1,3 @@
-import { PAYMENTINFO_LIST } from "@pages/payment/core/paymentInfoList";
 import { useState } from "react";
 import theme from "style/theme";
 import styled from "styled-components";
