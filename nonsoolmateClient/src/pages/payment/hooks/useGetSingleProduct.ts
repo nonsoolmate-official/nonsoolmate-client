@@ -6,7 +6,7 @@ const QUERY_KEY = {
 };
 export default function useGetSingleProduct(id: number) {
   const { data } = useQuery({
-    queryKey: [QUERY_KEY.getSingleProduct],
+    queryKey: [QUERY_KEY.getSingleProduct, id],
     queryFn: () => getSingleProduct(id),
   });
 
