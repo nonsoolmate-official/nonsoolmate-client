@@ -12,11 +12,19 @@ interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
   changeSelectUnivModalStatus: (open: boolean) => void;
   handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
+  activeCouponId: number | null;
+  handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
 }
 
 export default function CouponModal(props: ModalProps) {
-  const { changeCouponModalStatus, handleCouponTxtStatus, changeSelectUnivModalStatus } = props;
-  const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+  const {
+    changeCouponModalStatus,
+    handleCouponTxtStatus,
+    changeSelectUnivModalStatus,
+    activeCouponId,
+    handleActiveCouponId,
+  } = props;
+  // const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
   const [hasKorean, setHasKorean] = useState(false);
@@ -46,7 +54,7 @@ export default function CouponModal(props: ModalProps) {
     discountAmount?: number,
   ) {
     const isCouponActive = activeCouponId === couponMemberId;
-    setActiveCouponId(isCouponActive ? null : couponMemberId);
+    handleActiveCouponId(isCouponActive, couponMemberId);
     setSelectedCoupon(isCouponActive ? null : { couponName, couponType, discountRate, discountAmount });
   }
 
@@ -87,7 +95,6 @@ export default function CouponModal(props: ModalProps) {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
       changeCouponModalStatus(false);
-      changeSelectUnivModalStatus(true);
     }
   }
 

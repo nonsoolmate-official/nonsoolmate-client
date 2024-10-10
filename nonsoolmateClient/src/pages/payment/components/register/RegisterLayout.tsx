@@ -15,6 +15,10 @@ interface RegisterLayoutProps {
   isCouponOpen: boolean;
   couponTxt: string;
   dcInfo: string;
+  activeCouponId: number | null;
+  handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
+  notRegisterError: boolean;
+  alreadyPaidError: boolean;
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
@@ -26,6 +30,10 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     changeSelectUnivModalStatus,
     handleCouponTxtStatus,
     registerCard,
+    activeCouponId,
+    handleActiveCouponId,
+    notRegisterError,
+    alreadyPaidError,
   } = props;
 
   const response = useGetCardInfo();
@@ -39,13 +47,19 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
       {REGISTER_TEXT.map((item) => (
         <RegisterLayoutContainer key={item.title}>
           <TitleContainer>
-            <Title>{item.title}</Title>
+            <Title>
+              {item.title}
+              {notRegisterError && item.title === "결제 수단" && <ErrorText>* 결제 수단을 등록해 주세요.</ErrorText>}
+              {alreadyPaidError && item.title === "결제 수단" && (
+                <ErrorText>* 이미 멤버십 결제가 진행중입니다.</ErrorText>
+              )}
+            </Title>
             <RegisterButton
               button={item.buttonText}
               onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCard}
             />
           </TitleContainer>
-          <Content>
+          <Content $payError={(notRegisterError || alreadyPaidError) && item.title === "결제 수단"}>
             {item.buttonText === "쿠폰 사용" ? (
               <Coupon>
                 <CouponTxt $couponTxt={couponTxt}>
@@ -70,6 +84,8 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
           changeCouponModalStatus={changeCouponModalStatus}
           changeSelectUnivModalStatus={changeSelectUnivModalStatus}
           handleCouponTxtStatus={handleCouponTxtStatus}
+          activeCouponId={activeCouponId}
+          handleActiveCouponId={handleActiveCouponId}
         />
       )}
     </>
@@ -93,11 +109,12 @@ const Title = styled.p`
   ${({ theme }) => theme.fonts.Body1}
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ $payError: boolean }>`
   ${({ theme }) => theme.fonts.Body6}
 
   width: 100%;
   padding: 1.2rem;
+  border: 1px solid ${({ theme, $payError }) => ($payError ? theme.colors.error : "none")};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.grey_50};
   color: ${theme.colors.grey_500};
@@ -131,4 +148,11 @@ const CardInfo = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
+`;
+
+const ErrorText = styled.span`
+  margin-left: 0.8rem;
+  ${({ theme }) => theme.fonts.Caption1};
+
+  color: ${({ theme }) => theme.colors.error};
 `;

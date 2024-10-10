@@ -12,6 +12,7 @@ import SuccessModal from "../SuccessModal";
 import SelectUnivModal from "../teacherMatch/SelectUnivModal";
 import RandomMatchModal from "../teacherMatch/RandomMatchModal";
 import QuitMatchModal from "../teacherMatch/QuitMatchModal";
+import { usePostMembership } from "@pages/payment/hooks/usePostMembership";
 
 interface PaymentInfoProps {
   selectedPlan: number;
@@ -23,6 +24,9 @@ interface PaymentInfoProps {
   isRandomMatchOpen: boolean;
   isQuitOpen: boolean;
   changeQuitModalStatus: (open: boolean) => void;
+  activeCouponId: number | null;
+  showNotRegisterError: (show: boolean) => void;
+  showAlreadyPaidError: (show: boolean) => void;
 }
 
 export default function PaymentInfo(props: PaymentInfoProps) {
@@ -36,10 +40,17 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     isRandomMatchOpen,
     changeQuitModalStatus,
     isQuitOpen,
+    activeCouponId,
+    showNotRegisterError,
+    showAlreadyPaidError,
   } = props;
   const plan = PAYMENTINFO_LIST.find((item) => item.productId === selectedPlan);
   const [isAgree, setIsAgree] = useState(false);
-
+  const { mutate: postMembership } = usePostMembership(
+    changeSuccessModalStatus,
+    showNotRegisterError,
+    showAlreadyPaidError,
+  );
   const originalPrice = plan?.price || 0;
 
   const discountHistory = plan ? calculateStandardDiscount(plan) : [];
@@ -50,6 +61,12 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     setIsAgree(agreeState);
   }
 
+  function handlePayment() {
+    postMembership({
+      productId: selectedPlan,
+      couponMemberId: activeCouponId,
+    });
+  }
   return (
     <>
       <PaymentInfoContainer>
@@ -65,11 +82,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
         <DevideLine />
         <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
         <Agreements handleAgreements={handleAgreements} />
-        <PaymentButton
-          $isAgree={isAgree}
-          disabled={!isAgree}
-          type="button"
-          onClick={() => changeSuccessModalStatus(true)}>
+        <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button" onClick={handlePayment}>
           결제하기
         </PaymentButton>
       </PaymentInfoContainer>

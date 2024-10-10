@@ -2,7 +2,7 @@ import { client } from "@api/axios";
 
 interface PostMembershipTypes {
   productId: number;
-  couponMemberId: number;
+  couponMemberId: number | null;
 }
 
 export async function postMembership(props: PostMembershipTypes) {

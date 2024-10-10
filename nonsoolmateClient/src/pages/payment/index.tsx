@@ -13,10 +13,9 @@ export default function Payment() {
   const location = useLocation();
   const { id, plan } = location.state;
   const [selectedPlan, setSelectedPlan] = useState(id);
-
-  function handlePlanChange(newPlanId: number) {
-    setSelectedPlan(newPlanId);
-  }
+  const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+  const [notRegisterError, setNotRegisterError] = useState(false);
+  const [alreadyPaidError, setAlreadyPaidError] = useState(false);
 
   const [modalStatus, setModalStatus] = useState({
     isCouponOpen: false,
@@ -28,6 +27,14 @@ export default function Payment() {
 
   const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
   const [dcInfo, setDcInfo] = useState("");
+
+  function handlePlanChange(newPlanId: number) {
+    setSelectedPlan(newPlanId);
+  }
+
+  function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
+    setActiveCouponId(isCouponActive ? null : couponMemberId);
+  }
 
   function handleCouponTxtStatus(coupon: string, dcInfo: string) {
     setCouponTxt(coupon);
@@ -64,7 +71,14 @@ export default function Payment() {
         });
     });
   }
-  // ---------
+  // --------- 결제 에러 핸들링
+  function showNotRegisterError(show: boolean) {
+    setNotRegisterError(show);
+  }
+
+  function showAlreadyPaidError(show: boolean) {
+    setAlreadyPaidError(show);
+  }
 
   return (
     <>
@@ -81,6 +95,10 @@ export default function Payment() {
             couponTxt={couponTxt}
             dcInfo={dcInfo}
             registerCard={registerCard}
+            activeCouponId={activeCouponId}
+            handleActiveCouponId={handleActiveCouponId}
+            notRegisterError={notRegisterError}
+            alreadyPaidError={alreadyPaidError}
           />
         </PaymentLeftContainer>
         <PaymentInfo
@@ -93,6 +111,9 @@ export default function Payment() {
           changeRandomMatchModalStatus={(openModal) => changeModalStatus("isRandomMatchOpen", openModal)}
           changeQuitModalStatus={(openModal) => changeModalStatus("isQuitOpen", openModal)}
           isRandomMatchOpen={modalStatus.isRandomMatchOpen}
+          activeCouponId={activeCouponId}
+          showNotRegisterError={showNotRegisterError}
+          showAlreadyPaidError={showAlreadyPaidError}
         />
       </PaymentContainer>
     </>
