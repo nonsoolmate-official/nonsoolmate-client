@@ -36,7 +36,7 @@ export default function OrderInfo(props: OrderInfoProps) {
                   key={productId}
                   title={productName}
                   description={productDescriptions}
-                  checkBox={true}
+                  checkBox={false}
                 />
               ))}
       </PlanContainer>
