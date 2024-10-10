@@ -7,16 +7,20 @@ import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { Plan } from "@pages/membership/api/getProductsList";
 import Summary from "./Summary";
+import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
 
-export default function Subscribe(props: Plan) {
-  const { productId, productName, productDescriptions, price, defaultDiscounts } = props;
+interface SubscribeProps extends Plan {
+  discountHistory: DiscountHistoryItem[];
+}
+export default function Subscribe(props: SubscribeProps) {
+  const { productId, productName, productDescriptions, price, discountHistory } = props;
   return (
     <Container>
       <ContentContainer>
         <Icons id={productId} />
         <Title title={productName} />
         <Summary productDescriptions={productDescriptions} />
-        <Sales defaultDiscounts={defaultDiscounts} price={price} />
+        <Sales discountHistory={discountHistory} price={price} />
         <PurchaseButton id={productId} />
       </ContentContainer>
     </Container>

@@ -9,7 +9,7 @@ export default function Price(props: PriceProp) {
   const { price } = props;
   return (
     <Container>
-      <PriceText> &#8361;{price} </PriceText>
+      <PriceText> {price.toLocaleString()} </PriceText>
       <Month>/월</Month>
     </Container>
   );

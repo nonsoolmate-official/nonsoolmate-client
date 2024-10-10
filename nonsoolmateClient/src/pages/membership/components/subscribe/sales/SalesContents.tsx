@@ -1,15 +1,15 @@
-import { Discount } from "@pages/membership/api/getProductsList";
+import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-export default function SalesContents(props: Discount) {
-  const { discountName, discountRate } = props;
+export default function SalesContents(props: DiscountHistoryItem) {
+  const { discount_title, beforeDiscount_price, discount_rate } = props;
 
   return (
     <Container>
-      <SaleTitle>{discountName}</SaleTitle>
-      <BeforePrice> &#8361;100000</BeforePrice>
-      <SalePercent>{discountRate}% OFF</SalePercent>
+      <SaleTitle>{discount_title}</SaleTitle>
+      <BeforePrice> {beforeDiscount_price.toLocaleString()}</BeforePrice>
+      <SalePercent>{discount_rate * 100}% OFF</SalePercent>
     </Container>
   );
 }
