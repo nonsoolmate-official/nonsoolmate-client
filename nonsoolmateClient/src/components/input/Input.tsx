@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
-
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   value?: string;
@@ -8,7 +7,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
   errorMessage?: string | null;
 }
-
 export default function Input({
   placeholder,
   value = "",
@@ -24,22 +22,20 @@ export default function Input({
     </InputWrapper>
   );
 }
-
 const InputWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  position: relative;
 `;
 
 const InputLayout = styled.input<{ isError: boolean }>`
   position: relative;
-  padding: 0 1.2rem;
   height: 3.6rem;
+  padding: 0 1.2rem;
   border: 1px solid ${({ theme, isError }) => (isError ? theme.colors.error : theme.colors.grey_100)};
   border-radius: 6px;
   outline: none;
-
   ${({ theme }) => theme.fonts.Body6};
 
   &:focus {
@@ -52,12 +48,10 @@ const InputLayout = styled.input<{ isError: boolean }>`
 `;
 
 const ErrorMessage = styled.p<{ isVisible: boolean }>`
-  position: absolute;
   display: ${({ isVisible }) => (isVisible ? "block" : "none")};
-
+  position: absolute;
   top: 4.2rem;
   left: 0;
-
   color: ${({ theme }) => theme.colors.error};
   ${({ theme }) => theme.fonts.Body8};
 

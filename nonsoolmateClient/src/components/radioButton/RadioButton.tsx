@@ -22,10 +22,8 @@ export default function RadioButton({ label, value, id, ...props }: RadioButtonP
 
 export const RadioButtonWrapper = styled.div`
   display: flex;
-
-  align-items: center;
-
   gap: 0.8rem;
+  align-items: center;
 `;
 
 const StyledRadioButton = styled.input`
@@ -33,21 +31,16 @@ const StyledRadioButton = styled.input`
 
   & + label {
     padding: 0.8rem 4.15rem;
-
     border: 1px solid ${({ theme }) => theme.colors.grey_300};
-
     color: ${({ theme }) => theme.colors.grey_600};
-
-    transition: 0.2s ease-in-out;
-
     cursor: pointer;
+    transition: 0.2s ease-in-out;
   }
 
   &:checked + label {
     border: 1px solid transparent;
-
-    color: ${({ theme }) => theme.colors.main_blue};
     background-color: ${({ theme }) => theme.colors.light_blue};
+    color: ${({ theme }) => theme.colors.main_blue};
   }
 `;
 
@@ -55,6 +48,5 @@ const Label = styled.label`
   ${({ theme }) => theme.fonts.Body6};
 
   border-radius: 8px;
-
   background-color: ${({ theme }) => theme.colors.white};
 `;
