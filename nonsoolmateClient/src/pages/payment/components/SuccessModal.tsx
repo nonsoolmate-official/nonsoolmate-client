@@ -5,12 +5,12 @@ import styled from "styled-components";
 interface ModalProps {
   changeSelectUnivModalStatus: (open: boolean) => void;
   changeSuccessModalStatus: (open: boolean) => void;
-  finalPrice: number;
+  finalPrice_afterCoupon: number;
   planTitle: string;
 }
 
 export default function SuccessModal(props: ModalProps) {
-  const { changeSelectUnivModalStatus, changeSuccessModalStatus, finalPrice, planTitle } = props;
+  const { changeSelectUnivModalStatus, changeSuccessModalStatus, finalPrice_afterCoupon, planTitle } = props;
 
   function handleNext() {
     changeSelectUnivModalStatus(true);
@@ -31,7 +31,7 @@ export default function SuccessModal(props: ModalProps) {
           </Contents>
           <Contents>
             <Title>총 결제 금액</Title>
-            <Value>{finalPrice}원 / 월</Value>
+            <Value>{finalPrice_afterCoupon}원 / 월</Value>
           </Contents>
         </Container>
         <NextButton type="button" onClick={handleNext}>

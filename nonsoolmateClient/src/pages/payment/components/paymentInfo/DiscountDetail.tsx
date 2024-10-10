@@ -4,9 +4,12 @@ import styled from "styled-components";
 
 interface DiscountDetailProps {
   discountHistory: DiscountHistoryItem[];
+  dcInfo: string;
+  finalPrice_beforeCoupon: number;
 }
 export default function DiscountDetail(props: DiscountDetailProps) {
-  const { discountHistory } = props;
+  const { discountHistory, dcInfo, finalPrice_beforeCoupon } = props;
+
   return (
     <>
       {discountHistory.map((item) => (
@@ -18,6 +21,15 @@ export default function DiscountDetail(props: DiscountDetailProps) {
           </DiscountPriceBox>
         </DiscountDetailContainer>
       ))}
+      {dcInfo && (
+        <DiscountDetailContainer key={`${dcInfo}`}>
+          <Coupon>쿠폰 할인</Coupon>
+          <DiscountPriceBox>
+            <PrevPrice>{finalPrice_beforeCoupon}원</PrevPrice>
+            <DiscountRate>{dcInfo}</DiscountRate>
+          </DiscountPriceBox>
+        </DiscountDetailContainer>
+      )}
     </>
   );
 }

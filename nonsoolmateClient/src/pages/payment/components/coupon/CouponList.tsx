@@ -28,7 +28,7 @@ export default function CouponList(props: ListProps) {
             const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate, isUsed } = item;
             const isCouponClicked = activeCouponId === couponMemberId;
             // console.log(isUsed);
-            if (isUsed) {
+            if (!isUsed) {
               return (
                 <Coupon
                   type="button"
