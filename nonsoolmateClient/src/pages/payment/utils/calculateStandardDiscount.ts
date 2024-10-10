@@ -1,5 +1,5 @@
-import { DiscountHistoryItem } from "../types/discountHistoryType";
-import { Plan } from "@pages/membership/api/getProductsList";
+import { DiscountHistoryItem } from "../../../types/discountHistoryType";
+import { Plan } from "types/productsListType";
 
 export function calculateStandardDiscount(plan: Plan) {
   let currentPrice = plan?.price || 0;
@@ -13,11 +13,11 @@ export function calculateStandardDiscount(plan: Plan) {
       currentPrice *= 1 - item.discountRate;
 
       discountHistory.push({
-        discount_id: item.discountId,
-        discount_title: item.discountName,
-        beforeDiscount_price: beforeDiscountPrice,
-        discounted_price: currentPrice,
-        discount_rate: item.discountRate,
+        discountId: item.discountId,
+        discountTitle: item.discountName,
+        beforeDiscountPrice: beforeDiscountPrice,
+        discountedPrice: currentPrice,
+        discountRate: item.discountRate,
       });
     });
   }

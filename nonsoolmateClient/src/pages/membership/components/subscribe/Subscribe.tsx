@@ -5,9 +5,9 @@ import Title from "./Title";
 
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
-import { Plan } from "@pages/membership/api/getProductsList";
+import { Plan } from "types/productsListType";
 import Summary from "./Summary";
-import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
+import { DiscountHistoryItem } from "types/discountHistoryType";
 
 interface SubscribeProps extends Plan {
   discountHistory: DiscountHistoryItem[];

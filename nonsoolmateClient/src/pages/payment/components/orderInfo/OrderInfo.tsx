@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Plan from "./Plan";
-import { Plan as PlanType } from "@pages/membership/api/getProductsList";
+import { Plan as PlanType } from "types/productsListType";
 
 interface OrderInfoProps {
   id: number;

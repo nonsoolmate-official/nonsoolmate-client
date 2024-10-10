@@ -43,7 +43,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
   const originalPrice = plan?.price || 0;
 
   const discountHistory = plan ? calculateStandardDiscount(plan) : [];
-  const finalPrice = discountHistory[discountHistory.length - 1].discounted_price;
+  const finalPrice = discountHistory[discountHistory.length - 1].discountedPrice;
   const discountedPrice = originalPrice - finalPrice;
 
   function handleAgreements(agreeState: boolean) {

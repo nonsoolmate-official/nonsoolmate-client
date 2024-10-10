@@ -1,4 +1,4 @@
-import { Plan } from "@pages/membership/api/getProductsList";
+import { Plan } from "types/productsListType";
 import { getToken } from "@pages/socialLogin/utils/token";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";

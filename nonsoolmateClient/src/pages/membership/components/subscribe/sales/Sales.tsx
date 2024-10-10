@@ -2,7 +2,7 @@ import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import Price from "../Price";
 import SalesContents from "./SalesContents";
-import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
+import { DiscountHistoryItem } from "types/discountHistoryType";
 
 interface SalesProp {
   discountHistory: DiscountHistoryItem[];
@@ -14,19 +14,19 @@ export default function Sales(props: SalesProp) {
 
   let finalPrice = price;
   if (discountHistory.length) {
-    finalPrice = discountHistory[discountHistory.length - 1].discounted_price;
+    finalPrice = discountHistory[discountHistory.length - 1].discountedPrice;
   }
   return (
     <Container>
-      {discountHistory.map(({ discount_id, discount_title, beforeDiscount_price, discount_rate, discounted_price }) => {
+      {discountHistory.map(({ discountId, discountTitle, beforeDiscountPrice, discountRate, discountedPrice }) => {
         return (
           <SalesContents
-            key={discount_id}
-            discount_id={discount_id}
-            discount_title={discount_title}
-            discount_rate={discount_rate}
-            beforeDiscount_price={beforeDiscount_price}
-            discounted_price={discounted_price}
+            key={discountId}
+            discountId={discountId}
+            discountTitle={discountTitle}
+            discountRate={discountRate}
+            beforeDiscountPrice={beforeDiscountPrice}
+            discountedPrice={discountedPrice}
           />
         );
       })}
