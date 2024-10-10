@@ -44,19 +44,20 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     showNotRegisterError,
     showAlreadyPaidError,
   } = props;
-
   const [isAgree, setIsAgree] = useState(false);
-  const { data } = useGetSingleProduct(selectedPlan);
-  if (!data) {
-    return <></>;
-  }
-  const plan = data;
 
+  const { data } = useGetSingleProduct(selectedPlan);
   const { mutate: postMembership } = usePostMembership(
     changeSuccessModalStatus,
     showNotRegisterError,
     showAlreadyPaidError,
   );
+
+  if (!data) {
+    return <></>;
+  }
+  const plan = data;
+
   const originalPrice = plan?.price || 0;
 
   const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan) : [];
