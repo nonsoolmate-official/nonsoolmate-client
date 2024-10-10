@@ -803,7 +803,28 @@
   dependencies:
     "@tanstack/query-core" "5.59.4"
 
-"@tosspayments/tosspayments-sdk@^2.2.4":
+"@tosspayments/payment-sdk@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment-sdk/-/payment-sdk-1.9.0.tgz#e7981aff45712c8fc00835e146481b5d56de79f8"
+  integrity sha512-1R9RahD37TjaaVxZ/DhkCQuH8MTh5lP7vh8Y15tNNS+zky6GP/YWbUt02xB8ESGoAPx231zbOzk1wjupUtZu0w==
+  dependencies:
+    "@tosspayments/payment__types" "1.68.0"
+
+"@tosspayments/payment__types@1.68.0":
+  version "1.68.0"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment__types/-/payment__types-1.68.0.tgz#924fcd0b1da44d115c6ecfa62b84291c55061490"
+  integrity sha512-O6mEo7izwDP+Snk0ffENEWQBQ4l7ljT/YBzGlLP/2qtJJS/i3kALg7qUnvKsr71OrV2IEznkRW9CoSGg5DU5oQ==
+  dependencies:
+    "@tosspayments/sdk-constants" "^0.2.2"
+
+"@tosspayments/sdk-constants@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@tosspayments/sdk-constants/-/sdk-constants-0.2.2.tgz#91bd84fc1543eb2382b2a9b40792eed9f9146b1e"
+  integrity sha512-qTIcD9JnVtN65/yiW5sPAlvK5fpQtDluv4IEyslubncbQLQKE+ePSnGZU1fLNPxcchv6QTnwmgj9Ndm6EN/Ymg==
+  dependencies:
+    type-fest "^2.11.2"
+
+"@tosspayments/tosspayments-sdk@^2.3.2":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@tosspayments/tosspayments-sdk/-/tosspayments-sdk-2.3.2.tgz#860919bc180ee5c467275151b2845345866cfb2c"
   integrity sha512-8Sq1cMc4HrxF4zaL213D51epQM7P5p7Tq/iLARooX8SMSY/16MVs8NUuIcmO1dbfpcBaX10wLwYSOZcL4ZGRtw==
@@ -4140,6 +4161,11 @@ type-fest@^0.20.2:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
+
+type-fest@^2.11.2:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 typed-array-buffer@^1.0.2:
   version "1.0.2"

@@ -3,12 +3,14 @@ import styled from "styled-components";
 import RegisterButton from "./RegisterButton";
 import theme from "style/theme";
 import { REGISTER_TEXT } from "@pages/payment/core/registerText";
-import { SmallCouponIc } from "@assets/index";
 import CouponModal from "../coupon/CouponModal";
+import { CardIc, SmallCouponIc } from "@assets/index";
+import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 
 interface RegisterLayoutProps {
   changeCouponModalStatus: (open: boolean) => void;
   changeSelectUnivModalStatus: (open: boolean) => void;
+  registerCard: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
   couponTxt: string;
@@ -23,7 +25,10 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     dcInfo,
     changeSelectUnivModalStatus,
     handleCouponTxtStatus,
+    registerCard,
   } = props;
+
+  const response = useGetCardInfo();
 
   function openCouponModal() {
     changeCouponModalStatus(true);
@@ -37,7 +42,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
             <Title>{item.title}</Title>
             <RegisterButton
               button={item.buttonText}
-              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : openCouponModal}
+              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCard}
             />
           </TitleContainer>
           <Content>
@@ -49,6 +54,11 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
                 </CouponTxt>
                 <DcInfo>{dcInfo}</DcInfo>
               </Coupon>
+            ) : response.cardInfo ? (
+              <CardInfo>
+                <CardIc />
+                {response.cardInfo?.cardCompany} {response.cardInfo?.cardNumber}
+              </CardInfo>
             ) : (
               item.content
             )}
@@ -115,4 +125,10 @@ const DcInfo = styled.p`
 const SmallCouponIcon = styled(SmallCouponIc)`
   width: 2rem;
   height: 2rem;
+`;
+
+const CardInfo = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
 `;
