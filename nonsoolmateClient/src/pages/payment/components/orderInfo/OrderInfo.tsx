@@ -1,35 +1,44 @@
 import styled from "styled-components";
 import Plan from "./Plan";
-import { PLAN_LIST } from "../../core/planList";
+import { Plan as PlanType } from "@pages/membership/api/getProductsList";
 
 interface OrderInfoProps {
   id: number;
+  plan: PlanType[];
   selectedPlan: number;
   onPlanChange: (newPlanId: number) => void;
 }
 
 export default function OrderInfo(props: OrderInfoProps) {
-  const { id, selectedPlan, onPlanChange } = props;
+  const { id, plan, selectedPlan, onPlanChange } = props;
 
   return (
     <OrderInfoContainer>
       <OrderInfoTitle>주문 정보</OrderInfoTitle>
       <PlanContainer>
         {id === 1
-          ? PLAN_LIST.map(({ id, title, description }) => (
+          ? plan.map(({ productId, productName, productDescriptions }) => (
               <Plan
-                id={id}
-                key={id}
-                title={title}
-                description={description}
+                id={productId}
+                key={productId}
+                title={productName}
+                description={productDescriptions}
                 checkBox={true}
                 selectedPlan={selectedPlan}
                 onPlanChange={onPlanChange}
               />
             ))
-          : PLAN_LIST.filter((item) => item.id === 2).map(({ id, title, description }) => (
-              <Plan id={id} key={id} title={title} description={description} checkBox={false} />
-            ))}
+          : plan
+              .filter((item) => item.productId === 2)
+              .map(({ productId, productName, productDescriptions }) => (
+                <Plan
+                  id={productId}
+                  key={productId}
+                  title={productName}
+                  description={productDescriptions}
+                  checkBox={true}
+                />
+              ))}
       </PlanContainer>
     </OrderInfoContainer>
   );

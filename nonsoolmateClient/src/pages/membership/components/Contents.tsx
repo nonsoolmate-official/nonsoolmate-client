@@ -32,6 +32,7 @@ export default function Contents() {
               price={price}
               defaultDiscounts={defaultDiscounts}
               discountHistory={discountHistory}
+              plan={planInfo}
             />
           );
         })}

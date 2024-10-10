@@ -11,9 +11,10 @@ import { DiscountHistoryItem } from "@pages/payment/types/discountHistoryType";
 
 interface SubscribeProps extends Plan {
   discountHistory: DiscountHistoryItem[];
+  plan: Plan[];
 }
 export default function Subscribe(props: SubscribeProps) {
-  const { productId, productName, productDescriptions, price, discountHistory } = props;
+  const { productId, productName, productDescriptions, price, discountHistory, plan } = props;
   return (
     <Container>
       <ContentContainer>
@@ -26,7 +27,7 @@ export default function Subscribe(props: SubscribeProps) {
           <Sales discountHistory={discountHistory} price={price} />
         </ContentDetailBox>
       </ContentContainer>
-      <PurchaseButton id={productId} />
+      <PurchaseButton id={productId} plan={plan} />
     </Container>
   );
 }

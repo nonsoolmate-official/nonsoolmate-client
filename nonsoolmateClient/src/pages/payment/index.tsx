@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function Payment() {
   const location = useLocation();
-  const { id } = location.state;
+  const { id, plan } = location.state;
   const [selectedPlan, setSelectedPlan] = useState(id);
 
   function handlePlanChange(newPlanId: number) {
@@ -45,7 +45,7 @@ export default function Payment() {
       <PaymentContainer>
         <PaymentLeftContainer>
           <Title>정기결제</Title>
-          <OrderInfo id={id} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <OrderInfo id={id} plan={plan} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
             changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
