@@ -2,10 +2,10 @@ import { useModalDispatch } from "@hooks/useModal";
 import styled from "styled-components";
 
 export default function Modal() {
-  const showModal = useModalDispatch();
+  const dispatch = useModalDispatch();
 
   const handleClose = () => {
-    showModal(false);
+    dispatch({ type: "HIDE_MODAL" });
   };
 
   return (
