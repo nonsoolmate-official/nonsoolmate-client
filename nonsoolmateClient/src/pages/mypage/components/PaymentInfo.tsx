@@ -18,9 +18,7 @@ export default function PaymentInfo() {
             <InfoTitle>결제 수단</InfoTitle>
             <Info>{PAYMENT_DATA.payment.paymentMethod}</Info>
           </Payment>
-          <Button variant="text" size="sm">
-            결제 수단 변경하기
-          </Button>
+          <Button variant="text">결제 수단 변경하기</Button>
         </PaymentInfoBox>
 
         <PaymentInfoBox>
@@ -38,7 +36,7 @@ export default function PaymentInfo() {
               <Info>등록된 쿠폰이 없습니다.</Info>
             )}
           </Payment>
-          <Button variant="tertiary" size="sm">
+          <Button variant="tertiary" width={12}>
             쿠폰 변경
           </Button>
         </PaymentInfoBox>

@@ -23,9 +23,7 @@ export default function MembershipInfo() {
                       <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
                     </CurrentMembership>
                   </Membership>
-                  <Button variant="text" size="sm">
-                    멤버십 해지하기
-                  </Button>
+                  <Button variant="text">멤버십 해지하기</Button>
                 </MembershipInfoBox>
 
                 <Membership>

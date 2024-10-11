@@ -21,6 +21,7 @@ const ButtonWrapper = styled.button<{ variant: Variant; width?: number }>`
   width: ${({ width }) => `${width}rem`};
   padding: 0.8rem 2.8rem;
   border-radius: 8px;
+
   ${({ theme }) => theme.fonts.Body6};
 
   white-space: nowrap;
