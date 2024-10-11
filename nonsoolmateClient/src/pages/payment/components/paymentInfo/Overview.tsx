@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 interface OverviewProps {
   discountedPrice: number;
-  finalPrice: number;
+  finalPrice_afterCoupon: number;
 }
 export default function Overview(props: OverviewProps) {
-  const { discountedPrice, finalPrice } = props;
+  const { discountedPrice, finalPrice_afterCoupon } = props;
   return (
     <OverviewContainer>
       <DiscountOverview>
@@ -16,7 +16,7 @@ export default function Overview(props: OverviewProps) {
       <PaymentOverview>
         <TotalPayment>총 결제 금액</TotalPayment>
         <TotalPriceBox>
-          <TotalPrice>{finalPrice.toLocaleString()}원</TotalPrice>
+          <TotalPrice>{finalPrice_afterCoupon.toLocaleString()}원</TotalPrice>
           <Unit> / 월</Unit>
         </TotalPriceBox>
       </PaymentOverview>

@@ -5,7 +5,7 @@ import OrderInfo from "./components/orderInfo/OrderInfo";
 import RegisterLayout from "./components/register/RegisterLayout";
 import { media } from "style/responsiveStyle";
 import HomeHeader from "@pages/home/components/HomeHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
 
@@ -16,10 +16,9 @@ export default function Payment() {
   const initialId = storedId ? Number(storedId) : 0;
 
   const [selectedPlan, setSelectedPlan] = useState(id);
-
-  function handlePlanChange(newPlanId: number) {
-    setSelectedPlan(newPlanId);
-  }
+  const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+  const [notRegisterError, setNotRegisterError] = useState(false);
+  const [alreadyPaidError, setAlreadyPaidError] = useState(false);
 
   const [modalStatus, setModalStatus] = useState({
     isCouponOpen: false,
@@ -29,8 +28,24 @@ export default function Payment() {
     isQuitOpen: false,
   });
 
-  const [couponTxt, setCouponTxt] = useState("등록된 쿠폰이 없습니다.");
-  const [dcInfo, setDcInfo] = useState("");
+  const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || "등록된 쿠폰이 없습니다.");
+  const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
+
+  useEffect(() => {
+    sessionStorage.setItem("couponTxt", couponTxt);
+  }, [couponTxt]);
+
+  useEffect(() => {
+    sessionStorage.setItem("dcInfo", dcInfo);
+  }, [dcInfo]);
+
+  function handlePlanChange(newPlanId: number) {
+    setSelectedPlan(newPlanId);
+  }
+
+  function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
+    setActiveCouponId(isCouponActive ? null : couponMemberId);
+  }
 
   function handleCouponTxtStatus(coupon: string, dcInfo: string) {
     setCouponTxt(coupon);
@@ -67,7 +82,14 @@ export default function Payment() {
         });
     });
   }
-  // ---------
+  // --------- 결제 에러 핸들링
+  function showNotRegisterError(show: boolean) {
+    setNotRegisterError(show);
+  }
+
+  function showAlreadyPaidError(show: boolean) {
+    setAlreadyPaidError(show);
+  }
 
   return (
     <>
@@ -78,12 +100,15 @@ export default function Payment() {
           <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
-            changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
             isCouponOpen={modalStatus.isCouponOpen}
             couponTxt={couponTxt}
             dcInfo={dcInfo}
             registerCard={registerCard}
+            activeCouponId={activeCouponId}
+            handleActiveCouponId={handleActiveCouponId}
+            notRegisterError={notRegisterError}
+            alreadyPaidError={alreadyPaidError}
           />
         </PaymentLeftContainer>
         <PaymentInfo
@@ -96,6 +121,10 @@ export default function Payment() {
           changeRandomMatchModalStatus={(openModal) => changeModalStatus("isRandomMatchOpen", openModal)}
           changeQuitModalStatus={(openModal) => changeModalStatus("isQuitOpen", openModal)}
           isRandomMatchOpen={modalStatus.isRandomMatchOpen}
+          activeCouponId={activeCouponId}
+          showNotRegisterError={showNotRegisterError}
+          showAlreadyPaidError={showAlreadyPaidError}
+          dcInfo={dcInfo}
         />
       </PaymentContainer>
     </>

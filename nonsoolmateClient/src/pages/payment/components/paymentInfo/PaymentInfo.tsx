@@ -12,6 +12,8 @@ import SelectUnivModal from "../teacherMatch/SelectUnivModal";
 import RandomMatchModal from "../teacherMatch/RandomMatchModal";
 import QuitMatchModal from "../teacherMatch/QuitMatchModal";
 import useGetSingleProduct from "@pages/payment/hooks/useGetSingleProduct";
+import { usePostMembership } from "@pages/payment/hooks/usePostMembership";
+import { calcCouponDc } from "@pages/payment/utils/coupon";
 
 interface PaymentInfoProps {
   selectedPlan: number;
@@ -23,6 +25,10 @@ interface PaymentInfoProps {
   isRandomMatchOpen: boolean;
   isQuitOpen: boolean;
   changeQuitModalStatus: (open: boolean) => void;
+  activeCouponId: number | null;
+  showNotRegisterError: (show: boolean) => void;
+  showAlreadyPaidError: (show: boolean) => void;
+  dcInfo: string;
 }
 
 export default function PaymentInfo(props: PaymentInfoProps) {
@@ -36,10 +42,20 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     isRandomMatchOpen,
     changeQuitModalStatus,
     isQuitOpen,
+    activeCouponId,
+    showNotRegisterError,
+    showAlreadyPaidError,
+    dcInfo,
   } = props;
-
   const [isAgree, setIsAgree] = useState(false);
+
   const { data } = useGetSingleProduct(selectedPlan);
+  const { mutate: postMembership } = usePostMembership(
+    changeSuccessModalStatus,
+    showNotRegisterError,
+    showAlreadyPaidError,
+  );
+
   if (!data) {
     return <></>;
   }
@@ -48,14 +64,33 @@ export default function PaymentInfo(props: PaymentInfoProps) {
   const originalPrice = plan?.price || 0;
 
   const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan) : [];
-  const finalPrice = discountHistory.length
+
+  const finalPrice_beforeCoupon = discountHistory.length
     ? discountHistory[discountHistory.length - 1].discountedPrice
     : originalPrice;
 
-  const discountedPrice = originalPrice - finalPrice;
+  const finalPrice_afterCoupon = calcCouponDc(dcInfo, finalPrice_beforeCoupon);
+  const discountedPrice = originalPrice - finalPrice_afterCoupon;
 
   function handleAgreements(agreeState: boolean) {
     setIsAgree(agreeState);
+  }
+
+  function handlePayment() {
+    postMembership(
+      {
+        productId: selectedPlan,
+        couponMemberId: activeCouponId,
+      },
+      {
+        onSuccess: () => {
+          if (activeCouponId) {
+            sessionStorage.removeItem("couponTxt");
+            sessionStorage.removeItem("dcInfo");
+          }
+        },
+      },
+    );
   }
 
   return (
@@ -68,22 +103,24 @@ export default function PaymentInfo(props: PaymentInfoProps) {
         </InfoBox>
         <InfoBox>
           <InfoTitle>할인 정보</InfoTitle>
-          {plan && <DiscountDetail discountHistory={discountHistory} />}
+          {plan && (
+            <DiscountDetail
+              discountHistory={discountHistory}
+              dcInfo={dcInfo}
+              finalPrice_beforeCoupon={finalPrice_beforeCoupon}
+            />
+          )}
         </InfoBox>
         <DevideLine />
-        <Overview finalPrice={finalPrice} discountedPrice={discountedPrice} />
+        <Overview finalPrice_afterCoupon={finalPrice_afterCoupon} discountedPrice={discountedPrice} />
         <Agreements handleAgreements={handleAgreements} />
-        <PaymentButton
-          $isAgree={isAgree}
-          disabled={!isAgree}
-          type="button"
-          onClick={() => changeSuccessModalStatus(true)}>
+        <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button" onClick={handlePayment}>
           결제하기
         </PaymentButton>
       </PaymentInfoContainer>
       {isSucessOpen && plan && (
         <SuccessModal
-          finalPrice={finalPrice}
+          finalPrice_afterCoupon={finalPrice_afterCoupon}
           changeSuccessModalStatus={changeSuccessModalStatus}
           changeSelectUnivModalStatus={changeSelectUnivModalStatus}
           planTitle={plan.productName}

@@ -5,8 +5,8 @@ import { NavigateFunction } from "react-router-dom";
 export function usePostCardRegister(navigate: NavigateFunction, id: string | null) {
   return useMutation({
     mutationFn: postCardRegister,
-    onSuccess: () => {
-      console.log("Card registration successful");
+    onSuccess: (data) => {
+      console.log("Card registration successful", data);
       navigate(`/payment`, { state: { id: Number(id) } });
     },
     onError: (error) => {

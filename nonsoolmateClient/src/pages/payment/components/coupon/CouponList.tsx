@@ -25,25 +25,28 @@ export default function CouponList(props: ListProps) {
       {couponExist ? (
         <CouponListBox>
           {COUPON_LIST.coupons.map((item: CouponsType) => {
-            const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate } = item;
+            const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate, isUsed } = item;
             const isCouponClicked = activeCouponId === couponMemberId;
-
-            return (
-              <Coupon
-                type="button"
-                key={couponMemberId}
-                $isCouponClicked={isCouponClicked}
-                onClick={() => handleCouponClick(couponMemberId, couponName, couponType, discountRate, discountAmount)}>
-                {isCouponClicked ? <FilledCircleIcon /> : <EmptyCircleIcon />}
-                <CouponText>
-                  <DiscountTxt>{checkCouponType(couponType, discountRate, discountAmount)}</DiscountTxt>
-                  <CouponDetail>
-                    <CouponName>{couponName} |</CouponName>
-                    <CouponExpiration>유효기간 ~ {convertDate(validEndDate)}</CouponExpiration>
-                  </CouponDetail>
-                </CouponText>
-              </Coupon>
-            );
+            if (!isUsed) {
+              return (
+                <Coupon
+                  type="button"
+                  key={couponMemberId}
+                  $isCouponClicked={isCouponClicked}
+                  onClick={() =>
+                    handleCouponClick(couponMemberId, couponName, couponType, discountRate, discountAmount)
+                  }>
+                  {isCouponClicked ? <FilledCircleIcon /> : <EmptyCircleIcon />}
+                  <CouponText>
+                    <DiscountTxt>{checkCouponType(couponType, discountRate, discountAmount)}</DiscountTxt>
+                    <CouponDetail>
+                      <CouponName>{couponName} |</CouponName>
+                      <CouponExpiration>유효기간 ~ {convertDate(validEndDate)}</CouponExpiration>
+                    </CouponDetail>
+                  </CouponText>
+                </Coupon>
+              );
+            }
           })}
         </CouponListBox>
       ) : (
