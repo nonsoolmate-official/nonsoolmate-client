@@ -1,4 +1,4 @@
-import { MonthlyMembershipIc, SixMonthsMembershipIc } from "@assets/index";
+import { BasicPlanIc, PremiumPlanIc } from "@assets/index";
 import styled from "styled-components";
 
 interface IconsProp {
@@ -8,14 +8,14 @@ interface IconsProp {
 export default function Icons(props: IconsProp) {
   const { id } = props;
 
-  return <>{id === 1 ? <MonthlyMembershipIcon /> : <SixMonthsMembershipIcon />}</>;
+  return <>{id === 1 ? <BasicPlanIcon /> : <PremiumPlanIcon />}</>;
 }
 
-const MonthlyMembershipIcon = styled(MonthlyMembershipIc)`
+const BasicPlanIcon = styled(BasicPlanIc)`
   width: 4.4rem;
   height: 4.4rem;
 `;
-const SixMonthsMembershipIcon = styled(SixMonthsMembershipIc)`
+const PremiumPlanIcon = styled(PremiumPlanIc)`
   width: 4.4rem;
   height: 4rem;
 `;

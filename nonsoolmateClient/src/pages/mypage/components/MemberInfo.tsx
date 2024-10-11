@@ -129,22 +129,21 @@ export default function MemberInfo() {
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.grey_50};
+  width: 100%;
 `;
 
 const MemberInfoContainer = styled.form`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.8rem;
+  position: relative;
   width: 69.6rem;
-  padding: 2.4rem;
   margin-left: 2.4rem;
+  padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: ${({ theme }) => theme.effects.container_shadow};
   ${media.tablet} {
     padding: 3.1rem 3.2rem;
   }
@@ -152,32 +151,34 @@ const MemberInfoContainer = styled.form`
 
 const Info = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 2.4rem;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.h3`
   display: flex;
   padding: 2.4rem;
   ${({ theme }) => theme.fonts.Headline5};
+
   white-space: nowrap;
 `;
 
 const Field = styled.h3`
   width: 5.6rem;
   ${({ theme }) => theme.fonts.Body3};
+
   white-space: nowrap;
 `;
 
 const FieldLayout = styled.div`
   display: flex;
-  align-items: center;
   gap: 2.4rem;
+  align-items: center;
 `;
 
 const SubmitLayout = styled.div`
   display: flex;
-  margin-top: 4.8rem;
   justify-content: flex-end;
+  margin-top: 4.8rem;
 `;

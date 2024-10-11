@@ -48,24 +48,16 @@ export default function SideNav({ menu, setMenu }: SideNavProps) {
 
 const Ul = styled.ul`
   display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  justify-content: flex-start;
+  overflow: hidden;
   position: sticky;
-
   width: 43.1rem;
   height: 100%;
-
-  flex-direction: column;
-
-  justify-content: flex-start;
-
-  gap: 0.4rem;
-
   padding: 2.4rem 2.4rem 0 21.5rem;
-
   border-right: 1px solid ${({ theme }) => theme.colors.grey_100};
-
   background-color: ${({ theme }) => theme.colors.white};
-
-  overflow: hidden;
 `;
 
 const NavHeader = styled.header`
@@ -76,9 +68,6 @@ const NavHeader = styled.header`
 
 const MenuList = styled.li<{ $isActive: boolean }>`
   padding: 0.8rem;
-
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
-
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.main_blue : theme.colors.grey_400)};
   ${({ theme }) => theme.fonts.Body3};
 
@@ -87,7 +76,10 @@ const MenuList = styled.li<{ $isActive: boolean }>`
 
   &:hover {
     color: ${({ theme }) => theme.colors.main_blue};
-
     transition: color 0.5s ease-in-out;
+  }
+
+  &:not(:nth-last-child(1)) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
   }
 `;

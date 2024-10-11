@@ -19,9 +19,8 @@ export interface loginResProps {
 export default function usePostLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
-  console.log(CODE);
   const navigate = useNavigate();
-
+  const from = sessionStorage.getItem("from") || "/";
   useEffect(() => {
     client
       .post(
@@ -40,7 +39,12 @@ export default function usePostLogin() {
         const { accessToken, refreshToken } = res.data.data;
         setToken(accessToken);
         setRefreshToken(refreshToken);
-        window.location.href = "/home/test";
+
+        if (from === "/membership") {
+          window.location.href = "/membership";
+        } else {
+          window.location.href = "/";
+        }
       })
       .catch(() => {
         navigate("/error");

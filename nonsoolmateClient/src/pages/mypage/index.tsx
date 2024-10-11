@@ -1,3 +1,5 @@
+import MembershipInfo from "@pages/mypage/components/MembershipInfo";
+import Mentor from "@pages/mypage/components/Mentor";
 import TabletSideNav from "@pages/mypage/components/TabletSideNav";
 import { Menu } from "@pages/mypage/types/menu";
 import { useState } from "react";
@@ -21,6 +23,8 @@ export default function Index() {
         {isIpadSize && <TabletSideNav menu={menu} setMenu={setMenu} />}
 
         {!isIpadSize && <>{menu === "회원 정보" && <MemberInfo />}</>}
+        {!isIpadSize && <>{menu === "멤버십 관리" && <MembershipInfo />}</>}
+        {!isIpadSize && <>{menu === "담당 선생님" && <Mentor />}</>}
       </Mypage>
     </MypageContainer>
   );
@@ -28,18 +32,16 @@ export default function Index() {
 
 const MypageContainer = styled.section`
   display: flex;
-
+  flex-direction: column;
   width: 100%;
   height: 100vh;
-
-  flex-direction: column;
 `;
 
 const Mypage = styled.div`
   display: flex;
-
   width: 100%;
   height: 100vh;
+  background-color: ${({ theme }) => theme.colors.grey_50};
 
   ${media.tablet} {
     flex-direction: column;

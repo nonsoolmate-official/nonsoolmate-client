@@ -1,176 +1,156 @@
-import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
+import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import PaymentInfo from "./components/paymentInfo/PaymentInfo";
+import OrderInfo from "./components/orderInfo/OrderInfo";
+import RegisterLayout from "./components/register/RegisterLayout";
+import { media } from "style/responsiveStyle";
+import HomeHeader from "@pages/home/components/HomeHeader";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const clientKey = "test_gck_pP2YxJ4K87RzqvN0J4qJrRGZwXLO";
-const customerKey = uuidv4();
-
-interface Amount {
-  currency: string;
-  value: number;
-}
-
-interface WidgetPaymentMethodWidget {
-  //
-}
-
-interface PaymentWidgets {
-  setAmount(amount: Amount): Promise<void>;
-  renderPaymentMethods(options: { selector: string; variantKey: string }): Promise<WidgetPaymentMethodWidget>;
-  renderAgreement(options: { selector: string; variantKey: string }): Promise<void>;
-  requestPayment(options: {
-    orderId: string;
-    orderName: string;
-    successUrl: string;
-    failUrl: string;
-    customerEmail: string;
-    customerName: string;
-    customerMobilePhone: string;
-  }): Promise<void>;
-}
+import { loadTossPayments } from "@tosspayments/payment-sdk";
+import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
 
 export default function Payment() {
-  const [amount, setAmount] = useState<Amount>({
-    currency: "KRW",
-    value: 50_000,
+  const location = useLocation();
+  const { id } = location.state;
+  const storedId = sessionStorage.getItem("id");
+  const initialId = storedId ? Number(storedId) : 0;
+
+  const [selectedPlan, setSelectedPlan] = useState(id);
+  const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+  const [notRegisterError, setNotRegisterError] = useState(false);
+  const [alreadyPaidError, setAlreadyPaidError] = useState(false);
+
+  const [modalStatus, setModalStatus] = useState({
+    isCouponOpen: false,
+    isSelectUnivOpen: false,
+    isSuccessOpen: false,
+    isRandomMatchOpen: false,
+    isQuitOpen: false,
   });
-  const [ready, setReady] = useState(false);
-  const [widgets, setWidgets] = useState<PaymentWidgets | null>(null);
 
-  const generateRandomString = () => window.btoa(Math.random().toString()).slice(0, 20);
-  useEffect(() => {
-    async function fetchPaymentWidgets() {
-      // ------  결제위젯 초기화 ------
-      const tossPayments = await loadTossPayments(clientKey);
-      // 회원 결제
-      const paymentWidgets = tossPayments.widgets({
-        customerKey,
-      });
-
-      const customWidgets: PaymentWidgets = {
-        setAmount: async (amount: Amount) => {
-          await paymentWidgets.setAmount(amount);
-        },
-        renderPaymentMethods: async (options: { selector: string; variantKey: string }) => {
-          return await paymentWidgets.renderPaymentMethods(options);
-        },
-        renderAgreement: async (options: { selector: string; variantKey: string }) => {
-          await paymentWidgets.renderAgreement(options);
-        },
-        requestPayment: async (options: {
-          orderId: string;
-          orderName: string;
-          successUrl: string;
-          failUrl: string;
-          customerEmail: string;
-          customerName: string;
-          customerMobilePhone: string;
-        }) => {
-          await paymentWidgets.requestPayment(options);
-        },
-      };
-
-      setWidgets(customWidgets);
-    }
-
-    fetchPaymentWidgets();
-  }, [clientKey, customerKey]);
+  const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || "등록된 쿠폰이 없습니다.");
+  const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
 
   useEffect(() => {
-    async function renderPaymentWidgets() {
-      if (widgets == null) {
-        return;
-      }
-      // ------ 주문의 결제 금액 설정 ------
-      await widgets.setAmount(amount);
-
-      await Promise.all([
-        // ------  결제 UI 렌더링 ------
-        widgets
-          .renderPaymentMethods({
-            selector: "#payment-method",
-            variantKey: "DEFAULT",
-          })
-          .catch(console.error),
-        // ------  이용약관 UI 렌더링 ------
-        widgets
-          .renderAgreement({
-            selector: "#agreement",
-            variantKey: "AGREEMENT",
-          })
-          .catch(console.error),
-      ]);
-
-      setReady(true);
-    }
-
-    renderPaymentWidgets();
-  }, [widgets]);
+    sessionStorage.setItem("couponTxt", couponTxt);
+  }, [couponTxt]);
 
   useEffect(() => {
-    if (widgets == null) {
-      return;
-    }
+    sessionStorage.setItem("dcInfo", dcInfo);
+  }, [dcInfo]);
 
-    widgets.setAmount(amount).catch(console.error);
-  }, [widgets, amount]);
+  function handlePlanChange(newPlanId: number) {
+    setSelectedPlan(newPlanId);
+  }
+
+  function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
+    setActiveCouponId(isCouponActive ? null : couponMemberId);
+  }
+
+  function handleCouponTxtStatus(coupon: string, dcInfo: string) {
+    setCouponTxt(coupon);
+    setDcInfo(dcInfo);
+  }
+
+  function changeModalStatus(modalName: keyof typeof modalStatus, openModal: boolean) {
+    setModalStatus((prevState) => ({
+      ...prevState,
+      [modalName]: openModal,
+    }));
+  }
+
+  // -------- 카드 등록 로직
+  const clientKey = `${import.meta.env.VITE_CLIENTKEY}`;
+  const response = useGetCustomerInfo();
+  if (!response) return <></>;
+  const customerKey = response.customerKey;
+
+  function registerCard() {
+    loadTossPayments(clientKey).then((tossPayments) => {
+      tossPayments
+        .requestBillingAuth("카드", {
+          customerKey,
+          successUrl: `${window.location.origin}/success?id=${selectedPlan}`,
+          failUrl: window.location.origin + "/fail",
+        })
+        .catch((error) => {
+          if (error.code === "USER_CANCEL") {
+            // 사용자가 결제창을 닫았을 때
+          } else if (error.code === "INVALID_CARD_COMPANY") {
+            // 유효하지 않은 카드 코드에 대한 처리
+          }
+        });
+    });
+  }
+  // --------- 결제 에러 핸들링
+  function showNotRegisterError(show: boolean) {
+    setNotRegisterError(show);
+  }
+
+  function showAlreadyPaidError(show: boolean) {
+    setAlreadyPaidError(show);
+  }
 
   return (
-    <div className="wrapper">
-      <div className="box_section">
-        {/* 결제 UI */}
-        <div id="payment-method" />
-        {/* 이용약관 UI */}
-        <div id="agreement" />
-        {/* 쿠폰 체크박스 */}
-        <div>
-          <div>
-            <label htmlFor="coupon-box">
-              <input
-                id="coupon-box"
-                type="checkbox"
-                aria-checked="true"
-                disabled={!ready}
-                onChange={(event) => {
-                  // ------  주문서의 결제 금액이 변경되었을 경우 결제 금액 업데이트 ------
-                  setAmount(
-                    event.target.checked
-                      ? { ...amount, value: amount.value - 5_000 }
-                      : { ...amount, value: amount.value + 5_000 },
-                  );
-                }}
-              />
-              <span>5,000원 쿠폰 적용</span>
-            </label>
-          </div>
-        </div>
-
-        {/* 결제하기 버튼 */}
-        <button
-          className="button"
-          disabled={!ready}
-          onClick={async () => {
-            try {
-              // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-              // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
-              // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
-              await widgets?.requestPayment({
-                orderId: generateRandomString(),
-                orderName: "논술메이트 정기구독",
-                successUrl: window.location.origin + "/success",
-                failUrl: window.location.origin + "/fail",
-                customerEmail: "customer123@gmail.com",
-                customerName: "김논메",
-                customerMobilePhone: "01012341234",
-              });
-            } catch (error) {
-              // 에러 처리하기
-              console.error(error);
-            }
-          }}>
-          결제하기
-        </button>
-      </div>
-    </div>
+    <>
+      <HomeHeader />
+      <PaymentContainer>
+        <PaymentLeftContainer>
+          <Title>정기결제</Title>
+          <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <RegisterLayout
+            changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
+            handleCouponTxtStatus={handleCouponTxtStatus}
+            isCouponOpen={modalStatus.isCouponOpen}
+            couponTxt={couponTxt}
+            dcInfo={dcInfo}
+            registerCard={registerCard}
+            activeCouponId={activeCouponId}
+            handleActiveCouponId={handleActiveCouponId}
+            notRegisterError={notRegisterError}
+            alreadyPaidError={alreadyPaidError}
+          />
+        </PaymentLeftContainer>
+        <PaymentInfo
+          selectedPlan={selectedPlan}
+          isSelctUnivOpen={modalStatus.isSelectUnivOpen}
+          changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
+          isSucessOpen={modalStatus.isSuccessOpen}
+          isQuitOpen={modalStatus.isQuitOpen}
+          changeSuccessModalStatus={(openModal) => changeModalStatus("isSuccessOpen", openModal)}
+          changeRandomMatchModalStatus={(openModal) => changeModalStatus("isRandomMatchOpen", openModal)}
+          changeQuitModalStatus={(openModal) => changeModalStatus("isQuitOpen", openModal)}
+          isRandomMatchOpen={modalStatus.isRandomMatchOpen}
+          activeCouponId={activeCouponId}
+          showNotRegisterError={showNotRegisterError}
+          showAlreadyPaidError={showAlreadyPaidError}
+          dcInfo={dcInfo}
+        />
+      </PaymentContainer>
+    </>
   );
 }
+
+const PaymentContainer = styled.section`
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.4rem;
+  align-self: flex-start;
+  margin: 4.8rem 21.5rem;
+  ${media.tablet} {
+    flex-direction: column;
+    gap: 5.6rem;
+    margin: 4.8rem 3.2rem;
+  }
+`;
+
+const PaymentLeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+`;
+
+const Title = styled.h1`
+  ${({ theme }) => theme.fonts.Headline4}
+`;

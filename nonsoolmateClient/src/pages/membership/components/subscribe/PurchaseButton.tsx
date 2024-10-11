@@ -1,14 +1,27 @@
-// import { useNavigate } from "react-router-dom";
+import { Plan } from "types/productsListType";
+import { getToken } from "@pages/socialLogin/utils/token";
+import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 
-export default function PurchaseButton() {
-  // const navigate = useNavigate();
-  const wallaUrl = "https://walla.my/v/5VQBBMKXWe05gbyn2xn5";
-  // function clickPurchaseButton() {
-  //   navigate("/payment");
-  // }
-  return <Button onClick={() => window.open(wallaUrl)}>구매하기</Button>;
+interface PurchaseButtonProps {
+  id: number;
+  plan: Plan[];
+}
+export default function PurchaseButton(props: PurchaseButtonProps) {
+  const { id, plan } = props;
+  const navigate = useNavigate();
+
+  const from = location.pathname;
+  sessionStorage.setItem("from", from);
+  sessionStorage.setItem("plan", JSON.stringify(plan));
+
+  function clickPurchaseButton() {
+    sessionStorage.setItem("id", String(id));
+    getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
+  }
+
+  return <Button onClick={clickPurchaseButton}>시작하기</Button>;
 }
 
 const Button = styled.button`
@@ -16,7 +29,7 @@ const Button = styled.button`
   ${({ theme }) => theme.fonts.Body1};
 
   width: 25.6rem;
-  height: 4.8rem;
+  padding: 1rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.main_blue};
   color: ${({ theme }) => theme.colors.white};

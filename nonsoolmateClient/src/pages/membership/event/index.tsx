@@ -65,12 +65,12 @@ const Explanation = styled.p`
 
 const UnivsContainer = styled.div`
   display: grid;
-  gap: 1.4rem 1.4rem;
+  gap: 1.4rem;
   justify-content: center;
   align-items: center;
   width: 100%;
   padding: 6.4rem 11rem;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(10, 1fr);
 
   @media (width <= 1098px) {
     grid-template-columns: repeat(5, 1fr);

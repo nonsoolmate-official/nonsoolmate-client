@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
-import HomeMemberInfoToggle from "./HomeMemberInfoToggle";
 
+import UserProfileModal from "@pages/home/components/UserProfileModal";
 import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
 import useGetName from "../hooks/useGetName";
@@ -12,9 +12,6 @@ import useGetName from "../hooks/useGetName";
 export default function HomeHeader() {
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
-  const handleHomeMemberInfoToggle = () => {
-    setShowMemberInfo((open) => !open);
-  };
   const navigate = useNavigate();
 
   const getNameResponse = useGetName();
@@ -24,10 +21,16 @@ export default function HomeHeader() {
     data: { memberName },
   } = getNameResponse;
 
+  const handleHomeMemberInfoToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    setShowMemberInfo((open) => !open);
+  };
+
   return (
     <>
       <Header>
-        <LogoButton onClick={() => (getNameResponse ? navigate("/home/test") : navigate("/"))} type="button">
+        <LogoButton onClick={() => navigate("/")} type="button">
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
@@ -45,7 +48,7 @@ export default function HomeHeader() {
           </LoginInfoButton>
         </HeaderInfo>
       </Header>
-      {showMemberInfo && <HomeMemberInfoToggle />}
+      {showMemberInfo && <UserProfileModal onClose={() => setShowMemberInfo(false)} />}
     </>
   );
 }
@@ -56,8 +59,7 @@ const Header = styled.header`
   justify-content: space-between;
   position: sticky;
   top: 0;
-
-  /* z-index: 1; */
+  z-index: 1;
   padding: 1.6rem 21.5rem;
   border-bottom: 1px solid #ecedf0;
   background-color: ${({ theme }) => theme.colors.white};
