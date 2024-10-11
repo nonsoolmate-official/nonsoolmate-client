@@ -122,7 +122,7 @@ export default function MemberInfo() {
           />
         </Info>
         <SubmitLayout>
-          <Button variant="primary" size="sm" type="submit">
+          <Button variant="primary" width={8} type="submit">
             저장
           </Button>
         </SubmitLayout>
