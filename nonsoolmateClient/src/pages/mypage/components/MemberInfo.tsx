@@ -48,7 +48,7 @@ export default function MemberInfo() {
     const isFormValid = isNameValid && isEmailValid && isPhoneNumberValid && isBirthdayValid;
 
     setIsSubmitted(true);
-    dispatch({ type: "SHOW_MODAL" });
+    dispatch({ type: "SHOW_MODAL", variant: "confirm" });
 
     if (!isFormValid) {
       return;

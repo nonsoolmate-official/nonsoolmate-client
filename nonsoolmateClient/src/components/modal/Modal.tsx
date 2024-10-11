@@ -1,17 +1,24 @@
+import ChoiceModal from "@components/modal/ChoiceModal";
+import ConfirmModal from "@components/modal/ConfirmModal";
 import { useModalDispatch } from "@hooks/useModal";
 import styled from "styled-components";
 
-export default function Modal() {
+interface ModalProps {
+  variant?: "confirm" | "choice";
+}
+
+export default function Modal({ variant = "confirm" }: ModalProps) {
   const dispatch = useModalDispatch();
 
   const handleClose = () => {
-    dispatch({ type: "HIDE_MODAL" });
+    dispatch({ type: "CLOSE_MODAL" });
   };
 
   return (
     <Background onClick={handleClose}>
       <Dialog onClick={(e) => e.stopPropagation()}>
-        <Content>모달</Content>
+        {variant === "confirm" && <ConfirmModal />}
+        {variant === "choice" && <ChoiceModal />}
       </Dialog>
     </Background>
   );
@@ -31,13 +38,18 @@ const Background = styled.div`
 `;
 
 const Dialog = styled.div`
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  padding: 4.8rem 3.2rem 3.2rem;
   border-radius: 8px;
   background-color: white;
 `;
 
-const Content = styled.div`
+const Content = styled.h1`
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${({ theme }) => theme.fonts.Body1};
 `;

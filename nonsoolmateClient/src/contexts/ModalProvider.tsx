@@ -1,13 +1,17 @@
 import Modal from "@components/modal/Modal";
 import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
-type ModalState = { isModal: boolean };
+type ModalState = {
+  isModal: boolean;
+  variant?: "confirm" | "choice" | null;
+};
 
 const initialState: ModalState = {
   isModal: false,
+  variant: null,
 };
 
-type ModalAction = { type: "SHOW_MODAL" } | { type: "HIDE_MODAL" };
+type ModalAction = { type: "SHOW_MODAL"; variant: "confirm" | "choice" } | { type: "CLOSE_MODAL" };
 
 type ModalDispatch = Dispatch<ModalAction>;
 
@@ -17,9 +21,9 @@ export const ModalDispatchContext = createContext<ModalDispatch | undefined>(und
 function reducer(state: ModalState, action: ModalAction): ModalState {
   switch (action.type) {
     case "SHOW_MODAL":
-      return { isModal: true };
-    case "HIDE_MODAL":
-      return { isModal: false };
+      return { isModal: true, variant: action.variant };
+    case "CLOSE_MODAL":
+      return { isModal: false, variant: null };
     default:
       return state;
   }
@@ -32,7 +36,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     <ModalStateContext.Provider value={state}>
       <ModalDispatchContext.Provider value={dispatch}>
         {children}
-        {state.isModal && <Modal />}
+        {state.isModal && state.variant && <Modal variant={state.variant} />}
       </ModalDispatchContext.Provider>
     </ModalStateContext.Provider>
   );
