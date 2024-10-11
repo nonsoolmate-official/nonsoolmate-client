@@ -11,7 +11,10 @@ import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
 
 export default function Payment() {
   const location = useLocation();
-  const { id, plan } = location.state;
+  const { id } = location.state;
+  const storedId = sessionStorage.getItem("id");
+  const initialId = storedId ? Number(storedId) : 0;
+
   const [selectedPlan, setSelectedPlan] = useState(id);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [notRegisterError, setNotRegisterError] = useState(false);
@@ -94,7 +97,7 @@ export default function Payment() {
       <PaymentContainer>
         <PaymentLeftContainer>
           <Title>정기결제</Title>
-          <OrderInfo id={id} plan={plan} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
