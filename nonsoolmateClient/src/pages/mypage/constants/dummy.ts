@@ -59,7 +59,7 @@ export const MEMBERSHIP_DATA: MembershipData = {
   membership: {
     name: "베이직 플랜",
     startDate: "2024.01.01",
-    endDate: "2024.10.01",
+    endDate: "2024.11.01",
   },
 };
 

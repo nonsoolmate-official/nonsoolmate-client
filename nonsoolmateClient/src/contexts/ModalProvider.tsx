@@ -4,14 +4,18 @@ import { createContext, Dispatch, ReactNode, useReducer } from "react";
 type ModalState = {
   isModal: boolean;
   variant?: "confirm" | "choice" | "description" | null;
+  descriptionType?: "unsubscribe" | "welcome";
 };
 
 const initialState: ModalState = {
   isModal: false,
   variant: null,
+  descriptionType: undefined,
 };
 
-type ModalAction = { type: "SHOW_MODAL"; variant: "confirm" | "choice" | "description" } | { type: "CLOSE_MODAL" };
+type ModalAction =
+  | { type: "SHOW_MODAL"; variant: "confirm" | "choice" | "description"; descriptionType?: "unsubscribe" | "welcome" }
+  | { type: "CLOSE_MODAL" };
 
 type ModalDispatch = Dispatch<ModalAction>;
 
@@ -21,9 +25,9 @@ export const ModalDispatchContext = createContext<ModalDispatch | undefined>(und
 function reducer(state: ModalState, action: ModalAction): ModalState {
   switch (action.type) {
     case "SHOW_MODAL":
-      return { isModal: true, variant: action.variant };
+      return { isModal: true, variant: action.variant, descriptionType: action.descriptionType };
     case "CLOSE_MODAL":
-      return { isModal: false, variant: null };
+      return { isModal: false, variant: null, descriptionType: undefined };
     default:
       return state;
   }

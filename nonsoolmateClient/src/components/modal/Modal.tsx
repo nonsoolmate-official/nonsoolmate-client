@@ -2,14 +2,18 @@ import ChoiceModal from "@components/modal/ChoiceModal";
 import ConfirmModal from "@components/modal/ConfirmModal";
 import DescriptionModal from "@components/modal/DescriptionModal";
 import { useModalDispatch } from "@hooks/useModal";
+import { ModalStateContext } from "contexts/ModalProvider";
+import { useContext } from "react";
 import styled from "styled-components";
 
 interface ModalProps {
   variant?: "confirm" | "choice" | "description";
+  descriptionType?: "unsubscribe" | "welcome";
 }
 
 export default function Modal({ variant = "confirm" }: ModalProps) {
   const dispatch = useModalDispatch();
+  const state = useContext(ModalStateContext);
 
   const handleClose = () => {
     dispatch({ type: "CLOSE_MODAL" });
@@ -20,7 +24,7 @@ export default function Modal({ variant = "confirm" }: ModalProps) {
       <Dialog onClick={(e) => e.stopPropagation()}>
         {variant === "confirm" && <ConfirmModal />}
         {variant === "choice" && <ChoiceModal />}
-        {variant === "description" && <DescriptionModal />}
+        {variant === "description" && <DescriptionModal type={state?.descriptionType} />}
       </Dialog>
     </Background>
   );

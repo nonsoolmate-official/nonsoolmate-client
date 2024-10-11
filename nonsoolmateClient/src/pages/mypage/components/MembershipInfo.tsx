@@ -12,7 +12,7 @@ export default function MembershipInfo() {
   const dispatch = useModalDispatch();
 
   const handleResubscribe = () => {
-    dispatch({ type: "SHOW_MODAL", variant: "description" });
+    dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "welcome" });
   };
 
   const handleCancelMembership = () => {

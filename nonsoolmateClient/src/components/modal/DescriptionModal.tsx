@@ -1,14 +1,30 @@
 import Button from "@components/buttons/Button";
+import { useModalDispatch } from "@hooks/useModal";
 import { DESCRIPTION_MODAL } from "constants/modal";
 import styled from "styled-components";
 
-export default function DescriptionModal() {
+interface DescriptionModalProps {
+  type?: "unsubscribe" | "welcome" | undefined;
+}
+
+export default function DescriptionModal({ type }: DescriptionModalProps) {
+  const dispatch = useModalDispatch();
+
   return (
     <Wrapper>
-      <Heading>{DESCRIPTION_MODAL.WELCOME.TITLE}</Heading>
-      <Content>{DESCRIPTION_MODAL.WELCOME.CONTENT}</Content>
+      {type === "welcome" ? (
+        <>
+          <Heading>{DESCRIPTION_MODAL.WELCOME.TITLE}</Heading>
+          <Content>{DESCRIPTION_MODAL.WELCOME.CONTENT}</Content>
+        </>
+      ) : type === "unsubscribe" ? (
+        <>
+          <Heading>{DESCRIPTION_MODAL.UNSUBSCRIBE.TITLE}</Heading>
+          <Content>{DESCRIPTION_MODAL.UNSUBSCRIBE.CONTENT}</Content>
+        </>
+      ) : null}
 
-      <Button width={40.8} fontSize="Headline5">
+      <Button width={40.8} fontSize="Headline5" onClick={() => dispatch({ type: "CLOSE_MODAL" })}>
         확인
       </Button>
     </Wrapper>

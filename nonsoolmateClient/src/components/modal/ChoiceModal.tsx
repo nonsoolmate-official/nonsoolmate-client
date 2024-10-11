@@ -1,9 +1,16 @@
 import { MembershipBasicIc } from "@assets/index";
 import Button from "@components/buttons/Button";
+import { useModalDispatch } from "@hooks/useModal";
 import styled from "styled-components";
 
 export default function ChoiceModal() {
   // const { membership } = useMembership();
+  const dispatch = useModalDispatch();
+
+  const handleCancelMembership = () => {
+    dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "unsubscribe" });
+  };
+
   return (
     <Wrapper>
       <Title>아래 멤버십 혜택이 모두 사라져요</Title>
@@ -13,11 +20,11 @@ export default function ChoiceModal() {
       }
       <Notice>*지금 멤버십을 해지해도 {/* 멤버십 기간 */}까지 사용할 수 있어요.</Notice>
       <ButtonLayout>
-        <Button width={19.9} fontSize="Headline5">
-          임의로 배정받기
+        <Button width={19.9} fontSize="Headline5" onClick={handleCancelMembership}>
+          해지하기
         </Button>
-        <Button width={19.9} fontSize="Headline5">
-          선택 완료
+        <Button width={19.9} fontSize="Headline5" onClick={() => dispatch({ type: "CLOSE_MODAL" })}>
+          혜택 유지하기
         </Button>
       </ButtonLayout>
     </Wrapper>
