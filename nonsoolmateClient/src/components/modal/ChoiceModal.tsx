@@ -20,7 +20,7 @@ export default function ChoiceModal() {
       }
       <Notice>*지금 멤버십을 해지해도 {/* 멤버십 기간 */}까지 사용할 수 있어요.</Notice>
       <ButtonLayout>
-        <Button width={19.9} fontSize="Headline5" onClick={handleCancelMembership}>
+        <Button width={19.9} variant="secondary" fontSize="Headline5" onClick={handleCancelMembership}>
           해지하기
         </Button>
         <Button width={19.9} fontSize="Headline5" onClick={() => dispatch({ type: "CLOSE_MODAL" })}>
