@@ -21,14 +21,14 @@ function App() {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <ModalProvider>
-        <RecoilRoot>
-          <ThemeProvider theme={theme}>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <ModalProvider>
             <RouterProvider router={router} />
             <GlobalStyle />
-          </ThemeProvider>
-        </RecoilRoot>
-      </ModalProvider>
+          </ModalProvider>
+        </ThemeProvider>
+      </RecoilRoot>
     </QueryClientProvider>
   );
 }
