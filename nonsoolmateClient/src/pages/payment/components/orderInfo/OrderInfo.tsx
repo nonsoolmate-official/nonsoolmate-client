@@ -4,20 +4,25 @@ import { Plan as PlanType } from "types/productsListType";
 
 interface OrderInfoProps {
   id: number;
-  plan: PlanType[];
   selectedPlan: number;
   onPlanChange: (newPlanId: number) => void;
 }
 
 export default function OrderInfo(props: OrderInfoProps) {
-  const { id, plan, selectedPlan, onPlanChange } = props;
+  const { id, selectedPlan, onPlanChange } = props;
+  const storedPlan = sessionStorage.getItem("plan");
+  let parsedPlan: PlanType[] | null = null;
+
+  if (storedPlan) {
+    parsedPlan = JSON.parse(storedPlan);
+  }
 
   return (
     <OrderInfoContainer>
       <OrderInfoTitle>주문 정보</OrderInfoTitle>
       <PlanContainer>
-        {id === 1
-          ? plan.map(({ productId, productName, productDescriptions }) => (
+        {parsedPlan && id === 1
+          ? parsedPlan.map(({ productId, productName, productDescriptions }) => (
               <Plan
                 id={productId}
                 key={productId}
@@ -28,7 +33,8 @@ export default function OrderInfo(props: OrderInfoProps) {
                 onPlanChange={onPlanChange}
               />
             ))
-          : plan
+          : parsedPlan &&
+            parsedPlan
               .filter((item) => item.productId === 2)
               .map(({ productId, productName, productDescriptions }) => (
                 <Plan
