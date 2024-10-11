@@ -11,11 +11,14 @@ interface PurchaseButtonProps {
 export default function PurchaseButton(props: PurchaseButtonProps) {
   const { id, plan } = props;
   const navigate = useNavigate();
+
   const from = location.pathname;
   sessionStorage.setItem("from", from);
+  sessionStorage.setItem("plan", JSON.stringify(plan));
 
   function clickPurchaseButton() {
-    getToken() ? navigate("/payment", { state: { id, plan } }) : navigate("/signup", { state: { from } });
+    sessionStorage.setItem("id", String(id));
+    getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
   }
 
   return <Button onClick={clickPurchaseButton}>시작하기</Button>;
