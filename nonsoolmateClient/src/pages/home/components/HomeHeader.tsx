@@ -30,7 +30,7 @@ export default function HomeHeader() {
   return (
     <>
       <Header>
-        <LogoButton onClick={() => (getNameResponse ? navigate("/home/test") : navigate("/"))} type="button">
+        <LogoButton onClick={() => navigate("/")} type="button">
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
@@ -59,7 +59,6 @@ const Header = styled.header`
   justify-content: space-between;
   position: sticky;
   top: 0;
-
   z-index: 1;
   padding: 1.6rem 21.5rem;
   border-bottom: 1px solid #ecedf0;
