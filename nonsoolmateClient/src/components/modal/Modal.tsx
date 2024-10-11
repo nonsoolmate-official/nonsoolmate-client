@@ -1,10 +1,11 @@
 import ChoiceModal from "@components/modal/ChoiceModal";
 import ConfirmModal from "@components/modal/ConfirmModal";
+import DescriptionModal from "@components/modal/DescriptionModal";
 import { useModalDispatch } from "@hooks/useModal";
 import styled from "styled-components";
 
 interface ModalProps {
-  variant?: "confirm" | "choice";
+  variant?: "confirm" | "choice" | "description";
 }
 
 export default function Modal({ variant = "confirm" }: ModalProps) {
@@ -19,6 +20,7 @@ export default function Modal({ variant = "confirm" }: ModalProps) {
       <Dialog onClick={(e) => e.stopPropagation()}>
         {variant === "confirm" && <ConfirmModal />}
         {variant === "choice" && <ChoiceModal />}
+        {variant === "description" && <DescriptionModal />}
       </Dialog>
     </Background>
   );
@@ -45,11 +47,4 @@ const Dialog = styled.div`
   padding: 4.8rem 3.2rem 3.2rem;
   border-radius: 8px;
   background-color: white;
-`;
-
-const Content = styled.h1`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  ${({ theme }) => theme.fonts.Body1};
 `;

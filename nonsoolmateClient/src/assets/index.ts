@@ -121,6 +121,8 @@ import PlusIc from "./icon/plusIc.svg?react";
 import PassIc from "./icon/passIc.svg?react";
 import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 
+import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
+import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 
 export {
@@ -159,8 +161,10 @@ export {
   LeftCircleLongIc,
   LoginInfoIc,
   LogoIc,
+  MembershipBasicIc,
   MembershipDisabledIc,
   MembershipIc,
+  MembershipPremiumIc,
   MonthlyMembershipGrayIc,
   NaverLoginIc,
   NotCheckBtnIc,

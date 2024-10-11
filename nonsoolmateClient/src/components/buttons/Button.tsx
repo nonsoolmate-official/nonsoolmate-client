@@ -7,22 +7,23 @@ type Variant = "primary" | "secondary" | "tertiary" | "text";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   width?: number;
+  fontSize?: string;
 }
-export default function Button({ children, variant = "primary", width, ...props }: ButtonProps) {
+export default function Button({ children, variant = "primary", width, fontSize = "Body6", ...props }: ButtonProps) {
   return (
-    <ButtonWrapper type="button" variant={variant} width={width} {...props}>
+    <ButtonWrapper type="button" variant={variant} width={width} fontSize={fontSize} {...props}>
       {children}
     </ButtonWrapper>
   );
 }
 
-const ButtonWrapper = styled.button<{ variant: Variant; width?: number }>`
+const ButtonWrapper = styled.button<{ variant: Variant; width?: number; fontSize?: string }>`
   align-items: center;
   width: ${({ width }) => `${width}rem`};
   padding: 0.8rem 2.8rem;
   border-radius: 8px;
 
-  ${({ theme }) => theme.fonts.Body6};
+  ${({ fontSize, theme }) => fontSize && theme.fonts[fontSize as keyof typeof theme.fonts]};
 
   white-space: nowrap;
   ${({ variant }) => {

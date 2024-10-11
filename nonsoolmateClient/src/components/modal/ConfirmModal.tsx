@@ -7,11 +7,14 @@ export default function ConfirmModal() {
     <>
       <CheckCircleBtnIc />
       <Content>회원 정보가 저장되었습니다.</Content>
-      <Button width={40.8}>확인</Button>
+      <Button width={40.8} fontSize="Headline5">
+        확인
+      </Button>
     </>
   );
 }
 
 const Content = styled.h1`
+  margin-bottom: 1.6rem;
   ${({ theme }) => theme.fonts.Body1};
 `;

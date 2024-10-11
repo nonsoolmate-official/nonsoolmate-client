@@ -3,7 +3,7 @@ import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
 type ModalState = {
   isModal: boolean;
-  variant?: "confirm" | "choice" | null;
+  variant?: "confirm" | "choice" | "description" | null;
 };
 
 const initialState: ModalState = {
@@ -11,7 +11,7 @@ const initialState: ModalState = {
   variant: null,
 };
 
-type ModalAction = { type: "SHOW_MODAL"; variant: "confirm" | "choice" } | { type: "CLOSE_MODAL" };
+type ModalAction = { type: "SHOW_MODAL"; variant: "confirm" | "choice" | "description" } | { type: "CLOSE_MODAL" };
 
 type ModalDispatch = Dispatch<ModalAction>;
 
