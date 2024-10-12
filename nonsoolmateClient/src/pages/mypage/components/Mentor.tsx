@@ -14,14 +14,14 @@ export default function Mentor() {
   return (
     <MentorWrapper>
       <Title>담당 선생님</Title>
-      {data?.data.isMatched ? (
+      {data?.isMatched ? (
         <>
           <Discription> {name?.data.memberName}님의 목표대학에 가장 적합한 선생님이에요</Discription>
           <MentorInfoLayout>
             <MentorProfileContainer>
-              <Profile src={data?.data.teacherProfileImageUrl} />
+              <Profile src={data?.teacherProfileImageUrl} />
               <MentorProfileBox>
-                <Name>{data?.data.teacherName} 선생님</Name>
+                <Name>{data?.teacherName} 선생님</Name>
                 {MENTOR.teacher?.isPass && (
                   <Badge>
                     <PassIc />
@@ -33,13 +33,13 @@ export default function Mentor() {
             <Divider />
             <MentorInfoContainer>
               <SubTitle>선생님 소개</SubTitle>
-              <Content>{data?.data.introduction}</Content>
+              <Content>{data?.introduction}</Content>
             </MentorInfoContainer>
             <MentorInfoContainer>
               <SubTitle>첨삭 전문 대학교</SubTitle>
               <Content>
                 <UnivChipBox>
-                  {data?.data.teacherUniversities.map((univ, index) => (
+                  {data?.teacherUniversities.map((univ, index) => (
                     <UnivChip key={index} logo={univ.universityImageUrl}>
                       {univ.universityName}
                     </UnivChip>
@@ -49,9 +49,9 @@ export default function Mentor() {
             </MentorInfoContainer>
           </MentorInfoLayout>
         </>
-      ) : data?.data.isMatched === false ? (
+      ) : data?.isMatched === false ? (
         <NullMentorWrapper>첨삭 담당 선생님을 배정 중이에요. 배정은 영업일 기준 1일 이내에 완료돼요.</NullMentorWrapper>
-      ) : data?.data.isMatched === undefined ? (
+      ) : data?.isMatched === undefined ? (
         <NullMentorWrapper>
           <NullMentorContainer>
             <Content style={{ margin: 0 }}>아직 배정받은 선생님이 없어요.</Content>

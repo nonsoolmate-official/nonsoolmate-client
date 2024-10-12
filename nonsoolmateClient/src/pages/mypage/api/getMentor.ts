@@ -1,5 +1,4 @@
 import { client } from "@api/axios";
-import { Response } from "types/common";
 
 export interface MentorDataTypes {
   isMatched: boolean;
@@ -23,7 +22,7 @@ export interface MentorDataTypes {
 }
 
 export async function getMentor() {
-  const { data } = await client.get<Response<MentorDataTypes>>("/my/teacher");
+  const { data } = await client.get<MentorDataTypes>("/my/teacher");
 
   console.log(data);
   return data;
