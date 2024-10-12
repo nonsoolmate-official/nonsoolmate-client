@@ -46,7 +46,8 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
         <Line />
         <Button
           variant="tertiary"
-          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}>
+          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}
+          onClick={() => navigate("/mypage")}>
           마이페이지
         </Button>
         <Button
