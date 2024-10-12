@@ -5,6 +5,7 @@ import Loading from "@pages/loading";
 import { DataTypes } from "@pages/mypage/api/getProfile";
 import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import useMemberInfo from "@pages/mypage/hooks/useMemberInfo";
+import usePutMemberInfo from "@pages/mypage/hooks/usePutMemberInfo";
 import { AxiosResponse } from "axios";
 import { useState } from "react";
 import { media } from "style/responsiveStyle";
@@ -14,6 +15,8 @@ export default function MemberInfo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { data, isLoading } = useGetProfile();
+
+  const { mutate: editMemberInfo } = usePutMemberInfo();
 
   const {
     input,
@@ -49,8 +52,15 @@ export default function MemberInfo() {
     if (!isFormValid) {
       return;
     }
-  };
 
+    editMemberInfo({
+      name: input.name,
+      gender: gender ?? "",
+      birthYear: input.birthday,
+      email: input.email,
+      phoneNumber: input.phoneNumber,
+    });
+  };
   return (
     <Wrapper>
       <Title>회원정보</Title>
