@@ -3,11 +3,16 @@ import Button from "@components/buttons/Button";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
 import useGetMembership from "@pages/mypage/hooks/useGetMembership";
+import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 
 export default function MembershipInfo() {
+  const navigate = useNavigate();
+
   const data = useGetMembership();
+  const { mutate } = usePatchMembershipStatus();
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function MembershipInfo() {
                       <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
                     </CurrentMembership>
                   </Membership>
-                  <Button variant="text" size="sm">
+                  <Button variant="text" size="sm" onClick={() => mutate("CANCELLED")}>
                     멤버십 해지하기
                   </Button>
                 </MembershipInfoBox>
@@ -47,7 +52,9 @@ export default function MembershipInfo() {
             <Title>멤버십 관리</Title>
             <NullMembershipContainer>
               <Text>이용 중인 멤버십이 없습니다.</Text>
-              <Button variant="primary">멤버십 구매하기</Button>
+              <Button variant="primary" onClick={() => navigate("/membership")}>
+                멤버십 구매하기
+              </Button>
             </NullMembershipContainer>
             <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
           </MembershipWrapper>
