@@ -35,7 +35,7 @@ export default function MembershipInfo() {
                       <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
                     </CurrentMembership>
                   </Membership>
-                  {new Date(MEMBERSHIP_DATA.membership?.endDate).getTime() < new Date().getTime() ? (
+                  {new Date(MEMBERSHIP_DATA.membership?.endDate).getTime() > new Date().getTime() ? (
                     <Button variant="text" onClick={handleCancelMembership}>
                       멤버십 해지하기
                     </Button>

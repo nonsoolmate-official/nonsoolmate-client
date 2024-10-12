@@ -10,19 +10,14 @@ interface DescriptionModalProps {
 export default function DescriptionModal({ type }: DescriptionModalProps) {
   const dispatch = useModalDispatch();
 
+  if (type !== "welcome" && type !== "unsubscribe") return null;
+
+  const modalContent = DESCRIPTION_MODAL[type.toUpperCase() as keyof typeof DESCRIPTION_MODAL];
+
   return (
     <Wrapper>
-      {type === "welcome" ? (
-        <>
-          <Heading>{DESCRIPTION_MODAL.WELCOME.TITLE}</Heading>
-          <Content>{DESCRIPTION_MODAL.WELCOME.CONTENT}</Content>
-        </>
-      ) : type === "unsubscribe" ? (
-        <>
-          <Heading>{DESCRIPTION_MODAL.UNSUBSCRIBE.TITLE}</Heading>
-          <Content>{DESCRIPTION_MODAL.UNSUBSCRIBE.CONTENT}</Content>
-        </>
-      ) : null}
+      <Heading>{modalContent.TITLE}</Heading>
+      <Content>{modalContent.CONTENT}</Content>
 
       <Button width={40.8} fontSize="Headline5" onClick={() => dispatch({ type: "CLOSE_MODAL" })}>
         확인
