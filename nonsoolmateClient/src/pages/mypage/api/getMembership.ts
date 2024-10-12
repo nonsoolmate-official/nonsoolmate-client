@@ -1,5 +1,10 @@
 import { client } from "@api/axios";
-import { Response } from "types/common";
+
+interface Response<T> {
+  message: string;
+  status: number;
+  data: T;
+}
 
 interface MembershipTypes {
   status: string;
@@ -11,5 +16,7 @@ interface MembershipTypes {
 export async function getMembership() {
   const data = await client.get<Response<MembershipTypes>>("/membership");
 
-  return data.data;
+  console.log(data);
+
+  return data;
 }
