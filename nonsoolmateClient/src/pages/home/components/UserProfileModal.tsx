@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { MonthlyMembershipGrayIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import useOutsideClick from "@hooks/useOutsideClick";
+import Error from "@pages/error";
 import { USER } from "@pages/home/constants/dummy";
+import useGetTicket from "@pages/home/hooks/useGetTicket";
 import { useRef } from "react";
 import { media } from "style/responsiveStyle";
 
@@ -18,32 +20,28 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
 
   useOutsideClick(modalRef, onClose);
 
-  // const getTicketResponse = useGetTicket();
-  // if (!getTicketResponse) return <></>;
-
-  // const {
-  //   data: { memberName, ticketCount },
-  // } = getTicketResponse;
+  const { data } = useGetTicket();
+  if (!data) return <Error />;
 
   return (
     <BackgroundView>
       <UserProfileWrapper ref={modalRef}>
         <MemberInfo>
           <Profile src={USER.avatarUrl} />
-          <Name>{USER.userName} 님</Name>
+          <Name>{data.memberName} 님</Name>
         </MemberInfo>
         <Line />
         <PlanBox>
           <MonthlyMembershipGrayIc />
-          <PlanText>{USER.planType} 플랜 이용 중</PlanText>
+          <PlanText>{data.membershipType === "BASIC" ? "베이직" : "프리미엄"} 플랜 이용 중</PlanText>
         </PlanBox>
         <TicketCount>
           <Content>첨삭권</Content>
-          <Content>{USER.permissions.editCount}개</Content>
+          <Content>{data.reviewTicketCount}개</Content>
         </TicketCount>
         <TicketCount>
           <Content>재첨삭권</Content>
-          <Content>{USER.permissions.reEditCount}개</Content>
+          <Content>{data.reReviewticketCount}개</Content>
         </TicketCount>
         <Line />
         <Button

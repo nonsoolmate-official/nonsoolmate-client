@@ -1,12 +1,13 @@
-import { Response } from "types/common";
 import { client } from "@api/axios";
 
 export interface TicketDataTypes {
   memberName: string;
-  ticketCount: number;
+  membershipType: string;
+  reviewTicketCount: number;
+  reReviewticketCount: number;
 }
 
 export async function getTicket() {
-  const { data } = await client.get<Response<TicketDataTypes>>(`/my/ticket`);
+  const { data } = await client.get<TicketDataTypes>(`/membership/ticket`);
   return data;
 }
