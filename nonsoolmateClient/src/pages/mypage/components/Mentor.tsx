@@ -2,19 +2,21 @@ import { PassIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import Error from "@pages/error";
+import useGetName from "@pages/home/hooks/useGetName";
 import { MENTOR } from "@pages/mypage/constants/dummy";
 import { useGetMentor } from "@pages/mypage/hooks/useGetMentor";
 import styled from "styled-components";
 
 export default function Mentor() {
+  const name = useGetName();
   const { data } = useGetMentor();
 
   return (
     <MentorWrapper>
       <Title>담당 선생님</Title>
-      {MENTOR.teacher?.status === "matched" ? (
+      {data?.data.isMatched ? (
         <>
-          <Discription> {MENTOR.student}님의 목표대학에 가장 적합한 선생님이에요</Discription>
+          <Discription> {name?.data.memberName}님의 목표대학에 가장 적합한 선생님이에요</Discription>
           <MentorInfoLayout>
             <MentorProfileContainer>
               <Profile src={data?.data.teacherProfileImageUrl} />
@@ -49,7 +51,7 @@ export default function Mentor() {
         </>
       ) : data?.data.isMatched === false ? (
         <NullMentorWrapper>첨삭 담당 선생님을 배정 중이에요. 배정은 영업일 기준 1일 이내에 완료돼요.</NullMentorWrapper>
-      ) : data?.code === 204 ? (
+      ) : data?.data.isMatched === undefined ? (
         <NullMentorWrapper>
           <NullMentorContainer>
             <Content style={{ margin: 0 }}>아직 배정받은 선생님이 없어요.</Content>

@@ -22,7 +22,9 @@ export interface MentorDataTypes {
   ];
 }
 
-export const getMentor = async () => {
-  const { data } = await client.get<Response<MentorDataTypes>>("/my/teacter");
+export async function getMentor() {
+  const { data } = await client.get<Response<MentorDataTypes>>("/my/teacher");
+
+  console.log(data);
   return data;
-};
+}
