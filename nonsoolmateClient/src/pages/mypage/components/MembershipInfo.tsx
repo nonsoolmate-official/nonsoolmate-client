@@ -2,14 +2,16 @@ import { MembershipIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
+import useGetMembership from "@pages/mypage/hooks/useGetMembership";
 
 import styled from "styled-components";
 
 export default function MembershipInfo() {
-  const data = MEMBERSHIP_DATA;
+  const data = useGetMembership();
+
   return (
     <>
-      {!!data.membership.name ? (
+      {data.data?.status === 200 ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -40,14 +42,16 @@ export default function MembershipInfo() {
           <PaymentInfo />
         </InfoWrapper>
       ) : (
-        <MembershipWrapper>
-          <Title>멤버십 관리</Title>
-          <NullMembershipContainer>
-            <Text>이용 중인 멤버십이 없습니다.</Text>
-            <Button variant="primary">멤버십 구매하기</Button>
-          </NullMembershipContainer>
-          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
-        </MembershipWrapper>
+        data.data?.status === 204 && (
+          <MembershipWrapper>
+            <Title>멤버십 관리</Title>
+            <NullMembershipContainer>
+              <Text>이용 중인 멤버십이 없습니다.</Text>
+              <Button variant="primary">멤버십 구매하기</Button>
+            </NullMembershipContainer>
+            <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
+          </MembershipWrapper>
+        )
       )}
     </>
   );
