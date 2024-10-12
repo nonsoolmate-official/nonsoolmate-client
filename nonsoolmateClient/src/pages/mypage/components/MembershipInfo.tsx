@@ -1,7 +1,6 @@
 import { MembershipIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
-import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
 import useGetMembership from "@pages/mypage/hooks/useGetMembership";
 import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";
 import { useNavigate } from "react-router-dom";
@@ -11,12 +10,12 @@ import styled from "styled-components";
 export default function MembershipInfo() {
   const navigate = useNavigate();
 
-  const data = useGetMembership();
+  const { data } = useGetMembership();
   const { mutate } = usePatchMembershipStatus();
 
   return (
     <>
-      {data.data?.status === 200 ? (
+      {data?.code === 200 ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -27,7 +26,7 @@ export default function MembershipInfo() {
                     <InfoTitle>이용 중인 멤버십</InfoTitle>
                     <CurrentMembership>
                       <MembershipIc />
-                      <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
+                      <Info>{data.data.membershipName}</Info>
                     </CurrentMembership>
                   </Membership>
                   <Button variant="text" size="sm" onClick={() => mutate("CANCELLED")}>
@@ -38,7 +37,7 @@ export default function MembershipInfo() {
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {MEMBERSHIP_DATA.membership?.startDate}~{MEMBERSHIP_DATA.membership?.endDate}
+                    {data.data.startDate}~{data.data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>
@@ -47,7 +46,7 @@ export default function MembershipInfo() {
           <PaymentInfo />
         </InfoWrapper>
       ) : (
-        data.data?.status === 204 && (
+        data?.code === 204 && (
           <MembershipWrapper>
             <Title>멤버십 관리</Title>
             <NullMembershipContainer>
