@@ -24,6 +24,5 @@ export interface MentorDataTypes {
 export async function getMentor() {
   const { data } = await client.get<MentorDataTypes>("/my/teacher");
 
-  console.log(data);
   return data;
 }

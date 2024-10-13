@@ -3,7 +3,6 @@ import Button from "@components/buttons/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import Error from "@pages/error";
 import useGetName from "@pages/home/hooks/useGetName";
-import { MENTOR } from "@pages/mypage/constants/dummy";
 import { useGetMentor } from "@pages/mypage/hooks/useGetMentor";
 import styled from "styled-components";
 
@@ -22,12 +21,12 @@ export default function Mentor() {
               <Profile src={data?.teacherProfileImageUrl} />
               <MentorProfileBox>
                 <Name>{data?.teacherName} 선생님</Name>
-                {MENTOR.teacher?.isPass && (
-                  <Badge>
+                {data.tags.map((tag) => (
+                  <Badge key={tag.tagId}>
                     <PassIc />
-                    논술 합격 인증
+                    {tag.tagName}
                   </Badge>
-                )}
+                ))}
               </MentorProfileBox>
             </MentorProfileContainer>
             <Divider />
@@ -51,7 +50,7 @@ export default function Mentor() {
         </>
       ) : data?.isMatched === false ? (
         <NullMentorWrapper>첨삭 담당 선생님을 배정 중이에요. 배정은 영업일 기준 1일 이내에 완료돼요.</NullMentorWrapper>
-      ) : data?.isMatched === undefined ? (
+      ) : !data ? (
         <NullMentorWrapper>
           <NullMentorContainer>
             <Content style={{ margin: 0 }}>아직 배정받은 선생님이 없어요.</Content>
