@@ -15,7 +15,18 @@ export default function MembershipInfo() {
 
   return (
     <>
-      {data?.status === 200 ? (
+      {!data ? (
+        <MembershipWrapper>
+          <Title>멤버십 관리</Title>
+          <NullMembershipContainer>
+            <Text>이용 중인 멤버십이 없습니다.</Text>
+            <Button variant="primary" onClick={() => navigate("/membership")}>
+              멤버십 구매하기
+            </Button>
+          </NullMembershipContainer>
+          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
+        </MembershipWrapper>
+      ) : (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -29,7 +40,7 @@ export default function MembershipInfo() {
                       <Info>{data.data.data.membershipName}</Info>
                     </CurrentMembership>
                   </Membership>
-                  <Button variant="text" size="sm" onClick={() => mutate("CANCELLED")}>
+                  <Button variant="text" onClick={() => mutate("CANCELLED")}>
                     멤버십 해지하기
                   </Button>
                 </MembershipInfoBox>
@@ -45,18 +56,7 @@ export default function MembershipInfo() {
           </MembershipWrapper>
           <PaymentInfo />
         </InfoWrapper>
-      ) : data?.status === 204 ? (
-        <MembershipWrapper>
-          <Title>멤버십 관리</Title>
-          <NullMembershipContainer>
-            <Text>이용 중인 멤버십이 없습니다.</Text>
-            <Button variant="primary" onClick={() => navigate("/membership")}>
-              멤버십 구매하기
-            </Button>
-          </NullMembershipContainer>
-          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
-        </MembershipWrapper>
-      ) : null}
+      )}
     </>
   );
 }
