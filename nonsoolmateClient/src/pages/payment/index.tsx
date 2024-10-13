@@ -60,7 +60,7 @@ export default function Payment() {
   }
 
   // -------- 카드 등록 로직
-  const clientKey = "test_ck_6bJXmgo28embJb5RZGAy8LAnGKWx";
+  const clientKey = `${import.meta.env.VITE_CLIENTKEY}`;
   const response = useGetCustomerInfo();
   if (!response) return <></>;
   const customerKey = response.customerKey;
