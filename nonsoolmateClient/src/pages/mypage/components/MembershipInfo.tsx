@@ -18,10 +18,12 @@ export default function MembershipInfo() {
 
   const handleResubscribe = () => {
     dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "welcome" });
+    mutate("IN_PROGRESS");
   };
 
   const handleCancelMembership = () => {
     dispatch({ type: "SHOW_MODAL", variant: "choice" });
+    mutate("TERMINATED");
   };
 
   return (
