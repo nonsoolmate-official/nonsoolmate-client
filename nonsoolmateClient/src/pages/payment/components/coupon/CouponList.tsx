@@ -27,7 +27,7 @@ export default function CouponList(props: ListProps) {
           {COUPON_LIST.coupons.map((item: CouponsType) => {
             const { couponMemberId, couponName, couponType, discountRate, discountAmount, validEndDate, isUsed } = item;
             const isCouponClicked = activeCouponId === couponMemberId;
-            if (isUsed) {
+            if (!isUsed) {
               return (
                 <Coupon
                   type="button"
