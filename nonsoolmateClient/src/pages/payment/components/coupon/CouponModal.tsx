@@ -17,7 +17,6 @@ interface ModalProps {
 
 export default function CouponModal(props: ModalProps) {
   const { changeCouponModalStatus, handleCouponTxtStatus, activeCouponId, handleActiveCouponId } = props;
-  // const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
   const [hasKorean, setHasKorean] = useState(false);
