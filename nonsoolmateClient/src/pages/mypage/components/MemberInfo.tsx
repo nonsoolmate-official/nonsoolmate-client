@@ -1,6 +1,7 @@
 import Button from "@components/buttons/Button";
 import Input from "@components/input/Input";
 import RadioButtonGroup from "@components/radioButton/RadioButtonGroup";
+import { useModalDispatch } from "@hooks/useModal";
 import Loading from "@pages/loading";
 import { DataTypes } from "@pages/mypage/api/getProfile";
 import useGetProfile from "@pages/mypage/hooks/useGetProfile";
@@ -17,6 +18,8 @@ export default function MemberInfo() {
   const { data, isLoading } = useGetProfile();
 
   const { mutate: editMemberInfo } = usePutMemberInfo();
+
+  const dispatch = useModalDispatch();
 
   const {
     input,
@@ -48,6 +51,7 @@ export default function MemberInfo() {
     const isFormValid = isNameValid && isEmailValid && isPhoneNumberValid && isBirthdayValid;
 
     setIsSubmitted(true);
+    dispatch({ type: "SHOW_MODAL", variant: "confirm" });
 
     if (!isFormValid) {
       return;
@@ -128,7 +132,7 @@ export default function MemberInfo() {
           />
         </Info>
         <SubmitLayout>
-          <Button variant="primary" size="sm" type="submit">
+          <Button variant="primary" width={8} type="submit">
             저장
           </Button>
         </SubmitLayout>

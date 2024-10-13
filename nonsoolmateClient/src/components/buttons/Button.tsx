@@ -2,25 +2,28 @@
 import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
-type Size = "xs" | "sm" | "md" | "lg" | "xl";
 type Variant = "primary" | "secondary" | "tertiary" | "text";
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
-  size?: Size;
+  width?: number;
+  fontSize?: string;
 }
-export default function Button({ children, variant = "primary", size = "md", ...props }: ButtonProps) {
+export default function Button({ children, variant = "primary", width, fontSize = "Body6", ...props }: ButtonProps) {
   return (
-    <ButtonWrapper type="button" variant={variant} size={size} {...props}>
+    <ButtonWrapper type="button" variant={variant} width={width} fontSize={fontSize} {...props}>
       {children}
     </ButtonWrapper>
   );
 }
 
-const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
+const ButtonWrapper = styled.button<{ variant: Variant; width?: number; fontSize?: string }>`
   align-items: center;
+  width: ${({ width }) => `${width}rem`};
   padding: 0.8rem 2.8rem;
   border-radius: 8px;
-  ${({ theme }) => theme.fonts.Body6};
+
+  ${({ fontSize, theme }) => fontSize && theme.fonts[fontSize as keyof typeof theme.fonts]};
 
   white-space: nowrap;
   ${({ variant }) => {
@@ -78,34 +81,6 @@ const ButtonWrapper = styled.button<{ variant: Variant; size: Size }>`
         return css`
           background-color: ${({ theme }) => theme.colors.white};
           color: ${({ theme }) => theme.colors.main_blue};
-        `;
-    }
-  }}
-  ${({ size }) => {
-    switch (size) {
-      case "xs":
-        return css`
-          width: 8rem;
-        `;
-      case "sm":
-        return css`
-          width: 12rem;
-        `;
-      case "md":
-        return css`
-          width: 14.4rem;
-        `;
-      case "lg":
-        return css`
-          width: 19.9rem;
-        `;
-      case "xl":
-        return css`
-          width: 40.4rem;
-        `;
-      default:
-        return css`
-          width: 18.4rem;
         `;
     }
   }}

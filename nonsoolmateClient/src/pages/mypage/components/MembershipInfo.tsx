@@ -1,5 +1,6 @@
 import { MembershipIc } from "@assets/index";
 import Button from "@components/buttons/Button";
+import { useModalDispatch } from "@hooks/useModal";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import useGetMembership from "@pages/mypage/hooks/useGetMembership";
 import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";
@@ -12,6 +13,16 @@ export default function MembershipInfo() {
 
   const { data } = useGetMembership();
   const { mutate } = usePatchMembershipStatus();
+
+  const dispatch = useModalDispatch();
+
+  const handleResubscribe = () => {
+    dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "welcome" });
+  };
+
+  const handleCancelMembership = () => {
+    dispatch({ type: "SHOW_MODAL", variant: "choice" });
+  };
 
   return (
     <>
@@ -26,18 +37,25 @@ export default function MembershipInfo() {
                     <InfoTitle>이용 중인 멤버십</InfoTitle>
                     <CurrentMembership>
                       <MembershipIc />
-                      <Info>{data.data.data.membershipName}</Info>
+                      <Info>{data.data.membershipName}</Info>
                     </CurrentMembership>
                   </Membership>
-                  <Button variant="text" size="sm" onClick={() => mutate("CANCELLED")}>
-                    멤버십 해지하기
-                  </Button>
+
+                  {new Date(data.data?.endDate).getTime() > new Date().getTime() ? (
+                    <Button variant="text" onClick={handleCancelMembership}>
+                      멤버십 해지하기
+                    </Button>
+                  ) : (
+                    <Button variant="text" onClick={handleResubscribe}>
+                      멤버십 연장하기
+                    </Button>
+                  )}
                 </MembershipInfoBox>
 
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {data.data.data.startDate}~{data.data.data.endDate}
+                    {data.data.startDate}~{data.data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>
