@@ -3,14 +3,14 @@ import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
 interface ModalProps {
-  changeFailModalStatus: (open: boolean) => void;
+  showAlreadyPaidError: (open: boolean) => void;
 }
 
 export default function FailModal(props: ModalProps) {
-  const { changeFailModalStatus } = props;
+  const { showAlreadyPaidError } = props;
 
   function handleConfirm() {
-    changeFailModalStatus(false);
+    showAlreadyPaidError(false);
   }
 
   return (

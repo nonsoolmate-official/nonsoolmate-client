@@ -6,6 +6,7 @@ import { REGISTER_TEXT } from "@pages/payment/core/registerText";
 import CouponModal from "../coupon/CouponModal";
 import { CardIc, SmallCouponIc } from "@assets/index";
 import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
+import FailModal from "../FailModal";
 
 interface RegisterLayoutProps {
   changeCouponModalStatus: (open: boolean) => void;
@@ -18,6 +19,7 @@ interface RegisterLayoutProps {
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
   notRegisterError: boolean;
   alreadyPaidError: boolean;
+  showAlreadyPaidError: (open: boolean) => void;
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
@@ -32,6 +34,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     handleActiveCouponId,
     notRegisterError,
     alreadyPaidError,
+    showAlreadyPaidError,
   } = props;
 
   const response = useGetCardInfo();
@@ -48,16 +51,13 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
             <Title>
               {item.title}
               {notRegisterError && item.title === "결제 수단" && <ErrorText>* 결제 수단을 등록해 주세요.</ErrorText>}
-              {alreadyPaidError && item.title === "결제 수단" && (
-                <ErrorText>* 이미 멤버십 결제가 진행중입니다.</ErrorText>
-              )}
             </Title>
             <RegisterButton
               button={item.buttonText}
               onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCard}
             />
           </TitleContainer>
-          <Content $payError={(notRegisterError || alreadyPaidError) && item.title === "결제 수단"}>
+          <Content $payError={notRegisterError && item.title === "결제 수단"}>
             {item.buttonText === "쿠폰 사용" ? (
               <Coupon>
                 <CouponTxt $couponTxt={couponTxt}>
@@ -75,6 +75,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
               item.content
             )}
           </Content>
+          {alreadyPaidError && item.title === "결제 수단" && <FailModal showAlreadyPaidError={showAlreadyPaidError} />}
         </RegisterLayoutContainer>
       ))}
       {isCouponOpen && (

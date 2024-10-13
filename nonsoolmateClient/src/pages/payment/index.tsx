@@ -109,6 +109,7 @@ export default function Payment() {
             handleActiveCouponId={handleActiveCouponId}
             notRegisterError={notRegisterError}
             alreadyPaidError={alreadyPaidError}
+            showAlreadyPaidError={showAlreadyPaidError}
           />
         </PaymentLeftContainer>
         <PaymentInfo
