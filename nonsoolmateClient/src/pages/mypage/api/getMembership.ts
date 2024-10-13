@@ -16,7 +16,5 @@ interface MembershipTypes {
 export async function getMembership() {
   const data = await client.get<Response<MembershipTypes>>("/membership");
 
-  console.log(data);
-
   return data;
 }
