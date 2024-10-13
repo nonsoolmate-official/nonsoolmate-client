@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { MonthlyMembershipGrayIc } from "@assets/index";
+import { FemaleStudentIc, MaleStudentIc, MonthlyMembershipGrayIc, NeutralStudentIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import useOutsideClick from "@hooks/useOutsideClick";
 import Error from "@pages/error";
-import { USER } from "@pages/home/constants/dummy";
 import useGetTicket from "@pages/home/hooks/useGetTicket";
+import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import { useRef } from "react";
 import { media } from "style/responsiveStyle";
 
@@ -21,13 +21,22 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
   useOutsideClick(modalRef, onClose);
 
   const { data } = useGetTicket();
+
+  const { data: ProfileData } = useGetProfile();
+
   if (!data) return <Error />;
 
   return (
     <BackgroundView>
       <UserProfileWrapper ref={modalRef}>
         <MemberInfo>
-          <Profile src={USER.avatarUrl} />
+          {ProfileData?.data.gender === "M" ? (
+            <MaleStudentIc />
+          ) : ProfileData?.data.gender === "W" ? (
+            <FemaleStudentIc />
+          ) : (
+            <NeutralStudentIc />
+          )}
           <Name>{data.memberName} 님</Name>
         </MemberInfo>
         <Line />
@@ -91,12 +100,6 @@ const MemberInfo = styled.div`
   gap: 0.8rem;
   align-items: center;
   width: 18rem;
-`;
-
-const Profile = styled.img`
-  width: 4.4rem;
-  height: 4.4rem;
-  object-fit: cover;
 `;
 
 const Name = styled.p`

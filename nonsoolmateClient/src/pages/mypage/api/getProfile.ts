@@ -11,5 +11,6 @@ export interface DataTypes {
 
 export async function getProfile() {
   const { data } = await client.get<Response<DataTypes>>("/my/profile");
+
   return data;
 }
