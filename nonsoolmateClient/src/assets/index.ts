@@ -125,6 +125,8 @@ import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 import FemaleStudentIc from "./icon/femaleStudentIc.svg?react";
 import MaleStudentIc from "./icon/maleStudentIc.svg?react";
 import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
+import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
+import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 
 export {
@@ -166,8 +168,10 @@ export {
   LoginInfoIc,
   LogoIc,
   MaleStudentIc,
+  MembershipBasicIc,
   MembershipDisabledIc,
   MembershipIc,
+  MembershipPremiumIc,
   MonthlyMembershipGrayIc,
   NaverLoginIc,
   NeutralStudentIc,
