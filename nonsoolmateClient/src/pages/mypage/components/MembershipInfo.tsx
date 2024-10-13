@@ -1,5 +1,6 @@
 import { MembershipIc } from "@assets/index";
 import Button from "@components/buttons/Button";
+import { useModalDispatch } from "@hooks/useModal";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
 
@@ -7,6 +8,17 @@ import styled from "styled-components";
 
 export default function MembershipInfo() {
   const data = MEMBERSHIP_DATA;
+
+  const dispatch = useModalDispatch();
+
+  const handleResubscribe = () => {
+    dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "welcome" });
+  };
+
+  const handleCancelMembership = () => {
+    dispatch({ type: "SHOW_MODAL", variant: "choice" });
+  };
+
   return (
     <>
       {!!data.membership.name ? (
@@ -23,9 +35,15 @@ export default function MembershipInfo() {
                       <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
                     </CurrentMembership>
                   </Membership>
-                  <Button variant="text" size="sm">
-                    멤버십 해지하기
-                  </Button>
+                  {new Date(MEMBERSHIP_DATA.membership?.endDate).getTime() > new Date().getTime() ? (
+                    <Button variant="text" onClick={handleCancelMembership}>
+                      멤버십 해지하기
+                    </Button>
+                  ) : (
+                    <Button variant="text" onClick={handleResubscribe}>
+                      멤버십 연장하기
+                    </Button>
+                  )}
                 </MembershipInfoBox>
 
                 <Membership>

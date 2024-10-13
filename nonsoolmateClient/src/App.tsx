@@ -5,6 +5,7 @@ import theme from "style/theme";
 import { ThemeProvider } from "styled-components";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ModalProvider } from "contexts/ModalProvider";
 import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 
@@ -22,8 +23,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-          <GlobalStyle />
+          <ModalProvider>
+            <RouterProvider router={router} />
+            <GlobalStyle />
+          </ModalProvider>
         </ThemeProvider>
       </RecoilRoot>
     </QueryClientProvider>
