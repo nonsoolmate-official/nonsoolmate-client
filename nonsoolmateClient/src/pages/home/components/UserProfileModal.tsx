@@ -31,11 +31,11 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
       <UserProfileWrapper ref={modalRef}>
         <MemberInfo>
           {ProfileData?.data.gender === "M" ? (
-            <MaleStudentIc />
+            <MaleStudentIcon />
           ) : ProfileData?.data.gender === "W" ? (
-            <FemaleStudentIc />
+            <FemaleStudentIcon />
           ) : (
-            <NeutralStudentIc />
+            <NeutralStudentIcon />
           )}
           <Name>{data.memberName} 님</Name>
         </MemberInfo>
@@ -138,4 +138,19 @@ const Content = styled.p`
 const Line = styled.div`
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.colors.grey_200};
+`;
+
+const MaleStudentIcon = styled(MaleStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
+`;
+
+const FemaleStudentIcon = styled(FemaleStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
+`;
+
+const NeutralStudentIcon = styled(NeutralStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
 `;
