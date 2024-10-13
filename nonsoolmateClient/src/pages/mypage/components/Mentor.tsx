@@ -78,6 +78,7 @@ const MentorInfoLayout = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  min-width: 69.6rem;
   padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
