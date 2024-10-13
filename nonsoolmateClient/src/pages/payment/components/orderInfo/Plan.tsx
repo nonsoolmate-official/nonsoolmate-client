@@ -5,7 +5,7 @@ import styled from "styled-components";
 interface PlanProps {
   id: number;
   title: string;
-  description: string;
+  description: string[];
   checkBox: boolean;
   selectedPlan?: number;
   onPlanChange?: (newPlanId: number) => void;
@@ -36,7 +36,7 @@ export default function Plan(props: PlanProps) {
         </PlanTitle>
         <CheckIconBox $checkBox={checkBox}>{selectedPlan === id ? <CheckBtnIc /> : <CheckEmptyIc />}</CheckIconBox>
       </PlanTitleBox>
-      <PlanDescription>{description}</PlanDescription>
+      <PlanDescription> {description.join(", ")}</PlanDescription>
     </PlanBox>
   );
 }

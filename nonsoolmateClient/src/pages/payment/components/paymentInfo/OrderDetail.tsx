@@ -1,13 +1,16 @@
-import { OrderProps } from "@pages/payment/types/paymentInfoType";
 import theme from "style/theme";
 import styled from "styled-components";
+import { Plan } from "types/productsListType";
 
-export default function OrderDetail(props: OrderProps) {
-  const { plan } = props;
+interface OrderDetailProps {
+  plan: Plan;
+}
+
+export default function OrderDetail({ plan }: OrderDetailProps) {
   return (
     <OrderDetailContainer>
-      <Type>{plan?.title}</Type>
-      <Price>{plan?.price.toLocaleString()}원</Price>
+      <Type>{plan.productName}</Type>
+      <Price>{plan.price.toLocaleString()}원</Price>
     </OrderDetailContainer>
   );
 }

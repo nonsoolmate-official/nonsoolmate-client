@@ -48,8 +48,7 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
         <Line />
         <Button
           variant="tertiary"
-          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}
-          onClick={() => navigate("/mypage")}>
+          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}>
           마이페이지
         </Button>
         <Button
@@ -72,7 +71,7 @@ const UserProfileWrapper = styled.aside`
 
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 8px;
   align-items: center;
   position: fixed;
   top: 7.5rem;

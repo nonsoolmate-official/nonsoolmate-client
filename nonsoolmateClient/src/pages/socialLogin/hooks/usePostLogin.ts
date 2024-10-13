@@ -20,7 +20,7 @@ export default function usePostLogin() {
   const urlParams = new URLSearchParams(window.location.search);
   const CODE = urlParams.get("code");
   const navigate = useNavigate();
-  const from = sessionStorage.getItem("from") || "/home/test";
+  const from = sessionStorage.getItem("from") || "/";
   useEffect(() => {
     client
       .post(
@@ -43,7 +43,7 @@ export default function usePostLogin() {
         if (from === "/membership") {
           window.location.href = "/membership";
         } else {
-          window.location.href = "/home/test";
+          window.location.href = "/";
         }
       })
       .catch(() => {

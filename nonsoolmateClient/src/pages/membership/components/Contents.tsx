@@ -1,17 +1,40 @@
 import styled from "styled-components";
 import Subscribe from "./subscribe/Subscribe";
-import { CONTENT_LIST } from "../core/contentlist";
 import { columnFlex, commonFlex } from "style/commonStyle";
 import Advantage from "./advantage/Advantage";
 import { media } from "style/responsiveStyle";
+import useGetProductsList from "../hooks/useGetProductsList";
+import { calculateStandardDiscount } from "@pages/payment/utils/calculateStandardDiscount";
 
 export default function Contents() {
+  const response = useGetProductsList();
+  if (!response || !Array.isArray(response.data)) {
+    return <></>;
+  }
+  const planInfo = response.data;
   return (
     <Container>
       <SubscribeWrapper>
-        {CONTENT_LIST.map((ele) => {
-          const { id, title, sales, price } = ele;
-          return <Subscribe key={id} id={id} title={title} sales={sales} price={price} />;
+        {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
+          const discountHistory = calculateStandardDiscount({
+            productId,
+            productName,
+            productDescriptions,
+            price,
+            defaultDiscounts,
+          });
+          return (
+            <Subscribe
+              key={productId}
+              productId={productId}
+              productDescriptions={productDescriptions}
+              productName={productName}
+              price={price}
+              defaultDiscounts={defaultDiscounts}
+              discountHistory={discountHistory}
+              plan={planInfo}
+            />
+          );
         })}
       </SubscribeWrapper>
       <Ipad>

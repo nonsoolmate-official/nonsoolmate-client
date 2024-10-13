@@ -30,7 +30,7 @@ export default function HomeHeader() {
   return (
     <>
       <Header>
-        <LogoButton onClick={() => (getNameResponse ? navigate("/home/test") : navigate("/"))} type="button">
+        <LogoButton onClick={() => navigate("/")} type="button">
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
