@@ -123,6 +123,7 @@ import PassIc from "./icon/passIc.svg?react";
 import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
+import PayFailIc from "./icon/payFailIc.svg?react";
 
 export {
   Advan1Ic,
@@ -215,4 +216,5 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
+  PayFailIc,
 };
