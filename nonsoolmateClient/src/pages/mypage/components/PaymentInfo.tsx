@@ -101,6 +101,7 @@ const PaymentInfoLayout = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  max-width: 69.6rem;
   padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
