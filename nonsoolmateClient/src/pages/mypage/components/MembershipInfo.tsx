@@ -27,7 +27,7 @@ export default function MembershipInfo() {
 
   return (
     <>
-      {data?.status === "IN_PROGRESS" ? (
+      {data ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -42,14 +42,16 @@ export default function MembershipInfo() {
                     </CurrentMembership>
                   </Membership>
 
-                  {new Date(data?.endDate).getTime() > new Date().getTime() ? (
-                    <Button variant="text" onClick={handleCancelMembership}>
-                      멤버십 해지하기
-                    </Button>
-                  ) : (
+                  {data.status === "TERMINATED" || new Date(data?.endDate).getTime() < new Date().getTime() ? (
                     <Button variant="text" onClick={handleResubscribe}>
                       멤버십 연장하기
                     </Button>
+                  ) : (
+                    new Date(data?.endDate).getTime() > new Date().getTime() && (
+                      <Button variant="text" onClick={handleCancelMembership}>
+                        멤버십 해지하기
+                      </Button>
+                    )
                   )}
                 </MembershipInfoBox>
 
@@ -65,19 +67,16 @@ export default function MembershipInfo() {
           <PaymentInfo />
         </InfoWrapper>
       ) : (
-        data?.status === "TERMINATED" ||
-        (!data && (
-          <MembershipWrapper>
-            <Title>멤버십 관리</Title>
-            <NullMembershipContainer>
-              <Text>이용 중인 멤버십이 없습니다.</Text>
-              <Button variant="primary" onClick={() => navigate("/membership")}>
-                멤버십 구매하기
-              </Button>
-            </NullMembershipContainer>
-            <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
-          </MembershipWrapper>
-        ))
+        <MembershipWrapper>
+          <Title>멤버십 관리</Title>
+          <NullMembershipContainer>
+            <Text>이용 중인 멤버십이 없습니다.</Text>
+            <Button variant="primary" onClick={() => navigate("/membership")}>
+              멤버십 구매하기
+            </Button>
+          </NullMembershipContainer>
+          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
+        </MembershipWrapper>
       )}
     </>
   );
