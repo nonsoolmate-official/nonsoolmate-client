@@ -128,6 +128,7 @@ import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
 import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
 import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
+import PayFailIc from "./icon/payFailIc.svg?react";
 
 export {
   Advan1Ic,
@@ -225,4 +226,5 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
+  PayFailIc,
 };

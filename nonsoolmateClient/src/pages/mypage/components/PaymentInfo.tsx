@@ -1,13 +1,40 @@
-import { CouponIc, DiscountIc } from "@assets/index";
+import { DiscountIc, SmallCouponIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import useGetPayment from "@pages/mypage/hooks/useGetPayment";
 import { formatDate } from "@pages/mypage/utils/date";
+import CouponModal from "@pages/payment/components/coupon/CouponModal";
+import { COUPON_NOT_REGISTER } from "constants/coupon";
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function PaymentInfo() {
   const { data } = useGetPayment();
 
   const formattedDate = formatDate(data?.nextPaymentDate);
+
+  const [couponTxt, setCouponTxt] = useState(
+    () => sessionStorage.getItem("nextMonth_couponTxt") || COUPON_NOT_REGISTER,
+  );
+  const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("nextMonth_dcInfo") || "");
+  const [isCouponOpen, setIsCouponOpen] = useState(false);
+  const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
+
+  function handleNextMonthCouponTxtStatus(coupon: string, dcInfo: string) {
+    setCouponTxt(coupon);
+    setDcInfo(dcInfo);
+  }
+
+  function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
+    setActiveCouponId(isCouponActive ? null : couponMemberId);
+  }
+
+  function changeNextMonthCouponModalStatus(open: boolean) {
+    setIsCouponOpen(open);
+  }
+
+  function openCouponModal() {
+    changeNextMonthCouponModalStatus(true);
+  }
 
   return (
     <PaymentInfoWrapper>
@@ -29,25 +56,26 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            {data?.coupon && data.coupon.length > 0 ? (
-              data.coupon.map((coupon) => (
-                <EventInfoBox key={coupon.couponId}>
-                  <CouponInfo>
-                    <CouponIc />
-                    {coupon.couponName}
-                    <p>{coupon.discountRate * 100}&nbsp;OFF</p>
-                  </CouponInfo>
-                </EventInfoBox>
-              ))
-            ) : (
-              <Info>등록된 쿠폰이 없습니다.</Info>
-            )}
+            <Coupon $couponTxt={couponTxt}>
+              <CouponTxt $couponTxt={couponTxt}>
+                {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
+                {couponTxt}
+              </CouponTxt>
+              <DcInfo>{dcInfo}</DcInfo>
+            </Coupon>
           </Payment>
-          <Button variant="tertiary" width={12}>
+          <Button variant="tertiary" width={12} onClick={openCouponModal}>
             쿠폰 변경
           </Button>
         </PaymentInfoBox>
-
+        {isCouponOpen && (
+          <CouponModal
+            changeCouponModalStatus={changeNextMonthCouponModalStatus}
+            handleCouponTxtStatus={handleNextMonthCouponTxtStatus}
+            activeCouponId={activeCouponId}
+            handleActiveCouponId={handleActiveCouponId}
+          />
+        )}
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
 
@@ -155,15 +183,36 @@ const EventInfoBox = styled.div`
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
-const CouponInfo = styled.div`
+const Coupon = styled.div<{ $couponTxt: string }>`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: ${({ $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : "0.8rem 1.2rem")};
+  border-radius: 8px;
+  background-color: ${({ theme, $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : theme.colors.grey_50)};
+`;
+
+const CouponTxt = styled.div<{ $couponTxt: string }>`
   display: flex;
   gap: 0.8rem;
-  justify-content: space-between;
-  width: 100%;
-
+  align-items: center;
   ${({ theme }) => theme.fonts.Body4};
 
-  white-space: nowrap;
+  color: ${({ theme, $couponTxt }) =>
+    $couponTxt === COUPON_NOT_REGISTER ? theme.colors.black : theme.colors.grey_1000};
+`;
+
+const DcInfo = styled.p`
+  ${({ theme }) => theme.fonts.Body4};
+
+  color: ${({ theme }) => theme.colors.grey_1000};
+`;
+
+const SmallCouponIcon = styled(SmallCouponIc)`
+  width: 2rem;
+  height: 2rem;
 `;
 
 const DiscountInfo = styled.div`

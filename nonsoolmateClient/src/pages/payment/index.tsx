@@ -8,6 +8,7 @@ import HomeHeader from "@pages/home/components/HomeHeader";
 import { useEffect, useState } from "react";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
+import { COUPON_NOT_REGISTER } from "constants/coupon";
 
 export default function Payment() {
   const location = useLocation();
@@ -28,7 +29,7 @@ export default function Payment() {
     isQuitOpen: false,
   });
 
-  const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || "등록된 쿠폰이 없습니다.");
+  const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || COUPON_NOT_REGISTER);
   const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
 
   useEffect(() => {
@@ -109,6 +110,7 @@ export default function Payment() {
             handleActiveCouponId={handleActiveCouponId}
             notRegisterError={notRegisterError}
             alreadyPaidError={alreadyPaidError}
+            showAlreadyPaidError={showAlreadyPaidError}
           />
         </PaymentLeftContainer>
         <PaymentInfo
