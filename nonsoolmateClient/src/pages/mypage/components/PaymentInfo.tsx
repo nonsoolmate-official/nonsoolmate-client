@@ -1,11 +1,13 @@
 import { DiscountIc, SmallCouponIc } from "@assets/index";
 import Button from "@components/buttons/Button";
+import useGetCustomerInfo from "@pages/payment/hooks/useGetCustomerInfo";
 import useGetPayment from "@pages/mypage/hooks/useGetPayment";
 import { formatDate } from "@pages/mypage/utils/date";
 import CouponModal from "@pages/payment/components/coupon/CouponModal";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
 import { useState } from "react";
 import styled from "styled-components";
+import { registerCard } from "@utils/registerCard";
 
 export default function PaymentInfo() {
   const { data } = useGetPayment();
@@ -36,6 +38,23 @@ export default function PaymentInfo() {
     changeNextMonthCouponModalStatus(true);
   }
 
+  const from = location.pathname;
+  sessionStorage.setItem("from", from);
+  const clientKey = `${import.meta.env.VITE_CLIENTKEY}`;
+  const customerResponse = useGetCustomerInfo();
+  if (!customerResponse) {
+    return <></>;
+  }
+  const customerKey = customerResponse.customerKey;
+
+  function registerCardHandler() {
+    const from = sessionStorage.getItem("from");
+    registerCard({
+      clientKey,
+      customerKey,
+      from: from || "",
+    });
+  }
   return (
     <PaymentInfoWrapper>
       <Title>다음 결제 정보</Title>
@@ -50,7 +69,9 @@ export default function PaymentInfo() {
             <InfoTitle>결제 수단</InfoTitle>
             <Info>{data?.paymentMethod}</Info>
           </Payment>
-          <Button variant="text">결제 수단 변경하기</Button>
+          <Button variant="text" onClick={registerCardHandler}>
+            결제 수단 변경하기
+          </Button>
         </PaymentInfoBox>
 
         <PaymentInfoBox>
