@@ -28,7 +28,7 @@ export default function MembershipInfo() {
 
   return (
     <>
-      {data?.code === 200 ? (
+      {data ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -39,11 +39,11 @@ export default function MembershipInfo() {
                     <InfoTitle>이용 중인 멤버십</InfoTitle>
                     <CurrentMembership>
                       <MembershipIc />
-                      <Info>{data.data.membershipName}</Info>
+                      <Info>{data.membershipName}</Info>
                     </CurrentMembership>
                   </Membership>
 
-                  {new Date(data.data?.endDate).getTime() > new Date().getTime() ? (
+                  {new Date(data?.endDate).getTime() > new Date().getTime() ? (
                     <Button variant="text" onClick={handleCancelMembership}>
                       멤버십 해지하기
                     </Button>
@@ -57,7 +57,7 @@ export default function MembershipInfo() {
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {data.data.startDate}~{data.data.endDate}
+                    {data.startDate}~{data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>
@@ -65,7 +65,7 @@ export default function MembershipInfo() {
           </MembershipWrapper>
           <PaymentInfo />
         </InfoWrapper>
-      ) : data?.code === 204 ? (
+      ) : (
         <MembershipWrapper>
           <Title>멤버십 관리</Title>
           <NullMembershipContainer>
@@ -76,7 +76,7 @@ export default function MembershipInfo() {
           </NullMembershipContainer>
           <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
         </MembershipWrapper>
-      ) : null}
+      )}
     </>
   );
 }
@@ -104,6 +104,7 @@ const MembershipInfoLayout = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  max-width: 69.6rem;
   box-shadow: 0 0 12px 0 rgb(0 0 0 / 8%);
 `;
 
