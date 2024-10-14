@@ -6,8 +6,8 @@ import RegisterLayout from "./components/register/RegisterLayout";
 import { media } from "style/responsiveStyle";
 import HomeHeader from "@pages/home/components/HomeHeader";
 import { useEffect, useState } from "react";
-import { loadTossPayments } from "@tosspayments/payment-sdk";
 import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
+import { registerCard } from "@utils/registerCard";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
 
 export default function Payment() {
@@ -61,28 +61,23 @@ export default function Payment() {
   }
 
   // -------- 카드 등록 로직
+  const from = location.pathname;
+  sessionStorage.setItem("from", from);
   const clientKey = `${import.meta.env.VITE_CLIENTKEY}`;
   const response = useGetCustomerInfo();
   if (!response) return <></>;
   const customerKey = response.customerKey;
 
-  function registerCard() {
-    loadTossPayments(clientKey).then((tossPayments) => {
-      tossPayments
-        .requestBillingAuth("카드", {
-          customerKey,
-          successUrl: `${window.location.origin}/success?id=${selectedPlan}`,
-          failUrl: window.location.origin + "/fail",
-        })
-        .catch((error) => {
-          if (error.code === "USER_CANCEL") {
-            // 사용자가 결제창을 닫았을 때
-          } else if (error.code === "INVALID_CARD_COMPANY") {
-            // 유효하지 않은 카드 코드에 대한 처리
-          }
-        });
+  function registerCardHandler() {
+    const from = sessionStorage.getItem("from");
+    registerCard({
+      clientKey,
+      customerKey,
+      selectedPlan,
+      from: from || "",
     });
   }
+
   // --------- 결제 에러 핸들링
   function showNotRegisterError(show: boolean) {
     setNotRegisterError(show);
@@ -105,7 +100,7 @@ export default function Payment() {
             isCouponOpen={modalStatus.isCouponOpen}
             couponTxt={couponTxt}
             dcInfo={dcInfo}
-            registerCard={registerCard}
+            registerCardHandler={registerCardHandler}
             activeCouponId={activeCouponId}
             handleActiveCouponId={handleActiveCouponId}
             notRegisterError={notRegisterError}
