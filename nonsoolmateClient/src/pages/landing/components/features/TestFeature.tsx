@@ -1,8 +1,8 @@
+import editImage from "@assets/image/landing_feature1_1.png";
+import reEditImage from "@assets/image/landing_feature1_2.png";
 import { columnFlex } from "style/commonStyle";
 import theme from "style/theme";
 import styled from "styled-components";
-import editImage from "@assets/image/landing_fearure1_1.png";
-import reEditImage from "@assets/image/landing_feature1_2.png";
 import Content from "./Content";
 import Title from "./Title";
 
