@@ -1,14 +1,17 @@
 import { MembershipBasicIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import { useModalDispatch } from "@hooks/useModal";
+import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";
 import styled from "styled-components";
 
 export default function ChoiceModal() {
   // const { membership } = useMembership();
   const dispatch = useModalDispatch();
+  const { mutate } = usePatchMembershipStatus();
 
   const handleCancelMembership = () => {
     dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "unsubscribe" });
+    mutate("TERMINATED");
   };
 
   return (

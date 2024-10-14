@@ -23,12 +23,11 @@ export default function MembershipInfo() {
 
   const handleCancelMembership = () => {
     dispatch({ type: "SHOW_MODAL", variant: "choice" });
-    mutate("TERMINATED");
   };
 
   return (
     <>
-      {data ? (
+      {data?.status === "IN_PROGRESS" ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -57,7 +56,7 @@ export default function MembershipInfo() {
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {data.startDate}~{data.endDate}
+                    {data.startDate} ~ {data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>
@@ -66,16 +65,18 @@ export default function MembershipInfo() {
           <PaymentInfo />
         </InfoWrapper>
       ) : (
-        <MembershipWrapper>
-          <Title>멤버십 관리</Title>
-          <NullMembershipContainer>
-            <Text>이용 중인 멤버십이 없습니다.</Text>
-            <Button variant="primary" onClick={() => navigate("/membership")}>
-              멤버십 구매하기
-            </Button>
-          </NullMembershipContainer>
-          <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
-        </MembershipWrapper>
+        data?.status === "TERMINATED" && (
+          <MembershipWrapper>
+            <Title>멤버십 관리</Title>
+            <NullMembershipContainer>
+              <Text>이용 중인 멤버십이 없습니다.</Text>
+              <Button variant="primary" onClick={() => navigate("/membership")}>
+                멤버십 구매하기
+              </Button>
+            </NullMembershipContainer>
+            <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
+          </MembershipWrapper>
+        )
       )}
     </>
   );
