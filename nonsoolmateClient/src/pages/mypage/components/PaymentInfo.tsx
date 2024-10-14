@@ -7,7 +7,7 @@ import styled from "styled-components";
 export default function PaymentInfo() {
   const { data } = useGetPayment();
 
-  const formattedDate = formatDate(data?.data.nextPaymentDate);
+  const formattedDate = formatDate(data?.nextPaymentDate);
 
   return (
     <PaymentInfoWrapper>
@@ -21,7 +21,7 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>결제 수단</InfoTitle>
-            <Info>{data?.data.paymentMethod}</Info>
+            <Info>{data?.paymentMethod}</Info>
           </Payment>
           <Button variant="text">결제 수단 변경하기</Button>
         </PaymentInfoBox>
@@ -29,8 +29,8 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            {data?.data.coupon && data.data.coupon.length > 0 ? (
-              data.data.coupon.map((coupon) => (
+            {data?.coupon && data.coupon.length > 0 ? (
+              data.coupon.map((coupon) => (
                 <EventInfoBox key={coupon.couponId}>
                   <CouponInfo>
                     <CouponIc />
@@ -51,8 +51,8 @@ export default function PaymentInfo() {
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
 
-          {data?.data.discountEvent && data.data.discountEvent.length > 0 ? (
-            data.data.discountEvent.map((discount) => (
+          {data?.discountEvent && data.discountEvent.length > 0 ? (
+            data.discountEvent.map((discount) => (
               <EventInfoContainer key={discount.discountId}>
                 <EventInfoBox>
                   <DiscountInfo>
@@ -72,12 +72,12 @@ export default function PaymentInfo() {
 
         <Payment>
           <InfoTitle>총 할인가</InfoTitle>
-          <Info>{data?.data.totalDiscountPrice}</Info>
+          <Info>{data?.totalDiscountPrice}</Info>
         </Payment>
 
         <Payment>
           <InfoTitle>결제 예정 금액</InfoTitle>
-          <Info>{data?.data.totalPrice}</Info>
+          <Info>{data?.totalPrice}</Info>
         </Payment>
       </PaymentInfoLayout>
     </PaymentInfoWrapper>

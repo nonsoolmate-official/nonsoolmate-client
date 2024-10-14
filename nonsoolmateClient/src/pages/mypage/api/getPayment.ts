@@ -26,5 +26,5 @@ interface PaymentTypes {
 export async function getPayment() {
   const data = await client.get<PaymentTypes>("/membership/payment");
 
-  return data;
+  return data.data;
 }
