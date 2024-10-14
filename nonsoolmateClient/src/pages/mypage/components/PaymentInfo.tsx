@@ -74,6 +74,7 @@ export default function PaymentInfo() {
             handleCouponTxtStatus={handleNextMonthCouponTxtStatus}
             activeCouponId={activeCouponId}
             handleActiveCouponId={handleActiveCouponId}
+            couponFrom="/mypage"
           />
         )}
         <Payment>
