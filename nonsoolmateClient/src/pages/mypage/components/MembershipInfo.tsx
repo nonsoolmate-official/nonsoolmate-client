@@ -2,26 +2,33 @@ import { MembershipIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import { useModalDispatch } from "@hooks/useModal";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
-import { MEMBERSHIP_DATA } from "@pages/mypage/constants/dummy";
+import useGetMembership from "@pages/mypage/hooks/useGetMembership";
+import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 
 export default function MembershipInfo() {
-  const data = MEMBERSHIP_DATA;
+  const navigate = useNavigate();
+
+  const { data } = useGetMembership();
+  const { mutate } = usePatchMembershipStatus();
 
   const dispatch = useModalDispatch();
 
   const handleResubscribe = () => {
     dispatch({ type: "SHOW_MODAL", variant: "description", descriptionType: "welcome" });
+    mutate("IN_PROGRESS");
   };
 
   const handleCancelMembership = () => {
     dispatch({ type: "SHOW_MODAL", variant: "choice" });
+    mutate("TERMINATED");
   };
 
   return (
     <>
-      {!!data.membership.name ? (
+      {data?.code === 200 ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -32,10 +39,11 @@ export default function MembershipInfo() {
                     <InfoTitle>이용 중인 멤버십</InfoTitle>
                     <CurrentMembership>
                       <MembershipIc />
-                      <Info>{MEMBERSHIP_DATA.membership?.name}</Info>
+                      <Info>{data.data.membershipName}</Info>
                     </CurrentMembership>
                   </Membership>
-                  {new Date(MEMBERSHIP_DATA.membership?.endDate).getTime() > new Date().getTime() ? (
+
+                  {new Date(data.data?.endDate).getTime() > new Date().getTime() ? (
                     <Button variant="text" onClick={handleCancelMembership}>
                       멤버십 해지하기
                     </Button>
@@ -49,7 +57,7 @@ export default function MembershipInfo() {
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {MEMBERSHIP_DATA.membership?.startDate}~{MEMBERSHIP_DATA.membership?.endDate}
+                    {data.data.startDate}~{data.data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>
@@ -57,16 +65,18 @@ export default function MembershipInfo() {
           </MembershipWrapper>
           <PaymentInfo />
         </InfoWrapper>
-      ) : (
+      ) : data?.code === 204 ? (
         <MembershipWrapper>
           <Title>멤버십 관리</Title>
           <NullMembershipContainer>
             <Text>이용 중인 멤버십이 없습니다.</Text>
-            <Button variant="primary">멤버십 구매하기</Button>
+            <Button variant="primary" onClick={() => navigate("/membership")}>
+              멤버십 구매하기
+            </Button>
           </NullMembershipContainer>
           <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
         </MembershipWrapper>
-      )}
+      ) : null}
     </>
   );
 }

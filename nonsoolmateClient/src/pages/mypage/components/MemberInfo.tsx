@@ -6,6 +6,7 @@ import Loading from "@pages/loading";
 import { DataTypes } from "@pages/mypage/api/getProfile";
 import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import useMemberInfo from "@pages/mypage/hooks/useMemberInfo";
+import usePutMemberInfo from "@pages/mypage/hooks/usePutMemberInfo";
 import { AxiosResponse } from "axios";
 import { useState } from "react";
 import { media } from "style/responsiveStyle";
@@ -15,6 +16,8 @@ export default function MemberInfo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { data, isLoading } = useGetProfile();
+
+  const { mutate: editMemberInfo } = usePutMemberInfo();
 
   const dispatch = useModalDispatch();
 
@@ -53,8 +56,15 @@ export default function MemberInfo() {
     if (!isFormValid) {
       return;
     }
-  };
 
+    editMemberInfo({
+      name: input.name,
+      gender: gender ?? "",
+      birthYear: input.birthday,
+      email: input.email,
+      phoneNumber: input.phoneNumber,
+    });
+  };
   return (
     <Wrapper>
       <Title>회원정보</Title>
@@ -134,7 +144,7 @@ export default function MemberInfo() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 2.4rem 21.5rem 30.8rem 2.4rem;
 `;
 
 const MemberInfoContainer = styled.form`
@@ -142,8 +152,8 @@ const MemberInfoContainer = styled.form`
   flex-direction: column;
   gap: 2.8rem;
   position: relative;
-  width: 69.6rem;
-  margin-left: 2.4rem;
+  min-width: 70.4rem;
+  height: 28.8rem;
   padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -162,7 +172,7 @@ const Info = styled.div`
 
 const Title = styled.h3`
   display: flex;
-  padding: 2.4rem;
+  margin-bottom: 2.4rem;
   ${({ theme }) => theme.fonts.Headline5};
 
   white-space: nowrap;
@@ -184,5 +194,6 @@ const FieldLayout = styled.div`
 const SubmitLayout = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 4.8rem;
+  width: 100%;
+  margin-top: 2rem;
 `;

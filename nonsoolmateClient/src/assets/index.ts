@@ -108,10 +108,10 @@ import Univ9Ic from "./icon/univ9Ic.svg?react";
 import PracticeIc from "./icon/practiceIc.svg?react";
 import TakeTestIc from "./icon/takeTestIc.svg?react";
 
+import CardIc from "./icon/cardIc.svg?react";
 import CheckEmptyIc from "./icon/checkEmptyBtnIc.svg?react";
 import CloseIc from "./icon/closeIc.svg?react";
 import CouponIc from "./icon/couponIc.svg?react";
-import CardIc from "./icon/cardIc.svg?react";
 
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
@@ -122,8 +122,11 @@ import PlusIc from "./icon/plusIc.svg?react";
 import PassIc from "./icon/passIc.svg?react";
 import SmallCouponIc from "./icon/smallCouponIc.svg?react";
 
+import FemaleStudentIc from "./icon/femaleStudentIc.svg?react";
+import MaleStudentIc from "./icon/maleStudentIc.svg?react";
 import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
 import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
+import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 import PayFailIc from "./icon/payFailIc.svg?react";
 
@@ -135,13 +138,13 @@ export {
   Advan5Ic,
   BasicPlanIc,
   BorderIc,
+  CardIc,
   CheckBtnIc,
   CheckCircleBtnIc,
   CheckEmptyIc,
   CheckSmallIc,
   CloseIc,
   CouponIc,
-  CardIc,
   DiscountIc,
   DisplayIc,
   DownArrowBoldIc,
@@ -151,6 +154,7 @@ export {
   DownloadCircleIc,
   EmptyCircleIc,
   EmptyIc,
+  FemaleStudentIc,
   FilledCircleIc,
   FindTestIc,
   FooterLogoIc,
@@ -164,12 +168,14 @@ export {
   LeftCircleLongIc,
   LoginInfoIc,
   LogoIc,
+  MaleStudentIc,
   MembershipBasicIc,
   MembershipDisabledIc,
   MembershipIc,
   MembershipPremiumIc,
   MonthlyMembershipGrayIc,
   NaverLoginIc,
+  NeutralStudentIc,
   NotCheckBtnIc,
   PassIc,
   PaySuccessIc,
