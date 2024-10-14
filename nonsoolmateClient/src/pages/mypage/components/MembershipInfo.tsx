@@ -28,7 +28,7 @@ export default function MembershipInfo() {
 
   return (
     <>
-      {data?.status === 200 ? (
+      {data?.code === 200 ? (
         <InfoWrapper>
           <MembershipWrapper>
             <Title>멤버십 정보</Title>
@@ -65,7 +65,7 @@ export default function MembershipInfo() {
           </MembershipWrapper>
           <PaymentInfo />
         </InfoWrapper>
-      ) : data?.status === 204 ? (
+      ) : data?.code === 204 ? (
         <MembershipWrapper>
           <Title>멤버십 관리</Title>
           <NullMembershipContainer>

@@ -1,10 +1,5 @@
 import { client } from "@api/axios";
-
-interface Response<T> {
-  message: string;
-  status: number;
-  data: T;
-}
+import { Response } from "types/common";
 
 interface MembershipTypes {
   status: string;
