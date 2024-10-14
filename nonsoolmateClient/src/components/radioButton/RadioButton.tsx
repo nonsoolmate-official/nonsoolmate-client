@@ -49,4 +49,5 @@ const Label = styled.label`
 
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
+  white-space: nowrap;
 `;

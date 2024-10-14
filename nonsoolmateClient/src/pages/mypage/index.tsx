@@ -1,3 +1,4 @@
+import HomeIpadSide from "@pages/home/components/HomeIpadSide";
 import MembershipInfo from "@pages/mypage/components/MembershipInfo";
 import Mentor from "@pages/mypage/components/Mentor";
 import TabletSideNav from "@pages/mypage/components/TabletSideNav";
@@ -26,6 +27,7 @@ export default function Index() {
         {!isIpadSize && <>{menu === "멤버십 관리" && <MembershipInfo />}</>}
         {!isIpadSize && <>{menu === "담당 선생님" && <Mentor />}</>}
       </Mypage>
+      {isIpadSize && <HomeIpadSide />}
     </MypageContainer>
   );
 }

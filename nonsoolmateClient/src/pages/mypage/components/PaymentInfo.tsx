@@ -1,22 +1,27 @@
 import { CouponIc, DiscountIc } from "@assets/index";
 import Button from "@components/buttons/Button";
-import { PAYMENT_DATA } from "@pages/mypage/constants/dummy";
+import useGetPayment from "@pages/mypage/hooks/useGetPayment";
+import { formatDate } from "@pages/mypage/utils/date";
 import styled from "styled-components";
 
 export default function PaymentInfo() {
+  const { data } = useGetPayment();
+
+  const formattedDate = formatDate(data?.nextPaymentDate);
+
   return (
     <PaymentInfoWrapper>
       <Title>다음 결제 정보</Title>
       <PaymentInfoLayout>
         <Payment>
           <InfoTitle>다음 결제 일</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.dueDate}</Info>
+          <Info>{formattedDate}</Info>
         </Payment>
 
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>결제 수단</InfoTitle>
-            <Info>{PAYMENT_DATA.payment.paymentMethod}</Info>
+            <Info>{data?.paymentMethod}</Info>
           </Payment>
           <Button variant="text">결제 수단 변경하기</Button>
         </PaymentInfoBox>
@@ -24,14 +29,16 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            {!!PAYMENT_DATA.payment.couponInfo ? (
-              <EventInfoBox>
-                <CouponInfo>
-                  <CouponIc />
-                  {PAYMENT_DATA.payment.couponInfo.name}
-                  <p>{PAYMENT_DATA.payment.couponInfo.discount}&nbsp;OFF</p>
-                </CouponInfo>
-              </EventInfoBox>
+            {data?.coupon && data.coupon.length > 0 ? (
+              data.coupon.map((coupon) => (
+                <EventInfoBox key={coupon.couponId}>
+                  <CouponInfo>
+                    <CouponIc />
+                    {coupon.couponName}
+                    <p>{coupon.discountRate * 100}&nbsp;OFF</p>
+                  </CouponInfo>
+                </EventInfoBox>
+              ))
             ) : (
               <Info>등록된 쿠폰이 없습니다.</Info>
             )}
@@ -44,16 +51,18 @@ export default function PaymentInfo() {
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
 
-          {!!PAYMENT_DATA.payment.discountEvent ? (
-            <EventInfoContainer>
-              <EventInfoBox>
-                <DiscountInfo>
-                  <DiscountIc />
-                  {PAYMENT_DATA.payment.discountEvent.name}
-                  <p>{PAYMENT_DATA.payment.discountEvent.discount}&nbsp;OFF</p>
-                </DiscountInfo>
-              </EventInfoBox>
-            </EventInfoContainer>
+          {data?.discountEvent && data.discountEvent.length > 0 ? (
+            data.discountEvent.map((discount) => (
+              <EventInfoContainer key={discount.discountId}>
+                <EventInfoBox>
+                  <DiscountInfo>
+                    <DiscountIc />
+                    {discount.discountName}
+                    <p>{discount.discountRate * 100}&nbsp;OFF</p>
+                  </DiscountInfo>
+                </EventInfoBox>
+              </EventInfoContainer>
+            ))
           ) : (
             <Info>진행중인 할인 이벤트가 없습니다.</Info>
           )}
@@ -63,12 +72,12 @@ export default function PaymentInfo() {
 
         <Payment>
           <InfoTitle>총 할인가</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.totalDiscount}</Info>
+          <Info>{data?.totalDiscountPrice}</Info>
         </Payment>
 
         <Payment>
           <InfoTitle>결제 예정 금액</InfoTitle>
-          <Info>{PAYMENT_DATA.payment.totalPrice}</Info>
+          <Info>{data?.totalPrice}</Info>
         </Payment>
       </PaymentInfoLayout>
     </PaymentInfoWrapper>

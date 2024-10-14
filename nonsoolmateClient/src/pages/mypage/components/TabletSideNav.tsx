@@ -1,3 +1,6 @@
+import MemberInfo from "@pages/mypage/components/MemberInfo";
+import MembershipInfo from "@pages/mypage/components/MembershipInfo";
+import Mentor from "@pages/mypage/components/Mentor";
 import { Menu } from "@pages/mypage/types/menu";
 import styled from "styled-components";
 
@@ -8,20 +11,26 @@ interface TabletSideNavProps {
 
 export default function TabletSideNav({ menu, setMenu }: TabletSideNavProps) {
   return (
-    <Nav>
-      <Header>마이페이지</Header>
-      <Sidebar>
-        <MenuList onClick={() => setMenu("회원 정보")} $isActive={menu === "회원 정보"}>
-          회원 정보
-        </MenuList>
-        <MenuList onClick={() => setMenu("멤버십 관리")} $isActive={menu === "멤버십 관리"}>
-          멤버십 관리
-        </MenuList>
-        <MenuList onClick={() => setMenu("담당 선생님")} $isActive={menu === "담당 선생님"}>
-          담당 선생님
-        </MenuList>
-      </Sidebar>
-    </Nav>
+    <>
+      <Nav>
+        <Sidebar>
+          <MenuList onClick={() => setMenu("회원 정보")} $isActive={menu === "회원 정보"}>
+            회원 정보
+          </MenuList>
+          <MenuList onClick={() => setMenu("멤버십 관리")} $isActive={menu === "멤버십 관리"}>
+            멤버십 관리
+          </MenuList>
+          <MenuList onClick={() => setMenu("담당 선생님")} $isActive={menu === "담당 선생님"}>
+            담당 선생님
+          </MenuList>
+        </Sidebar>
+      </Nav>
+      <ContentWrapper>
+        {menu === "회원 정보" && <MemberInfo />}
+        {menu === "멤버십 관리" && <MembershipInfo />}
+        {menu === "담당 선생님" && <Mentor />}
+      </ContentWrapper>
+    </>
   );
 }
 
@@ -33,16 +42,11 @@ const Nav = styled.nav`
   padding: 0 3.2rem;
 `;
 
-const Header = styled.h2`
-  margin: 3.2rem 0 2.4rem;
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.Headline5};
-`;
-
 const Sidebar = styled.ul`
   display: flex;
   gap: 4rem;
   width: 100%;
+  margin-top: 2.8rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey_200};
 `;
 
@@ -55,4 +59,8 @@ const MenuList = styled.li<{ $isActive: boolean }>`
 
   list-style: none;
   cursor: pointer;
+`;
+
+const ContentWrapper = styled.section`
+  margin-left: 0.8rem;
 `;
