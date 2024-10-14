@@ -3,6 +3,7 @@ import Button from "@components/buttons/Button";
 import useGetPayment from "@pages/mypage/hooks/useGetPayment";
 import { formatDate } from "@pages/mypage/utils/date";
 import CouponModal from "@pages/payment/components/coupon/CouponModal";
+import { COUPON_NOT_REGISTER } from "constants/coupon";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -12,7 +13,7 @@ export default function PaymentInfo() {
   const formattedDate = formatDate(data?.nextPaymentDate);
 
   const [couponTxt, setCouponTxt] = useState(
-    () => sessionStorage.getItem("nextMonth_couponTxt") || "등록된 쿠폰이 없습니다.",
+    () => sessionStorage.getItem("nextMonth_couponTxt") || COUPON_NOT_REGISTER,
   );
   const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("nextMonth_dcInfo") || "");
   const [isCouponOpen, setIsCouponOpen] = useState(false);
@@ -57,7 +58,7 @@ export default function PaymentInfo() {
             <InfoTitle>쿠폰 정보</InfoTitle>
             <Coupon $couponTxt={couponTxt}>
               <CouponTxt $couponTxt={couponTxt}>
-                {couponTxt !== "등록된 쿠폰이 없습니다." && <SmallCouponIcon />}
+                {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
                 {couponTxt}
               </CouponTxt>
               <DcInfo>{dcInfo}</DcInfo>
@@ -188,10 +189,9 @@ const Coupon = styled.div<{ $couponTxt: string }>`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: ${({ $couponTxt }) => ($couponTxt === "등록된 쿠폰이 없습니다." ? "none" : "0.8rem 1.2rem")};
+  padding: ${({ $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : "0.8rem 1.2rem")};
   border-radius: 8px;
-  background-color: ${({ theme, $couponTxt }) =>
-    $couponTxt === "등록된 쿠폰이 없습니다." ? "none" : theme.colors.grey_50};
+  background-color: ${({ theme, $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : theme.colors.grey_50)};
 `;
 
 const CouponTxt = styled.div<{ $couponTxt: string }>`
@@ -201,7 +201,7 @@ const CouponTxt = styled.div<{ $couponTxt: string }>`
   ${({ theme }) => theme.fonts.Body4};
 
   color: ${({ theme, $couponTxt }) =>
-    $couponTxt === "등록된 쿠폰이 없습니다." ? theme.colors.black : theme.colors.grey_1000};
+    $couponTxt === COUPON_NOT_REGISTER ? theme.colors.black : theme.colors.grey_1000};
 `;
 
 const DcInfo = styled.p`

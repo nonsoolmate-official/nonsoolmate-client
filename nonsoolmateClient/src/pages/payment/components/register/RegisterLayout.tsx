@@ -7,6 +7,7 @@ import CouponModal from "../coupon/CouponModal";
 import { CardIc, SmallCouponIc } from "@assets/index";
 import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 import FailModal from "../FailModal";
+import { COUPON_NOT_REGISTER } from "constants/coupon";
 
 interface RegisterLayoutProps {
   changeCouponModalStatus: (open: boolean) => void;
@@ -61,7 +62,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
             {item.buttonText === "쿠폰 사용" ? (
               <Coupon>
                 <CouponTxt $couponTxt={couponTxt}>
-                  {couponTxt !== "등록된 쿠폰이 없습니다." && <SmallCouponIcon />}
+                  {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
                   {couponTxt}
                 </CouponTxt>
                 <DcInfo>{dcInfo}</DcInfo>
@@ -130,7 +131,7 @@ const CouponTxt = styled.div<{ $couponTxt: string }>`
   gap: 0.8rem;
   align-items: center;
   color: ${({ theme, $couponTxt }) =>
-    $couponTxt === "등록된 쿠폰이 없습니다." ? theme.colors.grey_500 : theme.colors.grey_1000};
+    $couponTxt === COUPON_NOT_REGISTER ? theme.colors.grey_500 : theme.colors.grey_1000};
 `;
 
 const DcInfo = styled.p`
