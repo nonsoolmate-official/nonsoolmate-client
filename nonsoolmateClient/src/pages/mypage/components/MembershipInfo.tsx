@@ -65,7 +65,8 @@ export default function MembershipInfo() {
           <PaymentInfo />
         </InfoWrapper>
       ) : (
-        data?.status === "TERMINATED" && (
+        data?.status === "TERMINATED" ||
+        (!data && (
           <MembershipWrapper>
             <Title>멤버십 관리</Title>
             <NullMembershipContainer>
@@ -76,7 +77,7 @@ export default function MembershipInfo() {
             </NullMembershipContainer>
             <Notice>* 쿠폰 등록은 멤버십 구매 시에 가능합니다.</Notice>
           </MembershipWrapper>
-        )
+        ))
       )}
     </>
   );
