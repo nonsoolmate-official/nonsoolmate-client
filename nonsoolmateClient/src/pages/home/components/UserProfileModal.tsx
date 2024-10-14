@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { MonthlyMembershipGrayIc } from "@assets/index";
+import { FemaleStudentIc, MaleStudentIc, MonthlyMembershipGrayIc, NeutralStudentIc } from "@assets/index";
 import Button from "@components/buttons/Button";
 import useOutsideClick from "@hooks/useOutsideClick";
-import { USER } from "@pages/home/constants/dummy";
+import Error from "@pages/error";
+import useGetTicket from "@pages/home/hooks/useGetTicket";
+import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import { useRef } from "react";
 import { media } from "style/responsiveStyle";
 
@@ -18,37 +20,43 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
 
   useOutsideClick(modalRef, onClose);
 
-  // const getTicketResponse = useGetTicket();
-  // if (!getTicketResponse) return <></>;
+  const { data } = useGetTicket();
 
-  // const {
-  //   data: { memberName, ticketCount },
-  // } = getTicketResponse;
+  const { data: ProfileData } = useGetProfile();
+
+  if (!data) return <Error />;
 
   return (
     <BackgroundView>
       <UserProfileWrapper ref={modalRef}>
         <MemberInfo>
-          <Profile src={USER.avatarUrl} />
-          <Name>{USER.userName} 님</Name>
+          {ProfileData?.data.gender === "M" ? (
+            <MaleStudentIcon />
+          ) : ProfileData?.data.gender === "W" ? (
+            <FemaleStudentIcon />
+          ) : (
+            <NeutralStudentIcon />
+          )}
+          <Name>{data.memberName} 님</Name>
         </MemberInfo>
         <Line />
         <PlanBox>
           <MonthlyMembershipGrayIc />
-          <PlanText>{USER.planType} 플랜 이용 중</PlanText>
+          <PlanText>{data.membershipType === "BASIC" ? "베이직" : "프리미엄"} 플랜 이용 중</PlanText>
         </PlanBox>
         <TicketCount>
           <Content>첨삭권</Content>
-          <Content>{USER.permissions.editCount}개</Content>
+          <Content>{data.reviewTicketCount}개</Content>
         </TicketCount>
         <TicketCount>
           <Content>재첨삭권</Content>
-          <Content>{USER.permissions.reEditCount}개</Content>
+          <Content>{data.reReviewticketCount}개</Content>
         </TicketCount>
         <Line />
         <Button
           variant="tertiary"
-          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}>
+          style={{ display: "flex", width: "100%", border: "none", padding: "0.8rem 0 0.8rem 0.4rem" }}
+          onClick={() => navigate("/mypage")}>
           마이페이지
         </Button>
         <Button
@@ -94,12 +102,6 @@ const MemberInfo = styled.div`
   width: 18rem;
 `;
 
-const Profile = styled.img`
-  width: 4.4rem;
-  height: 4.4rem;
-  object-fit: cover;
-`;
-
 const Name = styled.p`
   ${({ theme }) => theme.fonts.Body3};
 `;
@@ -136,4 +138,19 @@ const Content = styled.p`
 const Line = styled.div`
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.colors.grey_200};
+`;
+
+const MaleStudentIcon = styled(MaleStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
+`;
+
+const FemaleStudentIcon = styled(FemaleStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
+`;
+
+const NeutralStudentIcon = styled(NeutralStudentIc)`
+  width: 4.4rem;
+  height: 4.4rem;
 `;

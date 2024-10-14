@@ -6,9 +6,8 @@ const QUERY_KEY = {
 };
 
 export default function useGetTicket() {
-  const { data } = useQuery({
+  return useQuery({
     queryKey: [QUERY_KEY.getTicket],
     queryFn: () => getTicket(),
   });
-  return data;
 }
