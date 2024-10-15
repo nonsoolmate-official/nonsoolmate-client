@@ -6,11 +6,9 @@ const QUERY_KEY = {
 };
 
 export default function useGetPayment() {
-  const { data, refetch } = useQuery({
+  return useQuery({
     queryKey: [QUERY_KEY.getPayment],
     queryFn: () => getPayment(),
     refetchInterval: 3000,
   });
-
-  return { data, refetch };
 }

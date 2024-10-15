@@ -19,10 +19,6 @@ export default function PaymentInfo() {
   const [isCouponOpen, setIsCouponOpen] = useState(false);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
 
-  function handleNextMonthCouponTxtStatus(coupon: string, dcInfo: string) {
-    console.log(coupon, dcInfo);
-  }
-
   function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
     setActiveCouponId(isCouponActive ? null : couponMemberId);
   }
@@ -74,7 +70,6 @@ export default function PaymentInfo() {
         {isCouponOpen && (
           <CouponModal
             changeCouponModalStatus={changeNextMonthCouponModalStatus}
-            handleCouponTxtStatus={handleNextMonthCouponTxtStatus}
             activeCouponId={activeCouponId}
             handleActiveCouponId={handleActiveCouponId}
             couponFrom="/mypage"

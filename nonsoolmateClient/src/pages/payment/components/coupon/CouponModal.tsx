@@ -11,7 +11,7 @@ import usePatchCoupon from "@pages/mypage/hooks/usePatchCoupon";
 
 interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
-  handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
+  handleCouponTxtStatus?: (coupon: string, dcinfo: string) => void;
   activeCouponId: number | null;
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
   couponFrom: string;
@@ -81,7 +81,7 @@ export default function CouponModal(props: ModalProps) {
   }
 
   function applyCoupon() {
-    if (selectedCoupon) {
+    if (selectedCoupon && handleCouponTxtStatus) {
       const { couponName, couponType, discountRate, discountAmount } = selectedCoupon;
 
       if (couponType === "RATE") {
