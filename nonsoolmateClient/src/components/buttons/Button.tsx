@@ -11,13 +11,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 export default function Button({ children, variant = "primary", width, fontSize = "Body6", ...props }: ButtonProps) {
   return (
-    <ButtonWrapper type="button" variant={variant} width={width} fontSize={fontSize} {...props}>
+    <ButtonWrapper type="button" $variant={variant} width={width} fontSize={fontSize} {...props}>
       {children}
     </ButtonWrapper>
   );
 }
 
-const ButtonWrapper = styled.button<{ variant: Variant; width?: number; fontSize?: string }>`
+const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSize?: string }>`
   align-items: center;
   width: ${({ width }) => `${width}rem`};
   padding: 0.8rem 2.8rem;
@@ -26,8 +26,8 @@ const ButtonWrapper = styled.button<{ variant: Variant; width?: number; fontSize
   ${({ fontSize, theme }) => fontSize && theme.fonts[fontSize as keyof typeof theme.fonts]};
 
   white-space: nowrap;
-  ${({ variant }) => {
-    switch (variant) {
+  ${({ $variant }) => {
+    switch ($variant) {
       case "primary":
         return css`
           background-color: ${({ theme }) => theme.colors.main_blue};

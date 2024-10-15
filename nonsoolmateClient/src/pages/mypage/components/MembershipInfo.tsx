@@ -23,7 +23,6 @@ export default function MembershipInfo() {
 
   const handleCancelMembership = () => {
     dispatch({ type: "SHOW_MODAL", variant: "choice" });
-    mutate("TERMINATED");
   };
 
   return (
@@ -43,21 +42,23 @@ export default function MembershipInfo() {
                     </CurrentMembership>
                   </Membership>
 
-                  {new Date(data?.endDate).getTime() > new Date().getTime() ? (
-                    <Button variant="text" onClick={handleCancelMembership}>
-                      멤버십 해지하기
-                    </Button>
-                  ) : (
+                  {data.status === "TERMINATED" || new Date(data?.endDate).getTime() < new Date().getTime() ? (
                     <Button variant="text" onClick={handleResubscribe}>
                       멤버십 연장하기
                     </Button>
+                  ) : (
+                    new Date(data?.endDate).getTime() > new Date().getTime() && (
+                      <Button variant="text" onClick={handleCancelMembership}>
+                        멤버십 해지하기
+                      </Button>
+                    )
                   )}
                 </MembershipInfoBox>
 
                 <Membership>
                   <InfoTitle>이용 기간</InfoTitle>
                   <Info>
-                    {data.startDate}~{data.endDate}
+                    {data.startDate} ~ {data.endDate}
                   </Info>
                 </Membership>
               </MembershipInfoContainer>

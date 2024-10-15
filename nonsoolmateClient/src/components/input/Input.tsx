@@ -17,7 +17,7 @@ export default function Input({
 }: InputProps) {
   return (
     <InputWrapper>
-      <InputLayout placeholder={placeholder} value={value} onChange={onChange} isError={isError} {...props} />
+      <InputLayout placeholder={placeholder} value={value} onChange={onChange} $isError={isError} {...props} />
       {isError && <ErrorMessage isVisible={isError}>{errorMessage}</ErrorMessage>}
     </InputWrapper>
   );
@@ -29,11 +29,11 @@ const InputWrapper = styled.div`
   position: relative;
 `;
 
-const InputLayout = styled.input<{ isError: boolean }>`
+const InputLayout = styled.input<{ $isError: boolean }>`
   position: relative;
   height: 3.6rem;
   padding: 0 1.2rem;
-  border: 1px solid ${({ theme, isError }) => (isError ? theme.colors.error : theme.colors.grey_100)};
+  border: 1px solid ${({ theme, $isError }) => ($isError ? theme.colors.error : theme.colors.grey_100)};
   border-radius: 6px;
   outline: none;
   ${({ theme }) => theme.fonts.Body6};
