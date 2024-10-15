@@ -12,8 +12,9 @@ export default function Success() {
   const customerKey = searchParams.get("customerKey");
   const authKey = searchParams.get("authKey");
   const id = searchParams.get("id");
-  const { mutate: updateCard } = usePutCardUpdate(navigate, id);
-  const { mutate: postMutate } = usePostCardRegister(navigate, id);
+  const from = searchParams.get("from");
+  const { mutate: updateCard } = usePutCardUpdate(navigate, id, from);
+  const { mutate: postMutate } = usePostCardRegister(navigate, id, from);
   const { cardInfo, isLoading } = useGetCardInfo();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function Success() {
     } else {
       postMutate({ authKey: authKey });
     }
-  }, [authKey, cardInfo, navigate, postMutate, id]);
+  }, [authKey, cardInfo, navigate, postMutate, id, from]);
 
   if (!authKey) {
     return <></>;

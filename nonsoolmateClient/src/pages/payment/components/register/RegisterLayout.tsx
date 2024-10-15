@@ -11,7 +11,7 @@ import { COUPON_NOT_REGISTER } from "constants/coupon";
 
 interface RegisterLayoutProps {
   changeCouponModalStatus: (open: boolean) => void;
-  registerCard: () => void;
+  registerCardHandler: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
   isCouponOpen: boolean;
   couponTxt: string;
@@ -30,7 +30,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     couponTxt,
     dcInfo,
     handleCouponTxtStatus,
-    registerCard,
+    registerCardHandler,
     activeCouponId,
     handleActiveCouponId,
     notRegisterError,
@@ -55,7 +55,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
             </Title>
             <RegisterButton
               button={item.buttonText}
-              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCard}
+              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCardHandler}
             />
           </TitleContainer>
           <Content $payError={notRegisterError && item.title === "결제 수단"}>
