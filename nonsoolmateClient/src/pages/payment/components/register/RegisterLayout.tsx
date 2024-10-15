@@ -85,6 +85,7 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
           handleCouponTxtStatus={handleCouponTxtStatus}
           activeCouponId={activeCouponId}
           handleActiveCouponId={handleActiveCouponId}
+          couponFrom="/payment"
         />
       )}
     </>

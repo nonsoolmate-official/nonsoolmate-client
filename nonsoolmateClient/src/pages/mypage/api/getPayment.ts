@@ -4,14 +4,12 @@ interface PaymentTypes {
   nextPaymentDate: string;
   paymentMethod: string;
   cardNumber: string;
-  coupon: [
-    {
-      couponId: number;
-      couponName: string;
-      couponImageUrl: string;
-      discountRate: number;
-    },
-  ];
+  coupon: {
+    couponId: number;
+    couponName: string;
+    couponImageUrl: string;
+    discountRate: number;
+  };
   discountEvent: [
     {
       discountId: number;

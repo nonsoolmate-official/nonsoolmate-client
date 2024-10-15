@@ -9,5 +9,6 @@ export default function useGetPayment() {
   return useQuery({
     queryKey: [QUERY_KEY.getPayment],
     queryFn: () => getPayment(),
+    refetchInterval: 3000,
   });
 }

@@ -7,16 +7,18 @@ import styled from "styled-components";
 
 import CouponInput from "./CouponInput";
 import CouponList from "./CouponList";
+import usePatchCoupon from "@pages/mypage/hooks/usePatchCoupon";
 
 interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
-  handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
+  handleCouponTxtStatus?: (coupon: string, dcinfo: string) => void;
   activeCouponId: number | null;
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
+  couponFrom: string;
 }
 
 export default function CouponModal(props: ModalProps) {
-  const { changeCouponModalStatus, handleCouponTxtStatus, activeCouponId, handleActiveCouponId } = props;
+  const { changeCouponModalStatus, handleCouponTxtStatus, activeCouponId, handleActiveCouponId, couponFrom } = props;
   const [couponNumber, setCouponNumber] = useState("");
   const [mismatch, setMismatch] = useState(false);
   const [hasKorean, setHasKorean] = useState(false);
@@ -29,6 +31,7 @@ export default function CouponModal(props: ModalProps) {
 
   const { data: COUPON_LIST } = useGetCoupon();
   const { mutate: postCouponMutate } = usePostCoupon();
+  const { mutate: patchCouponMutate } = usePatchCoupon();
 
   const couponExist = COUPON_LIST && COUPON_LIST.coupons && COUPON_LIST.coupons.length > 0;
 
@@ -78,7 +81,7 @@ export default function CouponModal(props: ModalProps) {
   }
 
   function applyCoupon() {
-    if (selectedCoupon) {
+    if (selectedCoupon && handleCouponTxtStatus) {
       const { couponName, couponType, discountRate, discountAmount } = selectedCoupon;
 
       if (couponType === "RATE") {
@@ -87,6 +90,9 @@ export default function CouponModal(props: ModalProps) {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
       changeCouponModalStatus(false);
+      if (couponFrom == "/mypage" && activeCouponId) {
+        patchCouponMutate(activeCouponId);
+      }
     }
   }
 

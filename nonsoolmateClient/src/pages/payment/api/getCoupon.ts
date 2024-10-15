@@ -11,7 +11,6 @@ export interface CouponsType {
   ticketCount: number;
   validStartDate: string;
   validEndDate: string;
-  isUsed: boolean;
 }
 
 export interface CouponListResponse {

@@ -9,7 +9,6 @@ interface ListDetailType {
   ticketCount: number;
   validStartDate: string;
   validEndDate: string;
-  isUsed: boolean;
 }
 
 interface CouponListType {
@@ -29,7 +28,6 @@ export const COUPON_LIST: CouponListType = {
       ticketCount: 10,
       validStartDate: "2024-08-22T05:16:44.051Z",
       validEndDate: "2024-11-13T05:16:44.051Z",
-      isUsed: true,
     },
     {
       couponMemberId: 2,
@@ -42,7 +40,6 @@ export const COUPON_LIST: CouponListType = {
       ticketCount: 10,
       validStartDate: "2024-08-22T05:16:44.051Z",
       validEndDate: "2024-11-13T05:16:44.051Z",
-      isUsed: true,
     },
     {
       couponMemberId: 3,
@@ -55,7 +52,6 @@ export const COUPON_LIST: CouponListType = {
       ticketCount: 10,
       validStartDate: "2024-08-22T05:16:44.051Z",
       validEndDate: "2024-11-13T05:16:44.051Z",
-      isUsed: true,
     },
   ],
 };
