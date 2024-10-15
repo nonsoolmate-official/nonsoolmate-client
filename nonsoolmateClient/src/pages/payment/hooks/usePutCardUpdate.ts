@@ -10,7 +10,7 @@ export function usePutCardUpdate(navigate: NavigateFunction, id: string | null, 
       if (from === "/payment" && id) {
         navigate(`/payment`, { state: { id: Number(id) } });
       } else if (from === "/mypage") {
-        navigate(`/mypage`);
+        navigate(`/mypage`, { state: { menu: "멤버십 관리" } });
       }
     },
     onError: (error) => {

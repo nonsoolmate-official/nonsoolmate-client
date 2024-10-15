@@ -10,11 +10,15 @@ import styled from "styled-components";
 import HomeHeader from "../home/components/HomeHeader";
 import MemberInfo from "./components/MemberInfo";
 import SideNav from "./components/SideNav";
+import { useLocation } from "react-router-dom";
 
 export default function Index() {
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
 
-  const [menu, setMenu] = useState<Menu>("회원 정보");
+  const location = useLocation();
+
+  const initialMenu = location.state?.menu || "회원 정보";
+  const [menu, setMenu] = useState<Menu>(initialMenu);
 
   return (
     <MypageContainer>
