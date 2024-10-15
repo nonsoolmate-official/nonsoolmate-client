@@ -6,7 +6,6 @@ export function usePutCardUpdate(navigate: NavigateFunction, id: string | null, 
   return useMutation({
     mutationFn: putCardUpdate,
     onSuccess: () => {
-      console.log("Card update successful");
       if (from === "/payment" && id) {
         navigate(`/payment`, { state: { id: Number(id) } });
       } else if (from === "/mypage") {
