@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
 import HomeTestSet from "@assets/image/homeTestSet.png";
 import HomeTestSetTablet from "@assets/image/HomeTestSetTablet.png";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function HomeImg() {
@@ -31,4 +31,5 @@ const Image = styled.img`
   width: 100%;
   height: calc(100vh - 6.6rem);
   padding: 0;
+  object-fit: cover;
 `;

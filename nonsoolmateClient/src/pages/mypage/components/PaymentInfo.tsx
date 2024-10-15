@@ -129,6 +129,7 @@ const PaymentInfoLayout = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  max-width: 69.6rem;
   padding: 2.4rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -144,7 +145,7 @@ const Payment = styled.div`
 const PaymentInfoBox = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 const InfoTitle = styled.h2`
