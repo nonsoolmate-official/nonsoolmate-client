@@ -4,24 +4,23 @@ import useGetPayment from "@pages/mypage/hooks/useGetPayment";
 import { formatDate } from "@pages/mypage/utils/date";
 import CouponModal from "@pages/payment/components/coupon/CouponModal";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function PaymentInfo() {
-  const { data } = useGetPayment();
+  const { data: NEXT_PAYMENT, refetch } = useGetPayment();
 
-  const formattedDate = formatDate(data?.nextPaymentDate);
+  useEffect(() => {
+    refetch();
+  }, [NEXT_PAYMENT, refetch]);
 
-  const [couponTxt, setCouponTxt] = useState(
-    () => sessionStorage.getItem("nextMonth_couponTxt") || COUPON_NOT_REGISTER,
-  );
-  const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("nextMonth_dcInfo") || "");
+  const formattedDate = formatDate(NEXT_PAYMENT?.nextPaymentDate);
+
   const [isCouponOpen, setIsCouponOpen] = useState(false);
   const [activeCouponId, setActiveCouponId] = useState<number | null>(null);
 
   function handleNextMonthCouponTxtStatus(coupon: string, dcInfo: string) {
-    setCouponTxt(coupon);
-    setDcInfo(dcInfo);
+    console.log(coupon, dcInfo);
   }
 
   function handleActiveCouponId(isCouponActive: boolean, couponMemberId: number) {
@@ -48,7 +47,7 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>결제 수단</InfoTitle>
-            <Info>{data?.paymentMethod}</Info>
+            <Info>{NEXT_PAYMENT?.paymentMethod}</Info>
           </Payment>
           <Button variant="text">결제 수단 변경하기</Button>
         </PaymentInfoBox>
@@ -56,13 +55,17 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            <Coupon $couponTxt={couponTxt}>
-              <CouponTxt $couponTxt={couponTxt}>
-                {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
-                {couponTxt}
-              </CouponTxt>
-              <DcInfo>{dcInfo}</DcInfo>
-            </Coupon>
+            {NEXT_PAYMENT?.coupon ? (
+              <Coupon key={NEXT_PAYMENT.coupon.couponId}>
+                <CouponTxt>
+                  <SmallCouponIcon />
+                  {NEXT_PAYMENT.coupon.couponName}
+                </CouponTxt>
+                <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}%OFF</DcInfo>
+              </Coupon>
+            ) : (
+              <Info>{COUPON_NOT_REGISTER}</Info>
+            )}
           </Payment>
           <Button variant="tertiary" width={12} onClick={openCouponModal}>
             쿠폰 변경
@@ -80,8 +83,8 @@ export default function PaymentInfo() {
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
 
-          {data?.discountEvent && data.discountEvent.length > 0 ? (
-            data.discountEvent.map((discount) => (
+          {NEXT_PAYMENT?.discountEvent && NEXT_PAYMENT.discountEvent.length > 0 ? (
+            NEXT_PAYMENT.discountEvent.map((discount) => (
               <EventInfoContainer key={discount.discountId}>
                 <EventInfoBox>
                   <DiscountInfo>
@@ -101,12 +104,12 @@ export default function PaymentInfo() {
 
         <Payment>
           <InfoTitle>총 할인가</InfoTitle>
-          <Info>{data?.totalDiscountPrice}</Info>
+          <Info>{NEXT_PAYMENT?.totalDiscountPrice}</Info>
         </Payment>
 
         <Payment>
           <InfoTitle>결제 예정 금액</InfoTitle>
-          <Info>{data?.totalPrice}</Info>
+          <Info>{NEXT_PAYMENT?.totalPrice}</Info>
         </Payment>
       </PaymentInfoLayout>
     </PaymentInfoWrapper>
@@ -147,6 +150,7 @@ const PaymentInfoBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const InfoTitle = styled.h2`
@@ -185,25 +189,31 @@ const EventInfoBox = styled.div`
   background-color: ${({ theme }) => theme.colors.grey_50};
 `;
 
-const Coupon = styled.div<{ $couponTxt: string }>`
+const Coupon = styled.div`
   display: flex;
-  flex: 1;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: ${({ $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : "0.8rem 1.2rem")};
+  width: 37.6rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  background-color: ${({ theme, $couponTxt }) => ($couponTxt === COUPON_NOT_REGISTER ? "none" : theme.colors.grey_50)};
+  background-color: ${({ theme }) => theme.colors.grey_50};
+
+  @media (width <= 1024px) {
+    width: 30rem;
+  }
+
+  @media (width <= 855px) {
+    width: 20rem;
+  }
 `;
 
-const CouponTxt = styled.div<{ $couponTxt: string }>`
+const CouponTxt = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
   ${({ theme }) => theme.fonts.Body4};
 
-  color: ${({ theme, $couponTxt }) =>
-    $couponTxt === COUPON_NOT_REGISTER ? theme.colors.black : theme.colors.grey_1000};
+  color: ${({ theme }) => theme.colors.grey_1000};
 `;
 
 const DcInfo = styled.p`
