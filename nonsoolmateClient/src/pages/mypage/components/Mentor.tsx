@@ -142,7 +142,7 @@ const SubTitle = styled.h3`
   ${({ theme }) => theme.fonts.Body3};
 `;
 
-const Content = styled.p`
+const Content = styled.div`
   margin-top: 0.8rem;
   ${({ theme }) => theme.fonts.Body4};
 

@@ -32,7 +32,7 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
         <MemberInfo>
           {ProfileData?.data.gender === "M" ? (
             <MaleStudentIcon />
-          ) : ProfileData?.data.gender === "W" ? (
+          ) : ProfileData?.data.gender === "F" ? (
             <FemaleStudentIcon />
           ) : (
             <NeutralStudentIcon />
