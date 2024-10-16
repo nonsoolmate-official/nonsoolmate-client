@@ -1,5 +1,5 @@
 import { CheckCircleBtnIc } from "@assets/index";
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import { useModalDispatch } from "@hooks/useModal";
 import styled from "styled-components";
 

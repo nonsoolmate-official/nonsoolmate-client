@@ -1,4 +1,4 @@
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import Input from "@components/input/Input";
 import RadioButtonGroup from "@components/radioButton/RadioButtonGroup";
 import { useModalDispatch } from "@hooks/useModal";
