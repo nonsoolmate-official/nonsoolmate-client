@@ -1,5 +1,5 @@
 import { MembershipIc } from "@assets/index";
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import { useModalDispatch } from "@hooks/useModal";
 import PaymentInfo from "@pages/mypage/components/PaymentInfo";
 import useGetMembership from "@pages/mypage/hooks/useGetMembership";

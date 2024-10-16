@@ -1,13 +1,13 @@
 import { DiscountIc, SmallCouponIc } from "@assets/index";
-import Button from "@components/buttons/Button";
-import useGetCustomerInfo from "@pages/payment/hooks/useGetCustomerInfo";
+import Button from "@components/button/Button";
 import useGetPayment from "@pages/mypage/hooks/useGetPayment";
 import { formatDate } from "@pages/mypage/utils/date";
 import CouponModal from "@pages/payment/components/coupon/CouponModal";
+import useGetCustomerInfo from "@pages/payment/hooks/useGetCustomerInfo";
+import { registerCard } from "@utils/registerCard";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { registerCard } from "@utils/registerCard";
 
 export default function PaymentInfo() {
   const { data: NEXT_PAYMENT, refetch } = useGetPayment();

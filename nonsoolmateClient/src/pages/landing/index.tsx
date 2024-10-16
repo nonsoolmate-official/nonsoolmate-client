@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Header from "../../components/onbordingheader/Header";
+import Header from "../../components/header/Header";
 import HomeHeader from "../home/components/HomeHeader";
 import useGetName from "../home/hooks/useGetName";
 import { getToken } from "../socialLogin/utils/token";

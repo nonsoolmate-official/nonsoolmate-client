@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { FemaleStudentIc, MaleStudentIc, MonthlyMembershipGrayIc, NeutralStudentIc } from "@assets/index";
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import useOutsideClick from "@hooks/useOutsideClick";
 import Error from "@pages/error";
 import useGetTicket from "@pages/home/hooks/useGetTicket";
