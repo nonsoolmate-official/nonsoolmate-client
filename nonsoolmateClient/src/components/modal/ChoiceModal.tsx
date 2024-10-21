@@ -1,5 +1,5 @@
 import { MembershipBasicIc, MembershipPremiumIc } from "@assets/index";
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import { useModalDispatch } from "@hooks/useModal";
 import useGetMembership from "@pages/mypage/hooks/useGetMembership";
 import usePatchMembershipStatus from "@pages/mypage/hooks/usePatchMembershipStatus";

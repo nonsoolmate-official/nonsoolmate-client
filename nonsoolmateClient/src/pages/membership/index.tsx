@@ -1,5 +1,5 @@
 import { FooterLogoIc } from "@assets/index";
-import Header from "@components/onbordingheader/Header";
+import Header from "@components/header/Header";
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import HomeHeader from "../home/components/HomeHeader";

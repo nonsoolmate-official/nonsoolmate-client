@@ -1,8 +1,8 @@
-import LoginButton from "@components/buttons/LoginButton";
+import LoginButton from "@components/button/LoginButton";
 import { commonFlex } from "style/commonStyle";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
-import MembershipButton from "../buttons/MembershipButton";
+import MembershipButton from "../button/MembershipButton";
 
 import { DownArrowGreyIc, LoginInfoIc, UpArrowGreyIc } from "@assets/index";
 import useGetName from "@pages/home/hooks/useGetName";

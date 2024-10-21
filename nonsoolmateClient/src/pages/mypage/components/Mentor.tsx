@@ -1,5 +1,5 @@
 import { PassIc } from "@assets/index";
-import Button from "@components/buttons/Button";
+import Button from "@components/button/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import useGetName from "@pages/home/hooks/useGetName";
 import { useGetMentor } from "@pages/mypage/hooks/useGetMentor";
