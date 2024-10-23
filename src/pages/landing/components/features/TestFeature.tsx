@@ -3,8 +3,8 @@ import reEditImage from "@assets/image/landing_feature1_2.png";
 import { columnFlex } from "style/commonStyle";
 import theme from "style/theme";
 import styled from "styled-components";
-import Content from "./Content";
-import Title from "./Title";
+import Content from "../common/Content";
+import Title from "../common/Title";
 
 export default function TestFeature() {
   return (

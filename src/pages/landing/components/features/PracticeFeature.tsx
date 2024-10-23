@@ -2,8 +2,8 @@ import practiceImage1 from "@assets/image/landing_feature2_1.png";
 import practiceImage2 from "@assets/image/landing_feature2_2.png";
 import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
-import Content from "./Content";
-import Title from "./Title";
+import Content from "../common/Content";
+import Title from "../common/Title";
 
 export default function PracticeFeature() {
   return (
