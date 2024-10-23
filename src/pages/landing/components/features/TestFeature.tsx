@@ -4,13 +4,14 @@ import { columnFlex } from "style/commonStyle";
 import theme from "style/theme";
 import styled from "styled-components";
 import Content from "../common/Content";
-import Title from "../common/Title";
+import Title from "../common/GuideLayout";
 
 export default function TestFeature() {
   return (
     <TestFeatureContainer>
       <Title
         icType="test"
+        badge="시험보기"
         mainTitle="논술의 핵심은 첨삭이니까"
         subTitle="논술메이트의 전문 강사와 재첨삭으로 합격 가능성을 확실하게 높여요"
       />

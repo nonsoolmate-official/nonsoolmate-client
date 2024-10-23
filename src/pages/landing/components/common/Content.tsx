@@ -4,10 +4,10 @@ import theme from "style/theme";
 import styled from "styled-components";
 
 interface ContentProps {
-  num: string;
-  title: string;
-  description: string;
-  image: string;
+  num?: string;
+  title?: string;
+  description?: string;
+  image?: string;
 }
 export default function Content(props: ContentProps) {
   const { num, title, description, image } = props;

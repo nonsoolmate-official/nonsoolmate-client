@@ -1,19 +1,24 @@
-import { PracticeIc, TakeTestIc } from "@assets/index";
+import { PracticeIc, PriceIc, TakeTestIc } from "@assets/index";
+import { HTMLAttributes } from "react";
 import { columnFlex } from "style/commonStyle";
 import theme from "style/theme";
 import styled from "styled-components";
 
-interface TitleProps {
+interface TitleProps extends HTMLAttributes<HTMLDivElement> {
   icType: string;
+  badge: string;
   mainTitle: string;
   subTitle: string;
   caution?: string;
 }
-export default function Title(props: TitleProps) {
-  const { icType, mainTitle, subTitle, caution } = props;
+export default function GuideLayout({ icType, badge, mainTitle, subTitle, caution, ...props }: TitleProps) {
   return (
-    <TitleContainer>
-      {icType === "test" ? <TakeTestIc /> : <PracticeIc />}
+    <Wrapper {...props}>
+      <BadgeLayout>
+        {icType === "test" ? <TakeTestIc /> : icType === "practice" ? <PracticeIc /> : <PriceIc />}
+        {badge}
+      </BadgeLayout>
+
       <TitleBox $caution={caution}>
         <MainTitle>{mainTitle}</MainTitle>
         <SubTitleBox>
@@ -21,16 +26,33 @@ export default function Title(props: TitleProps) {
           {caution && <Caution>{caution}</Caution>}
         </SubTitleBox>
       </TitleBox>
-    </TitleContainer>
+    </Wrapper>
   );
 }
 
-const TitleContainer = styled.div`
+const Wrapper = styled.section`
   ${columnFlex}
 
   gap: 3rem;
   margin-bottom: 4rem;
   padding: 10.4rem 0;
+`;
+
+const BadgeLayout = styled.div`
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  padding: 0.8rem 1.6rem;
+
+  border-radius: 7px;
+
+  color: ${({ theme }) => theme.colors.main_blue};
+  background-color: ${({ theme }) => theme.colors.light_blue};
+  ${({ theme }) => theme.fonts.Body5};
 `;
 
 const TitleBox = styled.div<{ $caution: string | undefined }>`
