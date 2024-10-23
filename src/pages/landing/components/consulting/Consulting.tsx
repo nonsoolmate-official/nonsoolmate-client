@@ -54,7 +54,6 @@ const ConsultingServiceContainer = styled.div`
 `;
 
 const ApplyUnivConsulting = styled.img`
-
   z-index: 1;
   width: 37.1rem;
   height: 48.2rem;
@@ -79,9 +78,9 @@ const CareServiceLayout = styled.section`
 `;
 
 const CareServiceImg = styled.img`
-
   align-self: center;
   width: 93.6rem;
   height: 48.8rem;
+  margin-top: 2rem;
   object-fit: cover;
 `;

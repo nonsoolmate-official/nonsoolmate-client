@@ -42,7 +42,6 @@ const Wrapper = styled.section`
   ${columnFlex}
 
   gap: 3rem;
-  margin-bottom: 4rem;
   padding: 10.4rem 0;
 `;
 
