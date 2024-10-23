@@ -49,9 +49,12 @@ const SubTitleBox = styled.div`
   gap: 0.8rem;
 `;
 
-const SubTitle = styled.p`
+const SubTitle = styled.div`
   ${({ theme }) => theme.fonts.Body2};
 
+  text-align: center;
+
+  white-space: pre-line;
   color: ${theme.colors.grey_700};
 `;
 
