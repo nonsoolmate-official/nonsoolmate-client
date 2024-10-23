@@ -1,4 +1,4 @@
-import { PracticeIc, PriceIc, TakeTestIc } from "@assets/index";
+import { PracticeIc, PriceIc, ReviewIc, TakeTestIc } from "@assets/index";
 import { HTMLAttributes } from "react";
 import { columnFlex } from "style/commonStyle";
 import theme from "style/theme";
@@ -15,7 +15,15 @@ export default function GuideLayout({ icType, badge, mainTitle, subTitle, cautio
   return (
     <Wrapper {...props}>
       <BadgeLayout>
-        {icType === "test" ? <TakeTestIc /> : icType === "practice" ? <PracticeIc /> : <PriceIc />}
+        {icType === "test" ? (
+          <TakeTestIc />
+        ) : icType === "practice" ? (
+          <PracticeIc />
+        ) : icType === "price" ? (
+          <PriceIc />
+        ) : (
+          <ReviewIc />
+        )}
         {badge}
       </BadgeLayout>
 
@@ -40,18 +48,14 @@ const Wrapper = styled.section`
 
 const BadgeLayout = styled.div`
   display: flex;
-
-  align-items: center;
-  justify-content: center;
-
   gap: 0.6rem;
-
+  justify-content: center;
+  align-items: center;
   padding: 0.8rem 1.6rem;
-
   border-radius: 7px;
-
-  color: ${({ theme }) => theme.colors.main_blue};
   background-color: ${({ theme }) => theme.colors.light_blue};
+  color: ${({ theme }) => theme.colors.main_blue};
+
   ${({ theme }) => theme.fonts.Body5};
 `;
 
@@ -74,10 +78,9 @@ const SubTitleBox = styled.div`
 const SubTitle = styled.div`
   ${({ theme }) => theme.fonts.Body2};
 
-  text-align: center;
-
-  white-space: pre-line;
   color: ${theme.colors.grey_700};
+  text-align: center;
+  white-space: pre-line;
 `;
 
 const Caution = styled.p`

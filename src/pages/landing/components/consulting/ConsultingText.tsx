@@ -19,11 +19,8 @@ export default function ConsultingText({ category, subtitle, content }: Consulti
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-
-  padding: "12.8rem 12.8rem 0rem 12.8rem";
-
   gap: 2rem;
-
+  padding: "12.8rem 12.8rem 0rem 12.8rem";
   background-color: ${({ theme }) => theme.colors.grey_1100};
 `;
 
@@ -34,17 +31,15 @@ const Category = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  white-space: pre-line;
-
   color: ${({ theme }) => theme.colors.white};
+  white-space: pre-line;
 
   ${({ theme }) => theme.fonts.Headline4};
 `;
 
 const Content = styled.span`
-  white-space: pre-line;
-
   color: ${({ theme }) => theme.colors.grey_400};
+  white-space: pre-line;
 
   ${({ theme }) => theme.fonts.Body2};
 `;

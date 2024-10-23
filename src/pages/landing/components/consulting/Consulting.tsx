@@ -36,63 +36,52 @@ export default function Consulting() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   gap: 13.2rem;
-
   background-color: ${({ theme }) => theme.colors.grey_1100};
 `;
 
 const ConsultingServiceLayout = styled.section`
-  position: relative;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const ConsultingServiceContainer = styled.div`
   display: flex;
-
-  padding: 12.8rem 21.5rem 0 21.5rem;
-
-  justify-content: space-between;
   gap: 8.4rem;
+  justify-content: space-between;
+  padding: 12.8rem 21.5rem 0;
 `;
 
 const ApplyUnivConsulting = styled.img`
-  width: 37.1rem;
-  height: 48.2rem;
 
   z-index: 1;
+  width: 37.1rem;
+  height: 48.2rem;
   object-fit: cover;
 `;
 
 const Universities = styled.img`
   position: absolute;
-
   top: 75%;
   left: 50%;
-
+  z-index: 0;
   width: 131.3rem;
   height: 25.6rem;
-
   transform: translate(-50%, -50%);
-
-  z-index: 0;
-
   object-fit: cover;
 `;
 
 const CareServiceLayout = styled.section`
   display: flex;
   flex-direction: column;
-
-  padding: 0 21.5rem 0 21.5rem;
+  padding: 0 21.5rem;
 `;
 
 const CareServiceImg = styled.img`
-  width: 93.6rem;
-  height: 48.8rem;
 
   align-self: center;
-
+  width: 93.6rem;
+  height: 48.8rem;
   object-fit: cover;
 `;

@@ -69,12 +69,10 @@ const Description = styled.span`
   ${({ theme }) => theme.fonts.Body2};
 
   color: ${theme.colors.grey_600};
-
   word-break: keep-all;
 `;
 
 const Image = styled.img`
   width: 45.6rem;
-
   object-fit: cover;
 `;

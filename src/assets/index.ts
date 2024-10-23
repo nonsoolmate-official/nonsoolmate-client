@@ -130,6 +130,7 @@ import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
 import PayFailIc from "./icon/payFailIc.svg?react";
 import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 import PriceIc from "./icon/priceIc.svg?react";
+import ReviewIc from "./icon/reviewIc.svg?react";
 
 export {
   Advan1Ic,
@@ -199,6 +200,7 @@ export {
   RadioButtonDefaultIc,
   RecorrectionBlueIc,
   RecorrectionGrayIc,
+  ReviewIc,
   RightArrowBigIc,
   RightArrowBlueIc,
   RightArrowIc,

@@ -10,6 +10,7 @@ import TestFeature from "@pages/landing/components/features/TestFeature";
 import Footer from "@pages/landing/components/footer/Footer";
 import Price from "@pages/landing/components/price/Price";
 import RequestForm from "@pages/landing/components/requestForm/RequestForm";
+import Review from "@pages/landing/components/review/Review";
 import Univeristy from "@pages/landing/components/univeristy/Univeristy";
 import { getToken } from "@pages/socialLogin/utils/token";
 import styled from "styled-components";
@@ -28,6 +29,7 @@ export default function Landing() {
       <PracticeFeature />
       <Consulting />
       <Price />
+      <Review />
       <Advertise />
       <FaQ />
       <Footer />
