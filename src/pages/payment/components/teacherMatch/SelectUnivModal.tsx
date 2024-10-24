@@ -1,4 +1,4 @@
-import { CheckBtnIc, CheckEmptyIc, Univ4Ic } from "@assets/index";
+import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
 import { TargetUnivResponse } from "@pages/payment/api/getTargetUniv";
 import { PatchDataTypes } from "@pages/payment/api/patchTargetUniv";
 import useGetTargetUniv from "@pages/payment/hooks/useGetTargetUniv";
@@ -85,7 +85,7 @@ export default function SelectUnivModal(props: ModalProps) {
         {isOverSix && <RedText>* 최대 6개만 선택이 가능합니다.</RedText>}
         <Container>
           {TARGETS.map((data: TargetUnivResponse) => {
-            const { universityId, universityName } = data;
+            const { universityId, universityName, universityImageUrl } = data;
             const isChecked = checkedUnivs.includes(universityId);
 
             return (
@@ -95,7 +95,7 @@ export default function SelectUnivModal(props: ModalProps) {
                 $isChecked={isChecked}
                 onClick={() => handleCheck(universityId)}>
                 <UniversityBox>
-                  <Image as={Univ4Ic} />
+                  <Image src={universityImageUrl} alt="대학 이미지" />
                   <University>{universityName}</University>
                 </UniversityBox>
                 <CheckBox>{isChecked ? <CheckBtnIcon /> : <CheckEmptyIcon />}</CheckBox>
@@ -199,7 +199,7 @@ const CheckBox = styled.div`
   cursor: pointer;
 `;
 
-const Image = styled.svg`
+const Image = styled.img`
   object-fit: cover;
   width: 2.4rem;
   height: 2.4rem;
