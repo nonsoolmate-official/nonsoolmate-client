@@ -88,9 +88,9 @@ export default function Payment() {
   }
 
   return (
-    <>
+    <PaymentContainer>
       <HomeHeader />
-      <PaymentContainer>
+      <PaymentWrapper>
         <PaymentLeftContainer>
           <Title>정기결제</Title>
           <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
@@ -123,17 +123,25 @@ export default function Payment() {
           showAlreadyPaidError={showAlreadyPaidError}
           dcInfo={dcInfo}
         />
-      </PaymentContainer>
-    </>
+      </PaymentWrapper>
+    </PaymentContainer>
   );
 }
 
 const PaymentContainer = styled.section`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
+const PaymentWrapper = styled.div`
+  display: flex;
   flex-wrap: nowrap;
   gap: 2.4rem;
   align-self: flex-start;
-  margin: 4.8rem 21.5rem;
+  width: 100%;
+  padding: 4.8rem 21.5rem;
+
   ${media.tablet} {
     flex-direction: column;
     gap: 5.6rem;
