@@ -26,7 +26,7 @@ const Container = styled.div<{ $id: number }>`
   border: 1px solid white;
   border-radius: 12px;
   background: white;
-  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%);
+  box-shadow: ${({ theme }) => theme.effects.modal_shadow};
 `;
 
 const UnivImg = styled.svg`
