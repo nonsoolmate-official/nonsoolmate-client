@@ -26,7 +26,6 @@ export default function ReviewCard({ gender, univ, category, content }: ReviewCa
 }
 
 const CardWrapper = styled.div`
-
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
@@ -57,4 +56,6 @@ const Category = styled.div`
 
 const Content = styled.span`
   ${({ theme }) => theme.fonts.Body4};
+
+  word-break: keep-all;
 `;
