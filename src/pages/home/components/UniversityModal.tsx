@@ -120,7 +120,6 @@ const ModalView = styled.section`
   top: 50%;
   left: 50%;
   width: 77.4rem;
-  height: 49.6rem;
   padding: 4.8rem 5.5rem 4rem;
   border-radius: 16px;
   background-color: white;
@@ -128,7 +127,6 @@ const ModalView = styled.section`
 
   ${media.tablet} {
     width: 55rem;
-    height: 49.6rem;
     padding: 4.8rem 5.4rem 3.2rem;
   }
 `;
@@ -145,11 +143,7 @@ const Container = styled.section`
   gap: 0.6rem 0.4rem;
   width: 100%;
   margin-top: 2.4rem;
-  margin-bottom: 22.4rem;
-
-  ${media.tablet} {
-    margin-bottom: 17.6rem;
-  }
+  margin-bottom: 15rem;
 `;
 
 const CheckBoxButton = styled.button<{ $isChecked: boolean }>`
