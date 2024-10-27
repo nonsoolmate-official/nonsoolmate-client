@@ -7,11 +7,11 @@ export default function HomeIpadSide() {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState<string>(() => {
-    return localStorage.getItem("currentPage") || "test";
+    return sessionStorage.getItem("currentPage") || "test";
   });
 
   useEffect(() => {
-    localStorage.setItem("currentPage", currentPage);
+    sessionStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
   const handleMoveToPage = (page: string) => {
@@ -26,12 +26,12 @@ export default function HomeIpadSide() {
 
   return (
     <Side>
-      <IpadSideBarButton
+      {/* <IpadSideBarButton
         currentPage={currentPage}
         handleClick={() => handleMoveToPage("study")}
         pageType="study"
         buttonText="학습하기"
-      />
+      /> */}
       <IpadSideBarButton
         currentPage={currentPage}
         handleClick={() => handleMoveToPage("practice")}

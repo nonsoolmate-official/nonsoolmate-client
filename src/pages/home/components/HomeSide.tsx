@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useGetName from "../hooks/useGetName";
 import SideBarPracticeButton from "./SideBarPracticeButton";
-import SideBarStudyButton from "./SideBarStudyButton";
+// import SideBarStudyButton from "./SideBarStudyButton";
 import SideBarTestButton from "./SideBarTestButton";
 
 export default function HomeSide() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState<string>(() => {
-    return localStorage.getItem("currentPage") || "test";
+    return sessionStorage.getItem("currentPage") || "test";
   });
 
   useEffect(() => {
-    localStorage.setItem("currentPage", currentPage);
+    sessionStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
   const getNameResponse = useGetName();
@@ -24,10 +24,10 @@ export default function HomeSide() {
     data: { memberName },
   } = getNameResponse;
 
-  function handleMoveToHomeStudy() {
-    navigate("/home/study");
-    setCurrentPage("study");
-  }
+  // function handleMoveToHomeStudy() {
+  //   navigate("/home/study");
+  //   setCurrentPage("study");
+  // }
 
   function handleMoveToHomePractice() {
     navigate("/home/practice");
@@ -50,8 +50,8 @@ export default function HomeSide() {
           </SideHeaderBox>
         </SideHeader>
         <SideBar>
-          <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
-          <BorderIcon />
+          {/* <SideBarStudyButton currentPage={currentPage} handleMoveToHomeStudy={handleMoveToHomeStudy} />
+          <BorderIcon /> */}
           <SideBarPracticeButton currentPage={currentPage} handleMoveToHomePractice={handleMoveToHomePractice} />
           <BorderIcon />
           <SideBarTestButton currentPage={currentPage} handleMoveToHomeTest={handleMoveToHomeTest} />
