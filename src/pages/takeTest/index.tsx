@@ -82,6 +82,7 @@ export default function index() {
           openCoachMark={openCoachMark}
           examName={examName}
           examTimeLimit={examTimeLimit}
+          examId={examId}
         />
         <TestPaper examId={examId} openCoachMark={openCoachMark} openPrecautionModal={openPrecautionModal} />
       </TakeTestContainer>
