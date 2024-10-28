@@ -13,7 +13,6 @@ export default function Contents() {
     return <></>;
   }
   const planInfo = response.data;
-  console.log(planInfo);
   const individualEditing = calculateStandardDiscount({
     ...INDIVIDUAL_PURCHASE_LIST,
   });
@@ -65,13 +64,11 @@ const Container = styled.section`
   ${commonFlex}
 
   gap: 2.4rem;
-  margin-top: 8.1rem;
-  margin-bottom: 8.4rem;
+  margin: 5.6rem 8.4rem 8.4rem;
 
   ${media.tablet} {
     flex-direction: column;
-    margin-top: 5.6rem;
-    margin-bottom: 0;
+    margin-top: 5.6rem 7.5rem 0;
   }
 `;
 

@@ -16,7 +16,6 @@ const Container = styled.article`
   flex-direction: column;
   ${({ theme }) => theme.effects.membership_shadow};
 
-  width: 29.6rem;
   height: 40rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
