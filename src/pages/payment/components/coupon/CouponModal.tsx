@@ -153,7 +153,7 @@ const ModalView = styled.section`
   border-radius: 12px;
   background-color: white;
   transform: translate(-50%, -50%);
-  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%);
+  box-shadow: ${({ theme }) => theme.effects.modal_shadow};
 
   ${media.tablet} {
     top: 40%;

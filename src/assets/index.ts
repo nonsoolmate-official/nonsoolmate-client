@@ -26,6 +26,7 @@ import UpCircleIc from "./icon/upCircleIc.svg?react";
 
 import PracticeActiveIc from "./icon/practiceActiveIc.svg?react";
 import PracticeDisabledIc from "./icon/practiceDisabledIc.svg?react";
+import PracticeSidebarIc from "./icon/practiceSidebarIc.svg?react";
 
 import StudyActiveIc from "./icon/studyActiveIc.svg?react";
 import StudyDisabledIc from "./icon/studyDisabledIc.svg?react";
@@ -182,6 +183,7 @@ export {
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,
+  PracticeSidebarIc,
   PracticeIc,
   PrecautionNumOneIc,
   PrecautionNumThreeIc,

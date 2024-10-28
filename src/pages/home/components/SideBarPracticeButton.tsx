@@ -14,7 +14,7 @@ export default function SideBarPracticeButton(props: SideBarPracticeProps) {
     <ButtonBox type="button" onClick={handleMoveToHomePractice}>
       {currentPage === "practice" ? <PracticeActiveIcon /> : <PracticeDisabledIcon />}
       <ButtonTextBox>
-        <Text $currentPage={currentPage}>연습하기</Text>
+        <Text $currentPage={currentPage}>연습문제</Text>
       </ButtonTextBox>
       {currentPage === "practice" ? <RightArrowBlueIcon /> : <RightArrowIcon />}
     </ButtonBox>

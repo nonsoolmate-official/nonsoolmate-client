@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EmptyIc } from "@assets/index";
+import { PracticeSidebarIc } from "@assets/index";
 import { SetUnsetContainerLayout, UnsetContentLayout } from "style/layout/SetUnsetLayout";
 import { media } from "style/responsiveStyle";
 
@@ -9,8 +9,9 @@ export default function HomePractice() {
       <Box>
         <Header>나의 연습장</Header>
         <Content>
-          <EmptyIcon />
-          <ContentText>아직 준비 중이에요!</ContentText>
+          <PracticeSidebarIcon />
+          <ContentText>가입하신 이메일로 유형별 연습문제 pdf 파일을 모두 보내드렸어요!</ContentText>
+          <ContentText>다운받아 최대한 많이 풀어보세요:)</ContentText>
         </Content>
       </Box>
     </Container>
@@ -45,14 +46,15 @@ const Header = styled.h3`
 const Content = styled.section`
   ${UnsetContentLayout}
 
-  padding: 18.2rem 0 21rem;
+  padding: 18.2rem 0 18.8rem;
+  background-color: ${({ theme }) => theme.colors.white};
 
   ${media.tablet} {
     padding: 31.8rem 0 34.3rem;
   }
 `;
 
-const EmptyIcon = styled(EmptyIc)`
+const PracticeSidebarIcon = styled(PracticeSidebarIc)`
   width: 10.4rem;
   height: 6.1rem;
 `;
