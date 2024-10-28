@@ -88,8 +88,8 @@ export default function CouponModal(props: ModalProps) {
     if (selectedCoupon && handleCouponTxtStatus) {
       const { couponName, couponType, discountRate, discountAmount } = selectedCoupon;
 
-      if (couponType === "RATE") {
-        handleCouponTxtStatus(couponName, `${discountRate}% OFF`);
+      if (couponType === "RATE" && discountRate) {
+        handleCouponTxtStatus(couponName, `${discountRate * 100}% OFF`);
       } else {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
