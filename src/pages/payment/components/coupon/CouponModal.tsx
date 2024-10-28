@@ -1,7 +1,7 @@
 import { XIc } from "@assets/index";
 import useGetCoupon from "@pages/payment/hooks/useGetCoupon";
 import { usePostCoupon } from "@pages/payment/hooks/usePostCoupon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
@@ -29,9 +29,13 @@ export default function CouponModal(props: ModalProps) {
     discountAmount?: number;
   } | null>(null);
 
-  const { data: COUPON_LIST } = useGetCoupon();
+  const { data: COUPON_LIST, refetch } = useGetCoupon();
   const { mutate: postCouponMutate } = usePostCoupon();
   const { mutate: patchCouponMutate } = usePatchCoupon();
+
+  useEffect(() => {
+    refetch();
+  }, [COUPON_LIST, refetch]);
 
   const couponExist = COUPON_LIST && COUPON_LIST.coupons && COUPON_LIST.coupons.length > 0;
 
