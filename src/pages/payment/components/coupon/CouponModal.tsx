@@ -56,10 +56,10 @@ export default function CouponModal(props: ModalProps) {
   const handleCouponNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-    const hasKoreanChar = koreanRegex.test(value);
+    const validInputRegex = /^[a-zA-Z0-9]*$/;
+    const isValidInput = validInputRegex.test(value);
 
-    setHasKorean(hasKoreanChar);
+    setHasKorean(!isValidInput);
     setCouponNumber(value);
     setMismatch(false);
   };
