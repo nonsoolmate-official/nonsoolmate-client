@@ -5,6 +5,7 @@ import Advantage from "./advantage/Advantage";
 import { media } from "style/responsiveStyle";
 import useGetProductsList from "../hooks/useGetProductsList";
 import { calculateStandardDiscount } from "@pages/payment/utils/calculateStandardDiscount";
+import { INDIVIDUAL_PURCHASE_LIST } from "../core/individualPurchase";
 
 export default function Contents() {
   const response = useGetProductsList();
@@ -12,6 +13,10 @@ export default function Contents() {
     return <></>;
   }
   const planInfo = response.data;
+  console.log(planInfo);
+  const individualEditing = calculateStandardDiscount({
+    ...INDIVIDUAL_PURCHASE_LIST,
+  });
   return (
     <Container>
       <SubscribeWrapper>
@@ -36,6 +41,16 @@ export default function Contents() {
             />
           );
         })}
+        <Subscribe
+          key={INDIVIDUAL_PURCHASE_LIST.productId}
+          productId={INDIVIDUAL_PURCHASE_LIST.productId}
+          productDescriptions={INDIVIDUAL_PURCHASE_LIST.productDescriptions}
+          productName={INDIVIDUAL_PURCHASE_LIST.productName}
+          price={INDIVIDUAL_PURCHASE_LIST.price}
+          defaultDiscounts={INDIVIDUAL_PURCHASE_LIST.defaultDiscounts}
+          discountHistory={individualEditing}
+          plan={[INDIVIDUAL_PURCHASE_LIST]}
+        />
       </SubscribeWrapper>
       <Ipad>
         <AdvantageContainer>
