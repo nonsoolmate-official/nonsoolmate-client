@@ -42,7 +42,9 @@ export default function TestFinishModal(props: TestFinishProps) {
             </TotalTime>
             <ModalTitle>시험이 종료되었습니다.</ModalTitle>
             <ModalText>
-              <ModalTextGrey>수고하셨습니다! 답안지를 이미지로 제출해주세요.</ModalTextGrey>
+              <ModalTextGrey>수고하셨습니다!</ModalTextGrey>
+              <ModalTextGrey>답안지는 문서 파일(.hwp, .hwpx, .doc, .docx)에 </ModalTextGrey>
+              <ModalTextGrey>작성 후, 업로드해주세요.</ModalTextGrey>
               <ModalTextRed>* 답안지 제출 시 첨삭권 1개를 사용합니다.</ModalTextRed>
             </ModalText>
           </ModalContent>
@@ -58,7 +60,7 @@ export default function TestFinishModal(props: TestFinishProps) {
               ref={fileInputRef}
               multiple={true}
               onChange={handleFileInputChange}
-              accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+              accept=".hwp,.hwpx,.doc,.docx"
             />
           </ButtonContainer>
         </TestFinishModalBox>
@@ -102,7 +104,9 @@ const ModalText = styled.div`
 `;
 const ModalTextGrey = styled.p`
   color: ${({ theme }) => theme.colors.grey_700};
+  text-align: center;
 `;
+
 const ModalTextRed = styled.p`
   color: ${({ theme }) => theme.colors.error};
 `;

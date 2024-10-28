@@ -57,7 +57,7 @@ export default function SelectFileModal(props: Props) {
                 ref={fileInputRef}
                 multiple={true}
                 onChange={handleFileInputChange}
-                accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+                accept=".hwp,.hwpx,.doc,.docx"
               />
             </ButtonContainer>
           </ModalContent>
