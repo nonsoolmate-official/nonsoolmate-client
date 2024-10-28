@@ -25,7 +25,7 @@ export default function ReviewCard({ gender, univ, category, content }: ReviewCa
   );
 }
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
@@ -44,11 +44,11 @@ const InfoBox = styled.div`
   ${columnFlex}
 `;
 
-const University = styled.div`
+const University = styled.span`
   ${({ theme }) => theme.fonts.Body5};
 `;
 
-const Category = styled.div`
+const Category = styled.span`
   color: ${({ theme }) => theme.colors.grey_500};
 
   ${({ theme }) => theme.fonts.Body6};

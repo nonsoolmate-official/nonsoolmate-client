@@ -74,7 +74,7 @@ const SubTitleBox = styled.div`
   gap: 0.8rem;
 `;
 
-const SubTitle = styled.div`
+const SubTitle = styled.h2`
   ${({ theme }) => theme.fonts.Body2};
 
   color: ${theme.colors.grey_700};
