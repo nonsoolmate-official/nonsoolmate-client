@@ -4,10 +4,10 @@ import theme from "style/theme";
 import styled from "styled-components";
 
 interface ContentProps {
-  num: string;
-  title: string;
-  description: string;
-  image: string;
+  num?: string;
+  title?: string;
+  description?: string;
+  image?: string;
 }
 export default function Content(props: ContentProps) {
   const { num, title, description, image } = props;
@@ -15,7 +15,7 @@ export default function Content(props: ContentProps) {
     <ContentContainer>
       <TextBox>
         <ContentTitleBox>
-          <DesCriptionNum>{num}</DesCriptionNum>
+          <DescriptionNum>{num}</DescriptionNum>
           <ContentTitle>{title}</ContentTitle>
         </ContentTitleBox>
         <Description>{description}</Description>
@@ -53,7 +53,7 @@ const ContentTitleBox = styled.div`
   gap: 2rem;
 `;
 
-const DesCriptionNum = styled.h1`
+const DescriptionNum = styled.h2`
   ${({ theme }) => theme.fonts.Headline5};
 
   color: ${theme.colors.main_blue};
@@ -61,14 +61,18 @@ const DesCriptionNum = styled.h1`
 
 const ContentTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline3}
+
+  white-space: pre-line;
 `;
 
-const Description = styled.p`
+const Description = styled.span`
   ${({ theme }) => theme.fonts.Body2};
 
-  color: ${theme.colors.grey_700};
+  color: ${theme.colors.grey_600};
+  word-break: keep-all;
 `;
 
 const Image = styled.img`
   width: 45.6rem;
+  object-fit: cover;
 `;
