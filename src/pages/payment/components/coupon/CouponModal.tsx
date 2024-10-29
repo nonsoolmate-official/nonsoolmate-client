@@ -11,7 +11,7 @@ import usePatchCoupon from "@pages/mypage/hooks/usePatchCoupon";
 
 interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
-  handleCouponTxtStatus?: (coupon: string, dcinfo: string) => void;
+  handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
   activeCouponId: number | null;
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
   couponFrom: string;
@@ -94,7 +94,7 @@ export default function CouponModal(props: ModalProps) {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
       changeCouponModalStatus(false);
-      if (couponFrom == "/mypage" && activeCouponId) {
+      if (couponFrom == "/mypage" && activeCouponId != null) {
         patchCouponMutate(activeCouponId);
       }
     }
