@@ -7,7 +7,6 @@ const QUERY_KEY = {
 
 export default function useGetCoupon() {
   const { data, refetch } = useQuery({
-    refetchInterval: 3000,
     queryKey: [QUERY_KEY.getCoupon],
     queryFn: () => getCoupon(),
   });

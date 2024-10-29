@@ -50,6 +50,12 @@ export default function PaymentInfo() {
       from: from || "",
     });
   }
+
+  function handleCouponTxtStatus(coupon: string, dcInfo: string) {
+    sessionStorage.setItem("next_dcInfo", dcInfo);
+    sessionStorage.setItem("next_coupon", coupon);
+  }
+
   return (
     <PaymentInfoWrapper>
       <Title>다음 결제 정보</Title>
@@ -90,6 +96,7 @@ export default function PaymentInfo() {
         </PaymentInfoBox>
         {isCouponOpen && (
           <CouponModal
+            handleCouponTxtStatus={handleCouponTxtStatus}
             changeCouponModalStatus={changeNextMonthCouponModalStatus}
             activeCouponId={activeCouponId}
             handleActiveCouponId={handleActiveCouponId}

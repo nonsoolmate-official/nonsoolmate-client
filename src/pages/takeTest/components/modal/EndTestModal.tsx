@@ -18,7 +18,8 @@ export default function EndTestModal() {
           <ModalContent>
             <ModalText>
               <ModalTitle>수고하셨습니다!</ModalTitle>
-              <ModalSubTitle>제출 완료! 첨삭 결과는 일주일 뒤에 전달돼요.</ModalSubTitle>
+              <ModalSubTitle>제출 완료! </ModalSubTitle>
+              <ModalSubTitle>첨삭 결과는 3일 내로 전달해드려요!</ModalSubTitle>
             </ModalText>
             <QuitButton type="button" onClick={handleQuitButton}>
               시험 종료

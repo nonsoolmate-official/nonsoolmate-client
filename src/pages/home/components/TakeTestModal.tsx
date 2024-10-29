@@ -15,9 +15,10 @@ export default function TakeTestModal(props: TakeTestModalProps) {
   const { examId, handleTakeTestModal } = props;
 
   const navigate = useNavigate();
-  const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
-  const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
+  const [isDisplayClicked, setIsDisplayClicked] = useState(false);
+  const [isPrintClicked, setIsPrintClicked] = useState(false);
   const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
+  const isValid = isDisplayClicked || isPrintClicked;
 
   function handleDisplayOption() {
     setIsDisplayClicked((open) => !open);
@@ -84,7 +85,8 @@ export default function TakeTestModal(props: TakeTestModalProps) {
             type="button"
             onClick={moveToTakeTest}
             $isPrintClicked={isPrintClicked}
-            $isDisplayClicked={isDisplayClicked}>
+            $isDisplayClicked={isDisplayClicked}
+            disabled={!isValid}>
             다음
           </NextButton>
         </ModalButtonBox>
