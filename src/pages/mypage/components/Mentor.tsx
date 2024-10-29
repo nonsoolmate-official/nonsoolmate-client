@@ -4,10 +4,12 @@ import UnivChip from "@components/univChip/UnivChip";
 import useGetName from "@pages/home/hooks/useGetName";
 import { useGetMentor } from "@pages/mypage/hooks/useGetMentor";
 import styled from "styled-components";
+import useGetMembership from "../hooks/useGetMembership";
 
 export default function Mentor() {
   const name = useGetName();
   const { data } = useGetMentor();
+  const { data: membershipData } = useGetMembership();
 
   return (
     <MentorWrapper>
@@ -25,16 +27,24 @@ export default function Mentor() {
           <MentorInfoLayout>
             <MentorProfileContainer>
               <Profile src={data?.teacherProfileImageUrl} />
+
               <MentorProfileBox>
                 <Name>{data?.teacherName} 선생님</Name>
-                {data.tags.map((tag) => (
-                  <Badge key={tag.tagId}>
-                    <PassIc />
-                    {tag.tagName}
-                  </Badge>
-                ))}
+                {data.isCertified &&
+                  data.tags.map((tag) => (
+                    <Badge key={tag.tagId}>
+                      <PassIc />
+                      {tag.tagName}
+                    </Badge>
+                  ))}
               </MentorProfileBox>
+              <ButtonBox>
+                {data.qnaLink && membershipData && membershipData?.membershipName !== "베이직 플랜" && (
+                  <Button onClick={() => window.open(data.qnaLink, "_blank")}>1:1 질의응답</Button>
+                )}
+              </ButtonBox>
             </MentorProfileContainer>
+
             <Divider />
             <MentorInfoContainer>
               <SubTitle>선생님 소개</SubTitle>
@@ -168,4 +178,8 @@ const NullMentorContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const ButtonBox = styled.div`
+  margin-left: auto;
 `;
