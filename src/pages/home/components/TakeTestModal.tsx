@@ -15,8 +15,8 @@ export default function TakeTestModal(props: TakeTestModalProps) {
   const { examId, handleTakeTestModal } = props;
 
   const navigate = useNavigate();
-  const [isDisplayClicked, setIsDisplayClicked] = useState<boolean>(false);
-  const [isPrintClicked, setIsPrintClicked] = useState<boolean>(false);
+  const [isDisplayClicked, setIsDisplayClicked] = useState(false);
+  const [isPrintClicked, setIsPrintClicked] = useState(false);
   const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
   const isValid = isDisplayClicked || isPrintClicked;
 
@@ -50,7 +50,7 @@ export default function TakeTestModal(props: TakeTestModalProps) {
       setPdfPlugin(true);
     }
   }
-  //.
+
   return (
     <BackgroundView>
       <ModalView>
