@@ -96,7 +96,7 @@ export default function MemberInfo() {
         </Info>
 
         <Info>
-          <FieldLayout>
+          <FieldLayout style={{ width: "auto" }}>
             <Field>{MEMBERINFO.BIRTH}</Field>
             <Input
               value={input.birthday}
@@ -122,16 +122,18 @@ export default function MemberInfo() {
         </Info>
 
         <Info>
-          <Field>{MEMBERINFO.EMAIL}</Field>
-          <Input
-            value={input.email}
-            placeholder="example@email.com"
-            onChange={(e) => handleChangeInput("email", e)}
-            isError={isSubmitted && isEmailError}
-            errorMessage={isSubmitted ? validateEmail(input.email ?? "") : ""}
-            style={{ width: "56.8rem" }}
-          />
+          <FieldLayout style={{ width: "100%" }}>
+            <Field>{MEMBERINFO.EMAIL}</Field>
+            <Input
+              value={input.email}
+              placeholder="example@email.com"
+              onChange={(e) => handleChangeInput("email", e)}
+              isError={isSubmitted && isEmailError}
+              errorMessage={isSubmitted ? validateEmail(input.email ?? "") : ""}
+            />
+          </FieldLayout>
         </Info>
+
         <SubmitLayout>
           <Button variant="primary" width={8} type="submit">
             저장
@@ -169,6 +171,7 @@ const Info = styled.div`
   gap: 2.4rem;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const Title = styled.h3`
