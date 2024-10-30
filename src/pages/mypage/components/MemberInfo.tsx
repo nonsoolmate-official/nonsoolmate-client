@@ -179,7 +179,7 @@ const Title = styled.h3`
 `;
 
 const Field = styled.h3`
-  width: 5.6rem;
+  min-width: 5.6rem;
   ${({ theme }) => theme.fonts.Body3};
 
   white-space: nowrap;
