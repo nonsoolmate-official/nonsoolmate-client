@@ -9,6 +9,7 @@ import useGetTicket from "@pages/home/hooks/useGetTicket";
 import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import { useRef } from "react";
 import { media } from "style/responsiveStyle";
+import { MODAL } from "../constants/modal";
 
 interface UserInfoModalProps {
   onClose: () => void;
@@ -42,7 +43,13 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
         <Line />
         <PlanBox>
           <MonthlyMembershipGrayIc />
-          <PlanText>{data.membershipType === "BASIC" ? "베이직" : "프리미엄"} 플랜 이용 중</PlanText>
+          <PlanText>
+            {data.membershipType === "BASIC"
+              ? MODAL.MEMBERSHIP.BASIC
+              : data.membershipType === "PREMIUM"
+                ? MODAL.MEMBERSHIP.PREMIUM
+                : MODAL.MEMBERSHIP.NONE}
+          </PlanText>
         </PlanBox>
         <TicketCount>
           <Content>첨삭권</Content>
@@ -50,7 +57,11 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
         </TicketCount>
         <TicketCount>
           <Content>재첨삭권</Content>
-          <Content>{data.reReviewticketCount}개</Content>
+          {data.membershipType === "PREMIUM" ? (
+            <Content>무제한</Content>
+          ) : (
+            <Content>{data.reReviewticketCount}개</Content>
+          )}
         </TicketCount>
         <Line />
         <Button
