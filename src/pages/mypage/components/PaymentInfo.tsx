@@ -78,13 +78,13 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            {NEXT_PAYMENT?.coupon ? (
+            {NEXT_PAYMENT?.coupon.couponId ? (
               <Coupon key={NEXT_PAYMENT.coupon.couponId}>
                 <CouponTxt>
                   <SmallCouponIcon />
                   {NEXT_PAYMENT.coupon.couponName}
                 </CouponTxt>
-                <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}%OFF</DcInfo>
+                <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}% OFF</DcInfo>
               </Coupon>
             ) : (
               <Info>{COUPON_NOT_REGISTER}</Info>
@@ -105,22 +105,21 @@ export default function PaymentInfo() {
         )}
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
-
-          {NEXT_PAYMENT?.discountEvent && NEXT_PAYMENT.discountEvent.length > 0 ? (
-            NEXT_PAYMENT.discountEvent.map((discount) => (
-              <EventInfoContainer key={discount.discountId}>
-                <EventInfoBox>
+          <EventInfoContainer>
+            {NEXT_PAYMENT?.discountEvent && NEXT_PAYMENT.discountEvent.length > 0 ? (
+              NEXT_PAYMENT.discountEvent.map((discount) => (
+                <EventInfoBox key={discount.discountId}>
                   <DiscountInfo>
                     <DiscountIc />
                     {discount.discountName}
-                    <p>{discount.discountRate * 100}&nbsp;OFF</p>
+                    <p>{discount.discountRate * 100}% OFF</p>
                   </DiscountInfo>
                 </EventInfoBox>
-              </EventInfoContainer>
-            ))
-          ) : (
-            <Info>진행중인 할인 이벤트가 없습니다.</Info>
-          )}
+              ))
+            ) : (
+              <Info>진행중인 할인 이벤트가 없습니다.</Info>
+            )}
+          </EventInfoContainer>
         </Payment>
 
         <Divider />
@@ -242,6 +241,7 @@ const CouponTxt = styled.div`
 const DcInfo = styled.p`
   ${({ theme }) => theme.fonts.Body4};
 
+  margin-left: auto;
   color: ${({ theme }) => theme.colors.grey_1000};
 `;
 
@@ -259,6 +259,10 @@ const DiscountInfo = styled.div`
   ${({ theme }) => theme.fonts.Body4};
 
   white-space: nowrap;
+
+  & > p {
+    margin-left: auto;
+  }
 `;
 
 const Divider = styled.hr`
