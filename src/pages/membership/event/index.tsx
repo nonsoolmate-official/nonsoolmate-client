@@ -3,9 +3,14 @@ import { PresentIc } from "@assets/index";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import UnivBox from "../components/event/UnivBox";
+import { NOTION_LINK } from "../constants/refund";
 import { UNIV_LIST } from "../core/univlist";
 
 export default function index() {
+  const handleDetail = () => {
+    window.open(NOTION_LINK);
+  };
+
   return (
     <Container>
       <Title>
@@ -20,7 +25,7 @@ export default function index() {
           return <UnivBox key={id} id={id} univ={univ} img={img} details={details} />;
         })}
       </UnivsContainer>
-      <Button>자세히 보기 &gt; </Button>
+      <Button onClick={handleDetail}>자세히 보기 &gt; </Button>
     </Container>
   );
 }
