@@ -48,7 +48,7 @@ const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSiz
           color: ${({ theme }) => theme.colors.main_blue};
           /* stylelint-disable-next-line no-duplicate-selectors */
           &:hover {
-            background-color: ${({ theme }) => theme.colors.white};
+            background-color: ${({ theme }) => theme.colors.light_blue};
             color: ${({ theme }) => theme.colors.middle_blue};
           }
           /* stylelint-disable-next-line no-duplicate-selectors */

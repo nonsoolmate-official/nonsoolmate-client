@@ -27,10 +27,12 @@ const InputWrapper = styled.div`
   flex-direction: column;
   gap: 0.2rem;
   position: relative;
+  width: 100%;
 `;
 
 const InputLayout = styled.input<{ $isError: boolean }>`
   position: relative;
+  width: 100%;
   height: 3.6rem;
   padding: 0 1.2rem;
   border: 1px solid ${({ theme, $isError }) => ($isError ? theme.colors.error : theme.colors.grey_100)};
