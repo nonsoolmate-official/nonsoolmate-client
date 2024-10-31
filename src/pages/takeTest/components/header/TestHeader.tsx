@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Timer from "./Timer";
 import { LeftArrowBlackBtn } from "@assets/index";
 import { media } from "style/responsiveStyle";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { takeTestPdfPlugin } from "recoil/atom";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,9 @@ interface TestHeaderProps {
   openTestSubmitModal: boolean;
   examName: string;
   examTimeLimit: number;
+  examId: number;
 }
+
 export default function TestHeader(props: TestHeaderProps) {
   const {
     changeTestQuitStatus,
@@ -29,10 +31,12 @@ export default function TestHeader(props: TestHeaderProps) {
     openTestSubmitModal,
     examName,
     examTimeLimit,
+    examId,
   } = props;
 
   const navigate = useNavigate();
   const pdfPlugin = useRecoilValue(takeTestPdfPlugin);
+  const [, setPdfPlugin] = useRecoilState(takeTestPdfPlugin);
 
   function handleBackButton() {
     changeTestQuitStatus(true);
@@ -75,7 +79,16 @@ export default function TestHeader(props: TestHeaderProps) {
           </TimerBox>
         )}
         {pdfPlugin ? (
-          <TestCloseButton onClick={() => navigate("/home/test")} type="button">
+          <TestCloseButton
+            onClick={() => {
+              navigate("/takeTest", {
+                state: {
+                  examId: examId,
+                },
+              });
+              setPdfPlugin(false);
+            }}
+            type="button">
             준비 완료
           </TestCloseButton>
         ) : (

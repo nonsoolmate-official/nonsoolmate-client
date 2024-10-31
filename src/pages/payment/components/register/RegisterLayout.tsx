@@ -54,12 +54,12 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
               {notRegisterError && item.title === "결제 수단" && <ErrorText>* 결제 수단을 등록해 주세요.</ErrorText>}
             </Title>
             <RegisterButton
-              button={item.buttonText}
-              onClick={item.buttonText === "쿠폰 사용" ? openCouponModal : registerCardHandler}
+              button={(item.title === "결제 수단" && response.cardInfo ? item.buttonText2 : item.buttonText1) || ""}
+              onClick={item.buttonText1 === "쿠폰 사용" ? openCouponModal : registerCardHandler}
             />
           </TitleContainer>
           <Content $payError={notRegisterError && item.title === "결제 수단"}>
-            {item.buttonText === "쿠폰 사용" ? (
+            {item.buttonText1 === "쿠폰 사용" ? (
               <Coupon>
                 <CouponTxt $couponTxt={couponTxt}>
                   {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}

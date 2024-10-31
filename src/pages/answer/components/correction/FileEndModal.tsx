@@ -68,9 +68,9 @@ const ModalTitle = styled.h1`
   padding-bottom: 0.4rem;
 `;
 const ModalSubTitle = styled.p`
-  ${({ theme }) => theme.fonts.Body4};
-
   color: ${({ theme }) => theme.colors.grey_500};
+  text-align: center;
+  ${({ theme }) => theme.fonts.Body4};
 `;
 const QuitButton = styled(mainButtonStyle)`
   width: 16rem;

@@ -26,6 +26,7 @@ import UpCircleIc from "./icon/upCircleIc.svg?react";
 
 import PracticeActiveIc from "./icon/practiceActiveIc.svg?react";
 import PracticeDisabledIc from "./icon/practiceDisabledIc.svg?react";
+import PracticeSidebarIc from "./icon/practiceSidebarIc.svg?react";
 
 import StudyActiveIc from "./icon/studyActiveIc.svg?react";
 import StudyDisabledIc from "./icon/studyDisabledIc.svg?react";
@@ -128,8 +129,10 @@ import MaleStudentIc from "./icon/maleStudentIc.svg?react";
 import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
 import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
 import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
-import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 import PayFailIc from "./icon/payFailIc.svg?react";
+import PaySuccessIc from "./icon/paySuccessIc.svg?react";
+import PriceIc from "./icon/priceIc.svg?react";
+import ReviewIc from "./icon/reviewIc.svg?react";
 
 export {
   Advan1Ic,
@@ -179,10 +182,12 @@ export {
   NeutralStudentIc,
   NotCheckBtnIc,
   PassIc,
+  PayFailIc,
   PaySuccessIc,
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,
+  PracticeSidebarIc,
   PracticeIc,
   PrecautionNumOneIc,
   PrecautionNumThreeIc,
@@ -190,6 +195,7 @@ export {
   PremiumPlanIc,
   IndividualEditingIc,
   PresentIc,
+  PriceIc,
   PrintCircleIc,
   PrintIc,
   QnaToogleCloseIc,
@@ -198,6 +204,7 @@ export {
   RadioButtonDefaultIc,
   RecorrectionBlueIc,
   RecorrectionGrayIc,
+  ReviewIc,
   RightArrowBigIc,
   RightArrowBlueIc,
   RightArrowIc,
@@ -228,5 +235,4 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
-  PayFailIc,
 };

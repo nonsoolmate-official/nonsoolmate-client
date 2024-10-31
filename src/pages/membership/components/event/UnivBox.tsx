@@ -8,22 +8,25 @@ export default function UnivBox(props: UnivBoxProps) {
   const { id, univ, img, details } = props;
 
   return (
-    <Container>
+    <Container $id={id}>
       <UnivImg as={img} />
-      <UnivName $id={id}>{univ}</UnivName>
-      {details && <UnivDetails>{details}</UnivDetails>}
+      <Contents>
+        <UnivName>{univ}</UnivName>
+        {details && <UnivDetails>{details}</UnivDetails>}
+      </Contents>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $id: number }>`
   ${columnFlex}
 
-  padding: 2.4rem 1rem;
+  gap: ${({ $id }) => ($id == 4 || $id == 5 ? "0.8rem" : "1.6rem")};
+  padding: ${({ $id }) => ($id == 4 || $id == 5 ? "2rem 1rem" : "2.4rem 1rem")};
   border: 1px solid white;
   border-radius: 12px;
   background: white;
-  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%);
+  box-shadow: ${({ theme }) => theme.effects.modal_shadow};
 `;
 
 const UnivImg = styled.svg`
@@ -31,8 +34,13 @@ const UnivImg = styled.svg`
   height: 8.8rem;
 `;
 
-const UnivName = styled.p<{ $id: number }>`
-  margin-top: ${({ $id }) => ($id == 4 ? "0" : "1.6rem")};
+const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const UnivName = styled.p`
   ${({ theme }) => theme.fonts.Body3};
 
   color: ${({ theme }) => theme.colors.grey_800};

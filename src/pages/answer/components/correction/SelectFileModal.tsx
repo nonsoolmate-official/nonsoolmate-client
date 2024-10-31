@@ -38,7 +38,7 @@ export default function SelectFileModal(props: Props) {
               <RecorrectionBlueIcon />
               <ModalSubTitle>
                 첨삭 내용을 반영해 새로 작성한 <br />
-                답안지를 이미지로 제출해주세요.
+                답안지를 문서파일(.hwp, .hwpx, .doc, .docx)로 제출해주세요.
               </ModalSubTitle>
             </ModalText>
             <ButtonContainer>
@@ -57,7 +57,7 @@ export default function SelectFileModal(props: Props) {
                 ref={fileInputRef}
                 multiple={true}
                 onChange={handleFileInputChange}
-                accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+                accept=".hwp,.hwpx,.doc,.docx"
               />
             </ButtonContainer>
           </ModalContent>
