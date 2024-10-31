@@ -96,6 +96,11 @@ import Advan5Ic from "./icon/advan5Ic.svg?react";
 
 import PresentIc from "./icon/presentIc.svg?react";
 
+import Univ10Ic from "./icon/univ10Ic.svg?react";
+import Univ11Ic from "./icon/univ11Ic.svg?react";
+import Univ12Ic from "./icon/univ12Ic.svg?react";
+import Univ13Ic from "./icon/univ13Ic.svg?react";
+import Univ14Ic from "./icon/univ14Ic.svg?react";
 import Univ1Ic from "./icon/univ1Ic.svg?react";
 import Univ2Ic from "./icon/univ2Ic.svg?react";
 import Univ3Ic from "./icon/univ3Ic.svg?react";
@@ -186,8 +191,8 @@ export {
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,
-  PracticeSidebarIc,
   PracticeIc,
+  PracticeSidebarIc,
   PrecautionNumOneIc,
   PrecautionNumThreeIc,
   PrecautionNumTwoIc,
@@ -219,6 +224,11 @@ export {
   TakeTestIc,
   TestActiveIc,
   TestDisabledIc,
+  Univ10Ic,
+  Univ11Ic,
+  Univ12Ic,
+  Univ13Ic,
+  Univ14Ic,
   Univ1Ic,
   Univ2Ic,
   Univ3Ic,
