@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { FemaleStudentIc, MaleStudentIc, MonthlyMembershipGrayIc, NeutralStudentIc } from "@assets/index";
 import Button from "@components/button/Button";
 import useOutsideClick from "@hooks/useOutsideClick";
-import Error from "@pages/error";
 import useGetTicket from "@pages/home/hooks/useGetTicket";
 import useGetProfile from "@pages/mypage/hooks/useGetProfile";
 import { useRef } from "react";
@@ -25,7 +24,7 @@ export default function UserProfileModal({ onClose }: UserInfoModalProps) {
 
   const { data: ProfileData } = useGetProfile();
 
-  if (!data) return <Error />;
+  if (!data) return <></>;
 
   return (
     <BackgroundView>
