@@ -16,13 +16,13 @@ const Container = styled.article`
   flex-direction: column;
   ${({ theme }) => theme.effects.membership_shadow};
 
+  width: 23.9rem;
   height: 40rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.white};
 
   ${media.tablet} {
-    width: 61.6rem;
-    height: auto;
+    width: 29.6rem;
   }
 `;
 

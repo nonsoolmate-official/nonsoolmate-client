@@ -41,6 +41,7 @@ export default function AdvanBox() {
 const Container = styled.div`
   display: grid;
   width: 100%;
+  height: 100vh;
   padding: 1.8rem 1.6rem 0;
   border: 4px solid #6478ff;
   border-bottom-left-radius: 8px;

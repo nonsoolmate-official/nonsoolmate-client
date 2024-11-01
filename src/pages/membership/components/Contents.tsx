@@ -18,83 +18,50 @@ export default function Contents() {
   });
   return (
     <Container>
-      <SubscribeWrapper>
-        {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
-          const discountHistory = calculateStandardDiscount({
-            productId,
-            productName,
-            productDescriptions,
-            price,
-            defaultDiscounts,
-          });
-          return (
-            <Subscribe
-              key={productId}
-              productId={productId}
-              productDescriptions={productDescriptions}
-              productName={productName}
-              price={price}
-              defaultDiscounts={defaultDiscounts}
-              discountHistory={discountHistory}
-              plan={planInfo}
-            />
-          );
-        })}
-        <Subscribe
-          key={INDIVIDUAL_PURCHASE_LIST.productId}
-          productId={INDIVIDUAL_PURCHASE_LIST.productId}
-          productDescriptions={INDIVIDUAL_PURCHASE_LIST.productDescriptions}
-          productName={INDIVIDUAL_PURCHASE_LIST.productName}
-          price={INDIVIDUAL_PURCHASE_LIST.price}
-          defaultDiscounts={INDIVIDUAL_PURCHASE_LIST.defaultDiscounts}
-          discountHistory={individualEditing}
-          plan={[INDIVIDUAL_PURCHASE_LIST]}
-        />
-      </SubscribeWrapper>
-      <Ipad>
-        <AdvantageContainer>
-          <Advantage />
-        </AdvantageContainer>
-      </Ipad>
+      {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
+        const discountHistory = calculateStandardDiscount({
+          productId,
+          productName,
+          productDescriptions,
+          price,
+          defaultDiscounts,
+        });
+        return (
+          <Subscribe
+            key={productId}
+            productId={productId}
+            productDescriptions={productDescriptions}
+            productName={productName}
+            price={price}
+            defaultDiscounts={defaultDiscounts}
+            discountHistory={discountHistory}
+            plan={planInfo}
+          />
+        );
+      })}
+      <Subscribe
+        key={INDIVIDUAL_PURCHASE_LIST.productId}
+        productId={INDIVIDUAL_PURCHASE_LIST.productId}
+        productDescriptions={INDIVIDUAL_PURCHASE_LIST.productDescriptions}
+        productName={INDIVIDUAL_PURCHASE_LIST.productName}
+        price={INDIVIDUAL_PURCHASE_LIST.price}
+        defaultDiscounts={INDIVIDUAL_PURCHASE_LIST.defaultDiscounts}
+        discountHistory={individualEditing}
+        plan={[INDIVIDUAL_PURCHASE_LIST]}
+      />
+      <Advantage />
     </Container>
   );
 }
 
 const Container = styled.section`
-  ${commonFlex}
-
+  display: grid;
   gap: 2.4rem;
   margin: 5.6rem 8.4rem 8.4rem;
-
+  grid-template-columns: repeat(4, 1fr);
   ${media.tablet} {
-    flex-direction: column;
-    margin-top: 5.6rem 7.5rem 0;
-  }
-`;
-
-const SubscribeWrapper = styled.div`
-  display: flex;
-  gap: 2.4rem;
-`;
-
-const Ipad = styled.div`
-  ${media.tablet} {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 8.4rem;
-  }
-`;
-
-const AdvantageContainer = styled.article`
-  ${columnFlex}
-
-  gap: 3rem;
-  align-items: flex-start;
-
-  ${media.tablet} {
-    gap: 9.6rem;
-    align-items: center;
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.4rem;
+    margin: 5.6rem 7.5rem 8.4rem;
   }
 `;
