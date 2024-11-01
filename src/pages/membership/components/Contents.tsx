@@ -16,42 +16,50 @@ export default function Contents() {
     ...INDIVIDUAL_PURCHASE_LIST,
   });
   return (
-    <Container>
-      {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
-        const discountHistory = calculateStandardDiscount({
-          productId,
-          productName,
-          productDescriptions,
-          price,
-          defaultDiscounts,
-        });
-        return (
-          <Subscribe
-            key={productId}
-            productId={productId}
-            productDescriptions={productDescriptions}
-            productName={productName}
-            price={price}
-            defaultDiscounts={defaultDiscounts}
-            discountHistory={discountHistory}
-            plan={planInfo}
-          />
-        );
-      })}
-      <Subscribe
-        key={INDIVIDUAL_PURCHASE_LIST.productId}
-        productId={INDIVIDUAL_PURCHASE_LIST.productId}
-        productDescriptions={INDIVIDUAL_PURCHASE_LIST.productDescriptions}
-        productName={INDIVIDUAL_PURCHASE_LIST.productName}
-        price={INDIVIDUAL_PURCHASE_LIST.price}
-        defaultDiscounts={INDIVIDUAL_PURCHASE_LIST.defaultDiscounts}
-        discountHistory={individualEditing}
-        plan={[INDIVIDUAL_PURCHASE_LIST]}
-      />
-      <Advantage />
-    </Container>
+    <ContentsContainer>
+      <Container>
+        {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
+          const discountHistory = calculateStandardDiscount({
+            productId,
+            productName,
+            productDescriptions,
+            price,
+            defaultDiscounts,
+          });
+          return (
+            <Subscribe
+              key={productId}
+              productId={productId}
+              productDescriptions={productDescriptions}
+              productName={productName}
+              price={price}
+              defaultDiscounts={defaultDiscounts}
+              discountHistory={discountHistory}
+              plan={planInfo}
+            />
+          );
+        })}
+        <Subscribe
+          key={INDIVIDUAL_PURCHASE_LIST.productId}
+          productId={INDIVIDUAL_PURCHASE_LIST.productId}
+          productDescriptions={INDIVIDUAL_PURCHASE_LIST.productDescriptions}
+          productName={INDIVIDUAL_PURCHASE_LIST.productName}
+          price={INDIVIDUAL_PURCHASE_LIST.price}
+          defaultDiscounts={INDIVIDUAL_PURCHASE_LIST.defaultDiscounts}
+          discountHistory={individualEditing}
+          plan={[INDIVIDUAL_PURCHASE_LIST]}
+        />
+        <Advantage />
+      </Container>
+    </ContentsContainer>
   );
 }
+
+const ContentsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+`;
 
 const Container = styled.section`
   display: grid;
