@@ -30,7 +30,7 @@ export default function FileSubmitModal(props: Props) {
     if (buttonRef.current) {
       buttonRef.current.disabled = true;
     }
-    const response = await getPresignedUrl();
+    const response = await getPresignedUrl(examId, "REVISION");
     if (!response) return <Error />;
 
     const { resultFileName, preSignedUrl } = response?.data;
