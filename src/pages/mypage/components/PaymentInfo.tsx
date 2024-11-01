@@ -230,6 +230,7 @@ const InfoTxt = styled.div`
 const DcInfo = styled.p`
   ${({ theme }) => theme.fonts.Body4};
 
+  margin-left: auto;
   color: ${({ theme }) => theme.colors.grey_1000};
 `;
 

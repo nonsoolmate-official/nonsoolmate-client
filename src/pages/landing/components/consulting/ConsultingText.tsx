@@ -31,6 +31,7 @@ const Category = styled.h1`
 `;
 
 const Subtitle = styled.h2`
+  min-width: 45rem;
   color: ${({ theme }) => theme.colors.white};
   white-space: pre-line;
 

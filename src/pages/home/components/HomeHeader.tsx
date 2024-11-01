@@ -59,7 +59,7 @@ const Header = styled.header`
   justify-content: space-between;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   padding: 1.6rem 21.5rem;
   border-bottom: 1px solid #ecedf0;
   background-color: ${({ theme }) => theme.colors.white};

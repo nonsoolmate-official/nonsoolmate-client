@@ -6,6 +6,8 @@ export interface MentorDataTypes {
   teacherName: string;
   teacherProfileImageUrl: string;
   introduction: string;
+  isCertified: boolean;
+  qnaLink: string;
   teacherUniversities: [
     {
       universityName: string;
