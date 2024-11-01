@@ -5,10 +5,10 @@ import styled from "styled-components";
 interface UnivBoxProps extends UnivListTypes {}
 
 export default function UnivBox(props: UnivBoxProps) {
-  const { id, univ, img, details } = props;
+  const { univ, img, details } = props;
 
   return (
-    <Container $id={id}>
+    <Container>
       <UnivImg as={img} />
       <Contents>
         <UnivName>{univ}</UnivName>
@@ -18,11 +18,11 @@ export default function UnivBox(props: UnivBoxProps) {
   );
 }
 
-const Container = styled.div<{ $id: number }>`
+const Container = styled.div`
   ${columnFlex}
 
-  gap: ${({ $id }) => ($id == 4 || $id == 5 ? "0.8rem" : "1.6rem")};
-  padding: ${({ $id }) => ($id == 4 || $id == 5 ? "2rem 1rem" : "2.4rem 1rem")};
+  gap: 1.6rem;
+  padding: 2.4rem 2rem;
   border: 1px solid white;
   border-radius: 12px;
   background: white;
