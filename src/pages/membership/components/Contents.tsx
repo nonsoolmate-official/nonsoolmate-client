@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Subscribe from "./subscribe/Subscribe";
-import { columnFlex, commonFlex } from "style/commonStyle";
 import Advantage from "./advantage/Advantage";
 import { media } from "style/responsiveStyle";
 import useGetProductsList from "../hooks/useGetProductsList";
