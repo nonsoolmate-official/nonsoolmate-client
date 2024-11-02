@@ -14,7 +14,9 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
 
   const from = location.pathname;
   sessionStorage.setItem("from", from);
-  sessionStorage.setItem("plan", JSON.stringify(plan));
+  if (id === 1 || id === 2) {
+    sessionStorage.setItem("plan", JSON.stringify(plan));
+  }
 
   function clickPurchaseButton() {
     if (id === 3) {
