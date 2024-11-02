@@ -77,13 +77,13 @@ export default function PaymentInfo() {
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
-            {NEXT_PAYMENT?.coupon ? (
+            {NEXT_PAYMENT?.coupon.couponId ? (
               <InfoContents key={NEXT_PAYMENT.coupon.couponId}>
                 <InfoTxt>
                   <SmallCouponIcon />
                   {NEXT_PAYMENT.coupon.couponName}
                 </InfoTxt>
-                <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}%OFF</DcInfo>
+                <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}% OFF</DcInfo>
               </InfoContents>
             ) : (
               <Info>{COUPON_NOT_REGISTER}</Info>
@@ -112,7 +112,7 @@ export default function PaymentInfo() {
                     <DiscountIcon />
                     {discount.discountName}
                   </InfoTxt>
-                  <DcInfo>{discount.discountRate * 100}%OFF</DcInfo>
+                  <DcInfo>{discount.discountRate * 100}% OFF</DcInfo>
                 </InfoContents>
               ))
             ) : (
