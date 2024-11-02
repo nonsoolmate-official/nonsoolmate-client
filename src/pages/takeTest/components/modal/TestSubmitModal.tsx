@@ -30,7 +30,7 @@ export default function TestSubmitModal(props: TestSubmitProps) {
     if (buttonRef.current) {
       buttonRef.current.disabled = true;
     }
-    const response = await getPresignedUrl();
+    const response = await getPresignedUrl(examId, "EDITING");
     if (!response) return <Error />;
 
     const { resultFileName, preSignedUrl } = response?.data;

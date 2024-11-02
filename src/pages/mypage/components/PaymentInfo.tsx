@@ -64,7 +64,6 @@ export default function PaymentInfo() {
           <InfoTitle>다음 결제 일</InfoTitle>
           <Info>{formattedDate}</Info>
         </Payment>
-
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>결제 수단</InfoTitle>
@@ -74,18 +73,17 @@ export default function PaymentInfo() {
             결제 수단 변경하기
           </Button>
         </PaymentInfoBox>
-
         <PaymentInfoBox>
           <Payment>
             <InfoTitle>쿠폰 정보</InfoTitle>
             {NEXT_PAYMENT?.coupon.couponId ? (
-              <Coupon key={NEXT_PAYMENT.coupon.couponId}>
-                <CouponTxt>
+              <InfoContents key={NEXT_PAYMENT.coupon.couponId}>
+                <InfoTxt>
                   <SmallCouponIcon />
                   {NEXT_PAYMENT.coupon.couponName}
-                </CouponTxt>
+                </InfoTxt>
                 <DcInfo>{NEXT_PAYMENT.coupon.discountRate * 100}% OFF</DcInfo>
-              </Coupon>
+              </InfoContents>
             ) : (
               <Info>{COUPON_NOT_REGISTER}</Info>
             )}
@@ -105,34 +103,35 @@ export default function PaymentInfo() {
         )}
         <Payment>
           <InfoTitle>할인 이벤트</InfoTitle>
-          <EventInfoContainer>
+          <EventContainer>
             {NEXT_PAYMENT?.discountEvent && NEXT_PAYMENT.discountEvent.length > 0 ? (
               NEXT_PAYMENT.discountEvent.map((discount) => (
-                <EventInfoBox key={discount.discountId}>
-                  <DiscountInfo>
-                    <DiscountIc />
+                <InfoContents key={discount.discountId}>
+                  <InfoTxt>
+                    <DiscountIcon />
                     {discount.discountName}
-                    <p>{discount.discountRate * 100}% OFF</p>
-                  </DiscountInfo>
-                </EventInfoBox>
+                  </InfoTxt>
+                  <DcInfo>{discount.discountRate * 100}% OFF</DcInfo>
+                </InfoContents>
               ))
             ) : (
               <Info>진행중인 할인 이벤트가 없습니다.</Info>
             )}
-          </EventInfoContainer>
+          </EventContainer>
         </Payment>
-
         <Divider />
-
-        <Payment>
-          <InfoTitle>총 할인가</InfoTitle>
-          <Info>{NEXT_PAYMENT?.totalDiscountPrice}</Info>
-        </Payment>
-
-        <Payment>
-          <InfoTitle>결제 예정 금액</InfoTitle>
-          <Info>{NEXT_PAYMENT?.totalPrice}</Info>
-        </Payment>
+        {NEXT_PAYMENT && (
+          <Payment>
+            <InfoTitle>총 할인가</InfoTitle>
+            <Info>{NEXT_PAYMENT.totalDiscountPrice.toLocaleString()}원</Info>
+          </Payment>
+        )}
+        {NEXT_PAYMENT && (
+          <Payment>
+            <InfoTitle>결제 예정 금액</InfoTitle>
+            <Info>{NEXT_PAYMENT?.totalPrice.toLocaleString()}원</Info>
+          </Payment>
+        )}
       </PaymentInfoLayout>
     </PaymentInfoWrapper>
   );
@@ -165,11 +164,12 @@ const PaymentInfoLayout = styled.section`
 const Payment = styled.div`
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: baseline;
 `;
 
 const PaymentInfoBox = styled.div`
   display: flex;
+  gap: 2rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -181,6 +181,7 @@ const InfoTitle = styled.h2`
 
   ${({ theme }) => theme.fonts.Body3};
 
+  text-align: left;
   white-space: nowrap;
 `;
 
@@ -191,27 +192,14 @@ const Info = styled.div`
   ${({ theme }) => theme.fonts.Body4};
 `;
 
-const EventInfoContainer = styled.div`
+const EventContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  align-items: flex-start;
   width: 100%;
 `;
 
-const EventInfoBox = styled.div`
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 37.6rem;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey_50};
-`;
-
-const Coupon = styled.div`
+const InfoContents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -229,7 +217,7 @@ const Coupon = styled.div`
   }
 `;
 
-const CouponTxt = styled.div`
+const InfoTxt = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
@@ -250,19 +238,9 @@ const SmallCouponIcon = styled(SmallCouponIc)`
   height: 2rem;
 `;
 
-const DiscountInfo = styled.div`
-  display: flex;
-  gap: 0.8rem;
-  justify-content: space-between;
-  width: 100%;
-
-  ${({ theme }) => theme.fonts.Body4};
-
-  white-space: nowrap;
-
-  & > p {
-    margin-left: auto;
-  }
+const DiscountIcon = styled(DiscountIc)`
+  width: 2rem;
+  height: 2rem;
 `;
 
 const Divider = styled.hr`
