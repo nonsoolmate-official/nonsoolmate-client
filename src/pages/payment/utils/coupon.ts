@@ -1,8 +1,9 @@
 const COUPON_TYPE_RATE = "RATE";
 
 export function checkCouponType(couponType: string, discountRate?: number, discountAmount?: number) {
-  if (couponType === COUPON_TYPE_RATE) {
-    return `${discountRate}% OFF`;
+  if (couponType === COUPON_TYPE_RATE && discountRate) {
+    const calculateRate = discountRate * 100;
+    return `${calculateRate}% OFF`;
   } else {
     return `${discountAmount}원 OFF`;
   }

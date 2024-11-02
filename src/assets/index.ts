@@ -26,6 +26,7 @@ import UpCircleIc from "./icon/upCircleIc.svg?react";
 
 import PracticeActiveIc from "./icon/practiceActiveIc.svg?react";
 import PracticeDisabledIc from "./icon/practiceDisabledIc.svg?react";
+import PracticeSidebarIc from "./icon/practiceSidebarIc.svg?react";
 
 import StudyActiveIc from "./icon/studyActiveIc.svg?react";
 import StudyDisabledIc from "./icon/studyDisabledIc.svg?react";
@@ -63,6 +64,7 @@ import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 
 import BasicPlanIc from "./icon/basicPlanIc.svg?react";
 import PremiumPlanIc from "./icon/premiumPlanIc.svg?react";
+import IndividualEditingIc from "./icon/individualEditingIc.svg?react";
 
 import CheckSmallIc from "./icon/checkSmallIc.svg?react";
 
@@ -95,6 +97,11 @@ import Advan5Ic from "./icon/advan5Ic.svg?react";
 
 import PresentIc from "./icon/presentIc.svg?react";
 
+import Univ10Ic from "./icon/univ10Ic.svg?react";
+import Univ11Ic from "./icon/univ11Ic.svg?react";
+import Univ12Ic from "./icon/univ12Ic.svg?react";
+import Univ13Ic from "./icon/univ13Ic.svg?react";
+import Univ14Ic from "./icon/univ14Ic.svg?react";
 import Univ1Ic from "./icon/univ1Ic.svg?react";
 import Univ2Ic from "./icon/univ2Ic.svg?react";
 import Univ3Ic from "./icon/univ3Ic.svg?react";
@@ -127,8 +134,10 @@ import MaleStudentIc from "./icon/maleStudentIc.svg?react";
 import MembershipBasicIc from "./icon/membershipBasicIc.svg?react";
 import MembershipPremiumIc from "./icon/membershipPremiumIc.svg?react";
 import NeutralStudentIc from "./icon/neutralStudentIc.svg?react";
-import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 import PayFailIc from "./icon/payFailIc.svg?react";
+import PaySuccessIc from "./icon/paySuccessIc.svg?react";
+import PriceIc from "./icon/priceIc.svg?react";
+import ReviewIc from "./icon/reviewIc.svg?react";
 
 export {
   Advan1Ic,
@@ -178,16 +187,20 @@ export {
   NeutralStudentIc,
   NotCheckBtnIc,
   PassIc,
+  PayFailIc,
   PaySuccessIc,
   PlusIc,
   PracticeActiveIc,
   PracticeDisabledIc,
   PracticeIc,
+  PracticeSidebarIc,
   PrecautionNumOneIc,
   PrecautionNumThreeIc,
   PrecautionNumTwoIc,
   PremiumPlanIc,
+  IndividualEditingIc,
   PresentIc,
+  PriceIc,
   PrintCircleIc,
   PrintIc,
   QnaToogleCloseIc,
@@ -196,6 +209,7 @@ export {
   RadioButtonDefaultIc,
   RecorrectionBlueIc,
   RecorrectionGrayIc,
+  ReviewIc,
   RightArrowBigIc,
   RightArrowBlueIc,
   RightArrowIc,
@@ -212,6 +226,11 @@ export {
   TakeTestIc,
   TestActiveIc,
   TestDisabledIc,
+  Univ10Ic,
+  Univ11Ic,
+  Univ12Ic,
+  Univ13Ic,
+  Univ14Ic,
   Univ1Ic,
   Univ2Ic,
   Univ3Ic,
@@ -226,5 +245,4 @@ export {
   UpArrowIc,
   UpCircleIc,
   XIc,
-  PayFailIc,
 };

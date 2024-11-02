@@ -38,8 +38,10 @@ export default function SelectFileModal(props: Props) {
               <RecorrectionBlueIcon />
               <ModalSubTitle>
                 첨삭 내용을 반영해 새로 작성한 <br />
-                답안지를 이미지로 제출해주세요.
+                답안지를 문서파일(.hwp, .hwpx, .doc, .docx)로 <br />
+                제출해주세요.
               </ModalSubTitle>
+              <ModalTextRed>* 재첨삭을 받았던 시험의 추가 피드백은 질의응답방에서 요청해주세요!.</ModalTextRed>
             </ModalText>
             <ButtonContainer>
               <CancelButton
@@ -57,7 +59,7 @@ export default function SelectFileModal(props: Props) {
                 ref={fileInputRef}
                 multiple={true}
                 onChange={handleFileInputChange}
-                accept="image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+                accept=".hwp,.hwpx,.doc,.docx"
               />
             </ButtonContainer>
           </ModalContent>
@@ -101,6 +103,9 @@ const ModalSubTitle = styled.p`
   color: ${({ theme }) => theme.colors.grey_800};
   text-align: center;
   ${({ theme }) => theme.fonts.Body4};
+`;
+const ModalTextRed = styled.p`
+  color: ${({ theme }) => theme.colors.error};
 `;
 const ButtonContainer = styled.div`
   display: flex;

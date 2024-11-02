@@ -11,6 +11,7 @@ import { AxiosResponse } from "axios";
 import { useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
+import { MEMBERINFO } from "../constants/member";
 
 export default function MemberInfo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -71,7 +72,7 @@ export default function MemberInfo() {
       <MemberInfoContainer onSubmit={handleSubmit}>
         <Info>
           <FieldLayout>
-            <Field>이름</Field>
+            <Field>{MEMBERINFO.NAME}</Field>
             <Input
               value={input.name}
               placeholder="이름"
@@ -82,7 +83,7 @@ export default function MemberInfo() {
             />
           </FieldLayout>
           <FieldLayout>
-            <Field>성별</Field>
+            <Field>{MEMBERINFO.GENDER}</Field>
             <RadioButtonGroup
               options={[
                 { label: "남성", value: "M", name: "gender" },
@@ -95,8 +96,8 @@ export default function MemberInfo() {
         </Info>
 
         <Info>
-          <FieldLayout>
-            <Field>출생연도</Field>
+          <FieldLayout style={{ width: "auto" }}>
+            <Field>{MEMBERINFO.BIRTH}</Field>
             <Input
               value={input.birthday}
               placeholder="0000"
@@ -105,10 +106,10 @@ export default function MemberInfo() {
               errorMessage={isSubmitted ? validateBirthday(input.birthday ?? "") : ""}
               style={{ width: "6.4rem" }}
             />
-            <Field>년</Field>
+            <Field>{MEMBERINFO.YEAR}</Field>
           </FieldLayout>
           <FieldLayout>
-            <Field>전화번호</Field>
+            <Field>{MEMBERINFO.PHONE}</Field>
             <Input
               value={input.phoneNumber}
               placeholder="000-0000-0000"
@@ -121,16 +122,18 @@ export default function MemberInfo() {
         </Info>
 
         <Info>
-          <Field>이메일</Field>
-          <Input
-            value={input.email}
-            placeholder="example@email.com"
-            onChange={(e) => handleChangeInput("email", e)}
-            isError={isSubmitted && isEmailError}
-            errorMessage={isSubmitted ? validateEmail(input.email ?? "") : ""}
-            style={{ width: "56.8rem" }}
-          />
+          <FieldLayout style={{ width: "100%" }}>
+            <Field>{MEMBERINFO.EMAIL}</Field>
+            <Input
+              value={input.email}
+              placeholder="example@email.com"
+              onChange={(e) => handleChangeInput("email", e)}
+              isError={isSubmitted && isEmailError}
+              errorMessage={isSubmitted ? validateEmail(input.email ?? "") : ""}
+            />
+          </FieldLayout>
         </Info>
+
         <SubmitLayout>
           <Button variant="primary" width={8} type="submit">
             저장
@@ -168,6 +171,7 @@ const Info = styled.div`
   gap: 2.4rem;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const Title = styled.h3`
@@ -179,7 +183,7 @@ const Title = styled.h3`
 `;
 
 const Field = styled.h3`
-  width: 5.6rem;
+  min-width: 5.6rem;
   ${({ theme }) => theme.fonts.Body3};
 
   white-space: nowrap;

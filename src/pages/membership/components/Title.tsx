@@ -5,9 +5,9 @@ import { media } from "style/responsiveStyle";
 export default function Title() {
   return (
     <Container>
-      <Text>첨삭 그 이상의 개인화된 채점 및 관리</Text>
+      <Text>논술 직전 파이널을 위한 최고의 선택</Text>
       <Text>
-        온라인 과외,&nbsp;<Nonsool> 논술메이트 </Nonsool>와 함께하세요
+        프리미엄 첨삭,&nbsp;<Nonsool> 논술메이트 </Nonsool>와 함께하세요
       </Text>
     </Container>
   );

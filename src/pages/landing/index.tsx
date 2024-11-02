@@ -1,17 +1,19 @@
+import Header from "@components/header/Header";
+import HomeHeader from "@pages/home/components/HomeHeader";
+import useGetName from "@pages/home/hooks/useGetName";
+import Advertise from "@pages/landing/components/advertise/Advertise";
+import Banner from "@pages/landing/components/banner/Banner";
+import Consulting from "@pages/landing/components/consulting/Consulting";
+import FaQ from "@pages/landing/components/faq/FaQ";
+import PracticeFeature from "@pages/landing/components/features/PracticeFeature";
+import TestFeature from "@pages/landing/components/features/TestFeature";
+import Footer from "@pages/landing/components/footer/Footer";
+import Price from "@pages/landing/components/price/Price";
+import RequestForm from "@pages/landing/components/requestForm/RequestForm";
+import Review from "@pages/landing/components/review/Review";
+import Univeristy from "@pages/landing/components/univeristy/Univeristy";
+import { getToken } from "@pages/socialLogin/utils/token";
 import styled from "styled-components";
-import Header from "../../components/header/Header";
-import HomeHeader from "../home/components/HomeHeader";
-import useGetName from "../home/hooks/useGetName";
-import { getToken } from "../socialLogin/utils/token";
-import Advertise from "./components/advertise/Advertise";
-import Banner from "./components/banner/Banner";
-import FaQ from "./components/faq/FaQ";
-import PracticeFeature from "./components/features/PracticeFeature";
-import TestFeature from "./components/features/TestFeature";
-import Footer from "./components/footer/Footer";
-import Price from "./components/price/Price";
-import RequestForm from "./components/requestForm/RequestForm";
-import Univeristy from "./components/univeristy/Univeristy";
 
 export default function Landing() {
   const token = getToken();
@@ -25,7 +27,9 @@ export default function Landing() {
       <Univeristy />
       <TestFeature />
       <PracticeFeature />
+      <Consulting />
       <Price />
+      <Review />
       <Advertise />
       <FaQ />
       <Footer />

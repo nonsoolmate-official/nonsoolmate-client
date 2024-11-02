@@ -1,7 +1,7 @@
 import { XIc } from "@assets/index";
 import useGetCoupon from "@pages/payment/hooks/useGetCoupon";
 import { usePostCoupon } from "@pages/payment/hooks/usePostCoupon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
@@ -11,7 +11,7 @@ import usePatchCoupon from "@pages/mypage/hooks/usePatchCoupon";
 
 interface ModalProps {
   changeCouponModalStatus: (open: boolean) => void;
-  handleCouponTxtStatus?: (coupon: string, dcinfo: string) => void;
+  handleCouponTxtStatus: (coupon: string, dcinfo: string) => void;
   activeCouponId: number | null;
   handleActiveCouponId: (isCouponActive: boolean, couponMemberId: number) => void;
   couponFrom: string;
@@ -29,9 +29,13 @@ export default function CouponModal(props: ModalProps) {
     discountAmount?: number;
   } | null>(null);
 
-  const { data: COUPON_LIST } = useGetCoupon();
+  const { data: COUPON_LIST, refetch } = useGetCoupon();
   const { mutate: postCouponMutate } = usePostCoupon();
   const { mutate: patchCouponMutate } = usePatchCoupon();
+
+  useEffect(() => {
+    refetch();
+  }, [COUPON_LIST, refetch]);
 
   const couponExist = COUPON_LIST && COUPON_LIST.coupons && COUPON_LIST.coupons.length > 0;
 
@@ -56,10 +60,10 @@ export default function CouponModal(props: ModalProps) {
   const handleCouponNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-    const hasKoreanChar = koreanRegex.test(value);
+    const validInputRegex = /^[a-zA-Z0-9]*$/;
+    const isValidInput = validInputRegex.test(value);
 
-    setHasKorean(hasKoreanChar);
+    setHasKorean(!isValidInput);
     setCouponNumber(value);
     setMismatch(false);
   };
@@ -84,13 +88,13 @@ export default function CouponModal(props: ModalProps) {
     if (selectedCoupon && handleCouponTxtStatus) {
       const { couponName, couponType, discountRate, discountAmount } = selectedCoupon;
 
-      if (couponType === "RATE") {
-        handleCouponTxtStatus(couponName, `${discountRate}% OFF`);
+      if (couponType === "RATE" && discountRate) {
+        handleCouponTxtStatus(couponName, `${discountRate * 100}% OFF`);
       } else {
         handleCouponTxtStatus(couponName, `${discountAmount}원 OFF`);
       }
       changeCouponModalStatus(false);
-      if (couponFrom == "/mypage" && activeCouponId) {
+      if (couponFrom == "/mypage" && activeCouponId != null) {
         patchCouponMutate(activeCouponId);
       }
     }
@@ -153,7 +157,7 @@ const ModalView = styled.section`
   border-radius: 12px;
   background-color: white;
   transform: translate(-50%, -50%);
-  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%);
+  box-shadow: ${({ theme }) => theme.effects.modal_shadow};
 
   ${media.tablet} {
     top: 40%;
