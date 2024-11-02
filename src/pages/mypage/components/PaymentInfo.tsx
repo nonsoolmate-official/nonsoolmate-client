@@ -8,7 +8,6 @@ import { registerCard } from "@utils/registerCard";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { convertPrice } from "../utils/convertPrice";
 
 export default function PaymentInfo() {
   const { data: NEXT_PAYMENT, refetch } = useGetPayment();
@@ -124,13 +123,13 @@ export default function PaymentInfo() {
         {NEXT_PAYMENT && (
           <Payment>
             <InfoTitle>총 할인가</InfoTitle>
-            <Info>{convertPrice(NEXT_PAYMENT.totalDiscountPrice)}원</Info>
+            <Info>{NEXT_PAYMENT.totalDiscountPrice.toLocaleString()}원</Info>
           </Payment>
         )}
         {NEXT_PAYMENT && (
           <Payment>
             <InfoTitle>결제 예정 금액</InfoTitle>
-            <Info>{convertPrice(NEXT_PAYMENT?.totalPrice)}원</Info>
+            <Info>{NEXT_PAYMENT?.totalPrice.toLocaleString()}원</Info>
           </Payment>
         )}
       </PaymentInfoLayout>
