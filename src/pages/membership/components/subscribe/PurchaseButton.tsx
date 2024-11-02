@@ -17,8 +17,12 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
   sessionStorage.setItem("plan", JSON.stringify(plan));
 
   function clickPurchaseButton() {
-    sessionStorage.setItem("id", String(id));
-    getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
+    if (id === 3) {
+      window.location.href = "https://walla.my/v/WizqOMZ0xwVe9QsbQkpW";
+    } else {
+      sessionStorage.setItem("id", String(id));
+      getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
+    }
   }
 
   return <Button onClick={clickPurchaseButton}>시작하기</Button>;

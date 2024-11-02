@@ -64,6 +64,7 @@ import QnaToogleOpenIc from "./icon/qnatoogleopenIc.svg?react";
 
 import BasicPlanIc from "./icon/basicPlanIc.svg?react";
 import PremiumPlanIc from "./icon/premiumPlanIc.svg?react";
+import IndividualEditingIc from "./icon/individualEditingIc.svg?react";
 
 import CheckSmallIc from "./icon/checkSmallIc.svg?react";
 
@@ -197,6 +198,7 @@ export {
   PrecautionNumThreeIc,
   PrecautionNumTwoIc,
   PremiumPlanIc,
+  IndividualEditingIc,
   PresentIc,
   PriceIc,
   PrintCircleIc,

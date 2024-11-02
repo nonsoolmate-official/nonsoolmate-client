@@ -1,4 +1,4 @@
-import { BasicPlanIc, PremiumPlanIc } from "@assets/index";
+import { BasicPlanIc, PremiumPlanIc, IndividualEditingIc } from "@assets/index";
 import styled from "styled-components";
 
 interface IconsProp {
@@ -8,7 +8,9 @@ interface IconsProp {
 export default function Icons(props: IconsProp) {
   const { id } = props;
 
-  return <>{id === 1 ? <BasicPlanIcon /> : <PremiumPlanIcon />}</>;
+  return (
+    <>{id === 1 ? <BasicPlanIcon /> : id === 2 ? <PremiumPlanIcon /> : id === 3 ? <IndividualEditingIcon /> : null}</>
+  );
 }
 
 const BasicPlanIcon = styled(BasicPlanIc)`
@@ -18,4 +20,8 @@ const BasicPlanIcon = styled(BasicPlanIc)`
 const PremiumPlanIcon = styled(PremiumPlanIc)`
   width: 4.4rem;
   height: 4rem;
+`;
+const IndividualEditingIcon = styled(IndividualEditingIc)`
+  width: 4.4rem;
+  height: 4.4rem;
 `;
