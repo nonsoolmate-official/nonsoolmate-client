@@ -26,13 +26,19 @@ export default function Agreements({ handleAgreements }: AgreementsProps) {
     <AgreementContainer>
       <Agreement>
         <CheckIconBox onClick={clickTermsAgreement}>{isAgreeTerms ? <CheckBtnIc /> : <CheckEmptyIc />}</CheckIconBox>
-        <AgreementText> {AGREEMENT_TEXT.terms1}</AgreementText>
+        <AgreementText>
+          <a href="https://nonsoolmatee.notion.site/125c4d861687802793b3ea1faf085a74?pvs=4">{AGREEMENT_TEXT.terms1}</a>
+        </AgreementText>
       </Agreement>
       <Agreement>
         <CheckIconBox onClick={clickMinorConsentAgreement}>
           {isAgreeMinorConsent ? <CheckBtnIc /> : <CheckEmptyIc />}
         </CheckIconBox>
-        <AgreementText>{AGREEMENT_TEXT.terms2}</AgreementText>
+        <AgreementText>
+          <a href="https://www.notion.so/nonsoolmatee/125c4d86168780078295e23ffb0e6717?pvs=4#128c4d86168780ca9a9bf1e8de958aa0">
+            {AGREEMENT_TEXT.terms2}
+          </a>
+        </AgreementText>
       </Agreement>
     </AgreementContainer>
   );
@@ -59,4 +65,13 @@ const AgreementText = styled.p`
   ${({ theme }) => theme.fonts.Caption1}
 
   color: ${theme.colors.grey_500};
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.grey_1000};
+    }
+  }
 `;
