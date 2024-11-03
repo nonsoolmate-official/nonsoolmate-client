@@ -10,7 +10,7 @@ export default function Price(props: PriceProp) {
   return (
     <Container>
       <PriceText> ₩{price.toLocaleString()} </PriceText>
-      <Month>/월</Month>
+      <Unit>{price > 50000 ? "/월" : "/개"}</Unit>
     </Container>
   );
 }
@@ -25,7 +25,7 @@ const PriceText = styled.h2`
   ${({ theme }) => theme.fonts.Headline5};
 `;
 
-const Month = styled.h3`
+const Unit = styled.h3`
   ${({ theme }) => theme.fonts.Body6};
 
   padding-top: 0.7rem;
