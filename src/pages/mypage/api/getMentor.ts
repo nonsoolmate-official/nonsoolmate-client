@@ -14,13 +14,6 @@ export interface MentorDataTypes {
       universityImageUrl: string;
     },
   ];
-  tags: [
-    {
-      tagId: number;
-      tagName: string;
-      tagImageUrl: string;
-    },
-  ];
 }
 
 export async function getMentor() {
