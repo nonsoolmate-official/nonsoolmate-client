@@ -33,13 +33,12 @@ export default function Mentor() {
 
               <MentorProfileBox>
                 <Name>{data?.teacherName} 선생님</Name>
-                {data.isCertified &&
-                  data.tags.map((tag) => (
-                    <Badge key={tag.tagId}>
-                      <PassIc />
-                      {tag.tagName}
-                    </Badge>
-                  ))}
+                {data.isCertified && (
+                  <Badge>
+                    <PassIc />
+                    논술 합격 인증
+                  </Badge>
+                )}
               </MentorProfileBox>
               <ButtonBox>
                 {data.qnaLink && membershipData && membershipData?.membershipName !== "베이직 플랜" && (
