@@ -139,6 +139,9 @@ import PaySuccessIc from "./icon/paySuccessIc.svg?react";
 import PriceIc from "./icon/priceIc.svg?react";
 import ReviewIc from "./icon/reviewIc.svg?react";
 
+import TeacherFemaleIc from "./icon/teacherFemaleIc.svg?react";
+import TeacherMaleIc from "./icon/teacherMaleIc.svg?react";
+
 export {
   Advan1Ic,
   Advan2Ic,
@@ -226,6 +229,8 @@ export {
   TakeTestIc,
   TestActiveIc,
   TestDisabledIc,
+  TeacherFemaleIc,
+  TeacherMaleIc,
   Univ10Ic,
   Univ11Ic,
   Univ12Ic,
