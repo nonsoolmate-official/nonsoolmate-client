@@ -4,7 +4,7 @@ export interface MentorDataTypes {
   isMatched: boolean;
   teacherId: number;
   teacherName: string;
-  teacherProfileImageUrl: string;
+  gender: string;
   introduction: string;
   isCertified: boolean;
   qnaLink: string;

@@ -1,4 +1,4 @@
-import { PassIc } from "@assets/index";
+import { PassIc, TeacherFemaleIc, TeacherMaleIc } from "@assets/index";
 import Button from "@components/button/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import useGetName from "@pages/home/hooks/useGetName";
@@ -29,7 +29,7 @@ export default function Mentor() {
           <Discription> {name?.data.memberName}님의 목표대학에 가장 적합한 선생님이에요</Discription>
           <MentorInfoLayout>
             <MentorProfileContainer>
-              <Profile src={data?.teacherProfileImageUrl} />
+              {data?.gender == "F" ? <TeacherFemaleIcon /> : <TeacherMaleIcon />}
 
               <MentorProfileBox>
                 <Name>{data?.teacherName} 선생님</Name>
@@ -112,10 +112,14 @@ const MentorProfileContainer = styled.div`
   align-items: center;
 `;
 
-const Profile = styled.img`
+const TeacherFemaleIcon = styled(TeacherFemaleIc)`
   width: 6rem;
   height: 6rem;
-  object-fit: cover;
+`;
+
+const TeacherMaleIcon = styled(TeacherMaleIc)`
+  width: 6rem;
+  height: 6rem;
 `;
 
 const MentorProfileBox = styled.div`
