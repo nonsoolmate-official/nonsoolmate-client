@@ -3,6 +3,7 @@ import Button from "@components/button/Button";
 import UnivChip from "@components/univChip/UnivChip";
 import useGetName from "@pages/home/hooks/useGetName";
 import { useGetMentor } from "@pages/mypage/hooks/useGetMentor";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useGetMembership from "../hooks/useGetMembership";
 
@@ -11,6 +12,8 @@ export default function Mentor() {
   const { data } = useGetMentor();
   const { data: membershipData } = useGetMembership();
 
+  const navigate = useNavigate();
+
   return (
     <MentorWrapper>
       <Title>담당 선생님</Title>
@@ -18,7 +21,7 @@ export default function Mentor() {
         <NullMentorWrapper>
           <NullMentorContainer>
             <Content style={{ margin: 0 }}>아직 배정받은 선생님이 없어요.</Content>
-            <Button>선생님 배정 받기</Button>
+            <Button onClick={() => navigate("/membership")}>선생님 배정 받기</Button>
           </NullMentorContainer>
         </NullMentorWrapper>
       ) : data?.isMatched ? (

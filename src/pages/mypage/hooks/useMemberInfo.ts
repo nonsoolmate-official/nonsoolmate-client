@@ -44,8 +44,14 @@ export default function useMemberInfo(response: AxiosResponse<DataTypes>) {
   }, []);
 
   const validateName = useCallback((value: string) => {
+    const koreanRegex = /^[ㄱ-ㅎ가-힣]+$/;
+
     if (value.length == 0) {
       return ERROR_MESSAGE.NAME_EMPTY;
+    }
+
+    if (!koreanRegex.test(value)) {
+      return ERROR_MESSAGE.LANGUAGE;
     }
   }, []);
 
