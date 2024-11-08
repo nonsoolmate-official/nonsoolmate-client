@@ -44,6 +44,10 @@ const Wrapper = styled.section`
 
   gap: 3rem;
   padding: 10.4rem 0;
+
+  ${media.tablet} {
+    padding: 10.4rem 2rem;
+  }
 `;
 
 const BadgeLayout = styled.div`
@@ -68,11 +72,13 @@ const TitleBox = styled.div<{ $caution: string | undefined }>`
 const MainTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline2};
 
-  ${media.mobile} {
-    ${({ theme }) => theme.fonts.Body1};
-
+  ${media.tablet} {
     text-align: center;
     white-space: pre-line;
+  }
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body1};
   }
 `;
 
@@ -88,6 +94,9 @@ const SubTitle = styled.h2`
   color: ${theme.colors.grey_700};
   text-align: center;
 
+  ${media.tablet} {
+    white-space: pre-line;
+  }
   ${media.mobile} {
     ${({ theme }) => theme.fonts.Body8};
   }
@@ -97,4 +106,10 @@ const Caution = styled.p`
   ${({ theme }) => theme.fonts.Body8};
 
   color: ${theme.colors.grey_400};
+
+  ${media.tablet} {
+    margin-top: 3rem;
+    text-align: center;
+    white-space: pre-line;
+  }
 `;
