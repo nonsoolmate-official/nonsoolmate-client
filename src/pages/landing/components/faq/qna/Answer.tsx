@@ -1,3 +1,4 @@
+import { media } from "style/responsiveStyle";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -15,4 +16,8 @@ const Text = styled.h2`
 
   margin-left: 3.6rem;
   color: ${theme.colors.grey_8};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;
