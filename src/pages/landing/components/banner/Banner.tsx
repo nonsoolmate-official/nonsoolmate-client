@@ -52,11 +52,16 @@ const TextsContainer = styled.span`
   right: 15%;
   transform: translateY(-50%);
   width: 37.6rem;
+
   ${media.tablet} {
     ${columnFlex}
 
     left: 50%;
     transform: translate(-50%, -100%);
+  }
+
+  ${media.mobile} {
+    top: 45%;
   }
 `;
 

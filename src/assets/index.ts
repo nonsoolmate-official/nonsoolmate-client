@@ -36,6 +36,7 @@ import TestDisabledIc from "./icon/testDisabledIc.svg?react";
 
 import FooterLogoIc from "./icon/footerLogoIc.svg?react";
 import LogoIc from "./icon/logoIc.svg?react";
+import LogoSmallIc from "./icon/logoSmallIc.svg?react";
 
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
@@ -180,6 +181,7 @@ export {
   LeftCircleLongIc,
   LoginInfoIc,
   LogoIc,
+  LogoSmallIc,
   MaleStudentIc,
   MembershipBasicIc,
   MembershipDisabledIc,
