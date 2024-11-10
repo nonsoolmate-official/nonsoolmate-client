@@ -2,7 +2,7 @@
 import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
-type Variant = "primary" | "secondary" | "tertiary" | "text" | "mobile_gray" | "mobile_blue";
+type Variant = "primary" | "secondary" | "tertiary" | "text" | "mobile_gray" | "mobile_blue" | "guide";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -71,6 +71,17 @@ const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSiz
           color: ${({ theme }) => theme.colors.grey_300};
           text-decoration: underline;
           ${({ theme }) => theme.fonts.Body4};
+          /* stylelint-disable-next-line no-duplicate-selectors */
+          &:hover {
+            color: ${({ theme }) => theme.colors.main_blue};
+            transition: all 0.2s ease-in-out;
+          }
+        `;
+      case "guide":
+        return css`
+          padding: 0;
+          color: ${({ theme }) => theme.colors.main_blue};
+          ${({ theme }) => theme.fonts.Body3};
           /* stylelint-disable-next-line no-duplicate-selectors */
           &:hover {
             color: ${({ theme }) => theme.colors.main_blue};
