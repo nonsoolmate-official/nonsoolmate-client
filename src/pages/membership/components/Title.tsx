@@ -23,7 +23,7 @@ const Container = styled.div`
     margin-top: 10rem;
   }
 
-  ${media.mob} {
+  ${media.mobile} {
     margin-top: 8rem;
   }
 `;
