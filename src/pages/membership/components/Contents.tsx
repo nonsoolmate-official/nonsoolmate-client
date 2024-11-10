@@ -66,9 +66,14 @@ const Container = styled.section`
   gap: 2.4rem;
   margin: 5.6rem 8.4rem 8.4rem;
   grid-template-columns: repeat(4, 1fr);
+
   ${media.tablet} {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2.4rem;
     margin: 5.6rem 7.5rem 8.4rem;
+  }
+
+  ${media.mobile} {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
