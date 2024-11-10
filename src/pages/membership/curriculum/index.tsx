@@ -2,6 +2,7 @@ import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import ContentBox from "../components/curriculum/ContentBox";
 import { CURRICULUMS } from "../core/curriculum";
+import { media } from "style/responsiveStyle";
 
 export default function index() {
   return (
@@ -49,12 +50,22 @@ const Phrase = styled.p`
   margin-top: 3.2rem;
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline5};
+  }
 `;
 
 const Explanation = styled.p`
   margin-top: 1.6rem;
   color: ${({ theme }) => theme.colors.grey_600};
   ${({ theme }) => theme.fonts.Body2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+
+    color: ${({ theme }) => theme.colors.grey_700};
+  }
 `;
 
 const Contents = styled.div`
