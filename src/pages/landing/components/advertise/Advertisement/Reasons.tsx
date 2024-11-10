@@ -36,8 +36,13 @@ const Container = styled.section`
   }
 
   ${media.mobile} {
-    display: flex;
     overflow-x: auto;
-    width: 420px;
+    width: 100%;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
