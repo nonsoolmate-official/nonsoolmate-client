@@ -57,6 +57,7 @@ const Container = styled.div`
 
   ${media.mobile} {
     gap: 1.8rem;
+    padding: 0 2rem 0 0;
   }
 `;
 
