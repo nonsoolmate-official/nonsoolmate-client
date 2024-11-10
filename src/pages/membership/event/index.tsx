@@ -5,6 +5,7 @@ import styled from "styled-components";
 import UnivBox from "../components/event/UnivBox";
 import { NOTION_LINK } from "../constants/refund";
 import { UNIV_LIST } from "../core/univlist";
+import { media } from "style/responsiveStyle";
 
 export default function index() {
   const handleDetail = () => {
@@ -60,12 +61,22 @@ const Phrase = styled.p`
   margin-top: 3.2rem;
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline5};
+  }
 `;
 
 const Explanation = styled.p`
   margin-top: 1.6rem;
   color: ${({ theme }) => theme.colors.grey_600};
   ${({ theme }) => theme.fonts.Body2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+
+    color: ${({ theme }) => theme.colors.grey_800};
+  }
 `;
 
 const UnivsContainer = styled.div`
@@ -79,6 +90,17 @@ const UnivsContainer = styled.div`
 
   @media (width <= 1098px) {
     grid-template-columns: repeat(5, 1fr);
+  }
+
+  ${media.mobile} {
+    overflow-x: auto;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    padding: 6.4rem 2rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
