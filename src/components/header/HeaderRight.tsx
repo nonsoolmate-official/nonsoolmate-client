@@ -54,6 +54,10 @@ const Container = styled.div`
   ${media.tablet} {
     padding: 0 3.2rem 0 0;
   }
+
+  ${media.mobile} {
+    gap: 1.8rem;
+  }
 `;
 
 const LoginInfoButton = styled.button`
