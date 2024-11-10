@@ -22,16 +22,28 @@ const Container = styled.div`
   ${media.tablet} {
     margin-top: 10rem;
   }
+
+  ${media.mob} {
+    margin-top: 8rem;
+  }
 `;
 
 const Text = styled.h1`
   ${commonFlex}
 
   ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline5};
+  }
 `;
 
 const Nonsool = styled.p`
   ${({ theme }) => theme.fonts.Headline2};
 
   color: ${({ theme }) => theme.colors.main_blue};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline5};
+  }
 `;
