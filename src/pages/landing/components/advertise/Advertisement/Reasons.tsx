@@ -1,6 +1,7 @@
 import { REASON_LIST } from "@pages/landing/core/reasons";
 import styled from "styled-components";
 import Advertisement from "./Advertisement";
+import { media } from "style/responsiveStyle";
 
 export default function Reasons() {
   return (
@@ -32,5 +33,11 @@ const Container = styled.section`
 
   @media (width <= 1024px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${media.mobile} {
+    display: flex;
+    overflow-x: auto;
+    width: 420px;
   }
 `;

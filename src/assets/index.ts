@@ -124,6 +124,7 @@ import CouponIc from "./icon/couponIc.svg?react";
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import MonthlyMembershipGrayIc from "./icon/monthlyMembershipGrayIc.svg?react";
+import MobileErrorIc from "./icon/mobileErrorIc.svg?react";
 
 import PlusIc from "./icon/plusIc.svg?react";
 
@@ -188,6 +189,7 @@ export {
   MembershipIc,
   MembershipPremiumIc,
   MonthlyMembershipGrayIc,
+  MobileErrorIc,
   NaverLoginIc,
   NeutralStudentIc,
   NotCheckBtnIc,

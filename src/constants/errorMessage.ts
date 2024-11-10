@@ -6,4 +6,5 @@ export const ERROR_MESSAGE = {
   NAME_EMPTY: "* 이름을 입력해주세요.",
   PHONE_EMPTY: "* 전화번호를 입력해주세요.",
   EMAIL_EMPTY: "* 이메일을 입력해주세요.",
+  MOBILE: "모바일에서는 접속이 불가합니다.",
 };
