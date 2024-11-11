@@ -23,4 +23,8 @@ const Text = styled.h1`
   ${({ theme }) => theme.fonts.Headline1};
 
   color: ${({ theme }) => theme.colors.grey_1000};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline2};
+  }
 `;

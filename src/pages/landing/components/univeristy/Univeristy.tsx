@@ -29,6 +29,11 @@ const Container = styled.section`
   ${media.tablet} {
     padding: 19.62rem 0 23.8rem;
   }
+
+  ${media.mobile} {
+    gap: 5.6rem;
+    padding: 8rem 0;
+  }
 `;
 
 const TextContainer = styled.div`

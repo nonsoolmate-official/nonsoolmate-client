@@ -1,11 +1,8 @@
 import { InstaIc, KakaoIc } from "@assets/index";
+import { openUrl } from "@utils/openUrl";
 import styled from "styled-components";
 
 export default function Sns() {
-  function openUrl(url: string) {
-    window.open(url, "_blank");
-  }
-
   return (
     <Container>
       <BtnWrapper type="button" onClick={() => openUrl("http://pf.kakao.com/_iuHpG")}>

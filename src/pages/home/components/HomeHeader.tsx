@@ -8,8 +8,11 @@ import UserProfileModal from "@pages/home/components/UserProfileModal";
 import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
 import useGetName from "../hooks/useGetName";
+import Button from "@components/button/Button";
+import { openUrl } from "@utils/openUrl";
 
 export default function HomeHeader() {
+  const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
   const isIpadSize = useMediaQuery({ query: "(max-width: 1024px)" });
   const [showMemberInfo, setShowMemberInfo] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -34,6 +37,15 @@ export default function HomeHeader() {
           <LogoIcon />
         </LogoButton>
         <HeaderInfo>
+          {!isMobileSize && (
+            <Buttons>
+              <Button
+                variant="guide"
+                onClick={() => openUrl("https://nonsoolmatee.notion.site/808a224fdf664eb3bbf367d2db3ddb63?pvs=4")}>
+                이용 가이드
+              </Button>
+            </Buttons>
+          )}
           {!isIpadSize && (
             <MembershipButton type="button" onClick={() => navigate("/membership")}>
               멤버십
@@ -81,6 +93,11 @@ const LogoIcon = styled(LogoIc)`
 
 const HeaderInfo = styled.span`
   ${commonFlex};
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  margin-right: 1rem;
 `;
 
 const MembershipButton = styled.button`

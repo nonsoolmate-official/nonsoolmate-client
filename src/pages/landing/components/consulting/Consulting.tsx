@@ -1,10 +1,15 @@
 import applyUnivConsulting from "@assets/image/applyUnivConsulting.png";
 import img from "@assets/image/careServiceImg.png";
+import mobileImg from "@assets/image/careServiceMobile.png";
 import universitiesBg from "@assets/image/universitiesBg.png";
 import styled from "styled-components";
 import ConsultingText from "./ConsultingText";
+import { media } from "style/responsiveStyle";
+import { useMediaQuery } from "react-responsive";
 
 export default function Consulting() {
+  const isMobileSize = useMediaQuery({ query: "(max-width: 430px)" });
+
   return (
     <Wrapper>
       <ConsultingServiceLayout>
@@ -27,7 +32,11 @@ export default function Consulting() {
           content="학원보다 자유로운 실시간 질의응답과 과외보다 체계적인 학생 관리,
           오직 논술메이트에서 만나볼 수 있어요."
         />
-        <CareServiceImg src={img} alt="care-service-example" />
+        {isMobileSize ? (
+          <CareServiceImg src={mobileImg} alt="care-service-example" />
+        ) : (
+          <CareServiceImg src={img} alt="care-service-example" />
+        )}
       </CareServiceLayout>
     </Wrapper>
   );
@@ -51,6 +60,16 @@ const ConsultingServiceContainer = styled.div`
   gap: 8.4rem;
   justify-content: space-between;
   padding: 12.8rem 21.5rem 0;
+
+  @media (width <= 1140px) {
+    flex-direction: column;
+    padding: 12.8rem 2rem;
+    text-align: center;
+  }
+
+  ${media.mobile} {
+    text-align: left;
+  }
 `;
 
 const ApplyUnivConsulting = styled.img`
@@ -58,6 +77,11 @@ const ApplyUnivConsulting = styled.img`
   width: 37.1rem;
   height: 48.2rem;
   object-fit: cover;
+
+  @media (width <= 1140px) {
+    width: 100%;
+    object-fit: contain;
+  }
 `;
 
 const Universities = styled.img`
@@ -75,6 +99,16 @@ const CareServiceLayout = styled.section`
   display: flex;
   flex-direction: column;
   padding: 0 21.5rem;
+
+  @media (width <= 1140px) {
+    flex-direction: column;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  ${media.mobile} {
+    text-align: left;
+  }
 `;
 
 const CareServiceImg = styled.img`
@@ -83,4 +117,9 @@ const CareServiceImg = styled.img`
   height: 48.8rem;
   margin-top: 2rem;
   object-fit: cover;
+
+  @media (width <= 1140px) {
+    padding: 0 2rem;
+    object-fit: contain;
+  }
 `;
