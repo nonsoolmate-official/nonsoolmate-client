@@ -9,6 +9,7 @@ import { useMediaQuery } from "react-responsive";
 import { media } from "style/responsiveStyle";
 import useGetName from "../hooks/useGetName";
 import Button from "@components/button/Button";
+import { openUrl } from "@utils/openUrl";
 
 export default function HomeHeader() {
   const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
@@ -28,10 +29,6 @@ export default function HomeHeader() {
 
     setShowMemberInfo((open) => !open);
   };
-
-  function openUrl(url: string) {
-    window.open(url, "_blank");
-  }
 
   return (
     <>

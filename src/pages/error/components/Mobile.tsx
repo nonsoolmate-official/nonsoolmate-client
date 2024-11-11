@@ -4,13 +4,10 @@ import styled from "styled-components";
 import { ERROR_MESSAGE } from "constants/errorMessage";
 import Button from "@components/button/Button";
 import { useNavigate } from "react-router-dom";
+import { openUrl } from "@utils/openUrl";
 
 export default function Mobile() {
   const navigate = useNavigate();
-
-  function openUrl(url: string) {
-    window.open(url, "_blank");
-  }
 
   return (
     <Container>
