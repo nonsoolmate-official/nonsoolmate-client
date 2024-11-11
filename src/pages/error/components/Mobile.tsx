@@ -5,6 +5,7 @@ import { ERROR_MESSAGE } from "constants/errorMessage";
 import Button from "@components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { openUrl } from "@utils/openUrl";
+import { INSTRUCTION_LINK } from "../constants/mobile";
 
 export default function Mobile() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Mobile() {
         <Button variant="mobile_gray" onClick={() => navigate("/")}>
           돌아가기
         </Button>
-        <Button variant="mobile_blue" onClick={() => openUrl("https://nonsoolmatemobile.framer.website/")}>
+        <Button variant="mobile_blue" onClick={() => openUrl(INSTRUCTION_LINK)}>
           안내보기
         </Button>
       </Buttons>
