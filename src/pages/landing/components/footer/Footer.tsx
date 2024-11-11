@@ -62,4 +62,9 @@ const NonsoolInfo = styled.img`
   padding: 0;
   border: none;
   background: none;
+
+  ${media.mobile} {
+    width: 100%;
+    object-fit: contain;
+  }
 `;

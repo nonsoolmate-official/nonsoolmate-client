@@ -21,9 +21,9 @@ export default function Mobile() {
         <Button variant="mobile_gray" onClick={() => navigate("/")}>
           돌아가기
         </Button>
-        <Button variant="primary" style={{ padding: "0.8rem 1.6rem" }} onClick={() => openUrl(INSTRUCTION_LINK)}>
+        <InstructionButton variant="primary" onClick={() => openUrl(INSTRUCTION_LINK)}>
           안내보기
-        </Button>
+        </InstructionButton>
       </Buttons>
     </Container>
   );
@@ -58,4 +58,9 @@ const Buttons = styled.div`
   flex-direction: column;
   gap: 2rem;
   margin-top: 5.4rem;
+`;
+
+const InstructionButton = styled(Button)`
+  padding: 0.8rem 1.6rem;
+  ${({ theme }) => theme.fonts.Body7};
 `;

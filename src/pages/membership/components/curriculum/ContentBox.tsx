@@ -65,6 +65,10 @@ const Title = styled.p`
   margin-top: 1.2rem;
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Headline4};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body1};
+  }
 `;
 
 const Details = styled.p`
@@ -76,9 +80,20 @@ const Details = styled.p`
   ${media.tablet} {
     width: 64.8rem;
   }
+
+  ${media.mobile} {
+    width: 26.4rem;
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;
 
 const Img = styled.img`
   width: 64.8rem;
   height: 30rem;
+
+  ${media.tablet} {
+    width: 32rem;
+    height: 14.8rem;
+    object-fit: contain;
+  }
 `;

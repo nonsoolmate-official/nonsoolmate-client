@@ -10,6 +10,7 @@ import Contents from "./components/Contents";
 import Title from "./components/Title";
 import Curriculum from "./curriculum";
 import Event from "./event";
+import { media } from "style/responsiveStyle";
 
 export default function Membership() {
   const token = getToken();
@@ -46,6 +47,10 @@ const LogoContainer = styled.div`
 const Phrase = styled.p`
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.Headline4};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body1};
+  }
 `;
 
 const LogoIcon = styled(FooterLogoIc)`

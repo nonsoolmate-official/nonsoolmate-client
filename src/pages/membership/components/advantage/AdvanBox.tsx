@@ -53,6 +53,11 @@ const Container = styled.div`
     grid-template-columns: repeat(2, 1fr);
     padding: 1.8rem 1.6rem 3.2rem;
   }
+
+  ${media.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 1.8rem 1.6rem 3.2rem;
+  }
 `;
 
 const Box = styled.div<{ $last: boolean }>`

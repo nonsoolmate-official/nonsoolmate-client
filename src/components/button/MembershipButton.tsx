@@ -1,6 +1,7 @@
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { media } from "style/responsiveStyle";
 
 export default function MembershipButton() {
   const navigate = useNavigate();
@@ -22,4 +23,8 @@ const Button = styled.button`
   ${({ theme }) => theme.fonts.Body3};
 
   color: ${({ theme }) => theme.colors.main_blue};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;
