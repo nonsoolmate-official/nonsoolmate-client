@@ -1,3 +1,4 @@
+import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
 interface ConsultingTextProps {
@@ -22,12 +23,20 @@ const Wrapper = styled.section`
   gap: 2rem;
   padding: "12.8rem 12.8rem 0rem 12.8rem";
   background-color: ${({ theme }) => theme.colors.grey_1100};
+
+  ${media.tablet} {
+    padding: 0;
+  }
 `;
 
 const Category = styled.h1`
   color: ${({ theme }) => theme.colors.middle_blue};
 
   ${({ theme }) => theme.fonts.Body1};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Caption1};
+  }
 `;
 
 const Subtitle = styled.h2`
@@ -36,6 +45,11 @@ const Subtitle = styled.h2`
   white-space: pre-line;
 
   ${({ theme }) => theme.fonts.Headline4};
+
+  ${media.tablet} {
+    width: 100%;
+    ${({ theme }) => theme.fonts.Body1};
+  }
 `;
 
 const Content = styled.span`
@@ -43,4 +57,8 @@ const Content = styled.span`
   white-space: pre-line;
 
   ${({ theme }) => theme.fonts.Body2};
+
+  ${media.tablet} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;

@@ -1,3 +1,4 @@
+import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
 export default function Summary() {
@@ -8,4 +9,8 @@ const Text = styled.p`
   ${({ theme }) => theme.fonts.Body2};
 
   margin-top: 1rem;
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;

@@ -36,6 +36,7 @@ import TestDisabledIc from "./icon/testDisabledIc.svg?react";
 
 import FooterLogoIc from "./icon/footerLogoIc.svg?react";
 import LogoIc from "./icon/logoIc.svg?react";
+import LogoSmallIc from "./icon/logoSmallIc.svg?react";
 
 import LoginInfoIc from "./icon/loginInfoIc.svg?react";
 
@@ -123,6 +124,7 @@ import CouponIc from "./icon/couponIc.svg?react";
 import DiscountIc from "./icon/discountIc.svg?react";
 import MembershipIc from "./icon/membershipPlanIc.svg?react";
 import MonthlyMembershipGrayIc from "./icon/monthlyMembershipGrayIc.svg?react";
+import MobileErrorIc from "./icon/mobileErrorIc.svg?react";
 
 import PlusIc from "./icon/plusIc.svg?react";
 
@@ -180,12 +182,14 @@ export {
   LeftCircleLongIc,
   LoginInfoIc,
   LogoIc,
+  LogoSmallIc,
   MaleStudentIc,
   MembershipBasicIc,
   MembershipDisabledIc,
   MembershipIc,
   MembershipPremiumIc,
   MonthlyMembershipGrayIc,
+  MobileErrorIc,
   NaverLoginIc,
   NeutralStudentIc,
   NotCheckBtnIc,

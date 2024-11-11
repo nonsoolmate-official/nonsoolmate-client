@@ -1,6 +1,7 @@
 import Correction from "@pages/answer/correction";
 import Explanation from "@pages/answer/explanation";
 import Error from "@pages/error";
+import Mobile from "@pages/error/components/Mobile";
 import Home from "@pages/home";
 import HomePractice from "@pages/home/homePractice/HomePractice";
 import HomeStudy from "@pages/home/homeStudy/HomeStudy";
@@ -50,6 +51,7 @@ export const router = createBrowserRouter([
       { path: "/payment", element: <Payment /> },
       { path: "/fail", element: <Fail /> },
       { path: "/success", element: <Success /> },
+      { path: "/mobile/error", element: <Mobile /> },
     ],
   },
 ]);

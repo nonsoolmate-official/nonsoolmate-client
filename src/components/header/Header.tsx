@@ -4,6 +4,7 @@ import HeaderRight from "./HeaderRight";
 
 import UserProfileModal from "@pages/home/components/UserProfileModal";
 import { useState } from "react";
+import { media } from "style/responsiveStyle";
 
 interface HeaderProps {
   isLanding: boolean;
@@ -35,4 +36,8 @@ const Container = styled.header<{ $isLanding: boolean }>`
   height: 6.4rem;
   border-bottom: 1px solid #ecedf0;
   box-shadow: ${({ $isLanding }) => ($isLanding ? "none" : "0 0 12px 0 rgb(0 0 0 / 10%)")};
+
+  ${media.mobile} {
+    height: 4.8rem;
+  }
 `;

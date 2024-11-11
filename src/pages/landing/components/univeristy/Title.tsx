@@ -1,3 +1,4 @@
+import { media } from "style/responsiveStyle";
 import styled from "styled-components";
 
 export default function Title() {
@@ -6,4 +7,8 @@ export default function Title() {
 
 const Text = styled.h1`
   ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Headline5};
+  }
 `;

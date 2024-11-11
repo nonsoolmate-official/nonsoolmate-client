@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Reasons from "./Advertisement/Reasons";
 import Summary from "./Summary";
-import Title from "./Title";
+import { media } from "style/responsiveStyle";
 
 export default function Advertise() {
   return (
     <Container>
-      <Title />
+      <Text>왜 논술메이트인가요?</Text>
       <Summary />
       <Reasons />
     </Container>
@@ -23,5 +23,13 @@ const Container = styled.section`
 
   @media (width <= 768px) {
     padding: 8.6rem 2rem 11.6rem;
+  }
+`;
+
+const Text = styled.h1`
+  ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.tablet} {
+    ${({ theme }) => theme.fonts.Headline4};
   }
 `;

@@ -1,6 +1,7 @@
 import { PracticeIc, PriceIc, ReviewIc, TakeTestIc } from "@assets/index";
 import { HTMLAttributes } from "react";
 import { columnFlex } from "style/commonStyle";
+import { media } from "style/responsiveStyle";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -43,6 +44,10 @@ const Wrapper = styled.section`
 
   gap: 3rem;
   padding: 10.4rem 0;
+
+  ${media.tablet} {
+    padding: 10.4rem 2rem;
+  }
 `;
 
 const BadgeLayout = styled.div`
@@ -66,6 +71,15 @@ const TitleBox = styled.div<{ $caution: string | undefined }>`
 
 const MainTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline2};
+
+  ${media.tablet} {
+    text-align: center;
+    white-space: pre-line;
+  }
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body1};
+  }
 `;
 
 const SubTitleBox = styled.div`
@@ -79,11 +93,23 @@ const SubTitle = styled.h2`
 
   color: ${theme.colors.grey_700};
   text-align: center;
-  white-space: pre-line;
+
+  ${media.tablet} {
+    white-space: pre-line;
+  }
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;
 
 const Caution = styled.p`
   ${({ theme }) => theme.fonts.Body8};
 
   color: ${theme.colors.grey_400};
+
+  ${media.tablet} {
+    margin-top: 3rem;
+    text-align: center;
+    white-space: pre-line;
+  }
 `;

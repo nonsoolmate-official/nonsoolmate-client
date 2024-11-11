@@ -36,7 +36,13 @@ const ContentContainer = styled.div`
     gap:4rem;
     align-items: start;
   }
+
+  ${media.mobile} {
+    margin-bottom: 8rem;
+    padding: 0 2rem;
+  }
 `;
+
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,6 +50,9 @@ const TextBox = styled.div`
   width: 37.6rem;
   ${media.tablet} {
     gap: 2rem;
+  }
+  ${media.mobile} {
+    width: 100%;
   }
 `;
 
@@ -63,6 +72,10 @@ const ContentTitle = styled.h1`
   ${({ theme }) => theme.fonts.Headline3}
 
   white-space: pre-line;
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body1};
+  }
 `;
 
 const Description = styled.span`
@@ -70,9 +83,17 @@ const Description = styled.span`
 
   color: ${theme.colors.grey_600};
   word-break: keep-all;
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body8};
+  }
 `;
 
 const Image = styled.img`
   width: 45.6rem;
   object-fit: cover;
+
+  ${media.mobile} {
+    width: 100%;
+  }
 `;

@@ -2,6 +2,7 @@ import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { QnaToogleOpenIc, QnaToogleCloseIc } from "@assets/index";
 import theme from "style/theme";
+import { media } from "style/responsiveStyle";
 
 interface QuestionProps {
   question: string;
@@ -26,6 +27,10 @@ const Text = styled.h2`
   height: 7rem;
   color: ${theme.colors.grey_8};
   cursor: pointer;
+
+  ${media.mobile} {
+    ${({ theme }) => theme.fonts.Body5};
+  }
 `;
 
 const QnaToogleOpenIcon = styled(QnaToogleOpenIc)`
