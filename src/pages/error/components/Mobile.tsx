@@ -21,7 +21,7 @@ export default function Mobile() {
         <Button variant="mobile_gray" onClick={() => navigate("/")}>
           돌아가기
         </Button>
-        <Button variant="mobile_blue" onClick={() => openUrl(INSTRUCTION_LINK)}>
+        <Button variant="primary" style={{ padding: "0.8rem 1.6rem" }} onClick={() => openUrl(INSTRUCTION_LINK)}>
           안내보기
         </Button>
       </Buttons>
