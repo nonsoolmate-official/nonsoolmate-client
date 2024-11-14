@@ -119,7 +119,9 @@ const CareServiceImg = styled.img`
   object-fit: cover;
 
   @media (width <= 1140px) {
-    padding: 0 2rem;
+    width: 90%;
+    height: 100%;
+    margin-top: 10rem;
     object-fit: contain;
   }
 `;
