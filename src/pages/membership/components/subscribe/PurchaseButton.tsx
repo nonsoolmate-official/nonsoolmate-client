@@ -3,14 +3,17 @@ import { getToken } from "@pages/socialLogin/utils/token";
 import { useNavigate } from "react-router-dom";
 import { commonFlex } from "style/commonStyle";
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
 
 interface PurchaseButtonProps {
   id: number;
   plan: Plan[];
 }
+
 export default function PurchaseButton(props: PurchaseButtonProps) {
   const { id, plan } = props;
   const navigate = useNavigate();
+  const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
 
   const from = location.pathname;
   sessionStorage.setItem("from", from);
@@ -19,6 +22,10 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
   }
 
   function clickPurchaseButton() {
+    if (isMobileSize) {
+      navigate("/mobile/error");
+      return;
+    }
     if (id === 3) {
       window.location.href = "https://walla.my/v/WizqOMZ0xwVe9QsbQkpW";
     } else {
