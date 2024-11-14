@@ -82,7 +82,6 @@ const Explanation = styled.p`
 const UnivsContainer = styled.div`
   display: grid;
   gap: 1.4rem;
-  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 6.4rem 11rem;
