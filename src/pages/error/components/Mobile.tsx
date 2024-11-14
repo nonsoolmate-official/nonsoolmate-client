@@ -3,12 +3,14 @@ import { columnFlex } from "style/commonStyle";
 import styled from "styled-components";
 import { ERROR_MESSAGE } from "constants/errorMessage";
 import Button from "@components/button/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { openUrl } from "@utils/openUrl";
 import { INSTRUCTION_LINK } from "../constants/mobile";
 
 export default function Mobile() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state;
 
   return (
     <Container>
@@ -18,7 +20,7 @@ export default function Mobile() {
         <Text>PC로 확인해주세요!</Text>
       </Contents>
       <Buttons>
-        <Button variant="mobile_gray" onClick={() => navigate("/")}>
+        <Button variant="mobile_gray" onClick={() => navigate(from)}>
           돌아가기
         </Button>
         <InstructionButton variant="primary" onClick={() => openUrl(INSTRUCTION_LINK)}>

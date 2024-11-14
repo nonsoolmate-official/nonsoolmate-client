@@ -7,9 +7,10 @@ import { media } from "style/responsiveStyle";
 export default function LoginButton() {
   const navigate = useNavigate();
   const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
+  const from = location.pathname;
 
   function hanleLoginBtn() {
-    isMobileSize ? navigate("/mobile/error") : navigate("/signup");
+    isMobileSize ? navigate("/mobile/error", { state: { from } }) : navigate("/signup");
   }
 
   return (

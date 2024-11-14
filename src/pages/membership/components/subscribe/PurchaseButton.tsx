@@ -16,6 +16,7 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
   const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
 
   const from = location.pathname;
+
   sessionStorage.setItem("from", from);
   if (id === 1 || id === 2) {
     sessionStorage.setItem("plan", JSON.stringify(plan));
@@ -23,7 +24,7 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
 
   function clickPurchaseButton() {
     if (isMobileSize) {
-      navigate("/mobile/error");
+      navigate("/mobile/error", { state: { from } });
       return;
     }
     if (id === 3) {
