@@ -15,18 +15,28 @@ export default function Admin() {
     setPw(e.target.value);
   };
 
+  const handleSubmit = () => {};
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      handleSubmit();
+    }
+  };
+
   return (
     <Wrapper>
       <LogoIc />
       <Header>논술메이트 첨삭강사 로그인</Header>
-      <LoginForm>
+      <LoginForm onSubmit={handleSubmit}>
         <InfoLayout>
-          <Field>ID</Field>
-          <Input value={id} onChange={handleChangeId} />
+          <Field htmlFor="id">ID</Field>
+          <Input id="id" value={id} onChange={handleChangeId} onKeyDown={handleKeyDown} />
         </InfoLayout>
         <InfoLayout>
-          <Field>PW</Field>
-          <Input value={pw} onChange={handleChangePw} />
+          <Field htmlFor="pw">PW</Field>
+          <Input id="pw" value={pw} onChange={handleChangePw} type="password" onKeyDown={handleKeyDown} />
         </InfoLayout>
       </LoginForm>
     </Wrapper>
@@ -65,7 +75,7 @@ const InfoLayout = styled.div`
   width: 30.2rem;
 `;
 
-const Field = styled.p`
+const Field = styled.label`
   width: 3.6rem;
 
   ${({ theme }) => theme.fonts.Headline5};
