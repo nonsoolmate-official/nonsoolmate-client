@@ -1,21 +1,10 @@
 import { LogoIc } from "@assets/index";
 import Input from "@components/input/Input";
-import { ChangeEvent, useState } from "react";
+import useLoginForm from "@pages/admin/login/hooks/useLoginForm";
 import styled from "styled-components";
 
 export default function Admin() {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-
-  const handleChangeId = (e: ChangeEvent<HTMLInputElement>) => {
-    setId(e.target.value);
-  };
-
-  const handleChangePw = (e: ChangeEvent<HTMLInputElement>) => {
-    setPw(e.target.value);
-  };
-
-  const handleSubmit = () => {};
+  const { id, pw, handleChangeId, handleChangePw } = useLoginForm();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -24,6 +13,8 @@ export default function Admin() {
       handleSubmit();
     }
   };
+
+  const handleSubmit = () => {};
 
   return (
     <Wrapper>
