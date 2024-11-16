@@ -55,6 +55,7 @@ const Container = styled.div`
   }
 
   ${media.mobile} {
+    height: 100%;
     grid-template-columns: repeat(1, 1fr);
     padding: 1.8rem 1.6rem 3.2rem;
   }
