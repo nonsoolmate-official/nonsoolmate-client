@@ -50,6 +50,14 @@ const Subtitle = styled.h2`
     width: 100%;
     ${({ theme }) => theme.fonts.Body1};
   }
+
+  @media (width <= 340px) {
+    ${({ theme }) => theme.fonts.Body3};
+  }
+
+  @media (width <= 300px) {
+    ${({ theme }) => theme.fonts.Body5};
+  }
 `;
 
 const Content = styled.span`
