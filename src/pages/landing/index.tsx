@@ -44,7 +44,7 @@ export default function Landing() {
 // height: 100vh;
 
 const LandingContainer = styled.section<{ $isMobileSize: boolean }>`
-  overflow: ${({ $isMobileSize }) => ($isMobileSize ? "none" : "hidden auto")};
+  overflow: hidden auto;
   position: relative;
   height: ${({ $isMobileSize }) => ($isMobileSize ? "auto" : "100vh")};
 
