@@ -52,11 +52,13 @@ const Subtitle = styled.h2`
   }
 
   ${media.mobile} {
-    ${({ theme }) => theme.fonts.Body3};
+    width: 100%;
+    ${({ theme }) => theme.fonts.Body8};
   }
 
   @media (width <= 300px) {
-    ${({ theme }) => theme.fonts.Body5};
+    width: 100%;
+    ${({ theme }) => theme.fonts.Body8};
   }
 `;
 
