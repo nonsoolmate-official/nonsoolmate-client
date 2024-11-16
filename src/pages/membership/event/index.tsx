@@ -92,10 +92,11 @@ const UnivsContainer = styled.div`
   }
 
   ${media.mobile} {
+    height: fit-content;
+    padding: 6.4rem 2rem;
     overflow-x: auto;
     grid-template-columns: none;
     grid-auto-flow: column;
-    padding: 6.4rem 2rem;
 
     &::-webkit-scrollbar {
       display: none;
