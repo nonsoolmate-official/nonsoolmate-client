@@ -53,12 +53,7 @@ const Subtitle = styled.p`
 
   ${media.mobile} {
     width: 100%;
-    ${({ theme }) => theme.fonts.Body3};
-  }
-
-  @media (width <= 300px) {
-    width: 100%;
-    ${({ theme }) => theme.fonts.Body5};
+    ${({ theme }) => theme.fonts.Body8};
   }
 `;
 
