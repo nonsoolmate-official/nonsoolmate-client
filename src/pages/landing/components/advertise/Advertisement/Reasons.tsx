@@ -35,10 +35,15 @@ const Container = styled.section`
   }
 
   ${media.mobile} {
-    overflow-x: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow: auto hidden;
     width: 100%;
-    grid-template-columns: none;
-    grid-auto-flow: column;
+
+    & > * {
+      flex-shrink: 0;
+    }
 
     &::-webkit-scrollbar {
       display: none;
