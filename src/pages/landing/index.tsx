@@ -13,14 +13,16 @@ import RequestForm from "@pages/landing/components/requestForm/RequestForm";
 import Review from "@pages/landing/components/review/Review";
 import Univeristy from "@pages/landing/components/univeristy/Univeristy";
 import { getToken } from "@pages/socialLogin/utils/token";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 export default function Landing() {
   const token = getToken();
   const getNameResponse = token ? useGetName() : null;
+  const isMobileSize = useMediaQuery({ query: "(max-width:430px)" });
 
   return (
-    <LandingContainer>
+    <LandingContainer $isMobileSize={isMobileSize}>
       <RequestForm />
       {getNameResponse ? <HomeHeader /> : <Header isLanding={false} />}
       <Banner />
@@ -37,10 +39,10 @@ export default function Landing() {
   );
 }
 
-const LandingContainer = styled.section`
-  overflow: hidden auto;
+const LandingContainer = styled.section<{ $isMobileSize: boolean }>`
+  overflow: ${({ $isMobileSize }) => ($isMobileSize ? "hidden" : "hidden auto")};
   position: relative;
-  height: 100vh;
+  height: ${({ $isMobileSize }) => ($isMobileSize ? "fit-content" : "100vh")};
 
   &::-webkit-scrollbar {
     display: none;
