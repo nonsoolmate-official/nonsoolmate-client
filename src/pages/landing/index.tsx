@@ -44,9 +44,9 @@ export default function Landing() {
 // height: 100vh;
 
 const LandingContainer = styled.section<{ $isMobileSize: boolean }>`
-  overflow: hidden auto;
+  overflow: ${({ $isMobileSize }) => ($isMobileSize ? "auto" : "hidden auto")};
   position: relative;
-  height: ${({ $isMobileSize }) => ($isMobileSize ? "auto" : "100vh")};
+  height: ${({ $isMobileSize }) => ($isMobileSize ? "100%" : "100vh")};
 
   &::-webkit-scrollbar {
     display: none;
