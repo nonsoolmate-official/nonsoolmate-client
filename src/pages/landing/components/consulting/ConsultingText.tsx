@@ -51,7 +51,7 @@ const Subtitle = styled.h2`
     ${({ theme }) => theme.fonts.Body1};
   }
 
-  @media (width <= 340px) {
+  ${media.mobile} {
     ${({ theme }) => theme.fonts.Body3};
   }
 
