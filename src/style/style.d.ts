@@ -53,6 +53,7 @@ declare module "styled-components" {
       Body7: SerializedStyles;
       Body8: SerializedStyles;
       Caption1: SerializedStyles;
+      Policies: SerializedStyles;
     };
   }
 }
