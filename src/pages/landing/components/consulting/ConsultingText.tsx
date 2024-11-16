@@ -39,7 +39,7 @@ const Category = styled.h1`
   }
 `;
 
-const Subtitle = styled.h2`
+const Subtitle = styled.p`
   min-width: 45rem;
   color: ${({ theme }) => theme.colors.white};
   white-space: pre-line;
@@ -49,6 +49,11 @@ const Subtitle = styled.h2`
   ${media.tablet} {
     width: 100%;
     ${({ theme }) => theme.fonts.Body1};
+  }
+
+  ${media.mobile} {
+    width: 100%;
+    ${({ theme }) => theme.fonts.Body8};
   }
 `;
 
