@@ -42,16 +42,16 @@ export default function MembershipInfo() {
                     </CurrentMembership>
                   </Membership>
 
-                  {data.status === "TERMINATED" || new Date(data?.endDate).getTime() < new Date().getTime() ? (
+                  {data.status === "TERMINATED" ? (
                     <Button variant="text" onClick={handleResubscribe}>
                       멤버십 연장하기
                     </Button>
+                  ) : data.status === "IN_PROGRESS" ? (
+                    <Button variant="text" onClick={handleCancelMembership}>
+                      멤버십 해지하기
+                    </Button>
                   ) : (
-                    new Date(data?.endDate).getTime() > new Date().getTime() && (
-                      <Button variant="text" onClick={handleCancelMembership}>
-                        멤버십 해지하기
-                      </Button>
-                    )
+                    <></>
                   )}
                 </MembershipInfoBox>
 
