@@ -1,3 +1,4 @@
+import Admin from "@pages/admin/login";
 import Correction from "@pages/answer/correction";
 import Explanation from "@pages/answer/explanation";
 import Error from "@pages/error";
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
       { path: "/fail", element: <Fail /> },
       { path: "/success", element: <Success /> },
       { path: "/mobile/error", element: <Mobile /> },
+      { path: "/admin", element: <Admin /> },
     ],
   },
 ]);
