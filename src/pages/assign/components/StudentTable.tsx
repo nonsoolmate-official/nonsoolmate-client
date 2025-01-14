@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { STUDENT_TABLE } from "../constants/table";
 import AssignBtn from "./AssignBtn";
-import AlertBtn from "./AlertBtn";
+import ConfirmBtn from "./ConfirmBtn";
 
 export default function StudentTable() {
   return (
@@ -23,7 +23,7 @@ export default function StudentTable() {
                     colKey === "ASSIGN" ? (
                       <AssignBtn />
                     ) : (
-                      <AlertBtn />
+                      <ConfirmBtn />
                     )
                   ) : (
                     row[colKey as keyof typeof row]
