@@ -1,0 +1,64 @@
+import styled from "styled-components";
+import { STUDENT_TABLE } from "../constants/table";
+import AssignBtn from "./AssignBtn";
+import AlertBtn from "./AlertBtn";
+
+export default function StudentTable() {
+  return (
+    <Container>
+      <Table>
+        <thead>
+          <tr>
+            {Object.values(STUDENT_TABLE.COLUMN).map((columnName, index) => (
+              <Th key={index}>{columnName}</Th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {STUDENT_TABLE.ROWS.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {Object.keys(STUDENT_TABLE.COLUMN).map((colKey) => (
+                <Td key={colKey}>
+                  {colKey === "ASSIGN" || colKey === "ALERT" ? (
+                    colKey === "ASSIGN" ? (
+                      <AssignBtn />
+                    ) : (
+                      <AlertBtn />
+                    )
+                  ) : (
+                    row[colKey as keyof typeof row]
+                  )}
+                </Td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const Th = styled.th`
+  padding: 1.25rem 0.8rem;
+  background-color: ${({ theme }) => theme.colors.grey_50};
+  ${({ theme }) => theme.fonts.Body6};
+
+  text-align: center;
+`;
+
+const Td = styled.td`
+  padding: 1.25rem 0.8rem;
+  text-align: center;
+  ${({ theme }) => theme.fonts.Body6};
+`;
