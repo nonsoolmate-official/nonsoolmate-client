@@ -35,7 +35,7 @@ export default function OrderInfo(props: OrderInfoProps) {
             ))
           : parsedPlan &&
             parsedPlan
-              .filter((item) => item.productId === 2)
+              .filter((item) => item.productId === id)
               .map(({ productId, productName, productDescriptions }) => (
                 <Plan
                   id={productId}
