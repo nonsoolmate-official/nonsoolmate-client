@@ -2,8 +2,17 @@ import styled from "styled-components";
 import { TEST_TABLE } from "../constants/table";
 import AssignBtn from "./AssignBtn";
 import ConfirmBtn from "./ConfirmBtn";
+import { useState } from "react";
+import { ROWS_PER_PAGE } from "constants/admin";
+import Pagination from "@components/pagination/Pagination";
 
 export default function TestTable() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(TEST_TABLE.ROWS.length / ROWS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
+  const currentRows = TEST_TABLE.ROWS.slice(startIndex, startIndex + ROWS_PER_PAGE);
+
   return (
     <Container>
       <Table>
@@ -15,7 +24,7 @@ export default function TestTable() {
           </tr>
         </thead>
         <tbody>
-          {TEST_TABLE.ROWS.map((row, rowIndex) => (
+          {currentRows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {Object.keys(TEST_TABLE.COLUMN).map((colKey) => (
                 <Td key={colKey}>
@@ -34,6 +43,7 @@ export default function TestTable() {
           ))}
         </tbody>
       </Table>
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
     </Container>
   );
 }
@@ -42,6 +52,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 8rem;
 `;
 
 const Table = styled.table`
