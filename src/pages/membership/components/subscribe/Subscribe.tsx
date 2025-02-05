@@ -1,4 +1,3 @@
-import Icons from "./Icons";
 import PurchaseButton from "./PurchaseButton";
 import Sales from "./sales/Sales";
 import Title from "./Title";
@@ -8,6 +7,7 @@ import styled from "styled-components";
 import { Plan } from "types/productsListType";
 import Summary from "./Summary";
 import { DiscountHistoryItem } from "types/discountHistoryType";
+import PlanIcons from "../../../../components/planIcons/PlanIcons";
 
 interface SubscribeProps extends Plan {
   discountHistory: DiscountHistoryItem[];
@@ -19,7 +19,7 @@ export default function Subscribe(props: SubscribeProps) {
     <Container>
       <ContentContainer>
         <TitleBox>
-          <Icons id={productId} />
+          <PlanIcons id={productId} width="4.4rem" height="4.4rem" />
           <Title title={productName} />
         </TitleBox>
         <ContentDetailBox>

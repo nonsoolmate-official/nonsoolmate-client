@@ -1,4 +1,5 @@
-import { BasicPlanIc, CheckBtnIc, CheckEmptyIc, PremiumPlanIc } from "@assets/index";
+import { CheckBtnIc, CheckEmptyIc } from "@assets/index";
+import PlanIcons from "@components/planIcons/PlanIcons";
 import theme from "style/theme";
 import styled from "styled-components";
 
@@ -24,7 +25,7 @@ export default function Plan(props: PlanProps) {
     <PlanBox onClick={handleClick}>
       <PlanTitleBox>
         <PlanTitle>
-          {id === 1 ? <BasicPlanIcon /> : <PremiumPlanIcon />}
+          <PlanIcons id={id} width="2.2rem" height="2.2rem" />
           <PlanTitleText>{title}</PlanTitleText>
           {id === 1 ? (
             <></>
@@ -53,16 +54,6 @@ const PlanBox = styled.li`
 const PlanTitleBox = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const BasicPlanIcon = styled(BasicPlanIc)`
-  width: 2.2rem;
-  height: 2.2rem;
-`;
-
-const PremiumPlanIcon = styled(PremiumPlanIc)`
-  width: 2.2rem;
-  height: 2.2rem;
 `;
 
 const PlanTitle = styled.div`
