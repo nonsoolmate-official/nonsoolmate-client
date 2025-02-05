@@ -92,7 +92,7 @@ export default function Payment() {
       <HomeHeader />
       <PaymentWrapper>
         <PaymentLeftContainer>
-          <Title>정기결제</Title>
+          {id === 3 ? <Title>결제</Title> : <Title>정기결제</Title>}
           <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
