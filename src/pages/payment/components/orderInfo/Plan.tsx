@@ -9,15 +9,29 @@ interface PlanProps {
   description: string[];
   checkBox: boolean;
   selectedPlan?: number;
+  count?: number;
   onPlanChange?: (newPlanId: number) => void;
+  changeCount?: (newCount: number) => void;
 }
 
 export default function Plan(props: PlanProps) {
-  const { id, title, description, checkBox, selectedPlan, onPlanChange } = props;
+  const { id, title, description, checkBox, selectedPlan, count, onPlanChange, changeCount } = props;
 
   function handleClick() {
     if (onPlanChange) {
       onPlanChange(id);
+    }
+  }
+
+  function plusCount() {
+    if (changeCount && count !== undefined) {
+      changeCount(count + 1);
+    }
+  }
+
+  function minusCount() {
+    if (changeCount && count && count !== 1) {
+      changeCount(count - 1);
     }
   }
 
@@ -27,17 +41,31 @@ export default function Plan(props: PlanProps) {
         <PlanTitle>
           <PlanIcons id={id} width="2.2rem" height="2.2rem" />
           <PlanTitleText>{title}</PlanTitleText>
-          {id === 1 ? (
-            <></>
-          ) : (
+          {id === 2 ? (
             <PlanMerit>
               <PlanMeritText>최고 혜택</PlanMeritText>
             </PlanMerit>
+          ) : (
+            <></>
           )}
         </PlanTitle>
         <CheckIconBox $checkBox={checkBox}>{selectedPlan === id ? <CheckBtnIc /> : <CheckEmptyIc />}</CheckIconBox>
       </PlanTitleBox>
-      <PlanDescription> {description.join(", ")}</PlanDescription>
+      {id === 3 ? (
+        <>
+          <DescriptionBox>
+            <PlanDescription> {description.join(", ")}</PlanDescription>
+            <ButtonBox>
+              <QuantityChangeButton onClick={minusCount}>-</QuantityChangeButton>
+              <ChangedQuantity>{count}</ChangedQuantity>
+              <QuantityChangeButton onClick={plusCount}>+</QuantityChangeButton>
+            </ButtonBox>
+          </DescriptionBox>
+          <QuantityInfo>수량 : {count}개</QuantityInfo>
+        </>
+      ) : (
+        <PlanDescription> {description.join(", ")}</PlanDescription>
+      )}
     </PlanBox>
   );
 }
@@ -85,8 +113,41 @@ const CheckIconBox = styled.div<{ $checkBox: boolean }>`
   cursor: pointer;
 `;
 
+const DescriptionBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+`;
+
+const QuantityInfo = styled.p`
+  ${({ theme }) => theme.fonts.Body7}
+
+  color: ${theme.colors.grey_1000};
+`;
+
 const PlanDescription = styled.p`
   ${({ theme }) => theme.fonts.Body6};
 
   color: ${theme.colors.grey_800};
+`;
+
+const ChangedQuantity = styled.p`
+  align-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  ${({ theme }) => theme.fonts.Body7}
+
+  width: fit-content;
+  border: 0.5px solid ${theme.colors.grey_300};
+`;
+
+const QuantityChangeButton = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: ${theme.colors.grey_200};
 `;

@@ -32,6 +32,8 @@ export default function Payment() {
   const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || COUPON_NOT_REGISTER);
   const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
 
+  const [count, setCount] = useState(1);
+
   useEffect(() => {
     sessionStorage.setItem("couponTxt", couponTxt);
   }, [couponTxt]);
@@ -58,6 +60,10 @@ export default function Payment() {
       ...prevState,
       [modalName]: openModal,
     }));
+  }
+
+  function changeCount(newCount: number) {
+    setCount(newCount);
   }
 
   // -------- 카드 등록 로직
@@ -93,7 +99,13 @@ export default function Payment() {
       <PaymentWrapper>
         <PaymentLeftContainer>
           {id === 3 ? <Title>결제</Title> : <Title>정기결제</Title>}
-          <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          <OrderInfo
+            id={initialId}
+            selectedPlan={selectedPlan}
+            onPlanChange={handlePlanChange}
+            count={count}
+            changeCount={changeCount}
+          />
           <RegisterLayout
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
@@ -122,6 +134,7 @@ export default function Payment() {
           showNotRegisterError={showNotRegisterError}
           showAlreadyPaidError={showAlreadyPaidError}
           dcInfo={dcInfo}
+          count={count}
         />
       </PaymentWrapper>
     </PaymentContainer>

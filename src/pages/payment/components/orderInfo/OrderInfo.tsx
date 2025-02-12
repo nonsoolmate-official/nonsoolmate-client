@@ -5,11 +5,13 @@ import { Plan as PlanType } from "types/productsListType";
 interface OrderInfoProps {
   id: number;
   selectedPlan: number;
+  count: number;
   onPlanChange: (newPlanId: number) => void;
+  changeCount: (newCount: number) => void;
 }
 
 export default function OrderInfo(props: OrderInfoProps) {
-  const { id, selectedPlan, onPlanChange } = props;
+  const { id, selectedPlan, count, onPlanChange, changeCount } = props;
   const storedPlan = sessionStorage.getItem("plan");
   let parsedPlan: PlanType[] | null = null;
 
@@ -45,6 +47,8 @@ export default function OrderInfo(props: OrderInfoProps) {
                   title={productName}
                   description={productDescriptions}
                   checkBox={false}
+                  count={count}
+                  changeCount={changeCount}
                 />
               ))}
       </PlanContainer>

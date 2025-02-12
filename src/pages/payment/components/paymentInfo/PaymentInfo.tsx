@@ -29,6 +29,7 @@ interface PaymentInfoProps {
   showNotRegisterError: (show: boolean) => void;
   showAlreadyPaidError: (show: boolean) => void;
   dcInfo: string;
+  count: number;
 }
 
 export default function PaymentInfo(props: PaymentInfoProps) {
@@ -46,6 +47,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     showNotRegisterError,
     showAlreadyPaidError,
     dcInfo,
+    count,
   } = props;
   const [isAgree, setIsAgree] = useState(false);
 
@@ -59,11 +61,12 @@ export default function PaymentInfo(props: PaymentInfoProps) {
   if (!data) {
     return <></>;
   }
+
   const plan = data;
 
-  const originalPrice = plan?.price || 0;
+  const originalPrice = plan?.price * count || 0;
 
-  const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan) : [];
+  const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan, count) : [];
 
   const finalPrice_beforeCoupon = discountHistory.length
     ? discountHistory[discountHistory.length - 1].discountedPrice
@@ -99,7 +102,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
         <Title>결제 정보</Title>
         <InfoBox>
           <InfoTitle>주문 정보</InfoTitle>
-          {plan && <OrderDetail plan={plan} />}
+          {plan && <OrderDetail plan={plan} count={count} />}
         </InfoBox>
         <InfoBox>
           <InfoTitle>할인 정보</InfoTitle>

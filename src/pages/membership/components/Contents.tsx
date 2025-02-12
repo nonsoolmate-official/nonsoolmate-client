@@ -15,13 +15,16 @@ export default function Contents() {
     <ContentsContainer>
       <Container>
         {planInfo?.map(({ productId, productName, productDescriptions, price, defaultDiscounts }) => {
-          const discountHistory = calculateStandardDiscount({
-            productId,
-            productName,
-            productDescriptions,
-            price,
-            defaultDiscounts,
-          });
+          const discountHistory = calculateStandardDiscount(
+            {
+              productId,
+              productName,
+              productDescriptions,
+              price,
+              defaultDiscounts,
+            },
+            1,
+          );
           return (
             <Subscribe
               key={productId}
