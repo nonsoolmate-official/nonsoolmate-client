@@ -1,8 +1,8 @@
 import { DiscountHistoryItem } from "../../../types/discountHistoryType";
 import { Plan } from "types/productsListType";
 
-export function calculateStandardDiscount(plan: Plan) {
-  let currentPrice = plan?.price || 0;
+export function calculateStandardDiscount(plan: Plan, count: number) {
+  let currentPrice = count ? plan?.price * count : plan?.price;
 
   const discountHistory: DiscountHistoryItem[] = [];
 
