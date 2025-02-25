@@ -1,4 +1,5 @@
 import { LogoIc } from "@assets/index";
+import Button from "@components/button/Button";
 import Input from "@components/input/Input";
 import useLoginForm from "@pages/admin/login/hooks/useLoginForm";
 import styled from "styled-components";
@@ -29,6 +30,7 @@ export default function Admin() {
           <Field htmlFor="pw">PW</Field>
           <Input id="pw" value={pw} onChange={handleChangePw} type="password" onKeyDown={handleKeyDown} />
         </InfoLayout>
+        <Button type="submit">로그인</Button>
       </LoginForm>
     </Wrapper>
   );
@@ -64,6 +66,10 @@ const InfoLayout = styled.div`
   justify-content: center;
   align-items: center;
   width: 30.2rem;
+
+  &:nth-child(2) {
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const Field = styled.label`
