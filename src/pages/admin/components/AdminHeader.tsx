@@ -3,13 +3,29 @@ import { Link, useLocation } from "react-router-dom";
 import theme from "style/theme";
 import styled from "styled-components";
 
-function AdminHeader() {
+interface AdminHeaderProps {
+  type?: "admin" | "teacher";
+}
+
+const AdminHeader = ({ type = "admin" }: AdminHeaderProps) => {
   const location = useLocation();
 
-  const isAssignPage = location.pathname === "/admin/assign" || location.pathname === "/admin";
-  const isRequestPage = location.pathname === "/admin/request";
-  const isCompletePage = location.pathname === "/admin/complete";
-  const isManagePage = location.pathname === "/admin/manage";
+  const handleHeaderItems = () => {
+    if (type === "admin") {
+      return [
+        { path: "/admin/assign", title: "강사 배정" },
+        { path: "/admin/request", title: "첨삭 요청" },
+        { path: "/admin/complete", title: "첨삭 완료" },
+        { path: "/admin/manage", title: "계정 관리" },
+      ];
+    } else if (type === "teacher") {
+      return [
+        { path: "/admin/teacher-request", title: "첨삭 요청" },
+        { path: "/admin/teacher-complete", title: "첨삭 완료" },
+      ];
+    }
+    return [];
+  };
 
   const handleLogout = () => {
     removeToken();
@@ -19,28 +35,19 @@ function AdminHeader() {
     <Header>
       <Ul>
         <Layout>
-          {/* 라우팅 Path 변경 필요 */}
-          <Li $isCurrent={isAssignPage}>
-            <Link to="/admin/assign">강사 배정</Link>
-          </Li>
-          <Li $isCurrent={isRequestPage}>
-            <Link to="/admin/request">첨삭 요청</Link>
-          </Li>
-          <Li $isCurrent={isCompletePage}>
-            <Link to="/admin/complete">첨삭 완료</Link>
-          </Li>
-          <Li $isCurrent={isManagePage}>
-            <Link to="/admin/manage">계정 관리</Link>
-          </Li>
+          {handleHeaderItems().map((item) => (
+            <Li key={item.path} $isCurrent={location.pathname === item.path}>
+              <Link to={item.path}>{item.title}</Link>
+            </Li>
+          ))}
         </Layout>
-        {/* 로그아웃 핸들러 추가 */}
         <Logout role="button" onClick={handleLogout}>
           로그아웃
         </Logout>
       </Ul>
     </Header>
   );
-}
+};
 
 const Header = styled.header`
   position: fixed;
@@ -75,14 +82,11 @@ const Li = styled.li<{ $isCurrent?: boolean }>`
   }
 `;
 
-const Logout = styled.li`
+const Logout = styled(Li)`
   margin-left: 9rem;
-  ${theme.fonts.Body1};
+  color: ${theme.colors.black};
 
-  white-space: nowrap;
-  cursor: pointer;
-
-  :hover {
+  &:hover {
     color: ${theme.colors.dark_blue};
     transition: 0.2s ease-in-out;
   }

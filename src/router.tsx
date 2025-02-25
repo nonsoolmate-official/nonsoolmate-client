@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       { path: "/fail", element: <Fail /> },
       { path: "/success", element: <Success /> },
       { path: "/mobile/error", element: <Mobile /> },
-      { path: "/admin", element: <Admin /> },
+      { path: "/admin/assign", element: <Admin /> },
     ],
   },
 ]);
