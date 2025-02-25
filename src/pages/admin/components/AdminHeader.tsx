@@ -36,7 +36,7 @@ const AdminHeader = ({ type = "admin" }: AdminHeaderProps) => {
       <Ul>
         <Layout>
           {handleHeaderItems().map((item) => (
-            <Li key={item.path} $isCurrent={location.pathname === item.path}>
+            <Li key={item.path} role="button" $isCurrent={location.pathname === item.path}>
               <Link to={item.path}>{item.title}</Link>
             </Li>
           ))}
