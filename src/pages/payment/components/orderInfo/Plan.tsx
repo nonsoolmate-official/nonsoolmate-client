@@ -143,6 +143,7 @@ const ButtonBox = styled.div`
   ${({ theme }) => theme.fonts.Body7}
 
   width: fit-content;
+  height: 2.5rem;
   border: 0.5px solid ${theme.colors.grey_300};
 `;
 
