@@ -18,7 +18,7 @@ export default function TableLayout({ children, tableData, currentPage, setCurre
       <Table>
         <thead>
           <tr>
-            {Object.values(tableData.COLUMN).map((columnName, index) => (
+            {Object.values(tableData.COLUMN).map((columnName) => (
               <Th key={columnName}>{columnName}</Th>
             ))}
           </tr>
