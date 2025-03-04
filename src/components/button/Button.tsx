@@ -108,10 +108,10 @@ const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSiz
       case "assign":
         return css`
           padding: 0.6rem 2.2rem;
-          border: 1px solid ${({ theme }) => theme.colors.grey_600};
+          border: 1px solid ${$isActive ? theme.colors.light_blue : theme.colors.grey_500};
           border-radius: 8px;
-          background-color: ${$isActive ? theme.colors.grey_600 : theme.colors.white};
-          color: ${$isActive ? theme.colors.white : theme.colors.grey_600};
+          background-color: ${$isActive ? theme.colors.light_blue : theme.colors.white};
+          color: ${$isActive ? theme.colors.dark_blue : theme.colors.grey_500};
           ${({ theme }) => theme.fonts.Body6};
         `;
       default:

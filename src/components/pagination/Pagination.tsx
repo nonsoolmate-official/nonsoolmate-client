@@ -23,7 +23,7 @@ export default function Pagination(props: PaginationProps) {
 
   return (
     <Container>
-      <PageButton onClick={handlePrevPage} disabled={currentPage === 1}>
+      <PageButton type="button" onClick={handlePrevPage} disabled={currentPage === 1}>
         &lt; 이전
       </PageButton>
       {[...Array(totalPages)].map((_, index) => {

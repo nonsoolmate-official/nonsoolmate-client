@@ -30,7 +30,7 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
   ${({ theme }) => theme.fonts.Headline5};
 
   color: black;

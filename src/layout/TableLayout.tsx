@@ -19,7 +19,7 @@ export default function TableLayout({ children, tableData, currentPage, setCurre
         <thead>
           <tr>
             {Object.values(tableData.COLUMN).map((columnName, index) => (
-              <Th key={index}>{columnName}</Th>
+              <Th key={columnName}>{columnName}</Th>
             ))}
           </tr>
         </thead>
