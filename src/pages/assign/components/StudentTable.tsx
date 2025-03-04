@@ -10,6 +10,7 @@ export default function StudentTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
   const currentRows = STUDENT_TABLE.ROWS.slice(startIndex, startIndex + ROWS_PER_PAGE);
+  const BUTTON_KEYS = ["ASSIGN", "ALERT"];
 
   return (
     <TableLayout tableData={STUDENT_TABLE} currentPage={currentPage} setCurrentPage={setCurrentPage}>
@@ -17,15 +18,9 @@ export default function StudentTable() {
         <tr key={rowIndex}>
           {Object.keys(STUDENT_TABLE.COLUMN).map((colKey) => (
             <Td key={colKey}>
-              {colKey === "ASSIGN" || colKey === "ALERT" ? (
-                colKey === "ASSIGN" ? (
-                  <AssignBtn />
-                ) : (
-                  <ConfirmBtn />
-                )
-              ) : (
-                row[colKey as keyof typeof row]
-              )}
+              {colKey === "ASSIGN" && <AssignBtn />}
+              {colKey === "ALERT" && <ConfirmBtn />}
+              {!BUTTON_KEYS.includes(colKey) && row[colKey as keyof typeof row]}
             </Td>
           ))}
         </tr>
