@@ -1,4 +1,4 @@
-import Admin from "@pages/admin";
+import Admin from "@pages/admin/login";
 import Correction from "@pages/answer/correction";
 import Explanation from "@pages/answer/explanation";
 import Error from "@pages/error";
