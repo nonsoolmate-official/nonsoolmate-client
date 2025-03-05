@@ -4,6 +4,8 @@ import FooterRight from "./FooterRight";
 import { media } from "style/responsiveStyle";
 
 import NonsoolInfoImg from "@assets/image/nonsoolInfo.png";
+import { openUrl } from "@utils/openUrl";
+import { POLICIES } from "@pages/landing/constants/policies";
 
 export default function Footer() {
   return (
@@ -16,6 +18,11 @@ export default function Footer() {
         <Title>논술메이트</Title>
         <NonsoolInfo src={NonsoolInfoImg} />
       </Info>
+      <Policies>
+        <Text onClick={() => openUrl(POLICIES.PRIVACY)}>개인정보 처리방침</Text>
+        <Divide>|</Divide>
+        <Text onClick={() => openUrl(POLICIES.USAGE)}>이용약관</Text>
+      </Policies>
     </Container>
   );
 }
@@ -24,7 +31,6 @@ const Container = styled.footer`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 20.6rem;
   padding: 0 21.5rem;
 
   ${media.tablet} {
@@ -49,7 +55,7 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 2rem 0 5.8rem;
+  padding: 2rem 0 3.6rem;
 `;
 
 const Title = styled.p`
@@ -67,4 +73,23 @@ const NonsoolInfo = styled.img`
     width: 100%;
     object-fit: contain;
   }
+`;
+
+const Policies = styled.div`
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+  margin-bottom: 2.8rem;
+`;
+
+const Divide = styled.div`
+  width: 0.07rem;
+  height: 1.3rem;
+  background-color: ${({ theme }) => theme.colors.grey_400};
+`;
+
+const Text = styled.p`
+  ${({ theme }) => theme.fonts.Policies};
+
+  color: ${({ theme }) => theme.colors.black};
 `;

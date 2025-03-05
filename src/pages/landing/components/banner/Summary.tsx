@@ -8,4 +8,12 @@ const Text = styled.p`
   ${({ theme }) => theme.fonts.Body2};
 
   color: ${({ theme }) => theme.colors.grey_700};
+
+  @media (width <= 340px) {
+    ${({ theme }) => theme.fonts.Body3};
+  }
+
+  @media (width <= 300px) {
+    ${({ theme }) => theme.fonts.Body5};
+  }
 `;

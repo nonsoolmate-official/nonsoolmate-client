@@ -141,6 +141,13 @@ const fonts = {
     font-weight: 500;
     line-height: 1.6rem;
   `,
+  Policies: css`
+    font-family: Inter;
+    font-style: normal;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: normal;
+  `,
 };
 
 const theme: Pick<DefaultTheme, "colors" | "fonts" | "effects"> = {

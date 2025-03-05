@@ -19,6 +19,7 @@ import RedirectPage from "@pages/socialLogin";
 import Interceptors from "@pages/socialLogin/components/Interceptors";
 import TakeTest from "@pages/takeTest";
 import { createBrowserRouter } from "react-router-dom";
+import Assign from "@pages/assign";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,7 @@ export const router = createBrowserRouter([
       { path: "/success", element: <Success /> },
       { path: "/mobile/error", element: <Mobile /> },
       { path: "/admin", element: <Admin /> },
+      { path: "/assign", element: <Assign /> },
     ],
   },
 ]);
