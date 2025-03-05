@@ -2,22 +2,31 @@
 import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
-type Variant = "primary" | "secondary" | "tertiary" | "text" | "mobile_gray" | "mobile_blue" | "guide";
+type Variant = "primary" | "secondary" | "tertiary" | "text" | "mobile_gray" | "mobile_blue" | "guide" | "assign";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   width?: number;
   fontSize?: string;
+  isActive?: boolean;
 }
-export default function Button({ children, variant = "primary", width, fontSize = "Body6", ...props }: ButtonProps) {
+
+export default function Button({
+  children,
+  variant = "primary",
+  width,
+  fontSize = "Body6",
+  isActive = false,
+  ...props
+}: ButtonProps) {
   return (
-    <ButtonWrapper type="button" $variant={variant} width={width} fontSize={fontSize} {...props}>
+    <ButtonWrapper type="button" $variant={variant} width={width} fontSize={fontSize} $isActive={isActive} {...props}>
       {children}
     </ButtonWrapper>
   );
 }
 
-const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSize?: string }>`
+const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSize?: string; $isActive: boolean }>`
   align-items: center;
   width: ${({ width }) => `${width}rem`};
   padding: 0.8rem 2.8rem;
@@ -26,7 +35,8 @@ const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSiz
   ${({ fontSize, theme }) => fontSize && theme.fonts[fontSize as keyof typeof theme.fonts]};
 
   white-space: nowrap;
-  ${({ $variant }) => {
+
+  ${({ $variant, $isActive, theme }) => {
     switch ($variant) {
       case "primary":
         return css`
@@ -94,6 +104,15 @@ const ButtonWrapper = styled.button<{ $variant: Variant; width?: number; fontSiz
           background-color: ${({ theme }) => theme.colors.grey_700};
           color: ${({ theme }) => theme.colors.grey_100};
           ${({ theme }) => theme.fonts.Body7};
+        `;
+      case "assign":
+        return css`
+          padding: 0.6rem 2.2rem;
+          border: 1px solid ${$isActive ? theme.colors.light_blue : theme.colors.grey_500};
+          border-radius: 8px;
+          background-color: ${$isActive ? theme.colors.light_blue : theme.colors.white};
+          color: ${$isActive ? theme.colors.dark_blue : theme.colors.grey_500};
+          ${({ theme }) => theme.fonts.Body6};
         `;
       default:
         return css`
