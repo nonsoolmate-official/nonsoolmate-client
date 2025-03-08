@@ -24,14 +24,14 @@ export default function usePostLogin() {
   useEffect(() => {
     client
       .post(
-        `${import.meta.env.VITE_BASE_URL}/auth/social/login`,
+        `${import.meta.env.VITE_BASE_URL}/auth/login`,
         {
           platformType: "NAVER",
+          authorizationCode: CODE,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "authorization-code": CODE,
           },
         },
       )
