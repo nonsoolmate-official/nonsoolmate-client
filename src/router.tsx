@@ -12,6 +12,8 @@ import Membership from "@pages/membership";
 import MyPage from "@pages/mypage";
 import Payment from "@pages/payment";
 import Fail from "@pages/payment/components/Fail";
+import PaymentFail from "@pages/payment/components/singlePayment/PaymentFail";
+import PaymentSuccess from "@pages/payment/components/singlePayment/PaymentSuccess";
 import Success from "@pages/payment/components/Success";
 import Signup from "@pages/signup";
 import RedirectPage from "@pages/socialLogin";
@@ -51,6 +53,8 @@ export const router = createBrowserRouter([
       { path: "/payment", element: <Payment /> },
       { path: "/fail", element: <Fail /> },
       { path: "/success", element: <Success /> },
+      { path: "/single-payment/fail", element: <PaymentFail /> },
+      { path: "/single-payment/success", element: <PaymentSuccess /> },
       { path: "/mobile/error", element: <Mobile /> },
     ],
   },
