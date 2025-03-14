@@ -22,6 +22,11 @@ export default function usePostLogin() {
   const navigate = useNavigate();
   const from = sessionStorage.getItem("from") || "/home/test";
   useEffect(() => {
+    if (!CODE) {
+      navigate("/");
+      return;
+    }
+
     client
       .post(
         `${import.meta.env.VITE_BASE_URL}/auth/login`,
