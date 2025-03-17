@@ -22,16 +22,21 @@ export default function usePostLogin() {
   const navigate = useNavigate();
   const from = sessionStorage.getItem("from") || "/home/test";
   useEffect(() => {
+    if (!CODE) {
+      navigate("/");
+      return;
+    }
+
     client
       .post(
-        `${import.meta.env.VITE_BASE_URL}/auth/social/login`,
+        `${import.meta.env.VITE_BASE_URL}/auth/login`,
         {
           platformType: "NAVER",
+          authorizationCode: CODE,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "authorization-code": CODE,
           },
         },
       )
