@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import useGetCustomerInfo from "./hooks/useGetCustomerInfo";
 import { registerCard } from "@utils/registerCard";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
+import { PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
 
 export default function Payment() {
   const location = useLocation();
@@ -31,6 +32,11 @@ export default function Payment() {
 
   const [couponTxt, setCouponTxt] = useState(() => sessionStorage.getItem("couponTxt") || COUPON_NOT_REGISTER);
   const [dcInfo, setDcInfo] = useState(() => sessionStorage.getItem("dcInfo") || "");
+
+  const [count, setCount] = useState(1);
+
+  const [paymentWidget, setPaymentWidget] = useState<PaymentWidgetInstance | null>(null);
+  const [price, setPrice] = useState(() => Number(sessionStorage.getItem("price")));
 
   useEffect(() => {
     sessionStorage.setItem("couponTxt", couponTxt);
@@ -60,6 +66,14 @@ export default function Payment() {
     }));
   }
 
+  function changeCount(newCount: number) {
+    setCount(newCount);
+  }
+
+  function updatePrice(newPrice: number) {
+    setPrice(newPrice);
+  }
+
   // -------- 카드 등록 로직
   const from = location.pathname;
   sessionStorage.setItem("from", from);
@@ -67,6 +81,8 @@ export default function Payment() {
   const response = useGetCustomerInfo();
   if (!response) return <></>;
   const customerKey = response.customerKey;
+  const customerName = response.customerName;
+  const customerEmail = response.customerEmail;
 
   function registerCardHandler() {
     const from = sessionStorage.getItem("from");
@@ -92,9 +108,16 @@ export default function Payment() {
       <HomeHeader />
       <PaymentWrapper>
         <PaymentLeftContainer>
-          <Title>정기결제</Title>
-          <OrderInfo id={initialId} selectedPlan={selectedPlan} onPlanChange={handlePlanChange} />
+          {id === 3 ? <Title>결제</Title> : <Title>정기결제</Title>}
+          <OrderInfo
+            id={initialId}
+            selectedPlan={selectedPlan}
+            onPlanChange={handlePlanChange}
+            count={count}
+            changeCount={changeCount}
+          />
           <RegisterLayout
+            id={initialId}
             changeCouponModalStatus={(openModal) => changeModalStatus("isCouponOpen", openModal)}
             handleCouponTxtStatus={handleCouponTxtStatus}
             isCouponOpen={modalStatus.isCouponOpen}
@@ -106,9 +129,14 @@ export default function Payment() {
             notRegisterError={notRegisterError}
             alreadyPaidError={alreadyPaidError}
             showAlreadyPaidError={showAlreadyPaidError}
+            setPaymentWidget={setPaymentWidget}
+            paymentWidget={paymentWidget}
+            customerKey={customerKey}
+            price={price}
           />
         </PaymentLeftContainer>
         <PaymentInfo
+          id={initialId}
           selectedPlan={selectedPlan}
           isSelctUnivOpen={modalStatus.isSelectUnivOpen}
           changeSelectUnivModalStatus={(openModal) => changeModalStatus("isSelectUnivOpen", openModal)}
@@ -122,6 +150,11 @@ export default function Payment() {
           showNotRegisterError={showNotRegisterError}
           showAlreadyPaidError={showAlreadyPaidError}
           dcInfo={dcInfo}
+          count={count}
+          paymentWidget={paymentWidget}
+          customerName={customerName}
+          customerEmail={customerEmail}
+          updatePrice={updatePrice}
         />
       </PaymentWrapper>
     </PaymentContainer>

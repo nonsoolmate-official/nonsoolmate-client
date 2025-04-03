@@ -18,21 +18,15 @@ export default function PurchaseButton(props: PurchaseButtonProps) {
   const from = location.pathname;
 
   sessionStorage.setItem("from", from);
-  if (id === 1 || id === 2) {
-    sessionStorage.setItem("plan", JSON.stringify(plan));
-  }
 
   function clickPurchaseButton() {
     if (isMobileSize) {
       navigate("/mobile/error", { state: { from } });
       return;
     }
-    if (id === 3) {
-      window.location.href = "https://walla.my/v/WizqOMZ0xwVe9QsbQkpW";
-    } else {
-      sessionStorage.setItem("id", String(id));
-      getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
-    }
+    sessionStorage.setItem("plan", JSON.stringify(plan));
+    sessionStorage.setItem("id", String(id));
+    getToken() ? navigate("/payment", { state: { id } }) : navigate("/signup", { state: { from } });
   }
 
   return <Button onClick={clickPurchaseButton}>시작하기</Button>;

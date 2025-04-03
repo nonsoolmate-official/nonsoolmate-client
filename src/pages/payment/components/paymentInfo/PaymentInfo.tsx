@@ -14,8 +14,11 @@ import QuitMatchModal from "../teacherMatch/QuitMatchModal";
 import useGetSingleProduct from "@pages/payment/hooks/useGetSingleProduct";
 import { usePostMembership } from "@pages/payment/hooks/usePostMembership";
 import { calcCouponDc } from "@pages/payment/utils/coupon";
+import { PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
+import { nanoid } from "nanoid";
 
 interface PaymentInfoProps {
+  id: number;
   selectedPlan: number;
   isSelctUnivOpen: boolean;
   changeSelectUnivModalStatus: (open: boolean) => void;
@@ -29,10 +32,16 @@ interface PaymentInfoProps {
   showNotRegisterError: (show: boolean) => void;
   showAlreadyPaidError: (show: boolean) => void;
   dcInfo: string;
+  count: number;
+  paymentWidget: PaymentWidgetInstance | null;
+  customerName: string;
+  customerEmail: string;
+  updatePrice: (price: number) => void;
 }
 
 export default function PaymentInfo(props: PaymentInfoProps) {
   const {
+    id,
     selectedPlan,
     isSelctUnivOpen,
     changeSelectUnivModalStatus,
@@ -46,6 +55,11 @@ export default function PaymentInfo(props: PaymentInfoProps) {
     showNotRegisterError,
     showAlreadyPaidError,
     dcInfo,
+    count,
+    paymentWidget,
+    customerName,
+    customerEmail,
+    updatePrice,
   } = props;
   const [isAgree, setIsAgree] = useState(false);
 
@@ -59,38 +73,61 @@ export default function PaymentInfo(props: PaymentInfoProps) {
   if (!data) {
     return <></>;
   }
+
   const plan = data;
 
-  const originalPrice = plan?.price || 0;
+  const originalPrice = plan?.price * count || 0;
 
-  const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan) : [];
+  const discountHistory = plan.defaultDiscounts.length ? calculateStandardDiscount(plan, count) : [];
 
   const finalPrice_beforeCoupon = discountHistory.length
     ? discountHistory[discountHistory.length - 1].discountedPrice
     : originalPrice;
 
   const finalPrice_afterCoupon = calcCouponDc(dcInfo, finalPrice_beforeCoupon);
+  sessionStorage.setItem("price", finalPrice_afterCoupon.toString());
   const discountedPrice = originalPrice - finalPrice_afterCoupon;
 
   function handleAgreements(agreeState: boolean) {
     setIsAgree(agreeState);
   }
 
-  function handlePayment() {
-    postMembership(
-      {
-        productId: selectedPlan,
-        couponMemberId: activeCouponId,
-      },
-      {
-        onSuccess: () => {
-          if (activeCouponId) {
-            sessionStorage.removeItem("couponTxt");
-            sessionStorage.removeItem("dcInfo");
-          }
+  async function handlePayment(id: number) {
+    if (id === 3) {
+      // 단건 결제 요청 (paymentWidget 사용)
+      const currentPrice = Number(sessionStorage.getItem("price"));
+      updatePrice(currentPrice);
+      if (!paymentWidget) return;
+
+      try {
+        await paymentWidget.requestPayment({
+          orderId: nanoid(),
+          orderName: "첨삭권",
+          customerName: customerName,
+          customerEmail: customerEmail,
+          successUrl: `${window.location.origin}/single-payment/success`,
+          failUrl: `${window.location.origin}/single-payment/fail`,
+        });
+      } catch (error) {
+        console.error("Error requesting payment:", error);
+      }
+    } else {
+      // 다른 결제 방식 처리 (단건 결제 외 로직)
+      postMembership(
+        {
+          productId: selectedPlan,
+          couponMemberId: activeCouponId,
         },
-      },
-    );
+        {
+          onSuccess: () => {
+            if (activeCouponId) {
+              sessionStorage.removeItem("couponTxt");
+              sessionStorage.removeItem("dcInfo");
+            }
+          },
+        },
+      );
+    }
   }
 
   return (
@@ -99,7 +136,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
         <Title>결제 정보</Title>
         <InfoBox>
           <InfoTitle>주문 정보</InfoTitle>
-          {plan && <OrderDetail plan={plan} />}
+          {plan && <OrderDetail plan={plan} count={count} />}
         </InfoBox>
         <InfoBox>
           <InfoTitle>할인 정보</InfoTitle>
@@ -114,7 +151,7 @@ export default function PaymentInfo(props: PaymentInfoProps) {
         <DevideLine />
         <Overview finalPrice_afterCoupon={finalPrice_afterCoupon} discountedPrice={discountedPrice} />
         <Agreements handleAgreements={handleAgreements} />
-        <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button" onClick={handlePayment}>
+        <PaymentButton $isAgree={isAgree} disabled={!isAgree} type="button" onClick={() => handlePayment(id)}>
           결제하기
         </PaymentButton>
       </PaymentInfoContainer>

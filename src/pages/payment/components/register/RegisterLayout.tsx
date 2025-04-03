@@ -8,8 +8,11 @@ import { CardIc, SmallCouponIc } from "@assets/index";
 import useGetCardInfo from "@pages/payment/hooks/useGetCardInfo";
 import FailModal from "../FailModal";
 import { COUPON_NOT_REGISTER } from "constants/coupon";
+import PaymentWidget from "../singlePayment/PaymentWidget";
+import { PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
 
 interface RegisterLayoutProps {
+  id: number;
   changeCouponModalStatus: (open: boolean) => void;
   registerCardHandler: () => void;
   handleCouponTxtStatus: (coupon: string, dcInfo: string) => void;
@@ -21,10 +24,15 @@ interface RegisterLayoutProps {
   notRegisterError: boolean;
   alreadyPaidError: boolean;
   showAlreadyPaidError: (open: boolean) => void;
+  setPaymentWidget: (widget: PaymentWidgetInstance | null) => void;
+  paymentWidget: PaymentWidgetInstance | null;
+  customerKey: string;
+  price: number;
 }
 
 export default function RegisterLayout(props: RegisterLayoutProps) {
   const {
+    id,
     isCouponOpen,
     changeCouponModalStatus,
     couponTxt,
@@ -36,6 +44,10 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
     notRegisterError,
     alreadyPaidError,
     showAlreadyPaidError,
+    setPaymentWidget,
+    paymentWidget,
+    customerKey,
+    price,
   } = props;
 
   const response = useGetCardInfo();
@@ -46,39 +58,54 @@ export default function RegisterLayout(props: RegisterLayoutProps) {
 
   return (
     <>
-      {REGISTER_TEXT.map((item) => (
-        <RegisterLayoutContainer key={item.title}>
-          <TitleContainer>
-            <Title>
-              {item.title}
-              {notRegisterError && item.title === "결제 수단" && <ErrorText>* 결제 수단을 등록해 주세요.</ErrorText>}
-            </Title>
-            <RegisterButton
-              button={(item.title === "결제 수단" && response.cardInfo ? item.buttonText2 : item.buttonText1) || ""}
-              onClick={item.buttonText1 === "쿠폰 사용" ? openCouponModal : registerCardHandler}
-            />
-          </TitleContainer>
-          <Content $payError={notRegisterError && item.title === "결제 수단"}>
-            {item.buttonText1 === "쿠폰 사용" ? (
-              <Coupon>
-                <CouponTxt $couponTxt={couponTxt}>
-                  {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
-                  {couponTxt}
-                </CouponTxt>
-                <DcInfo>{dcInfo}</DcInfo>
-              </Coupon>
-            ) : response.cardInfo ? (
-              <CardInfo>
-                <CardIc />
-                {response.cardInfo?.cardCompany} {response.cardInfo?.cardNumber}
-              </CardInfo>
-            ) : (
-              item.content
-            )}
-          </Content>
-          {alreadyPaidError && item.title === "결제 수단" && <FailModal showAlreadyPaidError={showAlreadyPaidError} />}
-        </RegisterLayoutContainer>
-      ))}
+      {REGISTER_TEXT.map(
+        (item) =>
+          (id !== 3 || item.title === "쿠폰 사용") && (
+            <RegisterLayoutContainer key={item.title}>
+              <TitleContainer>
+                <Title>
+                  {item.title}
+                  {notRegisterError && item.title === "결제 수단" && (
+                    <ErrorText>* 결제 수단을 등록해 주세요.</ErrorText>
+                  )}
+                </Title>
+                <RegisterButton
+                  button={(item.title === "결제 수단" && response.cardInfo ? item.buttonText2 : item.buttonText1) || ""}
+                  onClick={item.buttonText1 === "쿠폰 사용" ? openCouponModal : registerCardHandler}
+                />
+              </TitleContainer>
+              <Content $payError={notRegisterError && item.title === "결제 수단"}>
+                {item.buttonText1 === "쿠폰 사용" ? (
+                  <Coupon>
+                    <CouponTxt $couponTxt={couponTxt}>
+                      {couponTxt !== COUPON_NOT_REGISTER && <SmallCouponIcon />}
+                      {couponTxt}
+                    </CouponTxt>
+                    <DcInfo>{dcInfo}</DcInfo>
+                  </Coupon>
+                ) : response.cardInfo ? (
+                  <CardInfo>
+                    <CardIc />
+                    {response.cardInfo?.cardCompany} {response.cardInfo?.cardNumber}
+                  </CardInfo>
+                ) : (
+                  item.content
+                )}
+              </Content>
+              {alreadyPaidError && item.title === "결제 수단" && (
+                <FailModal showAlreadyPaidError={showAlreadyPaidError} />
+              )}
+            </RegisterLayoutContainer>
+          ),
+      )}
+      {id === 3 && (
+        <PaymentWidget
+          setPaymentWidget={setPaymentWidget}
+          paymentWidget={paymentWidget}
+          customerKey={customerKey}
+          price={price}
+        />
+      )}
       {isCouponOpen && (
         <CouponModal
           changeCouponModalStatus={changeCouponModalStatus}

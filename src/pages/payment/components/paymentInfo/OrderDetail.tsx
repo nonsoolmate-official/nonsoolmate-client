@@ -4,13 +4,14 @@ import { Plan } from "types/productsListType";
 
 interface OrderDetailProps {
   plan: Plan;
+  count: number;
 }
 
-export default function OrderDetail({ plan }: OrderDetailProps) {
+export default function OrderDetail({ plan, count }: OrderDetailProps) {
   return (
     <OrderDetailContainer>
       <Type>{plan.productName}</Type>
-      <Price>{plan.price.toLocaleString()}원</Price>
+      <Price>{(plan.price * count).toLocaleString()}원</Price>
     </OrderDetailContainer>
   );
 }

@@ -5,11 +5,13 @@ import { Plan as PlanType } from "types/productsListType";
 interface OrderInfoProps {
   id: number;
   selectedPlan: number;
+  count: number;
   onPlanChange: (newPlanId: number) => void;
+  changeCount: (newCount: number) => void;
 }
 
 export default function OrderInfo(props: OrderInfoProps) {
-  const { id, selectedPlan, onPlanChange } = props;
+  const { id, selectedPlan, count, onPlanChange, changeCount } = props;
   const storedPlan = sessionStorage.getItem("plan");
   let parsedPlan: PlanType[] | null = null;
 
@@ -22,20 +24,22 @@ export default function OrderInfo(props: OrderInfoProps) {
       <OrderInfoTitle>주문 정보</OrderInfoTitle>
       <PlanContainer>
         {parsedPlan && id === 1
-          ? parsedPlan.map(({ productId, productName, productDescriptions }) => (
-              <Plan
-                id={productId}
-                key={productId}
-                title={productName}
-                description={productDescriptions}
-                checkBox={true}
-                selectedPlan={selectedPlan}
-                onPlanChange={onPlanChange}
-              />
-            ))
+          ? parsedPlan
+              .filter((item) => item.productId !== 3)
+              .map(({ productId, productName, productDescriptions }) => (
+                <Plan
+                  id={productId}
+                  key={productId}
+                  title={productName}
+                  description={productDescriptions}
+                  checkBox={true}
+                  selectedPlan={selectedPlan}
+                  onPlanChange={onPlanChange}
+                />
+              ))
           : parsedPlan &&
             parsedPlan
-              .filter((item) => item.productId === 2)
+              .filter((item) => item.productId === id)
               .map(({ productId, productName, productDescriptions }) => (
                 <Plan
                   id={productId}
@@ -43,6 +47,8 @@ export default function OrderInfo(props: OrderInfoProps) {
                   title={productName}
                   description={productDescriptions}
                   checkBox={false}
+                  count={count}
+                  changeCount={changeCount}
                 />
               ))}
       </PlanContainer>
