@@ -4,7 +4,7 @@ export const INDIVIDUAL_PURCHASE_LIST = {
   productName: "첨삭권",
   price: 50000,
   defaultDiscounts: [
-    { discountId: 1, discountName: "2024 특가", discountRate: 0.2 },
+    { discountId: 1, discountName: "2025 특가", discountRate: 0.2 },
     { discountId: 2, discountName: "파이널 10% 추가 할인", discountRate: 0.1 },
   ],
 };

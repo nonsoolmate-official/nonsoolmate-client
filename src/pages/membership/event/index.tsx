@@ -18,7 +18,7 @@ export default function index() {
         <PresentIcon />
         <TitleText>환급 이벤트</TitleText>
       </Title>
-      <Phrase>오직 2024년만! 합격생 100% 환급</Phrase>
+      <Phrase>오직 2025년만! 합격생 100% 환급</Phrase>
       <Explanation>목록 대학 논술 전형 합격 인증시 구독료를 100% 환급해드려요 (VAT 제외)</Explanation>
       <UnivsContainer>
         {UNIV_LIST.map((ele) => {
